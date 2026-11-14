@@ -1,0 +1,1881 @@
+[
+ {
+  "id": "C-001",
+  "claim": "The minimal free-reed model (one-mode reed equation z'' + (w0/Q) z' + w0^2 z = mu*dp with mu = Sr/M, pumped flow Sr*z', jet flow alpha*Su(h)*vj with dp = rho*vj^2/2, an upstream volume V1 obeying (V1/c0^2) dp1/dt = rho*(u0 - u) and an upstream pipe obeying p1 = p2 + rho*(L2/S2) du/dt) self-oscillates when integrated with a semi-implicit Euler scheme at 352.8 kHz, using the published harmonica-reed parameters (Lr 12.95 mm, Wr 2.1 mm, er 110 um, es 900 um, rest offset 528 um, hmin 50 um, fr 444 Hz, K 47.9 N/m, Q 95; S0 30 mm2, S1 800 mm2, L2 20 mm, S2 25 mm2).",
+  "kind": "software",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://arxiv.org/abs/2401.01606",
+    "doi": "",
+    "title": "A proposal for a minimal model of free reeds (Acta Acustica united with Acustica 93 (2007) 122-144)",
+    "version": "arXiv v1, 2024-01 (paper 2007)",
+    "locator": "section 2.1 eq. (4); section 2.2 eqs (5)-(7); section 3.1 equation list; Tables 2 and 3; appendix 5.2 and 5.4",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "research/spikes/s03-reed-minimal-model/output.json",
+    "doi": "",
+    "title": "planning spike S03",
+    "version": "this run",
+    "locator": "runs v0 = 1.5 to 3.5 m/s",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-010",
+   "D-011",
+   "T-100",
+   "T-101"
+  ],
+  "input_file_verdict": "not-in-input",
+  "note": "The spike used the Debut/Millot useful-section law, not the refined law of section 2.3.2.",
+  "tags": [
+   "subject:free-reed-modelling"
+  ]
+ },
+ {
+  "id": "C-002",
+  "claim": "In that model there is a threshold supply flow below which the reed does not sound (silent at 1.0 m/s, sounding at 1.5 m/s supply velocity through 30 mm2), the sounding frequency lies below the reed's natural frequency (440.7 Hz against 444 Hz, -13 cents) and falls slightly as the supply rises (-13.0 to -13.8 cents from 1.5 to 3.5 m/s), the tip amplitude grows with supply (1.3 to 2.4 mm), and at a much larger fixed supply flow (4 m/s) the reed is pushed through the plate and stops.",
+  "kind": "numerical",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "research/spikes/s03-reed-minimal-model/output.json",
+    "doi": "",
+    "title": "planning spike S03",
+    "version": "this run",
+    "locator": "runs list",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "https://arxiv.org/abs/2401.01606",
+    "doi": "",
+    "title": "A proposal for a minimal model of free reeds (Acta Acustica united with Acustica 93 (2007) 122-144)",
+    "version": "arXiv v1, 2024-01 (paper 2007)",
+    "locator": "section 3.2, figures 10 to 17 (qualitative agreement)",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-011",
+   "T-101",
+   "T-102",
+   "T-103"
+  ],
+  "input_file_verdict": "partly-supported",
+  "note": "The input file says pitch 'drops flat under excessive airflow'; the model shows a small fall and then choking. Measured cents-per-pascal figures for real reeds were not found.",
+  "tags": [
+   "subject:free-reed-modelling"
+  ]
+ },
+ {
+  "id": "C-003",
+  "claim": "In that model the reed tip motion stays close to sinusoidal (second harmonic of the displacement between -53 and -43 dB) while the volume flow through the reed carries strong harmonics that grow with the supply (second harmonic of the flow from -18.5 dB to -8.9 dB re the fundamental), so the harmonic content of the sound comes from the flow law, not from the reed motion.",
+  "kind": "numerical",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "research/spikes/s03-reed-minimal-model/output.json",
+    "doi": "",
+    "title": "planning spike S03",
+    "version": "this run",
+    "locator": "flow_harmonics_dB, reed_h2_dB",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "https://arxiv.org/abs/2401.01606",
+    "doi": "",
+    "title": "A proposal for a minimal model of free reeds (Acta Acustica united with Acustica 93 (2007) 122-144)",
+    "version": "arXiv v1, 2024-01 (paper 2007)",
+    "locator": "section 2.1 first paragraph; section 3.3",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-011",
+   "T-104"
+  ],
+  "input_file_verdict": "supported",
+  "note": "",
+  "tags": [
+   "subject:free-reed-modelling"
+  ]
+ },
+ {
+  "id": "C-004",
+  "claim": "A (-,+) reed in the minimal configuration oscillates only when V1*L2*w^2/(c0^2*S2) exceeds 1 (the upstream volume and inertance must be large enough); a (+,-) reed needs the opposite inequality.",
+  "kind": "numerical",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://arxiv.org/abs/2401.01606",
+    "doi": "",
+    "title": "A proposal for a minimal model of free reeds (Acta Acustica united with Acustica 93 (2007) 122-144)",
+    "version": "arXiv v1, 2024-01 (paper 2007)",
+    "locator": "section 3.1, instability condition after eq. (10)",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "research/spikes/s03-reed-minimal-model/volume_condition_output.json",
+    "doi": "",
+    "title": "planning spike S03B",
+    "version": "this run",
+    "locator": "L1 = 60, 30 mm oscillate (ratio 2.54, 1.27); L1 = 20, 10 mm do not (0.85, 0.42)",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-011",
+   "D-012",
+   "T-105"
+  ],
+  "input_file_verdict": "partly-supported",
+  "note": "The input file's 'upstream inertial effect' is right in kind; its statements about the ratio of reed frequency to Helmholtz frequency were not traced.",
+  "tags": [
+   "subject:free-reed-modelling"
+  ]
+ },
+ {
+  "id": "C-005",
+  "claim": "In Fletcher's sign convention as used by Millot and Baumann, (-,+) denotes a reed blown closed and (+,-) a reed blown open; a Western free reed in normal use is the (-,+) kind, and the same reed can act as a (+,-) reed when air flows the other way (as the second reed of a harmonica channel does). 'Inward-striking' is not a term the free-reed source uses.",
+  "kind": "bibliographic",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "https://arxiv.org/abs/2401.01606",
+    "doi": "",
+    "title": "A proposal for a minimal model of free reeds (Acta Acustica united with Acustica 93 (2007) 122-144)",
+    "version": "arXiv v1, 2024-01 (paper 2007)",
+    "locator": "abstract; section 2.1; Figure 1",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "r1-A-free-reed.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims A6, A7",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-010"
+  ],
+  "input_file_verdict": "partly-supported",
+  "note": "",
+  "tags": [
+   "subject:free-reed-modelling"
+  ]
+ },
+ {
+  "id": "C-006",
+  "claim": "The reed passes through its slot during a noticeable part of each period, so the escape area opens on both sides of the plate (two flow pulses per cycle).",
+  "kind": "software",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "https://arxiv.org/abs/2401.01606",
+    "doi": "",
+    "title": "A proposal for a minimal model of free reeds (Acta Acustica united with Acustica 93 (2007) 122-144)",
+    "version": "arXiv v1, 2024-01 (paper 2007)",
+    "locator": "section 3.3, discussion of Figure 17",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "research/spikes/s03-reed-minimal-model/output.json",
+    "doi": "",
+    "title": "planning spike S03",
+    "version": "this run",
+    "locator": "goes_through_plate true for every sounding run",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-011"
+  ],
+  "input_file_verdict": "supported",
+  "note": "Verified for the model; a measurement on a real reed was not read.",
+  "tags": [
+   "subject:free-reed-modelling"
+  ]
+ },
+ {
+  "id": "C-007",
+  "claim": "The first clamped-free bending frequency of a uniform rectangular reed is f1 = (1.875104^2/(2 pi sqrt(12))) (t/L^2) sqrt(E/rho) = 0.16154 (t/L^2) sqrt(E/rho), and the input file's reed-length table follows from it to within 0.005 mm.",
+  "kind": "mathematical",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "research/spikes/s01-input-tables/output.json",
+    "doi": "",
+    "title": "planning spike S01",
+    "version": "this run",
+    "locator": "reed_table_max_abs_diff_mm",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "r1-A-free-reed.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims A1, A2",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [],
+  "input_file_verdict": "supported",
+  "note": "Arithmetic only. The plan does not model reed geometry: each reed is specified by its natural frequency, Q, effective areas and offsets.",
+  "tags": [
+   "subject:free-reed-modelling"
+  ]
+ },
+ {
+  "id": "C-008",
+  "claim": "The input file's statements that threshold pressure was compared for reeds of Q 16, 19, 29, 55 and about 250, that a closing reed needs more than 2 kPa when its frequency is below the cavity's Helmholtz frequency, and that laser vibrometry shows sinusoidal motion at 0.2 kPa and strong harmonics at 1.4 to 1.6 kPa, could not be traced to any source.",
+  "kind": "bibliographic",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "r1-A-free-reed.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims A11, A13",
+    "accessed": "2026-11-14",
+    "tier": 4
+   },
+   {
+    "url": "research/INPUT_owner_research_file.md",
+    "doi": "",
+    "title": "owner's input file (uncorroborated; counts as zero sources)",
+    "version": "as uploaded",
+    "locator": "lines 18 and 21",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "inferred",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [],
+  "input_file_verdict": "not-found",
+  "note": "Not used by the plan.",
+  "tags": [
+   "subject:free-reed-modelling"
+  ]
+ },
+ {
+  "id": "C-009",
+  "claim": "Ricot, Causse and Misdariis (J. Acoust. Soc. Am. 117(4), 2279, 2005) exists and, by its abstract, treats the accordion reed as a blown-closed free reed without acoustic coupling and attributes the radiated sound mainly to a dipole source; St. Hilaire, Wilson and Beavers (J. Fluid Mech. 49, 803, 1971) and Tarnopolsky, Fletcher and Lai (J. Acoust. Soc. Am. 108, 400, 2000) exist.",
+  "kind": "bibliographic",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "https://pubs.aip.org/asa/jasa/article-abstract/117/4/2279/543421",
+    "doi": "10.1121/1.1852546",
+    "title": "Aerodynamic excitation and sound production of blown-closed free reeds without acoustic coupling: the example of the accordion reed, J. Acoust. Soc. Am. 117(4), 2279",
+    "version": "2005",
+    "locator": "abstract, through search results only",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "r1-A-free-reed.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims A9, A10",
+    "accessed": "2026-11-14",
+    "tier": 4
+   },
+   {
+    "url": "https://arxiv.org/abs/2401.01606",
+    "doi": "",
+    "title": "A proposal for a minimal model of free reeds (Acta Acustica united with Acustica 93 (2007) 122-144)",
+    "version": "arXiv v1, 2024-01 (paper 2007)",
+    "locator": "reference list",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-013"
+  ],
+  "input_file_verdict": "partly-supported",
+  "note": "Full texts not read (A-012, publisher refusals). The plan's radiation stage is a design choice (D-013) checked by listening, not a consequence of this claim.",
+  "tags": [
+   "subject:free-reed-modelling"
+  ]
+ },
+ {
+  "id": "C-010",
+  "claim": "Published synthesis work on free reeds that an implementer could consult exists: a physics-based harmonium reed synthesis (DAFx 2023), a time-domain reed and airflow scheme compared with laser vibrometry (Forum Acusticum 2023), and a thesis applying the Millot-Baumann model to the harmonica.",
+  "kind": "bibliographic",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "r1-B-harmonica.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims B6, B24",
+    "accessed": "2026-11-14",
+    "tier": 4
+   },
+   {
+    "url": "r1-C-accordion-melodica.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claim C17",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [],
+  "input_file_verdict": "not-in-input",
+  "note": "Seen in search results only.",
+  "tags": [
+   "subject:free-reed-modelling"
+  ]
+ },
+ {
+  "id": "C-011",
+  "claim": "A 10-hole Richter diatonic in C has blow notes C4 E4 G4 C5 E5 G5 C6 E6 G6 C7 and draw notes D4 G4 B4 D5 F5 A5 B5 D6 F6 A6 for holes 1 to 10; draw is the higher note in holes 1 to 6 and blow is the higher note in holes 7 to 10; harmonicas in other keys are the same layout transposed.",
+  "kind": "software",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Richter-tuned_harmonica",
+    "doi": "",
+    "title": "Richter-tuned harmonica",
+    "version": "read 2026-11-14",
+    "locator": "introduction and layout table",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "r1-B-harmonica.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims B7, B8 (two teaching sites)",
+    "accessed": "2026-11-14",
+    "tier": 4
+   },
+   {
+    "url": "https://arxiv.org/abs/2401.01606",
+    "doi": "",
+    "title": "A proposal for a minimal model of free reeds (Acta Acustica united with Acustica 93 (2007) 122-144)",
+    "version": "arXiv v1, 2024-01 (paper 2007)",
+    "locator": "Table 2 caption: a reed of channel 4 of a G harmonica has eigenfrequency 444 Hz, which is the draw note A4 of hole 4 on a G instrument",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "corroborated",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-020",
+   "T-110"
+  ],
+  "input_file_verdict": "supported",
+  "note": "Tier 1 support is partial (one reed of one key); the full table rests on Tier 3 and Tier 4 sources that agree.",
+  "tags": [
+   "subject:harmonica-acoustics"
+  ]
+ },
+ {
+  "id": "C-012",
+  "claim": "On an unvalved diatonic, a bend lowers the pitch of the higher reed of a hole towards the lower reed and stops about a semitone above it, so the available bends in C are: draw holes 1 (1 semitone), 2 (2), 3 (3), 4 (1), 6 (1); blow holes 8 (1), 9 (1), 10 (2); holes 5 and 7 bend by less than a semitone.",
+  "kind": "software",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Harmonica",
+    "doi": "",
+    "title": "Harmonica",
+    "version": "read 2026-11-14",
+    "locator": "sections on bending",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Richter-tuned_harmonica",
+    "doi": "",
+    "title": "Richter-tuned harmonica",
+    "version": "read 2026-11-14",
+    "locator": "valved diatonics",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "r1-B-harmonica.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims B9, B11, B20",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-021",
+   "T-111"
+  ],
+  "input_file_verdict": "supported",
+  "note": "Several agreeing sources, none Tier 1 read in full (Bahnson et al. 1998 and Johnston 1987 could not be opened). Carried as risk R-001. The bend table is data in the preset file, so a correction does not change code.",
+  "tags": [
+   "subject:harmonica-acoustics"
+  ]
+ },
+ {
+  "id": "C-013",
+  "claim": "Bending and overbending on a diatonic are two-reed effects: the normally silent reed of the hole sounds as an opening reed; an overblow or overdraw sounds about a semitone above the pitch of the reed that is normally silent for that breath direction.",
+  "kind": "software",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Harmonica",
+    "doi": "",
+    "title": "Harmonica",
+    "version": "read 2026-11-14",
+    "locator": "bending paragraph",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "https://arxiv.org/abs/2401.01606",
+    "doi": "",
+    "title": "A proposal for a minimal model of free reeds (Acta Acustica united with Acustica 93 (2007) 122-144)",
+    "version": "arXiv v1, 2024-01 (paper 2007)",
+    "locator": "section 3.4, reference to Helmholtz, Johnston, Millot and Bahnson",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "r1-B-harmonica.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims B10, B11",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-021",
+   "D-022"
+  ],
+  "input_file_verdict": "supported",
+  "note": "The physical two-reed mechanism is the reason for decision rule D-022 (emergent bend, with a fallback).",
+  "tags": [
+   "subject:harmonica-acoustics"
+  ]
+ },
+ {
+  "id": "C-014",
+  "claim": "A chromatic harmonica has a slide that raises every note by a semitone, wind-saver valves on the low and middle holes, and solo tuning repeating each octave (blow C E G C, draw D F A B per four holes on a C instrument); a 12-hole C chromatic starts at C4. Its bends are single-reed bends, downward only, of about a semitone.",
+  "kind": "software",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Chromatic_harmonica",
+    "doi": "",
+    "title": "Chromatic harmonica",
+    "version": "read 2026-11-14",
+    "locator": "introduction; limitations paragraph",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Harmonica",
+    "doi": "",
+    "title": "Harmonica",
+    "version": "read 2026-11-14",
+    "locator": "wind-savers",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "r1-B-harmonica.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claim B21",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-023",
+   "T-112"
+  ],
+  "input_file_verdict": "supported",
+  "note": "No Tier 1 source read. Carried in risk R-001.",
+  "tags": [
+   "subject:harmonica-acoustics"
+  ]
+ },
+ {
+  "id": "C-015",
+  "claim": "The MRI study of harmonica bending is by Egbert, Shin, Barrett, Rossing and Holbrook; no harmonica paper by an author named Foertsch was found (a website on bending physics by that author exists).",
+  "kind": "bibliographic",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "r1-B-harmonica.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims B12, B13",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [],
+  "input_file_verdict": "partly-supported",
+  "note": "",
+  "tags": [
+   "subject:harmonica-acoustics"
+  ]
+ },
+ {
+  "id": "C-016",
+  "claim": "No measured mouth pressures, vocal-tract resonance frequencies for bends, vibrato depths, or open single-note datasets for the harmonica were found; the only pressures read are the simulated over-pressures of the reed model (about 100 to 800 Pa in normal oscillation).",
+  "kind": "numerical",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "r1-B-harmonica.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims B23, B25",
+    "accessed": "2026-11-14",
+    "tier": 4
+   },
+   {
+    "url": "https://arxiv.org/abs/2401.01606",
+    "doi": "",
+    "title": "A proposal for a minimal model of free reeds (Acta Acustica united with Acustica 93 (2007) 122-144)",
+    "version": "arXiv v1, 2024-01 (paper 2007)",
+    "locator": "section 3.3",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "research/spikes/s03-reed-minimal-model/output.json",
+    "doi": "",
+    "title": "planning spike S03",
+    "version": "this run",
+    "locator": "mean_p2_Pa",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "inferred",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-024"
+  ],
+  "input_file_verdict": "not-found",
+  "note": "Control ranges are therefore design values fixed in D-024 and judged at the listening gate.",
+  "tags": [
+   "subject:harmonica-acoustics"
+  ]
+ },
+ {
+  "id": "C-017",
+  "claim": "Accordion treble reed ranks are named by organ footage: 16' (low, one octave below), 8' (unison), 4' (one octave above); a second or third 8' rank is detuned for tremolo. Common register switches are Piccolo (4'), Clarinet (8'), Bassoon (16'), Oboe (4'+8'), Violin (8'+8'), Musette imitation (4'+8'+8'), Musette authentic (8'+8'+8'), Organ (4'+16'), Harmonium (4'+8'+16'), Bandoneon (8'+16'), Accordion (8'+8'+16'), Master (4'+8'+8'+16').",
+  "kind": "software",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Accordion_reed_ranks_and_switches",
+    "doi": "",
+    "title": "Accordion reed ranks and switches",
+    "version": "read 2026-11-14",
+    "locator": "sections 'Reed ranks' and 'Register switches', table",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "r1-C-accordion-melodica.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claim C4 (wikibooks and two dealer pages)",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-030",
+   "T-120"
+  ],
+  "input_file_verdict": "partly-supported",
+  "note": "The input file lists Musette as MMH; the encyclopaedia distinguishes an imitation musette (4'+8'+8') from the authentic three-reed musette (8'+8'+8'). Several agreeing sources, none Tier 1; a naming convention has no primary source. Carried in risk R-001.",
+  "tags": [
+   "subject:accordion-acoustics"
+  ]
+ },
+ {
+  "id": "C-018",
+  "claim": "The detuned 8' rank is usually no more than 25 cents from the main rank; dealers classify tremolo by cents or beats at A4 (about 2, 4, 10, 15, 18 and 25 cents for concert, swing, American, German or Italian, French and Scottish styles); the beat rate for an offset of c cents at frequency f is f*(2^(c/1200) - 1), and tuners do not keep the offset constant in cents across the keyboard.",
+  "kind": "numerical",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Accordion_reed_ranks_and_switches",
+    "doi": "",
+    "title": "Accordion reed ranks and switches",
+    "version": "read 2026-11-14",
+    "locator": "reed ranks paragraph",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "research/spikes/s01-input-tables/output.json",
+    "doi": "",
+    "title": "planning spike S01",
+    "version": "this run",
+    "locator": "beat_table_max_abs_diff_hz",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "r1-C-accordion-melodica.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims C8, C9",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-031"
+  ],
+  "input_file_verdict": "supported",
+  "note": "The style tiers are dealer conventions and are used as preset values only.",
+  "tags": [
+   "subject:accordion-acoustics"
+  ]
+ },
+ {
+  "id": "C-019",
+  "claim": "A cassotto is a tone chamber holding one or two treble reed blocks whose sound is described as warmer and less sharp; the statement that it strengthens 500 to 1000 Hz and subdues everything above 1000 Hz comes from an unsourced encyclopaedia sentence, and no measured transfer function was found.",
+  "kind": "numerical",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Cassotto",
+    "doi": "",
+    "title": "Cassotto",
+    "version": "read 2026-11-14",
+    "locator": "second paragraph and 'Sound' section",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "r1-C-accordion-melodica.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claim C18",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-032"
+  ],
+  "input_file_verdict": "supported",
+  "note": "Used as a low-confidence preset for a configurable filter; the tests check the filter against its own configuration, not against the 500 to 1000 Hz figure.",
+  "tags": [
+   "subject:accordion-acoustics"
+  ]
+ },
+ {
+  "id": "C-020",
+  "claim": "An accordion pitch-bend study exists (Elejalde-Garcia, Macho-Stadler and Llanos-Vazquez, Acoustics in Practice, 2021) and reports drops of about 15 cents (finger only) and 25 cents (bellows and finger); its statements on even and odd harmonics could not be confirmed.",
+  "kind": "bibliographic",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "r1-C-accordion-melodica.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims C11, C12, C19",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-033"
+  ],
+  "input_file_verdict": "partly-supported",
+  "note": "Read at snippet level. The bend is an optional control with a 25-cent default range.",
+  "tags": [
+   "subject:accordion-acoustics"
+  ]
+ },
+ {
+  "id": "C-021",
+  "claim": "TinySOL version 6.0 (Zenodo record 3685367, CC BY 4.0) contains 689 accordion notes played ordinario, MIDI pitches 28 to 109, at pp (194), mf (302) and ff (185) plus 8 at p, as 44.1 kHz mono WAV; 35 of them are marked as digitally retuned; the archive is TinySOL.tar.gz (1026917185 bytes, md5 36030a7fe389da86c3419e5ee48e3b7f) and the metadata file TinySOL_metadata.csv has md5 a86c9bb115f69e61f2f25872e397fc4a.",
+  "kind": "policy",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://zenodo.org/records/3685367",
+    "doi": "10.5281/zenodo.3685367",
+    "title": "TinySOL: an audio dataset of isolated musical notes",
+    "version": "v6.0, 2020-01-31",
+    "locator": "record metadata (licence, files, checksums); TinySOL_metadata.csv rows with instrument Acc, downloaded and counted",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "K-20261007T160111Z-c-072",
+    "doi": "",
+    "title": "knowledge item from the store",
+    "version": "",
+    "locator": "same record, same checksums, read in an earlier run",
+    "accessed": "2026-11-14",
+    "tier": 3
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-050",
+   "T-200",
+   "S-REF"
+  ],
+  "input_file_verdict": "not-in-input",
+  "note": "The register of the recorded accordion (which ranks sound) is not stated in the record.",
+  "tags": [
+   "subject:folk-instrument-reference-recordings"
+  ]
+ },
+ {
+  "id": "C-022",
+  "claim": "Accordion reed tongues are normally spring steel on aluminium-alloy plates, two tongues per plate with a leather or plastic valve on the idle side; the input file's count of 448 reeds and its lowest and highest pitches (G1 or F2, A7) were not traced.",
+  "kind": "bibliographic",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "r1-C-accordion-melodica.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims C1, C2, C6, C7",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [],
+  "input_file_verdict": "partly-supported",
+  "note": "Not used: reeds are specified by frequency and Q, not by material.",
+  "tags": [
+   "subject:accordion-acoustics"
+  ]
+ },
+ {
+  "id": "C-023",
+  "claim": "The keyboard wind instrument is sold as Melodica (Hohner), Pianica (Yamaha) and Melodion (Suzuki); it has one air chamber fed by the player's breath and each key opens a pad that lets that air pass one reed; the reeds sound on blowing only.",
+  "kind": "software",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Melodica",
+    "doi": "",
+    "title": "Melodica",
+    "version": "read 2026-11-14",
+    "locator": "introduction; 'Types'; names paragraph",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "r1-C-accordion-melodica.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims C20, C21, C25",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-040"
+  ],
+  "input_file_verdict": "partly-supported",
+  "note": "The input file's sentence on brand names is muddled.",
+  "tags": [
+   "subject:melodica"
+  ]
+ },
+ {
+  "id": "C-024",
+  "claim": "Common melodica ranges are F3 to F6 (37 keys) and F3 to C6 (32 keys); the input file's ranges (soprano and alto F4 to F6, tenor C3 to C5, bass F2 to F4) match no maker's listing that was found, and the range of a bass melodion was not found.",
+  "kind": "software",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "r1-C-accordion-melodica.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims C20, C21, C22, C27",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-040"
+  ],
+  "input_file_verdict": "refuted",
+  "note": "Maker pages were seen at snippet level. Range presets are data; the engine sounds any MIDI note.",
+  "tags": [
+   "subject:melodica"
+  ]
+ },
+ {
+  "id": "C-025",
+  "claim": "No peer-reviewed or thesis study specific to the melodica was found: the input file's statements on three airflow regimes, the long-tube experiment (traced to a builders' forum only), reed tapering by register, chamber depth under bass reeds and moisture come from forums or could not be traced.",
+  "kind": "bibliographic",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "r1-C-accordion-melodica.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims C23, C24, C26, C27, C28",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "inferred",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-041"
+  ],
+  "input_file_verdict": "not-found",
+  "note": "The melodion model is the shared reed model fed from one plenum (D-041); its chord behaviour follows from mass conservation and is tested as such.",
+  "tags": [
+   "subject:melodica"
+  ]
+ },
+ {
+  "id": "C-026",
+  "claim": "The partials of a stiff string are f_n = n*f0*sqrt(1 + B*n^2) with B = pi^3*E*d^4/(64*T*L^2) for a solid round wire, equivalently B = pi^2*E*d^2/(64*rho*L^4*f0^2).",
+  "kind": "mathematical",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://euphonics.org/wp-content/uploads/2022/03/Double_decays_JASA.pdf",
+    "doi": "10.1121/10.0009012",
+    "title": "A necessary condition for double-decay envelopes in stringed instruments, J. Acoust. Soc. Am. 150(6), 4375-4384",
+    "version": "2021",
+    "locator": "eq. (4): the bending term E*pi^2*d^2*n^2/(64*rho*L^4*f1^2) is B*n^2",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "https://ccrma.stanford.edu/~jos/pasp/Stiff_String.html",
+    "doi": "",
+    "title": "Physical Audio Signal Processing: The Stiff String; Stiff String Synthesis Models",
+    "version": "online edition, page dated 2026-08-21",
+    "locator": "stiff-string wave equation and dispersion",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "r1-D-plucked-string.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims D1, D2 (Fletcher and Rossing form)",
+    "accessed": "2026-11-14",
+    "tier": 4
+   },
+   {
+    "url": "research/spikes/s01-input-tables/output.json",
+    "doi": "",
+    "title": "planning spike S01",
+    "version": "this run",
+    "locator": "strings table reproduced",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "corroborated",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-060",
+   "T-130"
+  ],
+  "input_file_verdict": "supported",
+  "note": "",
+  "tags": [
+   "subject:plucked-string-modelling"
+  ]
+ },
+ {
+  "id": "C-027",
+  "claim": "The loss factor of string mode n can be modelled as the sum of a bridge term eta_b = 2*Re(Y)/(pi*n*Y0) with Y0 = 1/sqrt(T*m), an air term eta_air = (rho_a/rho)*(2*sqrt(2)*M + 1)/M^2 with M = (d/4)*sqrt(2*pi*f_n/nu_a), rho_a = 1.2 kg/m3, nu_a = 1.5e-5 m2/s, and a bending term eta_bend = E*pi^2*d^2*n^2*eta_E/(64*rho*L^4*f1^2 + E*pi^2*d^2*n^2); air damping dominates low modes and bending damping high modes.",
+  "kind": "mathematical",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://euphonics.org/wp-content/uploads/2022/03/Double_decays_JASA.pdf",
+    "doi": "10.1121/10.0009012",
+    "title": "A necessary condition for double-decay envelopes in stringed instruments, J. Acoust. Soc. Am. 150(6), 4375-4384",
+    "version": "2021",
+    "locator": "section II A, eqs (1)-(4)",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-061",
+   "T-131"
+  ],
+  "input_file_verdict": "not-in-input",
+  "note": "One Tier 1 source, read in full; its air term is quoted from Fletcher and Rossing (1998). The tests check the implementation against these formulas and check qualitative ordering; calibration to recordings is a later step.",
+  "tags": [
+   "subject:plucked-string-modelling"
+  ]
+ },
+ {
+  "id": "C-028",
+  "claim": "Two strings of a course that share a bridge form a symmetric mode that drives the bridge and decays fast and an antisymmetric mode that hardly drives it and decays slowly; with a slight mistuning a note plucked on one or both strings shows a fast first decay followed by a slow second decay; with weak coupling and mistuning the envelope beats at the difference frequency; with strong resistive coupling the two frequencies lock and the beat disappears.",
+  "kind": "numerical",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "research/spikes/s04-coupled-pair/output.json",
+    "doi": "",
+    "title": "planning spike S04",
+    "version": "this run",
+    "locator": "unison_both, mistuned_1.0c, detuned_2c_weak, detuned_8c_weak, 3c_strong_coupling_mode_split_Hz",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "https://euphonics.org/wp-content/uploads/2022/03/Double_decays_JASA.pdf",
+    "doi": "10.1121/10.0009012",
+    "title": "A necessary condition for double-decay envelopes in stringed instruments, J. Acoust. Soc. Am. 150(6), 4375-4384",
+    "version": "2021",
+    "locator": "sections I and III",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "https://ccrma.stanford.edu/~jos/pasp/Coupled_Strings.html",
+    "doi": "",
+    "title": "Physical Audio Signal Processing: Coupled Strings; Two Ideal Strings Coupled at an Impedance",
+    "version": "online edition, page dated 2026-08-21",
+    "locator": "two-stage decay paragraph",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-062",
+   "T-132",
+   "T-133"
+  ],
+  "input_file_verdict": "supported",
+  "note": "With an exact unison and equal plucks the antisymmetric mode is not excited and no aftersound appears in a one-polarisation model; the model therefore keeps a small default mistuning.",
+  "tags": [
+   "subject:plucked-string-modelling"
+  ]
+ },
+ {
+  "id": "C-029",
+  "claim": "For the bowl-back mandolin Woodhouse measured (a 'Stridente' Neapolitan instrument with La Bella 770L strings), double decays are predicted for most notes above about 500 Hz and for none in the lowest octave; his coupled-pair example varies the mistuning over plus or minus 8 cents.",
+  "kind": "bibliographic",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "https://euphonics.org/wp-content/uploads/2022/03/Double_decays_JASA.pdf",
+    "doi": "10.1121/10.0009012",
+    "title": "A necessary condition for double-decay envelopes in stringed instruments, J. Acoust. Soc. Am. 150(6), 4375-4384",
+    "version": "2021",
+    "locator": "section II B, Figure 4 text; section III",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-062"
+  ],
+  "input_file_verdict": "supported",
+  "note": "One instrument. The plan does not assert a 500 Hz boundary; the behaviour follows from the bridge admittance preset.",
+  "tags": [
+   "subject:mandolin-acoustics"
+  ]
+ },
+ {
+  "id": "C-030",
+  "claim": "A string plucked at a fraction beta of its length has partial n excited in proportion to sin(n*pi*beta)/n^2 in displacement (so partials at multiples of 1/beta vanish), and a plectrum of finite width and compliance adds a low-pass effect.",
+  "kind": "mathematical",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "r1-D-plucked-string.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claim D19 (CCRMA text and DAFx paper)",
+    "accessed": "2026-11-14",
+    "tier": 4
+   },
+   {
+    "url": "https://ccrma.stanford.edu/~jos/pasp/Stiff_String.html",
+    "doi": "",
+    "title": "Physical Audio Signal Processing: The Stiff String; Stiff String Synthesis Models",
+    "version": "online edition, page dated 2026-08-21",
+    "locator": "context",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-063",
+   "T-134"
+  ],
+  "input_file_verdict": "supported",
+  "note": "Textbook result; the Tier 1 text was read by the round-1 worker, not re-read by the planner.",
+  "tags": [
+   "subject:plucked-string-modelling"
+  ]
+ },
+ {
+  "id": "C-031",
+  "claim": "Modal synthesis (a bank of exponentially decaying sinusoidal modes whose complex frequencies come from the coupled string, bridge and body system) reproduces the coupled-pair behaviour exactly for a linear model, because the response is the sum of the eigenmodes' decaying exponentials.",
+  "kind": "software",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "research/spikes/s04-coupled-pair/output.json",
+    "doi": "",
+    "title": "planning spike S04",
+    "version": "this run",
+    "locator": "envelope computed from the eigen-decomposition",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "K-20261009T120109Z-two-pole-resonator-with-input-zero-gives-cosine-start",
+    "doi": "",
+    "title": "knowledge item from the store",
+    "version": "",
+    "locator": "resonator form",
+    "accessed": "2026-11-14",
+    "tier": 3
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-060",
+   "D-062"
+  ],
+  "input_file_verdict": "not-in-input",
+  "note": "",
+  "tags": [
+   "subject:plucked-string-modelling"
+  ]
+ },
+ {
+  "id": "C-032",
+  "claim": "Weinreich's 'Coupled piano strings' (J. Acoust. Soc. Am. 62, 1474, 1977), Perng's Stanford thesis on the harpsichord plectrum (2012), and Rauhala and Valimaki's tunable dispersion filter design (2006) exist as the input file or common practice cite them; the input file's '2 x 2 complex bridge admittance matrix' wording was not found in a source that could be opened.",
+  "kind": "bibliographic",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "r1-D-plucked-string.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims D6, D16, D17, D21",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [],
+  "input_file_verdict": "partly-supported",
+  "note": "",
+  "tags": [
+   "subject:plucked-string-modelling"
+  ]
+ },
+ {
+  "id": "C-033",
+  "claim": "The Helmholtz frequency of a cavity with a hole is f = (c/(2*pi))*sqrt(S/(V*L_eff)) with L_eff the hole thickness plus end corrections (about 0.85 r per flanged end, 0.61 r per unflanged end).",
+  "kind": "mathematical",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Helmholtz_resonance",
+    "doi": "",
+    "title": "Helmholtz resonance",
+    "version": "read 2026-11-14",
+    "locator": "resonant frequency formula",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "r1-D-plucked-string.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims D23, D24",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [],
+  "input_file_verdict": "supported",
+  "note": "Not used: body modes are preset data, not computed from geometry.",
+  "tags": [
+   "subject:plucked-string-modelling"
+  ]
+ },
+ {
+  "id": "C-034",
+  "claim": "The mandolin has four unison double courses tuned G3 D4 A4 E5.",
+  "kind": "software",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_article",
+    "doi": "10.1250/ast.24.1",
+    "title": "The acoustics of mandolins, Acoust. Sci. & Tech. 24(1), 1-6",
+    "version": "2003",
+    "locator": "introduction",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Mandolin",
+    "doi": "",
+    "title": "Mandolin",
+    "version": "read 2026-11-14",
+    "locator": "introduction",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "K-20261009T164000Z-violin-family-mandolin-and-seven-string-guitar-tunings",
+    "doi": "",
+    "title": "knowledge item from the store",
+    "version": "",
+    "locator": "statement",
+    "accessed": "2026-11-14",
+    "tier": 3
+   }
+  ],
+  "confidence": "corroborated",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-070",
+   "T-140"
+  ],
+  "input_file_verdict": "supported",
+  "note": "",
+  "tags": [
+   "subject:mandolin-acoustics"
+  ]
+ },
+ {
+  "id": "C-035",
+  "claim": "Cohen and Rossing's Table 1 gives, for a Gibson F-type f-hole mandolin, (0,0) modes at 313 and 464 Hz, (1,0) 570, (0,1) 824, (2,0) 886, (3,0) 1117 Hz and air modes A0 272, A1 895, A2 816 Hz; for a Gibson F-type oval-hole mandolin, (0,0) modes at 209, 398 and 482 Hz, (1,0) 575, (0,1) 775, (2,0) 918, (3,0) 1149 Hz and A0 214, A1 804, A2 905 Hz; accelerance shows a broad maximum near 3.5 kHz; radiation is fairly even from 0 to 5 kHz with some rolloff above 2.5 kHz.",
+  "kind": "numerical",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_article",
+    "doi": "10.1250/ast.24.1",
+    "title": "The acoustics of mandolins, Acoust. Sci. & Tech. 24(1), 1-6",
+    "version": "2003",
+    "locator": "Table 1; sections 5.2 and 5.3",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-071"
+  ],
+  "input_file_verdict": "refuted",
+  "note": "The input file's 'top-plate mode at 318 Hz (f-hole) against 423 Hz (oval-hole)' is not in this paper; its 0 to 5 kHz statement is. Mode Q factors are not given. Used as preset values only.",
+  "tags": [
+   "subject:mandolin-acoustics"
+  ]
+ },
+ {
+  "id": "C-036",
+  "claim": "For bowl-back (Neapolitan) mandolins the lowest peak T(1,1)1, near 200 Hz, is tied to the Helmholtz resonance and is weak in the bridge admittance; T(1,1)2, the first soundboard mode, lies between about 450 and 700 Hz; the long dipole T(1,2) comes below the cross dipole. The paper is Quintavalla, Gabrielli and Canevari, Int. J. Wood Culture 2 (2022); the input file's exact averages (194.1, 553.6, 740.5 Hz and others) are in a table published as an image and were not read.",
+  "kind": "numerical",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "https://doi.org/10.1163/27723194-bja10001",
+    "doi": "10.1163/27723194-bja10001",
+    "title": "The Acoustics of Traditional Italian Mandolins and Their Relation with Soundboard Wood Properties, Int. J. Wood Culture 2(1-3), 1-18",
+    "version": "2022",
+    "locator": "section 3.1, text after Table 2; section 3.1.3",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-071"
+  ],
+  "input_file_verdict": "partly-supported",
+  "note": "Preset values for the bowl-back body use the readable statements (about 200 Hz, 450 to 700 Hz) and are marked low confidence.",
+  "tags": [
+   "subject:mandolin-acoustics"
+  ]
+ },
+ {
+  "id": "C-037",
+  "claim": "Common mandolin scale lengths are about 13 in (330 mm) for bowl-backs and 13 7/8 in (352 mm) for Gibson-style instruments; a common medium set is 0.011, 0.015 plain and 0.026, 0.040 wound (D'Addario EJ74), a light set 0.010, 0.014, 0.024w, 0.038w (EJ73); the input file's light set '0.010 to 0.034' is wrong.",
+  "kind": "numerical",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Mandolin",
+    "doi": "",
+    "title": "Mandolin",
+    "version": "read 2026-11-14",
+    "locator": "'Mandolin family', scale length sentence",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "r1-E-mandolin-bouzouki.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claim E5 (retailer listings)",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-072"
+  ],
+  "input_file_verdict": "partly-supported",
+  "note": "Preset values.",
+  "tags": [
+   "subject:mandolin-acoustics"
+  ]
+ },
+ {
+  "id": "C-038",
+  "claim": "The input file's string tables (linear density, tension, inharmonicity and partial stretch for plain steel strings) are arithmetically correct for the gauges, scales and pitches it lists.",
+  "kind": "numerical",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "research/spikes/s01-input-tables/output.json",
+    "doi": "",
+    "title": "planning spike S01",
+    "version": "this run",
+    "locator": "strings; string_max_rel_B_diff = 0",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-072"
+  ],
+  "input_file_verdict": "supported",
+  "note": "The gauges themselves are only partly confirmed (C-037, C-041). Wound strings are not covered: their bending stiffness is taken from an assumed core diameter.",
+  "tags": [
+   "subject:plucked-string-modelling"
+  ]
+ },
+ {
+  "id": "C-039",
+  "claim": "The Greek trichordo bouzouki is tuned D3D4 - A3A3 - D4D4 and the tetrachordo C3C4 - F3F4 - A3A3 - D4D4: the bass courses pair a thick wound string with a thin string an octave higher, the upper courses are unisons; most instruments have 27 frets.",
+  "kind": "software",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Bouzouki",
+    "doi": "",
+    "title": "Bouzouki",
+    "version": "read 2026-11-14",
+    "locator": "sections on trichordo and tetrachordo; construction paragraph",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Irish_bouzouki",
+    "doi": "",
+    "title": "Irish bouzouki",
+    "version": "read 2026-11-14",
+    "locator": "history paragraph",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "r1-E-mandolin-bouzouki.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims E11, E12, E13",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-073",
+   "T-141"
+  ],
+  "input_file_verdict": "supported",
+  "note": "Several agreeing sources, none Tier 1. Carried in risk R-001. Which string of an octave pair the plectrum meets first on a downstroke was not confirmed (default: the thick string, configurable).",
+  "tags": [
+   "subject:bouzouki"
+  ]
+ },
+ {
+  "id": "C-040",
+  "claim": "The Irish bouzouki is usually tuned G2 D3 A3 D4 in unison pairs (after Donal Lunny replaced the octave strings), with a flat or slightly arched back; scale lengths are mostly 24 to 25 in (60 to 65 cm) and up to 26 or 27 in; a common set is 0.011, 0.016 plain and 0.028, 0.040 wound (D'Addario EJ81).",
+  "kind": "software",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Irish_bouzouki",
+    "doi": "",
+    "title": "Irish bouzouki",
+    "version": "read 2026-11-14",
+    "locator": "history; construction; tuning",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "r1-E-mandolin-bouzouki.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims E6, E14, E15",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-073",
+   "T-141"
+  ],
+  "input_file_verdict": "supported",
+  "note": "No Tier 1 source; no acoustic measurements of an Irish bouzouki were found. Carried in risk R-001.",
+  "tags": [
+   "subject:bouzouki"
+  ]
+ },
+ {
+  "id": "C-041",
+  "claim": "Brezas et al., 'An Integrated Method for the Vibroacoustic Evaluation of a Carbon Fiber Bouzouki', Applied Sciences 13(7), 4585 (2023) exists and compares a wooden bouzouki (W02) with carbon-fibre ones; the input file's modal frequencies (185, 436, 635, 710, 796 Hz and the carbon-fibre values) could not be checked because the publisher refuses requests from the sandbox, and a conference paper by the same group, seen in a search result, quotes different peaks (W02: 180, 445, 695 Hz).",
+  "kind": "numerical",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "https://www.mdpi.com/2076-3417/13/7/4585",
+    "doi": "10.3390/app13074585",
+    "title": "An Integrated Method for the Vibroacoustic Evaluation of a Carbon Fiber Bouzouki, Applied Sciences 13(7), 4585",
+    "version": "2023",
+    "locator": "not read",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "r1-E-mandolin-bouzouki.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claim E7",
+    "accessed": "2026-11-14",
+    "tier": 4
+   }
+  ],
+  "confidence": "single-source",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-071"
+  ],
+  "input_file_verdict": "not-found",
+  "note": "Greek bouzouki body presets are marked low confidence; risk R-002.",
+  "tags": [
+   "subject:bouzouki"
+  ]
+ },
+ {
+  "id": "C-042",
+  "claim": "In an octave course the two strings do not form a near-degenerate pair at the fundamental: partial n of the octave string lies near partial 2n of the bass string, so pairing and double decay occur between those partials only.",
+  "kind": "mathematical",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "research/spikes/s04-coupled-pair/output.json",
+    "doi": "",
+    "title": "planning spike S04",
+    "version": "this run",
+    "locator": "the pair model applies to any two partials with nearly equal frequency",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "inferred",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-062",
+   "D-073"
+  ],
+  "input_file_verdict": "supported",
+  "note": "Follows from the model; no source read.",
+  "tags": [
+   "subject:bouzouki"
+  ]
+ },
+ {
+  "id": "C-043",
+  "claim": "JUCE tag 8.0.17-security dereferences to commit dabd5ad13cd869cba41046947fffc8e5ce5cd662 (2026-11-02); it differs from 8.0.15 (91ad83ae34a81e0833b1a2b0866f54846370ae53) by hardening of file, XML, JSON, ZIP, image and ValueTree parsing; a VST3 plus Standalone instrument plugin builds from it with CMake 3.28.3, Ninja 1.11.1 and g++ 13.3.0 on Ubuntu 24.04 in 88 s on 4 cores after installing 13 development packages, with juce_add_plugin(... FORMATS VST3 Standalone IS_SYNTH TRUE NEEDS_MIDI_INPUT TRUE COPY_PLUGIN_AFTER_BUILD FALSE) and JUCE_VST3_CAN_REPLACE_VST2=0.",
+  "kind": "software",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://github.com/juce-framework/JUCE",
+    "doi": "",
+    "title": "JUCE framework source at tag 8.0.17-security (LICENSE.md, docs/Linux Dependencies.md, docs/CMake API.md, bundled VST3 SDK LICENSE.txt)",
+    "version": "tag 8.0.17-security, commit dabd5ad13cd869cba41046947fffc8e5ce5cd662, 2026-11-02",
+    "locator": "git log of the tag; docs/Linux Dependencies.md; docs/CMake API.md",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "research/spikes/s02-juce-build/build.log",
+    "doi": "",
+    "title": "planning spike S02",
+    "version": "this run",
+    "locator": "configure.log, build.log (EXIT=0)",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-080",
+   "S-002"
+  ],
+  "input_file_verdict": "not-in-input",
+  "note": "",
+  "tags": [
+   "tech:juce"
+  ]
+ },
+ {
+  "id": "C-044",
+  "claim": "JUCE 8 modules are dual-licensed under AGPLv3 and the commercial JUCE licence; the VST3 SDK bundled at this tag carries the MIT licence.",
+  "kind": "policy",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://github.com/juce-framework/JUCE",
+    "doi": "",
+    "title": "JUCE framework source at tag 8.0.17-security (LICENSE.md, docs/Linux Dependencies.md, docs/CMake API.md, bundled VST3 SDK LICENSE.txt)",
+    "version": "tag 8.0.17-security, commit dabd5ad13cd869cba41046947fffc8e5ce5cd662, 2026-11-02",
+    "locator": "LICENSE.md lines 3 to 13; modules/juce_audio_processors_headless/format_types/VST3_SDK/LICENSE.txt",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "K-20261027T123100Z-juce8-licensing",
+    "doi": "",
+    "title": "knowledge item from the store",
+    "version": "",
+    "locator": "EULA read in an earlier run",
+    "accessed": "2026-11-14",
+    "tier": 3
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-081"
+  ],
+  "input_file_verdict": "not-in-input",
+  "note": "",
+  "tags": [
+   "tech:juce"
+  ]
+ },
+ {
+  "id": "C-045",
+  "claim": "The newest stable pluginval release is v1.0.4 (tag commit ed19c2c16b57a6d94db391bea3ef4a80b769d5bf); the only 2.x tags are betas (v2.0.0-beta1 to beta3). Its Linux, macOS and Windows archives have SHA-256 c01c49d8063965c4c2dea8324468336768f5c9139e0b1caebde14c2400b55352, 3c4c533bda0c5059eea3ddaea752d757ee2025041f0f47e6bcb0e87f6082b29f and c08e61ce3b96db41636f8ec7e76f4c7e2c13ebdac7fa1b5a1f52b4f32ec715ab; the command line takes --strictness-level 1 to 10 and --timeout-ms, validates in process without a flag, and can exit 0 without having run every test.",
+  "kind": "software",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://github.com/actions/checkout",
+    "doi": "",
+    "title": "Tag lists read with git ls-remote: actions/checkout, actions/upload-artifact, actions/download-artifact, actions/setup-python, actions/cache, catchorg/Catch2, Tracktion/pluginval, mull-project/mull, steinbergmedia/vst3sdk",
+    "version": "read 2026-11-14",
+    "locator": "Tracktion/pluginval tag list: only v1.0.x and v2.0.0-beta tags",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "K-20261007T160010Z-c-011",
+    "doi": "",
+    "title": "knowledge item from the store",
+    "version": "",
+    "locator": "and K-...c-009, c-010, c-012 to c-015, K-20261104T005300Z: hashes and CLI read from the v1.0.4 source and release in earlier runs",
+    "accessed": "2026-11-14",
+    "tier": 3
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-082",
+   "T-300"
+  ],
+  "input_file_verdict": "not-in-input",
+  "note": "Hashes and flags come from verified knowledge items at the same version; the release assets cannot be downloaded from the planning sandbox, so the implementer's first use re-checks the hash (it gates).",
+  "tags": [
+   "subject:pluginval"
+  ]
+ },
+ {
+  "id": "C-046",
+  "claim": "These tags exist with these commits: actions/checkout v7.0.1 3d3c42e5aac5ba805825da76410c181273ba90b1; actions/upload-artifact v7.0.2 cf430e030ddbb5b0abf93d22962f4752f3646cd9; actions/download-artifact v8.0.2 9000827ccba6bdab643e8b6fd33ac0654aef8333; actions/setup-python v7.1.0 6d4fd22b20465ccc0f7354476588e8df7c9ca0e0; actions/cache v6.1.0 55cc8345863c7cc4c66a329aec7e433d2d1c52a9; catchorg/Catch2 v3.16.1 08092139210881f01a34e60c5f2fd6afa0ea4024 (dereferenced).",
+  "kind": "software",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://github.com/actions/checkout",
+    "doi": "",
+    "title": "Tag lists read with git ls-remote: actions/checkout, actions/upload-artifact, actions/download-artifact, actions/setup-python, actions/cache, catchorg/Catch2, Tracktion/pluginval, mull-project/mull, steinbergmedia/vst3sdk",
+    "version": "read 2026-11-14",
+    "locator": "git ls-remote --tags output, 2026-11-14",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-083",
+   "S-003"
+  ],
+  "input_file_verdict": "not-in-input",
+  "note": "",
+  "tags": [
+   "subject:github-actions-pins"
+  ]
+ },
+ {
+  "id": "C-047",
+  "claim": "GitHub-hosted runner labels available on 2026-11-13 include ubuntu-24.04 (x64), ubuntu-24.04-arm (arm64), windows-2025 (x64, Visual Studio 2026), windows-2022 (x64), macos-15 (arm64) and macos-15-intel (x64); macOS 14 images were retired on 2026-11-02.",
+  "kind": "software",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://github.com/actions/runner-images",
+    "doi": "",
+    "title": "GitHub Actions runner images README, Available Images table",
+    "version": "commit 95e6f51a068507e8f43d061d2166a39d0ef36ce8, 2026-11-13",
+    "locator": "README.md, 'Available Images' table and notice",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "K-20261112T134500Z-github-hosted-runner-labels-2026-11",
+    "doi": "",
+    "title": "knowledge item from the store",
+    "version": "",
+    "locator": "same labels",
+    "accessed": "2026-11-14",
+    "tier": 3
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-084",
+   "S-003"
+  ],
+  "input_file_verdict": "not-in-input",
+  "note": "",
+  "tags": [
+   "subject:github-hosted-runner-labels"
+  ]
+ },
+ {
+  "id": "C-048",
+  "claim": "PyPI offers numpy 2.5.4, scipy 1.18.1, soundfile 0.14.0 and pytest 9.2.0; numpy 2.5.3, scipy 1.18.1 and soundfile 0.14.0 install and run on Python 3.13 in the planning sandbox.",
+  "kind": "software",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://pypi.org/simple/",
+    "doi": "",
+    "title": "PyPI index: numpy, scipy, soundfile, pytest versions",
+    "version": "read 2026-11-14",
+    "locator": "pip index versions; pip install output",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "research/spikes/s03-reed-minimal-model/output.json",
+    "doi": "",
+    "title": "planning spike S03",
+    "version": "this run",
+    "locator": "spikes ran on these versions",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-085"
+  ],
+  "input_file_verdict": "not-in-input",
+  "note": "",
+  "tags": [
+   "tech:python"
+  ]
+ },
+ {
+  "id": "C-049",
+  "claim": "The Philharmonia sample library includes mandolin and may be used freely, including in commercial work, but the samples must not be sold or made available 'as is'; under Rule 15 that makes them usable as a private reference only (linked, never republished).",
+  "kind": "policy",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "https://philharmonia.co.uk/resources/sound-samples/",
+    "doi": "",
+    "title": "Philharmonia sound samples",
+    "version": "read 2026-11-14",
+    "locator": "'Library' and 'Licensing' paragraphs",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-051",
+   "S-REF"
+  ],
+  "input_file_verdict": "not-in-input",
+  "note": "Which mandolin (type) was recorded, and the number of notes, are not stated on the page.",
+  "tags": [
+   "subject:folk-instrument-reference-recordings"
+  ]
+ },
+ {
+  "id": "C-050",
+  "claim": "The University of Iowa Musical Instrument Samples carry no restriction on use but contain none of the five instruments (their plucked-string content is guitar and orchestral pizzicato).",
+  "kind": "policy",
+  "load_bearing": false,
+  "sources": [
+   {
+    "url": "https://theremin.music.uiowa.edu/MIS.html",
+    "doi": "",
+    "title": "University of Iowa Musical Instrument Samples",
+    "version": "read 2026-11-14",
+    "locator": "instrument list and first paragraph",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-051"
+  ],
+  "input_file_verdict": "not-in-input",
+  "note": "",
+  "tags": [
+   "subject:folk-instrument-reference-recordings"
+  ]
+ },
+ {
+  "id": "C-051",
+  "claim": "No redistributable set of isolated notes was found for harmonica, melodica, mandolin or bouzouki; the search was incomplete (Freesound refuses requests from the sandbox, and Wikimedia Commons, the Internet Archive and sample-library sites were not searched).",
+  "kind": "policy",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "r1-G-references.json",
+    "doi": "",
+    "title": "round-1 worker file (sources read at snippet level; see that file)",
+    "version": "",
+    "locator": "claims and open questions",
+    "accessed": "2026-11-14",
+    "tier": 4
+   },
+   {
+    "url": "https://zenodo.org/records/3685367",
+    "doi": "10.5281/zenodo.3685367",
+    "title": "TinySOL: an audio dataset of isolated musical notes",
+    "version": "v6.0, 2020-01-31",
+    "locator": "instrument list",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "inferred",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-051",
+   "S-REF",
+   "G-L1"
+  ],
+  "input_file_verdict": "not-in-input",
+  "note": "The plan gives the implementer a bounded search procedure and a decision rule per instrument (D-051) instead of assuming a result.",
+  "tags": [
+   "subject:folk-instrument-reference-recordings"
+  ]
+ }
+]
