@@ -1,0 +1,968 @@
+{
+ "branch": "B harmonica",
+ "claims": [
+  {
+   "local_id": "B1",
+   "claim": "Bahnson, Antaki and Beery, 'Acoustical and physical dynamics of the diatonic harmonica', J. Acoust. Soc. Am. 103(4), April 1998, pp. 2134-2144, DOI 10.1121/1.421359, exists. It reports that reed vibration frequencies in a 10-hole diatonic depend on the size and shape of the player's vocal tract.",
+   "input_file_says": "Bahnson et al. cited (no title, year or venue) as showing bending makes each hole a coupled three-oscillator system.",
+   "verdict_on_input": "partly-supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.cs.bu.edu/fac/snyder/TablatureWeb/Bahnson%20JASA%201998.pdf",
+     "doi": "10.1121/1.421359",
+     "title": "Acoustical and physical dynamics of the diatonic harmonica",
+     "authors": "H. T. Bahnson, J. F. Antaki, Q. C. Beery",
+     "year": "1998",
+     "version": "JASA 103(4)",
+     "locator": "pp. 2134-2144 (abstract/index entry)",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "The web-fetch tool could not reach the PDF host (DNS refused) and curl was blocked, so only search-engine summaries of the abstract and a PDF extract were seen. The 'three-oscillator' wording in the input file was NOT verified in this paper. A page-numbered reading is still needed before any parameter is taken from it."
+  },
+  {
+   "local_id": "B2",
+   "claim": "A 10-hole diatonic spans about three octaves with 22 diatonic tones available but only 20 reeds, so some diatonic-scale notes are missing without bending (Bahnson et al. introduction, as relayed by a search summary).",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.cs.bu.edu/fac/snyder/TablatureWeb/Bahnson%20JASA%201998.pdf",
+     "doi": "10.1121/1.421359",
+     "title": "Acoustical and physical dynamics of the diatonic harmonica",
+     "authors": "Bahnson, Antaki, Beery",
+     "year": "1998",
+     "version": "JASA 103(4)",
+     "locator": "introduction (not located)",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Consistent with the layout in B7: 20 reeds give 19 distinct pitches before bends because C5 appears at hole 4 blow and C6 at hole 7 blow etc.; the '22 diatonic tones' figure should be re-checked against the PDF."
+  },
+  {
+   "local_id": "B3",
+   "claim": "Johnston's paper exists: R. B. Johnston, 'Pitch control in harmonica playing', Acoustics Australia 15 (1987), pp. 69-75 (issue number given as 2 or 3 by different secondary sources). Johnston was a Monash physicist and is credited with the terms 'closing reed' and 'opening reed' (the second term is not confirmed in the snippets).",
+   "input_file_says": "Johnston cited as showing three-oscillator bending and as analysing overbends by linear stability modelling.",
+   "verdict_on_input": "partly-supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://harp-l.org/pipermail/harp-l/2014-May/msg00008.html",
+     "doi": "",
+     "title": "[Harp-L] Johnston, Bahnson",
+     "authors": "Steve Baker (list post)",
+     "year": "2014",
+     "version": "",
+     "locator": "post body",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.planetharmonica.com/Ressources/Harp%20Trivia/harmonica.htm",
+     "doi": "",
+     "title": "Harmonica Trivia (bibliography)",
+     "authors": "Planet Harmonica",
+     "year": "",
+     "version": "",
+     "locator": "bibliography entry",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Full text not opened. A forum post points at a PDF on mis.ucd.ie (RJohnst/oldharp.pdf); not fetched. Whether Johnston used 'linear stability modelling' is unverified; Johnston's work is described as experimental."
+  },
+  {
+   "local_id": "B4",
+   "claim": "Millot, Cuesta and Valette, 'Experimental results when playing chromatically on a diatonic harmonica', Acta Acustica united with Acustica 87 (2001) 262-270, exists as a reference of the later Millot and Baumann paper; its findings were not read.",
+   "input_file_says": "Millot et al. cited as analysing overbends and the three-oscillator system.",
+   "verdict_on_input": "not-found",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://arxiv.org/abs/2401.01606v1",
+     "doi": "",
+     "title": "A proposal for a minimal model of free reed(s)",
+     "authors": "L. Millot, Cl. Baumann",
+     "year": "2007 (arXiv 2024)",
+     "version": "arXiv:2401.01606v1",
+     "locator": "reference list; text says the model has been used for chromatic playing on a diatonic harmonica, to be presented elsewhere",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Page range 262-270 and the title come from a search-engine summary of the arXiv reference list; the paper itself and its abstract were not seen. The input file's attribution to Millot et al. of 'overbend' modelling is therefore unverified."
+  },
+  {
+   "local_id": "B5",
+   "claim": "Millot and Baumann (Acta Acustica 93 (2007) 122-144, arXiv:2401.01606) propose a minimal free-reed model: a single-degree-of-freedom mass-spring-damper reed in pure flexion (first transverse mode), with flow through the reed including side and front escape areas under both reeds; reed thickness strongly affects level, playing frequency and displacement amplitude.",
+   "input_file_says": "not in input file (input describes reed ODE and orifice flow generally)",
+   "verdict_on_input": "not-in-input",
+   "kind": "mathematical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://arxiv.org/pdf/2401.01606",
+     "doi": "",
+     "title": "A proposal for a minimal model of free reed(s)",
+     "authors": "L. Millot, Cl. Baumann",
+     "year": "2007",
+     "version": "arXiv:2401.01606",
+     "locator": "abstract",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "abstract only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Best candidate base model for the harmonica reed ODE. Equations and parameter tables were not read; fetching arxiv.org failed (host not allowed). The paper explicitly says it has been used for chromatic harmonica playing."
+  },
+  {
+   "local_id": "B6",
+   "claim": "A distributed clamped-bar (Euler-Bernoulli beam) adaptation of the Millot-Baumann model for harmonium exists (Forum Acusticum 2023). The free-reed beam model is a published route beyond the single-mode reed.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf",
+     "doi": "",
+     "title": "Forum Acusticum 2023 paper 000853 (harmonium free reed model)",
+     "authors": "not read",
+     "year": "2023",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Belongs mainly to the accordion/harmonium branch; noted for completeness."
+  },
+  {
+   "local_id": "B7",
+   "claim": "Standard C Richter layout: blow notes holes 1-10 are C E G C E G C E G C (C4 E4 G4 C5 E5 G5 C6 E6 G6 C7); draw notes are D G B D F A B D F A (D4 G4 B4 D5 F5 A5 B5 D6 F6 A6). Draw is higher than blow in holes 1-6, blow is higher than draw in holes 7-10 (hole 7: blow C6, draw B5).",
+   "input_file_says": "Draw reed higher than blow in the lower register (holes 1-6 implied); no table given.",
+   "verdict_on_input": "supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://www.learntheharmonica.com/post/harmonica-notes-easy-guide-layout",
+     "doi": "",
+     "title": "Harmonica notes easy guide layout",
+     "authors": "learntheharmonica.com",
+     "year": "",
+     "version": "",
+     "locator": "layout table",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.harpsurgery.com/wp-content/uploads/C_Harp_Diagram_with_Overblows.pdf",
+     "doi": "",
+     "title": "C Harp Diagram with Overblows",
+     "authors": "Harp Surgery",
+     "year": "",
+     "version": "",
+     "locator": "diagram",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "The note letters come from a search summary; octave numbers (C4 start) are from the standard convention and my own working, not from a page. The Wikipedia 'Richter tuning' example table (C E G C D F A C E A) is not the standard layout and must not be used. Two vendor/teaching pages are not independent enough to count as corroboration at Tier 1."
+  },
+  {
+   "local_id": "B8",
+   "claim": "Other keys are the C layout transposed by a constant interval. Hole 4 on a standard G harmonica (hole 1 blow G3) is G4 blow and A4 draw, which is the C-harp hole 4 pair (C5, D5) lowered by 5 semitones. The input file's example is correct for a standard G harp; a 'low G' harp (hole 1 blow G2) would be an octave lower.",
+   "input_file_says": "hole 4 on a G harmonica pairs a G4 blow reed with an A4 draw reed",
+   "verdict_on_input": "supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.learntheharmonica.com/post/harmonica-notes-easy-guide-layout",
+     "doi": "",
+     "title": "Harmonica notes easy guide layout",
+     "authors": "learntheharmonica.com",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Derived by transposition from B7 and the convention that a G harp starts at G3. The G3 start was not checked on a page; it is a standard convention but a design should make the lowest note a parameter."
+  },
+  {
+   "local_id": "B9",
+   "claim": "Bend sizes on a C harp (standard practice, unverified here): draw bends in holes 1 (1 semitone), 2 (2), 3 (3), 4 (1), 5 (about a semitone or less, since draw F5 is only one semitone above blow E5), 6 (1); blow bends in holes 8 (1), 9 (1), 10 (up to 2). Hole 7 has no usable bend. Each bend stops just above the pitch of the lower reed in that hole, so the maximum bend is bounded by the interval between the two reeds (hole 3 draw B4 down to G4 blow: 4 semitones apart, 3 bend steps).",
+   "input_file_says": "downward bends 'by a semitone or more' between the two reeds' pitches",
+   "verdict_on_input": "supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://www.brendan-power.com/images/POWERBENDER_BOOK_SAMPLE.pdf",
+     "doi": "",
+     "title": "Powerbender book sample",
+     "authors": "Brendan Power",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Search summaries disagreed on which holes bend (one said 1, 4, 6 only, another said 1-4, 6 draw and 8-10 blow). The sizes above are from the interval between the two reeds in B7 plus common teaching practice and must be checked against a source before use. The interval bound is the important design rule."
+  },
+  {
+   "local_id": "B10",
+   "claim": "Overblow notes on a C harp sound about a semitone above the draw reed's note: 1OB Eb4, 4OB Eb5, 5OB F#5, 6OB Bb5 (2OB and 3OB duplicate other notes). Overdraws sound about a semitone above the blow reed's note: 7OD C#6, 9OD Ab6, 10OD Db7 (8OD duplicates F6). A source lists the practically used ones as overblows Eb, F#, Bb and overdraws Db, Ab, C#.",
+   "input_file_says": "players execute upward-shifted overbends (overblows and overdraws); no notes given",
+   "verdict_on_input": "supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://www.brendan-power.com/images/POWERBENDER_BOOK_SAMPLE.pdf",
+     "doi": "",
+     "title": "Powerbender book sample",
+     "authors": "Brendan Power",
+     "year": "",
+     "version": "",
+     "locator": "overbend list",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Note names come from my own computation from the B7 layout (draw/blow reed plus about one semitone), cross-checked only against the three letter names in the snippet. The overblow mechanism claim (blow reed choked, draw reed sounds as an opening reed) is in B11."
+  },
+  {
+   "local_id": "B11",
+   "claim": "Mechanism claimed in the harmonica literature (Johnston 1987; Bahnson et al. 1998): in a draw bend the higher (draw) reed's frequency is lowered by vocal-tract coupling while the lower (blow) reed behaves as an opening reed and takes over; in an overblow or overdraw the originally driven reed is choked and the other reed speaks, about a semitone above its rest pitch. This was NOT confirmed from the primary texts in this round.",
+   "input_file_says": "blow reed behaves as a (+,-) outward-opening reed under draw airflow; overblow via linear stability modelling by Johnston, Millot et al., Fortsch",
+   "verdict_on_input": "partly-supported",
+   "kind": "mathematical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://harp-l.org/pipermail/harp-l/2014-May/msg00008.html",
+     "doi": "",
+     "title": "[Harp-L] Johnston, Bahnson",
+     "authors": "Steve Baker",
+     "year": "2014",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "The only evidence seen is that Johnston coined reed-type terms (closing/opening) and that Bahnson et al. extended his experiments. The 'linear stability modelling' attribution is unverified."
+  },
+  {
+   "local_id": "B12",
+   "claim": "The real-time MRI harmonica bending study is by Peter R. Egbert (Stanford, ophthalmology), Thomas D. Rossing, David Barrett and Lewis Shin, with Andrew Holbrook named on Barrett's site. It imaged a professional player on non-magnetic harmonicas, with 3-D static and 2-D real-time upper-airway images of unbent and bent notes. Barrett's site reports that the anterior chamber (tongue hump to harmonica) controls bend depth, and deeper bends move the constriction backwards, with a scooped tongue shape for the deepest bends.",
+   "input_file_says": "MRI imaging by Barrett, Rossing and colleagues shows the tongue body rising toward the palate while the tongue tip pushes forward to the lips and harmonica during draw bends",
+   "verdict_on_input": "partly-supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://ccrma405080.stanford.edu/events/peter-r-egbert-real-time-magnetic-resonance-imaging-of-vocal-tract-during-harmonica-pitch-ben",
+     "doi": "",
+     "title": "Real-time MRI of vocal tract during harmonica pitch bends (Stanford colloquium abstract)",
+     "authors": "P. R. Egbert et al.",
+     "year": "",
+     "version": "",
+     "locator": "abstract",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.bluesharmonica.com/mri_bending_study",
+     "doi": "",
+     "title": "MRI bending study",
+     "authors": "David Barrett",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "A peer-reviewed article (journal, year) was not found. A search summary mentions a 2012 Proceedings of Meetings on Acoustics paper on the harmonica as a blues instrument, which may be related; unconfirmed. The input file's detail on tongue-body and tongue-tip motion is not confirmed by what I saw; the 'anterior chamber' and 'scooped tongue' description is Barrett's own wording. The input file credits Barrett and Rossing, which is consistent with the author list."
+  },
+  {
+   "local_id": "B13",
+   "claim": "No harmonica paper by F\u00f6rtsch could be found. The only trace is that Alfred F\u00f6rtsch runs a website on the physics of harmonica bending (bluesharpscience.de), reported by a blues-harmonica blog; its content was not opened.",
+   "input_file_says": "F\u00f6rtsch cited as demonstrating the three-oscillator bending model and analysing overbends",
+   "verdict_on_input": "not-found",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.bluesharmonica.com/website_dedicated_physics_harmonica",
+     "doi": "",
+     "title": "Website dedicated to the physics of the harmonica",
+     "authors": "David Barrett",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Treat any F\u00f6rtsch attribution in the input file as unsupported until a publication is located."
+  },
+  {
+   "local_id": "B14",
+   "claim": "A Cottingham survey of free-reed acoustics exists in Physics Today (the file 'PTO.v64.i3.44' suggests vol. 64, no. 3, 2011, p. 44; titled 'Acoustics of free-reed instruments') and notes pitch bending, especially in harmonica music, is of particular interest. Braasch and Cottingham also have an Acoustics Today article on free reeds.",
+   "input_file_says": "Cottingham not cited in the harmonica section (cited in the accordion section as source of reed-cell material)",
+   "verdict_on_input": "not-in-input",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://physicstoday.aip.org/features/acoustics-of-free-reed-instruments",
+     "doi": "",
+     "title": "Acoustics of free-reed instruments",
+     "authors": "likely J. P. Cottingham (author not read)",
+     "year": "2011",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Author, year and volume are inferred from the PDF file name and my background knowledge; verify."
+  },
+  {
+   "local_id": "B15",
+   "claim": "Reed-plate thickness: Hohner Marine Band Classic 1896 and MS-series diatonics list brass reed plates 0.9 mm thick; the Hohner 64 Chromonica lists 1.05 mm brass; Seydel Concerto lists 0.9 mm. These are plate thicknesses, not the reed tongue thickness, and per-reed length, width and tongue thickness were not found in any source.",
+   "input_file_says": "chromatic reeds often slightly longer and wider than diatonic reeds",
+   "verdict_on_input": "not-found",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.musicjunction.com.au/products/hohner-marine-band-classic-1896-10-hole-diatonic-harmonica",
+     "doi": "",
+     "title": "Hohner Marine Band Classic 1896",
+     "authors": "dealer page quoting Hohner specs",
+     "year": "",
+     "version": "",
+     "locator": "specification",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://sale.tomleemusic.com/collections/all/products/hohner-64-chromonica",
+     "doi": "",
+     "title": "Hohner 64 Chromonica",
+     "authors": "dealer page",
+     "year": "",
+     "version": "",
+     "locator": "specification",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "A forum thread says manufacturers use different reed dimensions with no common standard. Reed tongue dimensions will probably need to come from Bahnson et al. (which may tabulate them) or be set as tunable parameters from the frequency. Slot clearances: not found."
+  },
+  {
+   "local_id": "B16",
+   "claim": "Which reed is on which plate: the input file says blow reeds sit inside the comb and draw reeds outside. No source I could read confirms or refutes this. My own understanding is that the upper plate carries the blow reeds mounted inside the comb cavity and the lower plate the draw reeds mounted on its outer face, so each reed swings into its slot with the airflow it is driven by, but this is unverified.",
+   "input_file_says": "the blow reed sits on the inside and the draw reed sits on the outside",
+   "verdict_on_input": "not-found",
+   "kind": "policy",
+   "load_bearing_suggestion": true,
+   "sources": [],
+   "confidence": "inferred",
+   "notes": "Needs a manufacturer's construction diagram or Bahnson et al. Figure 1. The reed and cover-plate arrangement is a key modelling choice (which reed is closing vs opening)."
+  },
+  {
+   "local_id": "B17",
+   "claim": "A first-hand claim that bends need airtightness and that the comb and plates leak was not located in a readable source; the input file's statement on comb leaks and on chromatic windsavers rests on player and maintenance sources only. A Hohner chromatic uses thicker reed plates (1.05 mm) than a diatonic (0.9 mm).",
+   "input_file_says": "comb airtightness strongly affects bend stability; windsavers seal opposing reed slots",
+   "verdict_on_input": "not-found",
+   "kind": "policy",
+   "load_bearing_suggestion": false,
+   "sources": [],
+   "confidence": "inferred",
+   "notes": "Left as an open question; see open_questions."
+  },
+  {
+   "local_id": "B19",
+   "claim": "A Hatton study of harmonica note bending (leshatton.org, May 2015) and a McGill thesis (escholarship.mcgill.ca mc87pt57q) and an ISMA 2017 paper 52 appeared in search results as possible bending or harmonica-modelling sources; their content was not opened.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.leshatton.org/Study_of_harmonica_note_bending_Hatton_May2015.html",
+     "doi": "",
+     "title": "Study of harmonica note bending",
+     "authors": "L. Hatton",
+     "year": "2015",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://isma2017.cirmmt.mcgill.ca/proceedings/pdf/ISMA_2017_paper_52.pdf",
+     "doi": "",
+     "title": "ISMA 2017 paper 52",
+     "authors": "not read",
+     "year": "2017",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Follow these up next round for pressures, bend resonance frequencies and existing models."
+  },
+  {
+   "local_id": "B20",
+   "claim": "Half-valving puts windsavers on the draw reeds of holes 1-6 and the blow reeds of holes 7-10 (the higher-pitched reed in each hole, 10 of 20 reeds); these reeds then bend as single reeds (no cooperation from the opposite reed), and valved bends are reported to reach at least a semitone, with most players managing a whole tone. Valves block overblows and overdraws.",
+   "input_file_says": "limited downward bending remains possible on a single valved reed or half-valved diatonic, but cannot match the deep drops of an unvalved diatonic",
+   "verdict_on_input": "supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://www.bluesharmonica.com/two_half_valving_strategies_diatonic_harmonicas",
+     "doi": "",
+     "title": "Two half-valving strategies for diatonic harmonicas",
+     "authors": "D. Barrett",
+     "year": "",
+     "version": "",
+     "locator": "hole assignment",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://wikipedia.com/wiki/Blues_harp",
+     "doi": "",
+     "title": "Richter-tuned harmonica",
+     "authors": "Wikipedia",
+     "year": "",
+     "version": "",
+     "locator": "valved harmonicas section",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://harp-l.org/pipermail/harp-l/2007-August/msg00650.html",
+     "doi": "",
+     "title": "[Harp-L] chrom-style bends on a valved diatonic?",
+     "authors": "Harp-L list",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Evidence is player, forum and encyclopaedia text only; forum members disagree on stability (squeal prone vs as stable as unvalved) and on whether bends beyond a semitone are available. No measurement of valved bend size found. Treat the maximum single-reed bend as a tunable parameter, default 1 to 2 semitones."
+  },
+  {
+   "local_id": "B21",
+   "claim": "Chromatic harmonicas are conventionally solo tuned, like the Richter layout but without the draw G and with the interior Cs doubled; 12-hole models span three octaves (C4 start for a 12-hole C, 48 reeds), 14 and 16 hole models also exist. Pressing the slide raises each hole by a semitone, e.g. hole 1 blow C4 slide out, C#4 slide in.",
+   "input_file_says": "slide redirects breath from a natural reed plate to an offset reed plate tuned one semitone higher",
+   "verdict_on_input": "supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://en.wikipedia.com/wiki/Chromatic_harmonica",
+     "doi": "",
+     "title": "Chromatic harmonica",
+     "authors": "Wikipedia",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://hohner.de/en/instruments/harmonicas/chromatic/chrometta/chrometta-12",
+     "doi": "",
+     "title": "Chrometta 12 tuning chart",
+     "authors": "Hohner",
+     "year": "",
+     "version": "",
+     "locator": "tuning chart (official documentation)",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "corroborated",
+   "notes": "Two independent sources, but only snippets were seen and the Hohner chart is manufacturer documentation, so the 'Tier 1 actually read' condition is not met; treat as single-source in strict terms. Full note table per hole was not extracted. Seydel lists 12-hole models as three octaves tuned to equal temperament at A4 = 443 Hz (the reference pitch is a manufacturer choice and should be a parameter). The 'plate' wording in the input is not what the search showed (slide moves the mouthpiece channels, not plates); mechanism not verified."
+  },
+  {
+   "local_id": "B22",
+   "claim": "Throat vibrato on harmonica is quoted by a teaching site as most pleasing at about 5-6 Hz (3 Hz minimum acceptable). Hand and embouchure 'vibrato' do not change pitch and are tremolo (amplitude) effects. Hand cupping (wah) changes tone, like a guitar wah pedal, and needs a tight seal. No source gave a rate or depth in Hz or dB for the hand wah.",
+   "input_file_says": "not in input file (task asks for wah acoustics and vibrato rates)",
+   "verdict_on_input": "not-in-input",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.goodreads.com/author_blog_posts/22589918-how-to-do-vibrato-on-harmonica",
+     "doi": "",
+     "title": "How to do vibrato on harmonica",
+     "authors": "blog",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://harpsurgery.com/hand-tremolo",
+     "doi": "",
+     "title": "Hand tremolo",
+     "authors": "Harp Surgery",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.learntheharmonica.com/amp/tremolo-hand-wah-harmonica-lesson",
+     "doi": "",
+     "title": "Tremolo hand wah lesson",
+     "authors": "learntheharmonica.com",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Teaching-site figures, not measured. Depth of the throat vibrato in cents and the acoustic description of cupping (a variable cavity/aperture changing radiation and the reed-plate back volume) were not found; treat cup as a modelled filter plus amplitude modulation."
+  },
+  {
+   "local_id": "B23",
+   "claim": "No measured mouth pressure (Pa) for harmonica playing and no measured vocal-tract resonance frequencies for bends were found. A patent describes overblows qualitatively as needing critically altered vocal-tract resonance together with raised pressure, with the draw reed then sounding about a semitone above its natural pitch.",
+   "input_file_says": "not in input file; the Harmonium LDV pressures (0.2 kPa to 1.6 kPa) quoted in the accordion section are for harmonium",
+   "verdict_on_input": "not-found",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/6635814",
+     "doi": "",
+     "title": "Enhanced harmonica (US patent 6,635,814)",
+     "authors": "patent",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "The patent (Tier 2 source type; snippet only) supports the semitone-above-natural-pitch description. Bahnson et al. is likely to report pressures and resonance values but was not readable. Leave pressure range as an open design parameter."
+  },
+  {
+   "local_id": "B24",
+   "claim": "The only harmonica-specific synthesis implementation found is a 2021 BME (Budapest) thesis by Annamaria Rudas that models harmonica sound production in MATLAB using the Millot-Baumann free-reed model. A source-filter physically inspired harmonium synthesis model by Puranik and Scavone (DAFx 2023, paper 47) is a close relative. No digital-waveguide harmonica model and no open-source harmonica code were found.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "software",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://last.hit.bme.hu/sites/default/files/documents/Rudas_Annamaria_-_Szakdolgozat_2021.pdf",
+     "doi": "",
+     "title": "Rudas thesis 2021 (harmonica model)",
+     "authors": "A. Rudas",
+     "year": "2021",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.dafx.de/paper-archive/2023/DAFx23_paper_47.pdf",
+     "doi": "",
+     "title": "Physically inspired harmonium synthesis (DAFx23 paper 47)",
+     "authors": "Puranik, Scavone",
+     "year": "2023",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Both seen as search-result snippets only. Fetch Rudas thesis next round for model structure and parameters (reed mass, stiffness, damping, escape areas)."
+  },
+  {
+   "local_id": "B25",
+   "claim": "No open dataset of harmonica single notes and no published spectrum or attack-time measurements for harmonica notes were found in this round.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [],
+   "confidence": "inferred",
+   "notes": "Absence of evidence from three snippet searches; not a negative result."
+  }
+ ],
+ "equations": [],
+ "sources_checked": [
+  {
+   "url": "https://www.cs.bu.edu/fac/snyder/TablatureWeb/Bahnson%20JASA%201998.pdf",
+   "doi": "10.1121/1.421359",
+   "title": "Acoustical and physical dynamics of the diatonic harmonica",
+   "owner_or_authors": "Bahnson, Antaki, Beery",
+   "version_or_date": "JASA 103(4) 1998",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "unreachable",
+   "reason": "web fetch DNS refused; curl blocked by sandbox",
+   "licence_or_terms": "not read",
+   "content_summary": "Seen only via search-engine summary (bibliographic data, introduction statement about 20 reeds).",
+   "access_notes": "Needs www.cs.bu.edu allowed in network settings."
+  },
+  {
+   "url": "https://arxiv.org/html/2401.01606v1",
+   "doi": "",
+   "title": "A proposal for a minimal model of free reed(s)",
+   "owner_or_authors": "Millot, Baumann",
+   "version_or_date": "arXiv v1 Jan 2024 (Acta Acustica 2007)",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "unreachable",
+   "reason": "arxiv.org not in allowed hosts",
+   "licence_or_terms": "not read",
+   "content_summary": "Abstract via search summary.",
+   "access_notes": "Needs arxiv.org allowed."
+  },
+  {
+   "url": "https://www.phys.unsw.edu.au/jw/reprints/WolfeSmithAA.pdf",
+   "doi": "",
+   "title": "Wolfe and Smith, Acoustics Australia",
+   "owner_or_authors": "Wolfe, Smith",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "unreachable",
+   "reason": "host not allowed",
+   "licence_or_terms": "not read",
+   "content_summary": "",
+   "access_notes": ""
+  },
+  {
+   "url": "https://bluesharmonica.com/real_time_magnetic_resonance_imaging_fo_upper_airways_during_harmonica_pitch_bends_0",
+   "doi": "",
+   "title": "Real-time MRI of the upper airways during harmonica pitch bends",
+   "owner_or_authors": "David Barrett",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "unreachable",
+   "reason": "host not allowed",
+   "licence_or_terms": "not read",
+   "content_summary": "Snippet only via search.",
+   "access_notes": ""
+  },
+  {
+   "url": "https://ccrma405080.stanford.edu/events/peter-r-egbert-real-time-magnetic-resonance-imaging-of-vocal-tract-during-harmonica-pitch-ben",
+   "doi": "",
+   "title": "Stanford colloquium abstract (Egbert)",
+   "owner_or_authors": "Stanford CCRMA",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "unreachable",
+   "reason": "host not allowed",
+   "licence_or_terms": "not read",
+   "content_summary": "Snippet via search.",
+   "access_notes": ""
+  },
+  {
+   "url": "https://doi.org/10.1121/1.421359",
+   "doi": "10.1121/1.421359",
+   "title": "DOI resolver for Bahnson et al.",
+   "owner_or_authors": "",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "unreachable",
+   "reason": "host not allowed",
+   "licence_or_terms": "not read",
+   "content_summary": "",
+   "access_notes": ""
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/Richter-tuned_harmonica",
+   "doi": "",
+   "title": "Richter-tuned harmonica",
+   "owner_or_authors": "Wikipedia",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "unreachable",
+   "reason": "host not allowed",
+   "licence_or_terms": "not read",
+   "content_summary": "",
+   "access_notes": ""
+  },
+  {
+   "url": "https://harp-l.org/pipermail/harp-l/2014-May/msg00008.html",
+   "doi": "",
+   "title": "[Harp-L] Johnston, Bahnson",
+   "owner_or_authors": "Steve Baker",
+   "version_or_date": "2014",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "corroborating",
+   "reason": "snippet only",
+   "licence_or_terms": "not read",
+   "content_summary": "Confirms Johnston and Bahnson/Antaki relationship.",
+   "access_notes": ""
+  },
+  {
+   "url": "https://www.learntheharmonica.com/post/harmonica-notes-easy-guide-layout",
+   "doi": "",
+   "title": "Harmonica notes easy guide layout",
+   "owner_or_authors": "learntheharmonica.com",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "corroborating",
+   "reason": "snippet only",
+   "licence_or_terms": "not read",
+   "content_summary": "C Richter layout.",
+   "access_notes": ""
+  },
+  {
+   "url": "https://www.brendan-power.com/images/POWERBENDER_BOOK_SAMPLE.pdf",
+   "doi": "",
+   "title": "Powerbender book sample",
+   "owner_or_authors": "Brendan Power",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "corroborating",
+   "reason": "snippet only",
+   "licence_or_terms": "not read",
+   "content_summary": "Overblow and overdraw note names.",
+   "access_notes": ""
+  },
+  {
+   "url": "https://www.musicjunction.com.au/products/hohner-marine-band-classic-1896-10-hole-diatonic-harmonica",
+   "doi": "",
+   "title": "Hohner Marine Band Classic 1896",
+   "owner_or_authors": "dealer",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "corroborating",
+   "reason": "snippet only",
+   "licence_or_terms": "not read",
+   "content_summary": "Brass 0.9 mm reed plates.",
+   "access_notes": ""
+  },
+  {
+   "url": "https://physicstoday.aip.org/features/acoustics-of-free-reed-instruments",
+   "doi": "",
+   "title": "Acoustics of free-reed instruments",
+   "owner_or_authors": "Physics Today",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "not relevant",
+   "reason": "snippet only",
+   "licence_or_terms": "not read",
+   "content_summary": "Mentions pitch bending.",
+   "access_notes": ""
+  },
+  {
+   "url": "https://www.bluesharmonica.com/website_dedicated_physics_harmonica",
+   "doi": "",
+   "title": "Website dedicated to physics of harmonica",
+   "owner_or_authors": "David Barrett",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "corroborating",
+   "reason": "snippet only",
+   "licence_or_terms": "not read",
+   "content_summary": "Mentions Fortsch website.",
+   "access_notes": ""
+  },
+  {
+   "url": "https://www.bluesharmonica.com/two_half_valving_strategies_diatonic_harmonicas",
+   "doi": "",
+   "title": "Two half-valving strategies",
+   "owner_or_authors": "D. Barrett",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "used",
+   "reason": "snippet only",
+   "licence_or_terms": "not read",
+   "content_summary": "Half-valve hole assignment.",
+   "access_notes": ""
+  },
+  {
+   "url": "https://en.wikipedia.com/wiki/Chromatic_harmonica",
+   "doi": "",
+   "title": "Chromatic harmonica",
+   "owner_or_authors": "Wikipedia",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "used",
+   "reason": "snippet only",
+   "licence_or_terms": "not read (Wikipedia is normally CC BY-SA)",
+   "content_summary": "Solo tuning, 12-16 holes.",
+   "access_notes": ""
+  },
+  {
+   "url": "https://hohner.de/en/instruments/harmonicas/chromatic/chrometta/chrometta-12",
+   "doi": "",
+   "title": "Chrometta 12",
+   "owner_or_authors": "Hohner",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "snippet only",
+   "licence_or_terms": "not read",
+   "content_summary": "Slide out/in tuning chart.",
+   "access_notes": ""
+  },
+  {
+   "url": "https://harpsurgery.com/hand-tremolo",
+   "doi": "",
+   "title": "Hand tremolo",
+   "owner_or_authors": "Harp Surgery",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "used",
+   "reason": "snippet only",
+   "licence_or_terms": "not read",
+   "content_summary": "Tremolo vs vibrato terms.",
+   "access_notes": ""
+  },
+  {
+   "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/6635814",
+   "doi": "",
+   "title": "Enhanced harmonica US 6,635,814",
+   "owner_or_authors": "patent",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "used",
+   "reason": "snippet only",
+   "licence_or_terms": "not read",
+   "content_summary": "Overblow description.",
+   "access_notes": ""
+  },
+  {
+   "url": "https://last.hit.bme.hu/sites/default/files/documents/Rudas_Annamaria_-_Szakdolgozat_2021.pdf",
+   "doi": "",
+   "title": "Rudas thesis",
+   "owner_or_authors": "A. Rudas",
+   "version_or_date": "2021",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "used",
+   "reason": "snippet only",
+   "licence_or_terms": "not read",
+   "content_summary": "Harmonica model in MATLAB using Millot-Baumann.",
+   "access_notes": ""
+  },
+  {
+   "url": "https://www.dafx.de/paper-archive/2023/DAFx23_paper_47.pdf",
+   "doi": "",
+   "title": "DAFx23 paper 47",
+   "owner_or_authors": "Puranik, Scavone",
+   "version_or_date": "2023",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "corroborating",
+   "reason": "snippet only",
+   "licence_or_terms": "not read",
+   "content_summary": "Harmonium source-filter synthesis.",
+   "access_notes": ""
+  }
+ ],
+ "open_questions": [
+  "Primary texts (Bahnson 1998, Johnston 1987, Millot 2001, Millot and Baumann 2007) were not read because the fetch tool could not reach any external host; need those hosts allowed (cs.bu.edu, arxiv.org, doi.org, bluesharmonica.com, phys.unsw.edu.au, wikipedia.org) or text supplied.",
+  "Blow-inside / draw-outside plate arrangement, slot clearances and reed length, width and tongue thickness: no source read.",
+  "Egbert/Rossing/Barrett MRI paper: journal, year and measurements not confirmed.",
+  "Forstch: no publication found; the file's attribution is unsupported.",
+  "Chromatic: windsaver geometry, which chromatic reeds are valved, size of valved bends, slide leak: only partly covered (B20, B21).",
+  "Mouth pressures (Pa), bend resonance frequencies, wah acoustics, vibrato depth: no measured values found (B22, B23).",
+  "Spectra, attack times and open single-note datasets: none found (B25).",
+  "Read Rudas 2021 thesis and Millot and Baumann 2007 for model structure and parameters (B24, B5)."
+ ],
+ "summary": "Only web search worked, and only as snippets; web fetch and curl could not reach external hosts, so no primary text was read and nothing is Tier-1 verified.\nBahnson et al. (JASA 103(4), 1998), Johnston (Acoustics Australia 15, 1987) and Millot, Cuesta and Valette (Acta Acustica 87, 2001) exist; contents unread.\nC Richter layout, G-harp hole 4 example (G4/A4, correct) and overblow/overdraw notes are consistent with the file; bend sizes inferred.\nMRI study is Egbert, Rossing, Barrett, Shin (journal paper not found); no Forstch paper found; reed dimensions and plate sides unverified.\nHalf-valving, chromatic layout, vibrato rate and the Rudas thesis covered at snippet level; pressures, spectra and datasets not found."
+}

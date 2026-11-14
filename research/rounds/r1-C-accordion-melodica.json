@@ -1,0 +1,1126 @@
+{
+ "branch": "C accordion and melodica",
+ "claims": [
+  {
+   "local_id": "C1",
+   "claim": "Accordion reed plates carry one tongue on each face of a slot pair, so one plate serves both bellows directions, with a leather or plastic valve (ventile) covering the non-sounding tongue.",
+   "input_file_says": "Each reed plate carries two reed tongues mounted on opposite sides, paired with leather or synthetic check valves",
+   "verdict_on_input": "supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.accordions.com/articles/accordion_reed_production.aspx",
+     "doi": "",
+     "title": "Accordion Reed Production",
+     "authors": "Accordions Worldwide",
+     "year": "",
+     "version": "",
+     "locator": "search-result summary",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://petosa.com/blogs/accordion-culture/the-heart-and-soul-of-an-accordion-by-joe-petosa",
+     "doi": "",
+     "title": "The Heart and Soul of an Accordion",
+     "authors": "Joe Petosa",
+     "year": "",
+     "version": "",
+     "locator": "search-result summary",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Both are vendor or trade pages seen only as search summaries (fetch tools were blocked), and they share trade upstream, so not independent. Plastic valves are described as now common. A synthesiser needs only a push/pull selection per key, not valve physics."
+  },
+  {
+   "input_file_says": "brass and phosphor-bronze emphasis (reed material)",
+   "local_id": "C2",
+   "claim": "Accordion reed plates are mostly aluminium alloy (duralumin or Avional type); brass plates are used by some makers for small high reeds; historical plates were zinc, brass, soft steel or aluminium. Tongues are tempered spring steel, brass tongues being rare. The brass and phosphor-bronze emphasis is therefore a harmonium/melodica-style statement, not the accordion norm.",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.mfgrobots.com/Article/mfg/mpm/2374.html",
+     "doi": "",
+     "title": "Accordion: From Free-Reed Origins to Modern Innovations",
+     "authors": "mfgrobots",
+     "year": "",
+     "version": "",
+     "locator": "search-result summary",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://petosa.com/blogs/accordion-culture/the-heart-and-soul-of-an-accordion-by-joe-petosa",
+     "doi": "",
+     "title": "The Heart and Soul of an Accordion",
+     "authors": "Joe Petosa",
+     "year": "",
+     "version": "",
+     "locator": "search-result summary",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Weak sources. The input file did not state materials for the accordion directly except through the later melodion paragraph; treat as a caution. Material has small effect on a modelled reed except through mass and stiffness values, which should be taken from Cottingham-type reed measurements."
+  },
+  {
+   "local_id": "C3",
+   "claim": "Reed plates are fixed to wooden reed blocks with wax (Italian method), pins (traditional French) or screws; each block forms cells over which the plate sits.",
+   "input_file_says": "riveted metal free reeds mounted on wooden reed blocks",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.lamalleauxaccordeons.fr/en/content/7-working-mechanism-of-an-accordion",
+     "doi": "",
+     "title": "Working mechanism of an accordion",
+     "authors": "La Malle aux Accordeons (dealer)",
+     "year": "",
+     "version": "",
+     "locator": "search-result summary",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.accordions.com/articles/accordion_reed_production.aspx",
+     "doi": "",
+     "title": "Accordion Reed Production",
+     "authors": "Accordions Worldwide",
+     "year": "",
+     "version": "",
+     "locator": "search-result summary",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Tongues are riveted to plates (or in cheaper instruments nailed); plates themselves are waxed or pinned. Low design relevance."
+  },
+  {
+   "local_id": "C4",
+   "claim": "Register letters: L = 16' bassoon rank (one octave below written pitch), M = 8' clarinet rank (unison), H = 4' piccolo rank (one octave above). Common combinations: LM Bandoneon, MH Oboe, LH Organ, LMH Harmonium, MM(-) Violin, MMH Musette (M, M-, M+ with H as listed by some sources), LMM(-) Accordion, all ranks Master. Sources disagree on Master (LMM-M+ versus all voices) and some makers use different names, so the mapping is not standardised.",
+   "input_file_says": "L (16', Bassoon), M (8', Clarinet), H (4', Piccolo); Bandoneon (LM), Oboe (MH), Organ (LH), Harmonium (LMH), Violin (MM), Musette (MMH)",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://en.wikibooks.org/wiki/Accordion/Reed_Ranks_and_Switches",
+     "doi": "",
+     "title": "Accordion/Reed Ranks and Switches",
+     "authors": "Wikibooks contributors",
+     "year": "",
+     "version": "",
+     "locator": "search-result summary",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.ameraccord.com/commissions/ComposersGuide.pdf",
+     "doi": "",
+     "title": "Composer's guide to the accordion",
+     "authors": "American Accordionists' Association",
+     "year": "",
+     "version": "",
+     "locator": "search-result listing",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.libertybellows.com/general-accordion-questions.htm",
+     "doi": "",
+     "title": "General accordion questions",
+     "authors": "Liberty Bellows",
+     "year": "",
+     "version": "",
+     "locator": "search-result summary",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Wikibooks and the AAA guide are probably partly independent but I only saw summaries, so I cannot mark corroborated. Violin is two M ranks, one detuned; the input file's Musette (MMH) is shown as 4'+8'+8' detuned. Expose registers as a per-rank on/off switch matrix with named presets, not a fixed table."
+  },
+  {
+   "local_id": "C5",
+   "claim": "Treble ranks per instrument vary: 4 treble and 5 bass ranks are listed for common 41/120 models (for example Scandalli Air is Musette, Startone 120 IV), while a Concert V/V has 5 treble ranks; so '4 treble ranks, 5 bass ranks' is typical but not universal.",
+   "input_file_says": "professional 41-key / 120-bass instrument (4 treble ranks, 5 bass ranks)",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.thomann.de/ie/scandalli_air_is_musette.htm",
+     "doi": "",
+     "title": "Scandalli Air is Musette",
+     "authors": "Thomann (dealer)",
+     "year": "",
+     "version": "",
+     "locator": "specification list",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.thomannmusic.com/thomann_concert_vv_120_a_mano.htm",
+     "doi": "",
+     "title": "Thomann Concert V/V 120",
+     "authors": "Thomann (dealer)",
+     "year": "",
+     "version": "",
+     "locator": "specification list",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Dealer pages only."
+  },
+  {
+   "local_id": "C6",
+   "claim": "The input file's '448 reeds' arithmetic (328 treble plus 120 bass) cannot be traced to a source and looks wrong: reed counts depend on the model. A 41-key treble with 4 ranks has 41 x 4 = 164 plates, each with 2 tongues (push and pull) = 328 tongues, which is the file's treble figure. A 120-bass left hand with 5 ranks would have 5 x 96 (or similar) tongues rather than 120; the '120 bass reed tongues' figure conflates 120 buttons with reeds.",
+   "input_file_says": "328 treble reed tongues and 120 bass reed tongues - 448 individually tuned oscillators",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.thomann.de/ie/scandalli_air_is_musette.htm",
+     "doi": "",
+     "title": "Scandalli Air is Musette",
+     "authors": "Thomann (dealer)",
+     "year": "",
+     "version": "",
+     "locator": "treble/bass rank counts",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Treble figure derived by arithmetic from rank count; bass tongue count not found in any source I could open. Not load-bearing for a synthesiser."
+  },
+  {
+   "local_id": "C7",
+   "claim": "A 41-key treble keyboard spanning F to A is confirmed by dealer listings ('F to A'); the octave designation (F3 to A6 written, sounding with the 16' and 4' ranks one octave lower and higher) could not be confirmed from any source opened. The file's 'F2 or G1 lowest' and 'A7 (3520 Hz)' top figures were not traced to any source.",
+   "input_file_says": "spanning roughly F2 (~87 Hz) or G1 (~49 Hz) on the lowest bass reeds up to A7 (3520 Hz)",
+   "verdict_on_input": "not-found",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://www.thomannmusic.com/scandalli_intense_air_120.htm",
+     "doi": "",
+     "title": "Scandalli Intense",
+     "authors": "Thomann (dealer)",
+     "year": "",
+     "version": "",
+     "locator": "range 'F to A'",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Arithmetic check: written A6 = 1760 Hz, so the 4' rank sounds A7 = 3520 Hz, consistent with the file's top figure; written F3 = 174.6 Hz, with 16' rank sounding F2 = 87.3 Hz, consistent with the file's F2. G1 (49 Hz) cannot come from the treble side and may be a bass-side figure. Needs a manufacturer or Wikipedia Stradella check once fetch is allowed."
+  },
+  {
+   "local_id": "C8",
+   "claim": "Musette detuning is quoted in cents at A4 or beats per second; a typical shop rule is about 1 Hz = 3.5 cents mid-keyboard; style tiers on a community chart: dry 0, concert about 2 cents (0.5 Hz), swing about 4 cents (1 Hz), demi-swing about 7 cents (2 Hz, labelled Irish), American 10 cents (2.5 Hz), standard German/Italian 15 cents (4 Hz). Forum posts disagree (German/Italian 14 to 16 cents; Slovenian/Tex-Mex 12 cents; Irish or Amsterdam up to 25 cents). No Scottish or 'Sardo' entry was found.",
+   "input_file_says": "dry 0, Concert 2, Swing 4, American 10, German/Italian 15, Modern French 18, Scottish Sardo 25 cents",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://www.libertybellows.com/general-accordion-questions.htm",
+     "doi": "",
+     "title": "General accordion questions",
+     "authors": "Liberty Bellows",
+     "year": "",
+     "version": "",
+     "locator": "tuning chart",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.accordionists.info/threads/making-sense-out-of-cents.14511/latest",
+     "doi": "",
+     "title": "Making sense out of cents",
+     "authors": "accordionists.info forum",
+     "year": "",
+     "version": "",
+     "locator": "thread",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "The French (18 cents, 435/440/445) and Scottish (25 cents) entries are not in what I saw; a French tuner source gives 4 to 6 beats/s for three-voice musette. Expose offset as a user parameter with presets, not as a fixed standard."
+  },
+  {
+   "local_id": "C9",
+   "claim": "In practice the musette offset is not constant in cents or Hz: builders report that low notes (about C3) are tuned with larger cent offsets than high notes (about C6), while a constant cent offset would double the beat rate in Hz per octave. Actual tuning-table values were not found.",
+   "input_file_says": "a synthesizer should expose both constant-cent and beat-rate-scaled detuning curves across the keyboard",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://www.accordionists.info/threads/making-sense-out-of-cents.14511/latest",
+     "doi": "",
+     "title": "Making sense out of cents",
+     "authors": "accordionists.info forum",
+     "year": "",
+     "version": "",
+     "locator": "thread",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://acta-acustica.edpsciences.org/10.1051/aacus/2024020",
+     "doi": "10.1051/aacus/2024020",
+     "title": "Targeted detuning aiming for sensory pleasantness - A case study of Pipe Organs and Accordions",
+     "authors": "not read",
+     "year": "2024",
+     "version": "Acta Acustica 8, 33",
+     "locator": "not read",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "The Acta Acustica 2024 paper is open access and is probably the best source for measured accordion tremolo detuning across the keyboard; it was not readable here (host blocked). First thing to fetch when network allows."
+  },
+  {
+   "local_id": "C10",
+   "claim": "Exact beat rate for a cent offset c at frequency f is f(2^(c/1200) - 1); at A4 = 440 Hz, 15 cents gives 3.83 Hz and 444 Hz is 15.67 cents. These are arithmetic checks of the input file and are correct.",
+   "input_file_says": "exactly 15 cents yields 3.83 Hz whereas 444 Hz equals 15.67 cents",
+   "verdict_on_input": "supported",
+   "kind": "mathematical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "",
+     "doi": "",
+     "title": "Definition of the cent (1200 per octave)",
+     "authors": "standard",
+     "year": "",
+     "version": "",
+     "locator": "arithmetic",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Computed by hand: 440 x (2^(15/1200) - 1) = 440 x 0.008708 = 3.83 Hz; 1200 log2(444/440) = 15.67."
+  },
+  {
+   "local_id": "C11",
+   "claim": "The 2021 pitch-bend study exists: 'Accordion acoustics: A study on pitch bending', Elejalde-Garcia, Macho-Stadler and Llanos-Vazquez, Acoustics in Practice (EAA) 2021 issue 2, measuring a Pigini Sirius concert accordion. It reports that pitch drops about 25 cents (bellows-and-finger) and about 15 cents (finger-only), with similar drops for the harmonics so harmonicity is conserved, and that the cassotto, register and bellows direction have no influence on bending for most notes.",
+   "input_file_says": "Acoustics in Practice (2021) study ... finger-only about 15 cents, bellows-and-finger about 25 cents, all 20 harmonics drop by the same cent ratio",
+   "verdict_on_input": "supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://euracoustics.org/documents/14/AiP_2021_02_Accordion_acoustics.pdf",
+     "doi": "",
+     "title": "Accordion acoustics: A study on pitch bending",
+     "authors": "Elejalde-Garcia, Macho-Stadler, Llanos-Vazquez",
+     "year": "2021",
+     "version": "Acoustics in Practice 2021 (2)",
+     "locator": "abstract and results",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "abstract only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Seen only through search-engine extraction of the abstract; full text could not be fetched. Tested notes A#2 to A3 per one extract; no bend reported for C6 to C#8 (so the bend is not available on the highest notes). The abstract does not say the bend is absent on 4' reeds specifically."
+  },
+  {
+   "local_id": "C12",
+   "claim": "Even versus odd harmonic SPL during bending: the earlier Acoustics'08 paper by the same group reports that even harmonics lose more SPL than odd ones; the 2021 text mentions harmonics 7 to 20 but the sign and size of the 7 to 20 effect (even losing less than odd) could not be confirmed.",
+   "input_file_says": "even harmonics 2, 4, 6 drop more than odd 1, 3, 5, while across harmonics 7-20 even harmonics suffer less SPL loss than odd harmonics",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "http://www.conforg.fr/acoustics2008/cdrom/data/articles/001900.pdf",
+     "doi": "",
+     "title": "Controllable pitch-bending effects in the accordion playing",
+     "authors": "same group (Elejalde-Garcia et al.)",
+     "year": "2008",
+     "version": "Acoustics'08 Paris",
+     "locator": "results",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://euracoustics.org/documents/14/AiP_2021_02_Accordion_acoustics.pdf",
+     "doi": "",
+     "title": "Accordion acoustics: A study on pitch bending",
+     "authors": "Elejalde-Garcia et al.",
+     "year": "2021",
+     "version": "",
+     "locator": "results text",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "The 2008 paper reportedly also found loudness rising on average for bent notes, which conflicts with the input file's 'overall SPL drops'; unresolved. Do not model harmonic-dependent SPL until the full text is read."
+  },
+  {
+   "local_id": "C13",
+   "claim": "A newer explanation of bending: pressure loss at the reed-chamber vent hole opened by the pallet lowers the reed's effective spring constant (equivalent-circuit and nonlinear-oscillation model, Adachi et al.); the harmonica-style vocal-tract mechanism does not apply. Reported as a European Acoustics Association 2026 conference abstract; a JASA record 'On the mechanism of accordion pitch bending' (vol. 160, no. 4, p. 3057) also appears, authors unconfirmed.",
+   "input_file_says": "tilting a key slightly open ... to narrow the air passage ... while raising bellows pressure",
+   "verdict_on_input": "supported",
+   "kind": "mathematical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://dael.euracoustics.org/confs/fa2026/data/articles/000418.pdf",
+     "doi": "",
+     "title": "Aerodynamic mechanism of accordion pitch bending: simulation and theoretical analysis",
+     "authors": "Adachi, Okada, Samejima, Takeda, Nishimiya",
+     "year": "2026",
+     "version": "Forum Acusticum 2026 abstract (not edited by board)",
+     "locator": "abstract",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://pubs.aip.org/asa/jasa/article-abstract/160/4/3057/3406515/On-the-mechanism-of-accordion-pitch-bending",
+     "doi": "",
+     "title": "On the mechanism of accordion pitch bending",
+     "authors": "not read",
+     "year": "2026",
+     "version": "JASA 160(4) 3057",
+     "locator": "title only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Another search summary attributed up to about one semitone of bend to this mechanism, which exceeds the 25 cents in the 2021 study; the difference may be playing technique. Candidate model for a synthesiser: effective spring constant reduced as a function of vent opening and pressure."
+  },
+  {
+   "local_id": "C14",
+   "claim": "Pitch falls nearly linearly with increasing blowing pressure over the normal playing range for free reeds, attributed to a weaker effective restoring force; at very high pressure the frequency levels off and can rise. No accordion figure in cents per Pa was found.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://dael.euracoustics.org/confs/fa2026/data/articles/000418.pdf",
+     "doi": "",
+     "title": "Aerodynamic mechanism of accordion pitch bending",
+     "authors": "Adachi et al.",
+     "year": "2026",
+     "version": "",
+     "locator": "abstract",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://physicstoday.aip.org/features/acoustics-of-free-reed-instruments",
+     "doi": "",
+     "title": "Acoustics of free-reed instruments",
+     "authors": "James Cottingham",
+     "year": "2011",
+     "version": "Physics Today 64(3) 44",
+     "locator": "not read",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Cottingham's 2011 Physics Today article states this behaviour in general terms (as seen through a search summary of a Coe College study). Needs a numeric slope for reeds of a given pitch."
+  },
+  {
+   "local_id": "C15",
+   "claim": "Ricot, Causse and Misdariis, JASA 117(4) Pt 1, p. 2279 (April 2005), is titled 'Aerodynamic excitation and sound production of blown-closed free reeds without acoustic coupling: the example of the accordion reed'. It used water-flow visualisation and treats flow as incompressible and potential; it supports reed self-oscillation without pipe resonance. The input file's description is broadly right but the JASA record I saw is a conference abstract (p. 2279 of the meeting issue), not a full article.",
+   "input_file_says": "water-channel flow visualizations and wind-chamber studies by Ricot, Causs\u00e9, and Misdariis show that accordion reeds self-oscillate purely via local aerodynamic excitation",
+   "verdict_on_input": "partly-supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://hal.archives-ouvertes.fr/hal-01106161",
+     "doi": "",
+     "title": "Aerodynamic excitation and sound production of blown-closed free reeds without acoustic coupling: the example of the accordion reed",
+     "authors": "Ricot, Causse, Misdariis",
+     "year": "2005",
+     "version": "JASA 117(4) 2279",
+     "locator": "record",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "abstract only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Reed-chamber resonances matter mainly for higher accordion and harmonica reeds (Cottingham, ISMA 2017), so 'no acoustic coupling' is an approximation, not absolute. Verify the full article exists (probably Ricot's thesis or a later paper)."
+  },
+  {
+   "local_id": "C16",
+   "claim": "Cottingham's work on free-reed transients (Vienna Talk 2015 with Wolff; ISMA 2017 paper 52) found that reed onset begins with irregular motion, then a short transition, then amplitude growth; second transverse and first torsional tongue modes appear in the transient, the torsional mode being important in larger, lower reeds. Curving the tongue may ease the slow speech of large low reeds. No numerical onset times were found.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://isma2017.cirmmt.mcgill.ca/proceedings/pdf/ISMA_2017_paper_52.pdf",
+     "doi": "",
+     "title": "ISMA 2017 paper 52 (free reed transients)",
+     "authors": "Cottingham",
+     "year": "2017",
+     "version": "",
+     "locator": "section 5",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://viennatalk2015.mdw.ac.at/abstracts/ViennaTalk2015_submission_39.pdf",
+     "doi": "",
+     "title": "Detailed analysis of free reed initial transients",
+     "authors": "Cottingham, Wolff",
+     "year": "2015",
+     "version": "",
+     "locator": "abstract",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Both are by the same author, so not independent. Reeds were reed-organ type, not accordion. Design: make onset time grow with reed length (lower pitch) as a tunable parameter; no measured values available yet."
+  },
+  {
+   "local_id": "C17",
+   "claim": "Published synthesis work on bellows-driven free reeds exists: a DAFx 2023 paper on physics-based harmonium free-reed synthesis with bellows pressure as control parameter, a Forum Acusticum 2023 paper on a time-domain scheme for reed motion and airflow compared with laser vibrometry, and a NIME 2023 bandoneon synthesiser running on a Bela Mini. Roland's V-Accordion used pressure sensors with its 'Physical Behavior Modeling'.",
+   "input_file_says": "adapt the clamped-bar lumped-mass conservation equations validated on harmonium reeds",
+   "verdict_on_input": "partly-supported",
+   "kind": "software",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://www.dafx.de/paper-archive/2023/DAFx23_paper_47.pdf",
+     "doi": "",
+     "title": "DAFx23 paper 47 (harmonium free-reed synthesis)",
+     "authors": "not read",
+     "year": "2023",
+     "version": "",
+     "locator": "abstract",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://nime.org/proceedings/2023/nime2023_23.pdf",
+     "doi": "",
+     "title": "NIME 2023 paper 23 (bandoneon synthesiser)",
+     "authors": "not read",
+     "year": "2023",
+     "version": "",
+     "locator": "abstract",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf",
+     "doi": "",
+     "title": "Forum Acusticum 2023 free-reed time-domain scheme",
+     "authors": "not read",
+     "year": "2023",
+     "version": "",
+     "locator": "abstract",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://arxiv.org/html/2401.01606v1",
+     "doi": "",
+     "title": "A proposal for a minimal model of free reeds",
+     "authors": "not read",
+     "year": "2024",
+     "version": "arXiv 2401.01606",
+     "locator": "abstract",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "These are the first four papers to read in full for model structure and parameters (reed mass, stiffness, damping, gap). Authors and parameter values not yet extracted. The minimal-model preprint reports sinusoidal reed motion from Ricot's laser vibrometry."
+  },
+  {
+   "local_id": "C18",
+   "claim": "The cassotto is a wooden tone chamber enclosing one or two treble reed blocks (the 16' and one 8' rank in a double cassotto) that lowers the intensity of higher harmonics. No measured transfer function or spectral comparison was found, and the input file's '500 to 1000 Hz strengthened, above 1000 Hz subdued' could not be traced beyond probable encyclopaedia descriptions.",
+   "input_file_says": "strengthens frequencies between 500 Hz and 1000 Hz while subduing overtones above 1000 Hz",
+   "verdict_on_input": "not-found",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://euracoustics.org/documents/14/AiP_2021_02_Accordion_acoustics.pdf",
+     "doi": "",
+     "title": "Accordion acoustics: A study on pitch bending",
+     "authors": "Elejalde-Garcia et al.",
+     "year": "2021",
+     "version": "",
+     "locator": "description of cassotto",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.accordionists.info/goto/post?id=102454",
+     "doi": "",
+     "title": "forum post on cassotto",
+     "authors": "forum user",
+     "year": "",
+     "version": "",
+     "locator": "post",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Wikipedia could not be opened to confirm the origin of the frequency band. Model the cassotto as a user-adjustable low-pass or tilt filter on the L and M ranks, not as a fixed formant filter, until measurement is found."
+  },
+  {
+   "local_id": "C19",
+   "claim": "Pitch bending was reported in the 2021 study for A#2 to A3 and for most notes, but not from C6 to C#8 on the instrument tested.",
+   "input_file_says": "bends not effective on 4' piccolo reeds",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://euracoustics.org/documents/14/AiP_2021_02_Accordion_acoustics.pdf",
+     "doi": "",
+     "title": "Accordion acoustics: A study on pitch bending",
+     "authors": "Elejalde-Garcia et al.",
+     "year": "2021",
+     "version": "",
+     "locator": "abstract",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Suggests limiting bend depth to zero at the top of the keyboard rather than by register."
+  },
+  {
+   "local_id": "C20",
+   "claim": "Yamaha describes the P-37D Pianica as 37 keys covering F3 to F6 (three octaves).",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://usa.yamaha.com/products/musical_instruments/winds/pianica/p-37d/index.html",
+     "doi": "",
+     "title": "P-37D",
+     "authors": "Yamaha",
+     "year": "",
+     "version": "",
+     "locator": "product page",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://europe.yamaha.com/en/products/musical_instruments/keyboards/other_keyboard_instruments/p-37d/specs.html",
+     "doi": "",
+     "title": "P-37D specifications",
+     "authors": "Yamaha",
+     "year": "",
+     "version": "",
+     "locator": "specs",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Two Yamaha pages share a manufacturer upstream; manufacturer documentation, so Tier 1 for the spec."
+  },
+  {
+   "local_id": "C21",
+   "claim": "Hohner lists the Student 32 range as f (small octave) to c (three-lined octave), which in German notation is F3 to C6 in scientific notation (my reading of the notation, not stated).",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.hohner.de/en/instruments/melodica/student-melodicas/student-32-melodica",
+     "doi": "",
+     "title": "Student 32 Melodica",
+     "authors": "Hohner",
+     "year": "",
+     "version": "",
+     "locator": "product page",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Interpretation of German octave letters is inferred. Suzuki M-37C, Suzuki bass B-24 and Hammond Pro 44 ranges were not found."
+  },
+  {
+   "local_id": "C22",
+   "claim": "The input file's soprano and alto F4 to F6, tenor C3 to C5, bass F2 to F4 ranges could not be matched to any manufacturer: the common soprano/alto 37-key models are F3 to F6 (Yamaha P-37D), 32-key F3 to C6 (Hohner Student 32). The file's F4 to F6 is therefore not typical for standard models.",
+   "input_file_says": "soprano and alto roughly F4-F6; tenor C3-C5; bass F2-F4",
+   "verdict_on_input": "refuted",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://usa.yamaha.com/products/musical_instruments/winds/pianica/p-37d/index.html",
+     "doi": "",
+     "title": "P-37D",
+     "authors": "Yamaha",
+     "year": "",
+     "version": "",
+     "locator": "product page",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.hohner.de/en/instruments/melodica/student-melodicas/student-32-melodica",
+     "doi": "",
+     "title": "Student 32 Melodica",
+     "authors": "Hohner",
+     "year": "",
+     "version": "",
+     "locator": "product page",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "refuted",
+   "notes": "Refuted for the soprano class only; tenor and bass ranges still unchecked."
+  },
+  {
+   "local_id": "C23",
+   "claim": "I could not find a melodica-specific peer-reviewed or thesis study of overblow pitch flattening, shared-breath pressure drop or moisture; general free-reed behaviour (pitch falling with pressure) is the best available basis. The input file's 'physics-community experiments on melodica reeds' with three regimes was not traced.",
+   "input_file_says": "Physics-community experiments on melodica reeds distinguish three airflow regimes ... pitch drops noticeably flat",
+   "verdict_on_input": "not-found",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.phys.unsw.edu.au/jw/reprints/PlayingParameters.pdf",
+     "doi": "",
+     "title": "Playing parameters (reed instruments)",
+     "authors": "UNSW Music Acoustics",
+     "year": "",
+     "version": "",
+     "locator": "not read",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Search found nothing melodica-specific except forum posts."
+  },
+  {
+   "local_id": "C24",
+   "claim": "The long-tube experiment: a melodica builder forum thread ('Tubes - some experiments', melodicaworld.com) reports no significant difference playing through 15 ft of vinyl tubing; no peer-reviewed source; the '13 ms delay' figure was not found. For reference, sound at about 343 m/s over 4.6 m takes about 13 ms, so the figure is plausible arithmetic.",
+   "input_file_says": "extending the tube up to 15 ft (4.6 m) ... causes only ~13 ms of acoustic propagation delay",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://melodicaworld.com/?p=11741",
+     "doi": "",
+     "title": "Reply To: Tubes - some experiments",
+     "authors": "forum users",
+     "year": "",
+     "version": "",
+     "locator": "thread",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Anecdotal."
+  },
+  {
+   "local_id": "C25",
+   "claim": "The input file's 'Suzuki's brand name for the Hohner melodica' is muddled: Hohner's product is 'Melodica', Yamaha's is 'Pianica', and Suzuki's is 'Melodion'. I did not find a trademark page to confirm ownership.",
+   "input_file_says": "The melodion (Suzuki's brand name for the Hohner melodica, also sold as Pianica by Yamaha)",
+   "verdict_on_input": "partly-supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.hohner.de/en/instruments/melodica/student-melodicas/student-32-melodica",
+     "doi": "",
+     "title": "Student 32 Melodica",
+     "authors": "Hohner",
+     "year": "",
+     "version": "",
+     "locator": "product naming",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://usa.yamaha.com/products/musical_instruments/winds/pianica/p-37d/index.html",
+     "doi": "",
+     "title": "P-37D Pianica",
+     "authors": "Yamaha",
+     "year": "",
+     "version": "",
+     "locator": "product naming",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Suzuki naming from general knowledge, not from a page I opened."
+  },
+  {
+   "local_id": "C26",
+   "claim": "Melodica reed material: a Suzuki 32-key Melodion dealer listing gives phosphor bronze reeds in an ABS body, and a melodica forum describes phosphor bronze as the material of modern high-end reeds. Brass is common for reed plates in harmonicas (Hohner Golden Melody 0.9 mm brass), so the file's 'brass or phosphor bronze' is plausible but not shown to be the melodica norm.",
+   "input_file_says": "reeds are typically stamped from brass or cold-rolled work-hardened phosphor bronze (PB102), occasionally stainless steel",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.thomann.co.uk/suzuki_m_32c_melodion.htm",
+     "doi": "",
+     "title": "Suzuki M-32C Melodion",
+     "authors": "Thomann (dealer)",
+     "year": "",
+     "version": "",
+     "locator": "specification",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://melodicaworld.com/?p=4437",
+     "doi": "",
+     "title": "Melodica reeds - harmonica or accordion style?",
+     "authors": "forum users",
+     "year": "",
+     "version": "",
+     "locator": "thread",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "PB102 and stainless steel not traced. Dealer and forum only."
+  },
+  {
+   "local_id": "C27",
+   "claim": "Hammond Melodion Pro 44 forum reports say moisture residue can cake on a reed and stop it vibrating until cleaned; no teardown article describing capillary wicking into the reed gap was found. The Thomann listing gives the Pro-44HP V2 range as C to G3 (alto), which does not match the file's 'tenor C3 to C5'.",
+   "input_file_says": "engineering teardowns of stage instruments (e.g., Hammond Pro 44) demonstrate that warm breath moisture ... wicks via capillary action",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://melodicaworld.com/?p=12928",
+     "doi": "",
+     "title": "Hammond-Suzuki 44 v2",
+     "authors": "forum users",
+     "year": "",
+     "version": "",
+     "locator": "thread",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.thomannmusic.com/hammond_melodion_pro_44hp_v2_reviews.htm?rating=5",
+     "doi": "",
+     "title": "Hammond Melodion Pro 44HP V2",
+     "authors": "Thomann (dealer)",
+     "year": "",
+     "version": "",
+     "locator": "range field",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Range string 'C - G3' is ambiguous (probably C3 to G6 for 44 keys, 3.67 octaves: unverified). Moisture as a user parameter is reasonable but is a design choice, not a measured model."
+  },
+  {
+   "local_id": "C28",
+   "claim": "Accordina, Suzuki W-37 wooden body, single shared air chamber and bass-reed chamber depth statements could not be traced to any source; no source found for the Suzuki B-24 range.",
+   "input_file_says": "Accordina metal shell; Suzuki Wood Melodion W-37; shallower chamber under bass reeds",
+   "verdict_on_input": "not-found",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://melodicaworld.com/?p=1857",
+     "doi": "",
+     "title": "Reed Plates",
+     "authors": "forum users",
+     "year": "",
+     "version": "",
+     "locator": "thread",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Searched once; not found."
+  }
+ ],
+ "equations": [
+  {
+   "name": "Beat frequency for a cent offset",
+   "latex_or_text": "f_beat = f0 * (2^(c/1200) - 1)",
+   "symbols": "f0 = reference frequency (Hz); c = offset in cents",
+   "source_locator": "definition of the cent",
+   "source_url": ""
+  },
+  {
+   "name": "Cents from two frequencies",
+   "latex_or_text": "c = 1200 * log2(f2/f1)",
+   "symbols": "f1, f2 in Hz",
+   "source_locator": "definition of the cent",
+   "source_url": ""
+  }
+ ],
+ "sources_checked": [
+  {
+   "url": "https://euracoustics.org/documents/14/AiP_2021_02_Accordion_acoustics.pdf",
+   "doi": "",
+   "title": "Accordion acoustics: A study on pitch bending",
+   "owner_or_authors": "Elejalde-Garcia, Macho-Stadler, Llanos-Vazquez",
+   "version_or_date": "2021",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Pitch-bend measurements on a concert accordion",
+   "access_notes": "WebFetch and curl blocked (host not allowed); only search extracts seen"
+  },
+  {
+   "url": "https://dael.euracoustics.org/confs/fa2026/data/articles/000418.pdf",
+   "doi": "",
+   "title": "Aerodynamic mechanism of accordion pitch bending",
+   "owner_or_authors": "Adachi et al.",
+   "version_or_date": "2026",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Vent-hole pressure loss mechanism",
+   "access_notes": "fetch blocked; snippet only"
+  },
+  {
+   "url": "https://acta-acustica.edpsciences.org/10.1051/aacus/2024020",
+   "doi": "10.1051/aacus/2024020",
+   "title": "Targeted detuning aiming for sensory pleasantness",
+   "owner_or_authors": "not read",
+   "version_or_date": "2024",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "unreachable",
+   "reason": "host blocked",
+   "licence_or_terms": "not read",
+   "content_summary": "Detuning in pipe organs and accordions",
+   "access_notes": "curl returned 403 on CONNECT"
+  },
+  {
+   "url": "https://hal.archives-ouvertes.fr/hal-01106161",
+   "doi": "",
+   "title": "Ricot et al. record",
+   "owner_or_authors": "Ricot, Causse, Misdariis",
+   "version_or_date": "2005",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "unreachable",
+   "reason": "host blocked",
+   "licence_or_terms": "not read",
+   "content_summary": "",
+   "access_notes": "snippet only"
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/Accordion",
+   "doi": "",
+   "title": "Accordion (Wikipedia)",
+   "owner_or_authors": "",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "unreachable",
+   "reason": "host not allowed",
+   "licence_or_terms": "not read",
+   "content_summary": "",
+   "access_notes": "WebFetch failed to resolve"
+  },
+  {
+   "url": "https://www.libertybellows.com/general-accordion-questions.htm",
+   "doi": "",
+   "title": "General accordion questions",
+   "owner_or_authors": "Liberty Bellows",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Tuning chart",
+   "access_notes": "snippet only"
+  },
+  {
+   "url": "https://www.accordionists.info/threads/making-sense-out-of-cents.14511/latest",
+   "doi": "",
+   "title": "Making sense out of cents",
+   "owner_or_authors": "forum",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "",
+   "access_notes": "snippet only"
+  },
+  {
+   "url": "https://en.wikibooks.org/wiki/Accordion/Reed_Ranks_and_Switches",
+   "doi": "",
+   "title": "Reed ranks and switches",
+   "owner_or_authors": "Wikibooks",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "",
+   "access_notes": "snippet only"
+  },
+  {
+   "url": "https://usa.yamaha.com/products/musical_instruments/winds/pianica/p-37d/index.html",
+   "doi": "",
+   "title": "P-37D",
+   "owner_or_authors": "Yamaha",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "",
+   "access_notes": "snippet only"
+  },
+  {
+   "url": "https://www.hohner.de/en/instruments/melodica/student-melodicas/student-32-melodica",
+   "doi": "",
+   "title": "Student 32",
+   "owner_or_authors": "Hohner",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "",
+   "access_notes": "snippet only"
+  },
+  {
+   "url": "https://melodicaworld.com/?p=11741",
+   "doi": "",
+   "title": "Tubes - some experiments",
+   "owner_or_authors": "forum",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "",
+   "access_notes": "snippet only"
+  },
+  {
+   "url": "https://isma2017.cirmmt.mcgill.ca/proceedings/pdf/ISMA_2017_paper_52.pdf",
+   "doi": "",
+   "title": "ISMA 2017 paper 52",
+   "owner_or_authors": "Cottingham",
+   "version_or_date": "2017",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "",
+   "access_notes": "curl 403; snippet only"
+  }
+ ],
+ "open_questions": [
+  "All sources were seen only as search extracts because fetch hosts (euracoustics.org, wikipedia, arxiv, hal, pubs.aip.org, acta-acustica) were blocked; every claim therefore needs a full-text check before it is relied on.",
+  "Measured accordion tremolo detuning across the keyboard (candidate: Acta Acustica 2024, doi 10.1051/aacus/2024020).",
+  "Origin and any measurement behind the cassotto 500 to 1000 Hz statement.",
+  "Even/odd harmonic behaviour in the 2021 pitch-bend paper, and whether bend raises or lowers SPL.",
+  "Accordion compass octave designations, bass-side reed count and Stradella sounding octaves.",
+  "Attack times versus pitch and pressure for accordion reeds; bellows pressure range in Pa; spectrum 'to 10 kHz at A4 mezzo forte' source.",
+  "Melodica: Suzuki M-37C, B-24, Hammond Pro 44 ranges, reed material, chamber depth, moisture, vibrato and tonguing rates not found.",
+  "Bellows shake, push versus pull difference, key and valve noise not researched."
+ ],
+ "summary": "First pass only: 25 claims, all from search extracts because every fetch host was blocked. The 2021 Acoustics in Practice pitch-bend study exists (Elejalde-Garcia et al.) and the 15 and 25 cent figures match its abstract; the even/odd statement is only partly traceable. Ricot, Causse and Misdariis 2005 exists as a JASA abstract with a different title from the file's description. Register letters are broadly right but sources disagree on Master. Accordion plates are mostly aluminium with steel tongues, not brass or phosphor bronze. The melodica soprano range F4 to F6 is refuted for common models (P-37D is F3 to F6). Cassotto frequency band, 448 reeds, A7 and G1 figures, the 10 kHz spectrum, attack times and most melodica construction claims are untraced. Needs a second pass with fetch access."
+}

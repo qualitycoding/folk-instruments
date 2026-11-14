@@ -1,0 +1,18 @@
+1794646055
+[30/42] Building CXX object CMakeFiles/SpikePlugin_VST3.dir/tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX_utils.cpp.o
+[31/42] Building CXX object CMakeFiles/SpikePlugin_VST3.dir/tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_ARA.cpp.o
+[32/42] Building CXX object CMakeFiles/SpikePlugin_VST3.dir/tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_LV2.cpp.o
+[33/42] Building CXX object CMakeFiles/SpikePlugin_VST3.dir/tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp.o
+[34/42] Building CXX object CMakeFiles/SpikePlugin_VST3.dir/tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_Unity.cpp.o
+[35/42] Building CXX object CMakeFiles/SpikePlugin_VST3.dir/tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST2.cpp.o
+[36/42] Building CXX object CMakeFiles/SpikePlugin_Standalone.dir/tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp.o
+[37/42] Building CXX object CMakeFiles/SpikePlugin.dir/tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/deps/JUCE/modules/juce_audio_devices/juce_audio_devices.cpp.o
+[38/42] Building CXX object CMakeFiles/SpikePlugin.dir/tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/deps/JUCE/modules/juce_audio_formats/juce_audio_formats.cpp.o
+[39/42] Linking CXX static library "SpikePlugin_artefacts/Release/libSpike Plugin_SharedCode.a"
+[40/42] Linking CXX executable "SpikePlugin_artefacts/Release/Standalone/Spike Plugin"
+[41/42] Building CXX object CMakeFiles/SpikePlugin_VST3.dir/tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST3.cpp.o
+[42/42] Linking CXX shared module "SpikePlugin_artefacts/Release/VST3/Spike Plugin.vst3/Contents/x86_64-linux/Spike Plugin.so"
+removing moduleinfo.json
+creating /tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/build-s02/SpikePlugin_artefacts/Release/VST3/Spike Plugin.vst3/Contents/Resources/moduleinfo.json
+EXIT=0
+1794646143

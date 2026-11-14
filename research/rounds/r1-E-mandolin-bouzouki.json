@@ -1,0 +1,586 @@
+{
+ "branch": "E mandolin and bouzouki instruments",
+ "claims": [
+  {
+   "local_id": "E1",
+   "claim": "Cohen and Rossing, 'The acoustics of mandolins', Acoust. Sci. & Tech. 24(1), 1-6 (2003) exists (DOI 10.1250/ast.24.1.). Abstract: electronic TV holography on four mandolins and a mandola; lowest (0,0) modes can appear as a triplet (as in a guitar) or as a doublet; modal frequencies correlate with frequency-response curves; sound radiation is quite uniform over 0-5 kHz with some rolloff above 2.5 kHz.",
+   "input_file_says": "Cohen and Rossing reported that mandolin sound radiation remains fairly uniform from 0 to 5 kHz, with gradual rolloff above 2.5 kHz.",
+   "verdict_on_input": "supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_pdf/-char/en",
+     "doi": "10.1250/ast.24.1.",
+     "title": "The acoustics of mandolins",
+     "authors": "David Cohen, Thomas D. Rossing",
+     "year": "2003",
+     "version": "",
+     "locator": "abstract",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Only the abstract wording was seen, relayed through a search result. The J-STAGE host could not be fetched from this sandbox. The abstract wording supports the file; per-instrument modal tables were NOT read."
+  },
+  {
+   "local_id": "E2",
+   "claim": "The 2000 ASA (139th meeting, Atlanta) lay-language paper by Cohen and Rossing compares two Gibson F-type mandolins, one with an elliptical (oval) sound hole and one with f-holes, by holographic interferometry. It reports a pair of modes in which the plates rock side to side about a central nodal line at 524 and 546 Hz in the f-hole instrument and 579 and 644 Hz in the oval-hole instrument; the weaker bass of the oval-hole instrument is attributed to a larger mismatch between the main air resonance and the lowest plate modes. The figures 318 Hz (f-hole) and 423 Hz (oval) were NOT found in this source.",
+   "input_file_says": "TV holography found a primary top-plate mode at 318 Hz in an f-hole mandolin, shifting to 423 Hz in an oval-hole mandolin.",
+   "verdict_on_input": "not-found",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://acoustics.org/pressroom/httpdocs/139th/cohen.htm",
+     "doi": "",
+     "title": "Acoustics of Mandolins (139th ASA Meeting lay language paper)",
+     "authors": "David Cohen, Thomas Rossing",
+     "year": "2000",
+     "version": "",
+     "locator": "whole page",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Page seen only as a search-result summary. The 318/423 Hz pair may come from the 2003 paper or the JASA 2000 abstract (J. Acoust. Soc. Am. 107(5), Suppl., 2895); I could not read either. Do not use 318/423 Hz in the design until checked. The plate 'rocking' pair 524/546 vs 579/644 Hz is the only checked top-plate comparison."
+  },
+  {
+   "local_id": "E3",
+   "claim": "Cohen and Rossing 2003 report that Mandolins 2 and 4 had a third (0,0) mode near 575 Hz (garbled excerpt, tentative).",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_pdf/-char/en",
+     "doi": "10.1250/ast.24.1.",
+     "title": "The acoustics of mandolins",
+     "authors": "Cohen, Rossing",
+     "year": "2003",
+     "version": "",
+     "locator": "text excerpt",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Tentative. The lowest air and body mode frequencies (the ~220 Hz and 280-300 Hz guess in the task) were not confirmed."
+  },
+  {
+   "local_id": "E4",
+   "claim": "The Quintavalla paper exists, but not under the details the file implies. It is: M. Quintavalla, F. Gabrielli, C. Canevari, 'The Acoustics of Traditional Italian Mandolins and Their Relation with Soundboard Wood Properties', International Journal of Wood Culture 2(1-3), 1-18, DOI 10.1163/27723194-bja10001 (listed as March 2022 on ResearchGate; one lab page says 2024). Fragments say: the bowl back is stiff and massive so back-related peaks lie above soundboard modes; soundboard first five eigenmodes were simulated with +-50% elastic-property sensitivity; low-frequency monopole (Helmholtz-type) air modes occur; a mode named WWDF-1 is identified. None of the numerical values in the input file (194.1, 180.3-204.3, 201.1, 553.6, 451.5-694.5, 596.6, 740.5, 697.0, 1035, 106.1 Hz) or the labels T(1,1)_1 etc. could be checked.",
+   "input_file_says": "Quintavalla et al. (2022): T(1,1)_1 avg 194.1 Hz; T(1,1)_2 avg 553.6 Hz; T(1,2) avg 740.5 Hz; 106.1 Hz shift.",
+   "verdict_on_input": "not-found",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://pdfs.semanticscholar.org/9f7c/49a5b574bfde828b3918313c7fcf54ab2d89.pdf",
+     "doi": "10.1163/27723194-bja10001",
+     "title": "The Acoustics of Traditional Italian Mandolins and Their Relation with Soundboard Wood Properties",
+     "authors": "Quintavalla, Gabrielli, Canevari",
+     "year": "2022",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "The authors and bibliographic details are real; the numbers are unverified. Gabrielli being a coauthor is consistent with the file's 'Gabrielli model' (a luthier-model family) but not confirmed. Needs a second worker with PDF access (semanticscholar or ResearchGate PDF). A related paper is 'Acoustical Survey and Finite Element Analyses of Late Baroque Mandolin' (ResearchGate 378804285), not read."
+  },
+  {
+   "local_id": "E5",
+   "claim": "D'Addario EJ74 (medium, phosphor bronze, 11-40) is 0.011 / 0.015 / 0.026 wound / 0.040 wound inch for E5 / A4 / D4 / G3. EJ73 (light) is 0.010 / 0.014 / 0.024 wound / 0.038 wound. Retailer-listed EJ74 tensions per string: E 23.25 lb (10.54 kg), A 19.26 lb, D 23.36 lb, G 24.48 lb. EJ73 tensions (kg): E 8.73, A 7.63, D 9.08, G 9.97. The input file's light '0.010-0.034' is wrong: the D'Addario light set tops out at 0.038 (G3 wound); '0.034' is not a D'Addario light-set gauge.",
+   "input_file_says": "light 0.010-0.034 sets or medium 0.011-0.040 sets (0.011 E5 and 0.015 A4 on F-style).",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://www.stewmac.com/strings-and-accessories/strings/mandolin-strings/daddario-phosphor-bronze-mandolin-strings/",
+     "doi": "",
+     "title": "D'Addario Phosphor Bronze Mandolin Strings",
+     "authors": "StewMac",
+     "year": "",
+     "version": "",
+     "locator": "product table",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://reverb.com/item/24755796-d-addario-ej74-mandolin-strings-medium-phosphor-bronze",
+     "doi": "",
+     "title": "D'Addario EJ74 listing",
+     "authors": "Reverb",
+     "year": "",
+     "version": "",
+     "locator": "tension table",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Tension values reproduce D'Addario's chart as relayed by dealers. Official page https://www.daddario.com/globalassets/pdfs/accessories/tension_chart_13934.pdf was not opened. Compare the input table: it gives E5 0.011 at 103.9 N (10.6 kgf) on 352.4 mm, matching the dealer figure 10.54 kg to within 1 percent; and A4 0.015 at 86.1 N (8.78 kgf), which is higher than the 19.26 lb (8.74 kg) dealer figure, i.e. also consistent. The 0.015 A4 is plain in both sets. Which strings are wound: only the D4 and G3 courses."
+  },
+  {
+   "local_id": "E6",
+   "claim": "Irish bouzouki history: Johnny Moynihan (Sweeney's Men) brought a Greek tetrachordo bouzouki to Ireland and retuned it G2 D3 A3 D4 (GDAD); Andy Irvine also used GDAD from 1971; Irvine gave a Greek bouzouki to Dónal Lunny, who replaced the octave pairs of the two bass courses with unison pairs; English luthier Peter Abnett built the first distinctly 'Irish' bouzouki for Lunny in 1972 (hybrid body, three-piece partly staved back, straight sides); the first flat-backed instrument came from a John Bailey zouk bought by Moynihan in London. GDAD is the most common tuning today.",
+   "input_file_says": "developed in the 1960s-1970s via Johnny Moynihan, luthier Peter Abnett, and Dónal Lunny.",
+   "verdict_on_input": "supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Irish_bouzouki",
+     "doi": "",
+     "title": "Irish bouzouki",
+     "authors": "Wikipedia",
+     "year": "",
+     "version": "",
+     "locator": "History",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://reverb.com/news/the-irish-bouzouki-explained",
+     "doi": "",
+     "title": "The Irish Bouzouki, Explained by Andy Irvine",
+     "authors": "Reverb",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "The two sources are not independent (the Wikipedia article quotes Irvine accounts). Scale length not obtained; the input's 610-635 mm remains unchecked."
+  },
+  {
+   "local_id": "E7",
+   "claim": "Brezas et al., 'An Integrated Method for the Vibroacoustic Evaluation of a Carbon Fiber Bouzouki', Applied Sciences 13(7), 4585 (2023), DOI 10.3390/app13074585 exists (Hellenic Mediterranean University; ESPI, FEM, impulse tests; CarbonMusic project). Three carbon-fibre bouzoukis were moulded from a 3D scan of a wooden instrument; C01 was compared with the best of three wooden instruments (W02). Authors include Brezas and Kaselouris. A companion conference paper (Forum Acusticum 2023, 'Carbon fiber bouzouki design') exists and a later paper Brezas et al., Appl. Sci. 14(6), 2293 (2024). The labels W02 and C01 match the file. The modal numbers (185/235, 436/445, 635/655, 710/705, 796/820, 450 Hz) were NOT verified.",
+   "input_file_says": "Brezas et al. (2023): W02 (1,1) 185 Hz, C01 235 Hz; (2,2) 436/445; (2,3) 635/655; (3,2) 710/705; (4,2) 796/820; (1,2) at 450 Hz on C01.",
+   "verdict_on_input": "partly-supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "http://dx.doi.org/10.3390/app13074585",
+     "doi": "10.3390/app13074585",
+     "title": "An Integrated Method for the Vibroacoustic Evaluation of a Carbon Fiber Bouzouki",
+     "authors": "Brezas, Kaselouris et al.",
+     "year": "2023",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://dael.euracoustics.org/confs/fa2023/data/articles/000539.pdf",
+     "doi": "",
+     "title": "Carbon fiber bouzouki design",
+     "authors": "Brezas et al.",
+     "year": "2023",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "A search summary of the conference paper quotes resonance peaks 'W02 at 180, 445 and 695 Hz and C01 at 160, 666 and 1080 Hz', which differ from the file's pairs (for example C01 1080 Hz is not in the file); these may be impulse-response peaks rather than ESPI modes, not matched to labels. Treat the file's numbers as unverified, possibly mixed from ESPI and FEM tables."
+  },
+  {
+   "local_id": "E8",
+   "claim": "Earlier Greek-instrument work exists from the same group: Bakarezos, Gymnopoulos et al., 'Vibration analysis of the top plates of traditional Greek string musical instruments' (found on Semantic Scholar; not read). It could carry bouzouki top-plate modal data.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.semanticscholar.org/paper/VIBRATION-ANALYSIS-OF-THE-TOP-PLATES-OF-TRADITIONAL-Bakarezos-Gymnopoulos/c7af48af6b3ac691754a7d5a96dd96f3c1a1ced7",
+     "doi": "",
+     "title": "Vibration analysis of the top plates of traditional Greek string musical instruments",
+     "authors": "Bakarezos, Gymnopoulos et al.",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Lead only."
+  },
+  {
+   "local_id": "E9",
+   "claim": "Cohen and Rossing's chapter 'Mandolin Family Instruments' appears in Rossing (ed.), The Science of String Instruments (Springer 2010), DOI chapter 10.1007/978-1-4419-7110-4_6; not read (paywalled). Also a Cohen and Rossing conference-level paper 'Normal modes of different types of mandolins' exists on ResearchGate; the exact JASA title 'Normal modes of vibration in two mandolins' was not found, only JASA 107(5) Suppl. 2895 'Acoustics of mandolins' (2000).",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://link.springer.com/chapter/10.1007/978-1-4419-7110-4_6",
+     "doi": "10.1007/978-1-4419-7110-4_6",
+     "title": "Mandolin Family Instruments",
+     "authors": "Rossing (ed.)",
+     "year": "2010",
+     "version": "",
+     "locator": "chapter",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://pubs.aip.org/asa/jasa/article/107/5_Supplement/2895/546112/Acoustics-of-mandolins",
+     "doi": "",
+     "title": "Acoustics of mandolins",
+     "authors": "Cohen, Rossing",
+     "year": "2000",
+     "version": "",
+     "locator": "JASA 107(5) Suppl 2895",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Locators only."
+  },
+  {
+   "local_id": "E10",
+   "claim": "No 'luthier Chladni measurements, mandolin #95' source was found; the 162-164, 314-332 and 419-420 Hz plate figures are unattributed.",
+   "input_file_says": "luthier Chladni measurements on free plates (mandolin #95) show modes near 162-164, 314-332, 419-420 Hz.",
+   "verdict_on_input": "not-found",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [],
+   "confidence": "inferred",
+   "notes": "Not searched exhaustively (search quota hit). Treat as unsourced."
+  },
+  {
+   "local_id": "E11",
+   "claim": "Greek trichordo conventional tuning is D3D4 - A3A3 - D4D4: the bass course is an octave pair (thick wound D3 plus thin D4), the two upper courses are unisons. Some players use A D A tuning instead. Retailer and encyclopaedic sources agree.",
+   "input_file_says": "3 courses: D3/D4 - A3/A3 - D4/D4; lowest course in octaves.",
+   "verdict_on_input": "supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://wikipedia.com/wiki/Buzuki",
+     "doi": "",
+     "title": "Bouzouki (Wikipedia mirror)",
+     "authors": "",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://h2g2.com/entry/A27733016",
+     "doi": "",
+     "title": "Bouzouki Tunings (h2g2)",
+     "authors": "",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "The two sources are weak and may share upstream. The physical order of thick and thin string within an octave course was NOT confirmed (the file says thick string above thin); a source says only to tune the thick string first. The tetrachordo tuning C3C4 F3F4 A3A3 D4D4 was not checked in this pass."
+  },
+  {
+   "local_id": "E12",
+   "claim": "Greek bouzouki scale length is typically 670 to 690 mm (retailer listings give 670 mm and 680 mm). The input file's 680-690 mm is slightly high at the top but broadly consistent. A 27-fret count was not confirmed by any source found.",
+   "input_file_says": "~680-690 mm scale; ~27 frets.",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.thomannmusic.no/matsikas_greek_bouzouki_no_3m_nt.htm",
+     "doi": "",
+     "title": "Matsikas Greek Bouzouki (Thomann)",
+     "authors": "",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://m.thomann.de/pl/matsikas_bz6_205_bouzouki_6_string.htm",
+     "doi": "",
+     "title": "Matsikas BZ6 bouzouki (Thomann)",
+     "authors": "",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Vendor pages only."
+  },
+  {
+   "local_id": "E13",
+   "claim": "A user-contributed trichordo gauge set (not a manufacturer spec): wound 0.022 D3 with plain 0.011 D4 as the octave pair, 0.014 A3 pair, 0.011 D4 pair. Lighter sets drop each by 0.001.",
+   "input_file_says": "Greek tetrachordo D4 0.011, A3 0.014 plain (table).",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.h2g2.com/edited_entry/A827147",
+     "doi": "",
+     "title": "Bouzouki strings (h2g2)",
+     "authors": "",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Agrees with the input's 0.011 D4 and 0.014 A3 plain values; whether A3 is plain or wound in real sets, and tensions, unverified. Planner can compute tension from gauge, scale and pitch."
+  },
+  {
+   "local_id": "E14",
+   "claim": "D'Addario EJ81 Irish bouzouki set: plain steel 0.011, 0.011, 0.016, 0.016 (the two top courses D4 pair and A3 pair) and phosphor-bronze wound 0.028, 0.028, 0.040, 0.040 (D3 and G2 courses), for GDAD tuning. The task's guess '11-16-28w-40w' matches, per course.",
+   "input_file_says": "Irish short-scale and long-scale gauges A3 0.016/0.020, D4 0.011/0.013 (table).",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://www.prestomusic.com/instruments-accessories/products/8808454--daddario-ej81-irish-bouzouki-strings",
+     "doi": "",
+     "title": "D'Addario EJ81 (Presto Music)",
+     "authors": "",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://gspguitar.com/d-addario-ej81-irish-bouzouki-strings.html",
+     "doi": "",
+     "title": "D'Addario EJ81 (GSP)",
+     "authors": "",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Order of gauges to pitch is inferred: 0.011 for D4, 0.016 for A3, 0.028 for D3, 0.040 for G2 (all courses unison, so pairs share the gauge). Scale length is not published in listings (a buyer review says suits 66 cm zouks). The input's 0.020 plain A3 at 560 mm is not a retail-set gauge; it should not be used. Official D'Addario page not opened."
+  },
+  {
+   "local_id": "E15",
+   "claim": "Irish bouzouki scale length (610-635 mm in the input) was not verified: no maker page was found. Greek-style listings of Irish instruments quote 660-690 mm. Treat the input's 610-635 mm as unverified and probably too short for the GDAD instrument sets (EJ81 buyers say 66 cm suits).",
+   "input_file_says": "commonly 24-25 in (610-635 mm), ranging 530-665 mm.",
+   "verdict_on_input": "not-found",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://mandolinluthier.com/tuning-bouzouki.htm",
+     "doi": "",
+     "title": "Irish Bouzouki Tuning (mandolinluthier.com)",
+     "authors": "",
+     "year": "",
+     "version": "",
+     "locator": "",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Makers (Foley, Sobell, Abnett, Fylde, Stuart, Forster) were not reached. No acoustic measurements of any Irish bouzouki were found; the input's own admission of none is consistent."
+  }
+ ],
+ "equations": [],
+ "sources_checked": [
+  {
+   "url": "https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_article",
+   "doi": "10.1250/ast.24.1.",
+   "title": "The acoustics of mandolins",
+   "owner_or_authors": "Cohen, Rossing",
+   "version_or_date": "2003",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "unreachable",
+   "reason": "WebFetch could not resolve www.jstage.jst.go.jp (outside session network allow-list); abstract seen via search result only",
+   "licence_or_terms": "not read",
+   "content_summary": "abstract as in E1",
+   "access_notes": "host must be allowed"
+  },
+  {
+   "url": "https://www.mdpi.com/2076-3417/13/7/4585",
+   "doi": "10.3390/app13074585",
+   "title": "Brezas et al. carbon fibre bouzouki",
+   "owner_or_authors": "Brezas et al.",
+   "version_or_date": "2023",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "unreachable",
+   "reason": "host www.mdpi.com does not resolve from sandbox",
+   "licence_or_terms": "not read",
+   "content_summary": "",
+   "access_notes": ""
+  },
+  {
+   "url": "https://acoustics.org/pressroom/httpdocs/139th/cohen.htm",
+   "doi": "",
+   "title": "Acoustics of Mandolins lay paper",
+   "owner_or_authors": "ASA",
+   "version_or_date": "2000",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "unreachable",
+   "reason": "host does not resolve; summary only via search",
+   "licence_or_terms": "not read",
+   "content_summary": "E2",
+   "access_notes": ""
+  },
+  {
+   "url": "https://dael.euracoustics.org/confs/fa2023/data/articles/000539.pdf",
+   "doi": "",
+   "title": "Carbon fiber bouzouki design",
+   "owner_or_authors": "Brezas et al.",
+   "version_or_date": "2023",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "unreachable",
+   "reason": "host does not resolve",
+   "licence_or_terms": "not read",
+   "content_summary": "peaks quoted in E7 via search",
+   "access_notes": ""
+  },
+  {
+   "url": "https://pdfs.semanticscholar.org/9f7c/49a5b574bfde828b3918313c7fcf54ab2d89.pdf",
+   "doi": "10.1163/27723194-bja10001",
+   "title": "Quintavalla et al. Italian mandolins",
+   "owner_or_authors": "Quintavalla, Gabrielli, Canevari",
+   "version_or_date": "2022",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "unreachable",
+   "reason": "host does not resolve",
+   "licence_or_terms": "not read",
+   "content_summary": "E4 fragments via search",
+   "access_notes": ""
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/Irish_bouzouki",
+   "doi": "",
+   "title": "Irish bouzouki",
+   "owner_or_authors": "Wikipedia",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "used",
+   "reason": "snippet via search",
+   "licence_or_terms": "not read",
+   "content_summary": "E6",
+   "access_notes": ""
+  },
+  {
+   "url": "https://www.stewmac.com/strings-and-accessories/strings/mandolin-strings/daddario-phosphor-bronze-mandolin-strings/",
+   "doi": "",
+   "title": "D'Addario mandolin strings",
+   "owner_or_authors": "StewMac",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "used",
+   "reason": "snippet via search",
+   "licence_or_terms": "not read",
+   "content_summary": "E5",
+   "access_notes": ""
+  },
+  {
+   "url": "https://h2g2.com/entry/A27733016",
+   "doi": "",
+   "title": "Bouzouki Tunings",
+   "owner_or_authors": "h2g2",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "corroborating",
+   "reason": "snippet via search",
+   "licence_or_terms": "not read",
+   "content_summary": "E11",
+   "access_notes": ""
+  },
+  {
+   "url": "https://www.prestomusic.com/instruments-accessories/products/8808454--daddario-ej81-irish-bouzouki-strings",
+   "doi": "",
+   "title": "D'Addario EJ81",
+   "owner_or_authors": "Presto Music",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "used",
+   "reason": "snippet via search",
+   "licence_or_terms": "not read",
+   "content_summary": "E14",
+   "access_notes": ""
+  },
+  {
+   "url": "https://www.h2g2.com/edited_entry/A827147",
+   "doi": "",
+   "title": "Bouzouki strings",
+   "owner_or_authors": "h2g2 user",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "used",
+   "reason": "snippet via search",
+   "licence_or_terms": "not read",
+   "content_summary": "E13",
+   "access_notes": ""
+  }
+ ],
+ "open_questions": [
+  "Needs a worker with PDF access: Quintavalla et al. 2022 (Int. J. Wood Culture) numbers and mode naming; Cohen and Rossing 2003 per-instrument modal tables; Brezas et al. 2023 Table of ESPI/FEM modes.",
+  "Greek bouzouki scale length, fret count, string gauges and thick/thin order within octave courses; Irish bouzouki scale lengths and gauges (EJ81); playing technique: all not yet researched.",
+  "Mandolin decay times, bridge admittance curves for a modal filter bank: not found.",
+  "Playing technique (plectrum, picking position, tremolo rates), mandolin string tension for bowl-back sets, Greek tetrachordo tuning, and the thick/thin order within octave courses remain unresearched; web search quota was exhausted partway and WebFetch could not reach any host."
+ ],
+ "summary": "Partial first pass; the session's fetch tool cannot reach J-STAGE, MDPI, acoustics.org or semanticscholar, so most sources are snippet-only. Real works: Cohen and Rossing 2003; Quintavalla, Gabrielli, Canevari (Int. J. Wood Culture, DOI 10.1163/27723194-bja10001); Brezas et al. 2023 (Appl. Sci. 13, 4585). None of the file's numerical modal values could be confirmed; the 318/423 Hz pair is not in the 2000 lay summary. The EJ74/EJ73 gauges are confirmed, and the file's light '0.010-0.034' is wrong (0.010-0.038)."
+}

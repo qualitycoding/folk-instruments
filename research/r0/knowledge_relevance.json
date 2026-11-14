@@ -1,0 +1,1902 @@
+[
+ {
+  "id": "K-20261009T092104Z-ableton-computer-midi-keyboard-layout",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261027T120000Z-live-vst3-support",
+  "relevant": "yes",
+  "topic": "vst3",
+  "use": "Ableton Live as a manual host target: VST3 only, Apple-silicon-native builds required (macOS universal), install paths to document.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261112T134540Z-model-tier-map-2026-11",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261112T134530Z-environment-class-by-platform-2026-11",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "Whether to treat the Claude cloud sandbox as stable or ephemeral; item itself says run the probe, do not assume stable.",
+  "version_sensitive": true,
+  "needs_full_read": true
+ },
+ {
+  "id": "K-20261105T162900Z-amp-reference-material-sources",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261004T161603Z-audacity-pipe-protocol",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261004T161600Z-audacity-trim-silence-plugin",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T160103Z-basic-pitch-range",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261101T043000Z-basic-pitch-evaluatemodel-api",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261101T043000Z-basic-pitch-model-files",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261101T043000Z-basic-pitch-node-buffer",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261101T043000Z-tfjs-cpu-realtime-factor",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T163900Z-bass-guitar-tunings-four-to-seven-strings",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160032Z-c-033",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160033Z-c-034",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160034Z-c-035",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160035Z-c-036",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160036Z-c-037",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160037Z-c-038",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160114Z-c-075",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160128Z-c-089",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160140Z-c-101",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160141Z-c-102",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160044Z-c-045",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160045Z-c-046",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160046Z-c-047",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160047Z-c-048",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160124Z-c-085",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160041Z-c-042",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160038Z-c-039",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160039Z-c-040",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160040Z-c-041",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160121Z-c-082",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160123Z-c-084",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160130Z-c-091",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160131Z-c-092",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160132Z-c-093",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T193014Z-bs-roformer-sw-has-no-clear-weights-licence",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160129Z-c-090",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "What the Claude cloud planning sandbox lacks (sudo, cmake, JUCE dev libs, xvfb) so builds must happen in CI, not locally.",
+  "version_sensitive": true,
+  "needs_full_read": true
+ },
+ {
+  "id": "K-20261104T004500Z-pinned-toolchain-staging",
+  "relevant": "yes",
+  "topic": "cmake-cpp-build",
+  "use": "Pinned analysis toolchain versions (CMake 3.31.6, NumPy 2.2.6, SciPy 1.15.3, SoundFile 0.13.1) and the CMake no-exec-mount staging pitfall.",
+  "version_sensitive": true,
+  "needs_full_read": true
+ },
+ {
+  "id": "K-20261009T193009Z-codeberg-allowlist-live-proxy-can-be-stale",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "Egress allowlist edits do not reach a running sandbox; a fresh container is needed (matters for zenodo/TinySOL access).",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T193008Z-coi-serviceworker-adds-coop-and-coep-by-reload",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261004T102022Z-composite-score-attainable-range",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T193004Z-var-flux-form-convection-and-van-leer-order",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261104T003011Z-vsco-cc0-pizzicato-candidates",
+  "relevant": "yes",
+  "topic": "reference-recordings",
+  "use": "VSCO 2 CE (CC0, pinned commit) pizzicato WAVs as a licence-clean plucked-string reference candidate.",
+  "version_sensitive": true,
+  "needs_full_read": true
+ },
+ {
+  "id": "K-20261104T003012Z-pizzicato-reference-not-slap-evidence",
+  "relevant": "yes",
+  "topic": "reference-recordings",
+  "use": "Pizz references only support ordinary pluck/body claims; do not use for other techniques.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T003013Z-second-harmonic-dominates-reference-fft",
+  "relevant": "yes",
+  "topic": "audio-metrics",
+  "use": "Spectral-maximum is not a valid pitch estimator on plucked references; use a note-conditioned pitch comparison.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T011400Z-reference-spread-not-realism",
+  "relevant": "yes",
+  "topic": "listening-gate",
+  "use": "Spectral regression limit does not prove realism; decay mismatch is large so human listening gate is mandatory.",
+  "version_sensitive": false,
+  "needs_full_read": true
+ },
+ {
+  "id": "K-20261007T160006Z-c-007",
+  "relevant": "yes",
+  "topic": "cmake-cpp-build",
+  "use": "Catch2 v3.16.0 pin (commit) for the C++ unit-test framework.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160007Z-c-008",
+  "relevant": "yes",
+  "topic": "cmake-cpp-build",
+  "use": "nlohmann/json v3.12.0 pin (commit) for the headless render tool's JSON output.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261004T162314Z-inharmonic-square-cymbal-density",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261008T173537Z-oildrum-engine-v1-peak-levels",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261008T173538Z-oildrum-engine-v1-cymbal-spectrum",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261008T223321Z-oildrum-engine-v2-cymbal-spectrum",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261008T223321Z-oildrum-engine-v2-peak-levels",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T120101Z-oildrum-legacy-main-engine-clips",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T120102Z-oildrum-legacy-pitch-smoothing-bug",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T120110Z-oildrum-modal-engine-measured-results",
+  "relevant": "yes",
+  "topic": "modal-and-string-dsp",
+  "use": "Example modal-engine acceptance metrics (partial count at 50 ms, HF/LF T60 ratio, peak level) that can be reused as DSP tests.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T120117Z-uniform-noise-needs-sqrt3-for-unit-variance",
+  "relevant": "yes",
+  "topic": "modal-and-string-dsp",
+  "use": "Uniform noise excitation has std 1/sqrt(3); normalise pluck/reed noise power or levels will be about 41 dB off.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261008T223321Z-c-to-js-engine-port-needs-float32-state",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T193003Z-var-mushy-zone-cell-width-band-and-c2-profile",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261031T000000Z-ephemeral-sandbox-invariants",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "Ephemeral-sandbox hazards (no exec on durable mount, setsid for jobs, CMake ignores env overrides) to plan around.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T092106Z-fret-position-from-pitch-ratio",
+  "relevant": "yes",
+  "topic": "modal-and-string-dsp",
+  "use": "Fret position from pitch ratio (1 - 1/r) for fretted mandolin/bouzouki note-to-length mapping.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261101T200100Z-frozen-manifest-refreeze",
+  "relevant": "yes",
+  "topic": "other",
+  "use": "Frozen test manifest must be re-frozen in any PR touching listed files, with a CI sha256sum -c job.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261028T222647Z-juce-vst3-toolchain",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "A JUCE pin by commit (9.0.4, 3fb5cbc0340758596dac39f7c8de47d562b4896e) exists in a sibling plan; compare with the 9.0.5 and 9.0.3 pins before choosing.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261028T222647Z-pluginval-validation",
+  "relevant": "yes",
+  "topic": "pluginval",
+  "use": "pluginval v1.0.4 commit ed19c2c1... with strictness 10 as exit-0 gate in a sibling plan.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261028T222647Z-wmd-geiger-controls",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261107T000000Z-source-register-geiger-vst3",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261008T173540Z-general-midi-drum-key-map-subset",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261029T030600Z-windows-checkout-crlf-hash-manifests",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "Windows checkout CRLF breaks sha256sum -c on frozen manifests; add .gitattributes eol=lf for tests/**.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261004T102023Z-github-access-from-sandbox",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "GitHub reachability from the sandbox (api 403 unauthenticated; raw and clone work) and token-via-extraHeader push method.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261004T151600Z-github-rest-api-bypasses-broken-pack-transport",
+  "relevant": "yes",
+  "topic": "git-github",
+  "use": "Fallback to push via REST Git Data API when smart-HTTP pack push fails.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261004T162305Z-github-io-unreachable-from-sandbox",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "*.github.io is blocked in the sandbox so Pages output cannot be checked there.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261004T162306Z-git-push-and-contents-api-worked",
+  "relevant": "yes",
+  "topic": "git-github",
+  "use": "Earlier observation that token push and contents API worked; conflicts with later cloud-session refusals.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T120115Z-github-repo-access-is-per-session",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "Repositories are reachable only after add_repo (push access); plan must start with attaching the repo.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T160120Z-actions-blob-unreachable",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "Job logs/artifacts unreachable from sandbox; use a CI step that pushes a JSON diagnostics summary to a ci-diag branch.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T193502Z-git-proxy-repo-authorization",
+  "relevant": "yes",
+  "topic": "git-github",
+  "use": "Push and gh api are refused for repos outside the session's authorised set regardless of token.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T193504Z-proxy-injected-git-config",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "Injected GIT_CONFIG_*/GH_TOKEN can break git fetch with a personal token; unset and use an askpass helper.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261102T225700Z-repo-creation-refused-in-cloud-session",
+  "relevant": "yes",
+  "topic": "git-github",
+  "use": "Cloud session cannot create repositories; the owner must create the repo, then add_repo attaches it.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261102T232300Z-pages-api-and-api-writes-refused-by-proxy",
+  "relevant": "yes",
+  "topic": "git-github",
+  "use": "Cloud-session proxy refuses Pages API and blob/contents API writes (403) while run listing and rerun work; conflicts with 71, 73 and 97.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261102T232330Z-git-push-refused-github-app-scope",
+  "relevant": "yes",
+  "topic": "git-github",
+  "use": "Push can be 403 for GitHub App scope even after add_repo push; remedy is app installation or reconnect.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T003007Z-versioned-github-runner-labels",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "Use versioned runner labels ubuntu-24.04, windows-2025, macos-15 and never -latest in the matrix.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T004300Z-immutable-github-action-pins",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "Pin actions by full commit SHA with tag comment; tags recorded: checkout v7.0.1, setup-python v7.1.0, upload-artifact v7.0.2, download-artifact v8.0.2, cache v6.1.0.",
+  "version_sensitive": true,
+  "needs_full_read": true
+ },
+ {
+  "id": "K-20261009T160121Z-dispatch-default-branch",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "workflow_dispatch workflows must be on the default branch to show a Run button; ref input needs a default.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261029T030900Z-gh-run-logs-and-escape-sequences",
+  "relevant": "yes",
+  "topic": "git-github",
+  "use": "gh cannot read logs of a running job and needs --allow-escape-sequences; plan CI-diagnostics access accordingly.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160017Z-c-018",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "actions/checkout v7.0.1 commit 3d3c42e5aac5ba805825da76410c181273ba90b1.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160018Z-c-019",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "actions/setup-python v7.0.0 commit 5fda3b95a4ea91299a34e894583c3862153e4b97 (conflicts with v7.1.0 in item 82).",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160019Z-c-020",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "actions/upload-artifact v7.0.2 commit cf430e030ddbb5b0abf93d22962f4752f3646cd9.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160020Z-c-021",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "actions/download-artifact v8.0.2 commit 9000827ccba6bdab643e8b6fd33ac0654aef8333.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160021Z-c-022",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "actions/cache v6.1.0 commit 55cc8345863c7cc4c66a329aec7e433d2d1c52a9.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160022Z-c-023",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "ubuntu-24.04 is a supported x64 label; ubuntu-26.04 also GA.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160023Z-c-024",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "macos-15 is arm64; macos-latest is now macOS 26; macos-15-intel for Intel; macOS 14 deprecated (universal build needs arm64 plus x86_64 slices).",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160024Z-c-025",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "windows-2025 and windows-latest map to Visual Studio 2026 (18.x); VS2022 needs windows-2022; affects the MSVC generator.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160025Z-c-026",
+  "relevant": "yes",
+  "topic": "pluginval",
+  "use": "auval availability on macos-15 is unconfirmed; do not plan an AU gate relying on it.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160136Z-c-097",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "Breaking changes in pinned action majors (setup-python v7 no pip-install input, download-artifact v8 digest and zip behaviour, node24).",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261112T134520Z-ci-action-tags-2026-11",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261031T100200Z-github-actions-default-shell-pipefail",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "Use explicit shell: bash so pipelines fail on first error; default is bash -e without pipefail.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261102T085800Z-github-git-database-api-writes-when-transport-blocked",
+  "relevant": "yes",
+  "topic": "git-github",
+  "use": "Git database API route for committing when transport is blocked; use plural refs and bounded retry.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261112T134510Z-github-hosted-runner-billing-2026-11",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "Unsourced claim about ARM64 runner free tier and macOS minute multiplier; check billing page before any cost decision.",
+  "version_sensitive": true,
+  "needs_full_read": true
+ },
+ {
+  "id": "K-20261112T134500Z-github-hosted-runner-labels-2026-11",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "Runner label list recorded in 2026-11, not re-checked; includes macos-15, macos-26, windows-2022.",
+  "version_sensitive": true,
+  "needs_full_read": true
+ },
+ {
+  "id": "K-20261029T030800Z-github-hosted-runner-benchmark-variance",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "CPU/timing benchmarks on hosted runners vary by hardware; gate on ratios or generous bounds, not absolute numbers.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261004T161606Z-github-license-api-and-detection",
+  "relevant": "yes",
+  "topic": "licensing",
+  "use": "GitHub license API / LICENSE detection (Apache-2.0 text) for repository licensing step.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261004T162304Z-github-pages-index-entry-file",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261102T231600Z-pages-first-build-startup-failure",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T160118Z-pages-headers",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T160123Z-pr-draft",
+  "relevant": "yes",
+  "topic": "git-github",
+  "use": "Convert a draft PR to ready only via GraphQL markPullRequestReadyForReview.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160139Z-c-100",
+  "relevant": "yes",
+  "topic": "licensing",
+  "use": "Uploading binaries as artifacts of a public repository is a distribution; licence obligations (AGPL) apply.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T160122Z-token-scopes",
+  "relevant": "yes",
+  "topic": "git-github",
+  "use": "Fine-grained PAT needs Workflows permission to push .github/workflows files.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T193503Z-github-web-upload-tree-hash",
+  "relevant": "yes",
+  "topic": "git-github",
+  "use": "Verify web-uploaded commits by comparing tree hashes.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261101T200000Z-guard-seam-pattern",
+  "relevant": "yes",
+  "topic": "other",
+  "use": "Header-only pure guard seam (C++17, no JUCE) for NaN/zero-frequency guards so tests compile host-independently.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261004T162310Z-cabinet-structure-and-invariant-excitation",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261004T162311Z-minimum-phase-cabinet-ir-from-table",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261004T162313Z-beat-period-window-for-detuned-sources",
+  "relevant": "yes",
+  "topic": "audio-metrics",
+  "use": "For double-course (detuned) strings, analyse exactly one beat period with a rectangular window to measure harmonic levels.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T193005Z-htdemucs-onnx-io-contract-and-overlap-add",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T120106Z-hertz-contact-pulse-and-duration",
+  "relevant": "yes",
+  "topic": "modal-and-string-dsp",
+  "use": "Hertzian contact pulse sin^(3/2) with T = 2.943 delta_max/v as a model for pick/hammer excitation duration.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T120111Z-infinite-plate-impedance-steel",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160000Z-c-001",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "JUCE 9.0.3 was latest stable on 2026-09-28; the plan targets JUCE 8, so decide the pin explicitly.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160001Z-c-002",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "JUCE 9.0.3 tag commit be29c81492b6151c8ea8d14c840e1311963b3a83 (lightweight tag).",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160002Z-c-003",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "Previous JUCE 9.0.2 commit 72782788ce18c2d4d760b28e0921d6ffc6431102; 9.0.0 on 2026-07-21.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160003Z-c-004",
+  "relevant": "yes",
+  "topic": "licensing",
+  "use": "JUCE 9 modules are AGPLv3 or commercial (no plain GPLv3).",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160004Z-c-005",
+  "relevant": "yes",
+  "topic": "cmake-cpp-build",
+  "use": "JUCE 9.0.3 requires CMake >= 3.22.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160005Z-c-006",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "Ubuntu package list for JUCE 9.0.3 Linux builds (18 packages incl. libegl-dev, libxi-dev) for the CI apt step.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261029T030300Z-juce-decibelstogain-second-argument",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "Decibels::decibelsToGain second argument is a dB floor, not a linear value; common DSP-code bug.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T003002Z-juce-9-agpl-commercial-license",
+  "relevant": "yes",
+  "topic": "licensing",
+  "use": "JUCE 9.0.5 under AGPLv3 or commercial; project can be AGPL-3.0-only.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T003003Z-juce-9-cmake-minimum",
+  "relevant": "yes",
+  "topic": "cmake-cpp-build",
+  "use": "JUCE 9.0.5 requires CMake 3.22 or newer.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T003004Z-juce-9-headless-audioprocessor-path",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "JUCE 9 moves AudioProcessor to juce_audio_processors_headless; include paths differ from older layouts (headless module exists from 8.0.11).",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T003005Z-juce-9-vst3-cmake-options",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "JUCE 9.0.5 CMake VST3 options: IS_SYNTH, NEEDS_MIDI_INPUT, JUCE_VST3_CAN_REPLACE_VST2=0.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T004600Z-juce-host-only-processor-contract",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "JUCE 9.0.5 API suffices for a no-editor host-parameter VST3 (useful for headless render tool).",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T004700Z-apvts-state-not-realtime-safe",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "APVTS copyState/replaceState use locks; keep them out of processBlock.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T005000Z-juce-905-parser-and-macos-limits",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "JUCE 9.0.5 default macOS deployment target is 12.0; affects universal build settings.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261029T030500Z-au-registration-in-github-actions",
+  "relevant": "yes",
+  "topic": "pluginval",
+  "use": "AU validation on macOS runners needs install, ad-hoc sign and AudioComponentRegistrar restart; uses pluginval v2.0.0-beta3 (AU is outside scope but shows macOS pluginval pitfall).",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T164300Z-juce-8-0-15-combobox-has-no-gettext-editor-accessor",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "JUCE 8.0.15 ComboBox lacks getCurrentTextEditor; editor-code compile pitfall.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261029T030400Z-juce-convolution-default-state-and-gain",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "juce::dsp::Convolution reports IR size >0 before load and applies an internal gain scale (~1.53 for 0.5 IR); matters if body IRs are convolved.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261101T140100Z-juce-convolution-load-from-second-thread",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "Never call Convolution::loadImpulseResponse from a worker thread while audio runs (bad_function_call under pluginval).",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160026Z-c-027",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "AudioProcessor in headless module at 9.0.3; render tool can avoid GUI dependencies.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160027Z-c-028",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "ScopedJuceInitialiser_GUI for console tools/tests.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160028Z-c-029",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "JUCE ships no xvfb guidance; xvfb for editor tests is an inference.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160029Z-c-030",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "juce_audio_processors_headless introduced in 8.0.11 (absent 8.0.10), so available in an 8.x pin >= 8.0.11.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160030Z-c-031",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "CMake API doc identical between 8.0.15 and 9.0.3, so juce_add_plugin usage is portable across the two pins.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160031Z-c-032",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "JUCE 9.0.3 changes: EGL replaces GLX on Linux (libegl-dev), Drawable/SVG changes.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261027T123100Z-juce8-licensing",
+  "relevant": "yes",
+  "topic": "licensing",
+  "use": "JUCE 8 licence tiers and AGPLv3 option (Starter limit $20,000 revenue; Indie $300,000).",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261008T173542Z-juce-linux-build-dependencies-8-0-15",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "JUCE 8.0.15 Linux dependency list (16 packages) for CI apt step.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261008T223321Z-juce-vst3-linux-build-14-packages",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "Minimal 14-package set that built VST3 on Ubuntu 24.04 (no webkit/curl/jack-dev/ladspa) for faster CI installs.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T092105Z-juce-mpesynthesiser-voice-allocation-and-default-zone",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "MPESynthesiser voice allocation and default zone semantics for polyphonic voice management.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T164200Z-juce-combobox-attachment-spaces-items-linearly-over-the-parameter-range",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "ComboBoxAttachment spaces items linearly over parameter range; use choice parameters consistently.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T164500Z-juce-module-build-on-one-cpu-core-exceeds-a-300-second-tool-call",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "JUCE full build exceeds a 300 s tool call on 1 core; run builds in CI or detached with setsid.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T092102Z-juce-standalone-target-compiles-vst3-client",
+  "relevant": "yes",
+  "topic": "cmake-cpp-build",
+  "use": "In FORMATS VST3 Standalone builds the Standalone target also compiles the VST3 client file; define macros at directory scope before add_subdirectory(JUCE).",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261004T151500Z-juce-8-vs-9-vst3-breaking-change",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "JUCE 9 restructures VST3 client extension API (35+ breaking changes); pinning 8.x vs 9.x is a real decision.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T164400Z-juce-fontoptions-exists-on-master-without-stated-introduction-version",
+  "relevant": "yes",
+  "topic": "juce",
+  "use": "juce::FontOptions availability by version is undocumented; add a minimum-version check if used.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T092101Z-juce-vst3-can-replace-vst2-default-and-error",
+  "relevant": "yes",
+  "topic": "vst3",
+  "use": "JUCE_VST3_CAN_REPLACE_VST2 defaults to 1 and can trigger a #error; define it to 0 for VST3-only plugins.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261027T120100Z-juce-preset-automation-spam",
+  "relevant": "yes",
+  "topic": "vst3",
+  "use": "Load presets via replaceState, not per-parameter setValueNotifyingHost, to avoid spurious host automation.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T193016Z-lead-and-rhythm-guitar-have-no-open-model",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T194004Z-legacy-6j-half-power-bug",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T194005Z-legacy-operator-not-idempotent",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T194006Z-legacy-table-i-unreproducible",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T194007Z-legacy-table-iii-reproduced",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T194012Z-legacy-exponent-fit",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T194013Z-legacy-gamma-convention-dependence",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T194014Z-legacy-6j-table-k4-errors",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T194020Z-legacy-k16-different-hamiltonian",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T120103Z-clamped-circular-plate-eigenvalues",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T120104Z-lid-axisymmetric-ratio-in-the-patent",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T120105Z-plate-stretch-default-is-a-chosen-value",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T120107Z-ansys-clamped-plate-benchmark-vm-lsdyna-solve-051",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T120108Z-plate-modal-density-weyl-check",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T120113Z-bessel-ive-not-needed-below-lambda-700",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T120118Z-radiation-efficiency-law-ignores-net-volume",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T120119Z-donnell-shell-mode-example",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T120109Z-two-pole-resonator-with-input-zero-gives-cosine-start",
+  "relevant": "yes",
+  "topic": "modal-and-string-dsp",
+  "use": "Two-pole modal resonator with input zero gives cosine-start modes for impulsive excitation.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T092107Z-msvc-ninja-needs-vcvars-environment",
+  "relevant": "yes",
+  "topic": "cmake-cpp-build",
+  "use": "Ninja on Windows needs vcvars64 environment and -DCMAKE_BUILD_TYPE; in CI use ilammy/msvc-dev-cmd or the VS generator.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261029T030100Z-mull-runner-cli-and-config",
+  "relevant": "yes",
+  "topic": "mutation-testing",
+  "use": "mull-runner-19 CLI options; include/exclude paths belong in mull.yml.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261029T030200Z-mull-sqlite-schema",
+  "relevant": "yes",
+  "topic": "mutation-testing",
+  "use": "Mull SQLite report schema; execution_status 2 = survived, for scoring scripts.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261027T123200Z-mull-mutation-testing",
+  "relevant": "yes",
+  "topic": "mutation-testing",
+  "use": "Mull 0.34.0 with mull-19/clang-19 (LLVM 19.1.7), -O0 -g -grecord-command-line, -fpass-plugin; Linux-only practical; exclude tests and third-party.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261102T085900Z-mutation-ci-pricing-estimate-vs-measured",
+  "relevant": "yes",
+  "topic": "mutation-testing",
+  "use": "Mutation CI timing is an estimate until the first real run; score floor 5 points below first measured full-run score.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T193013Z-mvsep-mega-53-release-and-resource-needs",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261101T043000Z-npm-audit-clean-pins",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261004T151300Z-numpy-array-vs-scalar-ufunc-rounding-differs",
+  "relevant": "yes",
+  "topic": "python-tooling",
+  "use": "numpy array vs scalar ufunc last-bit differences: use tolerances in golden-value tests and cross-check C++ vs Python.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T234216Z-oildrumkit-engine-has-no-mutable-static-state",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234218Z-oildrumkit-engine-setsamplerate-allocates",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234220Z-oildrumkit-engine-reset-gives-exact-silence",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234222Z-oildrumkit-engine-trigger-sounds-on-the-same-sample",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234240Z-oildrumkit-engine-api-and-instrument-list",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234250Z-oildrumkit-engine-implements-hi-hat-choke",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234224Z-oildrumkit-engine-output-depends-on-process-segmentation",
+  "relevant": "yes",
+  "topic": "audio-metrics",
+  "use": "Output depends on process() block segmentation; test block-size invariance (128 vs 512) and short-block decay truncation.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T234226Z-oildrumkit-engine-limiter-saturates-at-352khz-and-above",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234228Z-oildrumkit-engine-cpu-by-block-size",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234230Z-oildrumkit-engine-bit-identical-across-translation-units",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234244Z-oildrumkit-engine-worst-case-trigger-cost",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234258Z-kitcore-fixed-128-frame-latency-matches-512-sample-host",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261105T223100Z-oildrum-hits-crest-factor-and-pair-builder-level",
+  "relevant": "yes",
+  "topic": "listening-gate",
+  "use": "RMS matching pairs: high crest factor clips may need much lower RMS (-36 dB) to build all stimuli; check the pair builder.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261106T180000Z-source-register-oildrumkit-listening-phase-v3",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261106T180600Z-oildrumkit-listening-gate-results",
+  "relevant": "yes",
+  "topic": "listening-gate",
+  "use": "Precedent: a 12-trial blind gate failed with 11,8,9,6,8,12 of 12 identified; expect iteration rounds.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T233105Z-licence-texts-offline-in-sandbox",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "Apache-2.0 text is at /usr/share/common-licenses/Apache-2.0 in the sandbox; apache.org is not reachable.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T193018Z-orchestral-strings-separate-as-a-section",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261004T151100Z-pcg64-xsl-rr-advance-then-output",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261004T151200Z-numpy-seedsequence-reconstructed",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261104T013000Z-pip-audit-pinned-offline-flags",
+  "relevant": "yes",
+  "topic": "python-tooling",
+  "use": "pip-audit 2.10.0 flags for pinned requirements (--no-deps --disable-pip --strict).",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T140031Z-pip-tools-hash-locking-build-backend",
+  "relevant": "yes",
+  "topic": "python-tooling",
+  "use": "pip-tools 7.5.1 hash-locking with --require-hashes; list setuptools explicitly; setuptools 80.9.0 flagged, 84.0.0 clean.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261004T151400Z-circular-correlation-shift-linearity",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261004T162312Z-comb-occupancy-pitch-tracking",
+  "relevant": "yes",
+  "topic": "audio-metrics",
+  "use": "Octave/fifth errors in autocorrelation pitch trackers when partials 2-3 dominate; use comb-occupancy scoring (checked on one file only).",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T160108Z-mpm-sub-a0",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261101T043000Z-playwright-mobile-devices",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160008Z-c-009",
+  "relevant": "yes",
+  "topic": "pluginval",
+  "use": "pluginval v1.0.4 (2024-12-04) tag commit ed19c2c16b57a6d94db391bea3ef4a80b769d5bf.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160009Z-c-010",
+  "relevant": "yes",
+  "topic": "pluginval",
+  "use": "pluginval v1.0.4 Linux zip size and SHA-256 for a pinned download.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160010Z-c-011",
+  "relevant": "yes",
+  "topic": "pluginval",
+  "use": "pluginval v1.0.4 macOS zip size and SHA-256 for a pinned download.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160011Z-c-012",
+  "relevant": "yes",
+  "topic": "pluginval",
+  "use": "pluginval v1.0.4 Windows zip size and SHA-256 for a pinned download.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160012Z-c-013",
+  "relevant": "yes",
+  "topic": "pluginval",
+  "use": "--strictness-level [1-10], default 5.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160013Z-c-014",
+  "relevant": "yes",
+  "topic": "pluginval",
+  "use": "--timeout-ms default 30000; set explicitly for slow plugin load.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160014Z-c-015",
+  "relevant": "yes",
+  "topic": "pluginval",
+  "use": "The CI guide's --validate-in-process flag does not exist in v1.0.4; do not copy it into the workflow.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261029T030000Z-pluginval-releases-and-action",
+  "relevant": "yes",
+  "topic": "pluginval",
+  "use": "No stable pluginval 2.0.0; only v2.0.0-beta1..3; the Action Tracktion/pluginval/validate has no v2 tag.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T003006Z-pluginval-1-0-4-cli",
+  "relevant": "yes",
+  "topic": "pluginval",
+  "use": "pluginval v1.0.4 capabilities: seeds, repeats, random order, sample-rate and block-size lists.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T004400Z-pluginval-archive-integrity",
+  "relevant": "yes",
+  "topic": "pluginval",
+  "use": "Archive byte counts and hashes recorded for v1.0.4 downloads (see items 203-205).",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T005200Z-pluginval-plugin-info-race",
+  "relevant": "yes",
+  "topic": "pluginval",
+  "use": "v1.0.4 predates a PluginInfoTest race fix (issue 149, commit fea38e7); use fixed commit only if the race reproduces.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T005300Z-pluginval-exit-not-coverage-proof",
+  "relevant": "yes",
+  "topic": "pluginval",
+  "use": "Exit 0 does not prove coverage; assert log content (options, test matrix, no disabled markers) in CI.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T123022Z-python-can-slcan-listen-only",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261004T102025Z-rdata-reads-rda-in-python",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261106T120000Z-c-001-rainbow-vcv",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261106T120001Z-c-002-rainbow-vcv",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261106T120002Z-c-003-rainbow-vcv",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261106T120003Z-c-004-rainbow-vcv",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261106T120004Z-c-005-rainbow-vcv",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261106T120005Z-c-006-rainbow-vcv",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261106T120006Z-c-007-rainbow-vcv",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261106T120007Z-c-008-rainbow-vcv",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261106T120008Z-c-009-rainbow-vcv",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261106T120009Z-c-010-rainbow-vcv",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261106T120010Z-c-011-rainbow-vcv",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261106T120011Z-c-012-rainbow-vcv",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261106T120012Z-c-013-rainbow-vcv",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "Versioned runner labels ubuntu-24.04, windows-2025, macos-15-intel, macos-15 confirmed (2026-11).",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261106T120013Z-c-014-rainbow-vcv",
+  "relevant": "yes",
+  "topic": "listening-gate",
+  "use": "Blind gate design from an earlier project: 12 seeded RMS-matched pairs, <=8/12 necessary but not sufficient.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T193501Z-sandbox-egress-policy",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "Egress proxy blocked zenodo.org and api.github.com on 2026-10-09 (TinySOL download risk); conflicts with 232.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T234254Z-vcvrack-com-blocked-github-rack-reachable",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261105T223300Z-sandbox-reachability-2026-11-05",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "On 2026-11-05 zenodo.org and api.github.com were reachable; freesound/archive.org were not; re-probe before relying on TinySOL download.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261004T162307Z-sandbox-shell-is-dash",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "Sandbox /bin/sh is dash; scripts need bash explicitly.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261008T173541Z-sandbox-build-tools-and-juce-tags-2026-10-08",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "Sandbox tool and JUCE tag state 2026-10-08 (cmake 3.28.3, JUCE 7.0.12 and 8.0.15 tag commits).",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261008T173543Z-sandbox-working-directory-resets-corroborated",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "Working dirs may vanish between turns; keep deliverables in a persisted output path and commit often.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T120116Z-sandbox-background-jobs-and-git-proxy-limits",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "Use setsid nohup for background jobs; git proxy allows two concurrent git ops; shallow clone push needs git fetch origin main.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T160117Z-playwright-sandbox-browsers",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T193012Z-huggingface-unreachable-from-the-review-sandbox",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234252Z-apt-install-needs-update-and-nodesource-update-fails-403",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "apt-get update exits non-zero (nodesource 403); tolerate under set -e.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T234256Z-dash-lacks-pipestatus-and-time-keyword",
+  "relevant": "yes",
+  "topic": "sandbox",
+  "use": "dash lacks PIPESTATUS, time and brace expansion; use bash -c.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261029T030700Z-asan-ubsan-juce-tests-in-actions",
+  "relevant": "yes",
+  "topic": "sanitizers",
+  "use": "ASan+UBSan clang flags and ASAN_OPTIONS for JUCE test executables on ubuntu-latest (6143 checks under 10 minutes).",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261101T140200Z-test-executable-allocation-probe",
+  "relevant": "yes",
+  "topic": "sanitizers",
+  "use": "Zero-allocation processBlock check via counting global operator new/delete with a self-test.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T003008Z-extended-waveguide-plucked-strings",
+  "relevant": "yes",
+  "topic": "modal-and-string-dsp",
+  "use": "Extended Karplus-Strong/waveguide with sympathetic strings is established prior art for plucked-string models.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T003009Z-waveguide-slap-collision-models",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261104T003010Z-upright-slap-two-output-sources",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261104T004200Z-upright-slap-source-qualified",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261104T011000Z-dsp-architecture-spike",
+  "relevant": "yes",
+  "topic": "modal-and-string-dsp",
+  "use": "An extended-KS/contact/body spike passed 54 architecture and 162 extreme runs; model for a DSP spike gate.",
+  "version_sensitive": false,
+  "needs_full_read": true
+ },
+ {
+  "id": "K-20261104T011100Z-analyser-known-answer-results",
+  "relevant": "yes",
+  "topic": "audio-metrics",
+  "use": "Known-answer analyser tests plus a 21-cent note-conditioned pitch regression limit with +/-50-cent conditioning window.",
+  "version_sensitive": false,
+  "needs_full_read": true
+ },
+ {
+  "id": "K-20261104T011200Z-eight-control-mapping-results",
+  "relevant": "yes",
+  "topic": "audio-metrics",
+  "use": "Control-mapping monotonicity test over five frozen values with fixed excitation noise seed.",
+  "version_sensitive": false,
+  "needs_full_read": true
+ },
+ {
+  "id": "K-20261104T011300Z-eight-voice-lifecycle-results",
+  "relevant": "yes",
+  "topic": "modal-and-string-dsp",
+  "use": "Eight voice slots with 0.015 pairwise sympathetic coupling stayed bounded (spectral radius 0.105); relevant to double-course sympathetic coupling.",
+  "version_sensitive": false,
+  "needs_full_read": true
+ },
+ {
+  "id": "K-20261104T011500Z-native-eight-voice-performance",
+  "relevant": "yes",
+  "topic": "modal-and-string-dsp",
+  "use": "Native RTF 0.0213 at 96 kHz/64 samples with 8 voices; proposed CI ceiling 0.25 per runner.",
+  "version_sensitive": false,
+  "needs_full_read": true
+ },
+ {
+  "id": "K-20261106T010000Z-pitch-flat-timbre-reads-as-synthetic",
+  "relevant": "yes",
+  "topic": "listening-gate",
+  "use": "Constant spectral centroid across pitch sounds artificial; pitch-scaled spectral envelope is a perceptual anchor for plucked strings.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T193506Z-sparse-projector-memory-limit",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T092108Z-standard-guitar-tuning-midi-and-hz",
+  "relevant": "yes",
+  "topic": "tunings",
+  "use": "Guitar open string MIDI/Hz and the G-B 4-semitone trap in uniform tables.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T120112Z-steel-loss-factors-in-patents",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T120114Z-engine-damping-law-parameters-are-estimates",
+  "relevant": "yes",
+  "topic": "modal-and-string-dsp",
+  "use": "Frequency-dependent modal damping law sigma = s0 + pi*eta*f + s2*f^2 with T60 = 6.91/sigma; example constants were estimates.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T164000Z-violin-family-mandolin-and-seven-string-guitar-tunings",
+  "relevant": "yes",
+  "topic": "tunings",
+  "use": "Mandolin tuning G3 D4 A4 E5 (and mandola C3 G3 D4 A4); bouzouki not listed.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T164100Z-eight-string-guitar-standard-tuning-f-sharp-b-e-a-d-g-b-e",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261105T223200Z-struck-metal-reference-leads-and-licences",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261106T112500Z-struck-metal-real-recording-catalogue",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261106T120000Z-oil-drum-hit-candidates-and-listening-notes",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T193510Z-t036-gauge-components",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T160105Z-transcription-synthetic-bias",
+  "relevant": "yes",
+  "topic": "audio-metrics",
+  "use": "Metrics validated only on synthetic fixtures may overstate real accuracy; include real-recording checks.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T090900Z-tremolo-picked-lead-pitch-clock-and-pick-envelope",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160051Z-c-052",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160052Z-c-053",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160133Z-c-094",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160134Z-c-095",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160042Z-c-043",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160048Z-c-049",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160115Z-c-076",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160116Z-c-077",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160117Z-c-078",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160055Z-c-056",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160056Z-c-057",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160057Z-c-058",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160058Z-c-059",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160059Z-c-060",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160100Z-c-061",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160101Z-c-062",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160102Z-c-063",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160043Z-c-044",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160049Z-c-050",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160138Z-c-099",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160053Z-c-054",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160118Z-c-079",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160050Z-c-051",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160054Z-c-055",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160111Z-c-072",
+  "relevant": "yes",
+  "topic": "reference-recordings",
+  "use": "TinySOL Zenodo 3685367 v6.0 CC BY 4.0 with archive and metadata md5; note it holds trumpet notes here, check for accordion/guitar subsets.",
+  "version_sensitive": true,
+  "needs_full_read": true
+ },
+ {
+  "id": "K-20261007T160113Z-c-074",
+  "relevant": "yes",
+  "topic": "reference-recordings",
+  "use": "TinySOL dynamics: centroid increases pp<mf<ff; method for dynamic-layer checks.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160135Z-c-096",
+  "relevant": "yes",
+  "topic": "reference-recordings",
+  "use": "TinySOL files are attack-trimmed so onset timing cannot be a reference; some files are resampled neighbours and must be excluded.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160103Z-c-064",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160104Z-c-065",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160105Z-c-066",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160106Z-c-067",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160107Z-c-068",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160108Z-c-069",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160109Z-c-070",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261007T160110Z-c-071",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261101T043000Z-twelve-tet-formula",
+  "relevant": "yes",
+  "topic": "tunings",
+  "use": "12-TET formula f = 440*2^((m-69)/12) for all tuning tables.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261009T163800Z-ups-and-downs-xen-wiki-permalink-is-a-redirect",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234212Z-rack-onsamplerate-change-and-onreset-calls",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234232Z-rack-enables-ftz-and-daz-on-engine-threads",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234246Z-rack-api-signatures-used-by-the-wrapper",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234204Z-rack-plugin-links-libRack-via-plugin-mk-stub-suffices",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234214Z-rack-compile-mk-flags-and-cpp17",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234248Z-rack-engine-sample-rate-menu-values",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234208Z-rack-voltage-standards-triggers-and-levels",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T234210Z-rack-schmitt-trigger-states-and-first-sample",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261004T161601Z-vinyl-lead-out-click-period",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261004T161602Z-vinyl-three-level-side-detector",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261004T162309Z-reference-recording-facts",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261009T092103Z-vst3-system-folder-needs-write-access-windows",
+  "relevant": "yes",
+  "topic": "vst3",
+  "use": "Windows system VST3 folder is not user-writable; COPY_PLUGIN_AFTER_BUILD fails in CI unless disabled or elevated.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160015Z-c-016",
+  "relevant": "yes",
+  "topic": "licensing",
+  "use": "JUCE 9.0.3 bundled VST3 SDK is MIT, located in juce_audio_processors_headless.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160016Z-c-017",
+  "relevant": "yes",
+  "topic": "vst3",
+  "use": "VST3 SDK path moved in JUCE 9.0.3 to the headless module.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261007T160137Z-c-098",
+  "relevant": "yes",
+  "topic": "licensing",
+  "use": "AGPLv3 applies to binaries linking JUCE 9; TinySOL CC BY 4.0 needs attribution; ASIO SDK GPLv3 only with JUCE_ASIO=1.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261104T005100Z-vst3-sdk-mit-sbom",
+  "relevant": "yes",
+  "topic": "licensing",
+  "use": "VST3 SDK 3.8.0 bundled with JUCE 9.0.5 is MIT.",
+  "version_sensitive": true,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261004T162301Z-dynamics-compressor-latency",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261004T162302Z-dynamics-compressor-not-a-brickwall",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261008T173539Z-web-audio-exponential-ramp-time-constant",
+  "relevant": "no"
+ },
+ {
+  "id": "K-20261105T233000Z-windows-default-stack-vs-engine-size",
+  "relevant": "yes",
+  "topic": "cmake-cpp-build",
+  "use": "Large objects (about 3.5 MB) on the stack crash on Windows (1 MB stack); heap-allocate voice/body-model state.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ },
+ {
+  "id": "K-20261105T233100Z-msys-exe-path-magic-and-frozen-stubs",
+  "relevant": "yes",
+  "topic": "ci-runners-and-actions",
+  "use": "Git Bash treats foo and foo.exe alike; stage extensionless frozen binaries via Python on Windows.",
+  "version_sensitive": false,
+  "needs_full_read": false
+ }
+]

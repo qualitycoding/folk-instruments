@@ -1,0 +1,64 @@
+{
+  "branch": "G reference recordings",
+  "claims": [
+    {
+      "local_id": "G1",
+      "claim": "TinySOL v6.0 (Zenodo 10.5281/zenodo.3685367) contains 2913 single-note samples of 14 instruments, including Accordion (family 'Keyboards'); it does NOT contain harmonica, melodica, mandolin or bouzouki. Licence CC BY 4.0 (redistributable). Audio is 44.1 kHz, 16-bit, mono; TinySOL.tar.gz is about 1.0 GB; MD5 36030a7fe389da86c3419e5ee48e3b7f; metadata CSV MD5 a86c9bb115f69e61f2f25872e397fc4a. Per-note pitch range, dynamics and number of accordion notes were not read (the metadata CSV was not opened).",
+      "input_file_says": "not in input file",
+      "verdict_on_input": "not-in-input",
+      "kind": "policy",
+      "load_bearing_suggestion": true,
+      "sources": [
+        {"url": "https://zenodo.org/records/3685367", "doi": "10.5281/zenodo.3685367", "title": "TinySOL", "authors": "not recorded (page summary only)", "year": "", "version": "6.0", "locator": "record page: licence field, file list, checksums", "accessed": "2026-11-14", "tier": 2, "read_depth": "full text"}
+      ],
+      "confidence": "single-source",
+      "notes": "Best redistributable accordion candidate found. Dry/close-miked status of the accordion notes, which registers were used, and the instrument model are not stated in what I read; check TinySOL_metadata.csv and the associated paper before relying on it for register-specific work. Download pattern: https://zenodo.org/records/3685367/files/TinySOL.tar.gz. Note: the page was read through a summarising fetch tool, so the licence wording is as reported by that tool, not copied verbatim by me."
+    },
+    {
+      "local_id": "G2",
+      "claim": "The Versilian Community Sample Library (VCSL, github.com/sgossner/VCSL) is stated on its repository page to be under Creative Commons 0 (public domain, redistributable). The page shows category folders (Aerophones, Chordophones, Idiophones, Membranophones, Electrophones/TX81Z) but I could not confirm from it whether harmonica, melodica, accordion, mandolin or bouzouki are present; the file tree request was refused (HTTP 403).",
+      "input_file_says": "not in input file",
+      "verdict_on_input": "not-in-input",
+      "kind": "policy",
+      "load_bearing_suggestion": false,
+      "sources": [
+        {"url": "https://github.com/sgossner/VCSL", "doi": "", "title": "VCSL", "authors": "S. Gossner and contributors", "year": "", "version": "", "locator": "README licence statement", "accessed": "2026-11-14", "tier": 2, "read_depth": "full text"}
+      ],
+      "confidence": "single-source",
+      "notes": "Per-instrument sets are about 20-75 MB of WAV. Format and sample rate for the shipped library were not stated (44.1 or 48 kHz, 16 or 24 bit is only the contributor guideline). Instrument list must be checked by a worker with GitHub tree access. A web search (snippets only, not a reading) found no evidence of harmonica, melodica, accordion or mandolin in VCSL; the README names harmonicas only as an example where mono recording is acceptable. Treat VCSL as probably lacking all five instruments until the tree is read. Karoryfer: search snippets list a few CC0-1.0 libraries (Bigcat Cello, Meatbass, Frankensnare) and mark most others Commercial; no CC0 mandolin or harmonica found (snippet only; licences not read from source pages)."
+    },
+    {
+      "local_id": "G3",
+      "claim": "Zenodo keyword searches for 'harmonica', 'mandolin', 'bouzouki' (first ~14-16 hits each, read via the API listing) returned NO audio sample dataset of these instruments; hits were taxonomic records, papers, 3D models (glb files of mandolins and a harmonica, CC BY 4.0, not audio) and an unrelated software record. The 'melodica' search was not completed (fetch tool rate limit).",
+      "input_file_says": "not in input file",
+      "verdict_on_input": "not-in-input",
+      "kind": "policy",
+      "load_bearing_suggestion": false,
+      "sources": [
+        {"url": "https://zenodo.org/api/records?q=harmonica&size=20", "doi": "", "title": "Zenodo search: harmonica", "authors": "", "year": "", "version": "", "locator": "records 1-16", "accessed": "2026-11-14", "tier": 3, "read_depth": "full text"},
+        {"url": "https://zenodo.org/api/records?q=mandolin&size=20", "doi": "", "title": "Zenodo search: mandolin", "authors": "", "year": "", "version": "", "locator": "records 1-14", "accessed": "2026-11-14", "tier": 3, "read_depth": "full text"},
+        {"url": "https://zenodo.org/api/records?q=bouzouki&size=20", "doi": "", "title": "Zenodo search: bouzouki", "authors": "", "year": "", "version": "", "locator": "records 1-4", "accessed": "2026-11-14", "tier": 3, "read_depth": "full text"}
+      ],
+      "confidence": "inferred",
+      "notes": "Negative result limited to the first page of results; later pages were truncated. No redistributable single-note set found for harmonica, mandolin or bouzouki on Zenodo so far."
+    }
+  ],
+  "equations": [],
+  "sources_checked": [
+    {"url": "https://zenodo.org/records/3685367", "doi": "10.5281/zenodo.3685367", "title": "TinySOL", "owner_or_authors": "IRCAM (not confirmed on page read)", "version_or_date": "6.0", "accessed": "2026-11-14", "tier": 2, "outcome": "used", "reason": "", "licence_or_terms": "CC BY 4.0, stated on record page", "content_summary": "2913 samples, 14 instruments incl. Accordion, 44.1 kHz 16-bit mono, 1.0 GB", "access_notes": "read via summarising fetch"},
+    {"url": "https://github.com/sgossner/VCSL", "doi": "", "title": "VCSL", "owner_or_authors": "Gossner et al.", "version_or_date": "", "accessed": "2026-11-14", "tier": 2, "outcome": "used", "reason": "instrument list not shown", "licence_or_terms": "CC0 1.0, stated on README", "content_summary": "category folders only", "access_notes": "tree API returned 403"},
+    {"url": "https://theremin.music.uiowa.edu/MIS.html", "doi": "", "title": "Iowa MIS", "owner_or_authors": "", "version_or_date": "", "accessed": "2026-11-14", "tier": 2, "outcome": "unreachable", "reason": "host not resolvable in sandbox", "licence_or_terms": "not read", "content_summary": "", "access_notes": ""},
+    {"url": "https://philharmonia.co.uk/resources/sound-samples/", "doi": "", "title": "Philharmonia sound samples", "owner_or_authors": "", "version_or_date": "", "accessed": "2026-11-14", "tier": 2, "outcome": "unreachable", "reason": "host not resolvable in sandbox", "licence_or_terms": "not read", "content_summary": "", "access_notes": ""},
+    {"url": "https://magenta.tensorflow.org/datasets/nsynth", "doi": "", "title": "NSynth", "owner_or_authors": "", "version_or_date": "", "accessed": "2026-11-14", "tier": 2, "outcome": "unreachable", "reason": "host not resolvable in sandbox", "licence_or_terms": "not read", "content_summary": "", "access_notes": ""},
+    {"url": "https://sfzinstruments.github.io/", "doi": "", "title": "SFZ Instruments", "owner_or_authors": "", "version_or_date": "", "accessed": "2026-11-14", "tier": 2, "outcome": "unreachable", "reason": "host not resolvable in sandbox", "licence_or_terms": "not read", "content_summary": "", "access_notes": ""},
+    {"url": "https://freesound.org/", "doi": "", "title": "Freesound", "owner_or_authors": "", "version_or_date": "", "accessed": "2026-11-14", "tier": 4, "outcome": "unreachable", "reason": "host not resolvable in sandbox", "licence_or_terms": "not read", "content_summary": "", "access_notes": ""},
+    {"url": "https://commons.wikimedia.org/", "doi": "", "title": "Wikimedia Commons", "owner_or_authors": "", "version_or_date": "", "accessed": "2026-11-14", "tier": 3, "outcome": "unreachable", "reason": "host not resolvable in sandbox", "licence_or_terms": "not read", "content_summary": "", "access_notes": ""},
+    {"url": "https://archive.org/", "doi": "", "title": "Internet Archive", "owner_or_authors": "", "version_or_date": "", "accessed": "2026-11-14", "tier": 3, "outcome": "unreachable", "reason": "host not resolvable in sandbox", "licence_or_terms": "not read", "content_summary": "", "access_notes": ""},
+    {"url": "https://zenodo.org/api/records?q=harmonica|mandolin|bouzouki", "doi": "", "title": "Zenodo searches", "owner_or_authors": "", "version_or_date": "", "accessed": "2026-11-14", "tier": 3, "outcome": "used", "reason": "negative result", "licence_or_terms": "per record", "content_summary": "no audio datasets", "access_notes": "truncated at ~100k chars"}
+  ],
+  "open_questions": [
+    "Which hosts are reachable? Only zenodo.org and github.com responded; Iowa, Philharmonia, Freesound, Commons, Archive, NSynth, sfzinstruments were not resolvable.",
+    "Does VCSL contain any of the five instruments?"
+  ],
+  "summary": "PARTIAL. Only TinySOL (accordion, CC BY 4.0, 1.0 GB, 44.1k/16/mono) was confirmed as a redistributable single-note source; VCSL is CC0 but its instrument list was not confirmed. Zenodo has no harmonica, mandolin or bouzouki sample sets in the first results. Most required sources were unreachable. Far fewer than 20 candidates; no candidate is invented."
+}

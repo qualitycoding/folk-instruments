@@ -1,0 +1,716 @@
+{
+ "branch": "A free-reed fundamentals",
+ "claims": [
+  {
+   "local_id": "A1",
+   "claim": "The first clamped-free Euler-Bernoulli mode has f1 = (lambda1^2/(2 pi L^2)) sqrt(E I/(rho A)), lambda1 = 1.875104 (root of cosh(x)cos(x) = -1). For a rectangular section (I = b t^3/12, A = b t) this reduces to f1 = (lambda1^2/(2 pi sqrt(12))) (t/L^2) sqrt(E/rho) = 0.16154 (t/L^2) sqrt(E/rho), independent of width.",
+   "input_file_says": "Formula lost in export; lambda1 about 1.875104 given",
+   "verdict_on_input": "supported",
+   "kind": "mathematical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://lampz.tugraz.at/~hadley/memm/mechanics/cbeam.php",
+     "doi": "",
+     "title": "Cantilever beam notes (TU Graz) and Rao example",
+     "authors": "Hadley (TU Graz)",
+     "year": "n.d.",
+     "version": "",
+     "locator": "cantilever section",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Textbook result (Rao); I confirmed the 0.16154 coefficient by computation. Only snippets of a tertiary page were seen; a Tier 1 textbook locator (Rao, Mechanical Vibrations, Table 8.1) was not opened. Applies to a uniform tongue; real reeds are tapered and have a rivet/clamp end condition, so use as a starting estimate and calibrate."
+  },
+  {
+   "local_id": "A2",
+   "claim": "The input file's length table is arithmetically reproducible: with lambda1 = 1.875104, the rectangular-beam formula and the stated E and rho, I obtained exactly the 27 listed lengths (e.g. brass 0.25 mm at 440 Hz = 17.97 mm; steel 0.40 mm at 1046.5 Hz = 17.51 mm). The steel/brass length ratio at equal t and f is (E/rho ratio)^(1/4) = 1.189, i.e. about 19% longer.",
+   "input_file_says": "Table plus 'roughly 19% greater effective length'",
+   "verdict_on_input": "supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://lampz.tugraz.at/~hadley/memm/mechanics/cbeam.php",
+     "doi": "",
+     "title": "Cantilever beam notes (TU Graz) and Rao example",
+     "authors": "Hadley (TU Graz)",
+     "year": "n.d.",
+     "version": "",
+     "locator": "cantilever section",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Computed by me with python; this tests arithmetic only, not whether the property values are typical. Table uses stainless 195 GPa; spring steel is about 200-210 GPa, so little change. Free-air frequency only; the reed lies in a slot so side-gap and thickness effects are separate."
+  },
+  {
+   "local_id": "A3",
+   "claim": "The single-mode reed ODE used by Millot and Baumann is a lumped oscillator for first-bending-mode tip displacement: mass*h'' + damping*h' + stiffness*(h - h0) = effective area * (p1 - p2), with an effective modal mass, damping from Q and stiffness from the natural frequency. I could not read the exact equation; the input file's symbols (m_r, R_r, k_r, h_n0, S_eff) were not matched to the source.",
+   "input_file_says": "Lumped m_r, R_r, k_r, h_n0 oscillator driven by S_eff*(p1-p2)",
+   "verdict_on_input": "partly-supported",
+   "kind": "mathematical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://arxiv.org/pdf/2401.01606",
+     "doi": "",
+     "title": "A proposal for a minimal model of free reed(s)",
+     "authors": "L. Millot, Cl. Baumann",
+     "year": "2007 (Acta Acustica 93:122-144); arXiv 2024",
+     "version": "arXiv:2401.01606v1",
+     "locator": "abstract and search-engine summary only; no equation numbers seen",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Source states the model uses pure flexion in the first transverse mode (snippet). Exact form, sign convention and the definition of S_eff need the full text; treat the standard single-mode form as inferred. Request arxiv.org to be allowed to confirm."
+  },
+  {
+   "local_id": "A4",
+   "claim": "Millot and Baumann (Acta Acustica 93, 2007, 122-144; arXiv:2401.01606) exists and proposes a minimal free-reed model suitable for numerical simulation: a reed on its first transverse mode, coupled to a volume, with linear stability analysis for both (-,+) and (+,-) reeds, and effects of volume size and excitation level on playing frequency; reed thickness strongly affects sound level, playing frequency and displacement amplitude; inverse bifurcations are suggested. The author list differs between sources (arXiv lists Millot only).",
+   "input_file_says": "Millot and Baumann minimal time-domain model",
+   "verdict_on_input": "supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://arxiv.org/pdf/2401.01606",
+     "doi": "",
+     "title": "A proposal for a minimal model of free reed(s)",
+     "authors": "L. Millot, Cl. Baumann",
+     "year": "2007 (Acta Acustica 93:122-144); arXiv 2024",
+     "version": "arXiv:2401.01606v1",
+     "locator": "abstract and search-engine summary only; no equation numbers seen",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Bibliographic existence confirmed from the arXiv record and search summary. Abstract-level only."
+  },
+  {
+   "local_id": "A5",
+   "claim": "The 'useful area' S_u(h_n) with reed thickness e_r, support thickness e_s and side gap h_min, and the 'two puffs per cycle' statement, could not be verified: the full text was not reachable. Not confirmed that the paper uses the input file's symbols (W_r, L_r, h_eff(s), alpha_c, U_pump).",
+   "input_file_says": "S_u(h_n) integral of h_eff(s) around perimeter; two asymmetric puffs per cycle",
+   "verdict_on_input": "not-found",
+   "kind": "mathematical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://arxiv.org/pdf/2401.01606",
+     "doi": "",
+     "title": "A proposal for a minimal model of free reed(s)",
+     "authors": "L. Millot, Cl. Baumann",
+     "year": "2007 (Acta Acustica 93:122-144); arXiv 2024",
+     "version": "arXiv:2401.01606v1",
+     "locator": "abstract and search-engine summary only; no equation numbers seen",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Abstract confirms thickness matters. The equations remain unrecovered; a design should derive a lookup S_u(h) from slot geometry (plate thickness, tongue thickness, side clearance) rather than rely on the file's formula until checked."
+  },
+  {
+   "local_id": "A6",
+   "claim": "Fletcher (1993, JASA 93:2172-2180) classifies simple pressure-controlled valves with one degree of freedom into four configurations according to the effect of static over-pressure at inlet or outlet on the opening. The Millot-Baumann model adopts Fletcher's sign labels: (-,+) for blown-closed and (+,-) for blown-open.",
+   "input_file_says": "'(-,+) blown-closed (inward-striking)'",
+   "verdict_on_input": "partly-supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://bvbvf1.bib-bvb.de/vufind/PrimoRecord/cdi_crossref_primary_10_1121_1_406857",
+     "doi": "10.1121/1.406857",
+     "title": "Autonomous vibration of simple pressure-controlled valves in gas flows",
+     "authors": "N. H. Fletcher",
+     "year": "1993",
+     "version": "",
+     "locator": "JASA 93(4):2172-2180; catalogue abstract only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "abstract only"
+    },
+    {
+     "url": "https://arxiv.org/pdf/2401.01606",
+     "doi": "",
+     "title": "A proposal for a minimal model of free reed(s)",
+     "authors": "L. Millot, Cl. Baumann",
+     "year": "2007 (Acta Acustica 93:122-144); arXiv 2024",
+     "version": "arXiv:2401.01606v1",
+     "locator": "abstract and search-engine summary only; no equation numbers seen",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Labels corroborated at snippet level (two sources) but neither read in full; not Tier 1 full text, so held at 'corroborated' only for the label pairing; the sign-convention meaning of each sign (which pressure side) was not read. Tarnopolsky et al. use a (2,1)/(1,2) style notation for the same classes, so the input's '(-,+)' is Millot-Baumann usage of Fletcher, not Fletcher's own symbols."
+  },
+  {
+   "local_id": "A7",
+   "claim": "A Western free reed is not simply 'blown closed'. Fletcher's 1979 inward/outward classification does not fit free reeds neatly; a free reed can show either closing or opening behaviour depending on conditions. A normal Western reed sounds only for p1 > p2 (one flow direction), and is usually described as blown-closed, but the companion reed on the other side of the plate in a harmonica channel is blown-open.",
+   "input_file_says": "Individual Western reeds operate in the (-,+) blown-closed (inward-striking) regime",
+   "verdict_on_input": "partly-supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://physicstoday.aip.org/features/acoustics-of-free-reed-instruments",
+     "doi": "",
+     "title": "Acoustics of free-reed instruments",
+     "authors": "J. P. Cottingham",
+     "year": "2011",
+     "version": "",
+     "locator": "Physics Today 64(3):44; snippet only",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.cs.bu.edu/fac/snyder/TablatureWeb/Bahnson%20JASA%201998.pdf",
+     "doi": "",
+     "title": "Bahnson, Antaki, Beery, Harmonica reed behaviour (JASA 1998)",
+     "authors": "Bahnson et al.",
+     "year": "1998",
+     "version": "",
+     "locator": "snippet only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Physics Today and an ASA-era note (snippets): normal behaviour blown-closed; harmonica companion reed blown-open. Also: a free reed does not 'strike' a frame in normal play; 'inward-striking' is wrong for a free reed that swings through a slot, which is why classification is ambiguous. The input wording 'pushes the reed tip toward and through its frame slot' matches blown-closed geometry but 'inward-striking' should be dropped."
+  },
+  {
+   "local_id": "A8",
+   "claim": "The input file's mechanism for harmonica bending (the draw-bend reed acting as (+,-)) is consistent with the harmonica literature: the normally silent opposing reed is the opening reed and sounds in two-reed pitch changes.",
+   "input_file_says": "Blow reed behaves as (+,-) outward-opening reed under draw airflow",
+   "verdict_on_input": "supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.cs.bu.edu/fac/snyder/TablatureWeb/Bahnson%20JASA%201998.pdf",
+     "doi": "",
+     "title": "Bahnson, Antaki, Beery, Harmonica reed behaviour (JASA 1998)",
+     "authors": "Bahnson et al.",
+     "year": "1998",
+     "version": "",
+     "locator": "snippet only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://researchportalplus.anu.edu.au/en/publications/oscillating-reed-valves-an-experimental-study/",
+     "doi": "10.1121/1.429473",
+     "title": "Oscillating reed valves - an experimental study",
+     "authors": "Tarnopolsky, Fletcher, Lai",
+     "year": "2000",
+     "version": "",
+     "locator": "JASA 108:400-406; abstract/snippet only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Snippets only. Detail is for the harmonica branch; recorded here because it tests the (-,+)/(+,-) terminology. Tarnopolsky et al. state experiments confirmed Fletcher's prediction that the reed vibrates most readily in the opening orientation when coupled to a resonator."
+  },
+  {
+   "local_id": "A9",
+   "claim": "St. Hilaire, Wilson and Beavers (1971, J. Fluid Mech. 49:803-816) is real (author order varies between catalogues). Its abstract: reed amplitude grows exponentially, growth rate measured against flow, and the theory evaluates unsteady potential flow around the reed. Later authors summarise it as an upstream inertial effect giving a pressure component in phase with reed velocity, so net power flows into the reed.",
+   "input_file_says": "St. Hilaire's theoretical model ... upstream inertial effect ... in phase with reed velocity",
+   "verdict_on_input": "supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://resolve.cambridge.org/core/journals/journal-of-fluid-mechanics/article/aerodynamic-excitation-of-the-harmonium-reed/3B5156625194BBF5549B08928B2F5495",
+     "doi": "10.1017/s0022112071002374",
+     "title": "Aerodynamic excitation of the harmonium reed",
+     "authors": "St. Hilaire, Wilson, Beavers",
+     "year": "1971",
+     "version": "",
+     "locator": "J. Fluid Mech. 49:803-816 (abstract and citing summaries)",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "abstract only"
+    },
+    {
+     "url": "https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf",
+     "doi": "",
+     "title": "Forum Acusticum 2023 paper on harmonium reed LDV (B5, 990 Hz) and distributed bar model",
+     "authors": "not identified from snippet",
+     "year": "2023",
+     "version": "",
+     "locator": "snippet only",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Two independent-ish summaries (one abstract, one a 2023 conference paper); original not read. 'Corroborated experimentally by Tarnopolsky et al.' was not confirmed: Tarnopolsky tested Fletcher's theory (snippet), and Ricot et al. test their own 2D model; I did not find either saying they corroborate St. Hilaire's."
+  },
+  {
+   "local_id": "A10",
+   "claim": "Ricot, Causs\u00e9 and Misdariis (JASA 117(4), 2005, 2279) exists: it treats the accordion reed as a blown-closed free reed without acoustic coupling; inertia gives velocity fluctuations in the reed opening, an unsteady Bernoulli force, and an added pressure from local reciprocating air motion; model is two-dimensional (qualitative comparison with air measurements); flow visualisations and water-tank measurements suggest incompressible potential flow. Dipole radiation, spectra and pressures used were not verified.",
+   "input_file_says": "Ricot et al. corroborate; dipole radiation without pipe resonator",
+   "verdict_on_input": "partly-supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://hal.archives-ouvertes.fr/hal-01106161",
+     "doi": "",
+     "title": "Aerodynamic excitation and sound production of blown-closed free reeds without acoustic coupling: the example of the accordion reed",
+     "authors": "Ricot, Causs\u00e9, Misdariis",
+     "year": "2005",
+     "version": "",
+     "locator": "JASA 117:2279; catalogue abstract",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "abstract only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Dipole claim and 'two puffs' are plausible but were not seen in text. Do not treat the dipole statement as verified."
+  },
+  {
+   "local_id": "A11",
+   "claim": "The statement about Q = 16, 19, 29, 55, ~250 and a '2 kPa' threshold for f_reed/f_H < 1 could not be located. The Tarnopolsky, Fletcher and Lai experiment (JASA 108:400-406) measured threshold pressure of reed valves coupled to a Helmholtz resonator and confirmed Fletcher's linear theory that opening-reed orientation oscillates more easily; no Q values or 2 kPa figure were found in snippets. A different (later) paper used f_reed/f_H = 1.5 as a modelling choice.",
+   "input_file_says": "Q 16, 19, 29, 55, ~250; f_reed/f_H >1 easy, <1 above 2 kPa",
+   "verdict_on_input": "not-found",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://researchportalplus.anu.edu.au/en/publications/oscillating-reed-valves-an-experimental-study/",
+     "doi": "10.1121/1.429473",
+     "title": "Oscillating reed valves - an experimental study",
+     "authors": "Tarnopolsky, Fletcher, Lai",
+     "year": "2000",
+     "version": "",
+     "locator": "JASA 108:400-406; abstract/snippet only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Treat these numbers as unsupported until the full text is read. Note the experiment studied a reed with Helmholtz cavity, whereas the minimal free-reed model also analyses volume size; the numbers may come from Millot-Baumann or Tarnopolsky. Open question."
+  },
+  {
+   "local_id": "A12",
+   "claim": "Playing frequency of reed-organ/harmonium free reeds falls approximately linearly with blowing pressure over normal playing pressures; at the lowest sounding pressures it can briefly rise, and well above normal it levels off and rises. A model fits the mid-range of about 0.6-1.0 kPa. The reed cell lowers frequency at a given pressure. Hysteresis is observed. No cents/kPa number was found.",
+   "input_file_says": "Sounding pitch slightly below free-air resonance, dropping flat under excessive airflow",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://www.cs.bu.edu/fac/snyder/TablatureWeb/BERLIN2.PDF",
+     "doi": "",
+     "title": "Cottingham et al., free-reed (reed organ) frequency-pressure papers, Berlin proceedings (ICA/ASA mirror)",
+     "authors": "J. P. Cottingham and co-authors",
+     "year": "c.1999",
+     "version": "",
+     "locator": "snippet only",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://physicstoday.aip.org/features/acoustics-of-free-reed-instruments",
+     "doi": "",
+     "title": "Acoustics of free-reed instruments",
+     "authors": "J. P. Cottingham",
+     "year": "2011",
+     "version": "",
+     "locator": "Physics Today 64(3):44; snippet only",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Snippets (ASA abstracts). 'Dropping flat under excessive airflow' is not right at very high pressure: frequency levels off and eventually rises. For an implementer: a pitch-vs-pressure slope must be calibrated, not taken from the file."
+  },
+  {
+   "local_id": "A13",
+   "claim": "Harmonium reed LDV: a 2023 Forum Acusticum study on a B5 (990 Hz) harmonium reed finds higher harmonics more prominent at higher excitation pressure; an earlier American reed-organ LDV study reports near-sinusoidal motion at normal playing pressure becoming irregular at 1.2 kPa. The input's '0.2 kPa nearly sinusoidal; 1.4-1.6 kPa higher harmonics' was not found; nearest are 0.8 and 1.2 kPa.",
+   "input_file_says": "~0.2 kPa sinusoidal; 1.4-1.6 kPa harmonics",
+   "verdict_on_input": "not-found",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf",
+     "doi": "",
+     "title": "Forum Acusticum 2023 paper on harmonium reed LDV (B5, 990 Hz) and distributed bar model",
+     "authors": "not identified from snippet",
+     "year": "2023",
+     "version": "",
+     "locator": "snippet only",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.cs.bu.edu/fac/snyder/TablatureWeb/BERLIN2.PDF",
+     "doi": "",
+     "title": "Cottingham et al., free-reed (reed organ) frequency-pressure papers, Berlin proceedings (ICA/ASA mirror)",
+     "authors": "J. P. Cottingham and co-authors",
+     "year": "c.1999",
+     "version": "",
+     "locator": "snippet only",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Pressure figures in the input could not be matched to a paper. Qualitative trend supported."
+  },
+  {
+   "local_id": "A14",
+   "claim": "Reed cell (chamber) effects: the cell lowers playing frequency and increases the higher harmonics relative to the fundamental (Cottingham, reed-organ reeds); sound pressure near the reed resembles a pulse train while reed motion is roughly sinusoidal. Excitation of second/third transverse and torsional modes by the cell was not confirmed.",
+   "input_file_says": "Cell lowers frequency, filters spectrum, enhances 2nd/3rd transverse and torsional modes",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.cs.bu.edu/fac/snyder/TablatureWeb/BERLIN2.PDF",
+     "doi": "",
+     "title": "Cottingham et al., free-reed (reed organ) frequency-pressure papers, Berlin proceedings (ICA/ASA mirror)",
+     "authors": "J. P. Cottingham and co-authors",
+     "year": "c.1999",
+     "version": "",
+     "locator": "snippet only",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf",
+     "doi": "",
+     "title": "Forum Acusticum 2023 paper on harmonium reed LDV (B5, 990 Hz) and distributed bar model",
+     "authors": "not identified from snippet",
+     "year": "2023",
+     "version": "",
+     "locator": "snippet only",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Snippets only. Mode-excitation part unverified."
+  },
+  {
+   "local_id": "A15",
+   "claim": "Material statement: the input says reeds are brass, phosphor bronze or stainless steel. I could not verify typical materials by source. Common knowledge (not confirmed here) is that harmonica reeds are brass or phosphor bronze and accordion reeds are mostly steel (and some brass) with an aluminium or brass plate.",
+   "input_file_says": "Brass, PB102, stainless; scraping tip raises, root lowers",
+   "verdict_on_input": "not-found",
+   "kind": "policy",
+   "load_bearing_suggestion": false,
+   "sources": [],
+   "confidence": "inferred",
+   "notes": "Searches that would test this hit the weekly limit. Tuning direction (filing near tip removes mass and raises pitch; near root removes stiffness and lowers pitch) follows from beam theory (f ~ t/L^2 sqrt(E/rho)) but I did not find a source. Brass density 8490 kg/m3 attributed to 'harmonium clamped-bar modelling' was not traced."
+  },
+  {
+   "local_id": "A16",
+   "claim": "Existing synthesis models for free reeds (Cottingham, Millot, Smith's Physical Audio Signal Processing, STK, Puranik and Scavone, Bilbao): not researched, searches hit the usage limit. The Millot-Baumann ODE-plus-orifice-flow-plus-volume model and the Forum Acusticum 2023 distributed-bar model are two published structures an implementer could follow.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "software",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://arxiv.org/pdf/2401.01606",
+     "doi": "",
+     "title": "A proposal for a minimal model of free reed(s)",
+     "authors": "L. Millot, Cl. Baumann",
+     "year": "2007 (Acta Acustica 93:122-144); arXiv 2024",
+     "version": "arXiv:2401.01606v1",
+     "locator": "abstract and search-engine summary only; no equation numbers seen",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf",
+     "doi": "",
+     "title": "Forum Acusticum 2023 paper on harmonium reed LDV (B5, 990 Hz) and distributed bar model",
+     "authors": "not identified from snippet",
+     "year": "2023",
+     "version": "",
+     "locator": "snippet only",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Open item for a follow-up pass."
+  }
+ ],
+ "equations": [
+  {
+   "name": "Clamped-free first-mode frequency",
+   "latex_or_text": "f_1 = (lambda_1^2/(2 pi L^2)) sqrt(E I/(rho A)); rectangular section: f_1 = (lambda_1^2/(2 pi sqrt(12))) (t/L^2) sqrt(E/rho) = 0.16154 t/L^2 sqrt(E/rho); lambda_1 = 1.875104 root of cosh(x) cos(x) = -1",
+   "symbols": "L length, t thickness, E Young's modulus, rho density, I second moment of area, A cross-section area",
+   "source_locator": "standard result; Rao, Mechanical Vibrations Table 8.1 (cited by a web page)",
+   "source_url": "https://lampz.tugraz.at/~hadley/memm/mechanics/cbeam.php"
+  },
+  {
+   "name": "Inverse for design: length from target pitch",
+   "latex_or_text": "L = sqrt( lambda_1^2 t sqrt(E/rho) / (2 pi sqrt(12) f_1) )",
+   "symbols": "as above",
+   "source_locator": "derived by me; reproduces input table to 0.01 mm",
+   "source_url": ""
+  },
+  {
+   "name": "Single-mode reed ODE (generic form, unverified against source)",
+   "latex_or_text": "m_r h'' + R_r h' + k_r (h - h0) = S_eff (p1 - p2)",
+   "symbols": "m_r, R_r, k_r modal mass, damping, stiffness; h0 rest offset; S_eff effective area; p1 upstream, p2 downstream pressure; sign convention not verified",
+   "source_locator": "Millot and Baumann 2007: first transverse mode only (equation not read)",
+   "source_url": "https://arxiv.org/pdf/2401.01606"
+  }
+ ],
+ "sources_checked": [
+  {
+   "url": "https://arxiv.org/pdf/2401.01606",
+   "doi": "",
+   "title": "Millot and Baumann, minimal model of free reeds",
+   "owner_or_authors": "Millot, Baumann",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Abstract-level: model, stability, thickness effects, Fletcher labels",
+   "access_notes": "Fetch failed: host not in the sandbox network allowlist (curl returned 403, WebFetch DNS failure); only search-engine summaries obtained."
+  },
+  {
+   "url": "https://ar5iv.labs.arxiv.org/html/2401.01606",
+   "doi": "",
+   "title": "ar5iv copy of Millot-Baumann",
+   "owner_or_authors": "Millot, Baumann",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "unreachable",
+   "reason": "host not allowed",
+   "licence_or_terms": "not read",
+   "content_summary": "",
+   "access_notes": "Fetch failed: host not in the sandbox network allowlist (curl returned 403, WebFetch DNS failure); only search-engine summaries obtained."
+  },
+  {
+   "url": "https://hal.archives-ouvertes.fr/hal-01106161",
+   "doi": "",
+   "title": "HAL record, Ricot et al.",
+   "owner_or_authors": "Ricot, Causse, Misdariis",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "unreachable",
+   "reason": "host not allowed",
+   "licence_or_terms": "not read",
+   "content_summary": "",
+   "access_notes": "Fetch failed: host not in the sandbox network allowlist (curl returned 403, WebFetch DNS failure); only search-engine summaries obtained."
+  },
+  {
+   "url": "https://www.phys.unsw.edu.au/music/people/publications/Tarnopolskyetal2000.pdf",
+   "doi": "",
+   "title": "Tarnopolsky et al. 2000 full text (UNSW)",
+   "owner_or_authors": "Tarnopolsky, Fletcher, Lai",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "unreachable",
+   "reason": "host not allowed",
+   "licence_or_terms": "not read",
+   "content_summary": "",
+   "access_notes": "Fetch failed: host not in the sandbox network allowlist (curl returned 403, WebFetch DNS failure); only search-engine summaries obtained."
+  },
+  {
+   "url": "https://researchportalplus.anu.edu.au/en/publications/oscillating-reed-valves-an-experimental-study/",
+   "doi": "",
+   "title": "Tarnopolsky et al. ANU record",
+   "owner_or_authors": "Tarnopolsky, Fletcher, Lai",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Bibliographic and abstract summary",
+   "access_notes": "Seen only via search results"
+  },
+  {
+   "url": "https://resolve.cambridge.org/core/journals/journal-of-fluid-mechanics/article/aerodynamic-excitation-of-the-harmonium-reed/3B5156625194BBF5549B08928B2F5495",
+   "doi": "",
+   "title": "St. Hilaire et al. 1971 (Cambridge)",
+   "owner_or_authors": "St. Hilaire, Wilson, Beavers",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Abstract and bibliographic data",
+   "access_notes": "Seen only via search results"
+  },
+  {
+   "url": "https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf",
+   "doi": "",
+   "title": "Forum Acusticum 2023 harmonium reed paper",
+   "owner_or_authors": "not identified",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Summary of St. Hilaire; harmonium LDV B5 reed; distributed bar model",
+   "access_notes": "Fetch failed: host not in the sandbox network allowlist (curl returned 403, WebFetch DNS failure); only search-engine summaries obtained."
+  },
+  {
+   "url": "https://www.cs.bu.edu/fac/snyder/TablatureWeb/BERLIN2.PDF",
+   "doi": "",
+   "title": "Cottingham reed-organ papers (BERLIN1/2, ICA mirror)",
+   "owner_or_authors": "Cottingham et al.",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Frequency-pressure relationship, reed cell effects",
+   "access_notes": "Snippets only"
+  },
+  {
+   "url": "https://physicstoday.aip.org/features/acoustics-of-free-reed-instruments",
+   "doi": "",
+   "title": "Acoustics of free-reed instruments",
+   "owner_or_authors": "Cottingham",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Blown-closed behaviour of Western reeds",
+   "access_notes": "Snippet only; fetch failed"
+  },
+  {
+   "url": "https://www.cs.bu.edu/fac/snyder/TablatureWeb/Bahnson%20JASA%201998.pdf",
+   "doi": "",
+   "title": "Bahnson JASA 1998",
+   "owner_or_authors": "Bahnson et al.",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Primary reed closing, companion reed blown open",
+   "access_notes": "Snippet only"
+  },
+  {
+   "url": "https://bvbvf1.bib-bvb.de/vufind/PrimoRecord/cdi_crossref_primary_10_1121_1_406857",
+   "doi": "",
+   "title": "Fletcher 1993 catalogue record",
+   "owner_or_authors": "Fletcher",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Four configurations of one-degree-of-freedom valves",
+   "access_notes": "Catalogue abstract only"
+  },
+  {
+   "url": "https://lampz.tugraz.at/~hadley/memm/mechanics/cbeam.php",
+   "doi": "",
+   "title": "Cantilever beam notes",
+   "owner_or_authors": "Hadley",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Cantilever wavenumber and root equation",
+   "access_notes": "Snippet only"
+  },
+  {
+   "url": "https://euphonics.org/11-6-free-reeds/",
+   "doi": "",
+   "title": "Euphonics, Free reeds",
+   "owner_or_authors": "Euphonics",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "not relevant",
+   "reason": "not opened",
+   "licence_or_terms": "not read",
+   "content_summary": "Appeared in results; not read",
+   "access_notes": "Fetch failed: host not in the sandbox network allowlist (curl returned 403, WebFetch DNS failure); only search-engine summaries obtained."
+  },
+  {
+   "url": "https://colinpykett.org.uk/physics-of-free-reed-wind-instruments.htm",
+   "doi": "",
+   "title": "Physics of free reeds (Pykett)",
+   "owner_or_authors": "Pykett",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "not relevant",
+   "reason": "not opened",
+   "licence_or_terms": "not read",
+   "content_summary": "Appeared in results; not read",
+   "access_notes": "Fetch failed: host not in the sandbox network allowlist (curl returned 403, WebFetch DNS failure); only search-engine summaries obtained."
+  },
+  {
+   "url": "https://arxiv.org/html/0810.2870v1",
+   "doi": "",
+   "title": "Interaction of reed and acoustic resonator in clarinet-like systems",
+   "owner_or_authors": "Dalmont/Silva et al.",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "not relevant",
+   "reason": "not opened",
+   "licence_or_terms": "not read",
+   "content_summary": "Appeared in results",
+   "access_notes": "Fetch failed: host not in the sandbox network allowlist (curl returned 403, WebFetch DNS failure); only search-engine summaries obtained."
+  }
+ ],
+ "open_questions": [
+  "Full text of Millot and Baumann 2007: exact reed ODE, flow equation, S_u(h) with e_r, e_s, h_min, and the two-puffs statement (arxiv.org, ar5iv, hal.science not reachable).",
+  "Where do Q = 16/19/29/55/~250 and '2 kPa' come from (Tarnopolsky 2000/2001/2002 or Millot-Baumann)?",
+  "Numbers for pitch fall in cents or Hz per kPa; harmonium LDV pressures 0.2 and 1.4-1.6 kPa.",
+  "Typical pressures for harmonica, accordion, harmonium; reed materials; tuning-by-filing source.",
+  "Digital synthesis models: Cottingham, STK, Smith PASP, Puranik-Scavone, Bilbao (not searched, usage limit).",
+  "Fletcher and Rossing chapter text on free reeds and exact sign convention for (+,-)/(-,+)."
+ ],
+ "summary": "Web fetch and curl were blocked by the sandbox allowlist, and the search tool hit a usage limit partway, so every source was read at snippet or abstract level only. Confirmed to exist: Millot-Baumann 2007, Ricot et al. 2005, St. Hilaire et al. 1971, Fletcher 1993, Tarnopolsky et al. 2000. Cantilever formula (coefficient 0.16154) and the input's 27-value length table verified by computation. The input's 'blown-closed (-,+), inward-striking' is only partly right: Western reeds are usually blown-closed but the companion reed is blown-open, and 'inward-striking' is a misnomer. Q values, 2 kPa threshold, 0.2/1.4-1.6 kPa LDV pressures, the S_u equation, materials, and synthesis models remain unverified. A follow-up pass with arxiv.org, hal.science, unsw.edu.au allowed is needed."
+}

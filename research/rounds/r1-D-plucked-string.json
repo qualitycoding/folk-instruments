@@ -1,0 +1,1605 @@
+{
+ "branch": "D plucked-string physics and synthesis",
+ "claims": [
+  {
+   "local_id": "D1",
+   "claim": "For a solid round wire of diameter d, Young's modulus E, tension T, vibrating length L, the stiff-string partials are f_n = n f_0 sqrt(1 + B n^2) with B = pi^3 E d^4 / (64 T L^2). This follows from B = pi^2 E S kappa^2 / (T L^2) with S = pi d^2/4 and radius of gyration kappa = d/4.",
+   "input_file_says": "B equation lost in export; text defines E, d_core, T, L, mu",
+   "verdict_on_input": "supported",
+   "kind": "mathematical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "",
+     "doi": "",
+     "title": "Own calculation in this session (python, SI units, rho=7850 kg/m^3, E=200 GPa)",
+     "authors": "research worker",
+     "year": "2026",
+     "version": "",
+     "locator": "arithmetic only; no external source",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "full text"
+    },
+    {
+     "url": "https://core.ac.uk/download/357253971.pdf",
+     "doi": "",
+     "title": "Audibility of the timbral effects of inharmonicity in stringed instrument tones",
+     "authors": "H. Jarvelainen, V. Valimaki, M. Karjalainen",
+     "year": "2001",
+     "version": "",
+     "locator": "defines B in partial formula; listening thresholds for piano and guitar tones; search summary only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://concept.lib.ed.ac.uk/esjs/article/download/9815/12844",
+     "doi": "",
+     "title": "Edinburgh student paper using Fletcher's equations (inharmonicity)",
+     "authors": "",
+     "year": "",
+     "version": "",
+     "locator": "states core-only assumption gives a simplified B",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "I derived the closed form myself; Fletcher 1964 (JASA 36, 203) and Fletcher & Rossing were not opened (all publisher hosts blocked in this session), so the exact printed form and the small clamped-end correction term (B-dependent factor on the fundamental, 1 + 2/(pi sqrt(...))) are unchecked. The two search summaries confirm only that B is defined in this partial formula and that a core-only assumption gives a simplified B. Implementers should treat the pinned-end formula as the first-order design equation."
+  },
+  {
+   "local_id": "D2",
+   "claim": "Equivalent forms: with T = 4 mu L^2 f_0^2, B = pi^3 E d^4 / (256 mu L^4 f_0^2); with mu = rho pi d^2/4 this is B = pi^2 E d^2 / (64 rho L^4 f_0^2). So at fixed scale L, B falls as 1/f_0^2 and rises as d^2: thick plain strings at low pitch on short scales are worst.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "mathematical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "",
+     "doi": "",
+     "title": "Own calculation in this session (python, SI units, rho=7850 kg/m^3, E=200 GPa)",
+     "authors": "research worker",
+     "year": "2026",
+     "version": "",
+     "locator": "arithmetic only; no external source",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "full text"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Algebra only. The input file gives mu and T separately in its table; this form lets the plugin derive B from f_0, gauge and scale alone. Note it yields B per string; the double-course partner has the same B."
+  },
+  {
+   "local_id": "D3",
+   "claim": "The input file's mandolin table is internally consistent: using rho = 7850 kg/m^3 and E = 200 GPa, mu = rho pi d^2/4 reproduces the listed mu (0.481, 0.895, 0.398, 0.780 g/m), T = 4 L^2 f_0^2 mu reproduces the listed tension (103.9, 86.1, 75.3, 65.7 N), and B = 4.576e-5, 1.910e-4, 4.918e-5, 2.164e-4 with stretch at n=10 / n=20 of 3.95/15.70, 16.38/63.74, 4.25/16.86, 18.53/71.86 cents (all agree to the printed precision). The statement 'sharpening the 20th partial of the A4 course by 64-72 cents' is therefore arithmetically right for these inputs.",
+   "input_file_says": "Table of B and cent stretch for four plain strings; 64-72 cents at n=20 for A4",
+   "verdict_on_input": "supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "",
+     "doi": "",
+     "title": "Own calculation in this session (python, SI units, rho=7850 kg/m^3, E=200 GPa)",
+     "authors": "research worker",
+     "year": "2026",
+     "version": "",
+     "locator": "arithmetic only; no external source",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "full text"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "This verifies arithmetic only, not that real strings have these gauges or tensions. Cents = 1200 log2 sqrt(1+B n^2). Real tension of an E5 at 103.9 N on a 352.4 mm scale is high but plausible for a plain steel 0.011 in string. The stretch is for partial n=20 (13.2 kHz for E5, above useful audio), so the audible issue is the n<=10 region (4 to 18 cents)."
+  },
+  {
+   "local_id": "D4",
+   "claim": "Steel music wire: E about 200 GPa and density about 7850 kg/m^3 are the working values used in the input file; B scales linearly with E, so a 5 percent E uncertainty gives a 5 percent change in B and about 2.5 percent in the cents stretch. Published music-wire figures (typically 200 to 210 GPa) were not retrieved from a Tier 1 source this session.",
+   "input_file_says": "E ~ 200 GPa; rho = 7850 kg/m^3",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "",
+     "doi": "",
+     "title": "Own calculation in this session (python, SI units, rho=7850 kg/m^3, E=200 GPa)",
+     "authors": "research worker",
+     "year": "2026",
+     "version": "",
+     "locator": "arithmetic only; no external source",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "full text"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "No Tier 1 source for music-wire E and rho was reachable. Recommend the synthesis take E, rho, and also measured tension from the user-visible string spec, with E as a tuning parameter. Gap: not settled."
+  },
+  {
+   "local_id": "D5",
+   "claim": "For wound strings the inharmonicity stiffness is usually taken from the core only (windings contribute little bending stiffness), but this is a simplification: published work reports the windings can add appreciable stiffness (about 7 percent in E S kappa^2 over the core-only estimate in a stepped-string study on circular-core piano strings), and wound bass strings have been the subject of dedicated bending-stiffness measurements.",
+   "input_file_says": "B uses solid core diameter d_core",
+   "verdict_on_input": "partly-supported",
+   "kind": "mathematical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://concept.lib.ed.ac.uk/esjs/article/download/9815/12844",
+     "doi": "",
+     "title": "Edinburgh student paper using Fletcher's equations (inharmonicity)",
+     "authors": "",
+     "year": "",
+     "version": "",
+     "locator": "states core-only assumption gives a simplified B",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.ioa.org.uk/system/files/publications/P%20CHUMNANTAS%20CA%20GREATED%20DM%20CAMPBELL%20INHARMONICITY%20OF%20STEPPED%20STIFF%20STRINGS.pdf",
+     "doi": "",
+     "title": "Inharmonicity of stepped stiff strings",
+     "authors": "P. Chumnantas, C. A. Greated, D. M. Campbell",
+     "year": "",
+     "version": "",
+     "locator": "windings may contribute to stiffness (about 7 percent in measurements on circular-core piano strings) per search summary",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Both are search-summary level only. For the mandolin G3 and D4 courses and bouzouki bass courses, B is small relative to plain strings because the core is thin, so a core-only B (possibly scaled by an empirical 1.0 to 1.1) is adequate for a first model; the mass uses the full wound mu, T = 4 mu L^2 f_0^2."
+  },
+  {
+   "local_id": "D6",
+   "claim": "Weinreich, 'Coupled piano strings', J. Acoust. Soc. Am. 62, 1474-1484 (1977) exists. Its explanation of the two-stage piano decay is bridge coupling between the strings of a note plus the two transverse polarisations: the vertical polarisation (matched better to the soundboard) decays faster, the horizontal polarisation, with unequal terminating impedance, decays more slowly.",
+   "input_file_says": "Weinreich (1977) classic analysis of coupled piano strings",
+   "verdict_on_input": "supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://eprints.soton.ac.uk/476996/1/Pablo_Miranda_Internoise2022.pdf",
+     "doi": "",
+     "title": "Piano string modelling paper (Internoise 2022), Southampton eprint",
+     "authors": "P. Miranda et al.",
+     "year": "2022",
+     "version": "",
+     "locator": "sentences on Woodhouse criterion and Weinreich as relayed in search summary",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.dsprelated.com/freebooks/pasp/String_Coupling_Effects.html",
+     "doi": "",
+     "title": "Physical Audio Signal Processing, String Coupling Effects (mirror of ccrma.stanford.edu/~jos/pasp)",
+     "authors": "J. O. Smith III",
+     "year": "",
+     "version": "",
+     "locator": "section String Coupling Effects / Coupled Strings; search summary only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.ioa.org.uk/system/files/publications/AR%20BAXANDALL%20IS%20BROWN%20CE%20GOUGH%20VIBRATIONS%20OF%20PIANO%20STRINGS%20AND%20COUPLING%20TO%20THE%20SOUNDBOARD.pdf",
+     "doi": "",
+     "title": "Vibrations of piano strings and coupling to the soundboard",
+     "authors": "A. R. Baxandall, I. S. Brown, C. E. Gough",
+     "year": "",
+     "version": "",
+     "locator": "cites Weinreich 1977",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Bibliographic details agree across several secondary sources (a 1994 ASA abstract, a 1981 UNSW paper and an Iowa/Montana paper also cite it with the same volume and pages), but those share the same upstream (the paper itself) and I did not open the 1977 paper, so the mechanism is relayed, not read."
+  },
+  {
+   "local_id": "D7",
+   "claim": "Beating and the double decay come from interference of two coupled modes with different decay rates; detuning of the unison strings (mistuning) shapes the beat rate and envelope. A model that merely sums two slightly detuned lossless-coupled strings gives beating but not a genuine two-stage decay; the second, longer-lived component needs strings that couple through a lossy bridge admittance (sym/antisym modes with different Q).",
+   "input_file_says": "Bridge coupling splits modes into symmetric (fast) and antisymmetric (slow) combinations; mistuning gives beating",
+   "verdict_on_input": "supported",
+   "kind": "mathematical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://www.dsprelated.com/freebooks/pasp/String_Coupling_Effects.html",
+     "doi": "",
+     "title": "Physical Audio Signal Processing, String Coupling Effects (mirror of ccrma.stanford.edu/~jos/pasp)",
+     "authors": "J. O. Smith III",
+     "year": "",
+     "version": "",
+     "locator": "section String Coupling Effects / Coupled Strings; search summary only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://eprints.soton.ac.uk/476996/1/Pablo_Miranda_Internoise2022.pdf",
+     "doi": "",
+     "title": "Piano string modelling paper (Internoise 2022), Southampton eprint",
+     "authors": "P. Miranda et al.",
+     "year": "2022",
+     "version": "",
+     "locator": "sentences on Woodhouse criterion and Weinreich as relayed in search summary",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Symmetric = both strings move together = large force on bridge = fast decay; antisymmetric = bridge force cancels = slow decay. This is the standard coupled-oscillator picture; read depth is search summary only. Design: a double-course model should have (a) a shared bridge admittance node, (b) a detune parameter in cents, (c) optional polarisation split."
+  },
+  {
+   "local_id": "D8",
+   "claim": "Woodhouse's paper is J. Woodhouse, 'A necessary condition for double-decay envelopes in stringed instruments', J. Acoust. Soc. Am. 150(6), 4375-4384 (2021), DOI 10.1121/10.0009012; the preprint is arXiv 2104.02480. The input file's 'JASA 150, 2021' is correct. Woodhouse's open-access book site euphonics.org has a chapter '7.3 Multiple strings and double decays'.",
+   "input_file_says": "Woodhouse (2021, JASA 150)",
+   "verdict_on_input": "supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://pubs.aip.org/asa/jasa/article/150/6/4375/994397/A-necessary-condition-for-double-decay-envelopes",
+     "doi": "10.1121/10.0009012",
+     "title": "A necessary condition for double-decay envelopes in stringed instruments",
+     "authors": "J. Woodhouse",
+     "year": "2021",
+     "version": "",
+     "locator": "J. Acoust. Soc. Am. 150(6), 4375-4384; abstract as quoted in search results only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.repository.cam.ac.uk/items/3d2cfb54-a00d-4dbb-8e08-69099990d8b2",
+     "doi": "",
+     "title": "A necessary condition for double-decay envelopes in stringed instruments (Cambridge repository record)",
+     "authors": "J. Woodhouse",
+     "year": "2021",
+     "version": "",
+     "locator": "repository record listed in search results; not opened",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Title, volume, issue, pages and DOI come from search-engine records of the AIP page and the Cambridge repository record plus a talk listing, not from an opened copy. All four hosts (aip, arxiv, cam, euphonics) were blocked from fetch in this session; the coordinator should allow them for a read-through."
+  },
+  {
+   "local_id": "D9",
+   "claim": "Woodhouse's abstract: measured body vibration of five stringed instruments is used to ask when a double decay should occur. The criterion is a necessary condition (not sufficient) obtainable from a standard bridge admittance measurement, and it needs the modes involved to have clearly different loss factors.",
+   "input_file_says": "Woodhouse formulated the necessary physical conditions for two-stage double decays",
+   "verdict_on_input": "supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://pubs.aip.org/asa/jasa/article/150/6/4375/994397/A-necessary-condition-for-double-decay-envelopes",
+     "doi": "10.1121/10.0009012",
+     "title": "A necessary condition for double-decay envelopes in stringed instruments",
+     "authors": "J. Woodhouse",
+     "year": "2021",
+     "version": "",
+     "locator": "J. Acoust. Soc. Am. 150(6), 4375-4384; abstract as quoted in search results only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.repository.cam.ac.uk/items/3d2cfb54-a00d-4dbb-8e08-69099990d8b2",
+     "doi": "",
+     "title": "A necessary condition for double-decay envelopes in stringed instruments (Cambridge repository record)",
+     "authors": "J. Woodhouse",
+     "year": "2021",
+     "version": "",
+     "locator": "repository record listed in search results; not opened",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Abstract-level only (via search summaries)."
+  },
+  {
+   "local_id": "D10",
+   "claim": "The criterion, as relayed by a secondary source, is that the loss factor due to coupling to the bridge/soundboard must exceed the other loss factor of the string (what the relayed sentence compares against was truncated). The input file's inequality eta_b >> eta_air (strongly greater, and only 'air') is not confirmed: the source says a necessary condition that the bridge loss factor exceed the string's own loss (air plus internal plus friction).",
+   "input_file_says": "eta_b must greatly exceed the intrinsic air and internal damping loss factor (eta_b >> eta_air)",
+   "verdict_on_input": "partly-supported",
+   "kind": "mathematical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://eprints.soton.ac.uk/476996/1/Pablo_Miranda_Internoise2022.pdf",
+     "doi": "",
+     "title": "Piano string modelling paper (Internoise 2022), Southampton eprint",
+     "authors": "P. Miranda et al.",
+     "year": "2022",
+     "version": "",
+     "locator": "sentences on Woodhouse criterion and Weinreich as relayed in search summary",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://pubs.aip.org/asa/jasa/article/150/6/4375/994397/A-necessary-condition-for-double-decay-envelopes",
+     "doi": "10.1121/10.0009012",
+     "title": "A necessary condition for double-decay envelopes in stringed instruments",
+     "authors": "J. Woodhouse",
+     "year": "2021",
+     "version": "",
+     "locator": "J. Acoust. Soc. Am. 150(6), 4375-4384; abstract as quoted in search results only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Exact inequality (including any factor, e.g. comparison with the loss factor of the strings alone vs with the sibling-string mode) could not be read. Treat as 'eta_bridge(f) > eta_string(f)' computed from bridge admittance; do not hard-code 'much greater'. For plucked strings the total string loss factor at a partial is eta_air + eta_friction + eta_bending (see D14)."
+  },
+  {
+   "local_id": "D11",
+   "claim": "Woodhouse's abstract states that the lute and mandolin, both normally double-strung, should show double decays over much of their playing range, especially towards the higher end; the piano over most of its range; the tested steel-string guitar only for a few notes near strong body resonances; the single-strung banjo for higher notes.",
+   "input_file_says": "Double decays across plucked and struck string instruments",
+   "verdict_on_input": "supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://pubs.aip.org/asa/jasa/article/150/6/4375/994397/A-necessary-condition-for-double-decay-envelopes",
+     "doi": "10.1121/10.0009012",
+     "title": "A necessary condition for double-decay envelopes in stringed instruments",
+     "authors": "J. Woodhouse",
+     "year": "2021",
+     "version": "",
+     "locator": "J. Acoust. Soc. Am. 150(6), 4375-4384; abstract as quoted in search results only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Abstract-level."
+  },
+  {
+   "local_id": "D12",
+   "claim": "The input file's specific mandolin statement ('below ~500 Hz no double decay, above ~500 Hz nearly all notes on all four courses') was not found in any text I could reach; the abstract only says 'especially towards the higher end'. One search summary mentioned a frequency near 330 Hz in connection with strong double decays but its instrument and context are unknown. The 500 Hz figure should be treated as unverified.",
+   "input_file_says": "Below about 500 Hz bridge losses too small; above about 500 Hz nearly all notes satisfy the criterion",
+   "verdict_on_input": "not-found",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://pubs.aip.org/asa/jasa/article/150/6/4375/994397/A-necessary-condition-for-double-decay-envelopes",
+     "doi": "10.1121/10.0009012",
+     "title": "A necessary condition for double-decay envelopes in stringed instruments",
+     "authors": "J. Woodhouse",
+     "year": "2021",
+     "version": "",
+     "locator": "J. Acoust. Soc. Am. 150(6), 4375-4384; abstract as quoted in search results only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.repository.cam.ac.uk/items/3d2cfb54-a00d-4dbb-8e08-69099990d8b2",
+     "doi": "",
+     "title": "A necessary condition for double-decay envelopes in stringed instruments (Cambridge repository record)",
+     "authors": "J. Woodhouse",
+     "year": "2021",
+     "version": "",
+     "locator": "repository record listed in search results; not opened",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Needs the full text (Section on mandolin admittance, probably a figure of loss-factor ratio versus frequency). Do not hard-code 500 Hz as a breakpoint in the plugin; derive the double-decay tendency from the bridge admittance model instead."
+  },
+  {
+   "local_id": "D13",
+   "claim": "Woodhouse's plus or minus 8 cents mistuning range and the 'low modal overlap gives audible beating, high modal overlap gives smooth double decay without beating' statement were not found in any reachable text; only the general fact that slight mistuning sculpts beating and decay shape is supported (secondary sources).",
+   "input_file_says": "Mistuning evaluated across +/-8 cents; low modal overlap gives beating; high modal overlap gives smooth double decay",
+   "verdict_on_input": "not-found",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://eprints.soton.ac.uk/476996/1/Pablo_Miranda_Internoise2022.pdf",
+     "doi": "",
+     "title": "Piano string modelling paper (Internoise 2022), Southampton eprint",
+     "authors": "P. Miranda et al.",
+     "year": "2022",
+     "version": "",
+     "locator": "sentences on Woodhouse criterion and Weinreich as relayed in search summary",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://pubs.aip.org/asa/jasa/article/150/6/4375/994397/A-necessary-condition-for-double-decay-envelopes",
+     "doi": "10.1121/10.0009012",
+     "title": "A necessary condition for double-decay envelopes in stringed instruments",
+     "authors": "J. Woodhouse",
+     "year": "2021",
+     "version": "",
+     "locator": "J. Acoust. Soc. Am. 150(6), 4375-4384; abstract as quoted in search results only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Open question. As a design default, expose detune in cents as a user parameter (range about 0 to 10 cents is physically common for unison courses, an assumption not a sourced value)."
+  },
+  {
+   "local_id": "D14",
+   "claim": "Woodhouse's two Acta Acustica united with Acustica 90(5) (2004) papers exist: 'On the synthesis of guitar plucks', pp. 928-944, and 'Plucked guitar transients: comparison of measurements and synthesis', pp. 945-965. Both concern guitar plucks. Reachable text did not give the loss-factor model parameters; a later Woodhouse et al. paper (Acta Acustica, 2012) states that string damping is strongly frequency dependent and fitted to a three-parameter model attributed to Valette.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://acta-acustica.edpsciences.org/10.1051/aacus/2020008",
+     "doi": "",
+     "title": "Reference lists citing Woodhouse 2004 (Acta Acustica 2020 banjo paper)",
+     "authors": "",
+     "year": "2020",
+     "version": "",
+     "locator": "bibliographic reference entries",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://es.scribd.com/document/137008905/AAA-Woodhouse-2012",
+     "doi": "",
+     "title": "Woodhouse 2012 Acta Acustica paper (Scribd copy)",
+     "authors": "J. Woodhouse et al.",
+     "year": "2012",
+     "version": "",
+     "locator": "statement on Valette three-parameter damping model",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "The eta_air + eta_friction + eta_bending decomposition named in the task and its steel-string values were not retrieved. From general knowledge (not verified here): air damping dominates low partials of thin strings; bending (thermoelastic and internal) loss grows with frequency; friction is roughly constant. Values must be fetched before use."
+  },
+  {
+   "local_id": "D15",
+   "claim": "A 2020 Acta Acustica paper 'Acoustics of the banjo: measurements and sound synthesis' (DOI 10.1051/aacus/2020008) exists with measured bridge admittance at the banjo bridge; it is relevant as a published plucked-instrument synthesis from a measured 2x2-style bridge admittance. Its details were not read.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://acta-acustica.edpsciences.org/10.1051/aacus/2020008",
+     "doi": "10.1051/aacus/2020008",
+     "title": "Acoustics of the banjo: measurements and sound synthesis",
+     "authors": "(authors not retrieved)",
+     "year": "2020",
+     "version": "",
+     "locator": "title and figure caption on admittance only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Authors and equations not retrieved. Candidate model for taking measured admittance to a synthesis."
+  },
+  {
+   "local_id": "D16",
+   "claim": "The 2x2 bridge admittance matrix (two transverse polarisations at the bridge, coupled by off-diagonal terms) is in line with the Weinreich picture of vertical and horizontal polarisation having different terminating admittance. I found no reachable source defining a 2x2 complex matrix explicitly for mandolin or bouzouki, and what matters audibly (which off-diagonal terms, how much) was not settled.",
+   "input_file_says": "Two polarisations coupled through a 2x2 complex bridge admittance matrix",
+   "verdict_on_input": "partly-supported",
+   "kind": "mathematical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://www.dsprelated.com/freebooks/pasp/String_Coupling_Effects.html",
+     "doi": "",
+     "title": "Physical Audio Signal Processing, String Coupling Effects (mirror of ccrma.stanford.edu/~jos/pasp)",
+     "authors": "J. O. Smith III",
+     "year": "",
+     "version": "",
+     "locator": "section String Coupling Effects / Coupled Strings; search summary only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://eprints.soton.ac.uk/476996/1/Pablo_Miranda_Internoise2022.pdf",
+     "doi": "",
+     "title": "Piano string modelling paper (Internoise 2022), Southampton eprint",
+     "authors": "P. Miranda et al.",
+     "year": "2022",
+     "version": "",
+     "locator": "sentences on Woodhouse criterion and Weinreich as relayed in search summary",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Design implication (inferred): an initial model can use a diagonal admittance (vertical = full body admittance, horizontal = small, stiff) with a small cross term; the horizontal polarisation produces the long-lived tail of the decay."
+  },
+  {
+   "local_id": "D17",
+   "claim": "Perng's thesis exists: Chao-Yu Jack Perng, 'Physical modeling of the harpsichord plectrum-string interaction', Stanford University Ph.D. dissertation, 2012 (Stanford PURL wp454hs7976; advisors listed include Doniach, Rossing, Chafe and Smith). It models the plectrum as a bent beam (cantilever), adds friction, and drives a digital waveguide; physical parameters such as plectrum stiffness and dimensions are controllable.",
+   "input_file_says": "Harpsichord plectrum thesis research by Perng parameterises pluck transients",
+   "verdict_on_input": "supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://purl.stanford.edu/wp454hs7976",
+     "doi": "",
+     "title": "Physical modeling of the harpsichord plectrum-string interaction",
+     "authors": "C.-Y. J. Perng",
+     "year": "2012",
+     "version": "",
+     "locator": "PhD thesis record; abstract via search summary",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.dafx.de/paper-archive/2010/DAFx10/PerngSmithRossing_DAFx10_P93.pdf",
+     "doi": "",
+     "title": "Harpsichord sound synthesis using a physical plectrum model interfaced with the digital waveguide (DAFx-10)",
+     "authors": "C.-Y. J. Perng, J. O. Smith, T. D. Rossing",
+     "year": "2010",
+     "version": "",
+     "locator": "abstract: plectrum shape from bent-beam equations, agrees with cantilever for small deflections",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Harpsichord plectra (quill or Delrin plucking by rising key) differ from a mandolin pick (rigid-ish tortoise or nylon, swept by hand), so Perng's model is a template (beam plus friction plus waveguide) not a parameter source for picks. Full text not opened."
+  },
+  {
+   "local_id": "D18",
+   "claim": "The input file does not cite Germain and Evangelista; the task cites 'Synthesis of guitar by digital waveguides: modeling the plectrum in the physical interaction of the player with the instrument' as DAFx 2009. I could not find a DAFx 2009 paper with that title. Real nearby works: Evangelista and Raspaud, simplified guitar bridge model (DAFx 2009); Eckerholm and Evangelista, 'The PluckSynth touch string' (DAFx 2008); Evangelista and Eckerholm, touch and collisions via scattering junctions (IEEE 2010). From memory, Germain and Evangelista's plectrum paper may be from a different venue (possibly IEEE WASPAA 2009), unverified.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://dafx.de/paper-archive/details/XJTIoSIXj3qqer3WzLlEHQ",
+     "doi": "",
+     "title": "The PluckSynth touch string",
+     "authors": "Eckerholm, Evangelista",
+     "year": "2008",
+     "version": "",
+     "locator": "DAFx archive record",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://dafx.de/paper-archive/details/PywhUlPUhwQUW7fKB6OHXQ",
+     "doi": "",
+     "title": "Simplified Guitar Bridge Model for the Displacement Wave Representation in Digital Waveguides",
+     "authors": "Evangelista, Raspaud",
+     "year": "2009",
+     "version": "",
+     "locator": "DAFx-09 archive record",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Cuzzucoli and Lombardo (player's touch model) not searched. Cited title unverified; do not cite until located."
+  },
+  {
+   "local_id": "D19",
+   "claim": "Pluck-position comb filtering: for an ideal string plucked at fractional position x_p/L, partial n is scaled by sin(n pi x_p/L), so partials with n x_p/L integer vanish (a pluck at L/k removes every k-th partial). Finite plectrum width and stiffness add a low-pass roll-off, and the pick leaves the string over a finite release time rather than an instant.",
+   "input_file_says": "x_p/L introduces comb-filter zeros at harmonics where sin(n pi x_p/L)=0; plectrum length and stiffness parameterise transients",
+   "verdict_on_input": "supported",
+   "kind": "mathematical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "",
+     "doi": "",
+     "title": "Own calculation in this session (python, SI units, rho=7850 kg/m^3, E=200 GPa)",
+     "authors": "research worker",
+     "year": "2026",
+     "version": "",
+     "locator": "arithmetic only; no external source",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "full text"
+    },
+    {
+     "url": "https://dafx.de/paper-archive/details/voJLbfcwppZSBDUfoanccA",
+     "doi": "",
+     "title": "Harpsichord Sound Synthesis using a Physical Plectrum Model Interfaced with the Digital Waveguide",
+     "authors": "Perng, Smith, Rossing",
+     "year": "2010",
+     "version": "",
+     "locator": "plectrum stiffness/dimension control of transients",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "The comb result is textbook for an ideal string released from rest; stiffness and loss modify it slightly. Quantitative plectrum-width low-pass numbers were not found."
+  },
+  {
+   "local_id": "D20",
+   "claim": "Karplus-Strong reduces to a single delay loop with a loop filter and is a simplified digital waveguide; Jaffe and Smith (1983) extended it; Karjalainen, Valimaki and Tolonen's 1998 CMJ review links it to waveguides. The 1998 paper itself was not located in the results.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "https://www.ece.uvic.ca/~bctill/papers/numacoust/V%c3%a4lim%c3%a4ki_etal_2006.pdf",
+     "doi": "",
+     "title": "Valimaki et al. 2006 review (digital waveguides and Karplus-Strong)",
+     "authors": "V. Valimaki et al.",
+     "year": "2006",
+     "version": "",
+     "locator": "sections on KS and digital waveguides",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "CMJ 22(3) 1998 listing not retrieved; design details (loop filter design, stability) unverified."
+  },
+  {
+   "local_id": "D21",
+   "claim": "Dispersion allpass design: Rauhala and Valimaki, 'Tunable dispersion filter design for piano synthesis', IEEE Signal Processing Letters 13(5), 253-256 (2006), uses a cascade of second-order allpass filters with coefficients from simple formulae based on the Thiran allpass; Abel, Valimaki and Smith, 'Robust, efficient design of allpass filters for dispersive string sound synthesis', IEEE SPL 17(4), 406-409 (2010), DOI 10.1109/LSP.2010.2040924, places allpass poles from roots of quartic polynomials with an efficient approximation, and cites the earlier work as the closest preceding. Abel and Smith, 'Robust design of very high-order allpass dispersion filters', DAFx 2006, gives a cascaded-biquad robust design. Smith's PASP has a 'Dispersion Filter Design' section with MATLAB code on the CCRMA wiki.",
+   "input_file_says": "Embed frequency-dependent allpass dispersion filters in each string loop",
+   "verdict_on_input": "supported",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://typeset.io/papers/tunable-dispersion-filter-design-for-piano-synthesis-fy4bq64bfk",
+     "doi": "",
+     "title": "Tunable dispersion filter design for piano synthesis",
+     "authors": "J. Rauhala, V. Valimaki",
+     "year": "2006",
+     "version": "",
+     "locator": "IEEE SPL 13(5), 253-256",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "abstract only"
+    },
+    {
+     "url": "https://bibbase.org/network/publication/abel-vlimki-smith-robustefficientdesignofallpassfiltersfordispersivestringsoundsynthesis-2010",
+     "doi": "10.1109/LSP.2010.2040924",
+     "title": "Robust, efficient design of allpass filters for dispersive string sound synthesis",
+     "authors": "J. S. Abel, V. Valimaki, J. O. Smith",
+     "year": "2010",
+     "version": "",
+     "locator": "IEEE SPL 17(4), 406-409",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "abstract only"
+    },
+    {
+     "url": "https://dafx.de/paper-archive/details/FxpIAYIVGkUKoqVYzYCHQg",
+     "doi": "",
+     "title": "Robust Design of Very High-Order Allpass Dispersion Filters",
+     "authors": "Abel, Smith",
+     "year": "2006",
+     "version": "",
+     "locator": "DAFx-06",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Design formulas themselves not retrieved. For mandolin B of 5e-5 to 2e-4 the dispersion matters mainly for partials up to about n=10 (stretch up to about 18 cents), so a low-order allpass (one to a few sections) is probably adequate; an implementer must check the group-delay fit against sqrt(1+B n^2) over the audio band. Stability: any allpass has unit gain; loop stability then depends on the loop filter being passive (|H| <= 1)."
+  },
+  {
+   "local_id": "D22",
+   "claim": "Commuted synthesis (Smith): because the linear parts of a plucked-string instrument commute, the body response can be moved before the string and a recorded body impulse response used as the string excitation; this avoids a high-order body filter. In STK, the Mandolin class uses two 'twang' string models plus commuted body impulse responses (credited to Cook and Scavone); Csound's STKMandolin opcode exposes a detune parameter.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "software",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://ccrma.stanford.edu/software/stk/classstk_1_1Mandolin.html",
+     "doi": "",
+     "title": "STK class Mandolin documentation",
+     "authors": "P. R. Cook, G. P. Scavone",
+     "year": "",
+     "version": "",
+     "locator": "class description",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.dsprelated.com/freebooks/pasp/Commuted_Synthesis.html",
+     "doi": "",
+     "title": "PASP, Commuted Synthesis",
+     "authors": "J. O. Smith III",
+     "year": "",
+     "version": "",
+     "locator": "section Commuted Synthesis",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://csound.com/manual/STKMandolin.html",
+     "doi": "",
+     "title": "Csound manual STKMandolin",
+     "authors": "",
+     "year": "",
+     "version": "",
+     "locator": "kdetune parameter",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Details of Mandolin.cpp (two delay lines, detune factor, pluck position, body-sample table) are from my memory, unverified here. Commuting requires the string to be linear and time-invariant; it fails when the pluck excitation is state-dependent (e.g. tremolo into a ringing string, D26) unless the body part is applied afterwards."
+  },
+  {
+   "local_id": "D23",
+   "claim": "Helmholtz frequency of a soundhole cavity: f_H = (c / 2 pi) sqrt(S / (V L_eff)), with S the hole area, V the cavity volume, c the speed of sound, and L_eff = t + end corrections (neck thickness plus per-end corrections). The formula is only approximate for guitar-like bodies because the body walls flex and the hole is not a simple neck.",
+   "input_file_says": "Helmholtz air frequency from S, L_neck, D, V with delta_end",
+   "verdict_on_input": "partly-supported",
+   "kind": "mathematical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://phys.unsw.edu.au/jw/Helmholtz.html",
+     "doi": "",
+     "title": "Helmholtz Resonance (UNSW Physclips)",
+     "authors": "J. Wolfe",
+     "year": "",
+     "version": "",
+     "locator": "guitar body acts almost like a Helmholtz resonator, approximation caveats",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://www.firgelliauto.com/blogs/engineering-calculators/helmholtz-resonator-calculator",
+     "doi": "",
+     "title": "Helmholtz Resonator Interactive Calculator",
+     "authors": "Firgelli",
+     "year": "",
+     "version": "",
+     "locator": "formula f = c/2pi sqrt(S/(V L))",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Garbled vendor page for the formula; the formula itself is standard (Fletcher and Rossing) but I did not read that book."
+  },
+  {
+   "local_id": "D24",
+   "claim": "End corrections: the textbook per-end values are about 0.85 r for a flanged opening and about 0.6 r (0.61 r) for an unflanged opening (r = radius), so for a hole in a thin plate with air on both sides L_eff is approximately t + 1.7 r. The input file's 'delta_end 0.6 to 0.85' is correct only if read as a multiplier of radius per end; it does not state this, nor the 1.7 r figure. One vendor page that gives 0.85 d and 0.61 d (diameter) is wrong in assigning them.",
+   "input_file_says": "delta_end typically 0.6 to 0.85 depending on termination flanging",
+   "verdict_on_input": "partly-supported",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://www.rose-hulman.edu/~moloney/Acoustics/0506/End_correction_Meeks_0506.doc",
+     "doi": "",
+     "title": "End correction (Rose-Hulman course notes)",
+     "authors": "Meeks",
+     "year": "2006",
+     "version": "",
+     "locator": "0.85 r flanged, about 0.6 r unflanged",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/9224380",
+     "doi": "",
+     "title": "US patent 9224380 (audio device, Helmholtz end-correction equation)",
+     "authors": "",
+     "year": "",
+     "version": "",
+     "locator": "uses 1.7 r for flanged opening",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Sources disagree on 1.7 r being 'flanged' vs 'unflanged'; physically 0.85 r per flanged end, summed over two sides is 1.7 r. For a mandolin oval hole in a thin top (t about 2 to 3 mm, r about 30 mm) the end term dominates: L_eff about 55 mm."
+  },
+  {
+   "local_id": "D25",
+   "claim": "The input file's doublet/triplet claim (rigid bowl-back gives air plus top monopole doublet; guitars give coupled triplet including back plate) and the T(1,1)_1 / T(1,1)_2 naming were not checked: Christensen and Vistisen 1980 (two- and three-oscillator guitar model) and Caldersmith/Rossing were not retrieved before search access failed.",
+   "input_file_says": "Helmholtz mode couples to top-plate monopole; doublet versus triplet",
+   "verdict_on_input": "not-found",
+   "kind": "mathematical",
+   "load_bearing_suggestion": false,
+   "sources": [],
+   "confidence": "inferred",
+   "notes": "Open question. From memory (unverified): Christensen and Vistisen, J. Acoust. Soc. Am. 68, 758 (1980), 'Simple model for low-frequency guitar function'."
+  },
+  {
+   "local_id": "D26",
+   "claim": "No measured mandolin or bouzouki T60 or loss-factor data by partial, no tremolo-picking literature (stroke rates, up/down asymmetry, re-excitation of a vibrating string) and no existing mandolin modal/FDTD synthesis paper beyond STK Mandolin were found in this session.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-found",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [],
+   "confidence": "inferred",
+   "notes": "Searches for these topics were not completed (search quota hit, then fetch blocked). They remain open."
+  },
+  {
+   "local_id": "D27",
+   "claim": "The input claim that a plectrum sweeping a two-string course excites the two strings at slightly staggered instants (hence not identical phases) is physically plausible but no source was found; the stagger is a few milliseconds at most for a pick moving at about 1 m/s across a 1 to 2 mm string spacing.",
+   "input_file_says": "Paired strings receive slightly staggered excitation instants",
+   "verdict_on_input": "not-found",
+   "kind": "numerical",
+   "load_bearing_suggestion": false,
+   "sources": [
+    {
+     "url": "",
+     "doi": "",
+     "title": "Own calculation in this session (python, SI units, rho=7850 kg/m^3, E=200 GPa)",
+     "authors": "research worker",
+     "year": "2026",
+     "version": "",
+     "locator": "arithmetic only; no external source",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "full text"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Estimate: spacing about 1 to 2 mm divided by pick speed 0.5 to 2 m/s gives about 0.5 to 4 ms. Inferred, not sourced."
+  },
+  {
+   "local_id": "D28",
+   "claim": "Audibility of inharmonicity: Jarvelainen, Valimaki and Karjalainen measured listening thresholds for inharmonicity in guitar and piano tones at several fundamentals, to give rules for when inharmonicity must be synthesised; threshold values were not extracted.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://core.ac.uk/download/357253971.pdf",
+     "doi": "",
+     "title": "Audibility of the timbral effects of inharmonicity in stringed instrument tones",
+     "authors": "H. Jarvelainen, V. Valimaki, M. Karjalainen",
+     "year": "2001",
+     "version": "",
+     "locator": "defines B in partial formula; listening thresholds for piano and guitar tones; search summary only",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Needed to decide whether the plugin must implement dispersion at all for plain mandolin strings (B about 5e-5 to 2e-4); fetch the paper (core.ac.uk 357253971) and read the threshold table."
+  },
+  {
+   "local_id": "D29",
+   "claim": "Christensen and Vistisen, 'Simple model for low-frequency guitar function', J. Acoust. Soc. Am. 68(3), 758-766 (1980), DOI 10.1121/1.384814, exists: the two lowest guitar resonances arise from coupling of the fundamental top-plate mode with the cavity Helmholtz resonance, in a coupled-oscillator (two degrees of freedom) model with experimentally determined parameters. The T(1,1)_1 / T(1,1)_2 labels and the input file's doublet-versus-triplet statement were not confirmed.",
+   "input_file_says": "Helmholtz air oscillator coupled to the lowest top-plate monopole; guitars show a triplet",
+   "verdict_on_input": "partly-supported",
+   "kind": "mathematical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://typeset.io/pdf/simple-model-for-low-frequency-guitar-function-plccqpv99x.pdf",
+     "doi": "10.1121/1.384814",
+     "title": "Simple model for low-frequency guitar function",
+     "authors": "O. Christensen, B. B. Vistisen",
+     "year": "1980",
+     "version": "",
+     "locator": "abstract via search summary",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "Three-oscillator (back plate) extension not confirmed; an Acta Acustica 1998 paper on guitar models with symmetric and asymmetric plate modes exists (Ingenta record) but was not read. A DTU Orbit reprint is reportedly open access."
+  },
+  {
+   "local_id": "D30",
+   "claim": "Maestre, Scavone and Smith's admittance-based waveguide work exists as 'Digital modeling of string instrument bridge reflectance and body radiativity for sound synthesis by digital waveguides', IEEE WASPAA 2015, DOI 10.1109/WASPAA.2015.7336951 (modal analysis of measured driving-point admittances, filters fitted jointly to admittance and radiativity, used in a plucked-string waveguide). The task's title 'Joint modeling of bridge admittance and body radiativity ... IEEE TASLP 2017' was not found; it may be a later or differently titled journal version.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-in-input",
+   "kind": "bibliographic",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://repositori.upf.edu/items/7c207d44-4ac0-4100-a216-dc814a1abe60/full",
+     "doi": "",
+     "title": "Digital modeling of string instrument bridge reflectance and body radiativity for sound synthesis by digital waveguides",
+     "authors": "E. Maestre, G. P. Scavone, J. O. Smith III",
+     "year": "2015",
+     "version": "",
+     "locator": "repository record (UPF), abstract",
+     "accessed": "2026-11-14",
+     "tier": 2,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "single-source",
+   "notes": "UPF repository is an open-access route to try for a full read. Relevant to how a mandolin body should be fitted as passive admittance filters."
+  },
+  {
+   "local_id": "D31",
+   "claim": "No measured mandolin or bouzouki partial decay times (T60 per partial) or loss factors were found. Related methodology exists: decay time depends on frequency in a complicated way (Cuesta and Valette's quality-factor expression for harpsichord string modes; Valette three-parameter damping model), and Smith's PASP has an EDR-based loop filter design method for fitting decay targets.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-found",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://ccrma.stanford.edu/%7Ejos/pasp/EDR_Based_Loop_Filter_Design.html",
+     "doi": "",
+     "title": "PASP, EDR-Based Loop Filter Design",
+     "authors": "J. O. Smith III",
+     "year": "",
+     "version": "",
+     "locator": "section title in search results",
+     "accessed": "2026-11-14",
+     "tier": 1,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "Test targets for mandolin will need own recordings or the Woodhouse banjo/guitar papers as stand-ins."
+  },
+  {
+   "local_id": "D32",
+   "claim": "Tremolo: no measured stroke rates, up/down asymmetry or re-excitation studies were found. Only (a) Wikipedia's statement that mandolin notes decay to silence, which encourages tremolo, and (b) a tempo-based illustration: sixteenth-note tremolo at 80 BPM is 320 strokes/min, about 5.3 strokes per second. Real tremolo rates are plausibly higher (inferred), and the pick damps a still-sounding string before re-exciting it.",
+   "input_file_says": "not in input file",
+   "verdict_on_input": "not-found",
+   "kind": "numerical",
+   "load_bearing_suggestion": true,
+   "sources": [
+    {
+     "url": "https://www.Wikipedia.com/wiki/Mandolin",
+     "doi": "",
+     "title": "Mandolin (encyclopaedia article)",
+     "authors": "",
+     "year": "",
+     "version": "",
+     "locator": "tremolo sustains notes that decay",
+     "accessed": "2026-11-14",
+     "tier": 3,
+     "read_depth": "snippet only"
+    },
+    {
+     "url": "https://youtubemusicsucks.com/how-to-tremolo-pick-a-mandolin/",
+     "doi": "",
+     "title": "How to tremolo pick a mandolin",
+     "authors": "",
+     "year": "",
+     "version": "",
+     "locator": "80 BPM example",
+     "accessed": "2026-11-14",
+     "tier": 4,
+     "read_depth": "snippet only"
+    }
+   ],
+   "confidence": "inferred",
+   "notes": "The 5.3 Hz figure is arithmetic on a tutorial's example, not a measurement. Design: the synth should model an excitation arriving on a nonzero string state (so plain commuted excitation of a fresh string is insufficient)."
+  }
+ ],
+ "equations": [
+  {
+   "name": "Stiff string partials",
+   "latex_or_text": "f_n = n f_0 sqrt(1 + B n^2)",
+   "symbols": "n partial number, f_0 ideal fundamental (Hz), B inharmonicity coefficient",
+   "source_locator": "standard form; search summary of Jarvelainen et al. 2001",
+   "source_url": "https://core.ac.uk/download/357253971.pdf"
+  },
+  {
+   "name": "B for solid round wire",
+   "latex_or_text": "B = pi^3 E d^4 / (64 T L^2) = pi^2 E S kappa^2 / (T L^2), S = pi d^2/4, kappa = d/4",
+   "symbols": "E Young's modulus (Pa), d diameter (m), T tension (N), L length (m)",
+   "source_locator": "own derivation, checked numerically against input table",
+   "source_url": ""
+  },
+  {
+   "name": "B in terms of f_0 and mu",
+   "latex_or_text": "B = pi^3 E d^4 / (256 mu L^4 f_0^2) = pi^2 E d^2 / (64 rho L^4 f_0^2)",
+   "symbols": "mu linear density (kg/m) = rho pi d^2/4, rho density (kg/m^3), using T = 4 mu L^2 f_0^2",
+   "source_locator": "own derivation",
+   "source_url": ""
+  },
+  {
+   "name": "Cents stretch",
+   "latex_or_text": "cents_n = 1200 log2( sqrt(1 + B n^2) )",
+   "symbols": "as above",
+   "source_locator": "own calculation, reproduces input table",
+   "source_url": ""
+  },
+  {
+   "name": "Pluck-position partial weight",
+   "latex_or_text": "a_n proportional to sin(n pi x_p / L) / n^2 (ideal string, triangular pluck)",
+   "symbols": "x_p pluck position, L length",
+   "source_locator": "textbook ideal-string result (not read from a source this session)",
+   "source_url": ""
+  },
+  {
+   "name": "Helmholtz frequency",
+   "latex_or_text": "f_H = (c / (2 pi)) sqrt( S / (V L_eff) ), L_eff = t + 2 * 0.85 r (flanged both sides) approx t + 1.7 r",
+   "symbols": "c speed of sound, S hole area, V cavity volume, t plate thickness, r hole radius",
+   "source_locator": "UNSW Physclips, Rose-Hulman notes (summaries)",
+   "source_url": "https://phys.unsw.edu.au/jw/Helmholtz.html"
+  },
+  {
+   "name": "Double-decay necessary condition (qualitative)",
+   "latex_or_text": "eta_bridge(f) > eta_string_other(f)",
+   "symbols": "eta_bridge loss factor from coupling to bridge/soundboard (from admittance), eta_string_other loss factor from other string loss mechanisms",
+   "source_locator": "Woodhouse 2021 as relayed by Miranda et al. 2022; exact inequality unread",
+   "source_url": "https://eprints.soton.ac.uk/476996/1/Pablo_Miranda_Internoise2022.pdf"
+  }
+ ],
+ "sources_checked": [
+  {
+   "url": "https://pubs.aip.org/asa/jasa/article/150/6/4375/994397/A-necessary-condition-for-double-decay-envelopes",
+   "doi": "",
+   "title": "Woodhouse 2021 JASA record",
+   "owner_or_authors": "J. Woodhouse",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Bibliographic record and abstract wording",
+   "access_notes": "Search summary only; WebFetch failed (host not resolvable in this sandbox); only search-result summaries seen"
+  },
+  {
+   "url": "https://arxiv.org/pdf/2104.02480",
+   "doi": "",
+   "title": "Woodhouse double decay preprint (arXiv 2104.02480)",
+   "owner_or_authors": "J. Woodhouse",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "unreachable",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Not opened",
+   "access_notes": "WebFetch could not resolve arxiv.org; ar5iv also unreachable"
+  },
+  {
+   "url": "https://www.repository.cam.ac.uk/items/3d2cfb54-a00d-4dbb-8e08-69099990d8b2",
+   "doi": "",
+   "title": "Cambridge repository record of Woodhouse 2021",
+   "owner_or_authors": "Univ. of Cambridge",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "unreachable",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Not opened",
+   "access_notes": "WebFetch failed (host not resolvable in this sandbox); only search-result summaries seen"
+  },
+  {
+   "url": "https://euphonics.org/7-3-multiple-strings-and-double-decays/",
+   "doi": "",
+   "title": "Euphonics 7.3 Multiple strings and double decays",
+   "owner_or_authors": "J. Woodhouse",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "unreachable",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Exists per search; not opened",
+   "access_notes": "euphonics.org not resolvable by fetch; curl also blocked (403 at proxy)"
+  },
+  {
+   "url": "https://eprints.soton.ac.uk/476996/1/Pablo_Miranda_Internoise2022.pdf",
+   "doi": "",
+   "title": "Miranda et al. Internoise 2022",
+   "owner_or_authors": "P. Miranda et al.",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "corroborating",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Relays Woodhouse criterion and Weinreich mechanism",
+   "access_notes": "Search summary only"
+  },
+  {
+   "url": "https://www.dsprelated.com/freebooks/pasp/String_Coupling_Effects.html",
+   "doi": "",
+   "title": "PASP String Coupling Effects",
+   "owner_or_authors": "J. O. Smith III",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "corroborating",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Vertical vs horizontal polarisation decay",
+   "access_notes": "Search summary only"
+  },
+  {
+   "url": "https://ccrma.stanford.edu/software/stk/classstk_1_1Mandolin.html",
+   "doi": "",
+   "title": "STK Mandolin class",
+   "owner_or_authors": "Cook, Scavone",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Two twang models and commuted synthesis",
+   "access_notes": "Search summary only"
+  },
+  {
+   "url": "https://purl.stanford.edu/wp454hs7976",
+   "doi": "",
+   "title": "Perng thesis record",
+   "owner_or_authors": "Stanford",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Existence, year, advisors",
+   "access_notes": "Search summary only; fetch unresolvable"
+  },
+  {
+   "url": "https://www.dafx.de/paper-archive/2010/DAFx10/PerngSmithRossing_DAFx10_P93.pdf",
+   "doi": "",
+   "title": "Perng, Smith, Rossing DAFx-10",
+   "owner_or_authors": "authors",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Plectrum shape from bent-beam equations",
+   "access_notes": "Search summary only"
+  },
+  {
+   "url": "https://core.ac.uk/download/357253971.pdf",
+   "doi": "",
+   "title": "Audibility of inharmonicity",
+   "owner_or_authors": "Jarvelainen et al.",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "B definition and listening thresholds exist",
+   "access_notes": "Search summary only"
+  },
+  {
+   "url": "https://acta-acustica.edpsciences.org/10.1051/aacus/2020008",
+   "doi": "",
+   "title": "Banjo paper Acta Acustica 2020",
+   "owner_or_authors": "",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Existence, admittance figure",
+   "access_notes": "Search summary only"
+  },
+  {
+   "url": "https://phys.unsw.edu.au/jw/Helmholtz.html",
+   "doi": "",
+   "title": "UNSW Helmholtz",
+   "owner_or_authors": "J. Wolfe",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "corroborating",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Guitar air mode approx Helmholtz",
+   "access_notes": ""
+  },
+  {
+   "url": "https://www.rose-hulman.edu/~moloney/Acoustics/0506/End_correction_Meeks_0506.doc",
+   "doi": "",
+   "title": "End correction notes",
+   "owner_or_authors": "Meeks",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "corroborating",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "0.85 r flanged, 0.6 r unflanged",
+   "access_notes": ""
+  },
+  {
+   "url": "https://www.firgelliauto.com/blogs/engineering-calculators/helmholtz-resonator-calculator",
+   "doi": "",
+   "title": "Firgelli calculator",
+   "owner_or_authors": "vendor",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "corroborating",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Formula with garbled/incorrect end-correction assignment",
+   "access_notes": ""
+  },
+  {
+   "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/9224380",
+   "doi": "",
+   "title": "US patent 9224380",
+   "owner_or_authors": "",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "corroborating",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "1.7 r end correction",
+   "access_notes": ""
+  },
+  {
+   "url": "https://www.dsprelated.com/freebooks/pasp/Commuted_Synthesis.html",
+   "doi": "",
+   "title": "PASP Commuted Synthesis",
+   "owner_or_authors": "J. O. Smith III",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Body IR as excitation",
+   "access_notes": "Search summary only"
+  },
+  {
+   "url": "https://csound.com/manual/STKMandolin.html",
+   "doi": "",
+   "title": "Csound STKMandolin",
+   "owner_or_authors": "",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "corroborating",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Detune parameter",
+   "access_notes": ""
+  },
+  {
+   "url": "https://typeset.io/papers/tunable-dispersion-filter-design-for-piano-synthesis-fy4bq64bfk",
+   "doi": "",
+   "title": "Rauhala and Valimaki 2006",
+   "owner_or_authors": "",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Second-order allpass cascade, Thiran-based",
+   "access_notes": ""
+  },
+  {
+   "url": "https://bibbase.org/network/publication/abel-vlimki-smith-robustefficientdesignofallpassfiltersfordispersivestringsoundsynthesis-2010",
+   "doi": "",
+   "title": "Abel, Valimaki, Smith 2010",
+   "owner_or_authors": "",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Quartic-root pole design",
+   "access_notes": ""
+  },
+  {
+   "url": "https://dafx.de/paper-archive/details/FxpIAYIVGkUKoqVYzYCHQg",
+   "doi": "",
+   "title": "Abel and Smith DAFx-06",
+   "owner_or_authors": "",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Very high-order allpass design",
+   "access_notes": ""
+  },
+  {
+   "url": "https://dafx.de/paper-archive/details/XJTIoSIXj3qqer3WzLlEHQ",
+   "doi": "",
+   "title": "PluckSynth touch string",
+   "owner_or_authors": "Eckerholm, Evangelista",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "corroborating",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Finger/pick on waveguide",
+   "access_notes": ""
+  },
+  {
+   "url": "https://dafx.de/paper-archive/details/PywhUlPUhwQUW7fKB6OHXQ",
+   "doi": "",
+   "title": "Simplified guitar bridge model",
+   "owner_or_authors": "Evangelista, Raspaud",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "corroborating",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "DAFx-09 bridge model",
+   "access_notes": ""
+  },
+  {
+   "url": "https://concept.lib.ed.ac.uk/esjs/article/download/9815/12844",
+   "doi": "",
+   "title": "Edinburgh Fletcher-based paper",
+   "owner_or_authors": "",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "corroborating",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Core-only simplification",
+   "access_notes": ""
+  },
+  {
+   "url": "https://www.ioa.org.uk/system/files/publications/P%20CHUMNANTAS%20CA%20GREATED%20DM%20CAMPBELL%20INHARMONICITY%20OF%20STEPPED%20STIFF%20STRINGS.pdf",
+   "doi": "",
+   "title": "Inharmonicity of stepped stiff strings",
+   "owner_or_authors": "Chumnantas et al.",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "corroborating",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Windings add stiffness",
+   "access_notes": ""
+  },
+  {
+   "url": "https://www.ece.uvic.ca/~bctill/papers/numacoust/V%c3%a4lim%c3%a4ki_etal_2006.pdf",
+   "doi": "",
+   "title": "Valimaki et al. 2006",
+   "owner_or_authors": "",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "corroborating",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "KS and DWG review",
+   "access_notes": ""
+  },
+  {
+   "url": "https://www.ioa.org.uk/system/files/publications/AR%20BAXANDALL%20IS%20BROWN%20CE%20GOUGH%20VIBRATIONS%20OF%20PIANO%20STRINGS%20AND%20COUPLING%20TO%20THE%20SOUNDBOARD.pdf",
+   "doi": "",
+   "title": "Baxandall et al.",
+   "owner_or_authors": "",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "corroborating",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Cites Weinreich",
+   "access_notes": ""
+  },
+  {
+   "url": "https://www.dsprelated.com/dspbooks/pasp/String_Coupling_Effects.html",
+   "doi": "",
+   "title": "mirror",
+   "owner_or_authors": "",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "unreachable",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "fetch failed",
+   "access_notes": "WebFetch failed (host not resolvable in this sandbox); only search-result summaries seen"
+  },
+  {
+   "url": "https://www.speech.kth.se/music/5_lectures/weinreic/weinreic.html",
+   "doi": "",
+   "title": "Weinreich lecture notes",
+   "owner_or_authors": "",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "unreachable",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "fetch failed",
+   "access_notes": "WebFetch failed (host not resolvable in this sandbox); only search-result summaries seen"
+  },
+  {
+   "url": "https://www.bohrium.com/paper-details/a-necessary-condition-for-double-decay-envelopes-in-stringed-instruments/814713989719130112-582",
+   "doi": "",
+   "title": "Bohrium record",
+   "owner_or_authors": "",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "unreachable",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "fetch failed",
+   "access_notes": "WebFetch failed (host not resolvable in this sandbox); only search-result summaries seen"
+  },
+  {
+   "url": "https://dafx.de/paper-archive/details/_B8kl7InKAjA221WjmV8Eg",
+   "doi": "",
+   "title": "Perng DAFx archive record",
+   "owner_or_authors": "",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "unreachable",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "fetch failed",
+   "access_notes": "WebFetch failed (host not resolvable in this sandbox); only search-result summaries seen"
+  },
+  {
+   "url": "https://typeset.io/pdf/simple-model-for-low-frequency-guitar-function-plccqpv99x.pdf",
+   "doi": "",
+   "title": "Christensen & Vistisen 1980",
+   "owner_or_authors": "authors",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Two-oscillator guitar model",
+   "access_notes": "Search summary only"
+  },
+  {
+   "url": "https://repositori.upf.edu/items/7c207d44-4ac0-4100-a216-dc814a1abe60/full",
+   "doi": "",
+   "title": "Maestre et al. WASPAA 2015 record",
+   "owner_or_authors": "UPF",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 2,
+   "outcome": "used",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Admittance + radiativity filter modelling",
+   "access_notes": "Search summary only"
+  },
+  {
+   "url": "https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_article",
+   "doi": "",
+   "title": "The acoustics of mandolins (Cohen and Rossing, Acoust. Sci. & Tech. 24(1))",
+   "owner_or_authors": "Cohen, Rossing",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "not relevant",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Outside this branch; abstract mentions TV holography of four mandolins and a mandola",
+   "access_notes": "Search summary only"
+  },
+  {
+   "url": "https://ccrma.stanford.edu/%7Ejos/pasp/EDR_Based_Loop_Filter_Design.html",
+   "doi": "",
+   "title": "PASP EDR-based loop filter design",
+   "owner_or_authors": "J. O. Smith III",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "corroborating",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Loop filter fitting to decay",
+   "access_notes": "Search summary only"
+  },
+  {
+   "url": "https://www.Wikipedia.com/wiki/Mandolin",
+   "doi": "",
+   "title": "Mandolin",
+   "owner_or_authors": "Wikipedia",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "corroborating",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Tremolo rationale",
+   "access_notes": ""
+  },
+  {
+   "url": "https://youtubemusicsucks.com/how-to-tremolo-pick-a-mandolin/",
+   "doi": "",
+   "title": "Tremolo tutorial",
+   "owner_or_authors": "blog",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 4,
+   "outcome": "corroborating",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "Tempo example only",
+   "access_notes": ""
+  },
+  {
+   "url": "https://openreview.net/pdf/617931ce90da4c3b1e5b20551bd1cd1a4b93c1b4.pdf",
+   "doi": "",
+   "title": "Plucked-string synthesis paper (search hit)",
+   "owner_or_authors": "",
+   "version_or_date": "",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "not relevant",
+   "reason": "",
+   "licence_or_terms": "not read",
+   "content_summary": "No mandolin data",
+   "access_notes": ""
+  }
+ ],
+ "open_questions": [
+  "Exact form of Woodhouse's criterion (is it eta_bridge > eta_other or a stronger factor, and which loss mechanisms are in eta_other) and the mandolin results (is there a ~500 Hz breakpoint, +/-8 cents mistuning, modal-overlap statement): needs the full text. Hosts needed: arxiv.org (2104.02480), www.repository.cam.ac.uk, euphonics.org, pubs.aip.org.",
+  "Loss-factor model for steel strings (eta_air, eta_friction, eta_bending) and published values from Woodhouse 2004: not retrieved.",
+  "Fletcher 1964 / Fletcher & Rossing exact B form and clamped-end correction; music-wire E and rho: no Tier 1 text read.",
+  "Smith PASP loop-filter, dispersion and coupled-string design formulas; Karjalainen et al. 1998; Maestre/Scavone 2017 admittance modelling; Bilbao: not retrieved.",
+  "Mandolin/bouzouki measured decay times; tremolo picking literature (stroke rate, re-excitation): not searched before quota ran out.",
+  "Christensen-Vistisen / Rossing coupled air-top-back models and the T(1,1)_n naming: not retrieved.",
+  "Germain and Evangelista plectrum paper: title and venue unverified; Cuzzucoli and Lombardo not searched.",
+  "Tremolo and mandolin T60 searches returned nothing quantitative; Maestre TASLP 2017 title unverified."
+ ],
+ "summary": "Fetch was unavailable for every host, so all sources are search-summary level and nothing is marked corroborated. Verified by own calculation: the input's mandolin B/cents table is arithmetically exact; B = pi^3 E d^4/(64 T L^2) derived, plus f0/mu forms. Woodhouse 2021 exists (JASA 150(6), 4375-4384, DOI 10.1121/10.0009012, arXiv 2104.02480); abstract says lute and mandolin show double decay over much of the range, especially higher. Input's 500 Hz mandolin threshold, +/-8 cents and modal-overlap statements were NOT found; eta_b >> eta_air is stronger than the relayed 'necessary condition'. Perng thesis exists (Stanford 2012); Germain and Evangelista DAFx 2009 title not found. End-correction 0.6-0.85 is per-radius per-end (about 1.7 r for a thin-plate hole). Tremolo, T60 data, and loss-factor values remain open."
+}
