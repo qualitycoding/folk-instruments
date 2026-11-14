@@ -1,0 +1,151 @@
+{
+ "Sr_mm2": 10.646808320907242,
+ "mu": 1.7298545924395003,
+ "Su_rest_mm2": 6.835739642741171,
+ "Su_min_mm2": 1.4,
+ "runs": [
+  {
+   "oscillates": false,
+   "tip_amplitude_um": 0.0,
+   "mean_p2_Pa": 1.9,
+   "v0_m_per_s": 0.25
+  },
+  {
+   "oscillates": false,
+   "tip_amplitude_um": 0.0,
+   "mean_p2_Pa": 7.8,
+   "v0_m_per_s": 0.5
+  },
+  {
+   "oscillates": false,
+   "tip_amplitude_um": 0.0,
+   "mean_p2_Pa": 31.8,
+   "v0_m_per_s": 1.0
+  },
+  {
+   "oscillates": true,
+   "f0_Hz": 440.67,
+   "cents_re_fr": -13.0,
+   "tip_amplitude_um": 1272.1,
+   "mean_p2_Pa": 106.1,
+   "flow_harmonics_dB": [
+    0.0,
+    -18.5,
+    -17.2,
+    -25.5,
+    -26.8,
+    -29.1,
+    -34.9,
+    -34.3,
+    -38.2,
+    -40.7,
+    -41.0,
+    -45.3
+   ],
+   "reed_h2_dB": -53.1,
+   "reed_h3_dB": -56.3,
+   "goes_through_plate": false,
+   "v0_m_per_s": 1.5
+  },
+  {
+   "oscillates": true,
+   "f0_Hz": 440.66,
+   "cents_re_fr": -13.1,
+   "tip_amplitude_um": 1768.1,
+   "mean_p2_Pa": 155.2,
+   "flow_harmonics_dB": [
+    0.0,
+    -15.9,
+    -15.5,
+    -24.2,
+    -25.4,
+    -29.3,
+    -29.5,
+    -31.9,
+    -35.5,
+    -36.2,
+    -39.2,
+    -39.5
+   ],
+   "reed_h2_dB": -50.5,
+   "reed_h3_dB": -54.7,
+   "goes_through_plate": true,
+   "v0_m_per_s": 2.0
+  },
+  {
+   "oscillates": true,
+   "f0_Hz": 440.58,
+   "cents_re_fr": -13.4,
+   "tip_amplitude_um": 2043.1,
+   "mean_p2_Pa": 194.6,
+   "flow_harmonics_dB": [
+    0.0,
+    -12.9,
+    -13.4,
+    -23.9,
+    -25.1,
+    -26.9,
+    -28.3,
+    -33.1,
+    -32.1,
+    -33.6,
+    -38.0,
+    -37.7
+   ],
+   "reed_h2_dB": -47.4,
+   "reed_h3_dB": -52.4,
+   "goes_through_plate": true,
+   "v0_m_per_s": 2.5
+  },
+  {
+   "oscillates": true,
+   "f0_Hz": 440.52,
+   "cents_re_fr": -13.6,
+   "tip_amplitude_um": 2256.4,
+   "mean_p2_Pa": 232.1,
+   "flow_harmonics_dB": [
+    0.0,
+    -10.6,
+    -12.0,
+    -23.6,
+    -23.4,
+    -25.5,
+    -28.4,
+    -31.8,
+    -30.3,
+    -34.3,
+    -35.6,
+    -34.8
+   ],
+   "reed_h2_dB": -45.0,
+   "reed_h3_dB": -50.9,
+   "goes_through_plate": true,
+   "v0_m_per_s": 3.0
+  },
+  {
+   "oscillates": true,
+   "f0_Hz": 440.47,
+   "cents_re_fr": -13.8,
+   "tip_amplitude_um": 2439.7,
+   "mean_p2_Pa": 268.7,
+   "flow_harmonics_dB": [
+    0.0,
+    -8.9,
+    -11.1,
+    -23.9,
+    -21.4,
+    -24.8,
+    -29.0,
+    -30.0,
+    -29.2,
+    -35.6,
+    -33.0,
+    -34.6
+   ],
+   "reed_h2_dB": -43.1,
+   "reed_h3_dB": -49.9,
+   "goes_through_plate": true,
+   "v0_m_per_s": 3.5
+  }
+ ]
+}

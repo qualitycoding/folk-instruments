@@ -1,0 +1,42 @@
+{
+ "unison_both": {
+  "rate_dB_s": -75.64102505699269,
+  "expected": -75.64102505699168
+ },
+ "unison_one": {
+  "early": -75.64102505698644,
+  "late": -75.64075214961883,
+  "expected_late": -3.601953574142461,
+  "single_string": -39.621489315567075
+ },
+ "detuned_2c_weak": {
+  "beat_Hz": 0.75,
+  "expected": 0.7629024835236153
+ },
+ "detuned_8c_weak": {
+  "beat_Hz": 3.0,
+  "expected": 3.056905105355514
+ },
+ "3c_strong_coupling_mode_split_Hz": 0.0001993335844167329,
+ "3c_uncoupled_split_Hz": 1.1446843548993035,
+ "mistuned_1.0c_a0_[1, 0]": {
+  "early_dB_s": -75.32880170622427,
+  "late_dB_s": -5.138836070470589,
+  "level_at_knee_dB": -21.47846733533264
+ },
+ "mistuned_1.0c_a0_[1, 0.7]": {
+  "early_dB_s": -76.22394383687971,
+  "late_dB_s": -5.138836069332865,
+  "level_at_knee_dB": -34.389228338647825
+ },
+ "mistuned_0.3c_a0_[1, 0]": {
+  "early_dB_s": -75.6127486243589,
+  "late_dB_s": -3.7377446404776253,
+  "level_at_knee_dB": -30.96625507625027
+ },
+ "reference_rates_dB_s": {
+  "symmetric": -75.64102505699168,
+  "intrinsic": -3.601953574142461,
+  "single": -39.621489315567075
+ }
+}
