@@ -1,5 +1,5 @@
 ---
-id: L-20261114T140500Z-onset-counter-missed-first-frame
+id: L-20261114T135000Z-onset-counter-missed-first-frame
 title: An onset counter that compares each frame with an earlier frame missed the attack at time zero
 status: active
 supersedes: []
@@ -9,7 +9,7 @@ severity: Low
 tags: [domain:audio, tech:python, phase:specification, kind:verification-gap]
 recorded_by: planner
 run: gen-20261114T004707Z-folk-instruments-vst
-recorded_at: 2026-11-14T14:05:00Z
+recorded_at: 2026-11-14T13:50:00Z
 ---
 ## Trigger
 Writing an attack or onset counter for rendered audio that detects a rise in frame level relative to a frame a few frames earlier, where the rendered file starts with a note at time zero.
