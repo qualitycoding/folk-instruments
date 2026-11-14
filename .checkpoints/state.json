@@ -1,7 +1,7 @@
 {
  "run_id": "gen-20261114T004707Z-folk-instruments-vst",
  "branch": "gen-20261114T004707Z-folk-instruments-vst",
- "sequence": 5,
+ "sequence": 6,
  "protocol_versions": {
   "core": "4.0",
   "modules/software-ci": "1.0",
@@ -62,7 +62,7 @@
  },
  "tier_substitutions": [],
  "phase": "1",
- "subphase": "1.3-round2-claims",
+ "subphase": "1.3-round3-in-progress",
  "rounds": {
   "research": 0,
   "exploration": 0,
@@ -123,6 +123,7 @@
   "research/rounds/r1-E-mandolin-bouzouki.json": "88c1d31b8ccc2286babef089ef91bfa643f81a3f9cc90480977fde021f5955f3",
   "research/rounds/r1-G-references.json": "6f839c35299d32ed60a2c2fd05dad1c5c7879484efa095a4d25b2596b117b03f",
   "research/rounds/r1-P-planner.json": "3b57e7f046b9e3c09770dec93f15f81541fbf9ee43d2b8d558f6a6c56387a6cd",
+  "research/rounds/r3-adversarial.json": "819c2644e37e5bd059ce40cc7573492f3b7d9ea6f9817bcb54f9936e65c0cc91",
   "research/spikes/s01-input-tables/output.json": "8a802fef547d15611f14afc17cdc446a18ecef6739ec9fd8092934d7b02c0533",
   "research/spikes/s01-input-tables/recompute.py": "f89b4047eadc750b969c6cd41961ccbd190780fc9e7f95d33d3c2e3f975d2e8c",
   "research/spikes/s02-juce-build/CMakeLists.txt": "5ab36361e13ab6e9a6731314924788c5c4dae786459f8ff0b63ab50da1f6e44d",
@@ -131,11 +132,15 @@
   "research/spikes/s02-juce-build/src/Plugin.cpp": "be5c86cd83b381a0774d81892225917e8adeffddca749d15ddd267ace10ee38d",
   "research/spikes/s03-reed-minimal-model/__pycache__/reed_sim.cpython-313.pyc": "72ab4c8b2a0cfef559d3ccd356b191c08606b31293506ca1d24fe00e59b948b3",
   "research/spikes/s03-reed-minimal-model/output.json": "25108366249bfa480431313fc872babb1c5c767ded349704e2d388e24bcda783",
+  "research/spikes/s03-reed-minimal-model/pressure_driven.py": "4c6fb0728a9db848df86eba8ec6ff02ec3a20fc229b3f3c5447291006cf8c898",
+  "research/spikes/s03-reed-minimal-model/pressure_driven_output.json": "68a160d9719e880ed104f887ea15bea521a4cf2f09e83b4570e852f429b5f97a",
   "research/spikes/s03-reed-minimal-model/reed_sim.py": "a45f1961cc6eb907adb5868a67fd092b94880d40cf779f47e0b3cf322df0d5ae",
   "research/spikes/s03-reed-minimal-model/volume_condition.py": "a6f1ba9594ed1f6008ef7d718f7846718b8ae990a850cc27c8d1c07ebf005d52",
   "research/spikes/s03-reed-minimal-model/volume_condition_output.json": "327ab9dddb0c426043b656efcd28284d4a8aaad80e4bcab232322bdd9f7684d5",
   "research/spikes/s04-coupled-pair/output.json": "4e128850fc575063babe2cd939b40cc6b9e5e9a8c7e03c626880b1b8babc9151",
   "research/spikes/s04-coupled-pair/pair.py": "a14b4498fb2e53b0ab636a89b88862c1dd8d730592016400f9660694b2b2669c",
+  "research/spikes/s05-reed-cost/output.txt": "440cba2612de92218ed6ca386572ff0042dbbbda071feaedbd32dc5a1159b4f8",
+  "research/spikes/s05-reed-cost/reed_bench.cpp": "813784826ceef0230bdaf94ba2341d9b3d312bcad9055c78c6d64e3ceefcc8b2",
   "research/tools/build_claims.py": "e86cafa0e164c46d1f31aa7da0d8aca28141175c17051eafeef1b2d74feb02ef",
   "reviews/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "scripts/check_knowledge_schema.py": "eab49ba4a33cf1a219a5af0b8175b519f8ca90c4b532389e82366043a90314ca",
@@ -155,5 +160,5 @@
  "lessons_loaded": [],
  "lessons_recorded": [],
  "knowledge_added": [],
- "updated_at": "2026-11-14T10:46:17Z"
+ "updated_at": "2026-11-14T13:40:38Z"
 }
