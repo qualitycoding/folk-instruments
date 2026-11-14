@@ -1,7 +1,7 @@
 {
  "run_id": "gen-20261114T004707Z-folk-instruments-vst",
  "branch": "gen-20261114T004707Z-folk-instruments-vst",
- "sequence": 7,
+ "sequence": 8,
  "protocol_versions": {
   "core": "4.0",
   "modules/software-ci": "1.0",
@@ -110,7 +110,8 @@
   "core/include/folk/tuning.h": "2232ee153c4b30d213c9fe7a84a70cac031026233097d5cd6dfae99d1ef091cc",
   "core/src/stubs.cpp": "5334bc279fb47885c2d6527c6151633b336c4be3bb08238491bf07f89099eb31",
   "lessons/L-20261114T090000Z-fetch-tool-shares-sandbox-allowlist.md": "bb3c7095d478004d251d354472a7c2f302cd7504951c5717086adbe0f2a473cf",
-  "lessons/L-20261114T140500Z-onset-counter-missed-first-frame.md": "b5af8e64420b75c74edde8e8ac3f1030eace4b215a2c1061cc0f0277307118c2",
+  "lessons/L-20261114T135000Z-onset-counter-missed-first-frame.md": "719b9f69d5387cb6cb972c08f15cb5ec229054bfabb829a471669e29ec2bdbb2",
+  "lessons/L-20261114T135800Z-frozen-tests-checked-against-oracle.md": "f62dbbd9310e8fd305cd43bb97dde0564b44c0cc56391cec7ef56418a3cb172d",
   "plan/ASSUMPTIONS.md": "9d71531e889a149db4956fe986963de1e419d44ec4c2ec8b44d4a60bdc04dc6e",
   "plan/PROFILE.md": "b4669c549879c09a9d5b4c501bbf399501fb060f7422d9f0ce214862aac76764",
   "plan/TEMPLATES.md": "a7cab6ff0a71b6a49d6a136b3ac0920368645d58396b30ef7b3e48eea587fb23",
@@ -216,5 +217,5 @@
  "lessons_loaded": [],
  "lessons_recorded": [],
  "knowledge_added": [],
- "updated_at": "2026-11-14T14:10:40Z"
+ "updated_at": "2026-11-14T14:10:57Z"
 }

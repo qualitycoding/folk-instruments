@@ -1,0 +1,41 @@
+-- Checking for module 'libcurl'
+--   Package 'libcurl', required by 'virtual:world', not found
+-- Checking for modules 'webkit2gtk-4.0;gtk+-x11-3.0'
+--   Package 'webkit2gtk-4.0', required by 'virtual:world', not found
+--   Package 'gtk+-x11-3.0', required by 'virtual:world', not found
+-- Configuring juceaide
+-- Building juceaide
+-- Exporting juceaide
+-- Testing juceaide
+-- Finished setting up juceaide
+-- Configuring done (0.9s)
+-- Generating done (0.1s)
+-- Build files have been written to: <scratch>/build-plugins
+1794664297
+-- Detecting CXX compile features - done
+-- Configuring done (0.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: <scratch>/build-plugins/vst3_helpers/FolkBouzouki
+[1/2] Building CXX object CMakeFiles/vst3_helper.dir<scratch>/deps/JUCE/modules/juce_audio_plugin_client/VST3/juce_VST3ManifestHelper.cpp.o
+[2/2] Linking CXX executable vst3_helper
+[286/298] Building CXX object plugins/CMakeFiles/FolkBouzouki_VST3.dir<scratch>/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX.cpp.o
+[287/298] Building CXX object plugins/CMakeFiles/FolkBouzouki_VST3.dir<scratch>/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX_utils.cpp.o
+[288/298] Building CXX object plugins/CMakeFiles/FolkBouzouki_VST3.dir<scratch>/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_ARA.cpp.o
+[289/298] Building CXX object plugins/CMakeFiles/FolkBouzouki_VST3.dir<scratch>/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_LV2.cpp.o
+[290/298] Building CXX object plugins/CMakeFiles/FolkBouzouki_VST3.dir<scratch>/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp.o
+[291/298] Building CXX object plugins/CMakeFiles/FolkBouzouki_VST3.dir<scratch>/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_Unity.cpp.o
+[292/298] Building CXX object plugins/CMakeFiles/FolkBouzouki_VST3.dir<scratch>/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST2.cpp.o
+[293/298] Building CXX object plugins/CMakeFiles/FolkMelodion_VST3.dir<scratch>/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST3.cpp.o
+[294/298] Linking CXX shared module "plugins/FolkMelodion_artefacts/Release/VST3/Folk Melodion.vst3/Contents/x86_64-linux/Folk Melodion.so"
+removing moduleinfo.json
+creating <scratch>/build-plugins/plugins/FolkMelodion_artefacts/Release/VST3/Folk Melodion.vst3/Contents/Resources/moduleinfo.json
+[295/298] Building CXX object plugins/CMakeFiles/FolkMandolin_VST3.dir<scratch>/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST3.cpp.o
+[296/298] Linking CXX shared module "plugins/FolkMandolin_artefacts/Release/VST3/Folk Mandolin.vst3/Contents/x86_64-linux/Folk Mandolin.so"
+removing moduleinfo.json
+creating <scratch>/build-plugins/plugins/FolkMandolin_artefacts/Release/VST3/Folk Mandolin.vst3/Contents/Resources/moduleinfo.json
+[297/298] Building CXX object plugins/CMakeFiles/FolkBouzouki_VST3.dir<scratch>/deps/JUCE/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST3.cpp.o
+[298/298] Linking CXX shared module "plugins/FolkBouzouki_artefacts/Release/VST3/Folk Bouzouki.vst3/Contents/x86_64-linux/Folk Bouzouki.so"
+removing moduleinfo.json
+creating <scratch>/build-plugins/plugins/FolkBouzouki_artefacts/Release/VST3/Folk Bouzouki.vst3/Contents/Resources/moduleinfo.json
+EXIT=0
+1794665107

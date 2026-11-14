@@ -406,6 +406,62 @@
    "licence_or_terms": "not read (publisher refused the request, HTTP 403)",
    "content_summary": "Not read; abstract seen in search results only.",
    "access_notes": "publisher blocks automated requests; not circumvented"
+  },
+  {
+   "url": "https://www.daddario.com/products/ej81-irish-bouzouki-strings",
+   "doi": "",
+   "title": "EJ81 Irish Bouzouki strings, product page",
+   "owner_or_authors": "D'Addario",
+   "version_or_date": "read 2026-11-14 by the round-3 reviewer",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "read by the planner; full text",
+   "licence_or_terms": "not read (product page)",
+   "content_summary": "Product title '11-40 Irish Bouzouki, 8-String, Phosphor Bronze' and the statement that the set is for GDAD tuning.",
+   "access_notes": ""
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/Overblowing",
+   "doi": "",
+   "title": "Overblowing",
+   "owner_or_authors": "Wikipedia contributors",
+   "version_or_date": "read 2026-11-14 by the round-3 reviewer",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "used",
+   "reason": "read by the planner; full text",
+   "licence_or_terms": "CC BY-SA 4.0 (page footer)",
+   "content_summary": "Opening-reed pitch just under a semitone above the closing-reed pitch on the harmonica; cites Bahnson et al. 1998.",
+   "access_notes": ""
+  },
+  {
+   "url": "https://commons.wikimedia.org/wiki/File:Tuning-Sound-G-Bouzouki.ogg",
+   "doi": "",
+   "title": "Tuning-Sound-G-Bouzouki.ogg and companion files (-d-, -a-, -dd-)",
+   "owner_or_authors": "SoylentGreen (Wikimedia Commons)",
+   "version_or_date": "2019-08-24",
+   "accessed": "2026-11-14",
+   "tier": 3,
+   "outcome": "used",
+   "reason": "read by the planner; file pages read by the round-3 reviewer",
+   "licence_or_terms": "CC BY-SA 4.0 (file description page, Licensing section)",
+   "content_summary": "Four isolated open-course notes of an Irish bouzouki, Ogg Vorbis.",
+   "access_notes": ""
+  },
+  {
+   "url": "https://github.com/Tracktion/pluginval",
+   "doi": "",
+   "title": "pluginval source at v1.0.4: Source/CommandLine.cpp",
+   "owner_or_authors": "Tracktion",
+   "version_or_date": "tag v1.0.4, commit ed19c2c16b57a6d94db391bea3ef4a80b769d5bf",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "read by the planner; source read by the round-3 reviewer",
+   "licence_or_terms": "GPL-3.0 (repository LICENSE, not opened)",
+   "content_summary": "Command-line options, defaults and in-process validation.",
+   "access_notes": ""
   }
  ]
 }
