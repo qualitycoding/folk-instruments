@@ -1,0 +1,5 @@
+{"reeds": 64, "oversampling": 4, "audio_seconds": 2.0, "wall_seconds": 0.3410, "realtime_factor": 5.87, "ns_per_reed_step": 13.87, "checksum": 2286.29}
+{"reeds": 64, "oversampling": 8, "audio_seconds": 2.0, "wall_seconds": 0.4703, "realtime_factor": 4.25, "ns_per_reed_step": 9.57, "checksum": 4572.23}
+{"reeds": 16, "oversampling": 4, "audio_seconds": 2.0, "wall_seconds": 0.0657, "realtime_factor": 30.44, "ns_per_reed_step": 10.69, "checksum": 834.297}
+4
+model name	: Intel(R) Xeon(R) Processor @ 2.10GHz
