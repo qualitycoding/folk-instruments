@@ -43,7 +43,7 @@
    "T-101"
   ],
   "input_file_verdict": "not-in-input",
-  "note": "The spike used the Debut/Millot useful-section law, not the refined law of section 2.3.2. The Table 2 parameters were measured on a (+,-) reed and are borrowed here for the (-,+) arrangement; the source says the two reeds of a channel differ.",
+  "note": "The spike used the Debut/Millot useful-section law, not the refined law of section 2.3.2. The Table 2 parameters were measured on a (+,-) reed and are borrowed here for the (-,+) arrangement; the source says the two reeds of a channel differ. The sign convention of the rest offset differs between the source's two reed types; the spike uses its own coordinate (D-010).",
   "tags": [
    "subject:free-reed-modelling"
   ]
@@ -149,7 +149,7 @@
  },
  {
   "id": "C-004",
-  "claim": "A (-,+) reed in the minimal configuration can oscillate only if V1*L2*w^2/(c0^2*S2) exceeds 1 (a necessary condition from the linearised analysis: the reed frequency must lie above the Helmholtz frequency of the cell and its inlet); near the boundary (ratio 1.27) the onset takes more than a second; a (+,-) reed needs the opposite inequality.",
+  "claim": "With the reference reed parameters, a (-,+) reed in the minimal configuration oscillated only when V1*L2*w^2/(c0^2*S2) exceeded 1 (ratios 2.54 and 1.27 sound, 0.85 and 0.42 do not), as the source's linearised analysis predicts; near the boundary the onset takes more than a second. The condition is not general: a reviewer's differently proportioned low reed oscillated at a ratio of 0.16.",
   "kind": "numerical",
   "load_bearing": true,
   "sources": [
@@ -183,14 +183,16 @@
   ],
   "confidence": "verified",
   "evidence_class": "n/a",
-  "contradicted_by": [],
+  "contradicted_by": [
+   "r4-adversarial.json (the condition as a general necessary condition)"
+  ],
   "informs": [
    "D-011",
    "D-012",
    "T-105"
   ],
   "input_file_verdict": "partly-supported",
-  "note": "The input file's 'upstream inertial effect' is right in kind; its statements about the ratio of reed frequency to Helmholtz frequency were not traced.",
+  "note": "The input file's 'upstream inertial effect' is right in kind; its statements about the ratio of reed frequency to Helmholtz frequency were not traced. The design keeps every reed at the reference ratio 2.54 (D-012), so the general question does not arise.",
   "tags": [
    "subject:free-reed-modelling"
   ]
@@ -1759,7 +1761,7 @@
    "T-300"
   ],
   "input_file_verdict": "not-in-input",
-  "note": "Hashes and flags come from verified knowledge items at the same version; the release assets cannot be downloaded from the planning sandbox, so the implementer's first use re-checks the hash (it gates).",
+  "note": "Hashes and flags come from verified knowledge items at the same version; the release assets cannot be downloaded from the planning sandbox, so the implementer's first use re-checks the hash (it gates). v1.0.4 dates from December 2024; no newer stable release exists.",
   "tags": [
    "subject:pluginval"
   ]
@@ -1970,7 +1972,7 @@
    "G-L1"
   ],
   "input_file_verdict": "not-in-input",
-  "note": "The plan gives the implementer a bounded search procedure and a decision rule per instrument (D-051) instead of assuming a result.",
+  "note": "The plan gives the implementer a bounded search procedure and a decision rule per instrument (D-051) instead of assuming a result. An archive.org item ('GTown Church Sampling Project', Creative Commons Sampling Plus 1.0) is said to include mandolin samples; its file list could not be read.",
   "tags": [
    "subject:folk-instrument-reference-recordings"
   ]
@@ -2005,7 +2007,7 @@
  },
  {
   "id": "C-053",
-  "claim": "Driven from a pressure reservoir through an inlet orifice (30 mm2) instead of a fixed flow, the reed model is silent at 50 Pa and sounds from 100 Pa to 1500 Pa (20 to 25 cents below its natural frequency, second flow harmonic rising from -20 dB to +1 dB), and is pushed through the plate without starting when 3000 Pa is applied within 20 ms; integration at 4 times 44.1 kHz gives the same pitch as at 8 times within 0.05 Hz.",
+  "claim": "At the reference pitch (444 Hz), driven from a pressure reservoir through an inlet orifice of 30 mm2, the reed model is silent at 50 Pa and sounds from 100 Pa to 1500 Pa, 20 to 23 cents below its natural frequency, with the second flow harmonic rising from -20 dB to about 0 dB; 3000 Pa applied within 20 ms holds the reed shut inside the slot without starting it, while a slower rise lets it sound. The reference reed's proportions do not transfer to other pitches: a reed scaled like a real cantilever to 3520 Hz did not oscillate at any pressure, and one scaled to 111 Hz sounded 50 to 100 cents flat.",
   "kind": "numerical",
   "load_bearing": true,
   "sources": [
@@ -2017,15 +2019,25 @@
     "locator": "all runs",
     "accessed": "2026-11-14",
     "tier": 1
+   },
+   {
+    "url": "research/rounds/r4-adversarial.json",
+    "doi": "",
+    "title": "round-4 adversarial review",
+    "version": "this run",
+    "locator": "review of C-053; new_load_bearing_claims 1",
+    "accessed": "2026-11-14",
+    "tier": 3
    }
   ],
   "confidence": "verified",
   "evidence_class": "n/a",
-  "contradicted_by": [],
+  "contradicted_by": [
+   "r4-adversarial.json (first wording: implied validity across the range; 'pushed through the plate')"
+  ],
   "informs": [
    "D-011",
    "D-012",
-   "D-014",
    "D-016",
    "T-101",
    "T-102"
@@ -2038,18 +2050,36 @@
  },
  {
   "id": "C-054",
-  "claim": "One step of the reed model costs 10 to 14 ns per reed in plain C++ (-O2, double precision, table look-up for the useful section) on the planning sandbox (Intel Xeon 2.1 GHz): 64 reeds at 4 times 48 kHz run 5.9 times faster than real time on one core, and at 8 times 4.3 times faster.",
+  "claim": "One step of the reed model costs 10 to 15 ns per reed in plain C++ (-O2, double precision, table look-up for the useful section; the loop is not vectorised) on the planning sandbox (Intel Xeon 2.1 GHz): 64 sounding reeds between 65 Hz and 1.5 kHz, scaled as in D-012, at 4 times 48 kHz run 5.6 times faster than real time on one core (6.4 times with -ffast-math). The figure covers the reeds only, not decimation, filters or the wrapper.",
   "kind": "numerical",
   "load_bearing": true,
   "sources": [
+   {
+    "url": "research/spikes/s05-reed-cost/output2.txt",
+    "doi": "",
+    "title": "planning spike S05B",
+    "version": "this run",
+    "locator": "both lines",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
    {
     "url": "research/spikes/s05-reed-cost/output.txt",
     "doi": "",
     "title": "planning spike S05",
     "version": "this run",
-    "locator": "three runs",
+    "locator": "first benchmark (A4 geometry for every reed)",
     "accessed": "2026-11-14",
     "tier": 1
+   },
+   {
+    "url": "research/rounds/r4-adversarial.json",
+    "doi": "",
+    "title": "round-4 adversarial review",
+    "version": "this run",
+    "locator": "review of C-054",
+    "accessed": "2026-11-14",
+    "tier": 3
    }
   ],
   "confidence": "verified",
@@ -2068,7 +2098,7 @@
  },
  {
   "id": "C-055",
-  "claim": "In the TinySOL accordion notes (646 analysed): the median pitch is 5 to 7 cents above A = 440 Hz; no component an octave below the note is present (below -55 dB); odd harmonics are stronger than even ones at pp and mf; ff is louder than pp by 12.4 to 24.8 dB (10th to 90th percentile) and brighter in 85 % of pitches; pitch at ff is 1.7 cents lower than at pp in the median; the rise to half the steady level takes 213 ms at pp, 94 ms at mf and 40 ms at ff in the median; the mean absolute difference of harmonics 1 to 8 between a note and the mean of its semitone neighbours has a 90th percentile of 10.1 dB (pp), 7.8 dB (mf) and 9.8 dB (ff).",
+  "claim": "In the TinySOL accordion notes (646 analysed; a second estimator on 330 notes agrees on the first two figures): the median pitch is 6 cents above A = 440 Hz; ff is louder than pp by 12.4 to 24.8 dB (10th to 90th percentile); odd harmonics are stronger than even ones in about nine notes in ten; ff is brighter than pp in 85 % of pitches; the pitch difference between ff and pp is not distinguishable from zero (median -1.7 cents, 95 % interval -3.4 to 0.0); about one note in ten shows a component an octave below the note (90th percentile -35 dB at pp, -42 dB at mf), the rest none; the rise to half the steady level takes 213 ms at pp, 94 ms at mf and 40 ms at ff in the median; the mean absolute difference of harmonics 1 to 8 between a note and the mean of its semitone neighbours has a 90th percentile of 10.1 dB (pp), 7.8 dB (mf) and 9.8 dB (ff). Below about 100 Hz the harmonic measurement cannot separate a note from mains hum.",
   "kind": "numerical",
   "load_bearing": true,
   "sources": [
@@ -2080,11 +2110,22 @@
     "locator": "whole file",
     "accessed": "2026-11-14",
     "tier": 1
+   },
+   {
+    "url": "research/rounds/r4-adversarial.json",
+    "doi": "",
+    "title": "round-4 adversarial review",
+    "version": "this run",
+    "locator": "review of C-055",
+    "accessed": "2026-11-14",
+    "tier": 3
    }
   ],
   "confidence": "verified",
   "evidence_class": "n/a",
-  "contradicted_by": [],
+  "contradicted_by": [
+   "r4-adversarial.json (first wording: no sub-octave component; ff 1.7 cents lower)"
+  ],
   "informs": [
    "D-050",
    "T-200",
@@ -2093,7 +2134,7 @@
    "T-105"
   ],
   "input_file_verdict": "not-in-input",
-  "note": "These are the thresholds of T-200; the spread between neighbouring real notes is wide, so T-200 is a necessary check and listening remains decisive.",
+  "note": "These are the thresholds of T-200; the spread between neighbouring real notes is wide, so T-200 is a necessary check and listening remains decisive. T-200 uses pitches from MIDI 45 (110 Hz) upwards, above the unreliable range.",
   "tags": [
    "subject:folk-instrument-reference-recordings"
   ]
@@ -2123,14 +2164,14 @@
    "D-092"
   ],
   "input_file_verdict": "not-in-input",
-  "note": "",
+  "note": "Round 4: this shows the tests are mutually consistent, not that they separate a right instrument from a wrong one; that is the job of the reference metrics and the listening gates.",
   "tags": [
    "subject:frozen-test-manifest"
   ]
  },
  {
   "id": "C-057",
-  "claim": "With the project's CMake files, five JUCE plugins (VST3 and Standalone) and five headless host-test programs build from JUCE 8.0.17-security in 810 s on 4 cores; in this JUCE version AudioProcessor::createEditor() is private and a host calls createEditorIfNeeded(); a console program can host the wrapper by compiling its source and linking juce::juce_audio_utils.",
+  "claim": "With the project's CMake files, five JUCE plugins (VST3 and Standalone) and five headless host-test programs build from JUCE 8.0.17-security in 810 s on 4 cores; in this JUCE version AudioProcessor::createEditor() is private and a host calls createEditorAndMakeActive() (createEditorIfNeeded() is deprecated); a console program can host the wrapper by compiling its source and linking juce::juce_audio_utils.",
   "kind": "software",
   "load_bearing": true,
   "sources": [
@@ -2151,6 +2192,15 @@
     "locator": "modules/juce_audio_processors_headless/processors/juce_AudioProcessor.h line 1027",
     "accessed": "2026-11-14",
     "tier": 1
+   },
+   {
+    "url": "research/spikes/s11-headless-editor/output.txt",
+    "doi": "",
+    "title": "planning spike S11",
+    "version": "this run",
+    "locator": "editor created and destroyed with and without a display",
+    "accessed": "2026-11-14",
+    "tier": 1
    }
   ],
   "confidence": "verified",
@@ -2162,7 +2212,7 @@
    "T-302"
   ],
   "input_file_verdict": "not-in-input",
-  "note": "",
+  "note": "The committed log is the tail of the build output; it shows the last links and EXIT=0.",
   "tags": [
    "tech:juce"
   ]
@@ -2202,6 +2252,78 @@
   "note": "The plan pins Python 3.13, the version the spikes ran on, so the claim's exact lower bound does not matter.",
   "tags": [
    "tech:python"
+  ]
+ },
+ {
+  "id": "C-059",
+  "claim": "Scaling the reference reed by similarity (for a frequency factor k = f/444: all heights x0, hmin, er, es and the pumping area Sr divided by k; inlet area divided by k; cell volume divided by k squared; stiffness, Q, tongue length and width, inlet passage unchanged) leaves the model's behaviour unchanged at every pitch: from 55.5 Hz to 5328 Hz it is silent at 50 Pa, sounds at 100, 400 and 1500 Pa at -20, -23 and -23 cents, with the same relative amplitude and the same flow harmonics to within 0.5 dB.",
+  "kind": "numerical",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "research/spikes/s12-reed-similarity-scaling/output.json",
+    "doi": "",
+    "title": "planning spike S12",
+    "version": "this run",
+    "locator": "all rows at 8 times 48 kHz, and at 4 times up to 1776 Hz",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-012",
+   "D-016",
+   "T-100",
+   "T-101",
+   "T-102",
+   "T-103"
+  ],
+  "input_file_verdict": "not-in-input",
+  "note": "This follows from writing the equations in dimensionless form; the spike confirms it. It gives up the proportions of real reeds: differences of timbre along the keyboard are added by calibration (DR-07).",
+  "tags": [
+   "subject:free-reed-modelling"
+  ]
+ },
+ {
+  "id": "C-060",
+  "claim": "The semi-implicit Euler step of the reed model needs about 100 or more steps per reed period: at 192 kHz it diverges for reeds at 3552 Hz and 5328 Hz above 100 Pa, and at 384 kHz for the 5328 Hz reed at 1500 Pa, while all runs with at least 108 steps per period stay bounded and agree in pitch within 1 cent; small gaps or a short inlet passage make it less stable.",
+  "kind": "numerical",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "research/spikes/s12-reed-similarity-scaling/output.json",
+    "doi": "",
+    "title": "planning spike S12",
+    "version": "this run",
+    "locator": "rows marked diverged",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "research/rounds/r4-adversarial.json",
+    "doi": "",
+    "title": "round-4 adversarial review",
+    "version": "this run",
+    "locator": "new_load_bearing_claims 2",
+    "accessed": "2026-11-14",
+    "tier": 3
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-011",
+   "T-009",
+   "T-100"
+  ],
+  "input_file_verdict": "not-in-input",
+  "note": "",
+  "tags": [
+   "subject:free-reed-modelling"
   ]
  }
 ]

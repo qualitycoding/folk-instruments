@@ -5,6 +5,7 @@ Register indices: 0 Piccolo, 1 Clarinet, 2 Bassoon, 3 Oboe, 4 Violin, 5 Musette 
 import pytest
 from conftest import hz, level_at, m, note, pitch_cents
 
+FUND = hz   # the beat is read from the band around the fundamental: upper harmonics beat at multiples of the rate
 WITH_L = [2, 7, 8, 9, 10, 11]
 WITHOUT_L = [0, 1, 3, 4, 5, 6]
 
@@ -45,7 +46,7 @@ def test_T120_master_is_louder_than_one_rank(render):
 def test_T121_tremolo_beat_rate_constant_cents(render, midi):
     """T-121. Violin register, 15 cents, constant-cents scaling: the level beats at f*(2^(15/1200)-1), within 8 %."""
     x, sr = render("accordion", note(midi, 0.7, 5.0, tail=0.2), {"register": 4, "musette_cents": 15, "musette_scaling": 0})
-    f, depth = m.modulation_frequency(m.seg(x, sr, 0.8, 4.8), sr, 0.5, 30.0)
+    f, depth = m.modulation_frequency(m.bandpass(m.seg(x, sr, 0.8, 4.8), sr, FUND(midi)), sr, 0.5, 30.0)
     expected = hz(midi) * (2 ** (15 / 1200) - 1)
     assert abs(f / expected - 1.0) <= 0.08 and depth >= 0.2
 
@@ -54,7 +55,7 @@ def test_T121_tremolo_beat_rate_constant_cents(render, midi):
 def test_T121_tremolo_beat_rate_constant_hz(render, midi):
     """T-121. With musette_scaling 1 every key beats at the rate the setting gives at A4 (3.829 Hz for 15 cents)."""
     x, sr = render("accordion", note(midi, 0.7, 5.0, tail=0.2), {"register": 4, "musette_cents": 15, "musette_scaling": 1})
-    f, depth = m.modulation_frequency(m.seg(x, sr, 0.8, 4.8), sr, 0.5, 30.0)
+    f, depth = m.modulation_frequency(m.bandpass(m.seg(x, sr, 0.8, 4.8), sr, FUND(midi)), sr, 0.5, 30.0)
     assert abs(f / 3.829 - 1.0) <= 0.08 and depth >= 0.2
 
 
@@ -62,11 +63,11 @@ def test_T121_dry_tuning_and_three_reed_musette(render):
     """T-121. With 0 cents two unison ranks do not beat; the authentic musette (M-, M, M+) beats at the offset rate or twice it."""
     dry, sr = render("accordion", note(69, 0.7, 5.0, tail=0.2), {"register": 4, "musette_cents": 0})
     wet, _ = render("accordion", note(69, 0.7, 5.0, tail=0.2), {"register": 4, "musette_cents": 15})
-    _, d_dry = m.modulation_frequency(m.seg(dry, sr, 0.8, 4.8), sr, 0.5, 30.0)
-    _, d_wet = m.modulation_frequency(m.seg(wet, sr, 0.8, 4.8), sr, 0.5, 30.0)
+    _, d_dry = m.modulation_frequency(m.bandpass(m.seg(dry, sr, 0.8, 4.8), sr, 440.0), sr, 0.5, 30.0)
+    _, d_wet = m.modulation_frequency(m.bandpass(m.seg(wet, sr, 0.8, 4.8), sr, 440.0), sr, 0.5, 30.0)
     assert d_dry <= d_wet / 5.0
     x, _ = render("accordion", note(69, 0.7, 5.0, tail=0.2), {"register": 6, "musette_cents": 15})
-    f, depth = m.modulation_frequency(m.seg(x, sr, 0.8, 4.8), sr, 0.5, 30.0)
+    f, depth = m.modulation_frequency(m.bandpass(m.seg(x, sr, 0.8, 4.8), sr, 440.0), sr, 0.5, 30.0)
     assert min(abs(f / 3.829 - 1.0), abs(f / 7.657 - 1.0)) <= 0.08 and depth >= 0.1
 
 

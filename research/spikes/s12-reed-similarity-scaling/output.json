@@ -1,0 +1,474 @@
+[
+ {
+  "state": "silent",
+  "amp_over_x0": 0.0001,
+  "k": 0.125,
+  "f": 55.5,
+  "oversampling": 4,
+  "p0": 50
+ },
+ {
+  "state": "sounds",
+  "cents": -20.12,
+  "amp_over_x0": 1.873,
+  "h2_dB": -20.3,
+  "h3_dB": -17.9,
+  "k": 0.125,
+  "f": 55.5,
+  "oversampling": 4,
+  "p0": 100
+ },
+ {
+  "state": "sounds",
+  "cents": -23.16,
+  "amp_over_x0": 4.629,
+  "h2_dB": -8.8,
+  "h3_dB": -9.7,
+  "k": 0.125,
+  "f": 55.5,
+  "oversampling": 4,
+  "p0": 400
+ },
+ {
+  "state": "sounds",
+  "cents": -23.37,
+  "amp_over_x0": 7.203,
+  "h2_dB": 0.1,
+  "h3_dB": -6.2,
+  "k": 0.125,
+  "f": 55.5,
+  "oversampling": 4,
+  "p0": 1500
+ },
+ {
+  "state": "silent",
+  "amp_over_x0": 0.0001,
+  "k": 0.125,
+  "f": 55.5,
+  "oversampling": 8,
+  "p0": 50
+ },
+ {
+  "state": "sounds",
+  "cents": -20.13,
+  "amp_over_x0": 1.873,
+  "h2_dB": -20.3,
+  "h3_dB": -17.9,
+  "k": 0.125,
+  "f": 55.5,
+  "oversampling": 8,
+  "p0": 100
+ },
+ {
+  "state": "sounds",
+  "cents": -23.17,
+  "amp_over_x0": 4.628,
+  "h2_dB": -8.8,
+  "h3_dB": -9.7,
+  "k": 0.125,
+  "f": 55.5,
+  "oversampling": 8,
+  "p0": 400
+ },
+ {
+  "state": "sounds",
+  "cents": -23.38,
+  "amp_over_x0": 7.203,
+  "h2_dB": 0.1,
+  "h3_dB": -6.2,
+  "k": 0.125,
+  "f": 55.5,
+  "oversampling": 8,
+  "p0": 1500
+ },
+ {
+  "state": "silent",
+  "amp_over_x0": 0.0001,
+  "k": 0.25,
+  "f": 111.0,
+  "oversampling": 4,
+  "p0": 50
+ },
+ {
+  "state": "sounds",
+  "cents": -20.1,
+  "amp_over_x0": 1.874,
+  "h2_dB": -20.3,
+  "h3_dB": -17.9,
+  "k": 0.25,
+  "f": 111.0,
+  "oversampling": 4,
+  "p0": 100
+ },
+ {
+  "state": "sounds",
+  "cents": -23.15,
+  "amp_over_x0": 4.629,
+  "h2_dB": -8.8,
+  "h3_dB": -9.7,
+  "k": 0.25,
+  "f": 111.0,
+  "oversampling": 4,
+  "p0": 400
+ },
+ {
+  "state": "sounds",
+  "cents": -23.36,
+  "amp_over_x0": 7.203,
+  "h2_dB": 0.1,
+  "h3_dB": -6.2,
+  "k": 0.25,
+  "f": 111.0,
+  "oversampling": 4,
+  "p0": 1500
+ },
+ {
+  "state": "silent",
+  "amp_over_x0": 0.0001,
+  "k": 0.25,
+  "f": 111.0,
+  "oversampling": 8,
+  "p0": 50
+ },
+ {
+  "state": "sounds",
+  "cents": -20.12,
+  "amp_over_x0": 1.873,
+  "h2_dB": -20.3,
+  "h3_dB": -17.9,
+  "k": 0.25,
+  "f": 111.0,
+  "oversampling": 8,
+  "p0": 100
+ },
+ {
+  "state": "sounds",
+  "cents": -23.16,
+  "amp_over_x0": 4.629,
+  "h2_dB": -8.8,
+  "h3_dB": -9.7,
+  "k": 0.25,
+  "f": 111.0,
+  "oversampling": 8,
+  "p0": 400
+ },
+ {
+  "state": "sounds",
+  "cents": -23.37,
+  "amp_over_x0": 7.203,
+  "h2_dB": 0.1,
+  "h3_dB": -6.2,
+  "k": 0.25,
+  "f": 111.0,
+  "oversampling": 8,
+  "p0": 1500
+ },
+ {
+  "state": "silent",
+  "amp_over_x0": 0.0001,
+  "k": 1.0,
+  "f": 444.0,
+  "oversampling": 4,
+  "p0": 50
+ },
+ {
+  "state": "sounds",
+  "cents": -19.99,
+  "amp_over_x0": 1.878,
+  "h2_dB": -20.3,
+  "h3_dB": -17.9,
+  "k": 1.0,
+  "f": 444.0,
+  "oversampling": 4,
+  "p0": 100
+ },
+ {
+  "state": "sounds",
+  "cents": -23.06,
+  "amp_over_x0": 4.632,
+  "h2_dB": -8.7,
+  "h3_dB": -9.6,
+  "k": 1.0,
+  "f": 444.0,
+  "oversampling": 4,
+  "p0": 400
+ },
+ {
+  "state": "sounds",
+  "cents": -23.27,
+  "amp_over_x0": 7.206,
+  "h2_dB": 0.2,
+  "h3_dB": -6.2,
+  "k": 1.0,
+  "f": 444.0,
+  "oversampling": 4,
+  "p0": 1500
+ },
+ {
+  "state": "silent",
+  "amp_over_x0": 0.0001,
+  "k": 1.0,
+  "f": 444.0,
+  "oversampling": 8,
+  "p0": 50
+ },
+ {
+  "state": "sounds",
+  "cents": -20.06,
+  "amp_over_x0": 1.875,
+  "h2_dB": -20.3,
+  "h3_dB": -17.9,
+  "k": 1.0,
+  "f": 444.0,
+  "oversampling": 8,
+  "p0": 100
+ },
+ {
+  "state": "sounds",
+  "cents": -23.12,
+  "amp_over_x0": 4.63,
+  "h2_dB": -8.8,
+  "h3_dB": -9.6,
+  "k": 1.0,
+  "f": 444.0,
+  "oversampling": 8,
+  "p0": 400
+ },
+ {
+  "state": "sounds",
+  "cents": -23.33,
+  "amp_over_x0": 7.204,
+  "h2_dB": 0.1,
+  "h3_dB": -6.2,
+  "k": 1.0,
+  "f": 444.0,
+  "oversampling": 8,
+  "p0": 1500
+ },
+ {
+  "state": "silent",
+  "amp_over_x0": 0.0001,
+  "k": 4.0,
+  "f": 1776.0,
+  "oversampling": 4,
+  "p0": 50
+ },
+ {
+  "state": "sounds",
+  "cents": -19.36,
+  "amp_over_x0": 1.896,
+  "h2_dB": -20.4,
+  "h3_dB": -17.6,
+  "k": 4.0,
+  "f": 1776.0,
+  "oversampling": 4,
+  "p0": 100
+ },
+ {
+  "state": "sounds",
+  "cents": -22.51,
+  "amp_over_x0": 4.645,
+  "h2_dB": -8.5,
+  "h3_dB": -9.3,
+  "k": 4.0,
+  "f": 1776.0,
+  "oversampling": 4,
+  "p0": 400
+ },
+ {
+  "state": "sounds",
+  "cents": -22.7,
+  "amp_over_x0": 7.216,
+  "h2_dB": 0.4,
+  "h3_dB": -6.0,
+  "k": 4.0,
+  "f": 1776.0,
+  "oversampling": 4,
+  "p0": 1500
+ },
+ {
+  "state": "silent",
+  "amp_over_x0": 0.0001,
+  "k": 4.0,
+  "f": 1776.0,
+  "oversampling": 8,
+  "p0": 50
+ },
+ {
+  "state": "sounds",
+  "cents": -19.81,
+  "amp_over_x0": 1.884,
+  "h2_dB": -20.3,
+  "h3_dB": -17.8,
+  "k": 4.0,
+  "f": 1776.0,
+  "oversampling": 8,
+  "p0": 100
+ },
+ {
+  "state": "sounds",
+  "cents": -22.91,
+  "amp_over_x0": 4.636,
+  "h2_dB": -8.7,
+  "h3_dB": -9.5,
+  "k": 4.0,
+  "f": 1776.0,
+  "oversampling": 8,
+  "p0": 400
+ },
+ {
+  "state": "sounds",
+  "cents": -23.13,
+  "amp_over_x0": 7.209,
+  "h2_dB": 0.2,
+  "h3_dB": -6.2,
+  "k": 4.0,
+  "f": 1776.0,
+  "oversampling": 8,
+  "p0": 1500
+ },
+ {
+  "state": "silent",
+  "amp_over_x0": 0.0002,
+  "k": 8.0,
+  "f": 3552.0,
+  "oversampling": 4,
+  "p0": 50
+ },
+ {
+  "state": "sounds",
+  "cents": -18.12,
+  "amp_over_x0": 1.918,
+  "h2_dB": -20.5,
+  "h3_dB": -17.2,
+  "k": 8.0,
+  "f": 3552.0,
+  "oversampling": 4,
+  "p0": 100
+ },
+ {
+  "state": "diverged",
+  "k": 8.0,
+  "f": 3552.0,
+  "oversampling": 4,
+  "p0": 400
+ },
+ {
+  "state": "diverged",
+  "k": 8.0,
+  "f": 3552.0,
+  "oversampling": 4,
+  "p0": 1500
+ },
+ {
+  "state": "silent",
+  "amp_over_x0": 0.0001,
+  "k": 8.0,
+  "f": 3552.0,
+  "oversampling": 8,
+  "p0": 50
+ },
+ {
+  "state": "sounds",
+  "cents": -19.36,
+  "amp_over_x0": 1.896,
+  "h2_dB": -20.4,
+  "h3_dB": -17.6,
+  "k": 8.0,
+  "f": 3552.0,
+  "oversampling": 8,
+  "p0": 100
+ },
+ {
+  "state": "sounds",
+  "cents": -22.51,
+  "amp_over_x0": 4.645,
+  "h2_dB": -8.5,
+  "h3_dB": -9.3,
+  "k": 8.0,
+  "f": 3552.0,
+  "oversampling": 8,
+  "p0": 400
+ },
+ {
+  "state": "sounds",
+  "cents": -22.7,
+  "amp_over_x0": 7.216,
+  "h2_dB": 0.4,
+  "h3_dB": -6.0,
+  "k": 8.0,
+  "f": 3552.0,
+  "oversampling": 8,
+  "p0": 1500
+ },
+ {
+  "state": "silent",
+  "amp_over_x0": 0.0004,
+  "k": 12.0,
+  "f": 5328.0,
+  "oversampling": 4,
+  "p0": 50
+ },
+ {
+  "state": "sounds",
+  "cents": -16.27,
+  "amp_over_x0": 1.945,
+  "h2_dB": -20.7,
+  "h3_dB": -16.5,
+  "k": 12.0,
+  "f": 5328.0,
+  "oversampling": 4,
+  "p0": 100
+ },
+ {
+  "state": "diverged",
+  "k": 12.0,
+  "f": 5328.0,
+  "oversampling": 4,
+  "p0": 400
+ },
+ {
+  "state": "diverged",
+  "k": 12.0,
+  "f": 5328.0,
+  "oversampling": 4,
+  "p0": 1500
+ },
+ {
+  "state": "silent",
+  "amp_over_x0": 0.0002,
+  "k": 12.0,
+  "f": 5328.0,
+  "oversampling": 8,
+  "p0": 50
+ },
+ {
+  "state": "sounds",
+  "cents": -18.8,
+  "amp_over_x0": 1.907,
+  "h2_dB": -20.5,
+  "h3_dB": -17.5,
+  "k": 12.0,
+  "f": 5328.0,
+  "oversampling": 8,
+  "p0": 100
+ },
+ {
+  "state": "sounds",
+  "cents": -22.1,
+  "amp_over_x0": 4.667,
+  "h2_dB": -8.5,
+  "h3_dB": -9.3,
+  "k": 12.0,
+  "f": 5328.0,
+  "oversampling": 8,
+  "p0": 400
+ },
+ {
+  "state": "diverged",
+  "k": 12.0,
+  "f": 5328.0,
+  "oversampling": 8,
+  "p0": 1500
+ }
+]

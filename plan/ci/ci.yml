@@ -1,0 +1,214 @@
+# Copy to .github/workflows/ci.yml in step S-003. Pins: plan/ENVIRONMENT.md. No step may swallow a failure (HANDOFF.md, Rule 14).
+name: ci
+on:
+  push:
+    branches: [main, "impl-**", "pr-**"]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+defaults:
+  run:
+    shell: bash
+env:
+  PLUGINVAL_VERSION: v1.0.4
+jobs:
+  freeze:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Frozen manifest
+        run: sha256sum -c tests/FROZEN_MANIFEST.sha256
+      - name: Schema of lessons and knowledge items
+        run: python3 scripts/check_knowledge_schema.py
+
+  core:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2025, macos-15, macos-15-intel]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+      - name: Tool versions (run record)
+        run: |
+          cmake --version
+          python3 --version
+          echo "runner image: ${ImageOS:-unknown} ${ImageVersion:-unknown}"
+      - name: Python packages
+        run: python3 -m pip install -r tests/requirements.txt
+      - name: Configure (core only)
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DFOLK_BUILD_PLUGINS=OFF "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=${{ github.workspace }}/bin" "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE=${{ github.workspace }}/bin"
+      - name: Build
+        run: cmake --build build --config Release --parallel 4
+      - name: Binaries exist
+        run: |
+          ls -l bin
+          test -s "bin/folk-render${{ runner.os == 'Windows' && '.exe' || '' }}"
+          test -s "bin/folk-tests${{ runner.os == 'Windows' && '.exe' || '' }}"
+          test -s "bin/folk-perf${{ runner.os == 'Windows' && '.exe' || '' }}"
+      - name: C++ unit and engine tests
+        run: bin/folk-tests
+      - name: Performance (gates on ubuntu-24.04 only, D-086)
+        run: bin/folk-perf
+        env:
+          FOLK_PERF_GATE: ${{ matrix.os == 'ubuntu-24.04' && '1' || '' }}
+      - name: Audio behaviour tests
+        working-directory: tests
+        run: python3 -m pytest -m "not reference" --junitxml=../pytest-core.xml
+        env:
+          FOLK_RENDER: ${{ github.workspace }}/bin/folk-render${{ runner.os == 'Windows' && '.exe' || '' }}
+      - name: Test report exists
+        run: test -s pytest-core.xml && grep -q "<testsuite" pytest-core.xml
+
+  plugins:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2025, macos-15, macos-15-intel]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Linux packages
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libasound2-dev libfreetype-dev libfontconfig1-dev libx11-dev libxcomposite-dev libxcursor-dev libxext-dev libxinerama-dev libxrandr-dev libxrender-dev libglu1-mesa-dev mesa-common-dev xvfb
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release ${{ runner.os == 'macOS' && '"-DCMAKE_OSX_ARCHITECTURES=arm64;x86_64" -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0' || '' }}
+      - name: Build
+        run: cmake --build build --config Release --parallel 4
+      - name: Host tests
+        run: ${{ runner.os == 'Linux' && 'xvfb-run -a' || '' }} ctest --test-dir build -C Release --output-on-failure -E folk-perf
+      - name: Collect the five VST3 bundles
+        run: |
+          mkdir -p out
+          for p in "Folk Harmonica" "Folk Accordion" "Folk Melodion" "Folk Mandolin" "Folk Bouzouki"; do
+            src="$(find build/plugins -type d -name "$p.vst3" | head -n 1)"
+            test -n "$src"
+            cp -R "$src" out/
+            test -d "out/$p.vst3"
+          done
+          cp LICENSE out/LICENSE
+      - name: Universal binary check
+        if: runner.os == 'macOS'
+        run: |
+          for p in "Folk Harmonica" "Folk Accordion" "Folk Melodion" "Folk Mandolin" "Folk Bouzouki"; do
+            a="$(lipo -archs "out/$p.vst3/Contents/MacOS/$p")"
+            echo "$p: $a"
+            echo "$a" | grep -q arm64
+            echo "$a" | grep -q x86_64
+          done
+      - name: Download pluginval and check its hash
+        run: |
+          case "${{ runner.os }}" in
+            Linux)   f=pluginval_Linux.zip;   h=c01c49d8063965c4c2dea8324468336768f5c9139e0b1caebde14c2400b55352 ;;
+            macOS)   f=pluginval_macOS.zip;   h=3c4c533bda0c5059eea3ddaea752d757ee2025041f0f47e6bcb0e87f6082b29f ;;
+            Windows) f=pluginval_Windows.zip; h=c08e61ce3b96db41636f8ec7e76f4c7e2c13ebdac7fa1b5a1f52b4f32ec715ab ;;
+          esac
+          curl --fail --location --retry 3 --retry-delay 10 -o "$f" "https://github.com/Tracktion/pluginval/releases/download/${PLUGINVAL_VERSION}/$f"
+          python3 -c "import hashlib,sys; d=hashlib.sha256(open(sys.argv[1],'rb').read()).hexdigest(); print(d); sys.exit(0 if d==sys.argv[2] else 1)" "$f" "$h"
+          mkdir -p pv && cd pv && python3 -c "import zipfile,sys; zipfile.ZipFile(sys.argv[1]).extractall('.')" "../$f"
+          find . -type f | head -n 20
+      - name: pluginval, strictness 10, each plugin (T-300)
+        run: |
+          case "${{ runner.os }}" in
+            Linux)   pv="pv/pluginval" ;;
+            macOS)   pv="pv/pluginval.app/Contents/MacOS/pluginval" ;;
+            Windows) pv="pv/pluginval.exe" ;;
+          esac
+          chmod +x "$pv" || exit 1
+          mkdir -p pvlogs
+          for p in "Folk Harmonica" "Folk Accordion" "Folk Melodion" "Folk Mandolin" "Folk Bouzouki"; do
+            set -o pipefail
+            ${{ runner.os == 'Linux' && 'xvfb-run -a' || '' }} "$pv" --strictness-level 10 --timeout-ms 300000 --verbose "$PWD/out/$p.vst3" 2>&1 | tee "pvlogs/$p.log"
+            python3 tests/ci/check_pluginval_log.py "pvlogs/$p.log" "$p"
+          done
+      - name: Upload plugin bundles (short retention, D-007)
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: vst3-${{ matrix.os }}
+          path: out
+          retention-days: 3
+          if-no-files-found: error
+      - name: Upload pluginval logs
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: pluginval-logs-${{ matrix.os }}
+          path: pvlogs
+          retention-days: 14
+          if-no-files-found: error
+
+  reference:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+      - run: python3 -m pip install -r tests/requirements.txt
+      - name: TinySOL cache
+        id: cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: tinysol
+          key: tinysol-6.0-36030a7fe389da86c3419e5ee48e3b7f-accordion
+      - name: Download TinySOL 6.0 (CC BY 4.0) and extract the accordion notes
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p tinysol && cd tinysol
+          curl --fail --location --retry 5 --retry-delay 20 -o TinySOL.tar.gz "https://zenodo.org/api/records/3685367/files/TinySOL.tar.gz/content"
+          echo "36030a7fe389da86c3419e5ee48e3b7f  TinySOL.tar.gz" | md5sum -c -
+          curl --fail --location --retry 5 --retry-delay 20 -o TinySOL_metadata.csv "https://zenodo.org/api/records/3685367/files/TinySOL_metadata.csv/content"
+          echo "a86c9bb115f69e61f2f25872e397fc4a  TinySOL_metadata.csv" | md5sum -c -
+          tar xzf TinySOL.tar.gz --wildcards '*Accordion*'
+          rm TinySOL.tar.gz
+      - name: Reference notes exist
+        run: test "$(find tinysol/Keyboards/Accordion -name '*.wav' | wc -l)" -eq 689
+      - name: Build the render tool
+        run: |
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DFOLK_BUILD_PLUGINS=OFF -DFOLK_BUILD_TESTS=OFF
+          cmake --build build --parallel 4
+          test -s build/folk-render
+      - name: Reference comparison (T-200, T-201)
+        working-directory: tests
+        run: python3 -m pytest -m reference -s --junitxml=../pytest-reference.xml
+        env:
+          FOLK_RENDER: ${{ github.workspace }}/build/folk-render
+          FOLK_TINYSOL: ${{ github.workspace }}/tinysol
+          FOLK_REF_ROOT: ${{ github.workspace }}/refs-redistributable
+      - run: test -s pytest-reference.xml && grep -q "<testsuite" pytest-reference.xml
+
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+      - name: Vulnerability scan of the Python test dependencies (T-310)
+        run: |
+          python3 -m pip install pip-audit==2.10.0
+          python3 -m pip_audit --strict -r tests/requirements.txt
+
+  all-green:
+    if: always()
+    needs: [freeze, core, plugins, reference, audit]
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Every job succeeded
+        run: |
+          echo '${{ toJSON(needs) }}'
+          test "${{ needs.freeze.result }}" = success
+          test "${{ needs.core.result }}" = success
+          test "${{ needs.plugins.result }}" = success
+          test "${{ needs.reference.result }}" = success
+          test "${{ needs.audit.result }}" = success

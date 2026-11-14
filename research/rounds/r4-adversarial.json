@@ -1,0 +1,264 @@
+{
+ "reviewed": [
+  {
+   "id": "C-053",
+   "verdict": "weakened",
+   "attack": "Re-ran the S03c equations in my own copy (adv4/scaled_reed.py; same equations, wider useful-section table) at 4 x 48 kHz. (1) Reference A4 reed: reproduced the spike (100 Pa: 438.88 Hz, -20.1 cents; 1500 Pa: 438.04 Hz, -23.4 cents). (2) Scaled the reed as a steel cantilever (f ~ e/L^2, K ~ W e^3/L^3, M ~ W e L, rest offset x0 ~ L) to 3520 Hz (L x0.45 = 5.83 mm, e x1.61 = 177 um, W x0.85, K = 1849 N/m, x0 = 238 um) and to 111 Hz (L x2 = 25.9 mm, e unchanged, W x1.4, K = 8.38 N/m, x0 = 1056 um), each with the cell unchanged and with the cell scaled (V1 /4 and inlet x0.4 for the high reed; V1 x4 or x16, inlet x2.8, and L2 x4 for the low reed), at 50, 100, 400, 1500 and 3000 Pa with a 20 ms ramp. (3) For the high reed also varied x0 (238, 119, 59, 40, 20 um), hmin (50, 15, 5 um), Q (95, 30), V1 (/1 to /64) and L2 (/1, /16, /64), and tried a 'light reed' (A4 geometry and stiffness, mass reduced to give 3520 Hz, which is what the S05 benchmark assumes). (4) Re-ran the original 3000 Pa case and read the final reed position; repeated it with a 0.3 s ramp.",
+   "finding": "(a) High reed, 3520 Hz: with cantilever scaling the reed never oscillates at any pressure from 50 to 3000 Pa, with or without the cell scaled, for any x0, hmin, Q, V1 or L2 tried; it only deflects statically by 1 to 7 um (static deflection p*Sr/K is 1.4 % of x0 at 1500 Pa, against 63 % for the A4 reed). With small gaps or a short inlet pipe (x0 <= 40 um with hmin 15 um; L2/16; L2/64) the explicit scheme BLOWS UP at 4 x 48 kHz (x -> 4 m in 0.095 s at 3000 Pa) but stays bounded at 8 x and 16 x 48 kHz, so the 4 x stability shown at 444 Hz does not transfer: the stiff algebraic jet term makes the explicit step parameter-dependent. The 'light reed' does oscillate at 1000 and 3000 Pa, but at 2522 and 2392 Hz, i.e. -577 and -669 cents below its natural frequency, not 20 to 25 cents. The S05 benchmark's own reeds (A4 geometry, only w0 changed, 400 Pa) are static from 2489 Hz up (reeds 54 to 63 of 64; 2349 Hz still sounds). (b) Low reed, 111 Hz: oscillates already at 50 Pa (no silent region at 50 Pa), stable (no blow-up), but sounds 53 to 99 cents flat (cell V1 x4) or 58 to 78 cents flat (cell unchanged), the pitch falls by 25 to 45 cents between 50 and 400 Pa (real accordion ff-pp: median -1.7 cents, C-055), and the reed is held shut (choked) at 1500 Pa, i.e. inside the input file's playing range; with the cell unchanged it re-starts at 3000 Pa in a different regime at 146 Hz (+479 cents). Tip amplitudes are 2.6 to 5 mm on a 26 mm tongue. With V1 x4 and L2 x4 the offset is -136 to -413 cents. The volume condition of C-004 also fails to predict: the unchanged cell (ratio 0.16) still oscillates at 50 and 100 Pa. (c) At 3000 Pa within 20 ms the A4 reed is NOT 'pushed through the plate': it rests at -137 um, inside the 1010 um slot (closed, choked), at both 4 x and 8 x 44.1 kHz. With a 0.3 s ramp to 3000 Pa the reed oscillates with 5.2 mm amplitude, so silence at 3000 Pa is attack-dependent, as round 3 found for the fixed-flow model (C-002); the claim does not carry that caveat. (d) At 1500 Pa the tip reaches +4.14 mm, beyond the spike's +-4 mm useful-section table, so the table is clamped for part of each cycle (pitch effect under 0.05 Hz; the 0.3 s ramp case reaches -5.27 mm, well outside). Tip amplitudes of 3 to 4 mm on a 13 mm tongue are far outside a one-mode linear beam. (e) What stands: for the A4 reed, the pitch figures, the silent 50 Pa case and the 4 x versus 8 x agreement are reproduced. Scaling choices are my own assumptions (no reed-dimension source was read); they are physically ordinary, and the failure at 3520 Hz persisted over every variation tried.",
+   "suggested_confidence": "verified for the A4 reed as reworded; the generalisation to the playing range is refuted by the scaled runs and must not be assumed",
+   "suggested_rewording": "For the A4 reed of C-001 (444 Hz), driven from a pressure reservoir through a 30 mm2 inlet, the model is silent at 50 Pa and sounds from 100 to 1500 Pa, 20 to 25 cents below its natural frequency (second flow harmonic -20 dB to +1 dB); a 3000 Pa step within 20 ms leaves it choked shut in the slot (x = -137 um), while a 0.3 s ramp to 3000 Pa lets it sound; 4 x and 8 x 44.1 kHz agree within 0.05 Hz. The result does not transfer to other pitches with the same cell and reed proportions: a cantilever-scaled 3520 Hz reed does not oscillate up to 3000 Pa and the explicit scheme can diverge at 4 x 48 kHz for small gaps; a 111 Hz reed sounds 50 to 100 cents flat with a pressure-dependent pitch and chokes at 1500 Pa. Per-register reed and cell parameters, and the integration scheme, are open design work (spike needed before D-011, D-014, D-016 are relied on)."
+  },
+  {
+   "id": "C-054",
+   "verdict": "stands-with-caveat",
+   "attack": "Compiled reed_bench.cpp with g++ 13.3.0 at -O2, -O3, -O3 -march=native, -O3 -march=native -ffast-math, and in single precision (-O2 and -O3 -march=native); ran each 5 times at 4 x and 8 x; read the vectoriser report (-fopt-info-vec-optimized); added a diagnostic copy that records each reed's tip excursion in the last 0.2 s.",
+   "finding": "No work is elided (the checksum is printed and stable). The inner per-reed loop is not loop-vectorised at any setting (only setup loops and basic blocks are), so the figure is scalar cost, which is what a straightforward implementation gets. Measured ns per reed step, 5 runs each: -O2 double 9.6 to 11.8 (4 x) and 9.6 to 10.9 (8 x); -O3 9.6 to 12.7; -O3 -march=native 8.8 to 11.3; -ffast-math 6.6 to 10.6; float -O2 10.3 to 18.5, float -O3 -march=native 8.2 to 11.8. So the 10 to 14 ns figure is reproduced; precision and -O3 change it little; -ffast-math gains about a third. Caveats: (1) the claimed difference between 4 x (13.9 ns) and 8 x (9.6 ns) is run-to-run noise from single 0.3 to 0.5 s runs, not an effect of oversampling; (2) all 64 reeds share the A4 reed's geometry and only w0 changes; under a 400 Pa step the reeds from 2489 Hz upward (10 of 64) do not oscillate, so the benchmark state is not the instrument's; the code is branch-light, so cost is probably similar, but it is not demonstrated; (3) the step omits the decimation filter for oversampling, radiation and body filters, parameter smoothing, voice management and any plenum coupling (melodion), so 'real-time factor 5.9' is for reeds only; (4) the single-precision checksum differs from double (2245.8 vs 2286.3) only because the float accumulator loses precision; tip excursions agree to 0.1 um.",
+   "suggested_confidence": "verified (sandbox only)",
+   "suggested_rewording": "One step of the reed model costs about 9 to 14 ns per reed in scalar C++ (g++ 13, -O2 or -O3, double or single precision; -ffast-math about 7 ns), measured on the planning sandbox with 64 reeds of identical geometry, of which the 10 highest were static; at 4 x 48 kHz this is 0.23 to 0.34 s of one core per second of audio for the reeds alone, excluding decimation and output filters."
+  },
+  {
+   "id": "C-055",
+   "verdict": "weakened",
+   "attack": "Wrote my own analysis (adv4/c055/indep.py: Blackman-Harris window, 16 x zero padding, harmonic levels as band power within +-0.3 f0, pitch as power-weighted mean of harmonics 1 to 6, segment 35 to 65 % of the file) and ran it on a random sample (seed 20261114) of 36 of the 67 pitches that have both pp and ff (330 notes, all dynamics). Then ran the metrics-based estimator on the same sample to separate sample from estimator; measured the prominence of any peak at f1/2 above its local floor; bootstrapped the full-set ff-pp pitch median; checked harmonic_profile_db for notes MIDI 28 to 52 against a +-10 cent error in f0, the nominal f0, and a second, disjoint 1 s segment; looked at mains hum.",
+   "finding": "Agree: median pitch +6.4/+6.3/+5.9 cents (pp/mf/ff; claim 5 to 7); ff-pp level q10/q50/q90 12.7/20.4/23.5 dB (claim 12.4/20.7/24.8); odd harmonics stronger than even in 89 % (pp) and 93 % (mf) of notes, and also 93 % at ff, which the claim leaves out. Disagree or fragile: (1) 'No component an octave below the note is present (below -55 dB)' is contradicted by the spike's own output: the 90th percentile of the sub-octave level is -35.4 dB (pp), -42.4 dB (mf) and -54.9 dB (ff), so -55 dB holds only for the median. My peak-prominence test shows that most notes have no discernible f/2 peak (median prominence 6 dB, the level expected from noise), but 5 pp, 19 mf and 14 ff notes of 330 have a distinct peak 10 to 30 dB above the local floor at f/2 (for example MIDI 71 mf, about -41 dB re h1). (2) 'Pitch at ff is 1.7 cents lower than at pp in the median': on the full set the median is -1.66 but its bootstrap 95 % interval is -3.4 to 0.0 cents and only 61 % of pitches are flatter; on my 36-pitch sample both my estimator (-0.15) and the metrics-based one (-0.21) give about zero. The direction is not established. (3) harmonic_profile_db for low notes: insensitive to a +-10 cent f0 error and to using the nominal f0 (difference 0.0 dB), and two disjoint 1 s segments differ by 0.7 dB median, 1.9 dB 90th percentile, 7.4 dB worst, so it is repeatable; but below about 100 Hz the +-35 cent search window (+-0.7 to +-2 Hz) is narrower than the Hann main lobe of a 1 s segment (+-2 Hz), so the 'peak' is often a window edge, and components within 2 Hz are not resolved: MIDI 31 (49.2 Hz) cannot be separated from 50 Hz mains hum. The strongest of harmonics 1 to 30 for notes 28 to 40 is harmonic 3 to 15, so a 10-harmonic profile normalised to its own maximum describes only the bottom of the spectrum there. Rise times were not recomputed.",
+   "suggested_confidence": "verified for pitch, level and odd/even figures; the sub-octave sentence and the ff-pp pitch sentence need rewording",
+   "suggested_rewording": "... the median level an octave below the note is -64 dB (pp), -69 dB (mf), -72 dB (ff) re the fundamental, but 10 % of notes exceed -35 dB (pp) / -42 dB (mf), and about one note in ten has a distinct sub-octave peak; odd harmonics are stronger than even ones at all three dynamics; the median pitch change from pp to ff is -1.7 cents (95 % interval -3.4 to 0.0; 61 % of pitches flatter), i.e. not distinguishable from zero; ... For notes below about 100 Hz the harmonic profile uses a search window narrower than the analysis window's resolution."
+  },
+  {
+   "id": "C-056",
+   "verdict": "stands-with-caveat",
+   "attack": "Read all of tests/py/*.py and metrics.py against the instrument physics and the S07 measurements; re-ran the oracle (fake_render.py via the scratch wrapper) against the current tests; compared file times of tests and oracle logs.",
+   "finding": "The oracle logs (14:06) post-date the last edit of test_strings.py (14:05) and show the claimed result (only T-163 fails, harmonica and melodion, from the PEAK chunk). My re-run of the oracle against the current tests (python3 -m pytest -m 'not reference', basetemp in the scratchpad) passed every instrument test, T-163 included this time (intermittent, as stated); the only failures were the 7 test_evidence_guard.py cases, because tools/evidence_guard.py is a stub ('not implemented'), which is outside the claim. The claim is about satisfiability by an idealised instrument; it is not evidence that the tests discriminate, nor that a correct physical instrument can pass them. Several assertions are ones a physically correct or real instrument could fail, or a wrong one pass (see test_defects): T-104 (centroid rises with breath at a single note: true for only 85 % of real accordion pitches; harmonic count counts noise peaks), T-121 (beat rate read from the broadband envelope, which beats at multiples when an upper harmonic dominates), T-144 (single-string single decay, which a two-polarisation string violates), T-148 (6 dB onset rise on re-plucking a ringing string), the modulation_frequency metric (unguarded parabolic interpolation, gives out-of-band and negative frequencies: S07's mod_hz 10th percentile is -0.204 Hz), and tests that depend on defaults the plan does not fix (accordion register). A new file tests/py/test_pluginval_log_check.py (18:50) post-dates S08 and is not covered by it.",
+   "suggested_confidence": "verified (as a satisfiability check only)",
+   "suggested_rewording": "Every frozen Python test of instrument behaviour present at 14:05 can be passed by one consistent idealised additive instrument, except the byte-identity test, which that stand-in fails only because libsndfile time-stamps float WAV files. This shows the tests are mutually consistent; it does not show that a physically correct instrument passes them or that a wrong one fails."
+  },
+  {
+   "id": "C-057",
+   "verdict": "stands-with-caveat",
+   "attack": "Read build.log line by line, the repository CMake files and tests/juce/host_test.cpp; inspected the build tree and JUCE checkout in the scratchpad; read juce_AudioProcessor.h at the pinned commit; ran one host-test program.",
+   "finding": "The log is a 41-line excerpt: configure messages, time stamps 1794664297 and 1794665107 (810 s, which covers the build only), steps [1/2], [2/2] and [286/298] to [298/298], and EXIT=0. It shows VST3 links for Melodion, Mandolin and Bouzouki only; it does not show the Harmonica and Accordion links, any Standalone link, any HostTest program, the JUCE version or the core count. The build tree does contain 5 VST3 .so files, 5 Standalone executables and 5 HostTest executables, and the JUCE checkout's HEAD is dabd5ad13cd869cba41046947fffc8e5ce5cd662, so the claim is true, but the cited log alone does not support it. juce_AudioProcessor.h line 1026-1027 does make createEditor() private; but createEditorIfNeeded() (line 1062-1063) is marked [[deprecated (\"Prefer createEditorAndMakeActive()\")]], so 'a host calls createEditorIfNeeded()' names the deprecated route; host_test.cpp uses it and would fail under -Werror. The host tests build but all 4 test cases fail at run time ('not implemented: createPluginFilter'), as expected for stubs; the claim is about building only.",
+   "suggested_confidence": "verified (from the build tree; the log is an excerpt)",
+   "suggested_rewording": "... in this JUCE version AudioProcessor::createEditor() is private; a host calls createEditorAndMakeActive() (createEditorIfNeeded() still exists but is deprecated) ... Evidence: build tree artefacts (5 VST3, 5 Standalone, 5 HostTest) and an excerpted log; keep the full log."
+  }
+ ],
+ "corrections_check": [
+  {
+   "id": "C-001",
+   "applied": "partly",
+   "comment": "Rewording (semi-implicit Euler, 44.1 to 705.6 kHz, RK4 agrees) and the borrowed (+,-) parameters are in claim and note. Dropped: r3 caveat (c) that the rest offset sign convention (+528 um upstream versus the paper's -dh - er/2 - es for (-,+)) was not reconciled, and caveat (b) that the paper integrates with backward Euler plus Newton-Raphson. The claim still says 'the published reed parameters' including 'rest offset 528 um' as if published in that form."
+  },
+  {
+   "id": "C-002",
+   "applied": "yes",
+   "comment": "Hysteresis, start-dependence and the gradual-rise-to-6 m/s case are in. I checked that the fixed-flow reed at 4 m/s does end beyond the slot (x = -1163 um against -1010 um), so 'through the plate' is right here (unlike C-053)."
+  },
+  {
+   "id": "C-003",
+   "applied": "yes",
+   "comment": "Total flow (jet plus pumped) and 'source flow' wording adopted; radiation note added."
+  },
+  {
+   "id": "C-004",
+   "applied": "yes",
+   "comment": "Necessary condition and onset time adopted. The register adds 'a (+,-) reed needs the opposite inequality', which r3 did not check. My low-reed runs (adv4) show a 111 Hz reed oscillating with ratio 0.16, so the condition, as computed with w = reed natural frequency, is not necessary in this model at other pitches; this needs a look."
+  },
+  {
+   "id": "C-013",
+   "applied": "yes",
+   "comment": "Single-source, Tier 1 limited to opening/closing reed pitch, 'a little less than a semitone' adopted."
+  },
+  {
+   "id": "C-028",
+   "applied": "yes",
+   "comment": "Resistive coupling, one polarisation, 3.5 cent locking boundary and reactive repulsion in the note. r3 caveat (d) (beat test nearly tautological) dropped; minor. The one-polarisation caveat is not carried into test T-144, which asserts single decay for one string."
+  },
+  {
+   "id": "C-030",
+   "applied": "partly",
+   "comment": "Plectrum low-pass half removed and the false 'Tier 1 read' corrected. r3 suggested confidence 'inferred'; the register keeps 'verified' on the strength of the numerical check in s09. Defensible for a mathematical identity, but it is a softening of r3's suggestion and should be stated as a deliberate choice."
+  },
+  {
+   "id": "C-031",
+   "applied": "yes",
+   "comment": "Diagonalisable condition and near-defective behaviour adopted; consequence D-062 noted."
+  },
+  {
+   "id": "C-040",
+   "applied": "yes",
+   "comment": "Split done: C-040 keeps tuning and EJ81 (corroborated); scale length, back and Lunny history are in a separate claim."
+  },
+  {
+   "id": "C-045",
+   "applied": "partly",
+   "comment": "Wrong first source (actions/checkout) replaced by Tracktion/pluginval; hashes marked as from knowledge items. Dropped: r3's caution that v1.0.4 is about two years old and main-branch fixes are not in it."
+  },
+  {
+   "id": "C-051",
+   "applied": "partly",
+   "comment": "Bouzouki Commons notes and harmonica bend clips adopted; single-source. Dropped: r3's archive.org candidate 'G-Town Church Sampling Project' said to contain mandolin samples under CC Sampling Plus 1.0 (contents unchecked); the claim now says flatly that nothing redistributable was found for mandolin, which overstates what was checked."
+  }
+ ],
+ "test_defects": [
+  {
+   "file": "tests/py/metrics.py",
+   "test": "modulation_frequency (used by test_reeds.py::test_T107_vibrato and test_accordion.py::test_T121_*)",
+   "problem": "Parabolic interpolation is applied even when the strongest bin lies at the band edge (not a local maximum), so the returned frequency can lie outside [f_lo, f_hi] or be negative; S07's own output shows mod_hz 10th percentile -0.204 Hz with f_lo = 0.3 Hz. Not caught by test_metrics_selfcheck.",
+   "suggested_fix": "Interpolate only if spec[k] >= both neighbours and k is interior to the band; otherwise return the bin frequency; clip d to [-0.5, 0.5]; add a self-check with a monotonic envelope."
+  },
+  {
+   "file": "tests/py/test_accordion.py",
+   "test": "test_T121_tremolo_beat_rate_constant_cents, test_T121_tremolo_beat_rate_constant_hz",
+   "problem": "The beat rate is read from the broadband level envelope. Harmonic n of a detuned pair beats at n times the fundamental beat (constant-cents detuning), so when an upper harmonic carries most of the power (common in real accordion notes: h3 is near or above h1 in many TinySOL notes) the strongest envelope component is at 2x or 3x the expected rate and a correct instrument fails.",
+   "suggested_fix": "Measure the envelope of the fundamental band (band_envelope_db around f1) or accept integer multiples, as the three-reed test already does."
+  },
+  {
+   "file": "tests/py/test_reeds.py",
+   "test": "test_T104_spectrum_is_rich_and_not_darker_when_louder",
+   "problem": "(a) Requires the centroid at velocity 1.0 to be at least that at 0.3 for one note; real accordion ff is brighter than pp in only 85 % of pitches (C-055), so a faithful instrument can fail at A4. (b) harmonic_count_above counts the maximum of any 35-cent window as a partial, so broadband noise within 60 dB of the peak counts as harmonics: a sine plus noise passes 'rich spectrum'.",
+   "suggested_fix": "(a) Allow a small tolerance (c_hi >= 0.95 c_lo) or require it on a majority of three notes; (b) count a partial only if its peak stands at least 10 dB above the median level of the surrounding inter-harmonic band."
+  },
+  {
+   "file": "tests/py/test_strings.py",
+   "test": "test_T144_double_decay_of_a_pair_and_single_decay_of_one_string",
+   "problem": "Asserts that one string alone decays at one rate (early/late ratio < 1.5). A real string, or a model with both transverse polarisations, shows double decay on a single string (C-028 caveat; Weinreich), so a more faithful model fails.",
+   "suggested_fix": "Make the single-string clause conditional on a one-polarisation model or drop it; keep the pair clause."
+  },
+  {
+   "file": "tests/py/test_strings.py",
+   "test": "test_T148_tremolo",
+   "problem": "count_onsets needs a 6 dB rise within 8 ms. Re-plucking a still-ringing string at constant velocity 83 ms after the last stroke restores about the same amplitude, so a physical pick model shows only the dip at pick contact and may never rise 6 dB; the additive oracle passes because it restarts each stroke from silence.",
+   "suggested_fix": "Detect strokes by spectral flux or by the envelope of a high band (above 3 kHz, where the pick transient dominates), and check the detector on a recorded mandolin tremolo before freezing."
+  },
+  {
+   "file": "tests/py/test_reeds.py and tests/py/test_common.py",
+   "test": "test_T100..T108 and T160..T163 for the accordion",
+   "problem": "They render the accordion with default settings; the plan (D-030, D-031) fixes musette_cents = 15 by default but does not fix the default register; only the oracle sets register 1 (Clarinet). With a default register that includes M+ (Violin, Accordion, Master), two ranks 15 cents apart merge into one peak about 7 cents sharp and T-100 fails for a correct instrument.",
+   "suggested_fix": "Set register 1 and musette_cents 0 explicitly in these tests, or fix the default register in D-030."
+  },
+  {
+   "file": "tests/py/test_reeds.py",
+   "test": "test_T102, test_T103, test_T105 (single note A[ins])",
+   "problem": "Breath-dependence of level, pitch and attack is tested only at one mid-range note. My C-053 runs show the reed model behaving very differently at 111 Hz (50 to 100 cents flat, 25 to 45 cents pitch change with pressure, choking at 1500 Pa) and not oscillating at 3520 Hz; an instrument wrong at the range ends passes all three.",
+   "suggested_fix": "Parametrise over a low, middle and high note per instrument (for example accordion 41, 69, 96; harmonica 60, 76, 93)."
+  },
+  {
+   "file": "tests/py/test_accordion.py",
+   "test": "test_T120_single_rank_registers_sound_in_their_octave",
+   "problem": "Requires the sub-octave component at least 50 dB below the note. In TinySOL about 10 % of real accordion notes have a sub-octave level above -35 dB (pp) or -42 dB (mf), some with a distinct peak, so a recording-faithful instrument could fail; harmless for a synthetic model, but the threshold is not grounded in the reference data it cites.",
+   "suggested_fix": "Use -35 dB (the real 90th percentile) or state that -50 dB is a design value, not a reference figure."
+  }
+ ],
+ "new_load_bearing_claims": [
+  {
+   "claim": "The pressure-driven minimal reed model with the A4 reed's proportions and cell does not transfer to the ends of the range: a cantilever-scaled 3520 Hz reed does not oscillate between 50 and 3000 Pa (all x0, hmin, Q, V1, L2 variations tried), and when made light enough to oscillate it sounds about 580 to 670 cents below its natural frequency; a 111 Hz reed sounds 50 to 100 cents flat, its pitch falls 25 to 45 cents between 50 and 400 Pa, and it chokes at 1500 Pa.",
+   "evidence": "adv4/scaled_reed.py, high_sweep.py, scaled_out_*.json, hs*.txt in the scratchpad (round 4)"
+  },
+  {
+   "claim": "The explicit (semi-implicit Euler) step of the pressure-driven model is not unconditionally stable at 4 x 48 kHz: for small reed gaps (x0 <= 40 um, hmin 15 um) or short inlet pipes (L2 / 16) it diverges, while 8 x and 16 x stay bounded; the stiff algebraic jet term sets the limit.",
+   "evidence": "adv4/blowup_check.txt and hs2_*.txt, hs3_*.txt (round 4)"
+  },
+  {
+   "claim": "In JUCE 8.0.17-security, AudioProcessor::createEditorIfNeeded() is deprecated in favour of createEditorAndMakeActive().",
+   "evidence": "modules/juce_audio_processors_headless/processors/juce_AudioProcessor.h lines 1055-1063 at commit dabd5ad13cd869cba41046947fffc8e5ce5cd662 (local checkout)"
+  }
+ ],
+ "downgrades": [
+  "C-053",
+  "C-055"
+ ],
+ "unresolved_contradictions": [
+  "C-053 says the reed 'is pushed through the plate' at 3000 Pa; the spike's own code leaves it at x = -137 um, inside the slot (closed), and a 0.3 s ramp to 3000 Pa makes it sound, which contradicts the unconditional 'without starting'.",
+  "C-055 says no sub-octave component is present (below -55 dB); its own output gives 90th percentiles of -35.4 dB (pp) and -42.4 dB (mf).",
+  "C-055's 'pitch at ff is 1.7 cents lower than at pp' has a bootstrap 95 % interval of -3.4 to 0.0 cents and a 36-pitch random subsample gives about 0 cents with two estimators; T-103's docstring relies on it.",
+  "C-004 (necessary condition V1*L2*w^2/(c0^2*S2) > 1) versus my 111 Hz run, which oscillates with ratio 0.16 at 50 and 100 Pa.",
+  "T-100 (every reed within 5 cents, 'the engine must compensate' 13 to 25 cents) presumes a small, stable offset; at 111 Hz and 3520 Hz the model's offset is 50 to 670 cents and pressure-dependent, so D-016's compensation scheme is untested outside A4.",
+  "C-054's benchmark has 10 of its 64 reeds silent (static), so the measured state is not the instrument's playing state."
+ ],
+ "sources_checked": [
+  {
+   "url": "research/spikes/s03-reed-minimal-model/pressure_driven.py",
+   "doi": "",
+   "title": "planning spike S03c",
+   "owner_or_authors": "this project",
+   "version_or_date": "file as of 2026-11-14",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "re-run and extended (scaled reeds, ramp, final position)",
+   "licence_or_terms": "project file",
+   "content_summary": "pressure-reservoir driven minimal reed; 7 pressures at 4 x and 8 x 44.1 kHz",
+   "access_notes": "local"
+  },
+  {
+   "url": "research/spikes/s05-reed-cost/reed_bench.cpp",
+   "doi": "",
+   "title": "planning spike S05",
+   "owner_or_authors": "this project",
+   "version_or_date": "file as of 2026-11-14",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "recompiled at six settings, 5 runs each; diagnostic copy",
+   "licence_or_terms": "project file",
+   "content_summary": "64-reed scalar benchmark",
+   "access_notes": "local, g++ 13.3.0"
+  },
+  {
+   "url": "https://zenodo.org/record/3685367",
+   "doi": "10.5281/zenodo.3685367",
+   "title": "TinySOL (local extracted copy and TinySOL_metadata.csv)",
+   "owner_or_authors": "Cella, Ghisi, Lostanlen et al. (IRCAM)",
+   "version_or_date": "6.0",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "independent recomputation of C-055 statistics on 330 notes",
+   "licence_or_terms": "CC BY 4.0 (per register claim C-021; not re-read)",
+   "content_summary": "accordion ordinario notes pp/mf/ff, 44.1 kHz mono",
+   "access_notes": "scratchpad copy extracted by an earlier round; not re-downloaded"
+  },
+  {
+   "url": "https://github.com/juce-framework/JUCE",
+   "doi": "",
+   "title": "JUCE modules/juce_audio_processors_headless/processors/juce_AudioProcessor.h",
+   "owner_or_authors": "Raw Material Software / JUCE",
+   "version_or_date": "commit dabd5ad13cd869cba41046947fffc8e5ce5cd662 (tag 8.0.17-security)",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "checked createEditor access and createEditorIfNeeded deprecation",
+   "licence_or_terms": "AGPLv3 / JUCE commercial (not re-read)",
+   "content_summary": "createEditor() private (l. 1026-1027); createEditorIfNeeded() deprecated, prefer createEditorAndMakeActive() (l. 1055-1063)",
+   "access_notes": "local checkout in scratchpad/deps/JUCE, HEAD file read directly (git not run)"
+  },
+  {
+   "url": "research/spikes/s10-plugin-build/build.log",
+   "doi": "",
+   "title": "planning spike S10 build log",
+   "owner_or_authors": "this project",
+   "version_or_date": "2026-11-14",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "checked against C-057 and the build tree",
+   "licence_or_terms": "project file",
+   "content_summary": "41-line excerpt, steps 286-298 of 298, EXIT=0, 810 s",
+   "access_notes": "local"
+  },
+  {
+   "url": "research/rounds/r3-adversarial.json",
+   "doi": "",
+   "title": "round 3 adversarial review",
+   "owner_or_authors": "this project",
+   "version_or_date": "2026-11-14",
+   "accessed": "2026-11-14",
+   "tier": 1,
+   "outcome": "used",
+   "reason": "corrections check",
+   "licence_or_terms": "project file",
+   "content_summary": "verdicts and rewordings for 26 load-bearing claims",
+   "access_notes": "local"
+  }
+ ],
+ "summary": "Round 4 attacked C-053 to C-057, checked 11 round-3 corrections and read every frozen Python test. C-053 weakened: reproduced for the A4 reed, but a cantilever-scaled 3520 Hz reed never oscillates (50 to 3000 Pa, many variants), a lightened one sounds 580 to 670 cents flat, the explicit step diverges at 4 x 48 kHz for small gaps, and a 111 Hz reed is 50 to 100 cents flat with 25 to 45 cents of pressure-dependent pitch and chokes at 1500 Pa; at 3000 Pa the A4 reed is choked in the slot, not through the plate, and sounds if the ramp is slow.\nC-054 stands with caveats: 9 to 12 ns per step reproduced; no elision; scalar (never loop-vectorised); -O3 and float change little, -ffast-math about -30 %; 10 of the 64 benchmark reeds are static; 4 x versus 8 x difference is noise.\nC-055 weakened: median pitch, ff-pp level and odd/even reproduced independently on 330 notes; no-sub-octave-below-55-dB statement contradicts its own 90th percentiles (-35/-42 dB); ff-pp pitch -1.7 cents has a 95 % interval of -3.4 to 0.0 and is about 0 on a subsample; harmonic_profile_db is repeatable at low notes but cannot resolve components within 2 Hz below about 100 Hz.\nC-056 stands as a satisfiability check (oracle re-run passes all instrument tests); 8 test defects listed.\nC-057 true per the build tree, but the cited log is a 41-line excerpt that does not show the Harmonica/Accordion, Standalone or HostTest links; createEditorIfNeeded() is deprecated in this JUCE.\nCorrections: 7 applied, 4 partly (C-001 sign-convention caveat dropped, C-030 kept verified instead of inferred, C-045 age caveat dropped, C-051 mandolin Sampling Plus candidate dropped).\nNew load-bearing findings: 3; downgrades: C-053, C-055; unresolved contradictions: 6."
+}

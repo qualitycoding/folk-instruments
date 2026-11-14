@@ -1,0 +1,6 @@
+editor created width 428 height 125
+editor destroyed
+no display exit=0
+editor created width 428 height 125
+editor destroyed
+xvfb exit=0

@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.22)
+project(SpikeEditor VERSION 0.1.0 LANGUAGES C CXX)
+set(CMAKE_CXX_STANDARD 20)
+add_compile_definitions(JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0)
+add_subdirectory(${JUCE_SOURCE_DIR} juce EXCLUDE_FROM_ALL)
+juce_add_console_app(EditorProbe PRODUCT_NAME "EditorProbe")
+target_sources(EditorProbe PRIVATE probe.cpp)
+target_link_libraries(EditorProbe PRIVATE juce::juce_audio_utils PUBLIC juce::juce_recommended_config_flags)

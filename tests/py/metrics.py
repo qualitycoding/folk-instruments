@@ -100,6 +100,12 @@ def band_envelope_db(x, sr, f_centre, half_width_cents=80.0, frame_s=0.01):
     return envelope_db(sosfiltfilt(sos, x), sr, frame_s)
 
 
+def bandpass(x, sr, f_centre, half_width_cents=80.0):
+    """The signal restricted to the band around one partial (zero-phase 4th-order Butterworth band-pass)."""
+    lo, hi = f_centre * 2 ** (-half_width_cents / 1200.0), f_centre * 2 ** (half_width_cents / 1200.0)
+    return sosfiltfilt(butter(4, [lo, min(hi, 0.49 * sr)], btype="bandpass", fs=sr, output="sos"), x)
+
+
 def decay_rate_db_per_s(t, level_db, t0, t1):
     """Least-squares slope of the level between t0 and t1 (negative for a decay)."""
     m = (t >= t0) & (t < t1)
@@ -134,7 +140,9 @@ def modulation_frequency(x, sr, f_lo=0.3, f_hi=30.0, frame_s=0.005):
     sel = (f >= f_lo) & (f <= f_hi)
     k = np.nonzero(sel)[0][0] + int(np.argmax(spec[sel]))
     a, b, c = spec[k - 1:k + 2]
-    d = 0.5 * (a - c) / (a - 2 * b + c) if (a - 2 * b + c) != 0 else 0.0
+    # Interpolate only at an interior local maximum; at the edge of the band report the edge bin itself.
+    d = 0.5 * (a - c) / (a - 2 * b + c) if (b >= a and b >= c and (a - 2 * b + c) != 0) else 0.0
+    d = float(np.clip(d, -0.5, 0.5))
     return float((k + d) * fs_env / nfft), float(b)
 
 

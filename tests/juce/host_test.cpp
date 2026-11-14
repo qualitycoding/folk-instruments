@@ -75,7 +75,7 @@ TEST_CASE("T-302 state round trip and malformed state", "[juce][security]") {
 TEST_CASE("T-302 an editor can be created and destroyed", "[juce]") {
     auto p = make();
     REQUIRE(p->hasEditor());
-    std::unique_ptr<juce::AudioProcessorEditor> ed(p->createEditorIfNeeded());   // createEditor() is private in JUCE 8.0.17
+    std::unique_ptr<juce::AudioProcessorEditor> ed(p->createEditorAndMakeActive());   // createEditor() is private in JUCE 8.0.17
     REQUIRE(ed != nullptr);
     CHECK(ed->getWidth() > 0);
     CHECK(ed->getHeight() > 0);

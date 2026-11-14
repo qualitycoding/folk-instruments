@@ -8,6 +8,9 @@ from conftest import hz, level_at, m, note, pitch_cents
 
 REEDS = ["harmonica", "accordion", "melodion"]
 A = {"harmonica": 72, "accordion": 69, "melodion": 69}   # a mid-range note each instrument plays by default
+RANGE = {"harmonica": [60, 72, 93], "accordion": [45, 69, 93], "melodion": [53, 69, 89]}   # low, middle and high notes
+ACROSS = [(i, n) for i in REEDS for n in RANGE[i]]
+BRIGHT = {"harmonica": [60, 67, 72, 81, 91], "accordion": [45, 57, 69, 81, 93], "melodion": [53, 62, 69, 77, 86]}
 PITCH_NOTES = {
     "harmonica": [60, 62, 64, 67, 71, 72, 74, 76, 77, 79, 81, 83, 84, 86, 88, 89, 91, 93, 96],   # every natural note of a C diatonic
     "accordion": [40, 52, 57, 60, 64, 69, 72, 76, 81, 88, 93, 100],
@@ -23,42 +26,47 @@ def test_T100_reed_pitch_within_5_cents(render, ins, midi):
     assert abs(pitch_cents(x, sr, midi)) <= 5.0
 
 
-@pytest.mark.parametrize("ins", REEDS)
-def test_T101_threshold(render, ins):
-    """T-101. Below the threshold pressure a reed is silent; at normal pressure it sounds (C-002)."""
-    quiet, sr = render(ins, note(A[ins], 0.02, 1.5))
-    loud, _ = render(ins, note(A[ins], 0.5, 1.5))
+@pytest.mark.parametrize("ins,midi", ACROSS)
+def test_T101_threshold(render, ins, midi):
+    """T-101. Starting from rest, a reed is silent below the threshold pressure and sounds at normal pressure, at the low,
+    middle and high end of each instrument (C-002, C-059)."""
+    quiet, sr = render(ins, note(midi, 0.02, 1.5))
+    loud, _ = render(ins, note(midi, 0.5, 1.5))
     assert m.rms_db(m.seg(quiet, sr, 0.5, 1.5)) < -70.0
     assert m.rms_db(m.seg(loud, sr, 0.5, 1.5)) > -40.0
 
 
-@pytest.mark.parametrize("ins", REEDS)
-def test_T102_level_rises_with_breath(render, ins):
+@pytest.mark.parametrize("ins,midi", ACROSS)
+def test_T102_level_rises_with_breath(render, ins, midi):
     """T-102. Level never falls as breath rises, and spans 10 to 40 dB between velocity 0.25 and 1.0
     (real accordion, ff minus pp: 12.4 to 24.8 dB between the 10th and 90th percentile)."""
-    lv = [m.rms_db(m.seg(render(ins, note(A[ins], v, 1.6))[0], 48000, 0.6, 1.6)) for v in (0.25, 0.4, 0.55, 0.7, 0.85, 1.0)]
+    lv = [m.rms_db(m.seg(render(ins, note(midi, v, 1.6))[0], 48000, 0.6, 1.6)) for v in (0.25, 0.4, 0.55, 0.7, 0.85, 1.0)]
     assert all(b >= a - 0.5 for a, b in zip(lv, lv[1:])), lv
     assert 10.0 <= lv[-1] - lv[0] <= 40.0, lv
 
 
-@pytest.mark.parametrize("ins", REEDS)
-def test_T103_pitch_falls_slightly_with_breath(render, ins):
-    """T-103. From velocity 0.3 to 1.0 the pitch moves by between -30 and +5 cents (model: about -1 to -5 cents;
-    real accordion ff minus pp: -8.6 to +2.2 cents between the 10th and 90th percentile)."""
-    lo = pitch_cents(*render(ins, note(A[ins], 0.3, 2.0)), A[ins])
-    hi = pitch_cents(*render(ins, note(A[ins], 1.0, 2.0)), A[ins])
+@pytest.mark.parametrize("ins,midi", ACROSS)
+def test_T103_pitch_moves_little_with_breath(render, ins, midi):
+    """T-103. From velocity 0.3 to 1.0 the pitch moves by between -30 and +5 cents (model: about -3 cents at every pitch,
+    spike S12; real accordion ff minus pp: -8.6 to +2.2 cents between the 10th and 90th percentile, median near zero)."""
+    lo = pitch_cents(*render(ins, note(midi, 0.3, 2.0)), midi)
+    hi = pitch_cents(*render(ins, note(midi, 1.0, 2.0)), midi)
     assert -30.0 <= hi - lo <= 5.0
 
 
 @pytest.mark.parametrize("ins", REEDS)
-def test_T104_spectrum_is_rich_and_not_darker_when_louder(render, ins):
-    """T-104. At velocity 0.6 at least 8 harmonics lie within 60 dB of the strongest (real accordion: 10 of the first 10);
-    the spectral centroid at velocity 1.0 is not below that at 0.3 (C-003)."""
-    x, sr = render(ins, note(A[ins], 0.6, 2.0))
+def test_T104_spectrum_is_rich_and_mostly_brighter_when_louder(render, ins):
+    """T-104. With the air noise off, at velocity 0.6 at least 8 harmonics lie within 60 dB of the strongest (real
+    accordion: 10 of the first 10). At four or more of five pitches the spectral centroid at velocity 1.0 is not below
+    that at 0.3 (real accordion: ff is brighter than pp at 85 % of pitches) (C-003, C-055)."""
+    x, sr = render(ins, note(A[ins], 0.6, 2.0), {"air_noise": 0})
     assert m.harmonic_count_above(m.seg(x, sr, 0.6, 1.6), sr, hz(A[ins]), -60.0, 20) >= 8
-    c_lo = m.spectral_centroid(m.seg(render(ins, note(A[ins], 0.3, 2.0))[0], sr, 0.6, 1.6), sr)
-    c_hi = m.spectral_centroid(m.seg(render(ins, note(A[ins], 1.0, 2.0))[0], sr, 0.6, 1.6), sr)
-    assert c_hi >= c_lo
+    brighter = 0
+    for midi in BRIGHT[ins]:
+        c_lo = m.spectral_centroid(m.seg(render(ins, note(midi, 0.3, 2.0), {"air_noise": 0})[0], sr, 0.6, 1.6), sr)
+        c_hi = m.spectral_centroid(m.seg(render(ins, note(midi, 1.0, 2.0), {"air_noise": 0})[0], sr, 0.6, 1.6), sr)
+        brighter += c_hi >= c_lo
+    assert brighter >= 4
 
 
 @pytest.mark.parametrize("ins", REEDS)

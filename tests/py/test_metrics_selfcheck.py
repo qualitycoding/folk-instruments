@@ -89,3 +89,19 @@ def test_modulation_frequency_ignores_ripple_of_a_steady_tone():
     t = np.arange(4 * SR) / SR
     fm, depth = m.modulation_frequency(tone(523.25, dur=4.0) * (1 + 0.05 * np.sin(2 * np.pi * 5.5 * t)), SR, 2.0, 12.0)
     assert abs(fm - 5.5) < 0.05 and abs(depth - 0.05) < 0.01
+
+
+def test_modulation_frequency_stays_inside_its_band():
+    t = np.arange(4 * SR) / SR
+    slow = tone(440.0, dur=4.0) * (1 + 0.3 * np.sin(2 * np.pi * 0.1 * t))     # modulation below the band
+    f, _ = m.modulation_frequency(slow, SR, 0.5, 30.0)
+    assert 0.5 <= f <= 30.0
+
+
+def test_bandpass_isolates_the_fundamental_beat():
+    """Two detuned tones with strong third harmonics: the broadband envelope also beats at three times the rate; the
+    band around the fundamental beats at the rate itself."""
+    f0, d = 440.0, 3.829
+    x = sum(tone(n * f0, dur=5.0, amp=a) + tone(n * (f0 + d), dur=5.0, amp=a) for n, a in ((1, 0.2), (3, 0.25)))
+    f, depth = m.modulation_frequency(m.bandpass(x, SR, f0), SR, 0.5, 30.0)
+    assert abs(f - d) < 0.05 and depth > 0.3

@@ -1,0 +1,2 @@
+{"reeds": 64, "sounding": 64, "finite": true, "max_substeps": 1, "steps_per_host_sample": 256.0, "audio_seconds": 3.0, "wall_seconds": 0.534, "realtime_factor": 5.62, "ns_per_step": 14.49}
+{"reeds": 64, "sounding": 64, "finite": true, "max_substeps": 1, "steps_per_host_sample": 256.0, "audio_seconds": 3.0, "wall_seconds": 0.468, "realtime_factor": 6.41, "ns_per_step": 12.70}
