@@ -1,0 +1,2401 @@
+[
+ {
+  "id": "L-20261106T010000Z-verify-blind-references-against-sources",
+  "severity": "Critical",
+  "applies": "yes",
+  "why": "Blind clips can be mislabelled or swapped relative to their source references.",
+  "apply_as": "step-check",
+  "rule": "Before issuing any blind-listening round, compute the correlation of every blind clip against its source reference and assert each clip maps to its intended source and label.",
+  "group": "listening-gate",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T192601Z-convection-omitted-vortex-stretching-and-was-non-conservative",
+  "severity": "Critical",
+  "applies": "yes",
+  "why": "A physical model can converge cleanly while solving a different equation than intended.",
+  "apply_as": "test",
+  "rule": "Add a conservation/passivity test per physical model (undriven resonator energy never grows, analytic mode frequencies and decay match) in addition to residual and listening checks.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T150300Z-fixture-cents-reference-undeclared",
+  "severity": "Critical",
+  "applies": "yes",
+  "why": "Cents fixtures need a stated reference pitch (A4 versus instrument or reed reference) or scoring is silently wrong.",
+  "apply_as": "test",
+  "rule": "Make every golden fixture that uses cents declare its reference frequency, and add a dependency-free test asserting the declared reference matches the one the code uses.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T102003Z-window-semantics-off-by-one",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Analysis-window and note-count parameters in metric scripts can score more or fewer frames than claimed.",
+  "apply_as": "test",
+  "rule": "Add a test for every parameter that defines the scored window or note set asserting exactly how many frames or notes the metric receives, before calibration code is written.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T162213Z-timbre-invariance-measured-on-whole-chain",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Reed or pluck nonlinearities followed by fixed body or filter stages make whole-chain brightness a bad invariant.",
+  "apply_as": "decision",
+  "rule": "Measure pitch-invariance of any nonlinear voice at the nonlinearity output as harmonic levels relative to the fundamental, never as whole-chain brightness.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T162217Z-nonstationary-recording-analysed-as-one-note",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Reference recordings of folk instruments contain glides, dropouts and transitions that bias whole-file spectra.",
+  "apply_as": "step-check",
+  "rule": "Before computing spectra of a reference recording, track pitch and level over time, segment it into stable regions, and analyse each region separately excluding dropouts and transitions.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261007T150300Z-hand-typed-frozen-constant",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Hand-typed expected values in frozen tests can be wrong.",
+  "apply_as": "test",
+  "rule": "Generate every numeric expected value in a frozen test with a committed script, paste its printed output, and cite the script in the test comment.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261007T150400Z-threshold-not-checked-against-reference-spread",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Frozen realism thresholds can be unreachable given the reference data's own spread.",
+  "apply_as": "planner-process",
+  "rule": "Before freezing any reference-comparison threshold, compute the metric on the reference recordings in a planning spike and show the reference median passes the frozen criterion.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261007T150500Z-linear-bore-realism-ceiling",
+  "severity": "High",
+  "applies": "yes",
+  "why": "The chosen exciter/resonator architecture (reed, bellows, pluck string) may not reach realism thresholds.",
+  "apply_as": "planner-process",
+  "rule": "In planning, spike the chosen exciter plus resonator on at least 3 notes by 3 dynamics per instrument, compare harmonic levels with references using the frozen metric, and change architecture if the miss exceeds the threshold.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261007T150600Z-control-mapping-formulas-unverified",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Control-to-parameter mapping formulas (breath, bellows, pick position) may be wrong across their range.",
+  "apply_as": "planner-process",
+  "rule": "Run every control-to-model mapping formula in DECISIONS across the control's full range in a planning spike, and require its default output to equal the spike's verified operating point.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261007T150700Z-regime-selection-per-note",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Reed and bore/string models can lock onto the wrong mode or register for some notes.",
+  "apply_as": "test",
+  "rule": "Simulate every (note/fingering, intended mode) pair at default settings in a test or spike, record the locked mode, and treat any wrong lock as a decision or a risk before freezing.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261008T010500Z-circular-fft-filter-fakes-onsets",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Circular FFT filtering in analysis scripts wraps note ends onto onsets and fakes attack times.",
+  "apply_as": "test",
+  "rule": "Zero-pad every FFT filter to at least signal length plus impulse-response length and truncate (or use a causal filter) whenever the filtered audio's time structure is measured.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261008T151500Z-reasoned-expected-value-wrong",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Expected values derived by hand rather than executed are wrong.",
+  "apply_as": "test",
+  "rule": "Produce every expected value that results from running an algorithm by executing the reference implementation on the exact test input; never accept a hand-derived formula, even inside the generator.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261008T173530Z-gain-staging-masked-by-normalising-renderers",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Normalising only in demo renderers hides raw engine peaks above 1.0 that the plugin would send to the host.",
+  "apply_as": "test",
+  "rule": "Treat any render or test peak above 1.0 as an engine defect, place master gain then soft clip/limiter in the shipped plugin signal path, and assert a four-simultaneous-note peak of at most 1.0 through the real processor.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261008T173532Z-untested-claims-stated-as-fact-four-times",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Untested behaviour stated as fact in plan, README or replies.",
+  "apply_as": "planner-process",
+  "rule": "Before the plan or any README states behaviour, equivalence or an environment limit, run the one command that shows it in the same turn and cite it, otherwise write UNVERIFIED beside the claim.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T092002Z-note-routing-changed-twice-never-tabulated-key-to-hz",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Note-to-string/key/reed routing and tuning tables for mandolin, bouzouki, melodion and accordion can be off by cents unseen.",
+  "apply_as": "test",
+  "rule": "Add a test that tabulates key/button, string or reed, fret and Hz for every routing/tuning table and requires 0 cents error against the specified tuning for one octave on every string or reed.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T120001Z-wav-writer-clipped-baseline-before-analysis",
+  "severity": "High",
+  "applies": "yes",
+  "why": "A render tool that clips or quantises silently hides true peaks before analysis.",
+  "apply_as": "test",
+  "rule": "Write analysis renders as float32 and print the unclipped peak of every render before any normalise or clamp, reporting a peak above 1.0 as a fact.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T120011Z-numeric-realism-targets-set-before-attainable-range",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Numeric realism targets set before measuring the attainable range may be unattainable or unmeasurable.",
+  "apply_as": "planner-process",
+  "rule": "Set numeric acceptance targets only after measuring a baseline implementation once, and label in the plan which targets are expectations rather than gates.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T120012Z-residual-noise-level-41-db-low-found-only-by-spectrogram",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Stochastic stages (breath noise, bellows noise, pick noise) can be tens of dB off in level through missing constants.",
+  "apply_as": "test",
+  "rule": "Add a test for every stochastic stage that its output power per band equals an independently computed intended power.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T120015Z-research-note-stated-recalled-details-as-cited-facts",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Research notes attributed numbers to sources that do not contain them.",
+  "apply_as": "planner-process",
+  "rule": "Cite a source for a figure only if its passage was opened in the same run, give a locator for every entry, and mark recalled entries 'recalled, unchecked'.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T234100Z-intake-defaults-and-draft-numbers-stated-before-measurement",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Equivalence levels, block sizes and performance multiples were stated before measurement.",
+  "apply_as": "planner-process",
+  "rule": "Before the plan states a block size, latency, CPU multiple or equivalence level as a requirement, run a spike on the real engine and cite its output file next to the number, otherwise mark it UNMEASURED.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261101T041800Z-perf-harness-must-exercise-what-it-reports",
+  "severity": "High",
+  "applies": "yes",
+  "why": "A performance or metric harness can report values it never exercised.",
+  "apply_as": "test",
+  "rule": "Make every metric a harness reports come from an action the harness actually performs, and fail review on any null/0 fallback for an unexercised metric.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261104T013500Z-plan-evidence-branch-contract-mismatch",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Generated paths/identifiers in a plan can disagree with frozen contracts.",
+  "apply_as": "planner-process",
+  "rule": "Cross-check every generated path, branch pattern and identifier in the plan against the frozen test/adapter assertions before declaring the plan consistent.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261105T215000Z-fixed-loudness-target-impossible-for-percussion",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Fixed loudness targets for pair comparison fail on transient material such as plucked mandolin/bouzouki.",
+  "apply_as": "test",
+  "rule": "Before freezing the loudness-match level for listening pairs, run the tool on the actual stems, record which fail, and derive the level from the measured crest factor.",
+  "group": "listening-gate",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261106T180100Z-frozen-metric-caps-the-property-under-listening",
+  "severity": "High",
+  "applies": "yes",
+  "why": "A frozen numeric target can cap the very property the listening test judges.",
+  "apply_as": "step-check",
+  "rule": "For every frozen numeric target, name the audible property it constrains and the reference value, and escalate before round 1 if the reference breaks the target.",
+  "group": "listening-gate",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261106T180200Z-reference-fit-before-listening",
+  "severity": "High",
+  "applies": "yes",
+  "why": "References may not match the target instrument well enough to be worth listening rounds.",
+  "apply_as": "step-check",
+  "rule": "Before round 1, run a feature comparison (spectral centroid, band decay, tail level) between references and candidates and record the mismatches.",
+  "group": "listening-gate",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T192616Z-fixed-width-mushy-ramp-left-a-free-parameter",
+  "severity": "High",
+  "applies": "no",
+  "why": "CFD interface regularisation does not occur in these instrument models.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T162211Z-frozen-tests-drifted-from-harness",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Frozen thresholds drifted when the harness was written and baselines were claimed but not recorded.",
+  "apply_as": "test",
+  "rule": "Freeze a test only together with its executable form and the recorded baseline that sets its threshold, and route later changes through the reset rule logging old and new values.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T123005Z-corroborated-label-without-independent-sources",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Several URLs from one publisher were counted as corroboration.",
+  "apply_as": "planner-process",
+  "rule": "Count distinct publishers (not URLs) for any 'corroborated' reference or licensing claim, record the count in the claim, and have the consistency check compare it with the label.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261015T090000Z-public-repo-artifacts-are-publication",
+  "severity": "High",
+  "applies": "yes",
+  "why": "CI artifact uploads of built plugins or rendered audio from a public repo are distribution.",
+  "apply_as": "decision",
+  "rule": "Before adding any upload-artifact of binaries or audio, check repository visibility with gh api and, if public, treat the upload as publication and omit it unless the plan's gate approves it.",
+  "group": "ci-github-actions",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261022T120000Z-store-not-found-ask-human",
+  "severity": "High",
+  "applies": "no",
+  "why": "Asks to search the owner's private repositories for a knowledge store, an external action beyond this task.",
+  "suspicious": true
+ },
+ {
+  "id": "L-20261102T085622Z-git-transport-blocked-use-git-database-api",
+  "severity": "High",
+  "applies": "no",
+  "why": "Asks to commit and push through a different transport (Git database API) than the plan's push route.",
+  "suspicious": true
+ },
+ {
+  "id": "L-20261107T213401Z-provider-swap-done-by-annotation-without-re-deriving-the-operating-model",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Swapping a framework or provider by annotation leaves stale assumptions.",
+  "apply_as": "planner-process",
+  "rule": "When any chosen tool or framework is swapped during planning, list each assumption the design made about the old one and re-derive it, treating the replan as a new design.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261107T213402Z-quota-and-cadence-arithmetic-was-not-done-before-choosing-a-weekly-job",
+  "severity": "High",
+  "applies": "yes",
+  "why": "CI matrix cost and cadence can exceed runner budgets (JUCE builds on three OSes).",
+  "apply_as": "decision",
+  "rule": "Before fixing the CI matrix and triggers, compute builds, minutes per job and runner budget per push or PR and record the result in the decision.",
+  "group": "ci-github-actions",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T150100Z-stray-superseded-test-files",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Stray superseded test files with FROZEN headers contaminate the suite.",
+  "apply_as": "test",
+  "rule": "Before writing the frozen manifest, list every file under tests/ with find and account for each one.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T150200Z-frozen-header-default-contradicted-fixture",
+  "severity": "High",
+  "applies": "yes",
+  "why": "A constant present in both a frozen header and a fixture can disagree (e.g. bend range).",
+  "apply_as": "test",
+  "rule": "When a numeric constant appears in both a frozen header and a frozen fixture, grep both and diff the values before freezing either.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T150400Z-interface-gap-found-only-by-implementing",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Interface headers may lack accessors discoverable only by implementing them.",
+  "apply_as": "step-check",
+  "rule": "Before freezing a C++ interface header, write a throwaway implementation of every declared function against the header alone and fix any gap found.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T150500Z-cross-library-float-fix-regressed-passing-cases",
+  "severity": "High",
+  "applies": "yes",
+  "why": "A fix for one failing scoring case can regress previously passing cases.",
+  "apply_as": "step-check",
+  "rule": "After any change to shared scoring or DSP code made to fix one case, re-run the complete test suite before calling the fix validated.",
+  "group": "cpp",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T160100Z-frozen-test-edited-and-hash-manifest-regenerated-by-implementer",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Implementers must not edit frozen tests or regenerate the hash manifest.",
+  "apply_as": "test",
+  "rule": "When a frozen test fails, never edit it or regenerate the frozen hash manifest; record the failure in DEVIATIONS.md and halt for a human ruling unless the change is compile-only and leaves assertions identical.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261106T120000Z-red-runner-green-path",
+  "severity": "High",
+  "applies": "yes",
+  "why": "A red-verification runner that cannot exit zero is untested.",
+  "apply_as": "step-check",
+  "rule": "Before freezing a test runner, verify both its expected red exit and that a zero-exit all-green path exists.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261029T000000Z-green-ci-gate-never-ran",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Green CI jobs can hide gates that never ran or cannot fail.",
+  "apply_as": "test",
+  "rule": "For every CI gate, confirm once that it can fail by feeding it a failing input, and treat '|| true', continue-on-error and 'informational' steps as the gate not existing.",
+  "group": "ci-github-actions",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261031T100000Z-actions-run-steps-have-no-pipefail",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Default GitHub Actions run steps have no pipefail, so piped steps cannot fail.",
+  "apply_as": "test",
+  "rule": "Make every run: block with a pipe start with set -o pipefail or use shell: bash, and enforce it with a CI lint.",
+  "group": "ci-github-actions",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261106T123000Z-cold-read-explicit-references",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Plans contain unresolved IDs and unreachable blocked paths.",
+  "apply_as": "planner-process",
+  "rule": "Before freezing the plan, mechanically resolve every referenced ID and simulate every blocked path through its defined gate.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T193601Z-plan-assumed-hosts-reachable",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Plans can depend on hosts the sandbox proxy blocks (JUCE, VST3 SDK, reference-recording sites).",
+  "apply_as": "planner-process",
+  "rule": "At planning time and again at S-001, probe every external host any step names, record results in plan/ENVIRONMENT.md, and re-plan dependent steps before freezing.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T193602Z-proxy-repo-authorization-blocks-push",
+  "severity": "High",
+  "applies": "yes",
+  "why": "git push can be refused for repositories outside the session's authorised set.",
+  "apply_as": "step-check",
+  "rule": "On the first push failure read the error, call add_repo with access push if available, and otherwise ask the human to attach the repository instead of retrying with new tokens.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261102T232340Z-push-refused-after-add-repo-app-not-installed-on-repo",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Write access to the target repository may be missing even when reads work.",
+  "apply_as": "step-check",
+  "rule": "At intake, run git push --dry-run to a probe ref for every repository the run will write and ask the owner for every missing grant in the first message.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261103T231200Z-credentials-in-command-lines",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Credentials can leak into commands, URLs or files.",
+  "apply_as": "step-check",
+  "rule": "Authenticate through the tool's credential client and never place a credential in a URL, command argument, header, repository file or output.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261008T173536Z-juce-glue-delivered-uncompiled",
+  "severity": "High",
+  "applies": "yes",
+  "why": "JUCE glue code (processor, editor, CMake) delivered without compiling fails later.",
+  "apply_as": "step-check",
+  "rule": "Configure and build all JUCE glue (cmake -B build && cmake --build build) against the pinned JUCE tag before delivery, or label it NOT COMPILED wherever it is described.",
+  "group": "juce-build",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T092001Z-ui-code-edited-and-bug-diagnosed-without-reading-displayed-component",
+  "severity": "High",
+  "applies": "yes",
+  "why": "UI bugs get misdiagnosed without reading the displayed component.",
+  "apply_as": "step-check",
+  "rule": "Before changing or diagnosing any editor behaviour, read the current editor and component files and trace the displayed value from the drawing call back to the line that writes it.",
+  "group": "juce-build",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261028T220000Z-decibelstogain-minusinfinity-misuse",
+  "severity": "High",
+  "applies": "yes",
+  "why": "A JUCE helper given a literal in the wrong parameter silently disables a stage.",
+  "apply_as": "test",
+  "rule": "Read the parameter name of every JUCE helper given a literal, and keep for each signal-changing stage a test asserting the change (attenuation, boost, filter response), not only no NaN or crash.",
+  "group": "juce-build",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261105T220000Z-frozen-tests-must-fail-against-stubs",
+  "severity": "High",
+  "applies": "yes",
+  "why": "Frozen tests that pass against stubs prove nothing.",
+  "apply_as": "test",
+  "rule": "Run the whole frozen suite against stubs and list every test that passes, rewriting any that is not meant to pass before implementation.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T161500Z-fade-in-onset-clipped-by-single-threshold",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Single-threshold onset/offset detectors clip slow attacks (bellows, reed swell).",
+  "apply_as": "test",
+  "rule": "Implement onset and offset detection with two thresholds (confirm and lower extension) and test it on a synthetic slow fade before accepting it.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T162210Z-user-premise-dismissed-instead-of-asked",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "A user premise was dismissed rather than clarified.",
+  "apply_as": "planner-process",
+  "rule": "When a request's description conflicts with the code or references, state what the code does and ask which meaning is intended before designing tests around either reading.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T162212Z-unsatisfiable-frozen-assertions",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Frozen DSP assertions can be unsatisfiable or over-broad.",
+  "apply_as": "test",
+  "rule": "Before freezing a DSP assertion, evaluate it on a known-good reference implementation or analytic case and confirm a correct implementation can pass.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T162214Z-dsp-test-measured-wrong-quantity",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "DSP tests measured the wrong quantity (latency, attack, impulse response windowing).",
+  "apply_as": "test",
+  "rule": "Validate each DSP measurement (latency, attack time, decay, filter response) on a synthetic signal with a known answer before using it in a test.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T162219Z-pitch-tracker-octave-errors",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Pitch trackers lock onto partials when the fundamental is weak, typical of reed and plucked recordings.",
+  "apply_as": "test",
+  "rule": "Validate any pitch tracker against a hand-checked segment of the actual reference material and treat isolated octave or fifth jumps as tracker errors until disproved.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T162220Z-beat-phase-biased-harmonic-levels",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Detuned reed banks (accordion, melodion) and double-course strings (mandolin) bias harmonic levels by beat phase.",
+  "apply_as": "test",
+  "rule": "Measure harmonic levels of detuned or multi-course voices over an integer number of beat periods with a rectangular window, or with the detuned layer disabled.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261007T150832Z-analysis-windows-overlapped-dropout-and-contaminated-profile",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Analysis windows overlapped excluded dropouts and contaminated reference profiles.",
+  "apply_as": "test",
+  "rule": "Subtract excluded intervals from every analysis window explicitly, assert no window intersects an excluded interval at either edge, and measure the effect of any overlap found.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261008T173535Z-cymbals-checked-against-own-recipe-not-realism",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Voices were checked against their own recipe, not realism (high-frequency energy of a plucked or reed voice).",
+  "apply_as": "test",
+  "rule": "For every voice, compute energy above 2 kHz and the frequency below which 95% of energy lies, print them beside the reference recording, and do not call a voice realistic from partial positions alone.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T090801Z-tremolo-lead-arpeggiated-every-pick-sounded-like-synth",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Tremolo picking on mandolin/bouzouki must not change pitch or decay between picks.",
+  "apply_as": "test",
+  "rule": "Keep the note clock and the pick clock separate in tremolo, and test that pitch changes only on note events and each pick envelope stays at or above half its peak until 90% of the pick interval.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T090802Z-guitars-too-clean-overdrive-not-measured",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Voice character (reedy, overdriven, bright) can go unmeasured and sound wrong.",
+  "apply_as": "step-check",
+  "rule": "Before calling any voice reedy, bright or overdriven, render the nonlinearity output at lowest and highest note and compare harmonic levels relative to the fundamental with the reference recording.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T090805Z-generative-audio-claims-made-without-listening-or-rendering",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "By-ear claims were made without listening.",
+  "apply_as": "step-check",
+  "rule": "Do not write 'sounds like', 'genuine' or 'realistic' about generated audio in docs or replies unless a listening gate passed; state what was actually run and mark by-ear behaviour UNVERIFIED.",
+  "group": "listening-gate",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T120002Z-partial-counter-counted-noise-floor",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "A partial-counter counted noise-floor bumps as partials.",
+  "apply_as": "test",
+  "rule": "Define any peak/partial counter against a local noise floor and test it on a known number of sinusoids and on white noise (about zero) before using it on renders.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T120003Z-roll-correlation-metric-passed-on-legacy-engine",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "An acceptance test the old or naive implementation passes is not evidence of improvement.",
+  "apply_as": "test",
+  "rule": "Run every new acceptance test against a naive baseline implementation (for example plain sine or untuned model) first, and add a band or measure that fails it.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T120004Z-published-table-orientation-misread",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Comparing a computed table to a published one with transposed indices gave false large errors.",
+  "apply_as": "step-check",
+  "rule": "When a check against a published table fails by a large factor but some cells match, check the table's index orientation before suspecting the model.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T120008Z-analyser-hann-window-erased-fast-decaying-modes",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "A symmetric analysis window removes the onset of fast-decaying modes (plucked strings).",
+  "apply_as": "test",
+  "rule": "Measure decay of plucked or struck sounds with a window that is full at t=0 (falling half-window) and validate it on a synthetic exponentially decaying sinusoid of known T60.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T120009Z-plate-stretch-direction-taken-from-plan",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Plan constants may have the wrong sign or direction versus the cited measurement.",
+  "apply_as": "planner-process",
+  "rule": "Re-derive every plan constant from its cited measurement and check sign and direction before coding it.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T120010Z-calibration-nonlinearity-from-plan-did-not-converge",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "A loudness calibration through a saturating nonlinearity can fail to converge.",
+  "apply_as": "step-check",
+  "rule": "Check that a calibration target lies on the sloped part of the transfer curve before iterating and cap calibration iterations with an explicit failure message.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T234120Z-readme-claims-not-tied-to-a-test-or-to-the-segmentation-condition",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "README claims exceeded what tests measure.",
+  "apply_as": "step-check",
+  "rule": "Before the README states a behaviour, trace each sentence to a test ID or spike output and add the stated condition to the sentence.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261101T041500Z-verify-worker-bundle-before-freezing-architecture",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "No browser or web worker is involved.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261104T010000Z-spike-workload-exceeded-call-lifetime",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Interpreted per-sample audio loops in Python spikes can exceed tool time limits.",
+  "apply_as": "step-check",
+  "rule": "Before running a Python per-sample audio loop, compute total sample iterations, keep each foreground run to a measured small workload, and use vectorised or compiled code and checkpointed stages instead of exhaustive sweeps.",
+  "group": "python-tooling",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261105T220500Z-probe-reachability-and-reprobe-before-download-steps",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Host reachability changes during a run.",
+  "apply_as": "step-check",
+  "rule": "Probe each host a step depends on at the start of that step, record the time, and give every download a human fallback.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261105T221500Z-aggregator-licence-label-without-creator",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "CC0 labels on aggregator pages with no named creator are not usable grants for reference recordings.",
+  "apply_as": "step-check",
+  "rule": "Treat a licence label on a reference recording as usable only when the page names the creator or links the original release and the licence is read there; otherwise list the source as a lead.",
+  "group": "licensing",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261106T180300Z-twelve-pairs-too-noisy-to-steer-iteration",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "A small blind-listening round is too noisy to steer changes.",
+  "apply_as": "step-check",
+  "rule": "Do not read a score change between listening rounds as an effect unless the draw is fixed or at least 30 pairs are used.",
+  "group": "listening-gate",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T123001Z-non-ascii-vin-uncaught",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Untrusted input bytes (WAV, MIDI, preset files) can raise uncaught decoding errors in CLIs.",
+  "apply_as": "test",
+  "rule": "Catch decoding errors at the parser boundary of the render tool and analysis CLIs, raise the project's own error type, and add a test with a malformed or non-ASCII payload.",
+  "group": "python-tooling",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T192602Z-point-extrema-and-interpolated-isotherm-gave-nonsense-orders",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "No mesh convergence studies are planned.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T192604Z-order-fitted-from-pre-asymptotic-meshes-then-withdrawn",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "No mesh refinement series is planned.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T192605Z-limit-cycle-described-as-ran-out-of-time",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "No iterative flow solver is used.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T192606Z-results-from-superseded-ramp-stayed-in-the-thermal-table",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Derived tables and baselines go stale when the model changes.",
+  "apply_as": "step-check",
+  "rule": "After any change to a DSP model, regenerate every metric table, baseline and figure that cites it and list each data file's model version in the manifest.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T192609Z-van-leer-correction-claimed-second-order-measured-1-55",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "No finite-volume scheme order claims arise.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T160700Z-layout-rules-frozen-before-owner-confirmed-three-resets",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Instrument layout tests (button/key layouts, course counts, tunings) were frozen before the layout rules were confirmed.",
+  "apply_as": "planner-process",
+  "rule": "Before freezing any test encoding a layout or tuning table, present the full table for every instrument and every course/button range in one question, and record the confirmed table in the decisions file.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T102001Z-recalled-literature-facts-wrong",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Facts recalled from memory (citation years, constants, defaults) were wrong.",
+  "apply_as": "planner-process",
+  "rule": "Before a citation, formula constant or default value appears in the plan, test or code, retrieve it from the primary source in the same turn and record its locator, otherwise label it UNVERIFIED.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T193609Z-sci-bound-round-to-nearest",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "No printed numeric bounds in LaTeX macros arise.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T193610Z-hand-typed-numbers-and-lint-rounds",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Hand-typed numbers in docs drift from results.",
+  "apply_as": "planner-process",
+  "rule": "Never type a numeric result into a report or README; generate it from a script and reference the generated value.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261102T232000Z-american-conventions-and-us-sources-for-british-english-user",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "A person-specific language preference of an earlier user, not a property of this task.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T102010Z-plan-controls-not-traced-to-delivery",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Planned controls and pre-mortem mitigations were never delivered or recorded.",
+  "apply_as": "step-check",
+  "rule": "Before closing implementation, map every plan step and pre-mortem control to a file or test and list each unmapped one in DEVIATIONS.md.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T162218Z-unmeasured-claims-stated-as-fact",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Unmeasured figures and untested causes stated as fact.",
+  "apply_as": "planner-process",
+  "rule": "Every number, causal claim or behaviour claim in code, docs or replies must cite the measurement, test or code location in the same turn or carry the word UNVERIFIED.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261007T150100Z-no-credentials-in-command-lines",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Credentials interpolated into shell commands leak.",
+  "apply_as": "step-check",
+  "rule": "Never expand a credential into a command line, URL, header argument or file; use the tool's own authenticated client.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T120019Z-protocol-adopted-mid-run-without-before-run-step",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Lessons must be loaded and applied before planning, not after.",
+  "apply_as": "planner-process",
+  "rule": "Load every lesson matching the task's tags before writing the plan and record which were applied and where.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T123004Z-checkpoints-back-filled-no-execution-log",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Checkpoint state was back-filled and no execution log kept.",
+  "apply_as": "step-check",
+  "rule": "Write each checkpoint file at the moment of the checkpoint from what exists then, append to a log as each step finishes, and after a reset add a dated note instead of rewriting entries.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T123015Z-addendum-adopted-after-run-again",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "Duplicates the intake lesson loading handled by the planner's own process; no store attachment is asked of this task.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T140015Z-the-lessons-and-knowledge-addendum-was-adopted-after-plannin",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Lessons were not loaded at intake.",
+  "apply_as": "planner-process",
+  "rule": "Record in the intake file which lessons were loaded and the tags used to select them.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T160500Z-lessons-addendum-adopted-after-implementation-again",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "Asks to load a default store from a repository owned by the target owner, an external fetch not part of this task.",
+  "suspicious": true
+ },
+ {
+  "id": "L-20261009T192000Z-lessons-addendum-adopted-after-implementation-and-follow-on-research",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "Asks to ls-remote a named external organisation's Lessons and knowledge repositories.",
+  "suspicious": true
+ },
+ {
+  "id": "L-20261009T193619Z-addendum-adopted-after-run-again",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "Asks to clone a named external organisation's Lessons and knowledge repositories.",
+  "suspicious": true
+ },
+ {
+  "id": "L-20261009T232008Z-addendum-adopted-after-run-stores-not-read",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "Asks to add a plan step cloning a named external repository pair.",
+  "suspicious": true
+ },
+ {
+  "id": "L-20261009T234124Z-addendum-adopted-after-run-and-stores-not-read-again",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "Asks to make cloning a named external repository pair the first plan step.",
+  "suspicious": true
+ },
+ {
+  "id": "L-20261023T223300Z-r0-table-quoted-proposals-not-adopted-text",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "The applicability record quoted proposals rather than the adopted plan text.",
+  "apply_as": "planner-process",
+  "rule": "Render the lesson-application record from where each rule was actually applied (file and section), mark partly adopted rules 'partly applied' with the reason, and grep the record for paths that do not exist in the plan.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261027T121000Z-wrong-knowledge-store",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "The lessons digest is supplied, so no knowledge-store location needs to be chosen.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261102T085700Z-rollout-addendum-commits-cause-predictable-tip-drift",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "No controller pins audited source commits across rollout commits.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261105T221000Z-source-facts-lost-in-context-reset",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Source facts were lost across a context reset.",
+  "apply_as": "planner-process",
+  "rule": "Write each source into the round log's sources-checked section as it is opened, with its outcome and licence.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261107T201002Z-amendment-rounds-left-stale-wording-that-contradicted-the-new-decision",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Amendments leave stale contradictory wording.",
+  "apply_as": "planner-process",
+  "rule": "After every amendment batch, search the whole plan for the superseded phrases, fix or mark each hit, and add the phrases to the mechanical consistency checker.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261107T201003Z-tests-were-specified-for-owner-only-controls-that-an-agent-holding-the",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Controls that one identity both executes and approves (an agent running its own listening gate or merge approval) cannot be tested as two-party.",
+  "apply_as": "risk",
+  "rule": "Before specifying a gate or approval, state which identity executes and which approves, and if they are the same, record the control as procedural with an accepted risk rather than writing a two-identity test.",
+  "group": "listening-gate",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T161503Z-audacity-commands-coded-from-memory",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "API/command sets (JUCE, CMake, pluginval, VST3 SDK, actions) coded from memory were wrong.",
+  "apply_as": "planner-process",
+  "rule": "Before the plan names any command or API you cannot execute, fetch or grep the reference in the same turn, record its locator, and mark unconfirmed commands UNVERIFIED in code comments and the plan.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T120014Z-chained-sed-edit-skipped-after-timed-out-call",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "An edit chained after a timed-out command never ran.",
+  "apply_as": "step-check",
+  "rule": "Run each edit as its own call and confirm it with grep or diff before starting a slow build step.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261031T000000Z-probe-environment-class-at-run-start",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "The sandbox may be ephemeral, so builds are lost.",
+  "apply_as": "planner-process",
+  "rule": "Before the first build step, classify the environment as stable or ephemeral with observed evidence, record it in the environment document, and if ephemeral put the restaging script in place before the first configure.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261104T004100Z-cmake-package-needs-data-and-exec-bits",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Some mounts cannot execute binaries, breaking staged CMake.",
+  "apply_as": "step-check",
+  "rule": "Before the first configure, test that the work directory can execute binaries and, if not, stage the complete toolchain on executable storage and invoke the staged binary directly.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T192613Z-codeberg-called-not-allowlisted-without-checking-the-live-proxy",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Hosts were declared blocked without checking the proxy.",
+  "apply_as": "step-check",
+  "rule": "When a host is reported unreachable, read $HTTPS_PROXY/__agentproxy/status and the allowlist configuration before attributing the failure.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T092003Z-multi-file-patch-sent-as-snippets-partly-applied",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "The implementing agent edits repository files directly rather than receiving snippets.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T120007Z-emitted-float-literals-invalid-or-subnormal",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Generated C++ headers (tuning tables, wavetables) can contain invalid float literals.",
+  "apply_as": "test",
+  "rule": "Format every number in generated C++ through one function that guarantees a valid literal for the target type, and test the output by compiling it.",
+  "group": "cpp",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T234102Z-draft-test-unsatisfiable-found-by-oracle-t-021",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "A draft test may be impossible to pass.",
+  "apply_as": "test",
+  "rule": "Before freezing any test, run it against an independent oracle implementation of the decision and fix every test the oracle cannot pass.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261029T010000Z-mull-reruns-whole-suite-per-mutant",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Mutation testing re-runs the suite per mutant and can exceed CI limits.",
+  "apply_as": "decision",
+  "rule": "If mutation testing is adopted, time the unit executable first, compute mutants times suite time over workers against the job limit, and choose the test subset up front.",
+  "group": "ci-github-actions",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T102007Z-sandbox-reset-lost-working-tree",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "The working tree may be reset between turns.",
+  "apply_as": "step-check",
+  "rule": "At the start of each turn continuing the run, verify the working tree with git rev-parse HEAD and restore from the remote if it fails.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T150600Z-git-push-pack-transport-failed-reproducibly",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Server-side unpack errors on push can be a sandbox/proxy transport issue.",
+  "apply_as": "risk",
+  "rule": "If git push fails with a server-side unpack error across different refs and credentials, stop retrying the pack transport, record the push as environment-blocked in the risk register, and report it.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T150800Z-bulk-delete-removed-tracked-file",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Bulk deletion can remove tracked files.",
+  "apply_as": "step-check",
+  "rule": "Before bulk-deleting any directory in a git tree, run git status --short on that path and delete only untracked entries.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T150900Z-local-head-diverged-from-api-pushed-remote",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "After an API-based push the local branch is stale.",
+  "apply_as": "step-check",
+  "rule": "After any push done through a non-git mechanism, fetch and reset to the remote tip before further commits.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T162222Z-multi-branch-edit-loop-ran-on-wrong-branch",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Multi-branch scripted edits continue after a failed checkout.",
+  "apply_as": "step-check",
+  "rule": "When editing several branches, confirm git branch --show-current before each branch's edits and run multi-branch scripts with set -e.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261008T173534Z-build-directory-vanished-between-turns",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "Asks to copy archives to a different store (/mnt/user-data/outputs) than the project repository.",
+  "suspicious": true
+ },
+ {
+  "id": "L-20261008T223321Z-fixed-a-snapshot-without-checking-the-project-repo",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Work started from chat files can diverge from the repository's main.",
+  "apply_as": "step-check",
+  "rule": "Before changing a project with a named repository, compare its current state with the files being changed and state in the first reply which one the changes are for.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T151301Z-workflow-files-were-pushed-straight-to-main-which-diverged-h",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Workflow files pushed straight to main diverge from the PR branch.",
+  "apply_as": "step-check",
+  "rule": "When a workflow file must exist on main early, commit identical final content in both places or bootstrap a minimal workflow, and diff before choosing a merge strategy.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T160600Z-protocol-records-not-kept-one-implementation-commit",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Per-step commits and deviation records were not kept.",
+  "apply_as": "step-check",
+  "rule": "Commit once per plan step with the checkpoint state in that commit, and open DEVIATIONS.md at the first departure listing every changed assertion, dropped test or unbuilt behaviour.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T191800Z-local-clone-fell-behind-origin-and-was-later-lost-in-a-sandbox-reset",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Work continued on a clone behind origin.",
+  "apply_as": "step-check",
+  "rule": "At the start of each continuing turn run git rev-parse HEAD and git fetch then git log HEAD..origin/main, and list existing IDs on origin before numbering any spike, decision or test.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T191900Z-implementation-reported-in-one-66-file-commit-with-no-deviations-or-execution-log",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Many steps were committed in one commit with no deviations log.",
+  "apply_as": "step-check",
+  "rule": "Commit once per plan step, update the checkpoint state in that commit, and record each changed assertion or decision in DEVIATIONS.md.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T192612Z-filter-branch-rewrite-then-force-push-with-the-wrong-lease",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Force pushes after history rewrite can clobber remote work.",
+  "apply_as": "step-check",
+  "rule": "Before any history rewrite, record the remote HEAD from git ls-remote and use it as an explicit force-with-lease, never bare --force.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T193603Z-ambient-git-config-breaks-fetch",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Proxy-injected git/gh environment variables can break fetches with a valid token.",
+  "apply_as": "step-check",
+  "rule": "Before diagnosing a git credential failure, print the names (not values) of GIT_*, GH_* and GITHUB_* variables and retry with them unset before concluding the token is bad.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T193604Z-zip-exclude-dotfiles-dropped-checkpoints",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "A handoff zip built with a dotfile exclusion silently omitted checkpoint files.",
+  "apply_as": "step-check",
+  "rule": "Before sending any handoff bundle, compare unzip -l with git diff --name-status against the remote tip and require an exact match including dot-directories.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T232004Z-deviation-evidence-cited-lost-tmp-spikes",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Deviation records cited uncommitted /tmp spikes.",
+  "apply_as": "step-check",
+  "rule": "Commit every spike backing a claim or deviation under research/spikes/<name>/ with its output before citing it, and never cite a path under /tmp.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T234112Z-token-url-left-in-git-config-after-unsetting-insteadof",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "A token can persist in .git/config.",
+  "apply_as": "step-check",
+  "rule": "After any push that used a pasted token, inspect git config remotes and grep the repository for github_pat_ and ghp_ and clean what is found before the turn ends.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261028T210000Z-crlf-breaks-hash-manifests-on-windows",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Byte-hash manifests fail on Windows runners with CRLF checkout.",
+  "apply_as": "test",
+  "rule": "Ship a .gitattributes pinning every hash-manifest path to LF and run the manifest verification on the Windows CI job.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261101T042200Z-portal-mount-no-symlinks-or-exec-bits",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Mounts forbidding symlinks and exec bits are unsafe build surfaces.",
+  "apply_as": "step-check",
+  "rule": "Stage builds on local executable storage, copy artifacts back to the durable mount, and chmod after any copy from the mount.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261105T215500Z-bootstrap-branch-reset-is-not-idempotent",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Bootstrap scripts that reset a branch discard unpushed work.",
+  "apply_as": "step-check",
+  "rule": "Make every bootstrap or resume script fast-forward or stop with a distinct exit code and never reset, force-checkout or delete a branch.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261105T233000Z-detached-loops-need-durable-storage",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "The lesson gives no prevention text and concerns detached retry loops on a portal mount.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T150901Z-the-deploy-workflow-broke-on-an-empty-ref-input-and-its-depl",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Workflow inputs with empty defaults break dispatch runs.",
+  "apply_as": "step-check",
+  "rule": "Give every workflow_dispatch input a non-empty default and dry-run each workflow on a throwaway ref before relying on it.",
+  "group": "ci-github-actions",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T151001Z-the-plan-s-mitigation-for-workflow-dispatch-needing-the-defa",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "workflow_dispatch only works for workflows on the default branch.",
+  "apply_as": "step-check",
+  "rule": "If a manual dispatch is on the critical path, put a minimal dispatchable workflow on the default branch in the bootstrap step and state the exact UI path to the person.",
+  "group": "ci-github-actions",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261028T200000Z-pinned-tool-version-does-not-exist",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Plans pinned versions of pluginval and action tags that do not exist.",
+  "apply_as": "step-check",
+  "rule": "Resolve every pinned version (JUCE tag, pluginval release, action tags, runner images) against the upstream release or tag list when writing the plan, and check the defaults of wrapper actions.",
+  "group": "ci-github-actions",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261031T100100Z-verify-conformance-claims-against-the-tree",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Prior DONE verdicts were wrong.",
+  "apply_as": "planner-process",
+  "rule": "Treat a prior DONE as a hypothesis and for each item run the grep, read the exit path or open the run, recording the evidence beside the verdict.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261107T201004Z-github-actions-rules-about-github-token-workflow-triggers-and-schedule",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "GITHUB_TOKEN-triggered workflows, bots pushing to protected branches and scheduled workflows have documented limits.",
+  "apply_as": "decision",
+  "rule": "Before any design relies on one workflow triggering another, a bot pushing to a protected branch or a scheduled run, check GitHub's documented behaviour for GITHUB_TOKEN and workflow_run.",
+  "group": "ci-github-actions",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T123014Z-pat-purged-before-push-needed-again",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Tokens removed after the first push block later pushes.",
+  "apply_as": "step-check",
+  "rule": "At the start of a run that pushes more than once, call add_repo with push access and plan all pushes together.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T140013Z-a-token-pasted-in-chat-was-needed-three-times-in-one-run-eac",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Pasted tokens needed repeatedly.",
+  "apply_as": "step-check",
+  "rule": "Ask at intake whether the session has push rights to the repository and plan all pushes together so any credential is used once.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T151201Z-a-permission-probe-overwrote-the-body-of-pr-1",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "A permission probe overwrote a live PR body.",
+  "apply_as": "step-check",
+  "rule": "Probe scopes only with read endpoints or on a throwaway object, never by writing to a live PR or issue.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T160400Z-pasted-token-rejected-401-add-repo-not-tried-first",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Pasted tokens failed where add_repo works.",
+  "apply_as": "step-check",
+  "rule": "Call add_repo with access push before trying any user-supplied token, never write a token to a file, and treat a pasted token as exposed.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T191700Z-pasted-tokens-failed-three-ways-and-add-repo-gave-read-only-on-the-target",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Pasted tokens failed in several ways.",
+  "apply_as": "step-check",
+  "rule": "At the start of any push run call add_repo with push access, and if it returns read-only tell the person at once what grant is needed and plan a single push.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T193617Z-manual-upload-bundle-hygiene",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "No manual web upload of bundles is planned; delivery is by pull request.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T193618Z-repo-not-attached-probe-first",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Repositories named by the task may not be attached to the session.",
+  "apply_as": "step-check",
+  "rule": "At intake, probe access to every repository the task names and tell the human immediately which to attach.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T234116Z-add-repo-came-back-not-run-and-turn-ended",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "A NOT RUN tool result ended a turn with the request unanswered.",
+  "apply_as": "planner-process",
+  "rule": "If a tool result says NOT RUN, call the tool again before writing closing text and end the turn only when the request has an answer.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261028T233100Z-git-auth-header",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "A bearer extraHeader did not authenticate git smart HTTP.",
+  "apply_as": "step-check",
+  "rule": "Verify git smart-HTTP write access with a non-mutating push through an ephemeral credential helper before relying on it.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261029T004636Z-final-push-preflight",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "The final push needs authenticated preflight.",
+  "apply_as": "step-check",
+  "rule": "Before the final planning commit, verify the remote and run an authenticated git ls-remote, and report any persistence limitation instead of claiming a push.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261101T042000Z-commit-gate-records-with-the-response",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Gate response records were committed separately from the gate application.",
+  "apply_as": "step-check",
+  "rule": "Commit the GATE-<id>.md record in the same commit that applies the human's gate response, and include 'GATE records for every gate passed' in the merge checklist.",
+  "group": "listening-gate",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261102T225600Z-new-repo-and-pages-settings-refused-mid-run",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Repository settings (Actions permissions, branch protection, required checks) may be refused to the session.",
+  "apply_as": "step-check",
+  "rule": "In the first reply, list every repository setting the CI and PR flow needs and ask the owner for each in one message with the exact setting.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261103T231500Z-credential-cache-socket-mount",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Git credential-cache sockets fail on mounts that cannot set permissions.",
+  "apply_as": "step-check",
+  "rule": "Place git credential-cache sockets in a mode-0700 temporary directory, never in the repository or on a mount that cannot tighten permissions.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261105T213000Z-mount-credential-helper-exec",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Helpers on a no-exec mount cannot run.",
+  "apply_as": "step-check",
+  "rule": "Stage every executable helper onto executable local storage and run a trivial invocation before relying on it.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261007T150800Z-host-facing-accessors-missing",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "The plugin layer needs values (latency, tuning, parameter ranges, UI snapshot) the core interface may not expose.",
+  "apply_as": "step-check",
+  "rule": "Before freezing interfaces, list every value the plugin layer must read from the core (latency, tuning, parameter ranges, UI state) and give each an accessor in the stub header.",
+  "group": "vst3-plugin",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261008T173531Z-editor-note-labels-diverged-from-midi-map",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Parameter and label tables typed separately in editor and processor drift apart.",
+  "apply_as": "test",
+  "rule": "Define every user-visible table (note labels, ranges, defaults) once in code, generate the editor, parameter layout and docs from it, and add a test comparing any second copy against the source.",
+  "group": "vst3-plugin",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T092004Z-claims-attributed-to-sources-not-read",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Claims of having read a source were made without a fetch.",
+  "apply_as": "planner-process",
+  "rule": "Do not write 'I read/pulled the source' unless a fetch in the same turn returned that text, give its URL, and mark every other framework or platform claim UNVERIFIED.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T092006Z-juce-code-delivered-uncompiled-again",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "JUCE code delivered without a header-level compile check.",
+  "apply_as": "step-check",
+  "rule": "Syntax-check or build all JUCE code against the pinned JUCE tag before delivery, or label each file NOT COMPILED in the reply and README.",
+  "group": "juce-build",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T160200Z-ui-compiled-but-never-run-and-smoke-test-abandoned",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "UI code that cannot be run in the sandbox goes unverified.",
+  "apply_as": "step-check",
+  "rule": "List every UI behaviour that cannot be run in the checkpoint's unverified array mapped to an operational test, and move computable decisions (label culling, font fit) into window-free tests.",
+  "group": "juce-build",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T160900Z-juce-api-assumed-from-memory-compile-caught-and-version-floor-unchecked",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "JUCE APIs written from memory did not exist in the pinned version.",
+  "apply_as": "step-check",
+  "rule": "Before using a JUCE API, grep the pinned JUCE headers for it, and add a static_assert on JUCE_MAJOR_VERSION when a newer API is used.",
+  "group": "juce-build",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T161000Z-ji-labels-computed-with-12-tet-maths-in-the-editor",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Displayed pitch labels computed separately from the engine can disagree with the sound.",
+  "apply_as": "test",
+  "rule": "Compute every displayed pitch by calling the engine function that produces the sound and test that each tuning mode's label frequency equals the engine frequency within 0.01 cent.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T161100Z-audio-thread-takes-mutex-and-copies-vectors-not-in-premortem",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Audio threads that lock, allocate or wait cause glitches.",
+  "apply_as": "step-check",
+  "rule": "In every plugin pre-mortem add the lens 'what does the audio thread lock, allocate or wait on' and mitigate with lock-free reads of a preallocated snapshot.",
+  "group": "vst3-plugin",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T161200Z-edocontrol-differs-from-plan-3-3-and-nothing-logged",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "UI plan bullets were not ticked as built or deviated.",
+  "apply_as": "step-check",
+  "rule": "After implementing a UI section, mark each plan bullet built, deviated (with a DEVIATIONS.md entry) or not built, and do not write 'per plan' for a bullet with no entry.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T161600Z-integration-tests-frozen-as-compile-unverified-juce-reachable-later",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "JUCE integration tests were frozen as compile-unverified though JUCE might be obtainable.",
+  "apply_as": "planner-process",
+  "rule": "Before recording a dependency as unavailable in the planning sandbox, run the clone or install command, keep its error output in research/, and if it works compile the frozen tests against it before the freeze.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261027T123000Z-juce-license-assumption",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "JUCE's licensing differs by major version (JUCE 8 AGPLv3 or commercial/Starter tiers).",
+  "apply_as": "decision",
+  "rule": "Read the current JUCE licence page for the pinned major version before writing the licence decision, and never carry a licensing premise across major versions.",
+  "group": "licensing",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261028T215000Z-vst3-validator-not-in-local-suite",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Host-contract rules (empty program names etc.) are caught only by the Steinberg validator.",
+  "apply_as": "test",
+  "rule": "Run pluginval at strictness 5 or higher in CI from the first build that produces a plugin binary and do not rely on unit tests for host-contract rules.",
+  "group": "vst3-plugin",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261029T020000Z-start-mutation-review-at-lowest-file",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "A very low mutation score for one file signals an untested or broken stage.",
+  "apply_as": "step-check",
+  "rule": "If mutation testing is used, review survivors by lowest per-file score first and write a test from the stage's documentation before reading individual mutants.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261101T124000Z-sandbox-recycle-mid-build",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "Asks to keep build caches on a different durable store (/mnt/agents), outside the project.",
+  "suspicious": true
+ },
+ {
+  "id": "L-20261101T130000Z-mount-build-cache-and-split-units",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "Targets JUCE 9 unity builds; JUCE 8 is pinned.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261101T140000Z-intermittent-host-failure-needs-a-stress-test",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Threading and audio-path changes cause intermittent host failures.",
+  "apply_as": "test",
+  "rule": "For any change touching threading or the audio path, run a host-style stress test (random parameter automation at several block sizes, re-prepare mid-run) in CI and treat intermittent pluginval failures as reproducible bugs.",
+  "group": "vst3-plugin",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T123010Z-build-backend-pin-and-pyproject-order",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "An editable install ran before pyproject.toml existed.",
+  "apply_as": "step-check",
+  "rule": "Create pyproject.toml, list the build backend in the lock input, and run pip-audit and a clean-room install in one step before writing analysis code.",
+  "group": "python-tooling",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T140003Z-the-hash-locked-environment-omitted-the-build-backend-and-th",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "A hash-locked Python environment omitted the build backend.",
+  "apply_as": "step-check",
+  "rule": "Include the build backend in the lock inputs from the start and run pip-audit on the final lock before treating the environment as done.",
+  "group": "python-tooling",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T150301Z-zoom-cost-was-measured-with-inter-raf-deltas-which-headless-",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Cost metrics measured by pacing deltas are masked.",
+  "apply_as": "test",
+  "rule": "Time the processBlock work itself for CPU budgets and check the metric can take values other than its pacing floor.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T150601Z-browser-tests-could-not-run-in-the-sandbox-so-four-defects-i",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Platform builds and tests that cannot run in the sandbox (Windows, macOS) surface defects late.",
+  "apply_as": "step-check",
+  "rule": "Push the branch and trigger CI after the first build step rather than the last, and report 'implemented, unverified' per platform until CI is green.",
+  "group": "ci-github-actions",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T191300Z-browser-suite-first-ran-after-the-whole-implementation-was-pushed",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "CI jobs first ran after the whole implementation was pushed.",
+  "apply_as": "step-check",
+  "rule": "After the first step adding a platform test, push and run the CI job, and until a CI run id is recorded in the checkpoint list every such test as 'implemented, unverified'.",
+  "group": "ci-github-actions",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T102002Z-perf-test-budget-not-derived",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Performance budgets were invented rather than derived.",
+  "apply_as": "test",
+  "rule": "Derive every performance budget (CPU per voice, render time) from a measured reference run or a stated requirement and time only the public API that serves that workload.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T102009Z-stale-test-counts-in-reports",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Test counts in reports were stale.",
+  "apply_as": "step-check",
+  "rule": "Produce every test count in a report from the test runner's list output in the same turn and never carry counts from earlier text.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T193612Z-frozen-test-silent-fallback-single-seed",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Test helpers with algorithms had silent defaults and unstated preconditions.",
+  "apply_as": "test",
+  "rule": "State the precondition of every algorithmic test helper, assert that fallback paths are never taken, and test the helper on a hand-checkable synthetic case before freezing.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T102004Z-checkpoint-rotated-corrupt-file",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "No rotating checkpoint backup routine is in scope.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T102008Z-duplicate-pitch-modules-shipped",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Overlapping modules arise when five plugins share DSP code.",
+  "apply_as": "step-check",
+  "rule": "Before adding a shared DSP module, grep for one with the same responsibility and extend it, and name any unused duplicate in DEVIATIONS.md before the push.",
+  "group": "cpp",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T150700Z-scripted-str-replace-silently-no-opped",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Scripted search-and-replace edits can silently do nothing.",
+  "apply_as": "step-check",
+  "rule": "After any non-interactive search-and-replace, diff or grep the target to confirm the change landed and prefer a primitive that fails loudly on non-match.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T153000Z-index-regen-skipped-after-crash-fix",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "A crashed generator was fixed without re-running it.",
+  "apply_as": "step-check",
+  "rule": "After fixing a script crash, re-run that exact script to completion and verify the generated file's invariant (entry count matches source count) before committing.",
+  "group": "python-tooling",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261007T150000Z-sandbox-no-pip-no-sudo",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "The cloud sandbox may lack pip, ensurepip, sudo and cmake.",
+  "apply_as": "planner-process",
+  "rule": "In the plan, create Python venvs with --without-pip plus get-pip.py, take CMake and build tools from release binaries, and never assume apt or system pip.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T123000Z-transcript-log-never-closed",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Resources opened by CLIs leak on error paths.",
+  "apply_as": "test",
+  "rule": "Release every resource a CLI or render tool opens in the same finally block or context manager and test closure after both normal and raising runs.",
+  "group": "python-tooling",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T123002Z-unguarded-first-element-indexing",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "No hardware adapter replies are parsed.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T192617Z-solver-studies-exceeded-tool-limit-and-background-runs-died",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Long studies exceeded the tool time limit and background jobs were killed.",
+  "apply_as": "step-check",
+  "rule": "Make every long render or analysis study resumable from saved state, run it in slices shorter than the tool limit, and test background survival with a heartbeat first.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T193613Z-heavy-jobs-without-memory-preflight",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Memory-heavy jobs were launched without a pre-flight.",
+  "apply_as": "step-check",
+  "rule": "Before any large render sweep, estimate peak memory, compare it with free -m and the cgroup limit, abort above 60 percent, and never run two heavy jobs concurrently.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T193614Z-src-change-after-production-run-d025",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "Baselines and reference renders can become stale when DSP source changes.",
+  "apply_as": "test",
+  "rule": "Add a check that fails when DSP source changes while recorded baseline or metric results carry an older provenance git commit.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T162215Z-waveshaper-curve-reassigned",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "Web Audio WaveShaperNode does not exist in a JUCE plugin.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T162216Z-dynamics-compressor-assumed-ideal",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "A compressor or limiter on the master adds latency and overshoots a ceiling.",
+  "apply_as": "decision",
+  "rule": "Follow any master compressor with a clipper for the ceiling and measure its path latency with an impulse, reporting it to the host.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T090803Z-waveshaper-curve-reassigned-again-in-void-choir-app",
+  "severity": "Medium",
+  "applies": "no",
+  "why": "Web Audio WaveShaperNode does not exist in a JUCE plugin.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T090804Z-master-compressor-without-ceiling-in-void-choir-app",
+  "severity": "Medium",
+  "applies": "yes",
+  "why": "A master chain ending in a compressor can exceed the ceiling.",
+  "apply_as": "test",
+  "rule": "Require an offline render of the full plugin chain to show a true peak at or below -1 dBFS before delivery.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T162221Z-fit-range-chosen-before-reference-bandwidth",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Fit ranges were chosen before measuring where reference energy lies.",
+  "apply_as": "step-check",
+  "rule": "Measure the reference's spectral centroid and band-energy distribution before choosing a fitting range and fit up to the frequency below which about 95% of its energy lies.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T120006Z-plate-table-too-short-for-mode-budget",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "A generated table fell short of the required row count.",
+  "apply_as": "test",
+  "rule": "Choose generator search bounds from the required count with margin and assert the row count after generation.",
+  "group": "python-tooling",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261106T180400Z-scan-for-leaks-must-skip-audio-payload",
+  "severity": "Low",
+  "applies": "no",
+  "why": "No name-leak scan of audio bytes is planned.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261106T180500Z-owner-extension-needs-a-recorded-route",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Listening round caps need an extension route.",
+  "apply_as": "decision",
+  "rule": "When freezing a cap on listening rounds, freeze the owner-controlled extension route with it and require each use to be recorded.",
+  "group": "listening-gate",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T192607Z-patch-assumed-applied-mushy-width-default-was-0-02",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "A patched default did not take effect.",
+  "apply_as": "step-check",
+  "rule": "Print the effective parameter values at the start of every study or render run and compare them with intended values before proceeding.",
+  "group": "python-tooling",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T102005Z-calibration-targets-before-attainable-range",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Calibration targets were chosen before measuring attainable range.",
+  "apply_as": "planner-process",
+  "rule": "Estimate the attainable range of each metric on the real engine before choosing calibration targets and print the range beside the targets.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T151000Z-parameter-range-set-without-attainable-range-check",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "A parameter's UI range was set to a nominal range instead of what the configuration attains.",
+  "apply_as": "step-check",
+  "rule": "Before setting a plugin parameter's user-facing range, measure the attainable range for the specific configuration instead of using the model's nominal range.",
+  "group": "vst3-plugin",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261007T150200Z-restart-means-fresh-state",
+  "severity": "Low",
+  "applies": "no",
+  "why": "Concerns restarting from another session's scratch state, which the plan does not use.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T140014Z-the-addendum-s-gate-id-g-003-collided-with-the-plan-s-own-g-",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Gate IDs from an addendum collided with the plan's own.",
+  "apply_as": "planner-process",
+  "rule": "Namespace gate and step IDs by source or allocate the next free number, and check for collisions mechanically.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T152201Z-the-checkpoint-state-was-never-updated-after-planning-and-th",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Checkpoint state not updated through implementation.",
+  "apply_as": "step-check",
+  "rule": "Update the checkpoint state at the end of every implementation step and append to an execution log with step, commit, time and run id.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261101T042300Z-probe-knowledge-store-dont-adopt-defaults",
+  "severity": "Low",
+  "applies": "no",
+  "why": "No knowledge-store location is chosen in this task.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261107T201005Z-output-restrictions-were-set-on-a-privacy-assumption-before-asking-wha",
+  "severity": "Low",
+  "applies": "no",
+  "why": "No privacy-driven output restrictions are in scope.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T092005Z-assumed-visual-studio-2022-log-said-18",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Visual Studio generator names hard-coded from assumption fail on Windows runners.",
+  "apply_as": "decision",
+  "rule": "Read the compiler and generator from the runner image or build log, and never name a Visual Studio version or generator in CMake or CI without verifying it.",
+  "group": "juce-build",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T160300Z-single-core-sandbox-builds-exceeded-tool-limit-background-jobs-died",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "JUCE builds can exceed the tool time limit and background builds died.",
+  "apply_as": "step-check",
+  "rule": "For any build that may exceed 250 seconds, start it with setsid nohup and poll the log or build one target per call with a timeout, and never start a long build without one of these.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T161500Z-work-and-build-directories-vanished-between-turns",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Work directories and JUCE build trees vanish between turns.",
+  "apply_as": "step-check",
+  "rule": "Commit a bootstrap script that clones the pinned JUCE tag and configures the test targets, and run it as the first command of every turn that needs a build.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T161300Z-stale-compile-unverified-statements-and-frozen-headers-on-retired-tests",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Status text and retired FROZEN headers go stale.",
+  "apply_as": "step-check",
+  "rule": "When a status changes edit every row that states it, and when a test is retired replace its FROZEN header with 'RETIRED - not built' in the same commit.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T140001Z-the-emulator-s-cli-batch-mode-does-not-print-the-pty-path-so",
+  "severity": "Low",
+  "applies": "no",
+  "why": "No emulator CLI is driven by tests.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261008T223321Z-git-add-all-committed-build-directories",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "git add -A before .gitignore committed CMake and JUCE build trees.",
+  "apply_as": "step-check",
+  "rule": "Create .gitignore for build output directories before the first git add -A and read git status --short before committing.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T090806Z-built-new-app-without-checking-the-named-project-repo",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "A new app was written although the user's project repository existed.",
+  "apply_as": "step-check",
+  "rule": "Clone or inspect the named project repository first and state in the first reply whether work targets it or a separate file.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T120016Z-blanket-git-add-swept-in-foreign-file",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "git add of a directory staged another task's file.",
+  "apply_as": "step-check",
+  "rule": "Stage by explicit file list and read git diff --cached --stat before every commit.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T140008Z-a-blanket-git-add-a-committed-emulator-log-files-again",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "git add -A committed log files.",
+  "apply_as": "step-check",
+  "rule": "Stage by explicit file list, read git diff --cached --stat before every commit, and add .gitignore entries when a tool first writes a log.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T191500Z-gitignore-model-pattern-excluded-the-tiny-test-fixtures",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "A .gitignore rule (for example *.wav or *.bin) can exclude fixtures the tests read.",
+  "apply_as": "test",
+  "rule": "After writing .gitignore, run git check-ignore -v on every fixture path tests read and require every needed file to print nothing.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T192610Z-gitignore-log-pattern-left-manifest-logs-untracked",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "A .gitignore rule left manifest-cited files untracked.",
+  "apply_as": "test",
+  "rule": "After changing .gitignore, run git ls-files against every file the manifest names and fail on any missing one.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T192611Z-tracked-file-count-typed-in-a-prompt-was-wrong",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "A typed file count was wrong.",
+  "apply_as": "step-check",
+  "rule": "Compute every count quoted in a report or prompt from the repository at that moment and never type one.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T232009Z-checkpoint-state-stale-after-implementation",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Checkpoint hash map stayed at planning time.",
+  "apply_as": "step-check",
+  "rule": "After each implementation step regenerate the artifacts hash map and updated_at from git ls-files and append one line to the execution log, with a make target so it is one command.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T232010Z-built-binaries-committed-no-gitignore",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Build outputs (plugin bundles, binaries) were committed by blanket add.",
+  "apply_as": "step-check",
+  "rule": "Before a commit that adds a new directory, run git status --short and add files by name or ignore the directory's build output first.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T232011Z-licence-text-not-obtainable-offline-pointer-left",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Licence texts the plan needs may not be obtainable in the sandbox.",
+  "apply_as": "step-check",
+  "rule": "At intake list every licence file the plan needs (project licence, JUCE/VST3 notices) and check its full text is obtainable, otherwise ask the owner before S-001.",
+  "group": "licensing",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T234122Z-checkpoint-state-stale-after-implementation-and-main-not-default",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Default branch may not be the released branch.",
+  "apply_as": "step-check",
+  "rule": "At the last implementation step update the checkpoint and run git ls-remote --symref origin HEAD, requiring the symref to name the intended branch.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261028T222647Z-malformed-clone-url",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "A mistyped repository URL duplicated the owner.",
+  "apply_as": "step-check",
+  "rule": "Construct every git network URL directly from the supplied owner/repository pair and compare it character by character.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261104T000900Z-stale-git-index-lock-after-mount-error",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "A stale zero-length git index lock blocks commits.",
+  "apply_as": "step-check",
+  "rule": "After a git index-lock error verify no git process is active and inspect the lock before removing only a confirmed stale lock.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261104T021500Z-credential-cache-shell-and-socket",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Credential-cache setup depended on the shell.",
+  "apply_as": "step-check",
+  "rule": "Check the executing shell and enforce a private socket directory before any non-interactive credential-cache operation.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261007T150900Z-windows-sha256sum-backslash",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "GNU sha256sum prefixes a backslash for Windows paths, breaking manifests.",
+  "apply_as": "test",
+  "rule": "In frozen bash scripts hash files through stdin (sha256sum < file) so output never contains an escaped path.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261007T151000Z-large-evidence-off-impl-branch",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "WAV evidence bloats the implementation branch.",
+  "apply_as": "decision",
+  "rule": "Store audio gate evidence on a dedicated orphan evidence branch, git-ignore renders on the implementation branch, and keep only SHA256SUMS on it.",
+  "group": "listening-gate",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T150701Z-actions-logs-and-artifacts-were-unreachable-from-the-sandbox",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Actions logs may be unreachable from the sandbox.",
+  "apply_as": "risk",
+  "rule": "Check Actions log reachability in the environment spike and, if blocked, record it as a risk and scope any diagnostics workflow to workflow_dispatch with minimal permissions.",
+  "group": "ci-github-actions",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T150801Z-the-plan-s-ci-workflow-template-failed-to-parse-because-gha-",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Workflow YAML with unquoted ${{ }} can fail to parse.",
+  "apply_as": "test",
+  "rule": "Parse every workflow file with a YAML loader and actionlint before the plan is marked ready and prefer block-style mappings for lines containing ${{ }}.",
+  "group": "ci-github-actions",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T161502Z-unauthenticated-github-api-call",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Unauthenticated API requests failed from the sandbox.",
+  "apply_as": "step-check",
+  "rule": "Use the authenticated gh CLI or GitHub tools for every GitHub API request and check the HTTP status before parsing JSON.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T161504Z-new-repo-pushed-without-license",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "A new repository pushed without LICENSE needed a follow-up.",
+  "apply_as": "step-check",
+  "rule": "Include a LICENSE file in the first push of any new repository, consistent with the JUCE licence decision, and ask the owner if the choice is not known.",
+  "group": "licensing",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T161505Z-guessed-raw-github-path-404",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Raw URLs recalled from memory returned 404.",
+  "apply_as": "step-check",
+  "rule": "Locate any file in a third-party repository (JUCE, pluginval, VST3 SDK) by tree listing or pinned tag before fetching it by raw path.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T120018Z-pat-in-chat-did-not-grant-repo-access-in-session",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Direct API calls with a pasted token failed where add_repo works.",
+  "apply_as": "step-check",
+  "rule": "Try add_repo first for any GitHub repository the task names and never use or store a pasted token when it works.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T151401Z-a-draft-pr-could-not-be-marked-ready-through-the-rest-api",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "A draft PR could not be marked ready through REST.",
+  "apply_as": "step-check",
+  "rule": "Check the PR object's draft field after any state-change request and use the GraphQL mutation for draft changes.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T192100Z-tool-call-came-back-not-run-and-the-turn-ended-with-no-response-requested",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "A turn ended while the request was open after a NOT RUN result.",
+  "apply_as": "planner-process",
+  "rule": "When a tool result says NOT RUN or is empty, re-issue the call once or tell the person what did not run and never close a turn while a request is open.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T192200Z-verified-label-on-a-claim-whose-cited-sources-covered-only-half",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "A claim was marked verified though sources supported only one half.",
+  "apply_as": "planner-process",
+  "rule": "Give every sentence-level assertion its own entry and status and mark it verified only if the cited source contains that assertion.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261028T233130Z-private-knowledge-clone",
+  "severity": "Low",
+  "applies": "no",
+  "why": "No private knowledge store is cloned by the plan.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261101T042100Z-github-git-flaky-use-codeload-tarball",
+  "severity": "Low",
+  "applies": "no",
+  "why": "Asks to fall back to codeload tarballs and a bundle push target after git transport failures.",
+  "suspicious": true
+ },
+ {
+  "id": "L-20261107T201006Z-github-graphql-calls-failed-in-one-claude-code-remote-session-while-th",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "GraphQL-backed gh commands failed in one remote session while REST worked.",
+  "apply_as": "step-check",
+  "rule": "Try the normal gh command once, read the error, and fall back to gh api REST routes only if GraphQL is refused.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261008T173533Z-readme-names-files-not-in-the-zip",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "A packaged README referenced files not in the archive.",
+  "apply_as": "step-check",
+  "rule": "Before sending any handoff archive, extract every file name a packaged document mentions and check each against unzip -l and the delivered file names.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T123006Z-performance-budget-docstring-wrong-multiple",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "A performance budget's stated headroom did not match the measurement.",
+  "apply_as": "test",
+  "rule": "Compute each performance budget from the measurement in the same script that writes the test, state the real multiple, and prefer a budget near 3-5x so a regression can fail.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T123011Z-red-verification-matched-wrong-exception",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "pytest.raises on a builtin exception matched a stub's NotImplementedError.",
+  "apply_as": "test",
+  "rule": "In red verification treat any passing test as a defect, and use dedicated exception types in failure-path assertions rather than builtins a stub may raise.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T123012Z-status-counts-typed-and-commit-count-misreported",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Counts in a status header and summary were typed and wrong.",
+  "apply_as": "step-check",
+  "rule": "Generate every count in a report from a command and paste its output, never typing numbers from memory.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T140009Z-the-red-verification-classifier-mis-read-junit-failure-and-e",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "The red-verification classifier mis-read junit failure and error elements.",
+  "apply_as": "test",
+  "rule": "Check that classified red-verification counts sum to the collected total and reason-code each test, not just the category.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T140011Z-test-category-counts-in-the-traceability-report-were-estimat",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Traceability category counts were estimated.",
+  "apply_as": "step-check",
+  "rule": "Generate every count in a report from the test run and never type it.",
+  "group": "planning-process",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T123008Z-oracle-spike-assumed-library-api",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "An oracle spike assumed library internals that do not exist.",
+  "apply_as": "step-check",
+  "rule": "Before writing an oracle spike, print dir() of the module and the signature of each call to be used.",
+  "group": "python-tooling",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T102006Z-placeholder-arithmetic-left-in-code",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Placeholder arithmetic (multiply by zero, TODO) reached review.",
+  "apply_as": "step-check",
+  "rule": "Grep the staged diff for multiply-by-zero, TODO and FIXME before every commit and write the intended expression directly.",
+  "group": "cpp",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261004T161501Z-synthetic-ground-truth-misprinted",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Ground truth compared by eye from rounded strings was wrong.",
+  "apply_as": "test",
+  "rule": "Compare detector output with ground truth numerically in code with an asserted tolerance, never by eye from rounded printed values.",
+  "group": "audio-metrics-and-references",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T140010Z-parsing-slips-found-only-by-the-implementation-compact-frame",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Protocol variants cited by the spec (MIDI running status, note-on velocity 0, bend ranges, MPE) were found only at implementation.",
+  "apply_as": "test",
+  "rule": "At the freeze, add a test for every protocol variant the spec names (for example note-on with velocity 0 as note-off, pitch-bend range, running status).",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T160800Z-naming-rule-first-draft-failed-14-of-217-oracle-cells",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "A derived naming or tuning rule failed cells of the published table.",
+  "apply_as": "test",
+  "rule": "Validate any derived tuning or note-naming rule against every cell of the published table in a committed script before it enters the plan or a frozen test.",
+  "group": "dsp-correctness",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261009T193605Z-premature-checkpoint-subphase",
+  "severity": "Low",
+  "applies": "no",
+  "why": "Specific to the checkpoint subphase field of an earlier workflow.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261029T002439Z-artifact-id-boundaries",
+  "severity": "Low",
+  "applies": "no",
+  "why": "Specific to artifact-ID scanner patterns in an earlier workflow.",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261104T004000Z-configured-package-index-unreachable",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Package index failures were misread as missing package versions.",
+  "apply_as": "step-check",
+  "rule": "On a package-index DNS or connection failure, identify the configured index, switch explicitly to the verified public PyPI index without changing pins, and do not treat the failure as the version being unavailable.",
+  "group": "python-tooling",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261104T011700Z-generated-python-cache-staged",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Generated bytecode got into evidence commits.",
+  "apply_as": "step-check",
+  "rule": "Before a broad research staging operation inspect the staged file list and ignore __pycache__, *.py[cod] and local build outputs.",
+  "group": "git-and-push",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261104T012000Z-red-test-reached-fixture-before-stub",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Red tests reached external fixtures before the stub.",
+  "apply_as": "test",
+  "rule": "In red verification invoke the stub before any optional downloaded fixture access and require every reported error to be the explicit planning-stub exception.",
+  "group": "frozen-tests",
+  "suspicious": false
+ },
+ {
+  "id": "L-20261106T063000Z-zstd-cli-shim",
+  "severity": "Low",
+  "applies": "yes",
+  "why": "Archival CLIs may be absent from the sandbox.",
+  "apply_as": "step-check",
+  "rule": "Before relying on any compression or archival CLI in a build, check which <tool> and, if absent but the library exists, build a minimal shim on executable storage.",
+  "group": "sandbox-environment",
+  "suspicious": false
+ }
+]

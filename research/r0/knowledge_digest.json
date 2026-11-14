@@ -1,0 +1,2586 @@
+[
+{
+"id": "K-20261009T092104Z-ableton-computer-midi-keyboard-layout",
+"statement": "Ableton Live's Computer MIDI Keyboard (toggle with M, or the keyboard icon at the top right) maps A S D F G H J K L to white keys and W E T Y U O P to black keys, Z and X shift the octave down and up, and C and V lower and raise a stepped velocity, because a computer keyboard sends no real velocity.",
+"tags": "[subject:ableton-computer-midi-keyboard, tech:ableton-live, domain:audio, phase:research]",
+"version": "Live 11 and 12 (sources dated 2019-2025)",
+"confidence": "corroborated",
+"path": "knowledge/ableton-computer-midi-keyboard/K-20261009T092104Z-ableton-computer-midi-keyboard-layout.md"
+},
+{
+"id": "K-20261027T120000Z-live-vst3-support",
+"statement": "Ableton Live hosts 64-bit VST3 plugins on Windows and macOS (VST3 supported as of Live 10.1); AU (v2/v3) is macOS-only; AAX is unsupported. VST3 install paths Live scans: C:\\Program Files\\Common Files\\VST3\\ (Win) and /Library/Audio/Plug-Ins/VST3/ (macOS). On Apple Silicon, the Universal build of Live only natively recognizes plugins compiled for Apple Silicon.",
+"tags": "[subject:ableton-live-plugin-formats, domain:audio, tech:ableton-live, tech:vst3, phase:research]",
+"version": "Ableton Live 12 (VST3 since 10.1; AUv3 since 11.2)",
+"confidence": "verified",
+"path": "knowledge/ableton-live-plugin-formats/K-20261027T120000Z-live-vst3-support.md"
+},
+{
+"id": "K-20261112T134540Z-model-tier-map-2026-11",
+"statement": "Planning protocol v3.15 assigned models to tiers as: T1 (orchestration, architecture, proof strategy) Fable (Mythos); T2 (deep analysis, proof review, adversarial review) Opus; T3 (synthesis, drafting) Sonnet; T4 (parsing, retrieval, mechanical checks) Haiku.",
+"tags": "[subject:agent-model-tiers, phase:planning]",
+"version": "2026-11",
+"confidence": "single-source",
+"path": "knowledge/agent-model-tiers/K-20261112T134540Z-model-tier-map-2026-11.md"
+},
+{
+"id": "K-20261112T134530Z-environment-class-by-platform-2026-11",
+"statement": "Planning protocol v3.6 to v3.15 classified agent execution environments as: Kimi on cloud ephemeral (observed, about 16 container recycles in one session); Kimi on localhost unknown, treated as ephemeral; Claude on cloud or remote stable (no recycling observed).",
+"tags": "[subject:agent-sandbox-environment-class, phase:planning]",
+"version": "2026-11",
+"confidence": "single-source",
+"path": "knowledge/agent-sandbox-environment-class/K-20261112T134530Z-environment-class-by-platform-2026-11.md"
+},
+{
+"id": "K-20261105T162900Z-amp-reference-material-sources",
+"statement": "As of 2026-11-05, no CC BY or CC0 real recording with a paired DI exists online for a Boss HM-2, a black-metal rig, a 5E3 Tweed Deluxe, a Mesa Dual Rectifier or a high-gain 5150/6505. Real recordings of Mark V, Engl, Mesa 550 and 6505 amps exist but carry no licence or a non-commercial one. TONE3000 has T3K-licensed NAM captures of all of these. The T3K licence lets rendered output be published but forbids redistributing the capture. For a non-commercial project, CC BY-NC and CC BY-NC-ND material may be used locally; unlicensed material may not be used at all.",
+"tags": "[subject:amp-reference-datasets, subject:guitar-amp-simulation, domain:audio, tech:nam, tech:zenodo, phase:research]",
+"version": "site contents and licences as read 2026-11-05",
+"confidence": "verified",
+"path": "knowledge/amp-reference-datasets/K-20261105T162900Z-amp-reference-material-sources.md"
+},
+{
+"id": "K-20261004T161603Z-audacity-pipe-protocol",
+"statement": "Audacity's mod-script-pipe on Windows uses the named pipes ToSrvPipe (write) and FromSrvPipe (read) with commands terminated by CR LF NUL; on Linux/macOS /tmp/audacity_script_pipe.to.<uid> and .from.<uid> with LF; a response ends at an empty line, and success is reported as 'BatchCommand finished: OK'.",
+"tags": "[subject:audacity-scripting, tech:audacity, tech:python, phase:implementation]",
+"version": "Audacity 3.x (pipe_test.py on master and release-3.7.1)",
+"confidence": "corroborated",
+"path": "knowledge/audacity-scripting/K-20261004T161603Z-audacity-pipe-protocol.md"
+},
+{
+"id": "K-20261004T161600Z-audacity-trim-silence-plugin",
+"statement": "Steve Daulton's Trim Silence Nyquist plug-in removes below-threshold audio only at the start and end of the selection, can be used in Chains/Macros, and loads the selection into RAM with a 1 GB cap (about 45 minutes of 44.1 kHz stereo).",
+"tags": "[subject:audacity-silence-trimming, tech:audacity, domain:audio, phase:research]",
+"version": "Trim Silence plug-in as posted on the Audacity forum (Audacity 2.x to 3.x)",
+"confidence": "corroborated",
+"path": "knowledge/audacity-silence-trimming/K-20261004T161600Z-audacity-trim-silence-plugin.md"
+},
+{
+"id": "K-20261009T160103Z-basic-pitch-range",
+"statement": "basic-pitch covers MIDI 21 to 108 (A0 at 27.5 Hz up to C8, 88 semitones) on mono input at 22050 Hz, so notes below A0, such as F#0 (MIDI 18, 23.1247 Hz at A4=440) on a 7-string bass, cannot be detected by it and need a separate pitch tracker; 12-TET frequency is f = 440 * 2^((m-69)/12).",
+"tags": "[subject:basic-pitch-model-range, tech:basic-pitch, domain:music-transcription, domain:audio, phase:research]",
+"version": "@spotify/basic-pitch 1.0.1",
+"confidence": "verified",
+"path": "knowledge/basic-pitch-model-range/K-20261009T160103Z-basic-pitch-range.md"
+},
+{
+"id": "K-20261101T043000Z-basic-pitch-evaluatemodel-api",
+"statement": "BasicPitch.evaluateModel(Float32Array|AudioBuffer, onComplete(frames,onsets,contours), percentCallback) at 22050 Hz; outputToNotesPoly(frames,onsets,onsetThresh,frameThresh,minNoteLen).",
+"tags": "[domain:audio, tech:tfjs, subject:basic-pitch-package, phase:research]",
+"version": "@spotify/basic-pitch 1.0.1",
+"confidence": "verified",
+"path": "knowledge/basic-pitch-package/K-20261101T043000Z-basic-pitch-evaluatemodel-api.md"
+},
+{
+"id": "K-20261101T043000Z-basic-pitch-model-files",
+"statement": "The npm package ships the TF.js graph model (model/model.json + group1-shard1of1.bin, ~904 KB).",
+"tags": "[domain:audio, tech:tfjs, subject:basic-pitch-package, phase:research]",
+"version": "@spotify/basic-pitch 1.0.1",
+"confidence": "verified",
+"path": "knowledge/basic-pitch-package/K-20261101T043000Z-basic-pitch-model-files.md"
+},
+{
+"id": "K-20261101T043000Z-basic-pitch-node-buffer",
+"statement": "basic-pitch generateFileData() returns a Node Buffer, so it is unsuitable in the browser.",
+"tags": "[domain:audio, tech:tfjs, subject:basic-pitch-package, phase:research]",
+"version": "@spotify/basic-pitch 1.0.1",
+"confidence": "verified",
+"path": "knowledge/basic-pitch-package/K-20261101T043000Z-basic-pitch-node-buffer.md"
+},
+{
+"id": "K-20261101T043000Z-tfjs-cpu-realtime-factor",
+"statement": "TF.js cpu backend runs basic-pitch at ~0.5-0.6x realtime in Node (23 s for 13 s audio), far too slow for the desktop target.",
+"tags": "[domain:audio, tech:tfjs, subject:basic-pitch-performance, phase:research]",
+"version": "@tensorflow/tfjs 3.21.0",
+"confidence": "verified",
+"path": "knowledge/basic-pitch-performance/K-20261101T043000Z-tfjs-cpu-realtime-factor.md"
+},
+{
+"id": "K-20261009T163900Z-bass-guitar-tunings-four-to-seven-strings",
+"statement": "Wikipedia's Bass guitar tuning gives 4-string E1 A1 D2 G2, 5-string B0 E1 A1 D2 G2 (usual), 6-string B0 E1 A1 D2 G2 C3 (usual), and for 7 strings B0 E1 A1 D2 G2 C3 F3 (Tobias 1987) or F#0 B0 E1 A1 D2 G2 C3 (Warwick); it gives no 8-string bass tuning.",
+"tags": "[subject:bass-guitar-tuning, domain:audio, phase:research]",
+"version": "Wikipedia as fetched 2026-10-09",
+"confidence": "single-source",
+"path": "knowledge/bass-guitar-tuning/K-20261009T163900Z-bass-guitar-tunings-four-to-seven-strings.md"
+},
+{
+"id": "K-20261007T160032Z-c-033",
+"statement": "Velut et al. 2017 outward-striking one-mass lip model: h'' + (w_l/Q_l) h' + w_l^2 (h - h0) = (p_b - p(t))/mu (eq. 1), Bernoulli flow u = W h sqrt(2(p_b - p)/rho) (eq. 5), impedance as sum of complex modes Z(w) = Zc sum_n [C_n/(jw - s_n) + C_n*/(jw - s_n*)] (eq. 3), with modal ODEs dp_n/dt = Zc C_n u + s_n p_n and p = 2 sum Re(p_n) (eq. 4).",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:brass-lip-model, phase:research]",
+"version": "2017 (HAL author version v4, dated 13 Dec 2016)",
+"confidence": "verified",
+"path": "knowledge/brass-lip-model/K-20261007T160032Z-c-033.md"
+},
+{
+"id": "K-20261007T160033Z-c-034",
+"statement": "Velut et al. 2017 lip parameters (Table 2): h0 = 5e-4 m, W = 12e-3 m, 1/mu = 0.11 m^2/kg (mu ~ 9.1 kg/m^2), Q_l = 7, with f_l swept 20-500 Hz; rho = 1.19 kg/m^3.",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:brass-lip-model, phase:research]",
+"version": "2017 (HAL author version v4, dated 13 Dec 2016)",
+"confidence": "verified",
+"path": "knowledge/brass-lip-model/K-20261007T160033Z-c-034.md"
+},
+{
+"id": "K-20261007T160034Z-c-035",
+"statement": "Freour et al. 2020 trumpet parameter set (same one-mass outward model, eq. 1-6): Q_l = 3, mu_l = 2 kg/m^2, y0 = 0.1 mm, b = 8 mm (eq. 15), with f_l = 382.18 Hz chosen by LSA 'sweet spot' so that the 4th regime (Bb4, ~470 Hz) is played; Hopf bifurcation at p0 ~ 2.2 kPa.",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:brass-lip-model, phase:research]",
+"version": "2020 (HAL author version)",
+"confidence": "verified",
+"path": "knowledge/brass-lip-model/K-20261007T160034Z-c-035.md"
+},
+{
+"id": "K-20261007T160035Z-c-036",
+"statement": "Doc, Vergez & Hannebicq 2023 give a register-by-register trumpet lip parameter set (L = 12 mm, Q_l = 20, mu = 9 kg/m^2) that makes the one-mass outward model play registers 2-6 in time-domain synthesis: p_b = 1256/2146/2973/3790/4931 Pa, f_l = 235/340/467/586/703 Hz, h0 = 0.242/0.218/0.190/0.172/0.168 mm.",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:brass-lip-model, phase:research]",
+"version": "2023 (HAL author version)",
+"confidence": "verified",
+"path": "knowledge/brass-lip-model/K-20261007T160035Z-c-036.md"
+},
+{
+"id": "K-20261007T160036Z-c-037",
+"statement": "Berjamin et al. (2017) trumpet-like simulation uses a one-mass lip m y'' + r y' + k(y - y_eq) = A (p_m - p_e) with m = 1.78e-4 kg, k = 1278.8 N/m, r = sqrt(mk)/4 (i.e. Q = 4, f_l ~ 427 Hz), lip width l = 1e-2 m, A = 1e-4 m^2, y_eq = 5e-4 m, p_m = 20 kPa.",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:brass-lip-model, phase:research]",
+"version": "arXiv v1 2015 preprint (published 2017)",
+"confidence": "verified",
+"path": "knowledge/brass-lip-model/K-20261007T160036Z-c-037.md"
+},
+{
+"id": "K-20261007T160037Z-c-038",
+"statement": "Bilbao/NESS-style FDTD lip parameter set (as tabulated in Willemsen, Bilbao, Ducceschi, Serafin, DAFx20in21, citing Harrison-Harsley 2018 thesis): M_r = 5.37e-5 kg, S_r = 1.46e-5 m^2, sigma_r = 5 s^-1, w_r = 0.01 m, H0 = 2.9e-4 m, omega_r/2pi 20-1000 Hz, P_m 0-6000 Pa (trombone context).",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:brass-lip-model, phase:research]",
+"version": "2021",
+"confidence": "verified",
+"path": "knowledge/brass-lip-model/K-20261007T160037Z-c-038.md"
+},
+{
+"id": "K-20261007T160114Z-c-075",
+"statement": "The planner's lip simulator (research/spikes/lipsim.cpp: Freour 2022 eq. 1, bilinear modal update at 96 kHz, closed-form implicit flow) reproduces Freour et al. 2022: with their Table 1 open-trumpet modes and Table 2 lips (Ql 3, mu 2 kg/m^2, y0 0.1 mm, b 8 mm) at f_l = 382.18 Hz it oscillates at f0 = 479.7 Hz for p0 = 3 kPa (paper: ~470 Hz, Hopf ~2.2 kPa) and does not start from rest at 2.0 kPa.",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:brass-lip-model, phase:research]",
+"version": "2026-10-07",
+"confidence": "verified",
+"path": "knowledge/brass-lip-model/K-20261007T160114Z-c-075.md"
+},
+{
+"id": "K-20261007T160128Z-c-089",
+"statement": "With the bell filter applied as a linear (zero-padded) convolution, the 'tongue release' attack gives onset medians of 40-160 ms by the reference metric (TinySOL band q10-q90: pp 26-164, mf 22-103, ff 22-99 ms); the best single setting (pressure rise 15 ms, lips closed, accent 1.5) puts 92/58/25 % of pp/mf/ff notes inside the band, and dynamic-dependent settings reach >= 50 % for every dynamic (pp 92 % at 15 ms/closed, mf 58 % at 15 ms/closed/accent 1.5, ff 50 % at 15 ms/half-open); >= 80 % per dynamic was not reached. Supersedes C-088 (circular-convolution artefact, lesson L-20261008T010500Z).",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:brass-lip-model, phase:research]",
+"version": "2026-10-07",
+"confidence": "verified",
+"path": "knowledge/brass-lip-model/K-20261007T160128Z-c-089.md"
+},
+{
+"id": "K-20261007T160140Z-c-101",
+"statement": "A 25 ms tongue stop (lips held closed, p_m = 0, then a 3 ms pressure re-attack) on a sustained mf note gives a 5 ms-RMS dip of 11.7-20.1 dB (median 15.9) in the radiated output of every normal-range standard note and recovery to within 3 dB of the steady level in a median 95 ms (97 % within 250 ms); 15 ms gives 7.7-16.8 dB; a 100 ms gap gives >= 29 dB.",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:brass-lip-model, phase:research]",
+"version": "2026-10-15",
+"confidence": "verified",
+"path": "knowledge/brass-lip-model/K-20261007T160140Z-c-101.md"
+},
+{
+"id": "K-20261007T160141Z-c-102",
+"statement": "After the D-007 release (p_m to 0 over 40 ms) the radiated output of every normal-range standard note at mf falls by 16.9-56.4 dB (median 38.8) below its steady level within 100 ms of note-off; only 87 % fall by >= 20 dB.",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:brass-lip-model, phase:research]",
+"version": "2026-10-15",
+"confidence": "verified",
+"path": "knowledge/brass-lip-model/K-20261007T160141Z-c-102.md"
+},
+{
+"id": "K-20261007T160044Z-c-045",
+"statement": "Lossless weakly nonlinear simple-wave propagation used for brassiness: dp/dt + [c0 + ((gamma+1)/2) u] dp/dx = 0 (eq. 1), which with p = rho0 c0 u and retarded time tau = t - x/c0 becomes dp/dx - ((gamma+1)/(2 rho0 c0^3)) p dp/dtau = 0 (eq. 2); for a flaring bore D(x) add + p (1/D) dD/dx (eq. 5), removed by the stretched coordinate z(x) = int_0^x D0/D(y) dy and w = D p (eqs. 6-8).",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:brass-nonlinear-propagation, phase:research]",
+"version": "2007",
+"confidence": "verified",
+"path": "knowledge/brass-nonlinear-propagation/K-20261007T160044Z-c-045.md"
+},
+{
+"id": "K-20261007T160045Z-c-046",
+"statement": "Shock formation distance: x_s = 2 gamma P_at c / ((gamma+1)(dp_m/dt)_max) (Hirschberg et al. eq. 1), equivalently x_s = rho0 c0^3 / (beta (dp/dt)_max) with beta = (gamma+1)/2 = 1.2; for a sinusoid of amplitude P, (dp/dt)_max = 2 pi f P, giving e.g. 2.76 m at 466 Hz/5 kPa, 1.38 m at 466 Hz/10 kPa, 0.69 m at 466 Hz/20 kPa (rho0 = 1.2, c0 = 343 m/s).",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:brass-nonlinear-propagation, phase:research]",
+"version": "1996 (HAL preprint dated 1995)",
+"confidence": "corroborated",
+"path": "knowledge/brass-nonlinear-propagation/K-20261007T160045Z-c-046.md"
+},
+{
+"id": "K-20261007T160046Z-c-047",
+"statement": "Effective nonlinear (equivalent-cylinder) length of a modern B-flat trumpet: brassiness potential B = (1/L_ecN) int_0^L Dmin/D(x) dx = 0.58 with Dmin = 8.7 mm for a Yamaha trumpet (c. 2002), i.e. L_NDeq = B x L_ecN ~ 0.85 m of 8.7 mm tube (L_ecN = c/(2 f1) ~ 1.47 m); a 19th-century Kessler trumpet has B = 0.74; the OpenWInD Tr_co_MP bore gives B ~ 0.61 (Dmin 9.28 mm, z(L) = 0.90 m).",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:brass-nonlinear-propagation, phase:research]",
+"version": "2020",
+"confidence": "corroborated",
+"path": "knowledge/brass-nonlinear-propagation/K-20261007T160046Z-c-047.md"
+},
+{
+"id": "K-20261007T160047Z-c-048",
+"statement": "Real-time algorithm options: Vergez & Rodet 2000 (J. Signal Processing 4(1):79-87) proposed a new algorithm for nonlinear propagation applied to a trumpet model, Msallam et al. 2000 (Acta Acust. 86(4):725-736) a trombone model with nonlinear propagation in the cylindrical part, and Helie & Smet 2008 a real-time 'brassy' audio effect for a straight pipe; none of these full texts were accessible, so the algorithm details below are derived from eq. (2) and not from them.",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:brass-nonlinear-propagation, phase:research]",
+"version": "2000",
+"confidence": "inferred",
+"path": "knowledge/brass-nonlinear-propagation/K-20261007T160047Z-c-048.md"
+},
+{
+"id": "K-20261007T160124Z-c-085",
+"statement": "Output chain p+ = p/2 -> simple-wave time warping over 0.85 m of equivalent cylinder -> TMM bell transfer j w H / Z_rad gives a mean harmonic MAD (H1..H8) vs TinySOL of 2.9 dB at ff (6 notes), but pp/mf are too bright (13.6 / 7.5 dB) when the steady pressure stays at 1.3 / 2.5 x threshold; without nonlinear propagation ff is too dark (centroid ratio 0.47-0.59).",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:brass-nonlinear-propagation, phase:research]",
+"version": "2026-10-07",
+"confidence": "verified",
+"path": "knowledge/brass-nonlinear-propagation/K-20261007T160124Z-c-085.md"
+},
+{
+"id": "K-20261007T160041Z-c-042",
+"statement": "A one-mass outward-striking model CAN produce a pedal-like note well above the strongly inharmonic first resonance: for the trombone Velut et al. find f_thresh,1 = 55.6 Hz vs f_ac,1 = 38 Hz (ratio 1.46, close to Bb1 = 58.27 Hz) at f_l = 49 Hz, and time-domain simulation at p_b = 150 Pa gives 61.86 Hz; a single-mode resonator still gives 61.06 Hz, so the pedal is attributed to coupling with the first mode, not the privileged-frequency mechanism of upper modes.",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:brass-pedal-note, phase:research]",
+"version": "2017 (HAL author version v4, dated 13 Dec 2016)",
+"confidence": "verified",
+"path": "knowledge/brass-pedal-note/K-20261007T160041Z-c-042.md"
+},
+{
+"id": "K-20261007T160038Z-c-039",
+"statement": "For the outward-striking one-mass model the playing (threshold) frequency is always just ABOVE the acoustic resonance f_ac,n, and the least-threshold ('optimal') lip frequency lies slightly BELOW it: trombone Table 5 gives f_l,opt/f_ac,n = 110/112 = 0.98, 162/170 = 0.95, 215/228 = 0.94, 271/290 = 0.93 for regimes 2-5, with f_thresh/f_ac,n = 1.10, 1.06, 1.05, 1.04 (Q_l = 7).",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:brass-regime-selection, phase:research]",
+"version": "2017 (HAL author version v4, dated 13 Dec 2016)",
+"confidence": "verified",
+"path": "knowledge/brass-regime-selection/K-20261007T160038Z-c-039.md"
+},
+{
+"id": "K-20261007T160039Z-c-040",
+"statement": "With trumpet parameters of low Q_l the optimal lip frequency is much further below the resonance: Freour et al. 2020 find f_l = 382.18 Hz for the 4th resonance at 462.98 Hz (ratio 0.825, Q_l = 3), playing near 470 Hz; across 8 trumpets f_l/f_4 = 0.81-0.82.",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:brass-regime-selection, phase:research]",
+"version": "2020 (HAL author version)",
+"confidence": "verified",
+"path": "knowledge/brass-regime-selection/K-20261007T160039Z-c-040.md"
+},
+{
+"id": "K-20261007T160040Z-c-041",
+"statement": "Hysteresis: with Freour's trumpet parameters the Bb4 branch emerges from an inverse (subcritical) Hopf bifurcation at p0 ~ 2.2 kPa with a fold at lower p0, so sound starts at 2.2 kPa but can be sustained below it on decrescendo; across 8 trumpets the hysteresis width H = 0.25-0.59 kPa and the dynamic range D (p-p up to p0 = 5 kPa) = 8.4-9.8 kPa.",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:brass-regime-selection, phase:research]",
+"version": "2020 (HAL author version)",
+"confidence": "verified",
+"path": "knowledge/brass-regime-selection/K-20261007T160040Z-c-041.md"
+},
+{
+"id": "K-20261007T160121Z-c-082",
+"statement": "Overblow by continuous interpolation of the lip setting between partials (f_l, h0 and/or p_m) produces silent gaps > 50 ms between registers for 10-19 of 35 notes and non-monotonic partial sequences, so it is rejected.",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:brass-regime-selection, phase:research]",
+"version": "2026-10-07",
+"confidence": "verified",
+"path": "knowledge/brass-regime-selection/K-20261007T160121Z-c-082.md"
+},
+{
+"id": "K-20261007T160123Z-c-084",
+"statement": "Within a register, raising only the blowing pressure (p_m x (1 + 2 o) for o in [0, 0.45]) keeps 35/35 standard notes on their partial and increases the mouthpiece-pressure centroid monotonically for 35/35; adding f_l x (1 + 0.04 o) pushes 11/35 notes to the next partial early.",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:brass-regime-selection, phase:research]",
+"version": "2026-10-07",
+"confidence": "verified",
+"path": "knowledge/brass-regime-selection/K-20261007T160123Z-c-084.md"
+},
+{
+"id": "K-20261007T160130Z-c-091",
+"statement": "Over 4 s runs (R5 review) the Doc 2023 lip set with pressure k x threshold (pp 1.3, mf 2.5, ff 5) sustains standard notes written 54-85 at pp/mf/ff, 86-87 at mf/ff only, 88 at ff only, 89 at mf/ff only (86/87 at pp are ring-downs of the attack transient); with blowing-factor floors (86, 87, 89 >= 2.5; 88 >= 5.0, D-023) all four sustain for 3 s.",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:brass-regime-selection, phase:research]",
+"version": "2026-10-08",
+"confidence": "verified",
+"path": "knowledge/brass-regime-selection/K-20261007T160130Z-c-091.md"
+},
+{
+"id": "K-20261007T160131Z-c-092",
+"statement": "The per-note frequency scale holds pp/mf/ff within +-4.6 cents only by construction: it shifts all poles and f_l by up to -84 cents (standard notes) and -114 cents (alternates), so at Intonation realism = 0 it overrides the bore's natural tendencies; pitch values reported for non-sustaining notes (87 pp, 89 pp) are invalid.",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:brass-regime-selection, phase:research]",
+"version": "2026-10-08",
+"confidence": "verified",
+"path": "knowledge/brass-regime-selection/K-20261007T160131Z-c-092.md"
+},
+{
+"id": "K-20261007T160132Z-c-093",
+"statement": "Held for 3 s, 125/133 tested 20 ms register jumps sustain; the 6 additional failures are all upward jumps into partials 10-14 (84 p8->p10, 85 p9->p11, 86 p9->p10, 87 p10->p11, 89 p12->p13/p14); jumps from partial 8 to 9 (written 80-84) sustain for 2.5 s, so Overblow is capped at partial max(n, 9) (D-009).",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:brass-regime-selection, phase:research]",
+"version": "2026-10-08",
+"confidence": "verified",
+"path": "knowledge/brass-regime-selection/K-20261007T160132Z-c-093.md"
+},
+{
+"id": "K-20261009T193014Z-bs-roformer-sw-has-no-clear-weights-licence",
+"statement": "The BS-RoFormer SW six-stem checkpoint has no clear licence: the upstream jarredou/BS-ROFO-SW-Fixed README says 'license: unknown', mirrors variously claim CC-BY-NC-SA-4.0, 'unlicensed' or MIT, and the original uploader's account was deleted (found June 2026).",
+"tags": "[subject:bs-roformer-sw, domain:source-separation, domain:audio, phase:research]",
+"version": "as reported in research/EXTENDED_STEMS.md, 2026-09-28",
+"confidence": "single-source",
+"path": "knowledge/bs-roformer-sw/K-20261009T193014Z-bs-roformer-sw-has-no-clear-weights-licence.md"
+},
+{
+"id": "K-20261007T160129Z-c-090",
+"statement": "The planning sandbox (Claude Code cloud, Ubuntu 24.04) has no sudo, no system pip/ensurepip and no cmake; a venv created with --without-pip + get-pip.py, CMake 4.4.4 and Ninja 1.13.2 release binaries work; JUCE Linux -dev packages except libx11-dev and xvfb are missing.",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:claude-code-cloud-sandbox, phase:research]",
+"version": "2026-10-07",
+"confidence": "verified",
+"path": "knowledge/claude-code-cloud-sandbox/K-20261007T160129Z-c-090.md"
+},
+{
+"id": "K-20261104T004500Z-pinned-toolchain-staging",
+"statement": "The pinned CMake/Python analysis toolchain and pluginval CLI were empirically installed or executed; CMake requires complete data-tree staging on a no-exec mount.",
+"tags": "[tech:cmake, tech:python, subject:toolchain-setup, phase:research]",
+"version": "CMake 3.31.6/3.22.4; NumPy 2.2.6; SciPy 1.15.3; SoundFile 0.13.1; pluginval 1.0.4",
+"confidence": "verified",
+"path": "knowledge/claude-code-cloud-sandbox/K-20261104T004500Z-pinned-toolchain-staging.md"
+},
+{
+"id": "K-20261009T193009Z-codeberg-allowlist-live-proxy-can-be-stale",
+"statement": "Adding a host (codeberg.org) to the user's network egress allowlist did not reach an already-running sandbox: the configuration listed it but the container's live proxy still denied it until a fresh container was started; the proxy status endpoint shows the live state.",
+"tags": "[subject:codeberg-access-from-sandbox, tech:codeberg, tech:git, kind:environment]",
+"version": "Claude Code cloud sandbox, 2026-10-09",
+"confidence": "single-source",
+"path": "knowledge/codeberg-access-from-sandbox/K-20261009T193009Z-codeberg-allowlist-live-proxy-can-be-stale.md"
+},
+{
+"id": "K-20261009T193008Z-coi-serviceworker-adds-coop-and-coep-by-reload",
+"statement": "coi-serviceworker 0.1.7 (MIT, last published 2023-07-09 per the npm registry) is a service worker that adds COOP and COEP headers and reloads the page, which is how a site on a host that cannot set headers becomes cross-origin isolated; the plan's decision rule is to continue with one thread and a notice when isolation is not reached after one reload.",
+"tags": "[subject:coi-serviceworker, tech:javascript, tech:github, phase:research]",
+"version": "coi-serviceworker 0.1.7",
+"confidence": "single-source",
+"path": "knowledge/coi-serviceworker/K-20261009T193008Z-coi-serviceworker-adds-coop-and-coep-by-reload.md"
+},
+{
+"id": "K-20261004T102022Z-composite-score-attainable-range",
+"statement": "With a harmonic 11-partial 1/h timbre and default weights, 1500 random chords per size gave composite scores (median, p95, max) of 1.88/2.29/3.06 for 2 notes, 1.28/1.80/2.98 for 3 notes and 0.81/1.29/2.02 for 4 notes, so 4-note sonorities rarely exceed about 2.0 and a target of 2.4 collapses onto 3-4 repeated pitch classes.",
+"tags": "[subject:composite-consonance-model, domain:music-perception, tech:python, tech:numpy, phase:verification]",
+"version": "consonance 0.1.0, default Weights, harmonic_timbre(11, 1.0)",
+"confidence": "verified",
+"path": "knowledge/composite-consonance-model/K-20261004T102022Z-composite-score-attainable-range.md"
+},
+{
+"id": "K-20261009T193004Z-var-flux-form-convection-and-van-leer-order",
+"statement": "In axisymmetric stream-function/vorticity form, conservative flux-form convection with face fluxes from corner stream-function differences supplies the vortex-stretching term -U*omega/R through planar weighting; with it the heat balance tends to zero at order 2.053 +/- 0.008, and the van Leer deferred correction measures about 1.55 (L2) and 1 (max norm).",
+"tags": "[subject:conservative-convection-scheme, domain:computational-fluid-dynamics, tech:python, phase:verification]",
+"version": "var-simulation commit 819736a",
+"confidence": "verified",
+"path": "knowledge/conservative-convection-scheme/K-20261009T193004Z-var-flux-form-convection-and-van-leer-order.md"
+},
+{
+"id": "K-20261104T003011Z-vsco-cc0-pizzicato-candidates",
+"statement": "VSCO 2 CE at commit 440300901dfe9275fd84e0b7763af1f8443ae62e is CC0 and its Solo Contrabass/Pizz files are raw 44.1 kHz stereo 16-bit WAV recordings; seven pinned candidates were downloaded and SHA-256 hashed successfully.",
+"tags": "[domain:audio, subject:vsco-contrabass-reference, phase:research]",
+"version": "440300901dfe9275fd84e0b7763af1f8443ae62e",
+"confidence": "verified",
+"path": "knowledge/contrabass-pizzicato-reference/K-20261104T003011Z-vsco-cc0-pizzicato-candidates.md"
+},
+{
+"id": "K-20261104T003012Z-pizzicato-reference-not-slap-evidence",
+"statement": "The selected VSCO files are labelled Pizz and are suitable only as ordinary pluck/body references; their filename taxonomy provides no evidence of psychobilly slap technique, so slap realism must use demos-only assessment unless a separate slap reference is verified.",
+"tags": "[domain:audio, subject:slap-reference-coverage, phase:research]",
+"version": "440300901dfe9275fd84e0b7763af1f8443ae62e",
+"confidence": "verified",
+"path": "knowledge/contrabass-pizzicato-reference/K-20261104T003012Z-pizzicato-reference-not-slap-evidence.md"
+},
+{
+"id": "K-20261104T003013Z-second-harmonic-dominates-reference-fft",
+"statement": "Exploratory FFT analysis of the seven VSCO candidates found the strongest 20\u2013300 Hz spectral peak at the second harmonic for every selected file; a spectral-maximum shortcut is therefore not a validated pitch estimator for this reference set.",
+"tags": "[domain:audio, subject:reference-pitch-analysis, phase:research]",
+"version": "2026-11-04",
+"confidence": "verified",
+"path": "knowledge/contrabass-pizzicato-reference/K-20261104T003013Z-second-harmonic-dominates-reference-fft.md"
+},
+{
+"id": "K-20261104T011400Z-reference-spread-not-realism",
+"statement": "R6 supports a spectral regression limit but exposes a large decay mismatch that cannot be presented as realism.",
+"tags": "[domain:audio, subject:reference-metric-spread, phase:research]",
+"version": "R6 2026-11-04",
+"confidence": "verified",
+"path": "knowledge/contrabass-pizzicato-reference/K-20261104T011400Z-reference-spread-not-realism.md"
+},
+{
+"id": "K-20261007T160006Z-c-007",
+"statement": "The latest Catch2 release is v3.16.0 (published 2026-08-25), an annotated tag whose commit is 317ac1ed4c0bb6e6b91eafc817e05c488feffcb3.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:cpp-dependencies, phase:research]",
+"version": "v3.16.0",
+"confidence": "verified",
+"path": "knowledge/cpp-dependencies/K-20261007T160006Z-c-007.md"
+},
+{
+"id": "K-20261007T160007Z-c-008",
+"statement": "The latest nlohmann/json release is v3.12.0 (published 2025-04-11), an annotated tag whose commit is 55f93686c01528224f448c19128836e7df245f72.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:cpp-dependencies, phase:research]",
+"version": "v3.12.0",
+"confidence": "verified",
+"path": "knowledge/cpp-dependencies/K-20261007T160007Z-c-008.md"
+},
+{
+"id": "K-20261004T162314Z-inharmonic-square-cymbal-density",
+"statement": "Six square oscillators at frequency ratios 1, 1.4471, 1.6170, 1.9265, 2.5028 and 2.6637, plus a noise wash, through a bandpass (Q 0.25) and a high-pass, gave a cymbal with 400+ spectral peaks and spectral flatness of about 0.6 over 2-12 kHz. The original 3-4 squares, each through a bandpass at its own frequency (Q 2), gave 5 peaks and near-sine partials: a bell, not a cymbal.",
+"tags": "[subject:drum-synthesis, domain:audio, tech:web-audio, phase:implementation]",
+"version": "atmospheric-javascript main 1602634 (cymbal())",
+"confidence": "verified",
+"path": "knowledge/drum-synthesis/K-20261004T162314Z-inharmonic-square-cymbal-density.md"
+},
+{
+"id": "K-20261008T173537Z-oildrum-engine-v1-peak-levels",
+"statement": "In the Oil Drum Kit modal engine, one full-velocity hit at default tuning peaks at 1.64-1.98 for the nine drum voices (bass, two snares, six toms), 1.19 for the cowbell, 1.21 for the rimshot and 0.52-0.57 for splash, ride and the two hats; Bass Drum, Snare 1, Ride and Low Tom 1 struck together peak at 4.84 (+13.7 dBFS), so that bank needs at least about 14 dB of master attenuation, or a limiter, before the host.",
+"tags": "[subject:drum-synthesis, domain:audio, tech:cpp, phase:verification]",
+"version": "DrumEngine.h in OilDrumKit_VST_Source.zip delivered 2026-10-08 (zip 13931 bytes)",
+"confidence": "verified",
+"path": "knowledge/drum-synthesis/K-20261008T173537Z-oildrum-engine-v1-peak-levels.md"
+},
+{
+"id": "K-20261008T173538Z-oildrum-engine-v1-cymbal-spectrum",
+"statement": "The v1 Oil Drum Kit cymbals (4-5 resonant bandpassed-noise partials, Q 5-10, ratios up to 5.6 times a 250-1000 Hz tuning) put 6.8% (splash), 0.6% (ride), 7.6% (closed hat) and 12.0% (open hat) of their energy above 2 kHz over the first 0.5 s, with 95% of the energy below 2140, 1146, 2464 and 2721 Hz.",
+"tags": "[subject:drum-synthesis, domain:audio, tech:cpp, phase:verification]",
+"version": "DrumEngine.h in OilDrumKit_VST_Source.zip delivered 2026-10-08 (zip 13931 bytes)",
+"confidence": "verified",
+"path": "knowledge/drum-synthesis/K-20261008T173538Z-oildrum-engine-v1-cymbal-spectrum.md"
+},
+{
+"id": "K-20261008T223321Z-oildrum-engine-v2-cymbal-spectrum",
+"statement": "In the redesigned Oil Drum Kit cymbal voices (six PolyBLEP squares at ratios 1, 1.4471, 1.6170, 1.9265, 2.5028, 2.6637 plus noise, two 24 dB/octave high-pass stages and a low-pass), at least 80% of the energy lies above 2 kHz for Splash, Ride, Hi-Hat Closed and Hi-Hat Open at minimum, default and maximum tuning (12 of 12 cases); the Ride at minimum tuning (210 Hz) is the tightest at 89.3%.",
+"tags": "[subject:drum-synthesis, domain:audio, tech:cpp, phase:verification]",
+"version": "DrumEngine.h at qualitycoding/oildrumkit branch archive/additive-v1-fixed, additive-v1/Source",
+"confidence": "verified",
+"path": "knowledge/drum-synthesis/K-20261008T223321Z-oildrum-engine-v2-cymbal-spectrum.md"
+},
+{
+"id": "K-20261008T223321Z-oildrum-engine-v2-peak-levels",
+"statement": "In the fixed additive Oil Drum Kit engine, output through render() (master gain 0.25, then tanh) peaks at 0.874 for Bass, Snare 1, Ride and Low Tom 1 struck together at velocity 1 (raw sum 5.392), and at 0.998 for all 15 instruments struck together; single hits at default tuning peak between 0.10 (Ride) and 0.46 (Bass Drum).",
+"tags": "[subject:drum-synthesis, domain:audio, tech:cpp, phase:verification]",
+"version": "DrumEngine.h at qualitycoding/oildrumkit branch archive/additive-v1-fixed, additive-v1/Source",
+"confidence": "verified",
+"path": "knowledge/drum-synthesis/K-20261008T223321Z-oildrum-engine-v2-peak-levels.md"
+},
+{
+"id": "K-20261009T120101Z-oildrum-legacy-main-engine-clips",
+"statement": "The pre-rewrite oildrumkit main-branch engine (Tools/legacy/DrumEngine_legacy.h) clips: single full-velocity hits peak at +4.3 to +5.7 dBFS for bass, snares, toms, cowbell and rimshot (cowbell +1.3, rimshot +1.9, snares +4.3/+4.5, toms +4.5 to +4.9, bass +5.7), and the 8-bar demo groove peaks at +11.9 dBFS, so any 16-bit render of it must be gain-staged or normalised.",
+"tags": "[subject:drum-synthesis, domain:audio, tech:cpp, phase:verification]",
+"version": "oildrumkit main before commit 35fbfea (legacy engine kept in Tools/legacy)",
+"confidence": "verified",
+"path": "knowledge/drum-synthesis/K-20261009T120101Z-oildrum-legacy-main-engine-clips.md"
+},
+{
+"id": "K-20261009T120102Z-oildrum-legacy-pitch-smoothing-bug",
+"statement": "In the legacy oildrumkit DrumEngine, the pitch-smoothing update `currentHz = target + coef * (currentHz - target)` with a per-sample coefficient for 20 ms ran once per process() call rather than per sample, so the real time constant was about 20 ms times the block length (about 10 s at 512 samples), and ringing voices were also live-retuned from currentHz, producing a pitch glide that struck metal does not have.",
+"tags": "[subject:drum-synthesis, domain:audio, tech:juce, tech:cpp, phase:verification]",
+"version": "oildrumkit Tools/legacy/DrumEngine_legacy.h",
+"confidence": "verified",
+"path": "knowledge/drum-synthesis/K-20261009T120102Z-oildrum-legacy-pitch-smoothing-bug.md"
+},
+{
+"id": "K-20261009T120110Z-oildrum-modal-engine-measured-results",
+"statement": "At velocity 1.0, 48 kHz, dry, the rewritten oildrumkit modal engine resolves 2 to 58 partials at 50 ms (legacy 1 to 4; only the ride, 58, and the open hi-hat, 28, reach 25), has high-frequency to low-frequency T60 ratios of 0.03-0.22 (legacy 0.74-1.60), peaks at -7.8 to -21.0 dBFS, and lowers the 100-1000 Hz snare-roll repeatability from 0.928 mean to 0.518.",
+"tags": "[subject:drum-synthesis, domain:audio, phase:verification]",
+"version": "oildrumkit main 35fbfea, Tools/metrics.py and Tools/compare.py",
+"confidence": "verified",
+"path": "knowledge/drum-synthesis/K-20261009T120110Z-oildrum-modal-engine-measured-results.md"
+},
+{
+"id": "K-20261009T120117Z-uniform-noise-needs-sqrt3-for-unit-variance",
+"statement": "A uniform [-1, 1) noise generator has standard deviation 1/sqrt(3), so band-limited residual noise needs a factor of sqrt(3) (1.7321) and a sample-rate normalisation to reach the intended power; omitting both made the oildrumkit cymbal residual about 41 dB too quiet until corrected in Source/DrumEngine.h (line 371).",
+"tags": "[subject:drum-synthesis, domain:audio, tech:cpp, phase:implementation]",
+"version": "oildrumkit Source/DrumEngine.h at 35fbfea",
+"confidence": "verified",
+"path": "knowledge/drum-synthesis/K-20261009T120117Z-uniform-noise-needs-sqrt3-for-unit-variance.md"
+},
+{
+"id": "K-20261008T223321Z-c-to-js-engine-port-needs-float32-state",
+"statement": "A JavaScript port of a float32 C++ oscillator engine, run in doubles, differed from the C++ output by up to 1.6e-2 of the file peak (Ride, 1.5 s) while a port that stores oscillator phases and envelopes in Float32Array differs by at most 9.7e-4 of the peak across all 16 reference files; the same port matches the C++ engine within that bound at 44.1, 48 and 96 kHz.",
+"tags": "[subject:dsp-port-parity, domain:audio, tech:javascript, tech:cpp, phase:verification]",
+"version": "additive-v1/web/engine.js against additive-v1/Source/DrumEngine.h, g++ 13.3 -O2, node 2026-10-08",
+"confidence": "verified",
+"path": "knowledge/dsp-port-parity/K-20261008T223321Z-c-to-js-engine-port-needs-float32-state.md"
+},
+{
+"id": "K-20261009T193003Z-var-mushy-zone-cell-width-band-and-c2-profile",
+"statement": "For the enthalpy-porosity liquid fraction, a band a fixed number of cells wide with a C2 smootherstep profile s^3(6s^2-15s+10) gives converged iterations on every mesh tried (N = 51 to 301); a clipped-linear ramp limit-cycled at N=76 (period 450 sweeps), failed at N=91 and stalled at N=101.",
+"tags": "[subject:enthalpy-porosity-mushy-zone, domain:computational-fluid-dynamics, tech:python, phase:implementation]",
+"version": "var-simulation commit 819736a",
+"confidence": "verified",
+"path": "knowledge/enthalpy-porosity-mushy-zone/K-20261009T193003Z-var-mushy-zone-cell-width-band-and-c2-profile.md"
+},
+{
+"id": "K-20261031T000000Z-ephemeral-sandbox-invariants",
+"statement": "On an ephemeral agent sandbox (observed: Kimi on cloud) /tmp is wiped between turns, the durable mount strips exec bits and can serve stale bytes, nohup jobs die with the tool call (setsid survives), CMake ignores environment-variable dependency overrides at configure time, git index.lock writes fail transiently, and outbound traffic to github.com can be blocked.",
+"tags": "[subject:ephemeral-sandbox-build-hygiene, tech:cmake, tech:git, phase:implementation]",
+"version": "Kimi cloud sandbox, GCC 12.2, CMake 3.25, ninja (2026-10)",
+"confidence": "verified",
+"path": "knowledge/ephemeral-sandbox-build-hygiene/K-20261031T000000Z-ephemeral-sandbox-invariants.md"
+},
+{
+"id": "K-20261009T092106Z-fret-position-from-pitch-ratio",
+"statement": "For any tuning, a fret whose pitch is ratio r above the open string sits at 1 - 1/r of the scale length from the nut, and measured from a virtual nut at fret a, fret n sits at 1 - r_a/r_n of the remaining string, so a scrolling fretboard needs only the pitch ratios and no tuning-specific code.",
+"tags": "[subject:fretboard-fret-geometry, domain:microtonal-tuning, domain:audio, tech:cpp, phase:specification]",
+"version": "version-independent",
+"confidence": "verified",
+"path": "knowledge/fretboard-fret-geometry/K-20261009T092106Z-fret-position-from-pitch-ratio.md"
+},
+{
+"id": "K-20261101T200100Z-frozen-manifest-refreeze",
+"statement": "A frozen test manifest (tests/FROZEN.sha256) is only as fresh as its last freeze; any PR that modifies a file listed in the manifest must re-freeze it in the same PR, and CI should carry a manifest-check job (sha256sum -c) so drift fails the build instead of the next remediation run.",
+"tags": "[subject:frozen-test-manifest, tech:github-actions, tech:cmake, phase:verification]",
+"version": "microtonal-guitar tests/FROZEN.sha256 at r5",
+"confidence": "verified",
+"path": "knowledge/frozen-test-manifest/K-20261101T200100Z-frozen-manifest-refreeze.md"
+},
+{
+"id": "K-20261028T222647Z-juce-vst3-toolchain",
+"statement": "JUCE 9.0.4 is pinned by commit for the planned CMake VST3 build; licensing must be satisfied before public release.",
+"tags": "[subject:geiger-vst3, tech:juce, tech:cpp, phase:research]",
+"version": "JUCE 9.0.4 at commit 3fb5cbc0340758596dac39f7c8de47d562b4896e",
+"confidence": "verified",
+"path": "knowledge/geiger-vst3/K-20261028T222647Z-juce-vst3-toolchain.md"
+},
+{
+"id": "K-20261028T222647Z-pluginval-validation",
+"statement": "pluginval v1.0.4 supports headless plug-in validation and strictness levels 1 through 10; level 10 is the planned host-validation gate.",
+"tags": "[subject:geiger-vst3, domain:audio, tech:vst3, phase:research]",
+"version": "pluginval v1.0.4 at commit ed19c2c16b57a6d94db391bea3ef4a80b769d5bf",
+"confidence": "verified",
+"path": "knowledge/geiger-vst3/K-20261028T222647Z-pluginval-validation.md"
+},
+{
+"id": "K-20261028T222647Z-wmd-geiger-controls",
+"statement": "The official original-pedal page documents the high-gain preamp, tone disable, sample-rate and bit-depth controls, Bits/Mask, pre/post-table operation, 252 hexadecimal-selected tables, CV, and bypass.",
+"tags": "[subject:geiger-vst3, domain:audio, domain:dsp, phase:research]",
+"version": "current WMD product page at access date",
+"confidence": "verified",
+"path": "knowledge/geiger-vst3/K-20261028T222647Z-wmd-geiger-controls.md"
+},
+{
+"id": "K-20261107T000000Z-source-register-geiger-vst3",
+"statement": "Source register for the Geiger VST3 planning run (run-20261028T222647Z-geiger-vst3): 6 external sources checked, 6 used, 0 corroborating-only, 0 rejected, 0 unreachable; 0 have no stated licence.",
+"tags": "[subject:geiger-vst3, domain:audio, tech:juce, tech:vst3, phase:research, kind:source-register]",
+"version": "version-independent",
+"confidence": "verified",
+"path": "knowledge/geiger-vst3/K-20261107T000000Z-source-register-geiger-vst3.md"
+},
+{
+"id": "K-20261008T173540Z-general-midi-drum-key-map-subset",
+"statement": "General MIDI channel-10 key map, as listed on Wikipedia: 37 Side Stick, 38 Acoustic Snare, 40 Electric Snare (or Rimshot), 41 Low Floor Tom, 42 Closed Hi-hat, 43 High Floor Tom, 45 Low Tom, 46 Open Hi-hat, 47 Low-Mid Tom, 48 High-Mid Tom, 50 High Tom, 51 Ride Cymbal 1, 55 Splash Cymbal, 56 Cowbell; note 36 is listed there as Electric Bass Drum (or High Bass Drum).",
+"tags": "[subject:general-midi-drum-map, domain:audio, phase:specification]",
+"version": "version-independent",
+"confidence": "single-source",
+"path": "knowledge/general-midi-drum-map/K-20261008T173540Z-general-midi-drum-key-map-subset.md"
+},
+{
+"id": "K-20261029T030600Z-windows-checkout-crlf-hash-manifests",
+"statement": "On GitHub's windows-latest runner actions/checkout produces CRLF line endings for text files by default, which breaks sha256sum -c on a manifest (file names read with a trailing carriage return); a .gitattributes line such as 'tests/** text eol=lf' fixes it.",
+"tags": "[subject:git-line-endings, tech:git, tech:github-actions, phase:verification]",
+"version": "windows-latest, git 2.56",
+"confidence": "verified",
+"path": "knowledge/git-line-endings/K-20261029T030600Z-windows-checkout-crlf-hash-manifests.md"
+},
+{
+"id": "K-20261004T102023Z-github-access-from-sandbox",
+"statement": "In this Claude sandbox, unauthenticated api.github.com returned HTTP 403, but github.com pages, raw.githubusercontent.com and anonymous git clone or ls-remote of public repositories worked; a personal access token pushes through git -c http.extraHeader with a Basic x-access-token header, which leaves nothing in .git/config; raw file names guessed from memory returned 404, so list a directory by scraping github.com/<owner>/<repo>/tree/<branch>/<dir>.",
+"tags": "[subject:github-access-from-sandbox, tech:git, tech:github, phase:implementation]",
+"version": "sandbox observed 2026-09-19 to 2026-10-04",
+"confidence": "verified",
+"path": "knowledge/github-access-from-sandbox/K-20261004T102023Z-github-access-from-sandbox.md"
+},
+{
+"id": "K-20261004T151600Z-github-rest-api-bypasses-broken-pack-transport",
+"statement": "When git push (smart-HTTP pack transfer) to a GitHub repository fails reproducibly with a server-side index-pack/unpack error regardless of branch, content size, or credential, GitHub's REST Git Data API (POST .../git/blobs for each file's base64 content, POST .../git/trees referencing the blob shas by full path, POST .../git/commits referencing the tree and a parent sha, PATCH .../git/refs/heads/<branch> to move the ref) succeeds via ordinary JSON-over-HTTPS requests, bypassing the pack-negotiation protocol entirely. GitHub's create-tree endpoint accepts full nested paths (e.g. vst/plan/PLAN.md) directly, so no manual nested-tree construction is needed for a flat list of files.",
+"tags": "[subject:github-access-from-sandbox, tech:git, tech:github, phase:implementation]",
+"version": "observed 2026-10-04, GitHub REST API v3 (application/vnd.github+json)",
+"confidence": "verified",
+"path": "knowledge/github-access-from-sandbox/K-20261004T151600Z-github-rest-api-bypasses-broken-pack-transport.md"
+},
+{
+"id": "K-20261004T162305Z-github-io-unreachable-from-sandbox",
+"statement": "From the Claude sandbox, *.github.io (GitHub Pages sites) is blocked: requests return HTTP 403 with x-deny-reason: host_not_allowed. A Pages site cannot be loaded or checked from the sandbox; its build status can be read through the authenticated api.github.com /repos/<owner>/<repo>/pages endpoint.",
+"tags": "[subject:github-access-from-sandbox, tech:github, phase:release]",
+"version": "sandbox observed 2026-10-04",
+"confidence": "verified",
+"path": "knowledge/github-access-from-sandbox/K-20261004T162305Z-github-io-unreachable-from-sandbox.md"
+},
+{
+"id": "K-20261004T162306Z-git-push-and-contents-api-worked",
+"statement": "On 2026-10-04, git push over smart HTTP with a token supplied per command (git -c http.extraheader with a Basic x-access-token header) succeeded from the sandbox on four pushes to qualitycoding/atmospheric-javascript, and the REST contents API (PUT /repos/<owner>/<repo>/contents/<path>, with the blob sha when updating) created single-file commits.",
+"tags": "[subject:github-access-from-sandbox, tech:git, tech:github, phase:release]",
+"version": "sandbox and GitHub, observed 2026-10-04",
+"confidence": "verified",
+"path": "knowledge/github-access-from-sandbox/K-20261004T162306Z-git-push-and-contents-api-worked.md"
+},
+{
+"id": "K-20261009T120115Z-github-repo-access-is-per-session",
+"statement": "In this Claude Code environment, GitHub repositories are reachable only after the session attaches them with the add_repo tool (access 'push' for pushes); direct API calls with a user-supplied personal access token to a repository that is not attached fail with 'GitHub access to this repository is not enabled for this session'. Attached repositories are cloned to /home/claude/<name>.",
+"tags": "[subject:github-access-from-sandbox, tech:github, tech:git, phase:release]",
+"version": "observed 2026-10-09",
+"confidence": "verified",
+"path": "knowledge/github-access-from-sandbox/K-20261009T120115Z-github-repo-access-is-per-session.md"
+},
+{
+"id": "K-20261009T160120Z-actions-blob-unreachable",
+"statement": "From the cloud sandbox, GitHub Actions job logs and artifacts (served from an Azure blob host) were not reachable, while api.github.com and the Contents API were; the workaround used was a CI step that pushes a JSON diagnostics summary to a ci-diag/* branch, which the sandbox then reads through the Contents API.",
+"tags": "[subject:github-access-from-sandbox, tech:github-actions, tech:github, phase:verification, kind:environment]",
+"version": "sandbox and GitHub, observed 2026-09-26",
+"confidence": "verified",
+"path": "knowledge/github-access-from-sandbox/K-20261009T160120Z-actions-blob-unreachable.md"
+},
+{
+"id": "K-20261009T193502Z-git-proxy-repo-authorization",
+"statement": "The git proxy refuses git push, and the gh api client refuses requests, for repositories not in the session's authorized repository set, regardless of the token supplied.",
+"tags": "[subject:github-access-from-sandbox, tech:git, tech:github, phase:release]",
+"version": "sandbox as of 2026-10-09",
+"confidence": "verified",
+"path": "knowledge/github-access-from-sandbox/K-20261009T193502Z-git-proxy-repo-authorization.md"
+},
+{
+"id": "K-20261009T193504Z-proxy-injected-git-config",
+"statement": "The sandbox injects GIT_CONFIG_* variables and GH_TOKEN/GITHUB_TOKEN; with these set, git fetch can report 'Invalid username or token' for a valid personal token until they are unset and an explicit askpass helper is used.",
+"tags": "[subject:github-access-from-sandbox, tech:git, tech:github, phase:verification]",
+"version": "sandbox as of 2026-09",
+"confidence": "verified",
+"path": "knowledge/github-access-from-sandbox/K-20261009T193504Z-proxy-injected-git-config.md"
+},
+{
+"id": "K-20261102T225700Z-repo-creation-refused-in-cloud-session",
+"statement": "In a Claude cloud session, `POST user/repos` through gh is refused with HTTP 403 'This GitHub API path is not available: sessions are bound to their configured repositories'; add_repo for a repository that does not exist answers 'not found, or no access'. The owner must create the repository, after which add_repo attaches it.",
+"tags": "[subject:github-access-from-sandbox, tech:github, phase:intake]",
+"version": "Claude cloud session as of 2026-11-02",
+"confidence": "verified",
+"path": "knowledge/github-access-from-sandbox/K-20261102T225700Z-repo-creation-refused-in-cloud-session.md"
+},
+{
+"id": "K-20261102T232300Z-pages-api-and-api-writes-refused-by-proxy",
+"statement": "In a Claude cloud session, the GitHub Pages API (GET and POST repos/<o>/<r>/pages) and API writes to git/blobs and contents are refused with HTTP 403 'not permitted through this proxy', while Actions run listing, run rerun and repository GETs work.",
+"tags": "[subject:github-access-from-sandbox, subject:github-pages, tech:github, phase:release]",
+"version": "Claude cloud session as of 2026-11-02",
+"confidence": "verified",
+"path": "knowledge/github-access-from-sandbox/K-20261102T232300Z-pages-api-and-api-writes-refused-by-proxy.md"
+},
+{
+"id": "K-20261102T232330Z-git-push-refused-github-app-scope",
+"statement": "git push from a Claude cloud session can be refused with HTTP 403 'Claude doesn't have GitHub access to <repo> for your organization' even after add_repo with access push succeeded; the remedy is adding the repository to the Claude GitHub App installation or reconnecting GitHub in claude.ai settings.",
+"tags": "[subject:github-access-from-sandbox, tech:git, tech:github, phase:release]",
+"version": "Claude cloud session as of 2026-11-02",
+"confidence": "verified",
+"path": "knowledge/github-access-from-sandbox/K-20261102T232330Z-git-push-refused-github-app-scope.md"
+},
+{
+"id": "K-20261104T003007Z-versioned-github-runner-labels",
+"statement": "GitHub-hosted versioned labels ubuntu-24.04 (x64), windows-2025 (x64) and macos-15 (arm64) are supported; moving -latest labels must not be used for the frozen matrix.",
+"tags": "[tech:github-actions, subject:ci-runner-labels, phase:research]",
+"version": "2026-11-04",
+"confidence": "corroborated",
+"path": "knowledge/github-actions/K-20261104T003007Z-versioned-github-runner-labels.md"
+},
+{
+"id": "K-20261104T004300Z-immutable-github-action-pins",
+"statement": "The five CI action tags resolve to immutable commit SHAs recorded in the toolchain evidence.",
+"tags": "[tech:github-actions, subject:ci-action-pins, phase:research]",
+"version": "checkout v7.0.1; setup-python v7.1.0; upload-artifact v7.0.2; download-artifact v8.0.2; cache v6.1.0",
+"confidence": "verified",
+"path": "knowledge/github-actions/K-20261104T004300Z-immutable-github-action-pins.md"
+},
+{
+"id": "K-20261009T160121Z-dispatch-default-branch",
+"statement": "A workflow with a workflow_dispatch trigger did not offer the Run workflow button while it existed only on a feature branch; the person could not find it until the workflow files were on the default branch (main), and a deploy workflow that takes a ref input needs a non-empty default and `ref: inputs.ref` on every checkout step.",
+"tags": "[subject:github-actions-dispatch, tech:github-actions, tech:github, phase:release]",
+"version": "GitHub Actions, observed 2026-09-27",
+"confidence": "verified",
+"path": "knowledge/github-actions-dispatch/K-20261009T160121Z-dispatch-default-branch.md"
+},
+{
+"id": "K-20261029T030900Z-gh-run-logs-and-escape-sequences",
+"statement": "gh api repos/<o>/<r>/actions/jobs/<id>/logs refuses output containing terminal escape sequences unless --allow-escape-sequences is passed, and returns a BlobNotFound 404 until the job has completed, so a running job's log cannot be read; gh run view <id> --log-failed is also unavailable while the run is in progress.",
+"tags": "[subject:github-actions-logs, tech:github-actions, tech:github, phase:verification]",
+"version": "gh 2.x, 2026-10",
+"confidence": "single-source",
+"path": "knowledge/github-actions-logs/K-20261029T030900Z-gh-run-logs-and-escape-sequences.md"
+},
+{
+"id": "K-20261007T160017Z-c-018",
+"statement": "The latest release of actions/checkout is v7.0.1 (2026-07-20), a lightweight tag at commit 3d3c42e5aac5ba805825da76410c181273ba90b1.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:github-actions-pins, phase:research]",
+"version": "v7.0.1",
+"confidence": "verified",
+"path": "knowledge/github-actions-pins/K-20261007T160017Z-c-018.md"
+},
+{
+"id": "K-20261007T160018Z-c-019",
+"statement": "The latest release of actions/setup-python is v7.0.0 (2026-07-20), a lightweight tag at commit 5fda3b95a4ea91299a34e894583c3862153e4b97.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:github-actions-pins, phase:research]",
+"version": "v7.0.0",
+"confidence": "verified",
+"path": "knowledge/github-actions-pins/K-20261007T160018Z-c-019.md"
+},
+{
+"id": "K-20261007T160019Z-c-020",
+"statement": "The latest release of actions/upload-artifact is v7.0.2 (2026-10-07T10:08Z), a lightweight tag at commit cf430e030ddbb5b0abf93d22962f4752f3646cd9.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:github-actions-pins, phase:research]",
+"version": "v7.0.2",
+"confidence": "verified",
+"path": "knowledge/github-actions-pins/K-20261007T160019Z-c-020.md"
+},
+{
+"id": "K-20261007T160020Z-c-021",
+"statement": "The latest release of actions/download-artifact is v8.0.2 (2026-10-07T10:09Z), a lightweight tag at commit 9000827ccba6bdab643e8b6fd33ac0654aef8333.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:github-actions-pins, phase:research]",
+"version": "v8.0.2",
+"confidence": "verified",
+"path": "knowledge/github-actions-pins/K-20261007T160020Z-c-021.md"
+},
+{
+"id": "K-20261007T160021Z-c-022",
+"statement": "The latest release of actions/cache is v6.1.0 (2026-06-26), a lightweight tag at commit 55cc8345863c7cc4c66a329aec7e433d2d1c52a9.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:github-actions-pins, phase:research]",
+"version": "v6.1.0",
+"confidence": "verified",
+"path": "knowledge/github-actions-pins/K-20261007T160021Z-c-022.md"
+},
+{
+"id": "K-20261007T160022Z-c-023",
+"statement": "The runner-images README (as of 2026-10-07) lists ubuntu-24.04 (also ubuntu-latest) as a supported x64 GitHub-hosted label; newer ubuntu-26.04 is also GA.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:github-actions-pins, phase:research]",
+"version": "main @ 2026-10-07",
+"confidence": "verified",
+"path": "knowledge/github-actions-pins/K-20261007T160022Z-c-023.md"
+},
+{
+"id": "K-20261007T160023Z-c-024",
+"statement": "The runner-images README lists macos-15 as a supported label for macOS 15 arm64 (also macos-15-xlarge; Intel is macos-15-intel / macos-15-large); macos-latest now points at macOS 26 (macos-26) and macOS 14 is deprecated.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:github-actions-pins, phase:research]",
+"version": "main @ 2026-10-07",
+"confidence": "verified",
+"path": "knowledge/github-actions-pins/K-20261007T160023Z-c-024.md"
+},
+{
+"id": "K-20261007T160024Z-c-025",
+"statement": "The runner-images README lists windows-2025 (also windows-latest and windows-2025-vs2026) as supported, but since June 2026 these labels map to the Windows Server 2025 image with Visual Studio 2026 (18.x), not VS2022; VS2022 requires windows-2022.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:github-actions-pins, phase:research]",
+"version": "main @ 2026-10-07",
+"confidence": "verified",
+"path": "knowledge/github-actions-pins/K-20261007T160024Z-c-025.md"
+},
+{
+"id": "K-20261007T160025Z-c-026",
+"statement": "Whether `auval` is present on macos-15 images could not be confirmed from the runner-images repo: neither the macos-15-arm64 readme nor the macos build scripts mention auval.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:github-actions-pins, phase:research]",
+"version": "20260907.0337.1",
+"confidence": "verified",
+"path": "knowledge/github-actions-pins/K-20261007T160025Z-c-026.md"
+},
+{
+"id": "K-20261007T160136Z-c-097",
+"statement": "Breaking changes of the pinned action majors: setup-python v7 removed the pip-install input, download-artifact v8 fails on digest mismatch by default and no longer unzips non-zip artifacts, checkout v7 refuses fork-PR heads under pull_request_target/workflow_run; all moved to node24/ESM.",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:github-actions-pins, phase:research]",
+"version": "2026-10-08",
+"confidence": "verified",
+"path": "knowledge/github-actions-pins/K-20261007T160136Z-c-097.md"
+},
+{
+"id": "K-20261112T134520Z-ci-action-tags-2026-11",
+"statement": "Planning protocol v3.15 gave these action tags as existence-checked examples in 2026-11: vmactions/freebsd-vm@v1.5.9, reactivecircus/android-emulator-runner@v2.38.0, maxim-lobanov/setup-xcode@v1.7.0.",
+"tags": "[subject:github-actions-pins, tech:github-actions, phase:planning]",
+"version": "2026-11",
+"confidence": "single-source",
+"path": "knowledge/github-actions-pins/K-20261112T134520Z-ci-action-tags-2026-11.md"
+},
+{
+"id": "K-20261031T100200Z-github-actions-default-shell-pipefail",
+"statement": "GitHub Actions run steps without a shell key use 'bash -e {0}' on Linux and macOS (no pipefail), whereas 'shell: bash' expands to 'bash --noprofile --norc -eo pipefail {0}', so only the explicit form makes a failing first command in a pipeline fail the step.",
+"tags": "[subject:github-actions-shell, tech:github-actions, phase:verification]",
+"version": "GitHub-hosted runners, 2026-10",
+"confidence": "verified",
+"path": "knowledge/github-actions-shell/K-20261031T100200Z-github-actions-default-shell-pipefail.md"
+},
+{
+"id": "K-20261102T085800Z-github-git-database-api-writes-when-transport-blocked",
+"statement": "Commits and pushes to a GitHub repository can be made entirely through the Git database API when git smart-HTTP transport to github.com is unreachable: POST /git/blobs, /git/trees (base_tree), /git/commits, then PATCH /git/refs/heads/{branch} (plural refs \u2014 the singular /git/ref route 404s on PATCH), verifying with GET /git/ref/heads/{branch}; freshly created refs may 404 on immediate update due to replica lag and need bounded retry, and codeload tarballs serve reads without consuming the REST rate limit.",
+"tags": "[subject:github-git-database-api, tech:github, tech:git, phase:implementation]",
+"version": "GitHub REST API v3, observed 2026-11-02 (version-independent behaviour)",
+"confidence": "corroborated",
+"path": "knowledge/github-git-database-api/K-20261102T085800Z-github-git-database-api-writes-when-transport-blocked.md"
+},
+{
+"id": "K-20261112T134510Z-github-hosted-runner-billing-2026-11",
+"statement": "Planning protocol v3.15 stated that GitHub-hosted ARM64 Linux runners were free on public repositories, and that macOS runner minutes billed at a multiple of Linux minutes on private repositories.",
+"tags": "[subject:github-hosted-runner-billing, tech:github-actions, phase:planning]",
+"version": "2026-11",
+"confidence": "single-source",
+"path": "knowledge/github-hosted-runner-billing/K-20261112T134510Z-github-hosted-runner-billing-2026-11.md"
+},
+{
+"id": "K-20261112T134500Z-github-hosted-runner-labels-2026-11",
+"statement": "Planning protocol v3.15 recorded these GitHub-hosted runner labels as verified in 2026-11: x64 ubuntu-24.04, ubuntu-26.04, windows-2025, windows-2022; arm64 ubuntu-24.04-arm, windows-11-arm; macOS Apple silicon macos-15, macos-26; macOS Intel macos-15-intel.",
+"tags": "[subject:github-hosted-runner-labels, tech:github-actions, phase:planning]",
+"version": "2026-11",
+"confidence": "single-source",
+"path": "knowledge/github-hosted-runner-labels/K-20261112T134500Z-github-hosted-runner-labels-2026-11.md"
+},
+{
+"id": "K-20261029T030800Z-github-hosted-runner-benchmark-variance",
+"statement": "CPU-percentage benchmarks on GitHub-hosted runners vary a lot run to run: the same code measured 10.8-11.7% on windows-latest in one run and 13.3-14.5% in another (AMD EPYC 9V74 vs 7763), and 18.0-35.6% versus 17.0-18.3% on the macos-latest virtual Apple M1 with 3 cpus.",
+"tags": "[subject:github-hosted-runner-performance, tech:github-actions, phase:verification]",
+"version": "windows-latest and macos-latest, 2026-10",
+"confidence": "verified",
+"path": "knowledge/github-hosted-runner-performance/K-20261029T030800Z-github-hosted-runner-benchmark-variance.md"
+},
+{
+"id": "K-20261004T161606Z-github-license-api-and-detection",
+"statement": "GitHub's authenticated GET /licenses/apache-2.0 returns the canonical Apache License 2.0 text (201 lines, no copyright line) in its body field; committing it as LICENSE makes GET /repos/<owner>/<repo>/license report spdx_id Apache-2.0, though for a repository's first LICENSE the endpoint returned Not Found for a few seconds after the push.",
+"tags": "[subject:github-license-detection, tech:github, phase:release]",
+"version": "GitHub REST API, observed 2026-10-04",
+"confidence": "verified",
+"path": "knowledge/github-license-detection/K-20261004T161606Z-github-license-api-and-detection.md"
+},
+{
+"id": "K-20261004T162304Z-github-pages-index-entry-file",
+"statement": "GitHub Pages uses index.html as a site's entry file: it must sit at the top level of the publishing source (branch and folder), and the name is case-sensitive. With the source set to main and /, index.html at the repository root is served at https://<owner>.github.io/<repo>/.",
+"tags": "[subject:github-pages, tech:github, phase:release]",
+"version": "GitHub Docs, accessed 2026-10-04",
+"confidence": "corroborated",
+"path": "knowledge/github-pages/K-20261004T162304Z-github-pages-index-entry-file.md"
+},
+{
+"id": "K-20261102T231600Z-pages-first-build-startup-failure",
+"statement": "Right after the owner enabled GitHub Pages (deploy from branch main, root), the first 'pages build and deployment' run (event dynamic) ended in startup_failure with no jobs, and its rerun stayed queued for over 20 minutes.",
+"tags": "[subject:github-pages, tech:github-actions, phase:release]",
+"version": "github.com as of 2026-11-02",
+"confidence": "single-source",
+"path": "knowledge/github-pages/K-20261102T231600Z-pages-first-build-startup-failure.md"
+},
+{
+"id": "K-20261009T160118Z-pages-headers",
+"statement": "GitHub Pages cannot set custom response headers such as COOP and COEP, so the page is not cross-origin isolated and SharedArrayBuffer, hence multi-threaded wasm, is unavailable.",
+"tags": "[subject:github-pages-headers, tech:github, phase:research]",
+"version": "GitHub Pages, as reported 2026-09-26",
+"confidence": "single-source",
+"path": "knowledge/github-pages-headers/K-20261009T160118Z-pages-headers.md"
+},
+{
+"id": "K-20261009T160123Z-pr-draft",
+"statement": "A draft pull request was taken out of draft with the GraphQL mutation markPullRequestReadyForReview; the REST API did not convert it.",
+"tags": "[subject:github-pr-draft-state, tech:github, phase:release]",
+"version": "GitHub API, observed 2026-09-27",
+"confidence": "verified",
+"path": "knowledge/github-pr-draft-state/K-20261009T160123Z-pr-draft.md"
+},
+{
+"id": "K-20261007T160139Z-c-100",
+"statement": "The repository qualitycoding/trumpet-vst is public (GitHub API `visibility: public`, checked 2026-10-15); workflow artifacts of a public repository can be downloaded by other GitHub users, so uploading built binaries is a distribution (lesson L-20261015T090000Z).",
+"tags": "[tech:github-actions, subject:github-repository-visibility, phase:research]",
+"version": "2026-10-15",
+"confidence": "verified",
+"path": "knowledge/github-repository-visibility/K-20261007T160139Z-c-100.md"
+},
+{
+"id": "K-20261009T160122Z-token-scopes",
+"statement": "With fine-grained personal access tokens, repository Contents, Pull requests, Actions, Pages, Workflows and environment administration are separate permissions, and pushing any file under .github/workflows/ needs the Workflows permission in addition to Contents; a missing one returns 403 'Resource not accessible by personal access token'.",
+"tags": "[subject:github-token-scopes, tech:github, phase:release, kind:environment]",
+"version": "GitHub fine-grained PATs, observed 2026-09-26 to 2026-09-27",
+"confidence": "verified",
+"path": "knowledge/github-token-scopes/K-20261009T160122Z-token-scopes.md"
+},
+{
+"id": "K-20261009T193503Z-github-web-upload-tree-hash",
+"statement": "Files uploaded through the GitHub web UI become 'Add files via upload' commits with new SHAs, so correctness is verified by fetching the branch and comparing git rev-parse <ref>^{tree} with the tree of the intended local commit.",
+"tags": "[subject:github-web-upload, tech:github, tech:git, phase:verification]",
+"version": "version-independent",
+"confidence": "verified",
+"path": "knowledge/github-web-upload/K-20261009T193503Z-github-web-upload-tree-hash.md"
+},
+{
+"id": "K-20261101T200000Z-guard-seam-pattern",
+"statement": "For guard remediations (zero/inf/NaN inputs), extract the validation into a pure header-only seam with no framework includes (C++17 only, e.g. safeDelayLength(sampleRate, targetFreq, bufferSize) returning 0.0 on any violation): red/green evidence then compiles host-independently, and the same seam is callable from both the audio thread and tests.",
+"tags": "[subject:guard-seam-pattern, domain:audio, tech:juce, tech:cpp, phase:verification]",
+"version": "microtonal-guitar PR #14 (fix/issue-5-zero-freq-guard)",
+"confidence": "verified",
+"path": "knowledge/guard-seam-pattern/K-20261101T200000Z-guard-seam-pattern.md"
+},
+{
+"id": "K-20261004T162310Z-cabinet-structure-and-invariant-excitation",
+"statement": "In the Void Choir reference recording, harmonic levels are tied to absolute frequency (a fixed cabinet), not harmonic number: the RMS level difference between pitches is 5.9 dB aligned by Hz versus 10.5 dB aligned by harmonic number. A pre-clip lowpass whose cutoff scales with f0, with the high-pass moved after the clipper, made the clipper output's harmonic balance pitch-invariant (spread 10.1/6.2 dB -> 0.8/0.1 dB, lead/rhythm).",
+"tags": "[subject:guitar-amp-simulation, domain:audio, tech:web-audio, phase:implementation]",
+"version": "atmospheric-javascript main 1602634",
+"confidence": "verified",
+"path": "knowledge/guitar-amp-simulation/K-20261004T162310Z-cabinet-structure-and-invariant-excitation.md"
+},
+{
+"id": "K-20261004T162311Z-minimum-phase-cabinet-ir-from-table",
+"statement": "A cabinet response tabulated as dB against log frequency can be turned into a minimum-phase FIR at the AudioContext's own sample rate with the real-cepstrum method (log magnitude -> inverse FFT -> fold the cepstrum -> FFT -> exp -> inverse FFT). With N=8192 and 2048 taps it matched the table within 3 dB at 44.1, 48 and 96 kHz, with at least 95% of its energy in the first 512 taps.",
+"tags": "[subject:guitar-amp-simulation, tech:web-audio, domain:audio, phase:implementation]",
+"version": "atmospheric-javascript main 1602634 (makeCabIR)",
+"confidence": "verified",
+"path": "knowledge/guitar-amp-simulation/K-20261004T162311Z-minimum-phase-cabinet-ir-from-table.md"
+},
+{
+"id": "K-20261004T162313Z-beat-period-window-for-detuned-sources",
+"statement": "To compare harmonic levels of a voice with two oscillators detuned by c cents, analyse exactly one beat period, 1/(f0*(2^(c/1200)-1)), with a rectangular window, so every beat phase is weighted equally. For a 10-cent saw pair this reduced a spurious 12.7 dB cross-pitch spread to 0.1 dB, whereas Hann windows and multi-window averages still left 5-8 dB.",
+"tags": "[subject:harmonic-level-measurement, domain:audio, phase:verification]",
+"version": "version-independent",
+"confidence": "verified",
+"path": "knowledge/harmonic-level-measurement/K-20261004T162313Z-beat-period-window-for-detuned-sources.md"
+},
+{
+"id": "K-20261009T193005Z-htdemucs-onnx-io-contract-and-overlap-add",
+"statement": "The demucs-onnx htdemucs export takes input 'mix' (1, 2, 343980) float32 at 44.1 kHz and returns 'stems' (1, 4, 2, 343980) in the order drums, bass, other, vocals; it is run on chunks of 343,980 samples with 25% overlap (stride 257,985), joined by triangular-window overlap-add with weight normalisation; the window is exactly 0 at index 0, so the first sample of a track is exactly 0 in every stem, and the four stems are not constrained to sum to the input.",
+"tags": "[subject:htdemucs-onnx-models, tech:demucs, domain:source-separation, domain:audio, phase:specification]",
+"version": "demucs-onnx 0.3.4",
+"confidence": "verified",
+"path": "knowledge/htdemucs-onnx-models/K-20261009T193005Z-htdemucs-onnx-io-contract-and-overlap-add.md"
+},
+{
+"id": "K-20261009T120106Z-hertz-contact-pulse-and-duration",
+"statement": "A Hertzian impact force pulse is a half-sine to the power 3/2, sin^(3/2), with duration T = 2.943 delta_max / v (delta_max the peak indentation, v the impact speed); with delta_max = (5 m v^2 / (4 k))^(2/5) and k = (4/3) E* sqrt(R) this equals T = 2.868 (m^2 / (R E*^2 v))^(1/5), and the two forms agree to 6 digits in a numerical check (7.5329e-5 s for m = 0.05 kg, R = 10 mm, E* = 100 GPa, v = 2 m/s).",
+"tags": "[subject:impact-contact-mechanics, domain:audio, phase:research]",
+"version": "version-independent",
+"confidence": "corroborated",
+"path": "knowledge/impact-contact-mechanics/K-20261009T120106Z-hertz-contact-pulse-and-duration.md"
+},
+{
+"id": "K-20261009T120111Z-infinite-plate-impedance-steel",
+"statement": "The driving-point impedance of an infinite thin plate is Z = 8 sqrt(D rho h), about 138 N s/m for 1.2 mm steel (E 200 GPa, nu 0.3, rho 7850 kg/m^3), independent of frequency; the arithmetic gives 138.13 N s/m.",
+"tags": "[subject:impact-contact-mechanics, subject:modal-plate-physics, domain:audio, phase:research]",
+"version": "version-independent",
+"confidence": "inferred",
+"path": "knowledge/impact-contact-mechanics/K-20261009T120111Z-infinite-plate-impedance-steel.md"
+},
+{
+"id": "K-20261007T160000Z-c-001",
+"statement": "The latest stable JUCE release is tag 9.0.3, published 2026-09-28T10:41:30Z (not a prerelease/draft).",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:juce, phase:research]",
+"version": "9.0.3",
+"confidence": "verified",
+"path": "knowledge/juce/K-20261007T160000Z-c-001.md"
+},
+{
+"id": "K-20261007T160001Z-c-002",
+"statement": "Tag 9.0.3 is a lightweight tag pointing directly at commit be29c81492b6151c8ea8d14c840e1311963b3a83 (git/ref/tags/9.0.3 object.type == 'commit', no tag object to dereference).",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:juce, phase:research]",
+"version": "9.0.3",
+"confidence": "verified",
+"path": "knowledge/juce/K-20261007T160001Z-c-002.md"
+},
+{
+"id": "K-20261007T160002Z-c-003",
+"statement": "The previous JUCE release before 9.0.3 is 9.0.2 (2026-09-07, commit 72782788ce18c2d4d760b28e0921d6ffc6431102), and JUCE 9.x exists (9.0.0 released 2026-07-21).",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:juce, phase:research]",
+"version": "9.0.3",
+"confidence": "verified",
+"path": "knowledge/juce/K-20261007T160002Z-c-003.md"
+},
+{
+"id": "K-20261007T160003Z-c-004",
+"statement": "JUCE 9.0.3 modules are dual-licensed under AGPLv3 and the commercial JUCE 9 End User Licence Agreement (no plain GPLv3).",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:juce, phase:research]",
+"version": "9.0.3",
+"confidence": "verified",
+"path": "knowledge/juce/K-20261007T160003Z-c-004.md"
+},
+{
+"id": "K-20261007T160004Z-c-005",
+"statement": "JUCE 9.0.3's top-level CMakeLists.txt requires cmake_minimum_required(VERSION 3.22).",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:juce, phase:research]",
+"version": "9.0.3",
+"confidence": "verified",
+"path": "knowledge/juce/K-20261007T160004Z-c-005.md"
+},
+{
+"id": "K-20261007T160005Z-c-006",
+"statement": "JUCE 9.0.3's docs/Linux Dependencies.md lists these Ubuntu packages: libasound2-dev, libjack-jackd2-dev, ladspa-sdk, libcurl4-openssl-dev, libfreetype-dev, libfontconfig1-dev, libx11-dev, libxcomposite-dev, libxcursor-dev, libxext-dev, libxinerama-dev, libxrandr-dev, libxrender-dev, libxi-dev, libwebkit2gtk-4.1-dev, libglu1-mesa-dev, mesa-common-dev, libegl-dev.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:juce, phase:research]",
+"version": "9.0.3",
+"confidence": "verified",
+"path": "knowledge/juce/K-20261007T160005Z-c-006.md"
+},
+{
+"id": "K-20261029T030300Z-juce-decibelstogain-second-argument",
+"statement": "juce::Decibels::decibelsToGain (db, minusInfinityDb = -100) treats its second argument as a dB value: any db not greater than minusInfinityDb returns 0, so passing a positive linear-looking value such as 1.0e-6f makes every realistic dB input return 0.",
+"tags": "[subject:juce, tech:juce, domain:audio, phase:implementation]",
+"version": "8.0.16",
+"confidence": "verified",
+"path": "knowledge/juce/K-20261029T030300Z-juce-decibelstogain-second-argument.md"
+},
+{
+"id": "K-20261104T003002Z-juce-9-agpl-commercial-license",
+"statement": "JUCE 9 modules, including the pinned 9.0.5 source, are offered under AGPLv3 or a commercial JUCE licence; the project may use AGPL-3.0-only rather than GPL-3.0.",
+"tags": "[tech:juce, subject:juce-licensing, phase:research]",
+"version": "9.0.5",
+"confidence": "verified",
+"path": "knowledge/juce/K-20261104T003002Z-juce-9-agpl-commercial-license.md"
+},
+{
+"id": "K-20261104T003003Z-juce-9-cmake-minimum",
+"statement": "JUCE 9.0.5 requires CMake 3.22 or newer.",
+"tags": "[tech:juce, tech:cmake, subject:juce-build, phase:research]",
+"version": "9.0.5",
+"confidence": "verified",
+"path": "knowledge/juce/K-20261104T003003Z-juce-9-cmake-minimum.md"
+},
+{
+"id": "K-20261104T003004Z-juce-9-headless-audioprocessor-path",
+"statement": "In JUCE 9.0.5 the AudioProcessor interface is in juce_audio_processors_headless/processors/juce_AudioProcessor.h, while AudioProcessorValueTreeState remains in juce_audio_processors/utilities; offline DSP code must not include paths assumed from earlier JUCE layouts.",
+"tags": "[tech:juce, subject:juce-headless-modules, phase:research]",
+"version": "9.0.5",
+"confidence": "verified",
+"path": "knowledge/juce/K-20261104T003004Z-juce-9-headless-audioprocessor-path.md"
+},
+{
+"id": "K-20261104T003005Z-juce-9-vst3-cmake-options",
+"statement": "JUCE 9.0.5 CMake supports VST3-only plug-in declaration with IS_SYNTH and NEEDS_MIDI_INPUT, disables VST2 replacement by default with JUCE_VST3_CAN_REPLACE_VST2=0, and provides NEEDS_CURL and NEEDS_WEB_BROWSER controls.",
+"tags": "[tech:juce, tech:cmake, subject:juce-cmake-api, phase:research]",
+"version": "9.0.5",
+"confidence": "verified",
+"path": "knowledge/juce/K-20261104T003005Z-juce-9-vst3-cmake-options.md"
+},
+{
+"id": "K-20261104T004600Z-juce-host-only-processor-contract",
+"statement": "JUCE 9.0.5 supplies the processor, bus, processBlock and XML state APIs needed for a host-parameter-only VST3 with no editor.",
+"tags": "[tech:juce, subject:processor-contract, phase:research]",
+"version": "9.0.5",
+"confidence": "verified",
+"path": "knowledge/juce/K-20261104T004600Z-juce-host-only-processor-contract.md"
+},
+{
+"id": "K-20261104T004700Z-apvts-state-not-realtime-safe",
+"statement": "APVTS atomic parameter reads are realtime-oriented, but copyState and replaceState use locks and must stay out of processBlock.",
+"tags": "[tech:juce, subject:realtime-state, phase:research]",
+"version": "9.0.5",
+"confidence": "verified",
+"path": "knowledge/juce/K-20261104T004700Z-apvts-state-not-realtime-safe.md"
+},
+{
+"id": "K-20261104T005000Z-juce-905-parser-and-macos-limits",
+"statement": "JUCE 9.0.5 adds parser nesting/entity limits and documents macOS 12.0 as its default deployment target.",
+"tags": "[tech:juce, subject:malformed-state, subject:macos-deployment, phase:research]",
+"version": "9.0.5",
+"confidence": "verified",
+"path": "knowledge/juce/K-20261104T005000Z-juce-905-parser-and-macos-limits.md"
+},
+{
+"id": "K-20261029T030500Z-au-registration-in-github-actions",
+"statement": "To validate an AU component with pluginval on a GitHub macOS runner, build the AU target explicitly, copy the .component to ~/Library/Audio/Plug-Ins/Components, ad-hoc sign it (codesign --force --deep -s -), restart AudioComponentRegistrar and pass the installed path; the unregistered build-tree path fails with 'No types found'.",
+"tags": "[subject:juce-au-ci, tech:juce, tech:github-actions, domain:audio, phase:verification]",
+"version": "macos-latest (Apple Silicon), pluginval v2.0.0-beta3",
+"confidence": "verified",
+"path": "knowledge/juce-au-ci/K-20261029T030500Z-au-registration-in-github-actions.md"
+},
+{
+"id": "K-20261009T164300Z-juce-8-0-15-combobox-has-no-gettext-editor-accessor",
+"statement": "In JUCE 8.0.15, juce::ComboBox has no getCurrentTextEditor member; compile error in EdoControl.h was resolved by testing combo.hasKeyboardFocus (true) to detect that the editable text field has focus.",
+"tags": "[subject:juce-combobox-editable, tech:juce, phase:implementation]",
+"version": "JUCE 8.0.15",
+"confidence": "verified",
+"path": "knowledge/juce-combobox-editable/K-20261009T164300Z-juce-8-0-15-combobox-has-no-gettext-editor-accessor.md"
+},
+{
+"id": "K-20261029T030400Z-juce-convolution-default-state-and-gain",
+"statement": "A freshly prepared juce::dsp::Convolution already reports getCurrentIRSize() > 0 before any IR is loaded, and a loaded one-sample IR of 0.5 (Normalise::no, matching rate) produced an output gain of about 1.53 per unit input, i.e. JUCE applies an internal scale to loaded IRs.",
+"tags": "[subject:juce-convolution, tech:juce, domain:audio, phase:verification]",
+"version": "8.0.16",
+"confidence": "single-source",
+"path": "knowledge/juce-convolution/K-20261029T030400Z-juce-convolution-default-state-and-gain.md"
+},
+{
+"id": "K-20261101T140100Z-juce-convolution-load-from-second-thread",
+"statement": "Calling juce::dsp::Convolution::loadImpulseResponse from a worker thread while the audio thread processes, with prepare() and the audio thread also touching the object, made random parameter automation throw std::bad_function_call in a JUCE 8.0.16 plugin (reproduced under ASan/UBSan at block size 1024 and by pluginval on macOS and Windows); keeping the calls on the audio thread did not.",
+"tags": "[subject:juce-convolution, tech:juce, domain:audio, phase:verification]",
+"version": "8.0.16",
+"confidence": "single-source",
+"path": "knowledge/juce-convolution/K-20261101T140100Z-juce-convolution-load-from-second-thread.md"
+},
+{
+"id": "K-20261007T160026Z-c-027",
+"statement": "In JUCE 9.0.3 the AudioProcessor class lives in the headless module at modules/juce_audio_processors_headless/processors/juce_AudioProcessor.h/.cpp, while AudioProcessorEditor (which needs GUI) stays in modules/juce_audio_processors/processors/juce_AudioProcessorEditor.h/.cpp.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:juce-headless-testing, phase:research]",
+"version": "9.0.3",
+"confidence": "verified",
+"path": "knowledge/juce-headless-testing/K-20261007T160026Z-c-027.md"
+},
+{
+"id": "K-20261007T160027Z-c-028",
+"statement": "juce::ScopedJuceInitialiser_GUI (declared in modules/juce_events/messages/juce_Initialisation.h, defined in modules/juce_events/messages/juce_MessageManager.cpp lines 531-550) just calls initialiseJuce_GUI() = MessageManager::getInstance() on the first instance and shutdownJuce_GUI() = MessageManager::deleteInstance() on the last, and is documented for use at the start of a console app's main().",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:juce-headless-testing, phase:research]",
+"version": "9.0.3",
+"confidence": "verified",
+"path": "knowledge/juce-headless-testing/K-20261007T160027Z-c-028.md"
+},
+{
+"id": "K-20261007T160028Z-c-029",
+"statement": "JUCE 9.0.3 ships no xvfb/headless-GUI testing guidance; using xvfb-run on Linux for editor tests is an inference. The JUCE repo's own workflows (.github/workflows) do not mention xvfb.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:juce-headless-testing, phase:research]",
+"version": "9.0.3",
+"confidence": "verified",
+"path": "knowledge/juce-headless-testing/K-20261007T160028Z-c-029.md"
+},
+{
+"id": "K-20261007T160029Z-c-030",
+"statement": "JUCE split juce_audio_processors into a headless module: juce_audio_processors_headless exists at 9.0.3 and was introduced in 8.0.11 (absent in 8.0.10, present in 8.0.11, 8.0.12, 8.0.15, 9.0.0), so it is not new in JUCE 9.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:juce-headless-testing, phase:research]",
+"version": "9.0.3",
+"confidence": "verified",
+"path": "knowledge/juce-headless-testing/K-20261007T160029Z-c-030.md"
+},
+{
+"id": "K-20261007T160030Z-c-031",
+"statement": "docs/CMake API.md at 9.0.3 is byte-identical to the one at 8.0.15, and relative to 8.0.12 it only adds optional juce_add_plugin/juce_add_gui_app arguments (ICON_COMPOSER_BUNDLE, LV2_PLUGIN_CLASS) plus clarifications on AU_SANDBOX_SAFE; no new required juce_add_plugin arguments, and nothing about the headless split.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:juce-headless-testing, phase:research]",
+"version": "9.0.3",
+"confidence": "verified",
+"path": "knowledge/juce-headless-testing/K-20261007T160030Z-c-031.md"
+},
+{
+"id": "K-20261007T160031Z-c-032",
+"statement": "JUCE 9.0.3 headline changes relevant to a plugin build: EGL replaces GLX for OpenGL on Linux (adds libegl-dev), Drawable no longer inherits from Component and has a new SVG parser, and juce_graphics no longer depends on juce_gui_basics for SVG/Drawable.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:juce-headless-testing, phase:research]",
+"version": "9.0.3",
+"confidence": "verified",
+"path": "knowledge/juce-headless-testing/K-20261007T160031Z-c-032.md"
+},
+{
+"id": "K-20261027T123100Z-juce8-licensing",
+"statement": "JUCE 8 is dual-licensed under the JUCE licence and the AGPLv3 (JUCE 7's GPLv3 option was replaced by AGPLv3). The JUCE licence has tiers: Starter (free, perpetual, annual revenue/funding limit $20,000, no splash screen), Indie ($40/month or $800 perpetual per user, limit $300,000), Pro ($175/month or $3,500 perpetual, no limit), and Educational (free, non-commercial). Presets and static assets that use only end-user features do not require licence seats.",
+"tags": "[subject:juce-licensing, tech:juce, phase:intake]",
+"version": "JUCE 8.x (EULA read 2026-10-27)",
+"confidence": "verified",
+"path": "knowledge/juce-licensing/K-20261027T123100Z-juce8-licensing.md"
+},
+{
+"id": "K-20261008T173542Z-juce-linux-build-dependencies-8-0-15",
+"statement": "JUCE 8.0.15's Linux dependency page lists 16 Ubuntu packages for building: libasound2-dev, libjack-jackd2-dev, ladspa-sdk, libcurl4-openssl-dev, libfreetype-dev, libfontconfig1-dev, libx11-dev, libxcomposite-dev, libxcursor-dev, libxext-dev, libxinerama-dev, libxrandr-dev, libxrender-dev, libwebkit2gtk-4.1-dev, libglu1-mesa-dev and mesa-common-dev, plus a C++ compiler installed separately.",
+"tags": "[subject:juce-linux-dependencies, tech:juce, phase:implementation]",
+"version": "JUCE 8.0.15",
+"confidence": "single-source",
+"path": "knowledge/juce-linux-dependencies/K-20261008T173542Z-juce-linux-build-dependencies-8-0-15.md"
+},
+{
+"id": "K-20261008T223321Z-juce-vst3-linux-build-14-packages",
+"statement": "On Ubuntu 24.04 x86-64 (g++ 13.3, CMake 3.28.3) the VST3 target of a JUCE plugin built and linked with JUCE 7.0.12 and with JUCE 8.0.15 after installing these 14 packages (libasound2-dev, libfontconfig1-dev, libfreetype-dev, libglu1-mesa-dev, libx11-dev, libxcomposite-dev, libxcursor-dev, libxext-dev, libxinerama-dev, libxrandr-dev, libxrender-dev, mesa-common-dev, plus the runtime libraries libglu1-mesa and libjack-jackd2-0), without libwebkit2gtk, libcurl4-openssl-dev, libjack-jackd2-dev or ladspa-sdk.",
+"tags": "[subject:juce-linux-dependencies, tech:juce, phase:implementation]",
+"version": "JUCE 7.0.12 and 8.0.15; Ubuntu 24.04 container",
+"confidence": "verified",
+"path": "knowledge/juce-linux-dependencies/K-20261008T223321Z-juce-vst3-linux-build-14-packages.md"
+},
+{
+"id": "K-20261009T092105Z-juce-mpesynthesiser-voice-allocation-and-default-zone",
+"statement": "In JUCE's MPESynthesiser, noteAdded calls findFreeVoice, which returns a voice that is not playing and can play the note (or, with stealing on, the oldest voice that is not playing the lowest or highest note), and the documentation ties no voice to a MIDI channel; a default-constructed instrument has one lower zone with 15 member channels.",
+"tags": "[subject:juce-mpe-voice-allocation, tech:juce, domain:audio, phase:implementation]",
+"version": "JUCE 8.0.9 documentation mirror",
+"confidence": "single-source",
+"path": "knowledge/juce-mpe-voice-allocation/K-20261009T092105Z-juce-mpesynthesiser-voice-allocation-and-default-zone.md"
+},
+{
+"id": "K-20261009T164200Z-juce-combobox-attachment-spaces-items-linearly-over-the-parameter-range",
+"statement": "JUCE's AudioProcessorValueTreeState::ComboBoxAttachment spaces combo box items linearly across the parameter's range, so each item maps to a fixed value and a typed number that is not an item has no representation.",
+"tags": "[subject:juce-parameter-attachments, tech:juce, domain:audio, phase:specification]",
+"version": "JUCE master documentation, read 2026-10-09",
+"confidence": "single-source",
+"path": "knowledge/juce-parameter-attachments/K-20261009T164200Z-juce-combobox-attachment-spaces-items-linearly-over-the-parameter-range.md"
+},
+{
+"id": "K-20261009T164500Z-juce-module-build-on-one-cpu-core-exceeds-a-300-second-tool-call",
+"statement": "On the single-core sandbox, a full build of the JUCE modules plus the plugin's sources, and an AddressSanitizer build, each took longer than one 300-second tool call, and plain nohup background builds did not survive to the next call.",
+"tags": "[subject:juce-sandbox-build-time, tech:juce, tech:cmake, phase:implementation]",
+"version": "JUCE 8.0.15",
+"confidence": "single-source",
+"path": "knowledge/juce-sandbox-build-time/K-20261009T164500Z-juce-module-build-on-one-cpu-core-exceeds-a-300-second-tool-call.md"
+},
+{
+"id": "K-20261009T092102Z-juce-standalone-target-compiles-vst3-client",
+"statement": "In a JUCE CMake plugin built with FORMATS VST3 Standalone, the Standalone target also compiles juce_audio_plugin_client_VST3.cpp, so a macro that file needs must reach both targets; an add_compile_definitions call at directory scope before add_subdirectory(JUCE) does.",
+"tags": "[subject:juce-standalone-compiles-vst3-client, tech:juce, tech:cmake, tech:vst3, phase:implementation]",
+"version": "observed with the JUCE checkout at D:/JUCE (has juce_audio_processors_headless), CMake with Ninja, 2026-10-09",
+"confidence": "verified",
+"path": "knowledge/juce-standalone-compiles-vst3-client/K-20261009T092102Z-juce-standalone-target-compiles-vst3-client.md"
+},
+{
+"id": "K-20261004T151500Z-juce-8-vs-9-vst3-breaking-change",
+"statement": "JUCE's 8.x line runs through tag 8.0.15; the 9.x line (9.0.0, 2026-07-21, through 9.0.2, 2026-09-07) restructures the VST3 client extension API, moving functionality out of VST3ClientExtensions into a new VST3Interface struct behind a JUCE_VST3_COMPATIBLE_CLASSES define, among 35+ other breaking changes listed in JUCE's own BREAKING_CHANGES.md.",
+"tags": "[subject:juce-versioning, tech:juce, phase:specification]",
+"version": "JUCE 8.0.15 and 9.0.0-9.0.2",
+"confidence": "verified",
+"path": "knowledge/juce-versioning/K-20261004T151500Z-juce-8-vs-9-vst3-breaking-change.md"
+},
+{
+"id": "K-20261009T164400Z-juce-fontoptions-exists-on-master-without-stated-introduction-version",
+"statement": "juce::FontOptions is documented on the JUCE master reference as 'Options that describe a particular font', used to construct Font instances in a fluent style, and the page does not say which JUCE version introduced it; the project uses it five times without a minimum-version check.",
+"tags": "[subject:juce-versioning, tech:juce, phase:implementation]",
+"version": "JUCE master documentation, read 2026-10-09",
+"confidence": "single-source",
+"path": "knowledge/juce-versioning/K-20261009T164400Z-juce-fontoptions-exists-on-master-without-stated-introduction-version.md"
+},
+{
+"id": "K-20261009T092101Z-juce-vst3-can-replace-vst2-default-and-error",
+"statement": "JUCE defines JUCE_VST3_CAN_REPLACE_VST2 as 1 by default, and the #error 'You may have a conflict with parameter automation between VST2 and VST3 versions of your plugin' in juce_audio_plugin_client_VST3.cpp fires when VST2 replacement is enabled, legacy parameter IDs are not forced and the mismatched-parameter-ID warning is not suppressed; defining JUCE_VST3_CAN_REPLACE_VST2=0 is the inferred fix for a plugin that never shipped as VST2.",
+"tags": "[subject:juce-vst3-parameter-id-conflict, tech:juce, tech:vst3, tech:cmake, phase:implementation]",
+"version": "JUCE 7.0+ and 8.x macro names as in the forum thread (undated); error observed with a JUCE 8 checkout that has the juce_audio_processors_headless module",
+"confidence": "single-source",
+"path": "knowledge/juce-vst3-parameter-id-conflict/K-20261009T092101Z-juce-vst3-can-replace-vst2-default-and-error.md"
+},
+{
+"id": "K-20261027T120100Z-juce-preset-automation-spam",
+"statement": "In JUCE-built VST3 plugins with an internal preset browser, loading a preset by calling setValueNotifyingHost per parameter emits beginEdit/performEdit-style notifications that some hosts (Ableton Live and Reason reported) record as automation, spawning spurious automation lanes. Preset loads should instead push state through AudioProcessorValueTreeState::replaceState; GUI edits should use beginChangeGesture/setValueNotifyingHost/endChangeGesture.",
+"tags": "[subject:juce-vst3-preset-automation, domain:audio, tech:juce, tech:vst3, tech:ableton-live, phase:research]",
+"version": "JUCE 8.x (VST3 wrapper behavior per 2025 forum thread)",
+"confidence": "corroborated",
+"path": "knowledge/juce-vst3-preset-automation/K-20261027T120100Z-juce-preset-automation-spam.md"
+},
+{
+"id": "K-20261009T193016Z-lead-and-rhythm-guitar-have-no-open-model",
+"statement": "As of the 2026-09-28 research note, lead and rhythm guitar separation exists only in server-side commercial products (Moises, 2024; MVSep, March 2026) and no open-weight model was found, so the proposed first step is a mid/side baseline (double-tracked rhythm parts are commonly panned wide, leads usually sit centre) before any fine-tune of BS-RoFormer with the MSST framework.",
+"tags": "[subject:lead-rhythm-guitar-separation, domain:source-separation, domain:audio, phase:research]",
+"version": "state of the field at 2026-09-28",
+"confidence": "inferred",
+"path": "knowledge/lead-rhythm-guitar-separation/K-20261009T193016Z-lead-and-rhythm-guitar-have-no-open-model.md"
+},
+{
+"id": "K-20261009T194004Z-legacy-6j-half-power-bug",
+"statement": "generate_6j_symbols.py uses half powers q^(n/2) with q=exp(i pi/(k+2)), giving [n]=sin(n pi/(2k+4))/sin(pi/(2k+4)) (wrong level; [k+2]!=0).",
+"tags": "[subject:legacy-code-audit, domain:quantum-gravity, tech:python, phase:research]",
+"version": "legacy repo codeberg.org/ghsc-research/hamil-3-qg-pos-cosmo @ 3d5890d0be619a4ccccbb0b7a00733a7fdd3cf28",
+"confidence": "verified",
+"path": "knowledge/legacy-code-audit/K-20261009T194004Z-legacy-6j-half-power-bug.md"
+},
+{
+"id": "K-20261009T194005Z-legacy-operator-not-idempotent",
+"statement": "The legacy operator P_leg (paper Sec. II.B single-6j matrix element, code figure_4_breathing_mode.py) is not idempotent, and H_leg=I-P_leg has negative eigenvalues and no zero modes for every k=3..12.",
+"tags": "[subject:legacy-code-audit, domain:quantum-gravity, tech:python, phase:research]",
+"version": "legacy repo codeberg.org/ghsc-research/hamil-3-qg-pos-cosmo @ 3d5890d0be619a4ccccbb0b7a00733a7fdd3cf28",
+"confidence": "verified",
+"path": "knowledge/legacy-code-audit/K-20261009T194005Z-legacy-operator-not-idempotent.md"
+},
+{
+"id": "K-20261009T194006Z-legacy-table-i-unreproducible",
+"statement": "The published Table I values are not produced by any code in the legacy repo; figure_4_breathing_mode.py gives E[5]=-0.47383703 at k=4 vs published 0.34115610; spectra_data.csv holds exactly 2x Table I.",
+"tags": "[subject:legacy-code-audit, domain:quantum-gravity, tech:python, phase:research]",
+"version": "legacy repo codeberg.org/ghsc-research/hamil-3-qg-pos-cosmo @ 3d5890d0be619a4ccccbb0b7a00733a7fdd3cf28",
+"confidence": "verified",
+"path": "knowledge/legacy-code-audit/K-20261009T194006Z-legacy-table-i-unreproducible.md"
+},
+{
+"id": "K-20261009T194007Z-legacy-table-iii-reproduced",
+"statement": "Legacy Table III probabilities are reproduced exactly (4 d.p.) by figure_4_breathing_mode.py (average of the 5 lowest eigenvectors of the non-PSD H_leg); the printed sign column agrees only up to the arbitrary global eigenvector sign.",
+"tags": "[subject:legacy-code-audit, domain:quantum-gravity, tech:python, phase:research]",
+"version": "version-independent",
+"confidence": "verified",
+"path": "knowledge/legacy-code-audit/K-20261009T194007Z-legacy-table-iii-reproduced.md"
+},
+{
+"id": "K-20261009T194012Z-legacy-exponent-fit",
+"statement": "Fitting A+B k^-beta to legacy Table I gives beta=0.41+-0.03, A=-0.21+-0.04; the published beta=0.79 comes from a pure power law (A=0).",
+"tags": "[subject:legacy-code-audit, domain:quantum-gravity, tech:python, phase:research]",
+"version": "version-independent",
+"confidence": "verified",
+"path": "knowledge/legacy-code-audit/K-20261009T194012Z-legacy-exponent-fit.md"
+},
+{
+"id": "K-20261009T194013Z-legacy-gamma-convention-dependence",
+"statement": "The legacy 'physical exponent' gamma=(1+beta)/2 depends on the assumed Lambda(k) convention: 0.77-1.19 for k vs k+2 choices.",
+"tags": "[subject:legacy-code-audit, domain:quantum-gravity, tech:python, phase:research]",
+"version": "version-independent",
+"confidence": "verified",
+"path": "knowledge/legacy-code-audit/K-20261009T194013Z-legacy-gamma-convention-dependence.md"
+},
+{
+"id": "K-20261009T194014Z-legacy-6j-table-k4-errors",
+"statement": "Legacy 6j_table_k4.json: entries 1-3 are wrong in magnitude/admissibility ({0 0 0;1 1 1}=0.7071 not 0.5; {1 1 1;1 1 1}=0 not 0.5; all-1/2 entry inadmissible); entry 4 has the wrong sign in the Racah-Wigner convention (legacy JSON value +0.57735; correct value -0.57735) and is not a consistent tetrahedron labelling.",
+"tags": "[subject:legacy-code-audit, domain:quantum-gravity, tech:python, phase:research]",
+"version": "legacy repo codeberg.org/ghsc-research/hamil-3-qg-pos-cosmo @ 3d5890d0be619a4ccccbb0b7a00733a7fdd3cf28",
+"confidence": "verified",
+"path": "knowledge/legacy-code-audit/K-20261009T194014Z-legacy-6j-table-k4-errors.md"
+},
+{
+"id": "K-20261009T194020Z-legacy-k16-different-hamiltonian",
+"statement": "Legacy calc-for-k-16.py uses a different Hamiltonian (H=3I-sum of three single-edge 'flip' operators) and its reported gap 0.0101 at k=16 contradicts the Table I power law (predicts ~0.114). The repo also contradicts itself: k-16-cal-results.txt reports gap 0.0000000000 for the same script.",
+"tags": "[subject:legacy-code-audit, domain:quantum-gravity, tech:python, phase:research]",
+"version": "legacy repo codeberg.org/ghsc-research/hamil-3-qg-pos-cosmo @ 3d5890d0be619a4ccccbb0b7a00733a7fdd3cf28",
+"confidence": "verified",
+"path": "knowledge/legacy-code-audit/K-20261009T194020Z-legacy-k16-different-hamiltonian.md"
+},
+{
+"id": "K-20261009T120103Z-clamped-circular-plate-eigenvalues",
+"statement": "The eigenvalues lambda of a clamped circular plate satisfy J_n(lambda) I_{n+1}(lambda) + I_n(lambda) J_{n+1}(lambda) = 0 with frequency proportional to lambda^2; the ideal ratio of the second axisymmetric mode (n=0, one nodal circle) to the fundamental is 3.893, the ratio (1,2) is 11.754 (the plan's 13.00 was wrong), and the computed lambda^2 values agree with the Manu et al. 2023 table to a worst relative error of 3.69e-7 over 42 values.",
+"tags": "[subject:modal-plate-physics, domain:audio, tech:python, tech:scipy, phase:research]",
+"version": "version-independent",
+"confidence": "verified",
+"path": "knowledge/modal-plate-physics/K-20261009T120103Z-clamped-circular-plate-eigenvalues.md"
+},
+{
+"id": "K-20261009T120104Z-lid-axisymmetric-ratio-in-the-patent",
+"statement": "US 6,339,960 B1 reports second-axisymmetric-mode frequencies of 250-280 Hz for oil-drum lids with a stiffening ring about 3 mm deep (fundamental about 100 Hz, ratio 2.5-2.8, below the ideal clamped-plate 3.893) and, for a ring about 5 mm deep, states only a fundamental above 110 Hz; the figure '450 Hz, ratio 4.0' used in Renders/RESEARCH.md for deep rings is not in the patent.",
+"tags": "[subject:modal-plate-physics, domain:audio, phase:research]",
+"version": "US 6,339,960 B1",
+"confidence": "single-source",
+"path": "knowledge/modal-plate-physics/K-20261009T120104Z-lid-axisymmetric-ratio-in-the-patent.md"
+},
+{
+"id": "K-20261009T120105Z-plate-stretch-default-is-a-chosen-value",
+"statement": "The oildrumkit engine maps plate mode ratios with r' = 1 + s(r - 1) and defaults to s = 0.8; only the lower anchor s = 0.57 (from the patent's 2.5-2.8 second-axisymmetric ratio: (2.65 - 1)/(3.893 - 1)) is supported by a source, the upper anchor s = 1.04 depended on the unsupported 4.0 ratio, so 0.8 is an engineering choice, not a measured value.",
+"tags": "[subject:modal-plate-physics, subject:drum-synthesis, domain:audio, phase:implementation]",
+"version": "oildrumkit Tools/voicing.json plateStretch 0.8",
+"confidence": "inferred",
+"path": "knowledge/modal-plate-physics/K-20261009T120105Z-plate-stretch-default-is-a-chosen-value.md"
+},
+{
+"id": "K-20261009T120107Z-ansys-clamped-plate-benchmark-vm-lsdyna-solve-051",
+"statement": "The ANSYS verification case VM-LSDYNA-SOLVE-051 (after Blevins 1979, Formulas for Natural Frequency and Mode Shape, table 11-1 case 3) lists a clamped circular plate (R 17 in, h 0.5 in, E 3e7 psi, rho 7.3e-4 lbf s^2/in^4, nu 0.3) with frequencies 172.64, 671.79 and 1505.07 Hz; the plate solver in oildrumkit gives 172.56 Hz for the fundamental, 0.05 % low; the id VM181 in the research note is wrong.",
+"tags": "[subject:modal-plate-physics, domain:audio, tech:python, phase:verification]",
+"version": "version-independent",
+"confidence": "verified",
+"path": "knowledge/modal-plate-physics/K-20261009T120107Z-ansys-clamped-plate-benchmark-vm-lsdyna-solve-051.md"
+},
+{
+"id": "K-20261009T120108Z-plate-modal-density-weyl-check",
+"statement": "For the clamped plate table generated by oildrumkit Tools/modes.py (lambda_max 48), there are 200 distinct frequencies (387 counting cos/sin pairs) up to a frequency ratio of 163.8, against a Weyl estimate N(L2) = L2/4 = 418, so the table holds about 93 % of the expected modes at the top of the range.",
+"tags": "[subject:modal-plate-physics, domain:audio, tech:python, phase:verification]",
+"version": "oildrumkit Tools/modes.py at 35fbfea",
+"confidence": "verified",
+"path": "knowledge/modal-plate-physics/K-20261009T120108Z-plate-modal-density-weyl-check.md"
+},
+{
+"id": "K-20261009T120113Z-bessel-ive-not-needed-below-lambda-700",
+"statement": "For lambda up to 48, scipy.special.iv(3, 48) = 3.7e19 and iv(0, 48) = 4.1e19, far below the double-precision limit of 1.8e308 (overflow of I_n begins near x = 700), so the exponentially scaled ive in oildrumkit Tools/modes.py is a convenience for stable ratios, not a necessity 'to avoid overflow'.",
+"tags": "[subject:modal-plate-physics, tech:scipy, tech:python, phase:verification]",
+"version": "scipy.special as installed in the sandbox on 2026-10-09",
+"confidence": "verified",
+"path": "knowledge/modal-plate-physics/K-20261009T120113Z-bessel-ive-not-needed-below-lambda-700.md"
+},
+{
+"id": "K-20261009T120118Z-radiation-efficiency-law-ignores-net-volume",
+"statement": "The oildrumkit modal engine's radiation weighting by frequency does not model net-volume-displacement radiation, whereas the patent US 6,339,960 B1 says the second axisymmetric lid mode is hard to detect with a microphone; axisymmetric modes may therefore be louder in the model than on a real lid.",
+"tags": "[subject:modal-plate-physics, subject:drum-synthesis, domain:audio, phase:research]",
+"version": "oildrumkit main 35fbfea; US 6,339,960 B1",
+"confidence": "inferred",
+"path": "knowledge/modal-plate-physics/K-20261009T120118Z-radiation-efficiency-law-ignores-net-volume.md"
+},
+{
+"id": "K-20261009T120119Z-donnell-shell-mode-example",
+"statement": "For the Donnell cylindrical-shell model in oildrumkit Tools/modes.py with m = 1, the lowest frequency is at n = 5 (152 Hz) and the n = 0 mode lies at the ring frequency, 2811 Hz.",
+"tags": "[subject:modal-plate-physics, domain:audio, tech:python, phase:verification]",
+"version": "oildrumkit Tools/modes.py at 35fbfea (default shell parameters)",
+"confidence": "verified",
+"path": "knowledge/modal-plate-physics/K-20261009T120119Z-donnell-shell-mode-example.md"
+},
+{
+"id": "K-20261009T120109Z-two-pole-resonator-with-input-zero-gives-cosine-start",
+"statement": "A two-pole resonator y[n] = 2 r cos(w) y[n-1] - r^2 y[n-2] + x[n] - r cos(w) x[n-1] has the impulse response r^n cos(w n), so a modal synthesiser that wants cosine-start modes after an impulsive force can use that input zero; checked numerically with r = 0.99, w = 0.3 (maximum difference 1.2e-15).",
+"tags": "[subject:modal-resonator-implementation, domain:audio, tech:cpp, tech:python, phase:implementation]",
+"version": "version-independent",
+"confidence": "verified",
+"path": "knowledge/modal-resonator-implementation/K-20261009T120109Z-two-pole-resonator-with-input-zero-gives-cosine-start.md"
+},
+{
+"id": "K-20261009T092107Z-msvc-ninja-needs-vcvars-environment",
+"statement": "Configuring CMake with the Ninja generator from a shell that has not run vcvars64 finds cl.exe but fails with C1083 on standard headers (cstring, algorithm, vector, array) and windows.h because INCLUDE and LIB are empty; building from the x64 Native Tools Command Prompt, after deleting the stale build directory, fixes it, and Ninja being single-config needs -DCMAKE_BUILD_TYPE=Release at configure time.",
+"tags": "[subject:msvc-ninja-environment, tech:msvc, tech:cmake, phase:implementation]",
+"version": "Visual Studio 18 Community, MSVC 19.50.35729.0, toolset 14.50.35717 (observed 2026-10-09)",
+"confidence": "corroborated",
+"path": "knowledge/msvc-ninja-environment/K-20261009T092107Z-msvc-ninja-needs-vcvars-environment.md"
+},
+{
+"id": "K-20261029T030100Z-mull-runner-cli-and-config",
+"statement": "mull-runner-19 (Mull from the mull-stable Cloudsmith repository) takes `<EXECUTABLE> [RUNNER_ARGS]...` with options such as --workers, --timeout, --minimum-timeout, --reporters, --report-name, --mutation-score-threshold and --allow-surviving; it has no --include-path or --exclude-path option, which belong in mull.yml (includePaths and excludePaths regexes, mutators list).",
+"tags": "[subject:mull, tech:mull, tech:cpp, phase:implementation]",
+"version": "mull-19 (mull-stable, 2026-10)",
+"confidence": "verified",
+"path": "knowledge/mull/K-20261029T030100Z-mull-runner-cli-and-config.md"
+},
+{
+"id": "K-20261029T030200Z-mull-sqlite-schema",
+"statement": "The Mull SQLite report has a table mutant(mutant_id, mutator, filename, directory, line_number, column_number, end_line_number, end_column_number, execution_status, exit_status, duration, stdout, stderr, mutation_replacement); execution_status 2 means the mutant survived, 1 and 3 mean it was killed (failed or timed out).",
+"tags": "[subject:mull, tech:mull, phase:verification]",
+"version": "mull-19 (mull-stable, 2026-10)",
+"confidence": "verified",
+"path": "knowledge/mull/K-20261029T030200Z-mull-sqlite-schema.md"
+},
+{
+"id": "K-20261027T123200Z-mull-mutation-testing",
+"statement": "Mull (LLVM-IR mutation testing for C/C++, latest release 0.34.0, May 2026) ships as version-matched packages: mull-19 bundles LLVM 19.1.7 and must be paired with clang-19. Test binaries are built with -O0 -g -grecord-command-line and the IR frontend via -fpass-plugin=/usr/lib/mull-ir-frontend-19; mull-runner-19 then reports killed/survived mutants. Tests and third-party paths must be excluded from mutation; Release builds must not be mutated (optimizer changes IR shape).",
+"tags": "[subject:mutation-testing-cpp, tech:cmake, tech:cpp, phase:verification]",
+"version": "Mull 0.34.0, mull-19/clang-19 pairing (2026)",
+"confidence": "verified",
+"path": "knowledge/mutation-testing-cpp/K-20261027T123200Z-mull-mutation-testing.md"
+},
+{
+"id": "K-20261102T085900Z-mutation-ci-pricing-estimate-vs-measured",
+"statement": "Under planning protocol v3.9, mutation-CI pricing (baseline test time, mutant count, job-time estimates) recorded while amending a plan is planning evidence, not measurement: it must be labelled estimate until confirmed by the first real CI run, and the score floor is calibrated five percentage points below the first measured full-run score \u2014 never derived from estimates and never weakened later without a human gate.",
+"tags": "[subject:mutation-testing-cpp, tech:mull, phase:planning]",
+"version": "planning protocol v3.9 (qualitycoding/skills commit ef99285404419153dd5f9aaae14f14bb53604a62)",
+"confidence": "corroborated",
+"path": "knowledge/mutation-testing-cpp/K-20261102T085900Z-mutation-ci-pricing-estimate-vs-measured.md"
+},
+{
+"id": "K-20261009T193013Z-mvsep-mega-53-release-and-resource-needs",
+"statement": "MVSep Mega 53 is ZFTurbo's BS-RoFormer that separates 53 stems, including mandolin, banjo, violin, viola, cello and strings, published as a release asset of Music-Source-Separation-Training v1.0.21; the release notes recommend at least 16 GB of VRAM even at batch size 1 and the release page states no licence.",
+"tags": "[subject:mvsep-mega-53, domain:source-separation, domain:audio, phase:research]",
+"version": "MSST release v1.0.21 (20 April, year not shown on the page; the research note gives 2026)",
+"confidence": "single-source",
+"path": "knowledge/mvsep-mega-53/K-20261009T193013Z-mvsep-mega-53-release-and-resource-needs.md"
+},
+{
+"id": "K-20261101T043000Z-npm-audit-clean-pins",
+"statement": "npm audit reports 0 vulnerabilities for the pinned dependency set (2026-09-26).",
+"tags": "[domain:audio, tech:nodejs, subject:npm-audit-clean-pins, phase:research]",
+"version": "see locator",
+"confidence": "verified",
+"path": "knowledge/npm-audit-clean-pins/K-20261101T043000Z-npm-audit-clean-pins.md"
+},
+{
+"id": "K-20261004T151300Z-numpy-array-vs-scalar-ufunc-rounding-differs",
+"statement": "On the same numpy version and machine, numpy's array-vectorized (SIMD-dispatched) log2/power ufuncs round the last bit differently from numpy's own scalar-path evaluation of the mathematically identical operation on the identical input; e.g. 220*2**(930/1200) then 1200*log2(f/261.6255653005986) gives exactly 630.0 via the array path but 630.00000000000034 via the scalar path. numpy's own 2.0**x and np.exp2(x) also disagree with each other in the last bit on the same input.",
+"tags": "[subject:numpy-ufunc-precision, tech:numpy, tech:cpp, phase:implementation]",
+"version": "numpy 2.4.4",
+"confidence": "verified",
+"path": "knowledge/numpy-ufunc-precision/K-20261004T151300Z-numpy-array-vs-scalar-ufunc-rounding-differs.md"
+},
+{
+"id": "K-20261009T234216Z-oildrumkit-engine-has-no-mutable-static-state",
+"statement": "The engine header has no mutable static state, so multiple module instances on Rack worker threads are independent.",
+"tags": "[subject:oildrumkit-engine-api, domain:audio, tech:cpp, phase:research]",
+"version": "oildrumkit@35fbfea (DrumEngine.h)",
+"confidence": "verified",
+"path": "knowledge/oildrumkit-engine-api/K-20261009T234216Z-oildrumkit-engine-has-no-mutable-static-state.md"
+},
+{
+"id": "K-20261009T234218Z-oildrumkit-engine-setsamplerate-allocates",
+"statement": "DrumEngine::setSampleRate allocates (Room std::vector) and does not silence voices; re-preparing is equivalent to constructing at the new rate.",
+"tags": "[subject:oildrumkit-engine-api, domain:audio, tech:cpp, phase:verification]",
+"version": "oildrumkit@35fbfea (DrumEngine.h)",
+"confidence": "verified",
+"path": "knowledge/oildrumkit-engine-api/K-20261009T234218Z-oildrumkit-engine-setsamplerate-allocates.md"
+},
+{
+"id": "K-20261009T234220Z-oildrumkit-engine-reset-gives-exact-silence",
+"statement": "setSampleRate(sr)+allNotesOff() yields exactly zero output until the next trigger.",
+"tags": "[subject:oildrumkit-engine-api, domain:audio, tech:cpp, phase:verification]",
+"version": "oildrumkit@35fbfea (DrumEngine.h)",
+"confidence": "verified",
+"path": "knowledge/oildrumkit-engine-api/K-20261009T234220Z-oildrumkit-engine-reset-gives-exact-silence.md"
+},
+{
+"id": "K-20261009T234222Z-oildrumkit-engine-trigger-sounds-on-the-same-sample",
+"statement": "A trigger produces non-zero output on the same sample (first sample of the next process()); with no triggers the output is exactly 0.",
+"tags": "[subject:oildrumkit-engine-api, domain:audio, tech:cpp, phase:verification]",
+"version": "oildrumkit@35fbfea (DrumEngine.h)",
+"confidence": "verified",
+"path": "knowledge/oildrumkit-engine-api/K-20261009T234222Z-oildrumkit-engine-trigger-sounds-on-the-same-sample.md"
+},
+{
+"id": "K-20261009T234240Z-oildrumkit-engine-api-and-instrument-list",
+"statement": "qualitycoding/oildrumkit@35fbfea: Source/DrumEngine.h is header-only with no JUCE dependency; API trigger(inst, vel), process(L, R, n) adds into buffers, setters clamp, 15 instruments, kChunk=128.",
+"tags": "[subject:oildrumkit-engine-api, domain:audio, tech:cpp, phase:research]",
+"version": "oildrumkit@35fbfea (DrumEngine.h)",
+"confidence": "verified",
+"path": "knowledge/oildrumkit-engine-api/K-20261009T234240Z-oildrumkit-engine-api-and-instrument-list.md"
+},
+{
+"id": "K-20261009T234250Z-oildrumkit-engine-implements-hi-hat-choke",
+"statement": "DrumEngine.h implements hi-hat choke: a chokeGroup test at lines 202-205 and chokeVoice at line 428 cut a sounding open hi-hat when the closed hi-hat is triggered.",
+"tags": "[subject:oildrumkit-engine-api, domain:audio, tech:cpp, phase:verification]",
+"version": "oildrumkit@35fbfea (DrumEngine.h)",
+"confidence": "single-source",
+"path": "knowledge/oildrumkit-engine-api/K-20261009T234250Z-oildrumkit-engine-implements-hi-hat-choke.md"
+},
+{
+"id": "K-20261009T234224Z-oildrumkit-engine-output-depends-on-process-segmentation",
+"statement": "Engine output depends on how process() calls are segmented: (a) overlapping voices share one PRNG, so draw order changes with segmentation; (b) modes are pruned once per process() call, so segments shorter than 128 samples truncate decays (B=32: up to -0.24 dB tail energy, -16% -60 dB duration at 96 kHz), while B=128 matches 512-sample blocks within 0.008 dB / 0.28% at 44.1-192 kHz.",
+"tags": "[subject:oildrumkit-engine-segmentation, domain:audio, tech:cpp, phase:verification]",
+"version": "oildrumkit@35fbfea (DrumEngine.h)",
+"confidence": "verified",
+"path": "knowledge/oildrumkit-engine-segmentation/K-20261009T234224Z-oildrumkit-engine-output-depends-on-process-segmentation.md"
+},
+{
+"id": "K-20261009T234226Z-oildrumkit-engine-limiter-saturates-at-352khz-and-above",
+"statement": "All Rack engine rates are numerically stable (finite); at >=352.8 kHz the engine output reaches the limiter ceiling 0.944; the soft limiter bounds output to 0.944.",
+"tags": "[subject:oildrumkit-engine-segmentation, domain:audio, tech:cpp, phase:verification]",
+"version": "oildrumkit@35fbfea (DrumEngine.h)",
+"confidence": "verified",
+"path": "knowledge/oildrumkit-engine-segmentation/K-20261009T234226Z-oildrumkit-engine-limiter-saturates-at-352khz-and-above.md"
+},
+{
+"id": "K-20261009T234228Z-oildrumkit-engine-cpu-by-block-size",
+"statement": "CPU (1 vCPU sandbox): dense roll (15 hits/50 ms) per-sample 1.47x real time vs 3.0-3.2x for blocks >= 16; moderate 20.6x vs 37x.",
+"tags": "[subject:oildrumkit-engine-segmentation, domain:audio, tech:cpp, phase:verification]",
+"version": "oildrumkit@35fbfea (DrumEngine.h); 1 vCPU sandbox",
+"confidence": "verified",
+"path": "knowledge/oildrumkit-engine-segmentation/K-20261009T234228Z-oildrumkit-engine-cpu-by-block-size.md"
+},
+{
+"id": "K-20261009T234230Z-oildrumkit-engine-bit-identical-across-translation-units",
+"statement": "With identical segmentation and flags, engine output is bit-identical across translation units (g++ 13.3, -funsafe-math-optimizations).",
+"tags": "[subject:oildrumkit-engine-segmentation, domain:audio, tech:cpp, phase:verification]",
+"version": "oildrumkit@35fbfea (DrumEngine.h); g++ 13.3",
+"confidence": "verified",
+"path": "knowledge/oildrumkit-engine-segmentation/K-20261009T234230Z-oildrumkit-engine-bit-identical-across-translation-units.md"
+},
+{
+"id": "K-20261009T234244Z-oildrumkit-engine-worst-case-trigger-cost",
+"statement": "Worst case of 15 simultaneous triggers costs <= 149 us of computation on the sandbox core.",
+"tags": "[subject:oildrumkit-engine-segmentation, domain:audio, tech:cpp, phase:verification]",
+"version": "oildrumkit@35fbfea (DrumEngine.h); 1 vCPU sandbox",
+"confidence": "verified",
+"path": "knowledge/oildrumkit-engine-segmentation/K-20261009T234244Z-oildrumkit-engine-worst-case-trigger-cost.md"
+},
+{
+"id": "K-20261009T234258Z-kitcore-fixed-128-frame-latency-matches-512-sample-host",
+"statement": "Rendering the engine in fixed 128-frame blocks (KitCore) reproduces single hits rendered VST-style in 512-sample host blocks to within +-0.05 dB tail energy and +-1 % of the -60 dB duration (observed 0.28 %), at the cost of exactly 128 frames of latency (2.90 ms at 44.1 kHz, 0.67 ms at 192 kHz); 32-sample blocks fail the same tolerance.",
+"tags": "[subject:oildrumkit-engine-segmentation, domain:audio, tech:vcv-rack, phase:verification]",
+"version": "oildrumkit@35fbfea (DrumEngine.h)",
+"confidence": "verified",
+"path": "knowledge/oildrumkit-engine-segmentation/K-20261009T234258Z-kitcore-fixed-128-frame-latency-matches-512-sample-host.md"
+},
+{
+"id": "K-20261105T223100Z-oildrum-hits-crest-factor-and-pair-builder-level",
+"statement": "The fifteen oildrumkit instruments' 1.0 s onset clips have a crest factor of 22.2 to 33.9 dB, so make_blind_pairs.py at its default -23 dB RMS builds only 4 of 15 stems and needs about -36 dB for all 15.",
+"tags": "[subject:oildrumkit-listening-phase, domain:audio, tech:python, phase:planning]",
+"version": "oildrumkit 1900ac8; make_blind_pairs.py sha256 3c4f75854e2a692d3a77460d470e289be405c2166bbc30abbd4eeb053d6824c7",
+"confidence": "verified",
+"path": "knowledge/oildrumkit-listening-phase/K-20261105T223100Z-oildrum-hits-crest-factor-and-pair-builder-level.md"
+},
+{
+"id": "K-20261106T180000Z-source-register-oildrumkit-listening-phase-v3",
+"statement": "Source register for the oildrumkit listening-phase plan (run gen-20261105T211145Z-oildrumkit-listening-phase), version 3: 39 external sources checked, 24 used, 0 corroborating, 2 rejected, 6 unreachable, 5 not relevant; 4 have an unknown or unstated licence or origin.",
+"tags": "[subject:oildrumkit-listening-phase, domain:audio, tech:github, phase:research, kind:source-register]",
+"version": "version-independent",
+"confidence": "verified",
+"path": "knowledge/oildrumkit-listening-phase/K-20261106T180000Z-source-register-oildrumkit-listening-phase-v3.md"
+},
+{
+"id": "K-20261106T180600Z-oildrumkit-listening-gate-results",
+"statement": "Blind listening gate G-LISTEN for oildrumkit, six rounds on 2026-11-06 against 13 real struck-steel and cymbal references: 11, 8, 9, 6, 8 and 12 of 12 identified; the gate failed.",
+"tags": "[subject:oildrumkit-listening-phase, domain:audio, phase:implementation]",
+"version": "oildrumkit impl/listening-validation at df96cee",
+"confidence": "verified",
+"path": "knowledge/oildrumkit-listening-phase/K-20261106T180600Z-oildrumkit-listening-gate-results.md"
+},
+{
+"id": "K-20261009T233105Z-licence-texts-offline-in-sandbox",
+"statement": "In the sandbox, the Apache-2.0 licence text was available at /usr/share/common-licenses/Apache-2.0, while a curl to https://www.apache.org/licenses/LICENSE-2.0.txt produced no file; the full CERN-OHL-P-2.0 text was not obtained, so hardware/LICENSE is a pointer.",
+"tags": "[subject:open-licence-texts-in-sandbox, tech:git, phase:implementation]",
+"version": "sandbox observed 2026-09-30",
+"confidence": "single-source",
+"path": "knowledge/open-licence-texts-in-sandbox/K-20261009T233105Z-licence-texts-offline-in-sandbox.md"
+},
+{
+"id": "K-20261009T193018Z-orchestral-strings-separate-as-a-section",
+"statement": "Orchestral strings separate as a section rather than as individual instruments (MVSep Strings is reported at SDR 5.41 dB on MVSep's set); the largest orchestral training set, SynthSOD (47 h rendered with the BBC Symphony Orchestra library), is synthetic, and its authors call generalisation to real recordings the main challenge.",
+"tags": "[subject:orchestral-strings-separation, domain:source-separation, domain:audio, phase:research]",
+"version": "as reported in research/EXTENDED_STEMS.md, 2026-09-28",
+"confidence": "single-source",
+"path": "knowledge/orchestral-strings-separation/K-20261009T193018Z-orchestral-strings-separate-as-a-section.md"
+},
+{
+"id": "K-20261004T151100Z-pcg64-xsl-rr-advance-then-output",
+"statement": "numpy default_rng's bit generator (PCG64, XSL-RR 128/64) advances its 128-bit LCG state before producing output from the new state, not output-then-advance; verified bit-exact against np.random.default_rng(seed).bit_generator state and first-N-doubles for 7 seeds.",
+"tags": "[subject:pcg64-bit-generator, tech:numpy, tech:cpp, phase:implementation]",
+"version": "numpy 2.4.4",
+"confidence": "verified",
+"path": "knowledge/pcg64-bit-generator/K-20261004T151100Z-pcg64-xsl-rr-advance-then-output.md"
+},
+{
+"id": "K-20261004T151200Z-numpy-seedsequence-reconstructed",
+"statement": "numpy's SeedSequence entropy-mixing algorithm (hashmix/mix functions over a 4-word uint32 pool, generate_state producing 8 uint32 words = 4 uint64 for PCG64's initstate/initseq) was reverse-engineered from scratch, with no authoritative spec consulted, and verified bit-exact against np.random.default_rng(seed).bit_generator.state for 7 seeds, for integer seeds under 2^32.",
+"tags": "[subject:pcg64-bit-generator, tech:numpy, tech:cpp, phase:implementation]",
+"version": "numpy 2.4.4",
+"confidence": "verified",
+"path": "knowledge/pcg64-bit-generator/K-20261004T151200Z-numpy-seedsequence-reconstructed.md"
+},
+{
+"id": "K-20261104T013000Z-pip-audit-pinned-offline-flags",
+"statement": "pip-audit 2.10.0 supports Python 3.10+ and provides --no-deps, --disable-pip, --strict, JSON formatting and an output file for auditing fully pinned requirements without dependency resolution.",
+"tags": "[tech:python, subject:dependency-security, phase:verification]",
+"version": "pip-audit 2.10.0",
+"confidence": "verified",
+"path": "knowledge/pip-audit/K-20261104T013000Z-pip-audit-pinned-offline-flags.md"
+},
+{
+"id": "K-20261009T140031Z-pip-tools-hash-locking-build-backend",
+"statement": "pip-tools 7.5.1 produces hash-locked requirements that install with `pip --require-hashes` on Python 3.12.3. The build backend (setuptools) is not in the lock unless listed: without it `pip install -e .` fails with `Cannot import setuptools.build_meta`, and setuptools 80.9.0 was flagged by pip-audit (PYSEC-2026-3447, fixed in 83.0.0); 84.0.0 was clean.",
+"tags": "[subject:pip-tools-hash-locking-build-backend, tech:pip-tools, tech:python, phase:implementation]",
+"version": "pip-tools 7.5.1; setuptools 84.0.0",
+"confidence": "verified",
+"path": "knowledge/pip-tools-hash-locking-build-backend/K-20261009T140031Z-pip-tools-hash-locking-build-backend.md"
+},
+{
+"id": "K-20261004T151400Z-circular-correlation-shift-linearity",
+"statement": "Circular cross-correlation is linear in its first operand (correlate(A+B, T) = correlate(A, T) + correlate(B, T)), and circularly rotating one operand by k rotates the correlation output by k: correlate(roll(T0, k), template)[b] = correlate(T0, template)[(b - k) mod B]. For Milne/Harrison-Pearce pitch-class harmonicity scored over many integer-cent candidates against the same held notes, this means the full per-candidate correlation vector can be obtained by precomputing two length-B vectors once (correlate(heldSpectrum, template) and correlate(noteSpectrumAtZero, template)) and combining them with an O(1) index shift per candidate, with no per-candidate FFT at all.",
+"tags": "[subject:pitch-class-harmonicity, tech:cpp, phase:implementation]",
+"version": "version-independent (a DSP identity)",
+"confidence": "verified",
+"path": "knowledge/pitch-class-harmonicity/K-20261004T151400Z-circular-correlation-shift-linearity.md"
+},
+{
+"id": "K-20261004T162312Z-comb-occupancy-pitch-tracking",
+"statement": "On distorted guitar material where partials 2-3 are stronger than the fundamental, autocorrelation and harmonic-sum salience pitch trackers make octave and fifth errors. Scoring each candidate f0 by (fraction of harmonic slots below 2.6 kHz with energy within 30 dB of the frame peak)^1.5 times (fraction of energy those slots cover) tracked the notes correctly.",
+"tags": "[subject:pitch-tracking, domain:audio, phase:research]",
+"version": "verified on power-synth-guitar-buzz_G_.wav only",
+"confidence": "verified",
+"path": "knowledge/pitch-tracking/K-20261004T162312Z-comb-occupancy-pitch-tracking.md"
+},
+{
+"id": "K-20261009T160108Z-mpm-sub-a0",
+"statement": "pitchy 4.1.0 (McLeod pitch method) with a 4096-sample window at 44.1 kHz resolved synthetic plucks from MIDI 18 to 40 to within about 0.02 semitone (11 of 11 correct), which covers the 7-string bass notes below basic-pitch's A0 floor.",
+"tags": "[subject:pitch-tracking, tech:pitchy, domain:music-transcription, domain:audio, phase:research]",
+"version": "pitchy 4.1.0",
+"confidence": "verified",
+"path": "knowledge/pitch-tracking/K-20261009T160108Z-mpm-sub-a0.md"
+},
+{
+"id": "K-20261101T043000Z-playwright-mobile-devices",
+"statement": "Playwright 1.63 provides 'Pixel 7' (chromium, 412x839, mobile+touch) and 'iPhone 15' (webkit, 393x659) descriptors; browser binaries cannot be downloaded in the planning sandbox.",
+"tags": "[domain:audio, tech:playwright, subject:playwright-mobile-devices, phase:research]",
+"version": "@playwright/test 1.63.0",
+"confidence": "verified",
+"path": "knowledge/playwright-mobile-devices/K-20261101T043000Z-playwright-mobile-devices.md"
+},
+{
+"id": "K-20261007T160008Z-c-009",
+"statement": "The latest pluginval release is v1.0.4 (published 2024-12-04), tag commit ed19c2c16b57a6d94db391bea3ef4a80b769d5bf (annotated tag, dereferenced).",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:pluginval, phase:research]",
+"version": "v1.0.4",
+"confidence": "verified",
+"path": "knowledge/pluginval/K-20261007T160008Z-c-009.md"
+},
+{
+"id": "K-20261007T160009Z-c-010",
+"statement": "pluginval v1.0.4 asset pluginval_Linux.zip (5911681 bytes) has SHA-256 c01c49d8063965c4c2dea8324468336768f5c9139e0b1caebde14c2400b55352.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:pluginval, phase:research]",
+"version": "v1.0.4",
+"confidence": "verified",
+"path": "knowledge/pluginval/K-20261007T160009Z-c-010.md"
+},
+{
+"id": "K-20261007T160010Z-c-011",
+"statement": "pluginval v1.0.4 asset pluginval_macOS.zip (9202795 bytes) has SHA-256 3c4c533bda0c5059eea3ddaea752d757ee2025041f0f47e6bcb0e87f6082b29f.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:pluginval, phase:research]",
+"version": "v1.0.4",
+"confidence": "verified",
+"path": "knowledge/pluginval/K-20261007T160010Z-c-011.md"
+},
+{
+"id": "K-20261007T160011Z-c-012",
+"statement": "pluginval v1.0.4 asset pluginval_Windows.zip (2408590 bytes) has SHA-256 c08e61ce3b96db41636f8ec7e76f4c7e2c13ebdac7fa1b5a1f52b4f32ec715ab.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:pluginval, phase:research]",
+"version": "v1.0.4",
+"confidence": "verified",
+"path": "knowledge/pluginval/K-20261007T160011Z-c-012.md"
+},
+{
+"id": "K-20261007T160012Z-c-013",
+"statement": "pluginval v1.0.4 CLI sets strictness with --strictness-level [1-10] (default 5, clamped to 1..10; 5 is the recommended minimum for host compatibility).",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:pluginval, phase:research]",
+"version": "v1.0.4",
+"confidence": "verified",
+"path": "knowledge/pluginval/K-20261007T160012Z-c-013.md"
+},
+{
+"id": "K-20261007T160013Z-c-014",
+"statement": "pluginval v1.0.4 timeout flag is --timeout-ms [milliseconds] (default 30000; -1, quoted, disables it); it fires when no test output has occurred for that long.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:pluginval, phase:research]",
+"version": "v1.0.4",
+"confidence": "verified",
+"path": "knowledge/pluginval/K-20261007T160013Z-c-014.md"
+},
+{
+"id": "K-20261007T160014Z-c-015",
+"statement": "The pluginval CI guide (docs/Adding pluginval to CI.md at v1.0.4) invokes it as 'pluginval --validate-in-process --output-dir ./bin <plugin>' on all three OSes, but in v1.0.4 the command-line code path hard-codes in-process validation and has no '--validate-in-process' option in its help or option table.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:pluginval, phase:research]",
+"version": "v1.0.4",
+"confidence": "verified",
+"path": "knowledge/pluginval/K-20261007T160014Z-c-015.md"
+},
+{
+"id": "K-20261029T030000Z-pluginval-releases-and-action",
+"statement": "pluginval has no stable 2.0.0 release: the published 2.x releases are v2.0.0-beta1, -beta2 and -beta3 (beta3 newest as of 2026-10-29), alongside v1.0.x; the GitHub Action lives at Tracktion/pluginval/validate and has no v2 tag.",
+"tags": "[subject:pluginval, tech:pluginval, tech:github-actions, domain:audio, phase:implementation]",
+"version": "v2.0.0-beta3",
+"confidence": "verified",
+"path": "knowledge/pluginval/K-20261029T030000Z-pluginval-releases-and-action.md"
+},
+{
+"id": "K-20261104T003006Z-pluginval-1-0-4-cli",
+"statement": "pluginval v1.0.4 is the latest stable release at tag commit ed19c2c16b57a6d94db391bea3ef4a80b769d5bf; it supports headless VST3 validation, strictness levels 1\u201310, random seeds, repeated runs, random test order, and explicit sample-rate and block-size lists.",
+"tags": "[tech:juce, subject:pluginval, tech:github-actions, phase:research]",
+"version": "v1.0.4",
+"confidence": "verified",
+"path": "knowledge/pluginval/K-20261104T003006Z-pluginval-1-0-4-cli.md"
+},
+{
+"id": "K-20261104T004400Z-pluginval-archive-integrity",
+"statement": "All three pluginval v1.0.4 release archives have recorded byte counts and SHA-256 hashes from successful downloads.",
+"tags": "[tech:juce, subject:pluginval, tech:github-actions, phase:research]",
+"version": "v1.0.4",
+"confidence": "verified",
+"path": "knowledge/pluginval/K-20261104T004400Z-pluginval-archive-integrity.md"
+},
+{
+"id": "K-20261104T005200Z-pluginval-plugin-info-race",
+"statement": "Stable pluginval v1.0.4 predates an exact PluginInfoTest message-thread fix recorded by issue #149 and commit fea38e7.",
+"tags": "[tech:juce, subject:pluginval, subject:validator-race, phase:research]",
+"version": "v1.0.4; fix fea38e7ed6a5e35b2e9122bb5685fc3dc8fe9a01",
+"confidence": "corroborated",
+"path": "knowledge/pluginval/K-20261104T005200Z-pluginval-plugin-info-race.md"
+},
+{
+"id": "K-20261104T005300Z-pluginval-exit-not-coverage-proof",
+"statement": "pluginval v1.0.4 can skip tests by strictness, GUI options or a disabled-test list, so exit zero alone does not prove the frozen validation coverage ran.",
+"tags": "[tech:juce, subject:pluginval, subject:validation-coverage, phase:research]",
+"version": "v1.0.4",
+"confidence": "verified",
+"path": "knowledge/pluginval/K-20261104T005300Z-pluginval-exit-not-coverage-proof.md"
+},
+{
+"id": "K-20261009T123022Z-python-can-slcan-listen-only",
+"statement": "In python-can 4.6.1, SlcanBus(listen_only=True) opens the adapter channel with the slcan command L (listen-only) instead of O, so the adapter does not acknowledge or transmit frames.",
+"tags": "[subject:python-can-slcan-listen-only, tech:python-can, tech:python, domain:automotive, phase:research]",
+"version": "python-can 4.6.1",
+"confidence": "verified",
+"path": "knowledge/python-can-slcan-listen-only/K-20261009T123022Z-python-can-slcan-listen-only.md"
+},
+{
+"id": "K-20261004T102025Z-rdata-reads-rda-in-python",
+"statement": "The Python package rdata 1.1.0 reads R .rda files: rdata.read_rda(path)['popular_1_pc_chord_type'] returned a pandas DataFrame with a 'count' column of 2048 integers.",
+"tags": "[subject:r-data-in-python, tech:python, tech:rdata, phase:implementation]",
+"version": "rdata 1.1.0",
+"confidence": "verified",
+"path": "knowledge/r-data-in-python/K-20261004T102025Z-rdata-reads-rda-in-python.md"
+},
+{
+"id": "K-20261106T120000Z-c-001-rainbow-vcv",
+"statement": "Pitch spans perfect fourth below (\u22125 semitones) through major third above (+4), with unison at noon.",
+"tags": "[subject:rainbow-machine-vcv, domain:audio, tech:vcv-rack, phase:research]",
+"version": "Rainbow Machine V2 / Rack SDK 2.6.6",
+"confidence": "corroborated",
+"path": "knowledge/rainbow-machine-vcv/K-20261106T120000Z-c-001-rainbow-vcv.md"
+},
+{
+"id": "K-20261106T120001Z-c-002-rainbow-vcv",
+"statement": "Primary controls wet harmony level; Secondary adds direction-dependent octave and an extra chorus voice at unison.",
+"tags": "[subject:rainbow-machine-vcv, domain:audio, tech:vcv-rack, phase:research]",
+"version": "Rainbow Machine V2 / Rack SDK 2.6.6",
+"confidence": "corroborated",
+"path": "knowledge/rainbow-machine-vcv/K-20261106T120001Z-c-002-rainbow-vcv.md"
+},
+{
+"id": "K-20261106T120002Z-c-003-rainbow-vcv",
+"statement": "Tracking controls wet/dry lag; higher V2 settings give shorter lag and tighter tracking.",
+"tags": "[subject:rainbow-machine-vcv, domain:audio, tech:vcv-rack, phase:research]",
+"version": "Rainbow Machine V2 / Rack SDK 2.6.6",
+"confidence": "corroborated",
+"path": "knowledge/rainbow-machine-vcv/K-20261106T120002Z-c-003-rainbow-vcv.md"
+},
+{
+"id": "K-20261106T120003Z-c-004-rainbow-vcv",
+"statement": "V2 Tone is brighter clockwise and darker counterclockwise in the effected path.",
+"tags": "[subject:rainbow-machine-vcv, domain:audio, tech:vcv-rack, phase:research]",
+"version": "Rainbow Machine V2 / Rack SDK 2.6.6",
+"confidence": "single-source",
+"path": "knowledge/rainbow-machine-vcv/K-20261106T120003Z-c-004-rainbow-vcv.md"
+},
+{
+"id": "K-20261106T120004Z-c-005-rainbow-vcv",
+"statement": "Magic feeds Primary and Secondary back into themselves and each other; feedback repeats ascend or descend according to Pitch.",
+"tags": "[subject:rainbow-machine-vcv, domain:audio, tech:vcv-rack, phase:research]",
+"version": "Rainbow Machine V2 / Rack SDK 2.6.6",
+"confidence": "corroborated",
+"path": "knowledge/rainbow-machine-vcv/K-20261106T120004Z-c-005-rainbow-vcv.md"
+},
+{
+"id": "K-20261106T120005Z-c-006-rainbow-vcv",
+"statement": "V2 Activate and Magic support both tap-to-latch and hold-for-momentary operation.",
+"tags": "[subject:rainbow-machine-vcv, domain:audio, tech:vcv-rack, phase:research]",
+"version": "Rainbow Machine V2 / Rack SDK 2.6.6",
+"confidence": "single-source",
+"path": "knowledge/rainbow-machine-vcv/K-20261106T120005Z-c-006-rainbow-vcv.md"
+},
+{
+"id": "K-20261106T120006Z-c-007-rainbow-vcv",
+"statement": "A real-time polyphonic pitch shifter can use two crossfaded time-varying delay branches; overlap and grain length trade glitches against combing/latency.",
+"tags": "[subject:rainbow-machine-vcv, domain:audio, tech:vcv-rack, phase:research]",
+"version": "Rainbow Machine V2 / Rack SDK 2.6.6",
+"confidence": "corroborated",
+"path": "knowledge/rainbow-machine-vcv/K-20261106T120006Z-c-007-rainbow-vcv.md"
+},
+{
+"id": "K-20261106T120007Z-c-008-rainbow-vcv",
+"statement": "Rack modules implement process(ProcessArgs), configure parameters/ports, build with RACK_DIR and make, and package with make dist.",
+"tags": "[subject:rainbow-machine-vcv, domain:audio, tech:vcv-rack, phase:research]",
+"version": "Rainbow Machine V2 / Rack SDK 2.6.6",
+"confidence": "verified",
+"path": "knowledge/rainbow-machine-vcv/K-20261106T120007Z-c-008-rainbow-vcv.md"
+},
+{
+"id": "K-20261106T120008Z-c-009-rainbow-vcv",
+"statement": "Mono audio inputs should sum polyphonic cables; typical audio is \u00b15 V; non-finite output must be suppressed.",
+"tags": "[subject:rainbow-machine-vcv, domain:audio, tech:vcv-rack, phase:research]",
+"version": "Rainbow Machine V2 / Rack SDK 2.6.6",
+"confidence": "verified",
+"path": "knowledge/rainbow-machine-vcv/K-20261106T120008Z-c-009-rainbow-vcv.md"
+},
+{
+"id": "K-20261106T120009Z-c-010-rainbow-vcv",
+"statement": "Apache-2.0 distribution as a free Rack plug-in requires the VCV non-commercial exception; copied Rack code would impose GPLv3.",
+"tags": "[subject:rainbow-machine-vcv, domain:audio, tech:vcv-rack, phase:research]",
+"version": "Rainbow Machine V2 / Rack SDK 2.6.6",
+"confidence": "single-source",
+"path": "knowledge/rainbow-machine-vcv/K-20261106T120009Z-c-010-rainbow-vcv.md"
+},
+{
+"id": "K-20261106T120010Z-c-011-rainbow-vcv",
+"statement": "VCV Library distribution forbids cloning brand/model names, logos, panel design, or component layout without owner permission.",
+"tags": "[subject:rainbow-machine-vcv, domain:audio, tech:vcv-rack, phase:research]",
+"version": "Rainbow Machine V2 / Rack SDK 2.6.6",
+"confidence": "corroborated",
+"path": "knowledge/rainbow-machine-vcv/K-20261106T120010Z-c-011-rainbow-vcv.md"
+},
+{
+"id": "K-20261106T120011Z-c-012-rainbow-vcv",
+"statement": "Rack SDK 2.6.6 exists for Windows x64, Linux x64, macOS x64 and macOS ARM64.",
+"tags": "[subject:rainbow-machine-vcv, domain:audio, tech:vcv-rack, phase:research]",
+"version": "Rainbow Machine V2 / Rack SDK 2.6.6",
+"confidence": "verified",
+"path": "knowledge/rainbow-machine-vcv/K-20261106T120011Z-c-012-rainbow-vcv.md"
+},
+{
+"id": "K-20261106T120012Z-c-013-rainbow-vcv",
+"statement": "ubuntu-24.04, windows-2025, macos-15-intel and macos-15 are valid versioned public-runner labels.",
+"tags": "[subject:rainbow-machine-vcv, domain:audio, tech:vcv-rack, phase:research]",
+"version": "Rainbow Machine V2 / Rack SDK 2.6.6",
+"confidence": "corroborated",
+"path": "knowledge/rainbow-machine-vcv/K-20261106T120012Z-c-013-rainbow-vcv.md"
+},
+{
+"id": "K-20261106T120013Z-c-014-rainbow-vcv",
+"statement": "Blind listening uses 12 seeded, RMS-matched pairs and demos; \u22648/12 is necessary but qualitative audible defects or clear reversed discrimination also require iteration.",
+"tags": "[subject:rainbow-machine-vcv, domain:audio, tech:vcv-rack, phase:research]",
+"version": "Rainbow Machine V2 / Rack SDK 2.6.6",
+"confidence": "corroborated",
+"path": "knowledge/rainbow-machine-vcv/K-20261106T120013Z-c-014-rainbow-vcv.md"
+},
+{
+"id": "K-20261009T193501Z-sandbox-egress-policy",
+"statement": "In this agent sandbox the egress proxy returns 'CONNECT tunnel failed, response 403' for api.github.com, zenodo.org, sandbox.zenodo.org, api.crossref.org and api.datacite.org, while pypi.org, files.pythonhosted.org and registry.npmjs.org are reachable.",
+"tags": "[subject:sandbox-egress-allowlist, tech:github, tech:zenodo, phase:planning]",
+"version": "sandbox as of 2026-10-09 (organisation egress policy)",
+"confidence": "verified",
+"path": "knowledge/sandbox-egress-allowlist/K-20261009T193501Z-sandbox-egress-policy.md"
+},
+{
+"id": "K-20261009T234254Z-vcvrack-com-blocked-github-rack-reachable",
+"statement": "In the sandbox the host vcvrack.com (manual pages and SDK zips) is refused by the proxy with host_not_allowed, while github.com/VCVRack/Rack (git, raw files, tags) is reachable, so Rack headers and plugin.mk can be read from the repository tag but the official SDK zip cannot be downloaded.",
+"tags": "[subject:sandbox-egress-allowlist, tech:vcv-rack, tech:github, phase:implementation]",
+"version": "sandbox as of 2026-09-28",
+"confidence": "verified",
+"path": "knowledge/sandbox-egress-allowlist/K-20261009T234254Z-vcvrack-com-blocked-github-rack-reachable.md"
+},
+{
+"id": "K-20261105T223300Z-sandbox-reachability-2026-11-05",
+"statement": "On 2026-11-05 the sandbox shell reached zenodo.org, pypi.org, raw.githubusercontent.com and api.github.com (200), bigsoundbank.com only later in the evening, never freesound.org (403) or archive.org (no connection), and github.com archive zips only after the repository was attached to the session.",
+"tags": "[subject:sandbox-egress-allowlist, tech:github, tech:zenodo, phase:planning]",
+"version": "sandbox as of 2026-11-05",
+"confidence": "verified",
+"path": "knowledge/sandbox-egress-allowlist/K-20261105T223300Z-sandbox-reachability-2026-11-05.md"
+},
+{
+"id": "K-20261004T162307Z-sandbox-shell-is-dash",
+"statement": "The sandbox bash tool runs commands with /bin/sh, which is dash (/bin/sh -> dash): bash-only syntax such as process substitution <(...) fails with 'Syntax error: \\\"(\\\" unexpected'.",
+"tags": "[subject:sandbox-environment, tech:bash, phase:implementation]",
+"version": "sandbox observed 2026-10-04",
+"confidence": "verified",
+"path": "knowledge/sandbox-environment/K-20261004T162307Z-sandbox-shell-is-dash.md"
+},
+{
+"id": "K-20261008T173541Z-sandbox-build-tools-and-juce-tags-2026-10-08",
+"statement": "On 2026-10-08 the sandbox had cmake 3.28.3, g++ and pkg-config installed, and pkg-config found freetype2, x11 and xext but not alsa, xinerama, xrandr, xcursor or gl; anonymous `git ls-remote --tags` on the official JUCE repository listed 7.0.12 (4f43011b96eb0636104cb3e433894cda98243626) and 8.0.15 (91ad83ae34a81e0833b1a2b0866f54846370ae53).",
+"tags": "[subject:sandbox-environment, subject:juce-versioning, tech:juce, tech:cpp, phase:implementation]",
+"version": "sandbox observed 2026-10-08; JUCE tags 7.0.12 and 8.0.15",
+"confidence": "verified",
+"path": "knowledge/sandbox-environment/K-20261008T173541Z-sandbox-build-tools-and-juce-tags-2026-10-08.md"
+},
+{
+"id": "K-20261008T173543Z-sandbox-working-directory-resets-corroborated",
+"statement": "On 2026-10-08 the work directories under /home/claude/oildrum (src, juce_plugin, web, staged zip) were gone at the start of a later turn while the three delivered files persisted under /mnt/user-data/outputs, a symlink to /mnt/attach/outputs; this matches the 2026-10-04 observation, so the contents of /home/claude cannot be assumed to survive a turn, although another run saw files persist across many turns, so persistence varies.",
+"tags": "[subject:sandbox-environment, tech:git, phase:implementation]",
+"version": "sandbox observed 2026-10-04 and 2026-10-08",
+"confidence": "corroborated",
+"path": "knowledge/sandbox-environment/K-20261008T173543Z-sandbox-working-directory-resets-corroborated.md"
+},
+{
+"id": "K-20261009T120116Z-sandbox-background-jobs-and-git-proxy-limits",
+"statement": "In the sandbox, background jobs started with plain '&' die when the tool call ends and need `setsid nohup <cmd> > log 2>&1 < /dev/null &`; the shell is dash (no `time` keyword, no `disown`); the git proxy allows two concurrent git operations; and a shallow clone must run `git fetch origin main` before a push or the push fails with HTTP 413.",
+"tags": "[subject:sandbox-environment, tech:bash, tech:git, phase:implementation]",
+"version": "sandbox observed 2026-10-04 to 2026-10-09",
+"confidence": "corroborated",
+"path": "knowledge/sandbox-environment/K-20261009T120116Z-sandbox-background-jobs-and-git-proxy-limits.md"
+},
+{
+"id": "K-20261009T160117Z-playwright-sandbox-browsers",
+"statement": "In the cloud sandbox, Playwright browser binaries cannot be downloaded, so Chromium, Firefox and WebKit end-to-end tests cannot run there; Playwright 1.63 provides the device descriptors 'Pixel 7' (Chromium, 412x839, mobile and touch) and 'iPhone 15' (WebKit, 393x659), which work on a GitHub-hosted runner.",
+"tags": "[subject:sandbox-environment, tech:playwright, tech:nodejs, phase:research, kind:environment]",
+"version": "Playwright 1.63.0; sandbox observed 2026-09-26",
+"confidence": "verified",
+"path": "knowledge/sandbox-environment/K-20261009T160117Z-playwright-sandbox-browsers.md"
+},
+{
+"id": "K-20261009T193012Z-huggingface-unreachable-from-the-review-sandbox",
+"statement": "On 2026-09-23 huggingface.co was not reachable from the sandbox used to review the plan, so the model download, CORS, memory and CSP claims could not be measured there and were deferred to a spike run on the owner's machine.",
+"tags": "[subject:sandbox-environment, tech:onnxruntime-web, phase:research, kind:environment]",
+"version": "sandbox observed 2026-09-23",
+"confidence": "verified",
+"path": "knowledge/sandbox-environment/K-20261009T193012Z-huggingface-unreachable-from-the-review-sandbox.md"
+},
+{
+"id": "K-20261009T234252Z-apt-install-needs-update-and-nodesource-update-fails-403",
+"statement": "In the sandbox, apt-get install of libgl1-mesa-dev failed with 404 until apt-get update was run, and apt-get update itself exits non-zero because the nodesource repository answers 403, so a script with set -e must tolerate that error; apt-get download plus dpkg-deb -x installs one package without root-owned state.",
+"tags": "[subject:sandbox-environment, tech:apt, phase:implementation]",
+"version": "sandbox observed 2026-09-29",
+"confidence": "verified",
+"path": "knowledge/sandbox-environment/K-20261009T234252Z-apt-install-needs-update-and-nodesource-update-fails-403.md"
+},
+{
+"id": "K-20261009T234256Z-dash-lacks-pipestatus-and-time-keyword",
+"statement": "In the sandbox's /bin/sh (dash), ${PIPESTATUS[0]} gives 'Bad substitution', the time keyword is not found when used as `(time cmd)`, and brace expansion such as cp dir/{a,b} is not performed; run such commands with bash -c.",
+"tags": "[subject:sandbox-environment, tech:bash, phase:implementation]",
+"version": "sandbox observed 2026-09-29",
+"confidence": "verified",
+"path": "knowledge/sandbox-environment/K-20261009T234256Z-dash-lacks-pipestatus-and-time-keyword.md"
+},
+{
+"id": "K-20261029T030700Z-asan-ubsan-juce-tests-in-actions",
+"statement": "A JUCE console test executable builds and runs cleanly on ubuntu-latest with clang, -O1 -g -fsanitize=address,undefined -fno-sanitize-recover=undefined, linking with the same flags, and ASAN_OPTIONS=detect_leaks=0:halt_on_error=1; the build plus 6143 checks (including a 1000-file fuzz corpus) finished in under 10 minutes.",
+"tags": "[subject:sanitizers-ci, tech:github-actions, tech:juce, tech:cpp, phase:verification]",
+"version": "ubuntu-latest, clang (runner default)",
+"confidence": "verified",
+"path": "knowledge/sanitizers-ci/K-20261029T030700Z-asan-ubsan-juce-tests-in-actions.md"
+},
+{
+"id": "K-20261101T140200Z-test-executable-allocation-probe",
+"statement": "Replacing the global operator new/delete in a JUCE test executable with versions that count calls made by the current thread (thread_local flag) gives a working zero-allocation check for processBlock; it needs a self-test that a deliberate allocation is counted, and it works alongside ASan/UBSan.",
+"tags": "[subject:sanitizers-ci, tech:juce, tech:cpp, phase:verification]",
+"version": "clang/AppleClang/MSVC, JUCE 8.0.16",
+"confidence": "verified",
+"path": "knowledge/sanitizers-ci/K-20261101T140200Z-test-executable-allocation-probe.md"
+},
+{
+"id": "K-20261104T003008Z-extended-waveguide-plucked-strings",
+"statement": "Extended Karplus\u2013Strong/digital-waveguide string models provide an established basis for efficient plucked-string synthesis, including plucking-style and sympathetic-string extensions.",
+"tags": "[domain:audio, subject:digital-waveguide-strings, phase:research]",
+"version": "1998",
+"confidence": "corroborated",
+"path": "knowledge/slap-bass-synthesis/K-20261104T003008Z-extended-waveguide-plucked-strings.md"
+},
+{
+"id": "K-20261104T003009Z-waveguide-slap-collision-models",
+"statement": "Slap synthesis has established digital-waveguide prior art using explicit string\u2013fingerboard collision models; nonlinear scattering junctions avoid the split-string output discontinuity reported for the earlier Rank\u2013Kubin approach.",
+"tags": "[domain:audio, subject:string-fingerboard-collision, phase:research]",
+"version": "2010",
+"confidence": "corroborated",
+"path": "knowledge/slap-bass-synthesis/K-20261104T003009Z-waveguide-slap-collision-models.md"
+},
+{
+"id": "K-20261104T003010Z-upright-slap-two-output-sources",
+"statement": "Upright slap-bass performance has at least two acoustically distinct output sources: fingerboard/contact sound for the slap and F-hole radiation for the pitched component.",
+"tags": "[domain:audio, subject:upright-slap-bass-acoustics, phase:research]",
+"version": "2008",
+"confidence": "single-source",
+"path": "knowledge/slap-bass-synthesis/K-20261104T003010Z-upright-slap-two-output-sources.md"
+},
+{
+"id": "K-20261104T004200Z-upright-slap-source-qualified",
+"statement": "The two-output-source description of upright slap bass is a single-source practitioner observation, not a load-bearing acoustic requirement; separate contact and body paths remain a product architecture hypothesis for empirical and listening tests.",
+"tags": "[domain:audio, subject:upright-slap-bass-acoustics, phase:research]",
+"version": "2008 source; planning qualification 2026-11-04",
+"confidence": "single-source",
+"path": "knowledge/slap-bass-synthesis/K-20261104T004200Z-upright-slap-source-qualified.md"
+},
+{
+"id": "K-20261104T011000Z-dsp-architecture-spike",
+"statement": "The extended-KS/contact/body planning spike is finite and deterministic over the required notes, dynamics, rates and bounded extreme-control matrix.",
+"tags": "[domain:audio, subject:string-contact-body-spike, phase:research]",
+"version": "R6 2026-11-04",
+"confidence": "verified",
+"path": "knowledge/slap-bass-synthesis/K-20261104T011000Z-dsp-architecture-spike.md"
+},
+{
+"id": "K-20261104T011100Z-analyser-known-answer-results",
+"statement": "Known-answer analysis passes and note-conditioned pitch comparison supports a 21-cent regression limit.",
+"tags": "[domain:audio, subject:analyser-correctness, phase:research]",
+"version": "R6 2026-11-04",
+"confidence": "verified",
+"path": "knowledge/slap-bass-synthesis/K-20261104T011100Z-analyser-known-answer-results.md"
+},
+{
+"id": "K-20261104T011200Z-eight-control-mapping-results",
+"statement": "All eight planning control mappings are strictly increasing over five frozen values with fixed excitation noise.",
+"tags": "[domain:audio, subject:control-mappings, phase:research]",
+"version": "R6 2026-11-04",
+"confidence": "verified",
+"path": "knowledge/slap-bass-synthesis/K-20261104T011200Z-eight-control-mapping-results.md"
+},
+{
+"id": "K-20261104T011300Z-eight-voice-lifecycle-results",
+"statement": "Eight slots and 0.015 pairwise sympathetic coupling remained bounded in the abstract lifecycle spike.",
+"tags": "[domain:audio, subject:voice-lifecycle, phase:research]",
+"version": "R6 2026-11-04",
+"confidence": "verified",
+"path": "knowledge/slap-bass-synthesis/K-20261104T011300Z-eight-voice-lifecycle-results.md"
+},
+{
+"id": "K-20261104T011500Z-native-eight-voice-performance",
+"statement": "The native Linux planning workload reached maximum RTF 0.021304663 at 96 kHz/64 samples with eight voices.",
+"tags": "[domain:audio, subject:performance-workload, tech:cpp, phase:research]",
+"version": "R6 2026-11-04",
+"confidence": "verified",
+"path": "knowledge/slap-bass-synthesis/K-20261104T011500Z-native-eight-voice-performance.md"
+},
+{
+"id": "K-20261106T010000Z-pitch-flat-timbre-reads-as-synthetic",
+"statement": "A plucked-string synth whose spectral centroid is constant across note height reads as piano/artificial to listeners even when per-note descriptors pass; pitch-scaled spectral envelope and fast decay are the perceptual anchors of pizzicato identity.",
+"tags": "[domain:audio, subject:timbre-perception, phase:verification]",
+"version": "0.1.0 candidate engine",
+"confidence": "verified",
+"path": "knowledge/slap-bass-synthesis/K-20261106T010000Z-pitch-flat-timbre-reads-as-synthetic.md"
+},
+{
+"id": "K-20261009T193506Z-sparse-projector-memory-limit",
+"statement": "In the container used, constructing the sparse vertex-projector product for k=4, Lx=2, Ly=2 (N=42065) failed with a 3.29 GiB MemoryError after 1297 CPU-s, and N=8256 (k=2, 3x2) needed about 4.3 GB resident memory.",
+"tags": "[subject:sparse-projector-memory, tech:python, tech:scipy, domain:quantum-gravity, phase:implementation]",
+"version": "tvtorus @ 4c8003b; container memory limit of 2026-09-22",
+"confidence": "verified",
+"path": "knowledge/sparse-projector-memory/K-20261009T193506Z-sparse-projector-memory-limit.md"
+},
+{
+"id": "K-20261009T092108Z-standard-guitar-tuning-midi-and-hz",
+"statement": "Standard guitar open strings E2 A2 D3 G3 B3 E4 are MIDI 40, 45, 50, 55, 59, 64 and 82.41, 110.00, 146.83, 196.00, 246.94, 329.63 Hz at A4 = 440, and the G-to-B gap is 4 semitones, so a uniform 5-semitone table (40 + 5*i) is one semitone high on the top two strings (100 cents against the Hz table).",
+"tags": "[subject:standard-guitar-tuning, domain:audio, tech:cpp, phase:specification]",
+"version": "version-independent",
+"confidence": "verified",
+"path": "knowledge/standard-guitar-tuning/K-20261009T092108Z-standard-guitar-tuning-midi-and-hz.md"
+},
+{
+"id": "K-20261009T120112Z-steel-loss-factors-in-patents",
+"statement": "US 9,546,296 gives loss factors of 0.001 for 1 mm uncoated steel (the 'clang') and 0.01 for the 'bong' case, measured by the Oberst method (ASTM E756-05); it contains no figures for welded or bolted joints (0.03 for bolted, in Renders/RESEARCH.md, is unsupported).",
+"tags": "[subject:steel-damping, domain:audio, phase:research]",
+"version": "US 9,546,296",
+"confidence": "single-source",
+"path": "knowledge/steel-damping/K-20261009T120112Z-steel-loss-factors-in-patents.md"
+},
+{
+"id": "K-20261009T120114Z-engine-damping-law-parameters-are-estimates",
+"statement": "The oildrumkit modal engine damps mode f with sigma(f) = sigma0 + pi eta f + sigma2 f^2 (nepers per second, amplitude e^(-sigma t), T60 = 6.91 / sigma) using sigma0 = 0.5, eta = 0.0035 and sigma2 = 1e-6; these constants are engineering estimates chosen to land between the patent loss factors, not fitted to a recording.",
+"tags": "[subject:steel-damping, subject:drum-synthesis, domain:audio, phase:implementation]",
+"version": "oildrumkit docs/PLAN.md A4 at 35fbfea",
+"confidence": "inferred",
+"path": "knowledge/steel-damping/K-20261009T120114Z-engine-damping-law-parameters-are-estimates.md"
+},
+{
+"id": "K-20261009T164000Z-violin-family-mandolin-and-seven-string-guitar-tunings",
+"statement": "Wikipedia's Standard tuning lists violin and mandolin G3 D4 A4 E5, viola and mandola C3 G3 D4 A4, cello C2 G2 D3 A3, standard guitar E2 A2 D3 G3 B3 E4 and 7-string guitar B1 E2 A2 D3 G3 B3 E4.",
+"tags": "[subject:string-instrument-tunings, domain:audio, phase:research]",
+"version": "Wikipedia as fetched 2026-10-09",
+"confidence": "single-source",
+"path": "knowledge/string-instrument-tunings/K-20261009T164000Z-violin-family-mandolin-and-seven-string-guitar-tunings.md"
+},
+{
+"id": "K-20261009T164100Z-eight-string-guitar-standard-tuning-f-sharp-b-e-a-d-g-b-e",
+"statement": "Standard tuning on an 8-string guitar is F# B E A D G B E (low F#1 under the 7-string's low B1).",
+"tags": "[subject:string-instrument-tunings, domain:audio, phase:research]",
+"version": "version-independent",
+"confidence": "single-source",
+"path": "knowledge/string-instrument-tunings/K-20261009T164100Z-eight-string-guitar-standard-tuning-f-sharp-b-e-a-d-g-b-e.md"
+},
+{
+"id": "K-20261105T223200Z-struck-metal-reference-leads-and-licences",
+"statement": "As of 2026-11-05 no redistributable single-hit recording of a steel oil drum has been confirmed: the closest, Lots of Sounds 'Metal Oil Tank Hit', is labelled CC0 with no creator named, a Freesound metal-bar multisample is CC BY-NC, and BigSoundBank offers a CC0 anvil.",
+"tags": "[subject:struck-metal-reference-recordings, domain:audio, phase:research]",
+"version": "pages as read on 2026-11-05",
+"confidence": "single-source",
+"path": "knowledge/struck-metal-reference-recordings/K-20261105T223200Z-struck-metal-reference-leads-and-licences.md"
+},
+{
+"id": "K-20261106T112500Z-struck-metal-real-recording-catalogue",
+"statement": "As of 2026-11-06 the best verified real, lossless, permissively licensed struck-metal sources for a non-redistributing build pipeline are University of Iowa MIS (anechoic gongs, tam-tams, crotales; 'without restrictions') and VCSL (CC0 WAV anvil, brake drum, gongs, tubular bells), plus hand-picked CC0 and CC-BY Freesound one-shots for steel and aluminium plate, pipes, conduit, thunder sheet and anvil; RealImpact is the best modal dataset but has no published dataset licence.",
+"tags": "[subject:struck-metal-reference-recordings, domain:audio, phase:research]",
+"version": "pages as read on 2026-11-06",
+"confidence": "single-source",
+"path": "knowledge/struck-metal-reference-recordings/K-20261106T112500Z-struck-metal-real-recording-catalogue.md"
+},
+{
+"id": "K-20261106T120000Z-oil-drum-hit-candidates-and-listening-notes",
+"statement": "As of 2026-11-06 three free Freesound recordings of struck steel containers are usable as oil-drum-style references (betchkal propane tanks CC BY 4.0, neirbonad1 gas tank CC0, rtyrty... can CC0), but no free source labels several oil drum sizes; the user listened and judged betchkal's last four high-amplitude hits ok, neirbonad1 a single strike with resonance and long decay, and all hits in rtyrty... good.",
+"tags": "[subject:struck-metal-reference-recordings, domain:audio, phase:research]",
+"version": "pages as read on 2026-11-06",
+"confidence": "single-source",
+"path": "knowledge/struck-metal-reference-recordings/K-20261106T120000Z-oil-drum-hit-candidates-and-listening-notes.md"
+},
+{
+"id": "K-20261009T193510Z-t036-gauge-components",
+"statement": "For k=1, Lx=2, Ly=2 (N=32) the support graph linking the staircase projector and the TV-normalised tent product has 4 connected components of 8 states each, so any sign-gauge search must seed every component.",
+"tags": "[subject:tent-vertex-operator, domain:quantum-gravity, tech:pytest, phase:verification]",
+"version": "tvtorus @ 88bb74d",
+"confidence": "verified",
+"path": "knowledge/tent-vertex-operator/K-20261009T193510Z-t036-gauge-components.md"
+},
+{
+"id": "K-20261009T160105Z-transcription-synthetic-bias",
+"statement": "Accuracy figures for note transcription measured on Karplus-Strong synthetic fixtures may overstate accuracy on real recordings, which have distortion, vibrato and string bleed; no real-recording accuracy was measured in this project.",
+"tags": "[subject:transcription-synthetic-fixture-bias, domain:music-transcription, domain:audio, phase:research]",
+"version": "version-independent",
+"confidence": "inferred",
+"path": "knowledge/transcription-synthetic-fixture-bias/K-20261009T160105Z-transcription-synthetic-bias.md"
+},
+{
+"id": "K-20261009T090900Z-tremolo-picked-lead-pitch-clock-and-pick-envelope",
+"statement": "In the single-file Void Choir prototype, a tremolo-picked lead was heard as a 'plonky synth' when pitch advanced on every pick with a decaying envelope, and as 'much better' once pitch changed only on eighth-note riff steps and each pick held for about 94% of the pick interval with a short noise transient.",
+"tags": "[subject:tremolo-picking-synthesis, domain:audio, tech:web-audio, phase:verification]",
+"version": "void-choir.html delivered 2026-10-09 (not in a repository)",
+"confidence": "single-source",
+"path": "knowledge/tremolo-picking-synthesis/K-20261009T090900Z-tremolo-picked-lead-pitch-clock-and-pick-envelope.md"
+},
+{
+"id": "K-20261007T160051Z-c-052",
+"statement": "Trumpet blowing pressures for C5 (523 Hz): pp 3.3 kPa, mf 6.3 kPa, ff 13 kPa; expert players reach up to ~25 kPa in loud high playing; mouthpiece sound pressure can reach ~175 dB (~20 kPa).",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:trumpet-blowing-pressure, phase:research]",
+"version": "1999",
+"confidence": "corroborated",
+"path": "knowledge/trumpet-blowing-pressure/K-20261007T160051Z-c-052.md"
+},
+{
+"id": "K-20261007T160052Z-c-053",
+"statement": "Threshold blowing pressure grows with register: medians 1047, 1788, 2477, 3158, 4109 Pa for registers 2-6 (written C4, G4, C5, E5, G5) of a B-flat trumpet.",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:trumpet-blowing-pressure, phase:research]",
+"version": "2023 (HAL author version)",
+"confidence": "verified",
+"path": "knowledge/trumpet-blowing-pressure/K-20261007T160052Z-c-053.md"
+},
+{
+"id": "K-20261007T160133Z-c-094",
+"statement": "Relaxing the sustain pressure to 1.0/0.8/0.6 x threshold is stable for >= 4.9 s on written 64, 74 and 78 (78 dies only at 0.5 x), confirming the hysteresis mechanism for soft dynamics; the pp/mf harmonic MAD figures of the dyn spike stand.",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:trumpet-blowing-pressure, phase:research]",
+"version": "2026-10-08",
+"confidence": "verified",
+"path": "knowledge/trumpet-blowing-pressure/K-20261007T160133Z-c-094.md"
+},
+{
+"id": "K-20261007T160134Z-c-095",
+"statement": "Doc 2023 register 4 is written C5 = concert B-flat4 (466 Hz); Fletcher & Tarnopolsky's 3.3/6.3/13 kPa refer to concert C5 (523 Hz), i.e. about 2.9/5.6/11.6 kPa scaled to 466 Hz, so the dynamics map (3.2/6.2/12.4 kPa) agrees within about 10 %.",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:trumpet-blowing-pressure, phase:research]",
+"version": "2026-10-08",
+"confidence": "verified",
+"path": "knowledge/trumpet-blowing-pressure/K-20261007T160134Z-c-095.md"
+},
+{
+"id": "K-20261007T160042Z-c-043",
+"statement": "A downloadable B-flat-trumpet-like bore (based on measurements of a real commercial trumpet; 9 cones mouthpiece, 4 cones leadpipe, 1 central cylinder, 20 cones bell; total length 1.4187 m) is published as two-column (x [m], r [m]) file Tr_co_MP in the OpenWInD repository (GPL-3.0).",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:trumpet-bore-geometry, phase:research]",
+"version": "2019 (HAL v2)",
+"confidence": "verified",
+"path": "knowledge/trumpet-bore-geometry/K-20261007T160042Z-c-043.md"
+},
+{
+"id": "K-20261007T160048Z-c-049",
+"statement": "No open, citable measured set of B-flat trumpet valve-loop lengths was found; the valves are specified acoustically as lowering pitch by 2 (1st), 1 (2nd) and 3 (3rd) equal-tempered semitones, so with a first-order cylindrical-pipe estimate the added effective lengths are (2^(k/12) - 1) x L_eff = 0.1225, 0.0595 and 0.1892 x L_eff, i.e. about 18.0, 8.8 and 27.8 cm for L_eff = 1.47 m.",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:trumpet-bore-geometry, phase:research]",
+"version": "web page, accessed 2026",
+"confidence": "inferred",
+"path": "knowledge/trumpet-bore-geometry/K-20261007T160048Z-c-049.md"
+},
+{
+"id": "K-20261007T160115Z-c-076",
+"statement": "A 7-parameter bore (cup, throat 1.83 mm, backbore, conical leadpipe, 0.460-inch cylinder, Bessel bell to 61.5 mm radius; own geometry, no third-party data) fitted by least squares to the Freour 2022 open-valve pole frequencies reproduces modes 2-11 within +-5.3 cents (rms 3.1 c) with air at 27 degC; total length 1.408 m; mode 1 at 84.0 Hz (measured 83.2 Hz).",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:trumpet-bore-geometry, phase:research]",
+"version": "2026-10-07",
+"confidence": "verified",
+"path": "knowledge/trumpet-bore-geometry/K-20261007T160115Z-c-076.md"
+},
+{
+"id": "K-20261007T160116Z-c-077",
+"statement": "The fitted-bore TMM reproduces the measured mode Q factors within ~15 % but over-predicts peak heights above ~800 Hz by a factor 1.5-3.5 (modes 7-11), so the resonator table applies per-mode measured/TMM frequency and height ratios of the open horn to every valve state.",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:trumpet-bore-geometry, phase:research]",
+"version": "2026-10-07",
+"confidence": "verified",
+"path": "knowledge/trumpet-bore-geometry/K-20261007T160116Z-c-077.md"
+},
+{
+"id": "K-20261007T160117Z-c-078",
+"statement": "Deriving valved resonances by uniformly scaling the open-horn modes by 1/(1 + sum of loop ratios) deviates from the TMM of the same bore by up to 86 cents (mode 1) and 40-75 cents (modes 2-8 for 1-3 and 1-2-3), so uniform scaling is rejected.",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:trumpet-bore-geometry, phase:research]",
+"version": "2026-10-07",
+"confidence": "verified",
+"path": "knowledge/trumpet-bore-geometry/K-20261007T160117Z-c-078.md"
+},
+{
+"id": "K-20261007T160055Z-c-056",
+"statement": "Rule: the n-th partial of the open B-flat trumpet sounds (and is written) 12*log2(n) semitones above C3 (p1=C3/MIDI48, p2=C4/60, p3=G4/67, p4=C5/72, p5=E5/76, p6=G5/79, p7=Bb5(flat)/82, p8=C6/84, p9=D6/86, p10=E6/88, p12=G6/91); a valve fingering lowering L semitones (1=2, 2=1, 3=3, additive) plays written pitch = partial pitch - L, so partial = round(2^((MIDI-48+L)/12)).",
+"tags": "[domain:brass, domain:audio, subject:trumpet-fingering, phase:research]",
+"version": "web edition, undated",
+"confidence": "verified",
+"path": "knowledge/trumpet-fingering/K-20261007T160055Z-c-056.md"
+},
+{
+"id": "K-20261007T160056Z-c-057",
+"statement": "F#3 to C4: F#3=123, G3=13, G#3=23, A3=12, A#3=1, B3=2, C4=0, all on partial 2.",
+"tags": "[domain:brass, domain:audio, subject:trumpet-fingering, phase:research]",
+"version": "(c)1982; edition (c)2005, 2013 (not the public-domain IMSLP 1864 edition)",
+"confidence": "verified",
+"path": "knowledge/trumpet-fingering/K-20261007T160056Z-c-057.md"
+},
+{
+"id": "K-20261007T160057Z-c-058",
+"statement": "C#4 to G4: C#4=123, D4=13, D#4=23, E4=12, F4=1, F#4=2, G4=0, all on partial 3.",
+"tags": "[domain:brass, domain:audio, subject:trumpet-fingering, phase:research]",
+"version": "(c)1982; edition (c)2005, 2013 (not the public-domain IMSLP 1864 edition)",
+"confidence": "verified",
+"path": "knowledge/trumpet-fingering/K-20261007T160057Z-c-058.md"
+},
+{
+"id": "K-20261007T160058Z-c-059",
+"statement": "G#4 to C5: G#4=23, A4=12, A#4=1, B4=2, C5=0 on partial 4; C#5=12, D5=1, D#5=2, E5=0 on partial 5; F5=1, F#5=2, G5=0 on partial 6.",
+"tags": "[domain:brass, domain:audio, subject:trumpet-fingering, phase:research]",
+"version": "(c)1982; edition (c)2005, 2013 (not the public-domain IMSLP 1864 edition)",
+"confidence": "verified",
+"path": "knowledge/trumpet-fingering/K-20261007T160058Z-c-059.md"
+},
+{
+"id": "K-20261007T160059Z-c-060",
+"statement": "G#5 to C6: G#5=23, A5=12, A#5=1, B5=2, C6=0 on partial 8.",
+"tags": "[domain:brass, domain:audio, subject:trumpet-fingering, phase:research]",
+"version": "(c)1982; edition (c)2005, 2013 (not the public-domain IMSLP 1864 edition)",
+"confidence": "verified",
+"path": "knowledge/trumpet-fingering/K-20261007T160059Z-c-060.md"
+},
+{
+"id": "K-20261007T160100Z-c-061",
+"statement": "C#6 to F6 DISAGREES with the expected chart: Spang's chart (valve picture) and trumpetfingeringchart.com give C#6=2 (partial 9) and D6=0 (partial 9, true 9th harmonic D6, +4c), D#6=2 and E6=0 (partial 10), F6=1 (partial 12), whereas the expected chart has C#6=12, D6=1 (partial 10).",
+"tags": "[domain:brass, domain:audio, subject:trumpet-fingering, phase:research]",
+"version": "(c)1999; PDF produced 2002, modified 2015",
+"confidence": "corroborated",
+"path": "knowledge/trumpet-fingering/K-20261007T160100Z-c-061.md"
+},
+{
+"id": "K-20261007T160101Z-c-062",
+"statement": "Alternates appearing in at least two sources (pitch, valves, partial): A3 3 p2; E4 3 p3; F#4 123 p4; G4 13 p4; A4 3 p4; C5 23 p5; C#5 123 p6; D5 13 p6; D#5 23 p6; E5 12 and 3 p6; F#5 123 p8; G5 13 p8; G#5 123 p9; A5 3 p8 and 13 p9; A#5 23 p9; B5 12 p9; C6 1 p9 and 23 p10; C#6 12 and 3 p10; D6 1 p10; D#6 23 p12; E6 12 and 3 p12.",
+"tags": "[domain:brass, domain:audio, subject:trumpet-fingering, phase:research]",
+"version": "(c)2013",
+"confidence": "corroborated",
+"path": "knowledge/trumpet-fingering/K-20261007T160101Z-c-062.md"
+},
+{
+"id": "K-20261007T160102Z-c-063",
+"statement": "The Arban matrix chart (Tier 1) prints every valve-combination row against the full partial series (open, 2, 1, 1-2/3, 2-3, 1-3, 1-2-3), so every alternate above exists there, and marks the diagonal of partial 7 and high-register partials 'Overtone too flat for regular use'; Arban's introduction also gives a historical alternate for F3 (low F below F#3): third slide drawn out a half step, fingering sequence popular with German cavalry trumpeters.",
+"tags": "[domain:brass, domain:audio, subject:trumpet-fingering, phase:research]",
+"version": "(c)1982; edition (c)2005, 2013 (not the public-domain IMSLP 1864 edition)",
+"confidence": "single-source",
+"path": "knowledge/trumpet-fingering/K-20261007T160102Z-c-063.md"
+},
+{
+"id": "K-20261007T160043Z-c-044",
+"statement": "Modal fit of a measured B-flat trumpet input impedance (open valves, with mouthpiece, corrected to 27 C) gives pole frequencies Im(s_k)/2pi = 83.2, 232.7, 348.1, 462.6, 582.1, 690.6, 800.4, 908.0, 1028.1, 1147.7, 1262.3 Hz, i.e. -3, -8, -13, -2, -22, -33, -46 cents relative to n x 116.54 Hz for n = 2..8.",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:trumpet-input-impedance, phase:research]",
+"version": "2022 (CC BY 4.0)",
+"confidence": "verified",
+"path": "knowledge/trumpet-input-impedance/K-20261007T160043Z-c-044.md"
+},
+{
+"id": "K-20261007T160049Z-c-050",
+"statement": "Independent corroboration of the 4th resonance: eight high-end B-flat trumpets measured with the same mouthpiece have f4 = 462.5-467.6 Hz (mean 464.70 Hz, std 1.67 Hz) and damping alpha4 = 33.75-35.04 s^-1, close to the 462.6 Hz pole in Freour 2022.",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:trumpet-input-impedance, phase:research]",
+"version": "2020 (HAL author version)",
+"confidence": "corroborated",
+"path": "knowledge/trumpet-input-impedance/K-20261007T160049Z-c-050.md"
+},
+{
+"id": "K-20261007T160138Z-c-099",
+"statement": "Measured complex residues make |Z| peak frequencies differ from pole frequencies Im(s)/2pi (modes 9-11: +9/+14/+24 cents), so the resonator generator must calibrate like with like (complex modal fit of the TMM vs measured poles) and keep the measured complex residues for the open state (D-004).",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:trumpet-input-impedance, phase:research]",
+"version": "2026-10-08",
+"confidence": "verified",
+"path": "knowledge/trumpet-input-impedance/K-20261007T160138Z-c-099.md"
+},
+{
+"id": "K-20261007T160053Z-c-054",
+"statement": "Ideal harmonic-series deviations from equal temperament (reference for 'natural' tendencies): partials 3 and 6 +2.0 c, 5 and 10 -13.7 c, 7 -31.2 c, 9 +3.9 c; on a real B-flat trumpet the measured open-valve resonances lie further below the harmonic series in the upper register (Freour 2022 poles: n = 4 -13 c, n = 6 -22 c, n = 7 -33 c, n = 8 -46 c relative to n x 116.54 Hz), but players' sounding pitch sits above the resonance (outward-striking behaviour) and is lipped.",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:trumpet-intonation, phase:research]",
+"version": "2022 (CC BY 4.0)",
+"confidence": "verified",
+"path": "knowledge/trumpet-intonation/K-20261007T160053Z-c-054.md"
+},
+{
+"id": "K-20261007T160118Z-c-079",
+"statement": "With valve loops tuned so each single valve lowers partials 3-6 by its nominal interval (loops 0.0896 m valve 2, 0.1841 m valve 1, 0.2837 m valve 3), the fitted-bore TMM gives partial-2 valved notes 15-60 cents flatter than the open partial 2 and 1-3 / 1-2-3 on partial 3 29-49 cents sharp, consistent with the teaching that low F#3/G3 are already low and only D4/C#4 need the third slide (C-F9).",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:trumpet-intonation, phase:research]",
+"version": "2026-10-07",
+"confidence": "verified",
+"path": "knowledge/trumpet-intonation/K-20261007T160118Z-c-079.md"
+},
+{
+"id": "K-20261007T160050Z-c-051",
+"statement": "For the trumpet the bell radiation resistance rises as the square of frequency up to a radiation cut-off at about 1000 Hz, above which the bell radiates efficiently and reflects little, so the mouthpiece-to-radiated-pressure transfer function is a high-pass shape that rises with frequency up to ~1-1.5 kHz and is roughly flat above.",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:trumpet-radiation, phase:research]",
+"version": "1999",
+"confidence": "single-source",
+"path": "knowledge/trumpet-radiation/K-20261007T160050Z-c-051.md"
+},
+{
+"id": "K-20261007T160054Z-c-055",
+"statement": "No direct C-vs-B-flat trumpet timbre comparison was found; the brassiness potential B is normalised by the equivalent cone length precisely so that instruments of similar bore profile but different length (e.g. C vs B-flat trumpets, ~11% length difference) have comparable B, while bore diameter (Dmin) and transfer function differences dominate timbre differences between trumpets.",
+"tags": "[domain:musical-acoustics, domain:brass, domain:audio, subject:trumpet-reference-recordings, phase:research]",
+"version": "2020",
+"confidence": "inferred",
+"path": "knowledge/trumpet-reference-recordings/K-20261007T160054Z-c-055.md"
+},
+{
+"id": "K-20261007T160111Z-c-072",
+"statement": "TinySOL (Zenodo record 3685367, v6.0, CC BY 4.0) contains 96 'Trumpet in C' ordinario notes, concert MIDI 54-86 at pp/mf/ff (ff missing at 54, 85, 86), 44.1 kHz 16-bit mono WAV; archive md5 36030a7fe389da86c3419e5ee48e3b7f, metadata md5 a86c9bb115f69e61f2f25872e397fc4a; the Pitch ID column is concert MIDI.",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:trumpet-reference-recordings, phase:research]",
+"version": "2026-10-07",
+"confidence": "verified",
+"path": "knowledge/trumpet-reference-recordings/K-20261007T160111Z-c-072.md"
+},
+{
+"id": "K-20261007T160113Z-c-074",
+"statement": "In TinySOL TpC the spectral centroid (pitch-normalised) increases strictly pp < mf < ff for 100 % of pitches 54-82, and the mean level of harmonics 6-10 (re strongest) is higher at ff than at pp by 13.7 dB (q10), 32.5 dB (median), 38.5 dB (q90).",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:trumpet-reference-recordings, phase:research]",
+"version": "2026-10-07",
+"confidence": "verified",
+"path": "knowledge/trumpet-reference-recordings/K-20261007T160113Z-c-074.md"
+},
+{
+"id": "K-20261007T160135Z-c-096",
+"statement": "TinySOL TpC files are trimmed at the attack (90/96 start within 5 ms of the attack), so onset times measured from a -40 dB-re-max start are relative to the editor's cut point and cannot serve as a reference band for synthetic onsets; four files (tag R100u/R100d: A#3 ff, B3 ff, G#3 ff, E5 mf) are semitone-resampled neighbours and are excluded from the reference set; the harmonic-MAD and centroid spread figures of C-073 stand (neighbour MAD changes <= 0.4 dB without them).",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:trumpet-reference-recordings, phase:research]",
+"version": "2026-10-08",
+"confidence": "verified",
+"path": "knowledge/trumpet-reference-recordings/K-20261007T160135Z-c-096.md"
+},
+{
+"id": "K-20261007T160103Z-c-064",
+"statement": "Third-valve slide (ring/saddle/trigger): push it out about 1/2 inch for 1-3 (D4, G3) and about 1 inch for 1-2-3 (C#4, F#3); on many horns G3 and F#3 are already low so only D4 and C#4 need correcting; the fix must arrive and leave with the note.",
+"tags": "[domain:brass, domain:audio, subject:trumpet-slide-triggers, phase:research]",
+"version": "undated web page",
+"confidence": "verified",
+"path": "knowledge/trumpet-slide-triggers/K-20261007T160103Z-c-064.md"
+},
+{
+"id": "K-20261007T160104Z-c-065",
+"statement": "First-valve slide (thumb trigger/throw): lowers notes using valve 1 alone or 1-2, 1-3, 1-2-3 - Buckner names fifth-line F (F5), high A (A5) and high B-flat as sharp notes it corrects; Spang's chart prints 'USE 1st VALVE SLIDE' on A3, E4, A4, F5 and A5 (the 1-2 notes plus F5), and 'USE 3rd VALVE SLIDE' on G3, D4, C#4 and F#3; on low F3/E3 both.",
+"tags": "[domain:brass, domain:audio, subject:trumpet-slide-triggers, phase:research]",
+"version": "undated web page",
+"confidence": "corroborated",
+"path": "knowledge/trumpet-slide-triggers/K-20261007T160104Z-c-065.md"
+},
+{
+"id": "K-20261007T160105Z-c-066",
+"statement": "Intonation reason: valve tubes are cut for the open horn, so a combination adds tubing computed on the unlengthened tube; the real second valve adds length to an already lengthened tube, so combinations come out short = sharp; the third slide cannot be tuned for everything, so design is a compromise (1 and 2 slightly flat, 3 alone very flat, to make combinations less sharp).",
+"tags": "[domain:brass, domain:audio, subject:trumpet-slide-triggers, phase:research]",
+"version": "web edition, undated",
+"confidence": "corroborated",
+"path": "knowledge/trumpet-slide-triggers/K-20261007T160105Z-c-066.md"
+},
+{
+"id": "K-20261007T160106Z-c-067",
+"statement": "Valve lowerings: 2nd valve = 1 semitone (minor 2nd), 1st = 2 semitones (major 2nd), 3rd = 3 semitones (minor 3rd); 1-2 (or 3) = 3, 2-3 = 4, 1-3 = 5, 1-2-3 = 6 semitones (Arban row labels).",
+"tags": "[domain:brass, domain:audio, subject:trumpet-valves, phase:research]",
+"version": "(c)1982; edition (c)2005, 2013 (not the public-domain IMSLP 1864 edition)",
+"confidence": "verified",
+"path": "knowledge/trumpet-valves/K-20261007T160106Z-c-067.md"
+},
+{
+"id": "K-20261007T160107Z-c-068",
+"statement": "Typical cent deviations of combinations on real horns (Weidner): 2 -5c, 1 -5c, 1-2 +1c, 3 -21c, 2-3 -8c, 1-3 +7c, 1-2-3 +28c; school method (AmericanFork p.114): 1-2 moderately sharp, 2-3 moderately flat, 1-3 very sharp, 1-2-3 extremely sharp.",
+"tags": "[domain:brass, domain:audio, subject:trumpet-valves, phase:research]",
+"version": "web edition, undated",
+"confidence": "corroborated",
+"path": "knowledge/trumpet-valves/K-20261007T160107Z-c-068.md"
+},
+{
+"id": "K-20261007T160108Z-c-069",
+"statement": "Ideal equal-tempered valve tube lengths (each valve cut for the open tube; sums of independent additions) give sharpness of +10.6c (1-2), +15.5c (2-3), +30.3c (1-3), +53.6c (1-2-3); trumpetfingeringchart.com quotes +11, +16, +30, +54.",
+"tags": "[domain:brass, domain:audio, subject:trumpet-valves, phase:research]",
+"version": "web page, 2026 access",
+"confidence": "verified",
+"path": "knowledge/trumpet-valves/K-20261007T160108Z-c-069.md"
+},
+{
+"id": "K-20261007T160109Z-c-070",
+"statement": "Normal written range of the B-flat trumpet: F#3 to about C6 as the chart/standard range (Arban chart F# below staff to C above the staff; Wikipedia: fingering charts go to the high C), with professional/orchestral parts to E6 and F6/F#6 at loud dynamics (Hugill); F3 on some horns with movable slides.",
+"tags": "[domain:brass, domain:audio, subject:trumpet-valves, phase:research]",
+"version": "(c)1982; edition (c)2005, 2013 (not the public-domain IMSLP 1864 edition)",
+"confidence": "corroborated",
+"path": "knowledge/trumpet-valves/K-20261007T160109Z-c-070.md"
+},
+{
+"id": "K-20261007T160110Z-c-071",
+"statement": "Pedal tones: tones below F#3 on the fundamental of each valve combination (open pedal C3, MIDI 48, partial 1); Arban edition footnotes say players can go 'from pedal C' and that pedal tones are used for practice and in contemporary repertoire; Wikipedia: possible below low F#.",
+"tags": "[domain:brass, domain:audio, subject:trumpet-valves, phase:research]",
+"version": "(c)1982; edition (c)2005, 2013 (not the public-domain IMSLP 1864 edition)",
+"confidence": "corroborated",
+"path": "knowledge/trumpet-valves/K-20261007T160110Z-c-071.md"
+},
+{
+"id": "K-20261101T043000Z-twelve-tet-formula",
+"statement": "12-TET: f = a4 * 2^((m-69)/12); MIDI 18 = F#0 = 23.1247 Hz at A4=440.",
+"tags": "[domain:audio, subject:twelve-tet-formula, phase:research]",
+"version": "6.4.3",
+"confidence": "verified",
+"path": "knowledge/twelve-tet-formula/K-20261101T043000Z-twelve-tet-formula.md"
+},
+{
+"id": "K-20261009T163800Z-ups-and-downs-xen-wiki-permalink-is-a-redirect",
+"statement": "The Xenharmonic Wiki permalink index.php?title=Kite%27s_ups_and_downs_notation&oldid=237152 fetched on 2026-10-09 returned a redirect page titled 'Ups and downs notation' that points to 'Kite's ups and downs notation', so it is not an article snapshot.",
+"tags": "[subject:ups-and-downs-notation, tech:github, phase:research]",
+"version": "oldid 237152 as fetched on 2026-10-09",
+"confidence": "single-source",
+"path": "knowledge/ups-and-downs-notation/K-20261009T163800Z-ups-and-downs-xen-wiki-permalink-is-a-redirect.md"
+},
+{
+"id": "K-20261009T234212Z-rack-onsamplerate-change-and-onreset-calls",
+"statement": "Module::onSampleRateChange(e) is called when the module is added and on every engine rate change, under the engine's exclusive lock; onReset(e) is called under the lock and the base implementation resets params (must be called by overrides).",
+"tags": "[subject:vcv-module-lifecycle, tech:vcv-rack, tech:cpp, phase:research]",
+"version": "Rack 2.6.6",
+"confidence": "verified",
+"path": "knowledge/vcv-module-lifecycle/K-20261009T234212Z-rack-onsamplerate-change-and-onreset-calls.md"
+},
+{
+"id": "K-20261009T234232Z-rack-enables-ftz-and-daz-on-engine-threads",
+"statement": "Rack enables FTZ and DAZ (MXCSR |= 0x8040) on engine threads.",
+"tags": "[subject:vcv-module-lifecycle, tech:vcv-rack, tech:cpp, phase:research]",
+"version": "Rack 2.6.6",
+"confidence": "verified",
+"path": "knowledge/vcv-module-lifecycle/K-20261009T234232Z-rack-enables-ftz-and-daz-on-engine-threads.md"
+},
+{
+"id": "K-20261009T234246Z-rack-api-signatures-used-by-the-wrapper",
+"statement": "Rack 2.6.6 API used by D-011 exists with these signatures: config, configParam, configSwitch, configInput, configOutput (Module.hpp 118-197), Port::getVoltage/isConnected (Port.hpp 50, 182), createParamCentered/createInputCentered/createOutputCentered (helpers.hpp 98-136), mm2px (window/Svg.hpp 30-34), random::u32 (random.hpp 124).",
+"tags": "[subject:vcv-module-lifecycle, tech:vcv-rack, tech:cpp, phase:verification]",
+"version": "Rack 2.6.6",
+"confidence": "verified",
+"path": "knowledge/vcv-module-lifecycle/K-20261009T234246Z-rack-api-signatures-used-by-the-wrapper.md"
+},
+{
+"id": "K-20261009T234204Z-rack-plugin-links-libRack-via-plugin-mk-stub-suffices",
+"statement": "Plugins build with Rack's plugin.mk from headers (include/, dep/include/) and link -lRack; on Linux libRack is resolved at load time via rpath /tmp/Rack2. A stub libRack.so suffices to link.",
+"tags": "[subject:vcv-plugin-build, tech:vcv-rack, tech:cpp, phase:verification]",
+"version": "Rack 2.6.6",
+"confidence": "verified",
+"path": "knowledge/vcv-plugin-build/K-20261009T234204Z-rack-plugin-links-libRack-via-plugin-mk-stub-suffices.md"
+},
+{
+"id": "K-20261009T234214Z-rack-compile-mk-flags-and-cpp17",
+"statement": "Rack compile.mk adds -std=c++11 then EXTRA_CXXFLAGS (so -std=c++17 there wins) and uses -O3 -funsafe-math-optimizations -fno-omit-frame-pointer -march=nehalem; the engine requires C++17 (std::clamp).",
+"tags": "[subject:vcv-plugin-build, tech:vcv-rack, tech:cpp, phase:verification]",
+"version": "Rack 2.6.6",
+"confidence": "verified",
+"path": "knowledge/vcv-plugin-build/K-20261009T234214Z-rack-compile-mk-flags-and-cpp17.md"
+},
+{
+"id": "K-20261009T234248Z-rack-engine-sample-rate-menu-values",
+"statement": "Rack's engine sample-rate menu offers 44.1/48 kHz x 2^i for i=-2..4 (11.025 kHz .. 768 kHz).",
+"tags": "[subject:vcv-sample-rate-menu, tech:vcv-rack, domain:audio, phase:research]",
+"version": "Rack 2.6.6",
+"confidence": "verified",
+"path": "knowledge/vcv-sample-rate-menu/K-20261009T234248Z-rack-engine-sample-rate-menu-values.md"
+},
+{
+"id": "K-20261009T234208Z-rack-voltage-standards-triggers-and-levels",
+"statement": "Voltage standards: audio \\u00b15 V; triggers 10 V/1 ms; trigger inputs use a Schmitt trigger with low \\u22480.1 V and high \\u22481\\u20132 V (current page: process(x, 0.1f, 1.f)); 1 V/oct; non-finite outputs \\u2192 0; monophonic modules read CV ports' first channel.",
+"tags": "[subject:vcv-voltage-standards, tech:vcv-rack, domain:audio, phase:research]",
+"version": "Rack 2.6.6",
+"confidence": "single-source",
+"path": "knowledge/vcv-voltage-standards/K-20261009T234208Z-rack-voltage-standards-triggers-and-levels.md"
+},
+{
+"id": "K-20261009T234210Z-rack-schmitt-trigger-states-and-first-sample",
+"statement": "rack::dsp::TSchmittTrigger<float>::process(in, low=0, high=1) has states LOW/HIGH/UNINITIALIZED, starts UNINITIALIZED, fires only on LOW\\u2192HIGH.",
+"tags": "[subject:vcv-voltage-standards, tech:vcv-rack, tech:cpp, phase:research]",
+"version": "Rack 2.6.6",
+"confidence": "verified",
+"path": "knowledge/vcv-voltage-standards/K-20261009T234210Z-rack-schmitt-trigger-states-and-first-sample.md"
+},
+{
+"id": "K-20261004T161601Z-vinyl-lead-out-click-period",
+"statement": "A lead-out (locked) groove repeats once per revolution, so a click in it recurs every 60/rpm seconds: 1.8 s at 33 1/3 rpm, 1.333 s at 45 rpm, about 0.77 s at 78 rpm.",
+"tags": "[subject:vinyl-side-detection, domain:audio, phase:research]",
+"version": "version-independent",
+"confidence": "verified",
+"path": "knowledge/vinyl-side-detection/K-20261004T161601Z-vinyl-lead-out-click-period.md"
+},
+{
+"id": "K-20261004T161602Z-vinyl-three-level-side-detector",
+"statement": "In a single-take vinyl capture, a 100 Hz to 8 kHz band-passed 50 ms RMS envelope, median-filtered over 0.5 s, separates three levels: arm-up phono hiss, groove noise, and music; splitting music regions on gaps over 12 s or containing 2 s of hiss found all four sides of a synthetic four-side recording.",
+"tags": "[subject:vinyl-side-detection, domain:audio, tech:python, phase:verification]",
+"version": "qualitycoding/side-splitter vinyl_trim.py at c1e8525",
+"confidence": "verified",
+"path": "knowledge/vinyl-side-detection/K-20261004T161602Z-vinyl-three-level-side-detector.md"
+},
+{
+"id": "K-20261004T162309Z-reference-recording-facts",
+"statement": "power-synth-guitar-buzz_G_.wav (the Void Choir guitar reference) is a 16 s, 44.1 kHz, 16-bit stereo riff spanning B-flat 1 to D-sharp 3 (58-155 Hz), not a single G note. Its first 2 s are a stable E2 (82.24-82.30 Hz), it has digital silence from 14.007 to 14.500 s, its partials are harmonic within +-2 cents, and it is one oscillator, not a detuned pair.",
+"tags": "[subject:void-choir-reference-recording, domain:audio, phase:research]",
+"version": "the file as uploaded 2026-09-19 (2,822,518 bytes)",
+"confidence": "verified",
+"path": "knowledge/void-choir-reference-recording/K-20261004T162309Z-reference-recording-facts.md"
+},
+{
+"id": "K-20261009T092103Z-vst3-system-folder-needs-write-access-windows",
+"statement": "On Windows the default VST3 folder C:\\\\Program Files\\\\Common Files\\\\VST3 is not writable by ordinary users, so JUCE's COPY_PLUGIN_AFTER_BUILD step fails there with 'Permission denied' (copyDir.cmake:45) unless the build runs elevated; Ableton Live scans that folder when 'Use VST3 Plug-In System Folder' is on and can also scan one custom VST3 folder, and neither Ableton's nor Steinberg's help article documents a per-user VST3 folder.",
+"tags": "[subject:vst3-install-locations-windows, tech:vst3, tech:ableton-live, tech:juce, phase:release]",
+"version": "Ableton Live help article (undated, current 2026-10-09); JUCE forum thread; observed with a JUCE 8 checkout",
+"confidence": "corroborated",
+"path": "knowledge/vst3-install-locations-windows/K-20261009T092103Z-vst3-system-folder-needs-write-access-windows.md"
+},
+{
+"id": "K-20261007T160015Z-c-016",
+"statement": "The VST3 SDK bundled in JUCE 9.0.3 lives at modules/juce_audio_processors_headless/format_types/VST3_SDK and its top-level LICENSE.txt is the MIT License (Copyright (c) 2025, Steinberg Media Technologies GmbH).",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:vst3-sdk, phase:research]",
+"version": "9.0.3",
+"confidence": "verified",
+"path": "knowledge/vst3-sdk/K-20261007T160015Z-c-016.md"
+},
+{
+"id": "K-20261007T160016Z-c-017",
+"statement": "In JUCE 9.0.3 the bundled VST3 SDK is no longer under modules/juce_audio_processors/format_types (that folder has no VST3_SDK); it moved to the juce_audio_processors_headless module.",
+"tags": "[tech:juce, tech:cmake, tech:github-actions, domain:audio, subject:vst3-sdk, phase:research]",
+"version": "9.0.3",
+"confidence": "verified",
+"path": "knowledge/vst3-sdk/K-20261007T160016Z-c-017.md"
+},
+{
+"id": "K-20261007T160137Z-c-098",
+"statement": "Binaries that link JUCE 9 under its open licence are AGPLv3 works as a whole (own sources stay Apache-2.0); JUCE >= 8.0.11 ships the ASIO SDK under GPLv3 (compiled only with JUCE_ASIO=1); TinySOL (CC BY 4.0) and Freour et al. 2022 (CC BY 4.0, Acta Acustica) require attribution when derived material is committed.",
+"tags": "[domain:audio, domain:musical-acoustics, domain:brass, subject:vst3-sdk, phase:research]",
+"version": "2026-10-08",
+"confidence": "verified",
+"path": "knowledge/vst3-sdk/K-20261007T160137Z-c-098.md"
+},
+{
+"id": "K-20261104T005100Z-vst3-sdk-mit-sbom",
+"statement": "JUCE 9.0.5's SPDX inventory identifies VST3 SDK 3.8.0 under MIT.",
+"tags": "[tech:juce, subject:vst3-licensing, phase:research]",
+"version": "JUCE 9.0.5 / VST3 SDK 3.8.0",
+"confidence": "verified",
+"path": "knowledge/vst3-sdk/K-20261104T005100Z-vst3-sdk-mit-sbom.md"
+},
+{
+"id": "K-20261004T162301Z-dynamics-compressor-latency",
+"statement": "On node-web-audio-api 2.2.0, a DynamicsCompressorNode delays an impulse by 8.71 ms at 44.1 kHz, both at default settings and at threshold -6 dB, ratio 20, attack 1 ms; a GainNode adds 0 ms. A compressor on one of several parallel paths therefore shifts that path late.",
+"tags": "[subject:web-audio-dynamics-compressor, tech:web-audio, domain:audio, phase:implementation]",
+"version": "node-web-audio-api 2.2.0, OfflineAudioContext at 44100 Hz",
+"confidence": "verified",
+"path": "knowledge/web-audio-dynamics-compressor/K-20261004T162301Z-dynamics-compressor-latency.md"
+},
+{
+"id": "K-20261004T162302Z-dynamics-compressor-not-a-brickwall",
+"statement": "A DynamicsCompressorNode at threshold -6 dB, ratio 20, attack 1 ms, knee 0 is not a peak ceiling: a sine at +6 dBFS came out at +0.09 dBFS on node-web-audio-api 2.2.0. A bounded ceiling needs a clipper (for example a tanh WaveShaper) after it.",
+"tags": "[subject:web-audio-dynamics-compressor, tech:web-audio, domain:audio, phase:implementation]",
+"version": "node-web-audio-api 2.2.0",
+"confidence": "verified",
+"path": "knowledge/web-audio-dynamics-compressor/K-20261004T162302Z-dynamics-compressor-not-a-brickwall.md"
+},
+{
+"id": "K-20261008T173539Z-web-audio-exponential-ramp-time-constant",
+"statement": "AudioParam.exponentialRampToValueAtTime follows v(t) = V0 * (V1/V0)^((t-T0)/(T1-T0)) with V0 and V1 positive (a target of 0 throws), so ramping to 0.001 * V0 at T0 + 3d is an exponential decay with time constant 3d/ln(1000) = 0.434d; a per-sample multiplier exp(-1/(d*sr)) has time constant d, so the ramp decays 2.3 times faster, and at t = d the ramp is at 0.100 of its start against 0.368.",
+"tags": "[subject:web-audio-param-automation, tech:web-audio, domain:audio, phase:implementation]",
+"version": "version-independent",
+"confidence": "single-source",
+"path": "knowledge/web-audio-param-automation/K-20261008T173539Z-web-audio-exponential-ramp-time-constant.md"
+},
+{
+"id": "K-20261105T233000Z-windows-default-stack-vs-engine-size",
+"statement": "A ~3.5 MB object held as a local in main crashes pre-main on Windows (1 MB default stack, 0xC00000FD) before the first statement runs; Linux/macOS 8 MB stacks mask the same bug.",
+"tags": "[tech:cpp, subject:windows-stack, phase:verification]",
+"version": "windows-2025, VS 18 2026 / cl 14.51",
+"confidence": "verified",
+"path": "knowledge/windows-ci/K-20261105T233000Z-windows-default-stack-vs-engine-size.md"
+},
+{
+"id": "K-20261105T233100Z-msys-exe-path-magic-and-frozen-stubs",
+"statement": "Git Bash equates foo and foo.exe in file operations, so extensionless-binary staging for a frozen stub must be done with Python (exact Win32 names); CreateProcess itself appends .exe for extensionless paths.",
+"tags": "[tech:github-actions, subject:windows-ci, phase:verification]",
+"version": "windows-2025 Git Bash",
+"confidence": "verified",
+"path": "knowledge/windows-ci/K-20261105T233100Z-msys-exe-path-magic-and-frozen-stubs.md"
+}
+]

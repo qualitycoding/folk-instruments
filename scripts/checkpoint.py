@@ -6,6 +6,7 @@ p = root / ".checkpoints" / "state.json"
 s = json.loads(p.read_text())
 s["sequence"] += 1
 s["phase"], s["subphase"] = sys.argv[1], sys.argv[2]
+subprocess.run(["git", "add", "-A"], cwd=root, check=True)
 files = subprocess.run(["git", "ls-files"], cwd=root, capture_output=True, text=True, check=True).stdout.split("\n")
 s["artifacts"] = {f: hashlib.sha256((root / f).read_bytes()).hexdigest() for f in sorted(files)
                   if f and not f.startswith(".checkpoints/") and (root / f).is_file()}
