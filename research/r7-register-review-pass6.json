@@ -1,0 +1,129 @@
+{
+ "checked": [
+  {
+   "row": 6,
+   "url": "https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "PDF pages 1-2 (curl, pdftotext)",
+   "correction": ""
+  },
+  {
+   "row": 45,
+   "url": "https://arxiv.org/pdf/2104.02480",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "PDF p1-2 and arxiv.org/abs/2104.02480 (CC BY 4.0 licence link)",
+   "correction": ""
+  },
+  {
+   "row": 82,
+   "url": "https://en.wikipedia.org/wiki/Irish_bouzouki",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "full page HTML; history, tuning, 24-25 in and 26-27 in scale lengths, Abnett 1972 all present; CC BY-SA 4.0 in footer text",
+   "correction": ""
+  },
+  {
+   "row": 47,
+   "url": "https://ccrma.stanford.edu/%7Ejos/pasp/EDR_Based_Loop_Filter_Design.html",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "full page HTML; footer copyright J. O. Smith III",
+   "correction": ""
+  },
+  {
+   "row": 57,
+   "url": "https://euphonics.org/7-3-multiple-strings-and-double-decays/",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "full page HTML; footer CC BY-NC-SA 4.0",
+   "correction": "Page title matches; content cell 'not opened' is stale since the page was fetched, but states nothing unsupported."
+  },
+  {
+   "row": 81,
+   "url": "https://dael.euracoustics.org/confs/fa2023/data/articles/000539.pdf",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "PDF p1-2; CC BY 3.0 copyright line",
+   "correction": ""
+  },
+  {
+   "row": 96,
+   "url": "https://zenodo.org/records/3685367",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "record page HTML; version 6.0, 2913 samples, 14 instruments, 44.1 kHz mono 16-bit, 1.0 GB, CC BY 4.0",
+   "correction": ""
+  },
+  {
+   "row": 98,
+   "url": "https://philharmonia.co.uk/resources/sound-samples/",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "page HTML; Licensing paragraph quoted accurately",
+   "correction": ""
+  },
+  {
+   "row": 100,
+   "url": "https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_article",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "article page HTML; (c) 2003 Acoustical Society of Japan, free access, four mandolins and a mandola",
+   "correction": ""
+  },
+  {
+   "row": 101,
+   "url": "https://arxiv.org/abs/2401.01606",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "abs page and PDF p1; abs page licence link is arXiv non-exclusive distribution 1.0",
+   "correction": "Abs page lists only Laurent Millot; the PDF title page gives L. Millot, Cl. Baumann, so the cell matches the paper itself. Detail of the measured harmonica parameter set not checked beyond the abstract."
+  },
+  {
+   "row": 104,
+   "url": "https://commons.wikimedia.org/wiki/File:Tuning-Sound-G-Bouzouki.ogg",
+   "title_ok": true,
+   "licence_ok": false,
+   "summary_ok": false,
+   "permitted_ok": false,
+   "where_read": "file page HTML",
+   "correction": "Page states 'Creative Commons Attribution-Share Alike 4.0 International' (author SoylentGreen, date 24 August 2019, own work); licence cell says 'not applicable' and so does permitted use. Cell should give CC BY-SA 4.0 and 'adapt with attribution' (or state that no file content was used). The page describes only the single G file ('Tuning Sound G for Irish Bouzouki'); it does not mention companion -d-, -a-, -dd- files or 'four isolated open-course notes'."
+  },
+  {
+   "row": 115,
+   "url": "https://en.wikipedia.org/wiki/Overblowing",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "full page HTML; 'just less than a semitone higher', Bahnson 1998 cited; CC BY-SA 4.0 footer",
+   "correction": ""
+  }
+ ],
+ "not_checked": [
+  "106 to 114 (one row of choice taken from this range: 115)"
+ ],
+ "discrepancies": 1,
+ "summary": "12 rows checked against live pages (all fetched HTTP 200). One discrepancy: row 104 licence and permitted-use cells say 'not applicable' although the file page states CC BY-SA 4.0, and the content cell's four companion notes are not supported by that page. Row 82 correction holds. Minor notes only: row 57 content cell is stale ('not opened'), row 101 author list matches the PDF though the arXiv abstract page names only Millot."
+}

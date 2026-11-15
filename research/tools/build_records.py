@@ -97,7 +97,9 @@ OVERRIDE = {"euphonics.org/publication-list": ("Site text CC BY-NC-SA 4.0 except
             "zenodo.org/records/3685367": (None, None, "C.-E. Cella, D. Ghisi, V. Lostanlen, F. Levy, J. Fineberg, Y. Maresz (recorded at Ircam)"),
             "zenodo.org/api/records/3685367": (None, None, "C.-E. Cella, D. Ghisi, V. Lostanlen, F. Levy, J. Fineberg, Y. Maresz (recorded at Ircam)")}
 PERMIT = {}
-SUMMARY = {"https://arxiv.org/pdf/2104.02480": "'Pickers' Guide to Acoustics of the Banjo', parts I and II (Politzer, Woodhouse, Mansour). A round-1 worker took this to be the preprint of Woodhouse's double-decay paper; it is not, and no claim rests on it.",
+SUMMARY = {"https://commons.wikimedia.org/wiki/File:Tuning-Sound-G-Bouzouki.ogg": "An isolated open-course note (G) of an Irish bouzouki, Ogg Vorbis, the contributor's own work (24 August 2019); companion files for the other courses exist under their own pages.",
+           "https://euphonics.org/7-3-multiple-strings": "Section 7.3 of Woodhouse's online book Euphonics: multiple strings, coupled polarisations and double-decay envelopes, with sound examples.",
+           "https://arxiv.org/pdf/2104.02480": "'Pickers' Guide to Acoustics of the Banjo', parts I and II (Politzer, Woodhouse, Mansour). A round-1 worker took this to be the preprint of Woodhouse's double-decay paper; it is not, and no claim rests on it.",
            "https://en.wikipedia.org/wiki/Irish_bouzouki": "History of the Irish bouzouki (Johnny Moynihan's retuning of a Greek bouzouki in the mid-1960s; Andy Irvine and Donal Lunny in the early 1970s, unison bass courses, Peter Abnett's first purpose-built instrument in 1972), common tunings (G2 D3 A3 D4), construction and scale lengths (24 to 25 in, some 26 to 27 in).",
            "https://ccrma.stanford.edu/software/stk/classstk_1_1Mandolin.html": "STK Mandolin class reference: two detuned plucked strings with a commuted body response; the page warns that commuted synthesis was covered by a Stanford patent.",
            "ccrma.stanford.edu/~jos/pasp/Stiff_String.html": "The stiffness term in the string wave equation and the resulting dispersion (high-frequency components travel faster); points to the following page, Stiff String Synthesis Models, for allpass dispersion filters.",
@@ -153,11 +155,11 @@ SWEPT = json.load(open("research/spikes/s16-licence-sweep/output.json"))
 for u, s_ in src_by_url.items():
     if SWEPT.get(u, {}).get("status") in ("000", "403", ""): s_["unreached_at_sweep"] = True
     for key, lic in SWEEP.items():
-        if (u.startswith(key) if key.startswith("http") else key in u):
+        if (u == key if key.endswith(".org/") else (u.startswith(key) if key.startswith("http") else key in u)):
             s_["licence_or_terms"] = lic; s_["swept"] = True
             if lic.startswith("not applicable"): PERMIT[u] = "not applicable (no content used)"
             break
-    if SWEPT.get(u, {}).get("status") == "200" and s_.get("outcome") == "unreachable":
+    if SWEPT.get(u, {}).get("status") == "200" and (s_.get("outcome") == "unreachable" or re.search(r"fail|blocked|not allowed|not resolv|snippet", s_.get("access_notes") or "", re.I)):
         s_["access_notes"] = "unreachable when first checked in round 1; fetched with HTTP 200 on 2026-11-15 by the licence sweep (spike S16), after the owner widened the network allowlist"
     if u == "https://arxiv.org/pdf/2104.02480": s_["title"] = "Pickers' Guide to Acoustics of the Banjo, parts I and II (arXiv 2104.02480)"; s_["owner_or_authors"] = "D. Politzer, J. Woodhouse, H. Mansour"
     if u.startswith("https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf"): s_["title"] = "Clamped bar model for free reeds (Forum Acusticum 2023)"; s_["owner_or_authors"] = "N. Puranik, G. Scavone"

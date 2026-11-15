@@ -58,7 +58,7 @@ The fetch tool could not resolve hosts outside the environment's network allowli
 - <https://pubs.aip.org/asa/jasa/article/150/6/4375/994397/A-necessary-condition-for-double-decay-envelopes>, accessed 2026-11-14: **used**. Bibliographic record and abstract wording
 - <https://arxiv.org/pdf/2104.02480>, accessed 2026-11-14: **unreachable**. 'Pickers' Guide to Acoustics of the Banjo', parts I and II (Politzer, Woodhouse, Mansour). A round-1 worker took this to be the preprint of Woodhouse's double-d
 - <https://www.repository.cam.ac.uk/items/3d2cfb54-a00d-4dbb-8e08-69099990d8b2>, accessed 2026-11-14: **unreachable**. Cited by a round-1 worker for: Woodhouse's paper is J. Woodhouse, 'A necessary condition for double-decay envelopes in stringed instruments', J. Acoust. Soc. Am
-- <https://euphonics.org/7-3-multiple-strings-and-double-decays/>, accessed 2026-11-14: **unreachable**. Exists per search; not opened
+- <https://euphonics.org/7-3-multiple-strings-and-double-decays/>, accessed 2026-11-14: **unreachable**. Section 7.3 of Woodhouse's online book Euphonics: multiple strings, coupled polarisations and double-decay envelopes, with sound examples.
 - <https://eprints.soton.ac.uk/476996/1/Pablo_Miranda_Internoise2022.pdf>, accessed 2026-11-14: **corroborating**. Relays Woodhouse criterion and Weinreich mechanism
 - <https://www.dsprelated.com/freebooks/pasp/String_Coupling_Effects.html>, accessed 2026-11-14: **corroborating**. Vertical vs horizontal polarisation decay
 - <https://ccrma.stanford.edu/software/stk/classstk_1_1Mandolin.html>, accessed 2026-11-14: **used**. STK Mandolin class reference: two detuned plucked strings with a commuted body response; the page warns that commuted synthesis was covered by a Stanford patent
