@@ -27,6 +27,8 @@ Read from `qualitycoding/skills` at commit `a20ed73` (`origin/main` on 2026-11-1
 | T3 | Sonnet |
 | T4 | Haiku |
 
+Tier substitution: from 2026-11-15 13:10 UTC the planning session (T1) ran on Opus after the owner changed the session model; the subagent tiers were unchanged. Recorded in `.checkpoints/state.json` (`tier_substitutions`).
+
 ## Sections not applicable
 
 | Section | Reason |

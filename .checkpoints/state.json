@@ -60,7 +60,15 @@
   "T3": "sonnet",
   "T4": "haiku"
  },
- "tier_substitutions": [],
+ "tier_substitutions": [
+  {
+   "at": "2026-11-15T13:10:00Z",
+   "tier": "T1",
+   "from": "fable",
+   "to": "opus",
+   "reason": "the owner switched the session model; the planning session (T1) continues on Opus. Rule 5: T1 is filled by the highest available model; recorded here and in plan/PROFILE.md."
+  }
+ ],
  "phase": "2",
  "subphase": "2E-freeze",
  "rounds": {
@@ -428,10 +436,12 @@
   "tools/make_demos.py": "088c03cecaf12e8f6c7789b4cc4def303b820d12c8cba0a9ed9a5ef4d78be0f9"
  },
  "in_flight": {
-  "operation": "cold-read pass 1 (dry run and mechanical agents)",
-  "started_at": "2026-11-15T01:10:00Z",
+  "operation": "cold-read pass 1 (dry-run and mechanical agents) and source-register review pass 4, resumed after a usage limit",
+  "started_at": "2026-11-15T13:08:00Z",
   "expected_outputs": [
-   "premortem/../research cold-read outputs in the scratchpad; items are resolved by amending the plan"
+   "scratchpad/coldread-1-dryrun.json",
+   "scratchpad/coldread-1-mechanical.json",
+   "research/r7-register-review-pass4.json"
   ],
   "safe_to_repeat": true
  },
