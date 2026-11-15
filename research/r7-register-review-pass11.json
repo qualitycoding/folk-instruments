@@ -1,0 +1,103 @@
+{
+ "checked": [
+  {
+   "row": 3,
+   "url": "https://arxiv.org/pdf/2401.01606",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "PDF first pages; abstract page https://arxiv.org/abs/2401.01606 (licence link nonexclusive-distrib/1.0); Fletcher conventions in text",
+   "correction": ""
+  },
+  {
+   "row": 6,
+   "url": "https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "PDF first page (CC BY 3.0 Unported statement; St. Hilaire, harmonium, clamped bar)",
+   "correction": ""
+  },
+  {
+   "row": 47,
+   "url": "https://ccrma.stanford.edu/%7Ejos/pasp/EDR_Based_Loop_Filter_Design.html",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Page and its footer (Copyright 2026-08-21 by Julius O. Smith III)",
+   "correction": ""
+  },
+  {
+   "row": 89,
+   "url": "https://archive.org/",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Home page (HTTP 200; title Internet Archive)",
+   "correction": ""
+  },
+  {
+   "row": 100,
+   "url": "https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_article",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Article page metadata (copyright 2003 ASJ, free access, abstract) and full-text PDF (Table 1, accelerance, spectra)",
+   "correction": ""
+  },
+  {
+   "row": 103,
+   "url": "https://ccrma.stanford.edu/~jos/pasp/Stiff_String.html",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Page text and footer; following page Stiff_String_Synthesis_Models.html (allpass)",
+   "correction": ""
+  },
+  {
+   "row": 125,
+   "url": "https://pypi.org/simple/",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": false,
+   "permitted_ok": true,
+   "where_read": "Index page (HTTP 200)",
+   "correction": "Content cell says 'Latest published versions'; the simple index lists only project names (numpy, scipy, soundfile, pytest are present) and no version numbers. Reword to 'project names confirmed present; versions from the per-project pages' or cite the per-project pages."
+  },
+  {
+   "row": 130,
+   "url": "https://archive.org/wayback/available?url=www.cs.bu.edu/fac/snyder/TablatureWeb/Bahnson%20JASA%201998.pdf",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "JSON response (HTTP 200; returns an available snapshot)",
+   "correction": ""
+  },
+  {
+   "row": 142,
+   "url": "https://www.daddario.com/sitemap.xml",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Sitemap index (HTTP 200; lists child sitemaps, no licence); a daddario.com product page footer states Copyright D'Addario & Co. All Rights Reserved, with a Terms link",
+   "correction": ""
+  }
+ ],
+ "not_checked": [
+  {
+   "row": 105,
+   "url": "https://doi.org/10.1163/27723194-bja10001",
+   "reason": "HTTP 403 from the doi.org/publisher route (request blocked); Brill alternative URL also returned 403 or 404, so title, licence and content could not be verified"
+  }
+ ],
+ "discrepancies": 1,
+ "summary": "Nine of ten rows checked; row 105 not checked (HTTP 403). One discrepancy: row 125 content cell claims latest versions, but the simple index shows names only. Rows 3, 6, 47, 89, 100, 103, 130 and 142 are consistent; the corrected rows 100 and 142 now match their pages."
+}

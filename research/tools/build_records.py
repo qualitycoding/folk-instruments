@@ -98,7 +98,8 @@ OVERRIDE = {"euphonics.org/publication-list": ("Site text CC BY-NC-SA 4.0 except
             "zenodo.org/records/3685367": (None, None, "C.-E. Cella, D. Ghisi, V. Lostanlen, F. Levy, J. Fineberg, Y. Maresz (recorded at Ircam)"),
             "zenodo.org/api/records/3685367": (None, None, "C.-E. Cella, D. Ghisi, V. Lostanlen, F. Levy, J. Fineberg, Y. Maresz (recorded at Ircam)")}
 PERMIT = {}
-SUMMARY = {"https://www.daddario.com/sitemap.xml": "The XML sitemap of the D'Addario website, used to find the product page of the EJ81 set.",
+SUMMARY = {"https://pypi.org/simple/": "The PyPI simple index (project names only); the version numbers were read with `pip index versions`, which queries each project's own index page.",
+           "https://www.daddario.com/sitemap.xml": "The XML sitemap of the D'Addario website, used to find the product page of the EJ81 set.",
            "https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_article": "Article page of Cohen and Rossing (2003): abstract (TV holography of four mandolins and a mandola; modal frequencies; frequency response; sound spectra 0 to 5 kHz) and free full text. The full text (PDF, its own row) holds Table 1 with the modal and air-cavity frequencies, the accelerance curves and the radiated spectra.",
            "https://zenodo.org/api/records?q=harmonica|mandolin": "Zenodo API searches for the instrument names (the query separators must be percent-encoded as %7C to run). Among the first hits are dataset records (3D models of a mandolin, a 'wood harmonica', an 1892 harmonica record, a corpus of allemandes), none of them a set of isolated notes of these instruments.",
            "https://commons.wikimedia.org/w/index.php?search=bouzouki": "A Wikimedia Commons search for bouzouki audio files; its hits carry mixed licences per file (for example CC BY-SA 4.0). The other Commons searches of round 3 (harmonica, melodica, mandolin) are summarised in research/rounds/r3-adversarial.json; the files used have their own rows.",
@@ -171,6 +172,7 @@ for u, s_ in src_by_url.items():
     if SWEPT.get(u, {}).get("status") == "200" and (s_.get("outcome") == "unreachable" or re.search(r"fail|blocked|not allowed|not resolv|snippet", s_.get("access_notes") or "", re.I)):
         s_["access_notes"] = "unreachable when first checked in round 1; fetched with HTTP 200 on 2026-11-15 by the licence sweep (spike S16), after the owner widened the network allowlist"
     if u.startswith("https://ccrma.stanford.edu/software/stk/classstk_1_1Mandolin"): s_["access_notes"] = "class reference page fetched with HTTP 200 on 2026-11-15"
+    if u == "https://doi.org/10.1163/27723194-bja10001": s_["access_notes"] = "read in full on 2026-11-14 (HTTP 200, licence links on the article page); a re-check on 2026-11-15 was refused by the publisher's site (HTTP 403)"
     if u == "https://zenodo.org/record/3685367": s_["access_notes"] = "record metadata read through the Zenodo API; the archive was downloaded and its md5 checked in spike S07"
     if u.startswith("https://commons.wikimedia.org/w/index.php?search=bouzouki"): s_["title"] = "Wikimedia Commons search: bouzouki filetype:audio"
     if u.startswith("https://zenodo.org/records/4588740"): s_["version_or_date"] = "version 1.1 (record page)"
