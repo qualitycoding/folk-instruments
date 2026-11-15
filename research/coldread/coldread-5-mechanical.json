@@ -1,0 +1,171 @@
+{
+ "checks": [
+  {
+   "n": 1,
+   "name": "IDs defined",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "no sentence of the form DR-01 to DR-NN found in the scanned files; DR rows are DR-01 to DR-16"
+   ]
+  },
+  {
+   "n": 2,
+   "name": "Paths and demo names",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "plan/OPERATIONS.md and research/NOVELTY.md: cited only in plan/PROFILE.md:41,45 as artifacts not created (N/A); no line requires them",
+    "listening/ and references/: directories created via S-LISTEN Outputs listening/*.md and action 5 \"(create the directory)\"; S-210/S-REF Outputs references/index.csv, references/ATTRIBUTION.md"
+   ]
+  },
+  {
+   "n": 3,
+   "name": "Structure of plan/PLAN.md",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "plan/PLAN.md:447 S-LISTEN has extra field(s) ['Demo list'] besides the 14 (not a miss)",
+    "S-212 Outputs only an updated core/src/harmonica.cpp (existing file, no CMakeLists.txt change named); its build-time switch is not stated to be a CMake option, so it is not counted as a writer of generated presets"
+   ]
+  },
+  {
+   "n": 4,
+   "name": "G-003, D-004, PROFILE",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 5,
+   "name": "Failure-swallowing idioms",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 6,
+   "name": "HANDOFF content, TEMPLATES, schema and register scripts",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "check_knowledge_schema.py exit 0 (all entries valid); check_register.py exit 0 (complete: 149 rows, every list covered); no __pycache__ was created by the runs, nothing deleted"
+   ]
+  },
+  {
+   "n": 7,
+   "name": "No protocol-section references in PLAN.md",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 8,
+   "name": "Frozen manifest",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "manifest has 28 entries; entries outside tests/: []"
+   ]
+  },
+  {
+   "n": 9,
+   "name": "Every T-id in Evidence produced / Done when",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 10,
+   "name": "CI platform matrix, YAML parse, pinned actions",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 11,
+   "name": "S-LISTEN content and listening gates",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 12,
+   "name": "No review outputs present",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "reviews/ contains: ['.gitkeep']"
+   ]
+  },
+  {
+   "n": 13,
+   "name": "Spike references exist; JSON parses",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "research/spikes/s03-reed-minimal-model/reed_sim.py exists",
+    "research/spikes/s04-coupled-pair/output.json parses",
+    "research/spikes/s04-coupled-pair/pair.py exists",
+    "research/spikes/s05-reed-cost/reed_bench2.cpp exists",
+    "research/spikes/s12-reed-similarity-scaling/similarity.py exists",
+    "research/spikes/s17-string-body/pluck_ref.py exists",
+    "research/spikes/s18-plenum-filters/plenum.py exists",
+    "spike names cited by number (S03, S05, S12, S17, S18) all have a research/spikes/ directory"
+   ]
+  },
+  {
+   "n": 14,
+   "name": "CI-invoked tools exist or are created before first use",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "plan/ci/ci.yml:139 tests/ci/check_pluginval_log.py present=True",
+    "plan/ci/ci.yml:184 tools/fetch_references.py present=False",
+    "plan/ci/gate-evidence.yml:55 tools/fetch_references.py present=False",
+    "plan/ci/gate-evidence.yml:62 tools/build_evidence.py present=False",
+    "plan/ci/gate-evidence.yml:70 tools/evidence_guard.py present=True",
+    "tests/ci/check_pluginval_log.py (ci.yml:139): present; frozen.",
+    "tools/fetch_references.py (ci.yml:184): absent; created by S-210 gate action 4 (Outputs) or S-REF action 5 (Outputs). ci.yml is first triggered in S-003, which precedes both, so it is NOT guaranteed; the plan states the expected failure (plan/PLAN.md S-003 action 3: job `reference` fails at its step \"Fetch every indexed reference\" because the fetch tool and the index do not exist yet; S-320 Done when: job `reference` may still be red). By S-320 (S-310<-S-300<-S-212<-S-210) the tool exists.",
+    "tools/fetch_references.py (gate-evidence.yml:55): created by S-210 gate action 4 before the first marker push (gate action 6); gate-evidence.yml is copied in S-210 gate action 1 and its job runs only on a [gate-evidence marker; guaranteed.",
+    "tools/build_evidence.py (gate-evidence.yml:62): created (first version) by S-210 gate action 5 before the marker push of action 6; listed in S-210 Outputs; guaranteed. S-340 completes it.",
+    "tools/evidence_guard.py (gate-evidence.yml:70): present as a stub that exits 64; implemented by S-210 gate action 2 (PY T210 must pass) before the marker push; guaranteed."
+   ]
+  },
+  {
+   "n": 15,
+   "name": "Tool options consistent",
+   "passed": false,
+   "misses": [
+    "plan/DECISIONS.md:132 D-052 fetch_references.py synopsis lacks ['--only-redistributable'], which S-REF action 5 (plan/PLAN.md) defines and gate-evidence.yml passes; S-210 gate action 4 implements the tool \"to D-052\"",
+    "plan/ci/gate-evidence.yml:55 fetch_references.py option --only-redistributable is not in D-052 (plan/DECISIONS.md:132, defines ['--archive-cache', '--index', '--root'])"
+   ],
+   "notes": [
+    "build_evidence.py options defined by S-340 actions 1-2: ['--gate', '--index', '--instrument', '--out', '--private-out', '--ref-root', '--render', '--seed']",
+    "GAIN options: ['--check', '--instrument', '--render']",
+    "D-052: ['--archive-cache', '--index', '--root']; S-REF action 5: ['--archive-cache', '--index', '--only-redistributable', '--root']"
+   ]
+  },
+  {
+   "n": 16,
+   "name": "TinySOL table",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 17,
+   "name": "Gate Blocks / Continues meanwhile consistency",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "plan/GATES.md:22 Blocks ['G-P1', 'G-P2'] -> []",
+    "plan/GATES.md:22 Blocks ['G-P1'] -> ['S-220', 'S-230']",
+    "plan/GATES.md:22 Blocks ['G-P2'] -> ['S-260']",
+    "plan/GATES.md:23 Continues meanwhile ['G-P1', 'G-P2'] -> []",
+    "plan/GATES.md:23 Continues meanwhile ['G-P1'] -> ['S-212', 'S-101', 'S-240', 'S-250', 'S-REF']",
+    "plan/GATES.md:23 Continues meanwhile ['G-P2'] -> ['S-200', 'S-201', 'S-210', 'S-212', 'S-220', 'S-230', 'S-REF']",
+    "plan/GATES.md:37 Blocks ['G-L1', 'G-L2', 'G-L3', 'G-L4', 'G-L5'] -> ['S-INTEGRATE']",
+    "plan/GATES.md:38 Continues meanwhile ['G-L1', 'G-L2', 'G-L3', 'G-L4', 'G-L5'] -> []",
+    "plan/GATES.md:69 Blocks ['G-003'] -> []",
+    "S-220 depends on G-P1 answer and is in its Blocks",
+    "S-230 depends on G-P1 answer and is in its Blocks",
+    "S-260 depends on G-P2 answer and is in its Blocks"
+   ]
+  }
+ ],
+ "summary": "17 checks run by script; 16 passed, 1 failed (check 15: 2 misses). Only failure: check 15, tools/fetch_references.py option --only-redistributable is passed by plan/ci/gate-evidence.yml:55 and defined in PLAN.md S-REF action 5, but is missing from the D-052 synopsis (plan/DECISIONS.md:132), which S-210 gate action 4 tells the implementer to implement to. check_knowledge_schema.py and check_register.py both exit 0; manifest all OK; no __pycache__ created in the checkout."
+}
