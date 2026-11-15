@@ -95,7 +95,9 @@ OVERRIDE = {"euphonics.org/publication-list": ("Site text CC BY-NC-SA 4.0 except
             "zenodo.org/records/3685367": (None, None, "C.-E. Cella, D. Ghisi, V. Lostanlen, F. Levy, J. Fineberg, Y. Maresz (recorded at Ircam)"),
             "zenodo.org/api/records/3685367": (None, None, "C.-E. Cella, D. Ghisi, V. Lostanlen, F. Levy, J. Fineberg, Y. Maresz (recorded at Ircam)")}
 PERMIT = {}
-SUMMARY = {"commons.wikimedia.org/wiki/File:Bending_Mundharmonika.ogg": "A recording of draw bends on a diatonic harmonica (the contributor's own work, 2006); not isolated single notes."}
+SUMMARY = {"ccrma.stanford.edu/~jos/pasp/Stiff_String.html": "The stiffness term in the string wave equation and the resulting dispersion (high-frequency components travel faster); points to the following page, Stiff String Synthesis Models, for allpass dispersion filters.",
+           "commons.wikimedia.org/wiki/File:Electra-Melodica": "A recording of a Hohner Electra-Melodica (an instrument of 1967); not used.",
+           "commons.wikimedia.org/wiki/File:Bending_Mundharmonika.ogg": "A recording of draw bends on a harmonica (the contributor's own work, 2006)."}
 for u, s_ in src_by_url.items():
     for key, text in SUMMARY.items():
         if key in u: s_["content_summary"] = text
