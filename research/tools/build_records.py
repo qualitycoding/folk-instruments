@@ -159,6 +159,7 @@ for u, s_ in src_by_url.items():
             break
     if SWEPT.get(u, {}).get("status") == "200" and s_.get("outcome") == "unreachable":
         s_["access_notes"] = "unreachable when first checked in round 1; fetched with HTTP 200 on 2026-11-15 by the licence sweep (spike S16), after the owner widened the network allowlist"
+    if u == "https://arxiv.org/pdf/2104.02480": s_["title"] = "Pickers' Guide to Acoustics of the Banjo, parts I and II (arXiv 2104.02480)"; s_["owner_or_authors"] = "D. Politzer, J. Woodhouse, H. Mansour"
     if u.startswith("https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf"): s_["title"] = "Clamped bar model for free reeds (Forum Acusticum 2023)"; s_["owner_or_authors"] = "N. Puranik, G. Scavone"
     cs = (s_.get("content_summary") or "").strip()
     if s_.get("fixed_summary"): continue

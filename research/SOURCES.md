@@ -46,7 +46,7 @@ Every external source opened or queried during planning (149 distinct URLs), in 
 42. Student 32. Hohner. . <https://www.hohner.de/en/instruments/melodica/student-melodicas/student-32-melodica> Accessed 2026-11-14. Tier 1. Outcome: used.
 43. General accordion questions. Liberty Bellows. . <https://www.libertybellows.com/general-accordion-questions.htm> Accessed 2026-11-14. Tier 4. Outcome: used.
 44. Banjo paper Acta Acustica 2020. . . <https://acta-acustica.edpsciences.org/10.1051/aacus/2020008> Accessed 2026-11-14. Tier 1. Outcome: used.
-45. Woodhouse double decay preprint (arXiv 2104.02480). J. Woodhouse. . <https://arxiv.org/pdf/2104.02480> Accessed 2026-11-14. Tier 2. Outcome: unreachable.
+45. Pickers' Guide to Acoustics of the Banjo, parts I and II (arXiv 2104.02480). D. Politzer, J. Woodhouse, H. Mansour. . <https://arxiv.org/pdf/2104.02480> Accessed 2026-11-14. Tier 2. Outcome: unreachable.
 46. Abel, Valimaki, Smith 2010. . . <https://bibbase.org/network/publication/abel-vlimki-smith-robustefficientdesignofallpassfiltersfordispersivestringsoundsynthesis-2010> Accessed 2026-11-14. Tier 1. Outcome: used.
 47. PASP EDR-based loop filter design. J. O. Smith III. . <https://ccrma.stanford.edu/%7Ejos/pasp/EDR_Based_Loop_Filter_Design.html> Accessed 2026-11-14. Tier 1. Outcome: corroborating.
 48. STK Mandolin class. Cook, Scavone. . <https://ccrma.stanford.edu/software/stk/classstk_1_1Mandolin.html> Accessed 2026-11-14. Tier 1. Outcome: used.
