@@ -96,7 +96,7 @@ Every external source opened or queried during planning (149 distinct URLs), in 
 92. VCSL. Gossner et al.. . <https://github.com/sgossner/VCSL> Accessed 2026-11-14. Tier 2. Outcome: used. Note: instrument list not shown
 93. NSynth. . . <https://magenta.tensorflow.org/datasets/nsynth> Accessed 2026-11-14. Tier 2. Outcome: unreachable. Note: host not resolvable in sandbox
 94. SFZ Instruments. . . <https://sfzinstruments.github.io/> Accessed 2026-11-14. Tier 2. Outcome: unreachable. Note: host not resolvable in sandbox
-95. Zenodo searches. . . <https://zenodo.org/api/records?q=harmonica|mandolin|bouzouki> Accessed 2026-11-14. Tier 3. Outcome: used. Note: negative result
+95. Zenodo searches. . . <https://zenodo.org/api/records?q=harmonica%7Cmandolin%7Cbouzouki> Accessed 2026-11-14. Tier 3. Outcome: used. Note: negative result
 96. TinySOL. C.-E. Cella, D. Ghisi, V. Lostanlen, F. Levy, J. Fineberg, Y. Maresz (recorded at Ircam). 6.0. <https://zenodo.org/records/3685367> DOI 10.5281/zenodo.3685367. Accessed 2026-11-14. Tier 2. Outcome: used. Claims: C-021.
 97. Richter-tuned harmonica. Wikipedia contributors. read 2026-11-14. <https://en.wikipedia.org/wiki/Richter-tuned_harmonica> Accessed 2026-11-14. Tier 3. Outcome: used. Claims: C-011, C-012. Note: read by the planner; full text
 98. Philharmonia sound samples. Philharmonia Orchestra. read 2026-11-14. <https://philharmonia.co.uk/resources/sound-samples/> Accessed 2026-11-14. Tier 1. Outcome: used. Claims: C-049. Note: read by the planner; full text

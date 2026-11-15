@@ -48,7 +48,7 @@ The planner corrected D-010, D-011, D-012, D-015, D-016, DR-03 and step S-201. R
 Steps S-200 and S-201 would pass (40 rows, smallest margin 0.95 cents); the frozen reed tests T-101, T-102, T-103 and T-105 can be satisfied. The calibration ranges were still too wide and the re-check clause could not be met by a calibrated set; both were then narrowed and replaced (D-012's calibrated-set check). **The research loop ended at the round limit, not by saturation**: round 6 still produced new load-bearing findings. They are in the register as C-062 and C-063, and what was not re-reviewed after the last correction is risk R-003.
 
 ## Termination criteria
-Rounds run: 6 of at most 6. Load-bearing claims: 36; verified 26, corroborated 3, below the bar 7 (C-012, C-013, C-014, C-017, C-027, C-039, C-051), each carried into `premortem/RISK_REGISTER.md` (R-001, R-004, R-005). R7: the source register is `knowledge/K-20261115T020000Z-source-register-folk-instruments-vst.md`."""}
+Rounds run: 6 of at most 6. Load-bearing claims: 36; verified 26, corroborated 3, below the bar 7 (C-012, C-013, C-014, C-017, C-027, C-039, C-051), each carried into `premortem/RISK_REGISTER.md` (R-001, R-004, R-005). R7: the source register is `knowledge/K-20261115T020000Z-source-register-folk-instruments-vst.md`, compiled by `research/tools/build_records.py`. Licences of the sources not yet read were swept from the pages themselves (spike S16). Review (R7 step 3): twelve passes by fresh reviewers against the live pages (`research/r7-register-review*.json`); passes 1 to 11 found one or two discrepancies each (licences not read at the source, content cells saying more than the page, a mistaken source identity, a rule in the build script that overwrote file licences), all corrected; pass 12 (nine rows, random sample plus the last correction) found none. Completeness (R7 step 4): `python3 research/tools/check_register.py` exits 0 (149 rows; every URL of the round logs, `research/SOURCES.md` and `research/claims.json` is a row). The register is marked `confidence: verified`. 81 rows carry an unknown licence: 79 because their host could not be reached from the planning sandbox, 2 because the PDF states none."""}
 RANK = {"used": 0, "corroborating": 1, "rejected": 2, "not relevant": 3, "unreachable": 4}
 src_by_url, per_round = {}, collections.defaultdict(list)
 for rnd, files in ROUND_FILES.items():
@@ -56,7 +56,7 @@ for rnd, files in ROUND_FILES.items():
         d = json.load(open("research/rounds/" + f))
         for s in d.get("sources_checked", []):
             if not isinstance(s, dict) or not str(s.get("url", "")).startswith("http"): continue
-            u = re.sub(r"[?&](token|sig|signature|X-Amz-[A-Za-z-]+)=[^&]+", "", s["url"]).strip()
+            u = re.sub(r"[?&](token|sig|signature|X-Amz-[A-Za-z-]+)=[^&]+", "", s["url"]).strip().replace("|", "%7C")
             s = dict(s, url=u, round=rnd, file=f); per_round[rnd].append(s)
             old = src_by_url.get(u)
             if old is None or RANK.get(s.get("outcome"), 9) < RANK.get(old.get("outcome"), 9):
@@ -101,7 +101,7 @@ PERMIT = {}
 SUMMARY = {"https://pypi.org/simple/": "The PyPI simple index (project names only); the version numbers were read with `pip index versions`, which queries each project's own index page.",
            "https://www.daddario.com/sitemap.xml": "The XML sitemap of the D'Addario website, used to find the product page of the EJ81 set.",
            "https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_article": "Article page of Cohen and Rossing (2003): abstract (TV holography of four mandolins and a mandola; modal frequencies; frequency response; sound spectra 0 to 5 kHz) and free full text. The full text (PDF, its own row) holds Table 1 with the modal and air-cavity frequencies, the accelerance curves and the radiated spectra.",
-           "https://zenodo.org/api/records?q=harmonica|mandolin": "Zenodo API searches for the instrument names (the query separators must be percent-encoded as %7C to run). Among the first hits are dataset records (3D models of a mandolin, a 'wood harmonica', an 1892 harmonica record, a corpus of allemandes), none of them a set of isolated notes of these instruments.",
+           "https://zenodo.org/api/records?q=harmonica%7Cmandolin": "Zenodo API searches for the instrument names (the query separators must be percent-encoded as %7C to run). Among the first hits are dataset records (3D models of a mandolin, a 'wood harmonica', an 1892 harmonica record, a corpus of allemandes), none of them a set of isolated notes of these instruments.",
            "https://commons.wikimedia.org/w/index.php?search=bouzouki": "A Wikimedia Commons search for bouzouki audio files; its hits carry mixed licences per file (for example CC BY-SA 4.0). The other Commons searches of round 3 (harmonica, melodica, mandolin) are summarised in research/rounds/r3-adversarial.json; the files used have their own rows.",
            "https://zenodo.org/records/4588740": "Good-sounds dataset: single notes and scales of orchestral and other instruments recorded at 48 kHz; none of the five instruments.",
            "https://commons.wikimedia.org/wiki/File:Tuning-Sound-G-Bouzouki.ogg": "A short recording, 'Tuning Sound G for Irish Bouzouki', the contributor's own work (24 August 2019).",
@@ -250,7 +250,7 @@ supersedes: []
 tags: [subject:free-reed-modelling, subject:plucked-string-modelling, domain:audio, phase:research, kind:source-register]
 applies_to_version: version-independent
 source: {{ url: "", doi: "", title: "Source register, run {RUN}", locator: "table below", accessed: "2026-11-15", tier: n/a }}
-confidence: REVIEW_PENDING
+confidence: verified
 derived_from: [{', '.join(cited)}]
 discovered_by: planner
 run: {RUN}

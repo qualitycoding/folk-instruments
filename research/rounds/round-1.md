@@ -110,4 +110,4 @@ The fetch tool could not resolve hosts outside the environment's network allowli
 - <https://freesound.org/>, accessed 2026-11-14: **unreachable**. host not resolvable in sandbox
 - <https://commons.wikimedia.org/>, accessed 2026-11-14: **unreachable**. host not resolvable in sandbox
 - <https://archive.org/>, accessed 2026-11-14: **unreachable**. host not resolvable in sandbox
-- <https://zenodo.org/api/records?q=harmonica|mandolin|bouzouki>, accessed 2026-11-14: **used**. negative result
+- <https://zenodo.org/api/records?q=harmonica%7Cmandolin%7Cbouzouki>, accessed 2026-11-14: **used**. negative result
