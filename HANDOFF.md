@@ -207,8 +207,8 @@ What to record per round, from the same skill:
 
 ### Delivering audio
 
-- Evidence built from redistributable material only goes to the orphan branch `evidence/<gate id>` through the `gate-evidence` workflow; give the owner the zip URL and say that it works only if the repository is public.
-- If the repository is private, or the files are pilot demos (`G-P1`, `G-P2`), or the pairs derive from a private reference: put the files in a directory outside the repository, zip them, and hand the zip to the owner through the conversation's file-sharing facility if there is one; otherwise state the absolute path and ask the owner, in the gate record, how they want to receive it. Never commit such files and never attach them to a branch, release, lesson or knowledge item.
+- **Evidence branches.** Demos rendered by the product (pilot gates `G-P1`, `G-P2` included) and blind pairs built only from redistributable references go to the orphan branch `evidence/<gate id>` through the `gate-evidence` workflow (`plan/ci/gate-evidence.yml`). Give the owner the zip URL `https://github.com/qualitycoding/folk-instruments/archive/refs/heads/evidence/<gate id>.zip` and the per-file URLs; if the repository is private, say so: the owner then downloads the zip while signed in.
+- **Private pairs** (any pair built from a private reference) never go to a branch. Send them to the owner with the session's file-sending tool (in Claude Code: `SendUserFile`), as one zip built in a directory outside the repository. If the session has no such tool, write the gate record with the path and the hashes, ask the owner in it how they want to receive the files, and wait: the gate stays `OPEN` until they answer.
 - Every delivery states how many references are redistributable and how many are private.
 
 ## 10. Ephemeral environments
@@ -268,3 +268,11 @@ Verbatim from the protocol:
 ## 13. Commit messages and attribution
 
 Use plain, descriptive commit messages naming the step (`S-210: harmonica instrument`). Add whatever attribution lines your session's rules require. Never put credentials, tokens or personal data in a commit, a log, a lesson or a knowledge item.
+
+## 14. Reading CI results
+
+Read workflow runs, job conclusions and job logs with the GitHub tools the session provides (in Claude Code: the GitHub MCP tools, for example `actions_list`, `actions_get` and `get_job_logs`; load them with the tool search if they are deferred), or with the `gh` command if it is installed and authenticated. Record the run URL and each job's conclusion in `EXECUTION_LOG.md`. If no method can read the results, halt and write `BLOCKED.md` asking the owner for read access to Actions; do not guess a result and do not report an unread run as green.
+
+## 15. Fresh-context reviewers
+
+`S-REVIEW`, `S-ADVERSARIAL` and `S-RETRO` must be done by an agent that wrote none of the code (`S-RETRO`: none of the records). Start one with the session's subagent tool (in Claude Code: `Agent`), or as a new session (in a Claude Code cloud session: `create_session`), giving it only the branch and the step's text. If neither is possible, halt and write `BLOCKED.md` asking the owner to start a fresh session on the branch for that step; a review written by the implementer itself does not satisfy the step.

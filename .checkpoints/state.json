@@ -75,7 +75,7 @@
   "research": 6,
   "exploration": 0,
   "proof_review": 0,
-  "cold_read": 0,
+  "cold_read": 1,
   "premortem": 0,
   "audit": 0
  },
@@ -436,12 +436,11 @@
   "tools/make_demos.py": "088c03cecaf12e8f6c7789b4cc4def303b820d12c8cba0a9ed9a5ef4d78be0f9"
  },
  "in_flight": {
-  "operation": "cold-read pass 1 (dry-run and mechanical agents) and source-register review pass 4, resumed after a usage limit",
-  "started_at": "2026-11-15T13:08:00Z",
+  "operation": "cold-read pass 2 (new dry-run and mechanical agents)",
+  "started_at": "2026-11-15T15:30:00Z",
   "expected_outputs": [
-   "scratchpad/coldread-1-dryrun.json",
-   "scratchpad/coldread-1-mechanical.json",
-   "research/r7-register-review-pass4.json"
+   "scratchpad/coldread-2-dryrun.json",
+   "scratchpad/coldread-2-mechanical.json"
   ],
   "safe_to_repeat": true
  },

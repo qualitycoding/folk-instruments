@@ -12,8 +12,8 @@ INS = {
     "harmonica": (72, 60, 96, [(60, 64, 67), (65, 69, 72), (67, 71, 74)], [{"variant": 0, "key": 0}, {"variant": 0, "key": 7}, {"variant": 1}]),
     "accordion": (69, 41, 100, [(57, 61, 64), (62, 66, 69), (64, 68, 71)], [{"register": r} for r in range(12)] + [{"register": 1, "cassotto": 1}, {"register": 4, "musette_cents": 4}, {"register": 4, "musette_cents": 25}]),
     "melodion": (65, 53, 89, [(60, 64, 67), (65, 69, 72), (67, 71, 74)], [{"range": 1, "body": 0}, {"range": 1, "body": 1}, {"range": 1, "body": 2}, {"range": 1, "breath_mode": 1}]),
-    "mandolin": (69, 55, 96, [(55, 62, 71, 79), (60, 64, 72, 79), (62, 69, 74, 78)], [{"body": 0}, {"body": 1}, {"body": 2}]),
-    "bouzouki": (62, 50, 86, [(50, 57, 62), (55, 59, 62), (57, 61, 64)], [{"variant": 0}, {"variant": 1}, {"variant": 2}]),
+    "mandolin": (69, 55, 96, [(55, 62, 71, 79), (60, 64, 72, 79), (55, 62, 74, 78)], [{"body": 0}, {"body": 1}, {"body": 2}]),
+    "bouzouki": (62, 50, 86, [(50, 57, 62), (55, 59, 62), (53, 57, 64)], [{"variant": 0}, {"variant": 1}, {"variant": 2}]),
 }
 PLUCKED = ("mandolin", "bouzouki")
 

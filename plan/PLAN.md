@@ -178,7 +178,7 @@ Order at a glance: `S-000`, `S-002`, `S-003`; then two tracks that may run concu
 - Depends on: S-201
 - Inputs: D-020 to D-024, `core/src/reed.h`, `presets/harmonica.json`
 - Actions: implement the harmonica instrument in `core/src/harmonica.cpp`: note mapping through `diatonicNoteFor` and `chromaticNoteFor`, the baseline bend of D-022, breath sources, vibrato, `wah`, `air_noise`, `airtightness`, `valve_buzz`, polyphony 4 with oldest-first stealing, silence for unplayable notes.
-- Outputs: `core/src/harmonica.cpp`
+- Outputs: `core/src/harmonica.cpp`; for the gate: `.github/workflows/gate-evidence.yml`, `tools/evidence_guard.py`, a first version of `tools/build_evidence.py`, `references/index.csv` (header only)
 - Evidence produced: T-100 (harmonica), T-101 to T-109 (harmonica), T-110 to T-114
 - Done when: CORE BUILD; PY `harmonica`; PY `(T100 or T101 or T102 or T103 or T104 or T105 or T106 or T107 or T108 or T109) and harmonica`.
 - Checkpoint: step done.
@@ -188,7 +188,7 @@ Order at a glance: `S-000`, `S-002`, `S-003`; then two tracks that may run concu
 - Lessons applied: group "dsp-correctness"
 - Exclusive resources: none
 
-Gate actions of S-210 (after its tests pass): render `demos/harmonica-01-melody.events`, `-04-dynamics`, `-08-bend`, `-10-chromatic-on-diatonic` and `-203-variant` to WAV with `folk-render` at 48 kHz into `$HOME/folk-pilot/G-P1/`; write `GATE-G-P1.md` from the template in `HANDOFF.md` with the evidence and questions of `plan/GATES.md`; deliver the five files to the owner by the delivery rule of `HANDOFF.md` (section "Delivering audio"); PUSH; report in chat. While the gate is open, continue with the strings track and with `S-212`.
+Gate actions of S-210 (after its tests pass): the pilot gate needs the evidence tooling early, so: (1) copy `plan/ci/gate-evidence.yml` to `.github/workflows/gate-evidence.yml`; (2) implement `tools/evidence_guard.py` to the contract of T-210 now (ahead of `S-REF`; PY `T210` must pass); (3) write `references/index.csv` with the header of D-052 and no rows; (4) write a first version of `tools/build_evidence.py` that renders the instrument's demos, writes `MANIFEST.json`, `SHA256SUMS` and `ATTRIBUTION.md`, and runs the guard (`S-340` completes it with pairs and metrics); (5) push a commit with the marker `[gate-evidence G-P1 harmonica seed=1]`; check the branch `evidence/G-P1`; write `GATE-G-P1.md` from the template in `HANDOFF.md` with the evidence and questions of `plan/GATES.md` (the demos to point the owner to: `harmonica-01-melody`, `-04-dynamics`, `-08-bend`, `-10-chromatic-on-diatonic`, `-203-variant`); PUSH; report in chat. While the gate is open, continue with the strings track and with `S-212`.
 
 ### S-212 Optional: two-reed bend
 - Tier: T2
@@ -272,7 +272,7 @@ Gate actions of S-210 (after its tests pass): render `demos/harmonica-01-melody.
 - Lessons applied: L-20261004T162217Z-nonstationary-recording-analysed-as-one-note; knowledge K-20261004T162313Z (beat-period windows)
 - Exclusive resources: none
 
-Gate actions of S-250: render `demos/mandolin-01-melody.events`, `-04-dynamics`, `-06-chords`, `-07-tremolo` and the three `-20x-variant` files into `$HOME/folk-pilot/G-P2/`; write `GATE-G-P2.md`; deliver; PUSH; report. While the gate is open, continue with the reeds track.
+Gate actions of S-250: push a commit with the marker `[gate-evidence G-P2 mandolin seed=1]` (the tooling exists from `S-210`); check the branch `evidence/G-P2`; write `GATE-G-P2.md` (the demos to point the owner to: `mandolin-01-melody`, `-04-dynamics`, `-06-chords`, `-07-tremolo`, `-201-variant` to `-203-variant`); PUSH; report. While the gate is open, continue with the reeds track.
 
 ### S-260 Bouzouki
 - Tier: T2
@@ -354,7 +354,7 @@ Gate actions of S-250: render `demos/mandolin-01-melody.events`, `-04-dynamics`,
 - Depends on: S-110
 - Inputs: D-050 to D-052; `tests/py/test_evidence_guard.py`; `tests/py/test_reference.py`
 - Actions:
-  1. Implement `tools/evidence_guard.py` to the contract in `tests/py/test_evidence_guard.py`.
+  1. Implement `tools/evidence_guard.py` to the contract in `tests/py/test_evidence_guard.py`, unless `S-210` has already done so.
   2. TinySOL: download and check it as the `reference` job of `plan/ci/ci.yml` does, into `$HOME/folk-refs/tinysol` (outside the repository). If Zenodo is unreachable locally, rely on the CI job (rule DR-13).
   3. Search for further references, in this order, and stop for an instrument as soon as 12 usable notes are indexed: (a) Wikimedia Commons, through `https://commons.wikimedia.org/w/api.php?action=query&list=search&srnamespace=6&srsearch=<instrument>+filetype:audio`, for the five instrument names and for "mouth organ", "melodica", "mandoline", "bouzouki"; start from the four files `Tuning-Sound-G-Bouzouki.ogg`, `Tuning-Sound-d-Bouzouki.ogg`, `Tuning-Sound-a-Bouzouki.ogg`, `Tuning-Sound-dd-Bouzouki.ogg`; (b) Zenodo, through `https://zenodo.org/api/records?q=<instrument>&type=dataset`; (c) the Internet Archive item `GTownChurchSamplingProject`; (d) the Philharmonia sample library, mandolin files only, as a private reference under D-051. A note is usable when it is a single isolated note at least 1.2 s long, its pitch is identified, its source page names an author and a licence, and the licence was read on that page. Record every source opened in the source register (`knowledge/K-*-source-register-*.md`), with licence and permitted use.
   4. Write `references/index.csv` with the header of D-052: first the 12 TinySOL accordion rows of D-050 (MIDI 48, 52, 55, 59, 62, 65, 69, 72, 76, 79, 83, 86; velocity 0.6; `sets` `register=1;cassotto=0;a4_hz=441.6;vibrato_depth=0`; the take chosen by D-052's tie rule; `source_url` the Zenodo archive URL of `plan/ENVIRONMENT.md`; licence `CC-BY-4.0`; `redistributable` `true`), then one row per usable note found by the search (none is a valid result), with `redistributable` `true` only for public-domain, CC0, CC BY and CC BY-SA material. Store redistributable files under `$HOME/folk-refs/redistributable/` and private ones under `$HOME/folk-refs/private/`; set `FOLK_REF_ROOT=$HOME/folk-refs` and use paths relative to it in the `file` column. Commit `references/index.csv` and `references/ATTRIBUTION.md` (author, title, URL and licence of every redistributable reference, and the TinySOL citation). Never commit audio.

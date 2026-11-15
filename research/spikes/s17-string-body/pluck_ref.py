@@ -65,7 +65,8 @@ def render(courses_strings, L, fret, midi, vel, modes, coupling, Y_ref, sr=48000
             singles = [(0, i) for i in range(len(S[0].n))]
         for (j, i) in singles:
             d = w[j][i] - z[j][i].real; lam = d * (1 + 1j * S[j].eta_i[i] / 2) + z[j][i]
-            td = t - (delay / sr if j == 1 else 0); F += np.real(amp[j][i] * np.exp(1j * lam * np.clip(td, 0, None))) * (td >= 0) * 0 + np.real(amp[j][i] * 1j * np.exp(1j * lam * np.clip(td, 0, None))).__neg__() * 0 + amp[j][i] * np.exp(-lam.imag * np.clip(td, 0, None)) * np.sin(lam.real * np.clip(td, 0, None)) * (td >= 0)
+            td = t - (delay / sr if j == 1 else 0)
+            F += np.real(amp[j][i] * np.exp(1j * lam * np.clip(td, 0, None))) * (td >= 0)    # same cosine start as the paired partials
     else:
         F[0] = tap * sr / 1000.0
     # body: v_k'' + (w_k/Q_k) v_k' + w_k^2 v_k = g_k (w_k/Q_k) F'  (velocity of mode k; resonant gain g_k), bilinear transform

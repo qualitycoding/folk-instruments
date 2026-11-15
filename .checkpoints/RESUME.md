@@ -1,13 +1,13 @@
-# Resume note
+# Resume note (planning agent)
 
-**Where things stand.** Phases 0 to 2 are complete: six research rounds were run (the loop ended at the round limit, not by saturation), the claim register holds 63 claims, the tests are frozen (`tests/FROZEN_MANIFEST.sha256`, red-verified, and checked against the stand-in renderer of spike S08). Phase 3 documents are written: `plan/PLAN.md`, `plan/DECISIONS.md`, `plan/ENVIRONMENT.md`, `plan/GATES.md`, `plan/TRACEABILITY.md`, `HANDOFF.md`. The source register exists; its review (R7 step 3) has had three passes, each of which found two small discrepancies that were corrected; pass 4 is running.
+This note is for the PLANNING agent. An implementing agent starts at `HANDOFF.md` and step `S-000`, not here.
 
-**Next action.** Run the cold-read gate (3.6): pass 1 is in flight (a dry-run agent and a mechanical agent, each on a clean clone). Resolve every item by amending the plan, then repeat with new agents until a pass returns nothing (at most 5 passes). Then Phase 4 (pre-mortem rounds by fresh reviewers, at most 5), 4.7 (assumption audit), and Phase 5.
+**Where things stand.** Phases 0 to 2 are complete (six research rounds, ended at the round limit; 65 claims; tests frozen and red-verified). Phase 3 documents exist. Cold read pass 1 (dry run and mechanical) produced 38 + 6 items; all were resolved by amending the plan, with two new planning spikes: S17 (the reference implementation of the string and body model) and S18 (melodion plenum and body filters). The source register has had nine review passes; each found discrepancies, all corrected; it is not yet marked `verified`.
 
-**Open questions.** Whether the source register can be marked `verified` (it needs a review pass with no discrepancy): `research/r7-register-review*.json`.
+**Next action.** Cold read pass 2 with new agents on a clean clone (`state.json` `in_flight`). Resolve its items; repeat to at most 5 passes. Then a register review pass that finds nothing (then set the register's `confidence: verified`), Phase 4 pre-mortem, 4.7 assumption audit, Phase 5 final check and push.
 
-**Candidate decisions.** None open; all are in `plan/DECISIONS.md`.
+**Open questions.** None for the owner.
 
-**Do not redo.** The intake batch is used. The reed model was researched to the round limit; do not start a seventh research round. The stand-in renderer run (S08) was repeated after the last test change. `main` exists; do not push to it.
+**Do not redo.** Research is closed at round 6. The intake batch is used. `main` exists; do not push to it. Spikes S17 and S18 are current; S08 (the stand-in renderer) predates S17 and is a check of the tests only.
 
 **Human answers still to apply.** None.
