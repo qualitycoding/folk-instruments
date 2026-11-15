@@ -1,0 +1,97 @@
+{
+ "checked": [
+  {
+   "row": 6,
+   "url": "https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "PDF first page (pdftotext): title, authors, CC BY 3.0 copyright line, B5 harmonium reed LDV",
+   "correction": ""
+  },
+  {
+   "row": 92,
+   "url": "https://github.com/sgossner/VCSL",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "github.com page returned HTTP 403; read raw.githubusercontent.com README of the same repository: CC0 statement confirmed. The category folder names (Aerophones, Chord...) could not be confirmed from the README or the page",
+   "correction": ""
+  },
+  {
+   "row": 101,
+   "url": "https://arxiv.org/abs/2401.01606",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "arXiv abstract page: title, Millot and Baumann, journal ref Acta Acustica 93 (2007) 122-144, non-exclusive distribution licence link",
+   "correction": ""
+  },
+  {
+   "row": 106,
+   "url": "https://en.wikipedia.org/wiki/Accordion_reed_ranks_and_switches",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "page body and footer: CC BY-SA 4.0",
+   "correction": ""
+  },
+  {
+   "row": 107,
+   "url": "https://en.wikipedia.org/wiki/Bouzouki",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "page body and footer: CC BY-SA 4.0; 27 frets, trichordo/tetrachordo present",
+   "correction": ""
+  },
+  {
+   "row": 115,
+   "url": "https://en.wikipedia.org/wiki/Overblowing",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "page body and footer: CC BY-SA 4.0; 'just less than a semitone', Bahnson et al. cited",
+   "correction": ""
+  },
+  {
+   "row": 125,
+   "url": "https://pypi.org/simple/",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "simple index (project names only) and /simple/numpy/ page; pip index versions numpy returns a version (2.5.4)",
+   "correction": ""
+  },
+  {
+   "row": 127,
+   "url": "https://archive.org/advancedsearch.php",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "fetched: the Advanced Search page (HTTP 200); no query is encoded in the URL, cell correctly says search query / not applicable",
+   "correction": ""
+  },
+  {
+   "row": 145,
+   "url": "https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_pdf",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "PDF first pages (title, Cohen and Rossing, G3 D4 A4 E5 tuning, four mandolins and a mandola) and _article page meta tag copyright '2003 by The Acoustical Society of Japan'",
+   "correction": ""
+  }
+ ],
+ "not_checked": [],
+ "discrepancies": 0,
+ "summary": "All nine rows checked; no discrepancies. Row 92: the github.com page returns 403, so the CC0 statement was confirmed on the raw README only, and the category folder names in the content cell were not confirmed (not contradicted)."
+}

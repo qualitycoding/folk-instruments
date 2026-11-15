@@ -54,8 +54,8 @@ Categories: U unit, I integration, O operational, S security, P performance, R r
 | T-161 | same (with `tests/fixtures/`) | O, S | SC-11 | 16 |
 | T-162 | same | I | SC-03, SC-11 | 5 |
 | T-163 | same | O | SC-11 | 5 |
-| T-200 | `tests/py/test_reference.py` | R | SC-13; C-055 | 11 (one, T-200a, is a tool check) |
-| T-201 | same | R | SC-13 | 5 |
+| T-200 | `tests/py/test_reference.py` | R | SC-13; C-055 | 11: T-200a (1, a tool check on the data), T-200b harmonic profile (3), T-200c centroid (3), T-200d dynamic range (1), T-200e rise time (3) |
+| T-201 | same | R | SC-13 | 5: T-201a index well-formed (1), T-201b comparison per instrument (4) |
 | T-210 | `tests/py/test_evidence_guard.py` | S | SC-13; Rule 15 | 7 |
 | T-300 | CI step "pluginval, strictness 10, each plugin" with `tests/ci/check_pluginval_log.py` | V | SC-01 | 5 plugins on 4 runners |
 | T-310 | CI job `audit` (`pip_audit --strict`) | S | SC-15 | 1 |

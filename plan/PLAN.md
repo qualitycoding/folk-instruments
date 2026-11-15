@@ -1,6 +1,6 @@
 # Plan
 
-<!-- STATUS HEADER: written in Phase 5 -->
+<!-- STATUS HEADER: written by the planner before the final push -->
 
 Read `HANDOFF.md` first. Conventions used in every step:
 
@@ -508,7 +508,7 @@ Gate actions of S-250: push a commit with the marker `[gate-evidence G-P2 mandol
 - Inputs: `lessons/`, `knowledge/`, `plan/TEMPLATES.md`, `scripts/check_knowledge_schema.py`
 - Actions:
   1. Write `GATE-G-003.md` listing every lesson and knowledge item to push (ID, title or statement, tags), the source register on its own line with its source count and the number of rows whose licence is `unknown` or `none stated`, the new tags to add to each store's `TAXONOMY.md`, and the proposed targets: lessons to `https://github.com/qualitycoding/Lessons`, knowledge to `https://github.com/qualitycoding/knowledge`. Allowed responses: `push-to-proposed`, `push-to: <lesson-target> [knowledge-target]`, `do-not-push`. PUSH, report, and halt.
-  2. On sign-off: clone each target with `git clone --depth 1 <target>` into a directory outside the repository (if cloning or pushing is refused for lack of access, go to action 3's bundle fallback); copy each lesson to `lessons/<primary-tag>/` (its first `tech:` or `domain:` tag with `:` replaced by `-`, else `general`) and each knowledge item to `knowledge/<subject>/` (its first `subject:` tag without the prefix); add the new tags to `TAXONOMY.md`; run `python scripts/build_index.py` and `python scripts/check_knowledge_schema.py` in each store; commit and push each store on the branch the response names (default: the store's default branch; if this session may only push to a designated branch of the stores, push there and say so in the report).
+  2. On sign-off: clone each target with `git clone --depth 1 <target>` into a directory outside the repository (if cloning or pushing is refused for lack of access, go to action 3's bundle fallback); copy each lesson to `lessons/<primary-tag>/` (its first `tech:` or `domain:` tag with `:` replaced by `-`, else `general`) and each knowledge item to `knowledge/<subject>/` (its first `subject:` tag without the prefix); add the new tags to `TAXONOMY.md`; run each store's own `python scripts/build_index.py` and `python scripts/check_knowledge_schema.py` (both scripts live in the stores, not in this repository); commit and push each store on the branch the response names (default: the store's default branch; if this session may only push to a designated branch of the stores, push there and say so in the report).
   3. If a push is rejected because the target moved, pull, rebuild the indexes, and retry, up to 3 times per store. If a push still fails, a target is unreachable, or no response arrives: build the bundles from this repository: copy `lessons/` (or `knowledge/`) into a new empty git repository outside the working tree in the Appendix C layout, commit, run `git bundle create lessons-<run_id>.bundle --all` (or `knowledge-<run_id>.bundle`) there, commit the bundle files to `impl-<run_id>` under `bundles/`, PUSH, and report their paths.
 - Outputs: `GATE-G-003.md`; pushed stores or bundles
 - Evidence produced: none
