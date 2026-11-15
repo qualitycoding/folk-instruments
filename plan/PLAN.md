@@ -342,6 +342,8 @@ Gate actions of S-250: push a commit with the marker `[gate-evidence G-P2 mandol
   1. PUSH and wait for the CI run on the pushed commit.
   2. Read every job's conclusion; for the `plugins` job read the five `pluginval log check: passed` lines per runner; for the `core` job on `ubuntu-24.04` read the five `PERF` lines.
   3. Fix failures in the code and repeat. Apply rule DR-06 for T-013 and rule DR-09 for pluginval.
+  4. If `S-212` adopted the two-reed bend provisionally, settle it by rule DR-04 from the harmonica `PERF` line of this run (turn the switch off and re-run if T-013 fails for the harmonica only because of it), and record the outcome in `DEVIATIONS.md`.
+  5. Record the three items of `plan/ENVIRONMENT.md` section 5 that `S-003` deferred (universal binary, pluginval archive layout, pluginval log markers) from this run, applying that table's 'If it fails' column.
 - Outputs: none new
 - Evidence produced: T-013 (gating), T-300, T-310, the CI platform matrix of D-084
 - Done when: one CI run on the head commit has `freeze`, `core` (4 runners), `plugins` (4 runners) and `audit` green; job `reference` may still be red at this step and `all-green` with it; the 20 pluginval log checks passed; the five `PERF` lines on `ubuntu-24.04` show `realtime_factor` of 4.00 or more with `gate=1`; the run URL and those figures are in `EXECUTION_LOG.md`.
