@@ -119,7 +119,7 @@ Order at a glance: `S-000`, `S-002`, `S-003`; then two tracks that may run concu
 - Gate: none
 - Relevant decisions/claims: D-060 to D-062; C-026, C-027, C-028
 - Lessons applied: none
-- Exclusive resources: none
+- Exclusive resources: generated presets
 
 ### S-110 Engine frame and render tool
 - Tier: T2
@@ -155,7 +155,7 @@ Order at a glance: `S-000`, `S-002`, `S-003`; then two tracks that may run concu
 - Gate: none
 - Relevant decisions/claims: D-010 to D-016; C-001 to C-004, C-053, C-054, C-059, C-060
 - Lessons applied: group "dsp-correctness"
-- Exclusive resources: none
+- Exclusive resources: generated presets
 
 ### S-201 Reed check across the range and tuning calibration
 - Tier: T3
@@ -208,7 +208,7 @@ Gate actions of S-210 (after its tests pass): the pilot gate needs the evidence 
 - Gate: none
 - Relevant decisions/claims: D-022; C-013
 - Lessons applied: none
-- Exclusive resources: generated presets
+- Exclusive resources: none
 
 ### S-220 Accordion
 - Tier: T2
@@ -331,7 +331,7 @@ Gate actions of S-250: push a commit with the marker `[gate-evidence G-P2 mandol
 - Gate: none
 - Relevant decisions/claims: D-094; C-057
 - Lessons applied: group "juce-build" and "vst3-plugin"; knowledge K-20261104T004700Z (no APVTS state calls in `processBlock`), K-20261009T092101Z (`JUCE_VST3_CAN_REPLACE_VST2=0`), K-20261009T092103Z (no copy into system plugin folders)
-- Exclusive resources: none
+- Exclusive resources: generated presets
 
 ### S-320 Green on every platform
 - Tier: T3
@@ -384,7 +384,7 @@ Gate actions of S-250: push a commit with the marker `[gate-evidence G-P2 mandol
   2. If any reference test fails, calibrate by rule DR-07, running `python3 tools/reed_check.py --instrument <name> --calibrated > baseline/reed-check-calibrated.csv` and then `tools/calibrate_reeds.py` after any change to a reed curve, and re-running the whole of `S-300`'s `Done when` after each round.
   3. Save the final output to `baseline/reference-after.txt`.
 - Outputs: `baseline/reference-before.txt`, `baseline/reference-after.txt`, possibly updated `presets/reeds.json`, `presets/bodies.json` and `presets/strings.json` (`eta_E` and the plectrum factors, DR-07)
-- Evidence produced: T-200 (T-200a to T-200e), T-201 (T-201b)
+- Evidence produced: T-200 (T-200a, T-200b, T-200c, T-200d, T-200e), T-201 (T-201b)
 - Done when: `python3 -m pytest -m reference -s` exits 0 locally or in the CI `reference` job, and the `Done when` of `S-300` still holds; or rule DR-07's five rounds are used up, in which case the step is logged as failed, the failing tests are listed in `EXECUTION_LOG.md`, and the plan continues to `S-340` with that failure carried into the evidence of the listening gate of the instrument concerned. A step logged as failed this way counts as done for the `Depends on` lists of later steps (`HANDOFF.md` section 4).
 - Checkpoint: rounds used; pass or fail per test.
 - On failure: rule DR-07.

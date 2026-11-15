@@ -1055,7 +1055,8 @@
   "contradicted_by": [],
   "informs": [
    "D-060",
-   "T-130"
+   "T-005",
+   "T-140"
   ],
   "input_file_verdict": "supported",
   "note": "",

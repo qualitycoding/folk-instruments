@@ -1,0 +1,108 @@
+{
+ "checks": [
+  {
+   "n": 1,
+   "name": "IDs defined",
+   "passed": false,
+   "misses": [
+    "T-130 undefined; used at research/claims.json C-026 informs (T-130 is declared unused in plan/TRACEABILITY.md:63)"
+   ]
+  },
+  {
+   "n": 2,
+   "name": "Paths exist or are created; demo files resolve",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 3,
+   "name": "Structure of plan/PLAN.md",
+   "passed": false,
+   "misses": [
+    "S-200 (plan/PLAN.md:142) writes CMakeLists.txt (plan/PLAN.md:149) but does not list exclusive resource \"generated presets\"",
+    "S-212 (plan/PLAN.md:197) lists \"generated presets\" but its Outputs/Actions never write presets/, core/src/generated/ or CMakeLists.txt",
+    "S-310 (plan/PLAN.md:317) writes presets/factory.json (plan/PLAN.md:323) but does not list exclusive resource \"generated presets\"",
+    "S-101 (plan/PLAN.md:108) adds new source file core/src/strings.cpp (plan/PLAN.md:114), which the convention at plan/PLAN.md:20 adds to CMakeLists.txt, but does not list \"generated presets\""
+   ]
+  },
+  {
+   "n": 4,
+   "name": "G-003, D-004, PROFILE",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 5,
+   "name": "Failure-swallowing idioms",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 6,
+   "name": "HANDOFF contents and checker scripts",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 7,
+   "name": "No protocol-section references in PLAN",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 8,
+   "name": "Frozen manifest",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 9,
+   "name": "Every test id evidenced in PLAN",
+   "passed": false,
+   "misses": [
+    "T-200b (plan/TRACEABILITY.md:57) appears in no \"Evidence produced\" or \"Done when\" line of plan/PLAN.md (lettered sub-id; its base T-200 is cited)",
+    "T-200c (plan/TRACEABILITY.md:57) appears in no \"Evidence produced\" or \"Done when\" line of plan/PLAN.md (lettered sub-id; its base T-200 is cited)",
+    "T-200d (plan/TRACEABILITY.md:57) appears in no \"Evidence produced\" or \"Done when\" line of plan/PLAN.md (lettered sub-id; its base T-200 is cited)"
+   ]
+  },
+  {
+   "n": 10,
+   "name": "Platform matrix, YAML, pinned actions",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 11,
+   "name": "S-LISTEN content and listening gates",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 12,
+   "name": "No review outputs present",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 13,
+   "name": "Spike references exist; JSON parses",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 14,
+   "name": "CI tools exist or are created before first workflow use",
+   "passed": false,
+   "misses": [
+    "tools/fetch_references.py (plan/ci/ci.yml:184) is absent and no creating step precedes S-003 (first copy of plan/ci/ci.yml); created by: S-210 (Outputs, plan/PLAN.md:185) is not in the Depends-on chain of S-003: NOT guaranteed; S-REF (Outputs, plan/PLAN.md:367) is not in the Depends-on chain of S-003: NOT guaranteed; S-003 action 3 (plan/PLAN.md:77) expects the `reference` job to fail at this step until then"
+   ]
+  },
+  {
+   "n": 15,
+   "name": "Tool options match their definitions",
+   "passed": true,
+   "misses": []
+  }
+ ],
+ "summary": "1: 1 misses; 2: passed; 3: 4 misses; 4: passed; 5: passed; 6: passed; 7: passed; 8: passed; 9: 3 misses; 10: passed; 11: passed; 12: passed; 13: passed; 14: 1 misses; 15: passed. Notes: check 1 counts the \"D-065 to D-069 are not used\" line (plan/DECISIONS.md:106) as an unused declaration; no \"DR-01 to DR-NN\" sentence exists (16 DR rows, DR-01..DR-16). Check 2: plan/OPERATIONS.md and research/NOVELTY.md appear only in plan/PROFILE.md:41,45 as not-created artefacts, so not reported. Check 9 misses are lettered sub-ids whose base T-200 is cited (strict reading). Check 14 miss is anticipated by S-003 action 3 (the reference job is expected to fail at the fetch step until S-210/S-REF). Scripts: /tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/coldm4/."
+}
