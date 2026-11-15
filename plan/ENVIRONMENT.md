@@ -29,6 +29,25 @@ Every pin below was looked up on 2026-11-14. "Verified" names the spike or sourc
 
 The Python pins are in `tests/requirements.txt`, which is the lockfile for the test tooling (four direct packages; their own dependencies are resolved by pip at install time). The C++ dependencies are locked by commit in `CMakeLists.txt` (`FOLK_JUCE_COMMIT`, `FOLK_CATCH2_COMMIT`).
 
+### TinySOL rows of the accordion reference set
+
+The 12 mf notes of D-050, chosen by D-052's tie rule from `TinySOL_metadata.csv` (md5 above) and hashed from the files of `TinySOL.tar.gz` (md5 above) on 2026-11-15; the first was also checked against the archive member directly. `S-REF` copies these into `references/index.csv`; if a fresh download gives a different hash, that is a halt (the archive changed), not a reason to edit the row.
+
+| MIDI | `file` | sha256 |
+|---|---|---|
+| 48 | `tinysol/Keyboards/Accordion/ordinario/Acc-ord-C3-mf-N-N.wav` | `8104a1b94189528cdadb8924c7f5f9078b97682fff803c2603c03855714f0147` |
+| 52 | `tinysol/Keyboards/Accordion/ordinario/Acc-ord-E3-mf-N-N.wav` | `595a61999f8bf55d5cf12c9a3fa221ec35623548146b6f4dad1d31a24cba0df7` |
+| 55 | `tinysol/Keyboards/Accordion/ordinario/Acc-ord-G3-mf-N-N.wav` | `ae260ca6b36e54fb09a3ab7c8c7756a28137bcd4f32e920c3dc0002c05b2d7ad` |
+| 59 | `tinysol/Keyboards/Accordion/ordinario/Acc-ord-B3-mf-N-N.wav` | `6212e1a4fcae58b92cf869a2dae810a4cd7d955f333a4f724279beb29aa3e461` |
+| 62 | `tinysol/Keyboards/Accordion/ordinario/Acc-ord-D4-mf-N-N.wav` | `ed4b652c6f8742b5984cf6fbfd7c8ff75e895fa675d71463b2e7426ee9bbeb15` |
+| 65 | `tinysol/Keyboards/Accordion/ordinario/Acc-ord-F4-mf-N-N.wav` | `8972f9b19e44a3dce5735d3967b13daa2bff2aa9469f0143ff22d5f5f4427bb6` |
+| 69 | `tinysol/Keyboards/Accordion/ordinario/Acc-ord-A4-mf-N-N.wav` | `86d7b1767461c4340dccc7bbe953395abe059741da8511f0649e157cfdb2115c` |
+| 72 | `tinysol/Keyboards/Accordion/ordinario/Acc-ord-C5-mf-N-N.wav` | `3f622c5d45d900b717a4349fa501dd9d7a18bf5c8e7a26ea295022768be90e4e` |
+| 76 | `tinysol/Keyboards/Accordion/ordinario/Acc-ord-E5-mf-N-N.wav` | `0d5c45ee87cfe9023efffa13dfa65fa789bcaab90093be781574c2058f833c61` |
+| 79 | `tinysol/Keyboards/Accordion/ordinario/Acc-ord-G5-mf-N-N.wav` | `f1074a98319c2f76b3114a09a5d0395335695728bef4b96d31ecc13ce23664d4` |
+| 83 | `tinysol/Keyboards/Accordion/ordinario/Acc-ord-B5-mf-N-N.wav` | `6649162d7d6576d768f1d13bf9426852998fe396236259da02e73ee102b522b2` |
+| 86 | `tinysol/Keyboards/Accordion/ordinario/Acc-ord-D6-mf-N-N.wav` | `4a7aaf99956994e8ea86f760adffd0ea4746c04199f9aa983af641bf47bb012a` |
+
 ## 2. Setup on Ubuntu 24.04 (verified in the planning sandbox as root; CI prefixes `sudo`)
 
 ```

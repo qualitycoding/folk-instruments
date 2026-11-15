@@ -1,0 +1,186 @@
+{
+ "items": [
+  {
+   "n": 1,
+   "where": "plan/PLAN.md S-212; DECISIONS DR-04; plan/ci/ci.yml job core; tests/cpp/test_engine.cpp T-010, T-015",
+   "kind": "unevaluable done-when",
+   "severity": "guess",
+   "text": "DR-04 adopts the two-reed bend only if T-013 passes in the CI core job on ubuntu-24.04, but in ci.yml the performance step runs after 'C++ unit and engine tests', and T-010 and T-015 there require all five instruments to sound (peak > 0.01, rms > -50 dB). S-212 runs while G-P1 is open, before the accordion, melodion and possibly the strings exist, so the CI perf step is skipped and DR-04's condition cannot be judged at S-212.",
+   "suggested_fix": "Either make S-212 depend on S-230 and S-260 (or defer its adoption decision to S-300/S-320), or let DR-04 judge T-013 from a dedicated `folk-perf` run with FOLK_PERF_GATE=1 recorded locally/CI regardless of folk-tests."
+  },
+  {
+   "n": 2,
+   "where": "plan/PLAN.md S-240 action 2, S-110; DECISIONS D-064, D-090, D-092; core/include/folk/engine.h",
+   "kind": "missing input",
+   "severity": "guess",
+   "text": "The render tool must deliver `tap <strength>` events sample-accurately to the plucked engine (D-064, T-146 uses `0.1 tap 1.0`), but `folk::Engine` (public interface, 'as committed' per D-090) has no tap method and the plan names no route; S-240 names an internal header only for `--dump-model`. Adding a method changes a public interface, which the default rule says halts.",
+   "suggested_fix": "State the route: e.g. an internal header under core/src/ exposing `tap(float strength, int sampleOffset)` on the plucked engine class that folk-render reaches by downcast, or explicitly allow adding a virtual `tap` to engine.h."
+  },
+  {
+   "n": 3,
+   "where": "plan/PLAN.md conventions 'Exclusive resource generated presets' vs S-101, S-200, S-310",
+   "kind": "contradiction",
+   "severity": "minor",
+   "text": "The exclusive resource includes CMakeLists.txt, and the conventions say new source files are added to CMakeLists.txt, yet S-101 (strings.cpp) and S-200 (reed.cpp and the `reed_probe` target) edit CMakeLists.txt with 'Exclusive resources: none' while the other track may be editing it; likewise S-310 writes presets/factory.json and regenerates the header with 'none' while S-330 (which lists the resource) can run at the same time (both depend only on S-300).",
+   "suggested_fix": "Add 'generated presets' to S-101, S-200 and S-310, or narrow the resource to presets/*.json and the generated header and make CMakeLists.txt edits a separate rule."
+  },
+  {
+   "n": 4,
+   "where": "plan/PLAN.md S-210, S-220, S-230, S-250, S-260 Outputs ('GAIN ... run after the instrument's tests pass') vs DECISIONS D-013; tests/py/test_common.py T-162",
+   "kind": "contradiction",
+   "severity": "minor",
+   "text": "Each instrument step says GAIN is run after the instrument's tests pass, but its Done when (PY `harmonica`, `accordion`, `melodion`, `strings ...`) includes T-162, which needs the default note at velocity 0.8 to peak between -30 and -1 dBFS and so depends on G_out; with G_out = 1 the raw du/dt or bridge-force level is arbitrary. D-013 says GAIN runs 'as soon as that instrument makes sound'.",
+   "suggested_fix": "Say GAIN is run once the instrument sounds and before its Done when is evaluated (as D-013 says)."
+  },
+  {
+   "n": 5,
+   "where": "plan/PLAN.md S-REF action 4 and Done when; S-000 On failure; DECISIONS DR-13",
+   "kind": "missing decision rule",
+   "severity": "guess",
+   "text": "S-000 lets a failed Zenodo check pass with 'S-REF then relies on CI', but S-REF must write the 12 TinySOL rows with the sha256 of each chosen file (T201_index requires a 64-hex hash), which can only be computed from the downloaded files; the CI reference job prints no hashes, so with Zenodo unreachable locally there is no stated way to fill the index.",
+   "suggested_fix": "Either commit the 12 TinySOL paths and sha256 values in the plan (computed in spike S07), or add a CI/one-off workflow step that prints them for the implementer to copy."
+  },
+  {
+   "n": 6,
+   "where": "plan/PLAN.md S-340 action 1(c) MANIFEST.json derived_from for pair files; HANDOFF section 9",
+   "kind": "ambiguous",
+   "severity": "guess",
+   "text": "'a pair file the ids of its reference' can be read as: only the side cut from the reference lists the id (the candidate side is rendered, not derived from reference audio). Under that reading MANIFEST.json on the public evidence branch tells the listener which of A/B is the reference for every pair, defeating the blind test.",
+   "suggested_fix": "Say explicitly that both pair-NN-A.wav and pair-NN-B.wav list the same reference id (and that the key and sources files list all 12 ids)."
+  },
+  {
+   "n": 7,
+   "where": "plan/PLAN.md S-340 action 1(b); S-REF action 3-4; tools/listening/make_blind_pairs.py",
+   "kind": "missing decision rule",
+   "severity": "guess",
+   "text": "Reference and candidate clips are named `<MIDI note>.wav` and make_blind_pairs.py matches them by stem, but S-REF does not forbid two indexed notes at the same pitch (Philharmonia ships several dynamics and takes per pitch); two of the 12 chosen rows with the same MIDI note collide and yield fewer than 12 stems.",
+   "suggested_fix": "Name the clips by row id (e.g. `<id>.wav`) or add a rule that the 12 selected ids have distinct MIDI notes (skip duplicates when picking)."
+  },
+  {
+   "n": 8,
+   "where": "plan/PLAN.md S-003, S-320, S-LISTEN; plan/ci/ci.yml concurrency (cancel-in-progress)",
+   "kind": "missing decision rule",
+   "severity": "minor",
+   "text": "Every PUSH from any step triggers ci.yml in the single group `ci-<ref>` with cancel-in-progress: true. S-003 and S-320 list 'the CI concurrency group' as exclusive, but concurrently running steps (S-100/S-101 during S-003; S-REF, S-330, S-340 during S-320) and the S-LISTEN marker commits do not, so their pushes cancel the run S-003/S-320 is waiting for.",
+   "suggested_fix": "List the CI concurrency group on every step that pushes while S-003 or S-320 waits, or tell the implementer to hold all pushes until the awaited run finishes."
+  },
+  {
+   "n": 9,
+   "where": "plan/GATES.md G-L1 to G-L5 Evidence bundle vs plan/PLAN.md S-LISTEN action 3",
+   "kind": "contradiction",
+   "severity": "minor",
+   "text": "GATES says a privately delivered pair set has 'their hashes on the branch', but S-LISTEN action 3 builds the private pairs locally and puts PAIRS-SHA256SUMS in the gate record; the CI-built evidence branch for that gate is demos-only and never holds the hashes.",
+   "suggested_fix": "Make both say the same thing (record the hashes in the gate record, or commit PAIRS-SHA256SUMS to the evidence branch via a second marker run)."
+  },
+  {
+   "n": 10,
+   "where": "plan/PLAN.md S-LISTEN action 3 (local private pair build); HANDOFF Rule 15 (d)",
+   "kind": "missing decision rule",
+   "severity": "minor",
+   "text": "Building the mandolin pairs locally needs the Philharmonia files under $HOME/folk-refs; if the sandbox cannot reach the source, Rule 15(d) says the human downloads it at a gate, but no gate record, question or procedure for that hand-off is defined.",
+   "suggested_fix": "Add the fallback: open the gate record with a request for the owner to place the files (with expected sha256) and wait."
+  },
+  {
+   "n": 11,
+   "where": "plan/DECISIONS.md DR-07; plan/PLAN.md S-100 action 1, S-240, S-330 Outputs",
+   "kind": "missing input",
+   "severity": "minor",
+   "text": "DR-07 calibrates eta_E and the plectrum factors 0.15 and 0.1 'read from presets/strings.json so that they are preset data', but S-100 writes strings.json only from D-070 to D-073 and S-240 writes only bodies.json; no step puts eta_E (D-061) or the plectrum factors (D-063) into strings.json, so S-240 may hard-code them.",
+   "suggested_fix": "Add to S-100 or S-240 that strings.json holds eta_E (plain, wound) and the two plectrum factors (claim 'none', confidence 'design') and that pluck.cpp reads them."
+  },
+  {
+   "n": 12,
+   "where": "plan/PLAN.md S-310 action 2; DECISIONS D-094; tests/juce/host_test.cpp T-302 state round trip",
+   "kind": "contradiction",
+   "severity": "minor",
+   "text": "S-310 suggests deferring a loaded state to 'the start of the next block', while D-094 says the wrapper updates the JUCE parameters from the engine after loadState accepts it; T-302 reads the parameters immediately after setStateInformation with no processBlock in between, so following the deferral literally fails the frozen test.",
+   "suggested_fix": "Say that setStateInformation validates the text on a temporary Engine off the audio thread and updates the JUCE parameters synchronously; only the audio engine picks the values up at the next block."
+  },
+  {
+   "n": 13,
+   "where": "plan/DECISIONS.md D-094; plan/PLAN.md S-310",
+   "kind": "ambiguous",
+   "severity": "minor",
+   "text": "'returns a juce::GenericAudioProcessorEditor ... with a preset menu listing the variant presets' cannot be done literally (GenericAudioProcessorEditor has no preset menu); it is unclear whether the presets are JUCE programs (getNumPrograms/setCurrentProgram, shown by the host) or a custom component wrapping the generic editor.",
+   "suggested_fix": "Name the mechanism (e.g. expose factory presets as JUCE programs, plus a ComboBox in an editor that embeds GenericAudioProcessorEditor)."
+  },
+  {
+   "n": 14,
+   "where": "plan/PLAN.md S-340 action 1(c) METRICS.md",
+   "kind": "undefined term",
+   "severity": "minor",
+   "text": "'for private references only the count of notes inside and outside the reference spread' does not say which metric's spread (centroid ratio, level, rise or decay rate, or the T-201 harmonic-profile spread) or how it is computed.",
+   "suggested_fix": "Define it, e.g. as the T-201 harmonic-profile test: count of notes within max(6 dB, 90th percentile of the neighbour spread)."
+  },
+  {
+   "n": 15,
+   "where": "plan/GATES.md G-L4 question 3; demos/melodion-204-variant.events",
+   "kind": "contradiction",
+   "severity": "minor",
+   "text": "The melodion question asks whether 'chords under a limited breath (-204-variant) sag believably', but melodion-204-variant is a single-note melody with breath_mode 1 (no chords); the implementer must copy the question verbatim into the gate record and the owner cannot answer it from that demo.",
+   "suggested_fix": "Point the question at a demo that plays chords with breath_mode 1, or add one to tools/make_demos.py."
+  },
+  {
+   "n": 16,
+   "where": "premortem/RISK_REGISTER.md R-012 and R-015 vs DECISIONS D-052, DR-07, plan/ci/ci.yml job reference",
+   "kind": "contradiction",
+   "severity": "minor",
+   "text": "R-012's mitigation says 'CI never downloads private references', but D-052 and the ci.yml reference job fetch every indexed row, private ones included (R-014 says so). R-015 says S-330 may adjust the bridge-loss cap and pitch compensation under DR-07, but DR-07 allows only body Q and gains, eta_E and the plectrum factors.",
+   "suggested_fix": "Correct R-012's mitigation text to match D-052/R-014, and either add the cap to DR-07's list or remove the claim from R-015."
+  },
+  {
+   "n": 17,
+   "where": "plan/DECISIONS.md D-052 ('file' first component names a folder for one source) vs plan/PLAN.md S-REF action 4 and S-003 action 1",
+   "kind": "contradiction",
+   "severity": "guess",
+   "text": "D-052 says the first path component of `file` names one source's folder (TinySOL: `tinysol/...`, archive member = the rest), but S-REF says to store redistributable files under `redistributable/` and private ones under `private/` relative to FOLK_REF_ROOT, which puts several sources under one first component and conflicts with the TinySOL rows (`tinysol/...`, cached by CI at refs/tinysol). For an archive source such as the Philharmonia zip, the member path then depends on which layout is used. Separately, S-003 ignores `refs-*/` while both workflows download references, private ones included, into `refs/` inside the working tree (Rule 15(d) asks for a git-ignored or outside directory).",
+   "suggested_fix": "Fix one layout, e.g. `<source>/<member path>` with source folders such as `tinysol`, `philharmonia`, `wikimedia`, and record the private/redistributable split only in the flag; change the ignore line to `refs/`."
+  },
+  {
+   "n": 18,
+   "where": "plan/PLAN.md S-250 and S-260 'Depends on' vs their Outputs and gate actions",
+   "kind": "missing input",
+   "severity": "guess",
+   "text": "S-250 and S-260 run GAIN (`tools/calibrate_gains.py`, written in S-200) and S-250 pushes the `[gate-evidence G-P2 ...]` marker relying on 'the tooling exists from S-210' (gate-evidence.yml, build_evidence.py, evidence_guard.py, fetch_references.py), but the strings track depends only on S-101, S-110 and S-240. If the strings track reaches S-250 before the reeds track finishes S-200/S-210, these inputs do not exist.",
+   "suggested_fix": "Add S-200 to S-250's Depends on and either add S-210 or move the evidence-tooling actions into a step both pilots depend on."
+  },
+  {
+   "n": 19,
+   "where": "plan/PLAN.md S-212 Done when (`$B/folk-tests -r compact` 'the names of passed cases')",
+   "kind": "non-literal command",
+   "severity": "minor",
+   "text": "Catch2's compact reporter prints failures and a summary, not the names of passed test cases (even with -s it prints assertions, not case names), so the baseline list `cpp: <test case name>` cannot be produced by that command as written.",
+   "suggested_fix": "Use e.g. `$B/folk-tests -r junit` and extract the testcase names without failure elements, or `--list-tests` plus the run's failures."
+  }
+ ],
+ "steps_walked": [
+  "S-000",
+  "S-002",
+  "S-003",
+  "S-100",
+  "S-101",
+  "S-110",
+  "S-200",
+  "S-201",
+  "S-210",
+  "S-212",
+  "S-220",
+  "S-230",
+  "S-240",
+  "S-250",
+  "S-260",
+  "S-300",
+  "S-310",
+  "S-320",
+  "S-REF",
+  "S-330",
+  "S-340",
+  "S-REVIEW",
+  "S-ADVERSARIAL",
+  "S-LISTEN",
+  "S-INTEGRATE",
+  "S-RETRO",
+  "S-KNOW"
+ ],
+ "summary": "Walked all 27 steps of plan/PLAN.md against DECISIONS, ENVIRONMENT, GATES, TRACEABILITY, ASSUMPTIONS, both workflows, the three named spikes and the risk register; checked 20+ frozen test files/cases (T-001..T-015, T-100..T-163, T-200, T-201, T-210, T-300, T-302) and found them consistent with the decisions (pytest count 306/14 and Catch2 count 27 reproduce).\nNo blocker that stops the plan outright; 7 items force a guess, 12 are minor (19 total).\nMost serious: S-212/DR-04 cannot judge T-013 in CI until all five instruments sound (ci.yml skips the perf step after folk-tests fails); the Engine API has no tap entry point though D-064/D-092/T-146 need one; S-REF cannot hash the TinySOL rows when Zenodo is unreachable locally.\nListening integrity: MANIFEST derived_from for pair files can leak the answer key under one reading, and `<MIDI note>.wav` naming collides for duplicate pitches.\nCoordination: the strings track (S-250/S-260) uses S-200/S-210 outputs without depending on them; the 'generated presets' resource and the CI concurrency group are not listed on every step that touches them."
+}

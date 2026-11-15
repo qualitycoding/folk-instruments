@@ -75,7 +75,7 @@
   "research": 6,
   "exploration": 0,
   "proof_review": 0,
-  "cold_read": 3,
+  "cold_read": 4,
   "premortem": 0,
   "audit": 0
  },
@@ -461,11 +461,11 @@
   "tools/make_demos.py": "3542e95daeaaee608c23662fe2489763d78ebe8db983a0d93381be9cc719bbf4"
  },
  "in_flight": {
-  "operation": "cold-read pass 4",
-  "started_at": "2026-11-15T20:00:00Z",
+  "operation": "cold-read pass 5",
+  "started_at": "2026-11-15T21:30:00Z",
   "expected_outputs": [
-   "scratchpad/coldread-4-dryrun.json",
-   "scratchpad/coldread-4-mechanical.json"
+   "scratchpad/coldread-5-dryrun.json",
+   "scratchpad/coldread-5-mechanical.json"
   ],
   "safe_to_repeat": true
  },
