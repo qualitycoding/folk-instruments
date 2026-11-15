@@ -1,0 +1,305 @@
+{
+ "checks": [
+  {
+   "n": 1,
+   "name": "IDs defined",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "no sentence of the form DR-01 to DR-NN found in the scanned files; DR rows are DR-01 to DR-16"
+   ]
+  },
+  {
+   "n": 2,
+   "name": "Paths and demo names",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "plan/OPERATIONS.md and research/NOVELTY.md: cited only in plan/PROFILE.md:41,45 as artifacts not created (N/A); no line requires them",
+    "listening/ and references/: directories created via S-LISTEN Outputs listening/*.md (S-LISTEN action 5 records into listening/<gate_id>-round-<N>.md); S-210/S-REF Outputs references/index.csv, references/ATTRIBUTION.md"
+   ]
+  },
+  {
+   "n": 3,
+   "name": "Structure of plan/PLAN.md",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "plan/PLAN.md:449 S-LISTEN has extra field(s) ['Demo list'] besides the 14 (not a miss)"
+   ]
+  },
+  {
+   "n": 4,
+   "name": "G-003, D-004, PROFILE",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 5,
+   "name": "Failure-swallowing idioms",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 6,
+   "name": "HANDOFF content, TEMPLATES, schema and register scripts",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "check_knowledge_schema.py exit 0 (all entries valid); check_register.py exit 0 (complete: 149 rows, every list covered); run with python3 -B -I, no __pycache__ or .pyc created in the checkout"
+   ]
+  },
+  {
+   "n": 7,
+   "name": "No protocol-section references in PLAN.md",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "plan/PLAN.md:328 \"(ENVIRONMENT section 2)\" refers to plan/ENVIRONMENT.md section 2 (locale-gen de_DE.UTF-8 at line 59), a plan section, not a protocol section; not counted"
+   ]
+  },
+  {
+   "n": 8,
+   "name": "Frozen manifest",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "manifest has 30 entries; entries outside tests/: []"
+   ]
+  },
+  {
+   "n": 9,
+   "name": "Every T-id in Evidence produced / Done when",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 10,
+   "name": "CI platform matrix, YAML parse, pinned actions",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "both workflows parse: ['plan/ci/ci.yml', 'plan/ci/gate-evidence.yml']",
+    "plan/ci/ci.yml actions/cache@55cc8345863c matches plan/ENVIRONMENT.md:25",
+    "plan/ci/ci.yml actions/checkout@3d3c42e5aac5 matches plan/ENVIRONMENT.md:22",
+    "plan/ci/ci.yml actions/setup-python@6d4fd22b2046 matches plan/ENVIRONMENT.md:23",
+    "plan/ci/ci.yml actions/upload-artifact@cf430e030ddb matches plan/ENVIRONMENT.md:24",
+    "plan/ci/gate-evidence.yml actions/cache@55cc8345863c matches plan/ENVIRONMENT.md:25",
+    "plan/ci/gate-evidence.yml actions/checkout@3d3c42e5aac5 matches plan/ENVIRONMENT.md:22",
+    "plan/ci/gate-evidence.yml actions/download-artifact@9000827ccba6 matches plan/ENVIRONMENT.md:26",
+    "plan/ci/gate-evidence.yml actions/setup-python@6d4fd22b2046 matches plan/ENVIRONMENT.md:23",
+    "plan/ci/gate-evidence.yml actions/upload-artifact@cf430e030ddb matches plan/ENVIRONMENT.md:24"
+   ]
+  },
+  {
+   "n": 11,
+   "name": "S-LISTEN content and listening gates",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 12,
+   "name": "No review outputs present",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "reviews/ contains: ['.gitkeep']"
+   ]
+  },
+  {
+   "n": 13,
+   "name": "Spike references exist; JSON parses",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "research/spikes/s03-reed-minimal-model/reed_sim.py exists",
+    "research/spikes/s04-coupled-pair/output.json parses",
+    "research/spikes/s04-coupled-pair/pair.py exists",
+    "research/spikes/s05-reed-cost/reed_bench2.cpp exists",
+    "research/spikes/s12-reed-similarity-scaling/similarity.py exists",
+    "research/spikes/s17-string-body/pluck_ref.py exists",
+    "research/spikes/s18-plenum-filters/plenum.py exists"
+   ]
+  },
+  {
+   "n": 14,
+   "name": "CI-invoked tools exist or are created before first use",
+   "passed": false,
+   "misses": [
+    "plan/PLAN.md:77 S-003 action 3 gives as the reason job `reference` fails at 'Fetch every indexed reference' that \"the fetch tool and the index do not exist yet\", but tools/fetch_references.py exists (a stub that exits 64); the step still fails, for the stub's exit status 64, not for a missing file"
+   ],
+   "notes": [
+    "plan/ci/ci.yml:29 invokes scripts/check_knowledge_schema.py; present=True",
+    "plan/ci/ci.yml:157 invokes tests/ci/check_pluginval_log.py; present=True",
+    "plan/ci/ci.yml:231 invokes tools/fetch_references.py; present=True",
+    "plan/ci/gate-evidence.yml:61 invokes tools/fetch_references.py; present=True",
+    "plan/ci/gate-evidence.yml:68 invokes tools/build_evidence.py; present=False",
+    "plan/ci/gate-evidence.yml:76 invokes tools/evidence_guard.py; present=True",
+    "plan/PLAN.md:462 invokes tools/listening/score_gate.py; present=False",
+    "tools/fetch_references.py present; stub=True (exits 64; docstring: replaced by S-210 gate action 4 or S-REF)",
+    "scripts/check_knowledge_schema.py (ci.yml:29): present; exits 0 on the checkout.",
+    "tests/ci/check_pluginval_log.py (ci.yml:157): present; frozen.",
+    "tools/fetch_references.py (ci.yml:231): present as stub exiting 64; implemented by S-210 gate action 4 or S-REF action 5. At S-003 (first CI run) the stub makes job `reference` fail at \"Fetch every indexed reference\", which S-003 action 3 expects; S-320 Done when allows `reference` to be red; by S-330 (Depends on S-REF) it is implemented.",
+    "tools/fetch_references.py (gate-evidence.yml:61): gate-evidence.yml is copied at S-210 gate action 1 and its job runs only on a commit with the [gate-evidence marker; the tool is implemented at gate action 4 (PY T211) before the marker push at gate action 6; guaranteed.",
+    "tools/build_evidence.py (gate-evidence.yml:68): first version written by S-210 gate action 5, before the marker push; S-340 completes it; guaranteed.",
+    "tools/evidence_guard.py (gate-evidence.yml:76): present as stub exiting 64 (docstring names only S-REF as replacer); implemented by S-210 gate action 2 (PY T210) before the marker push; guaranteed.",
+    "tools/listening/score_gate.py (plan/PLAN.md S-LISTEN action 5): absent; created by S-340 action 2 and Outputs; S-LISTEN depends on S-ADVERSARIAL <- S-REVIEW <- S-340; guaranteed."
+   ]
+  },
+  {
+   "n": 15,
+   "name": "Tool options consistent",
+   "passed": false,
+   "misses": [
+    "plan/PLAN.md:195 S-210 gate action 5 says the first tools/build_evidence.py \"accepts every argument of `S-340`\" and lists ['--gate', '--instrument', '--out', '--private-out', '--ref-root', '--render', '--seed'], which omits ['--index'] defined (optional, default references/index.csv) by S-340 action 1 (plan/PLAN.md:404)",
+    "plan/PLAN.md:367 S-REF action 5 lists the fetch_references.py options ['--archive-cache', '--index', '--only-redistributable', '--root'] but D-052 (plan/DECISIONS.md:132) also defines ['--archives'] which the frozen test tests/py/test_fetch_references.py (T-211) passes"
+   ],
+   "notes": [
+    "build_evidence.py options defined by S-340 actions 1-2: ['--gate', '--index', '--instrument', '--out', '--private-out', '--ref-root', '--render', '--seed']",
+    "GAIN options: ['--check', '--instrument', '--render']",
+    "D-052: ['--archive-cache', '--archives', '--index', '--only-redistributable', '--root']; S-REF action 5: ['--archive-cache', '--index', '--only-redistributable', '--root']"
+   ]
+  },
+  {
+   "n": 16,
+   "name": "TinySOL table",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 17,
+   "name": "Gate Blocks / Continues meanwhile consistency",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "plan/GATES.md:23 Blocks ['G-P1', 'G-P2'] -> []",
+    "plan/GATES.md:23 Blocks ['G-P1'] -> ['S-220', 'S-230']",
+    "plan/GATES.md:23 Blocks ['G-P2'] -> ['S-260']",
+    "plan/GATES.md:24 Continues meanwhile ['G-P1', 'G-P2'] -> []",
+    "plan/GATES.md:24 Continues meanwhile ['G-P1'] -> ['S-212', 'S-101', 'S-240', 'S-250', 'S-REF']",
+    "plan/GATES.md:24 Continues meanwhile ['G-P2'] -> ['S-200', 'S-201', 'S-210', 'S-212', 'S-220', 'S-230', 'S-REF']",
+    "plan/GATES.md:38 Blocks ['G-L1', 'G-L2', 'G-L3', 'G-L4', 'G-L5'] -> ['S-INTEGRATE']",
+    "plan/GATES.md:39 Continues meanwhile ['G-L1', 'G-L2', 'G-L3', 'G-L4', 'G-L5'] -> []",
+    "plan/GATES.md:71 Blocks ['G-004'] -> []",
+    "plan/GATES.md:80 Blocks ['G-003'] -> []",
+    "S-220 depends on G-P1 answer and is in its Blocks",
+    "S-230 depends on G-P1 answer and is in its Blocks",
+    "S-260 depends on G-P2 answer and is in its Blocks"
+   ]
+  },
+  {
+   "n": 18,
+   "name": "Stated test counts agree with the files",
+   "passed": false,
+   "misses": [
+    "plan/ASSUMPTIONS.md:26 A-009 says \"A gating performance test per plugin\" (5 tests), but the files have 1 performance TEST_CASE (T-013 in tests/cpp/test_perf.cpp, program folk-perf), one test that loops over the five instruments and CHECKs each when FOLK_PERF_GATE is set"
+   ],
+   "notes": [
+    "Catch2: folk-tests 27 (tuning 11, strings 6, engine 10), folk-locale-tests 2, folk-perf 1, host_test.cpp 9 per program; ctest without folk-perf: 7 ['folk-tests', 'folk-locale-tests', 'FolkHarmonicaHostTest', 'FolkAccordionHostTest', 'FolkMelodionHostTest', 'FolkMandolinHostTest', 'FolkBouzoukiHostTest']",
+    "pytest (static, with parametrisations): not reference 316, reference 16; per file {'tests/py/test_accordion.py': 27, 'tests/py/test_common.py': 36, 'tests/py/test_evidence_guard.py': 7, 'tests/py/test_fetch_references.py': 10, 'tests/py/test_harmonica.py': 48, 'tests/py/test_melodion.py': 7, 'tests/py/test_metrics_selfcheck.py': 12, 'tests/py/test_pluginval_log_check.py': 2, 'tests/py/test_reeds.py': 92, 'tests/py/test_reference.py': 16, 'tests/py/test_strings.py': 75}",
+    "plan/TRACEABILITY.md:30 T-001 Catch2 test cases = 1 OK",
+    "plan/TRACEABILITY.md:31 T-002 Catch2 test cases = 3 OK",
+    "plan/TRACEABILITY.md:32 T-003 Catch2 test cases = 3 OK",
+    "plan/TRACEABILITY.md:33 T-004 Catch2 test cases = 1 OK",
+    "plan/TRACEABILITY.md:34 T-007 Catch2 test cases = 3 OK",
+    "plan/TRACEABILITY.md:35 T-005 Catch2 test cases = 3 OK",
+    "plan/TRACEABILITY.md:36 T-006 Catch2 test cases = 3 OK",
+    "plan/TRACEABILITY.md:37 T-008 Catch2 test cases = 2 OK",
+    "plan/TRACEABILITY.md:38 T-009 Catch2 test cases = 2 OK",
+    "plan/TRACEABILITY.md:39 T-010 Catch2 test cases = 1 OK",
+    "plan/TRACEABILITY.md:40 T-011 Catch2 test cases = 1 OK",
+    "plan/TRACEABILITY.md:41 T-012 Catch2 test cases = 1 OK",
+    "plan/TRACEABILITY.md:42 T-014 Catch2 test cases = 2 OK",
+    "plan/TRACEABILITY.md:43 T-015 Catch2 test cases = 1 OK",
+    "plan/TRACEABILITY.md:44 T-016 Catch2 test cases = 2 OK",
+    "plan/TRACEABILITY.md:45 T-013 Catch2 test cases = 1 OK",
+    "plan/TRACEABILITY.md:46 T-302 Catch2 test cases = 7 OK",
+    "plan/TRACEABILITY.md:47 T-303 Catch2 test cases = 1 OK",
+    "plan/TRACEABILITY.md:48 T-304 Catch2 test cases = 1 OK",
+    "plan/TRACEABILITY.md:49 T-090 cases = 12 OK",
+    "plan/TRACEABILITY.md:50 T-091 cases = 2 OK",
+    "plan/TRACEABILITY.md:51 T-100 to T-109 cases per id ['T-100', 'T-101', 'T-102', 'T-103', 'T-104', 'T-105', 'T-106', 'T-107', 'T-108', 'T-109'] = [44, 9, 9, 9, 3, 3, 3, 3, 6, 3] OK",
+    "plan/TRACEABILITY.md:52 T-110 to T-114 cases per id ['T-110', 'T-111', 'T-112', 'T-113', 'T-114'] = [6, 30, 10, 1, 1] OK",
+    "plan/TRACEABILITY.md:53 T-120 to T-125 cases per id ['T-120', 'T-121', 'T-122', 'T-123', 'T-124', 'T-125'] = [14, 7, 2, 2, 1, 1] OK",
+    "plan/TRACEABILITY.md:54 T-131 to T-134 cases per id ['T-131', 'T-132', 'T-133', 'T-134'] = [2, 1, 3, 1] OK",
+    "plan/TRACEABILITY.md:55 T-140 to T-154 cases per id ['T-140', 'T-141', 'T-142', 'T-143', 'T-144', 'T-145', 'T-146', 'T-147', 'T-148', 'T-149', 'T-150', 'T-151', 'T-152', 'T-153', 'T-154'] = [23, 1, 2, 1, 1, 1, 6, 1, 2, 1, 5, 1, 2, 1, 27] OK",
+    "plan/TRACEABILITY.md:56 T-160 pytest cases = 10 OK",
+    "plan/TRACEABILITY.md:57 T-161 pytest cases = 16 OK",
+    "plan/TRACEABILITY.md:58 T-162 pytest cases = 5 OK",
+    "plan/TRACEABILITY.md:59 T-163 pytest cases = 5 OK",
+    "plan/TRACEABILITY.md:60 T-200 pytest cases = 11 OK",
+    "plan/TRACEABILITY.md:60 T-200 sub-case counts = [1, 3, 3, 1, 3] OK",
+    "plan/TRACEABILITY.md:61 T-201 pytest cases = 5 OK",
+    "plan/TRACEABILITY.md:61 T-201 sub-case counts = [1, 4] OK",
+    "plan/TRACEABILITY.md:62 T-210 pytest cases = 7 OK",
+    "plan/TRACEABILITY.md:63 T-211 pytest cases = 10 OK",
+    "plan/TRACEABILITY.md:64 T-300 plugins x runners = (5, 4) OK",
+    "plan/TRACEABILITY.md:65 T-310 cases \"1\" not countable from files",
+    "plan/TRACEABILITY.md:103 folk-tests cases/failed = (27, 27) OK",
+    "plan/TRACEABILITY.md:104 folk-locale-tests cases/failed = (2, 2) OK",
+    "plan/TRACEABILITY.md:105 folk-perf cases = 1 OK",
+    "plan/TRACEABILITY.md:106 host programs / cases each / T-302 = (5, 9, 7) OK",
+    "plan/TRACEABILITY.md:106 T-303, T-304 one each = (1, 1) OK",
+    "plan/TRACEABILITY.md:107 not-reference collected/passed/T-090/T-091/failed = (316, 14, 12, 2, 302) OK",
+    "plan/TRACEABILITY.md:108 reference collected/passed/failed/errors = (16, 1, 5, 10) OK",
+    "plan/ENVIRONMENT.md:115 folk-tests cases/fail = (27, 27) OK",
+    "plan/ENVIRONMENT.md:115 host test programs = 5 OK",
+    "plan/PLAN.md:61 red run counts = (27, 27, 2, 2) OK",
+    "plan/PLAN.md:61 Catch2 programs (S-002 action 3 runs folk-tests, folk-locale-tests, folk-perf) = 3 OK",
+    "plan/PLAN.md:309 folk-tests cases = 27 OK",
+    "plan/PLAN.md:328 ctest tests without folk-perf / host programs = (7, 5) OK",
+    "plan/PLAN.md:349 host-test count (ctest without folk-perf) = 7 OK",
+    "plan/PLAN.md:349 pluginval log checks (plugins x runners of job plugins) = 20 OK",
+    "plan/PLAN.md:195 PERF lines (one per instrument of T-013) = 5 OK",
+    "plan/PLAN.md:343 PERF lines (one per instrument of T-013) = 5 OK",
+    "plan/PLAN.md:349 PERF lines (one per instrument of T-013) = 5 OK",
+    "plan/DECISIONS.md:134 pairs per round (12 real + 2 controls) = 14 OK",
+    "plan/DECISIONS.md:134 pairs per round (12 real + 2 controls) = 14 OK",
+    "plan/GATES.md:49 pairs per round (12 real + 2 controls) = 14 OK",
+    "plan/GATES.md:49 pairs per round (12 real + 2 controls) = 14 OK",
+    "plan/GATES.md:51 pairs per round (12 real + 2 controls) = 14 OK",
+    "plan/GATES.md:51 answer letters (one per pair) = 14 OK",
+    "plan/PLAN.md:405 answer letters (one per pair) = 14 OK",
+    "plan/PLAN.md:462 answer letters (one per pair) = 14 OK",
+    "plan/PLAN.md:404 make_blind_pairs --pairs = 14 OK",
+    "plan/PLAN.md:404 clips (2 per pair) = 28 OK",
+    "plan/PLAN.md:409 clips (2 per pair) = 28 OK",
+    "plan/ENVIRONMENT.md:115 (not a count): the freeze-state sentence names folk-tests, folk-perf, host tests and pytest but not folk-locale-tests, and attributes status-64 stub failures only to the evidence guard, not to the tools/fetch_references.py stub (T-211, 10 cases); plan/TRACEABILITY.md:107 names both",
+    "HANDOFF.md:27 (not a count): \"The frozen suite\" lists build/folk-tests, build/folk-perf, the five HostTest programs and pytest, but not build/folk-locale-tests (T-016)",
+    "HANDOFF.md:186 binomial figures checked: P(X>=10|12)=0.0193, P(X>=9)=0.0730, P(X>=7)=0.387; D-053 \"about 0.07\" for 9 of 12 agrees",
+    "cross-check: pytest --collect-only (run with -B, PYTHONDONTWRITEBYTECODE=1, -p no:cacheprovider; nothing written in the checkout) gives the same per-file counts, 316 not reference and 16 reference"
+   ]
+  },
+  {
+   "n": 19,
+   "name": "all-green needs and gate-evidence outputs",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "all-green needs ['freeze', 'core', 'plugins', 'host-tsan', 'reference', 'audit']; each tested = success; if: always()",
+    "plan/ci/gate-evidence.yml:97 needs.evidence.outputs.gate declared",
+    "plan/ci/gate-evidence.yml:98 needs.evidence.outputs.instrument declared",
+    "plan/ci/gate-evidence.yml:99 needs.evidence.outputs.seed declared",
+    "plan/ci/gate-evidence.yml:113 needs.evidence.outputs.gate declared",
+    "job evidence output gate <- step marker writes gate",
+    "job evidence output instrument <- step marker writes instrument",
+    "job evidence output seed <- step marker writes seed"
+   ]
+  },
+  {
+   "n": 20,
+   "name": "Risk register citations and row shape",
+   "passed": false,
+   "misses": [
+    "premortem/RISK_REGISTER.md:16 R-010 status 'accepted (named in the Phase 5 report)' not among mitigated, accepted, open, speculative"
+   ],
+   "notes": [
+    "header (line 5) has 11 columns: ['ID', 'Description', 'Lens', 'Severity', 'Likelihood (conditions)', 'Root cause', 'Traces to', 'Failure path', 'Mitigation (what it adds)', 'Status', 'Origin']",
+    "50 rows, R-001 to R-050",
+    "statuses: {'mitigated': 35, 'accepted (named in the Phase 5 report)': 1, 'accepted': 14}",
+    "19 distinct R-ids cited in plan/*.md; all present"
+   ]
+  }
+ ],
+ "summary": "20 checks run by script on cold6m; 16 passed, 4 failed (check 14: 1 miss; check 15: 2 misses; check 18: 1 miss; check 20: 1 miss). Check 14: S-003 action 3 (plan/PLAN.md:77) still says the fetch tool does not exist, but tools/fetch_references.py is now a stub exiting 64. Check 15: S-210 gate action 5 lists build_evidence.py arguments \"of S-340\" without --index; S-REF action 5 lists fetch_references.py options without --archives (in D-052 and passed by frozen T-211). Check 18: A-009 (plan/ASSUMPTIONS.md:26) says \"a gating performance test per plugin\" but there is one T-013 TEST_CASE looping over five instruments; every other stated count (27, 2, 1, 9 per host program, 7 ctest, 316 and 16 collected, 14 pairs, 28 clips, the per-T Cases column) agrees. Check 20: R-010 status \"accepted (named in the Phase 5 report)\" carries its note in parentheses, not after a semicolon. check_knowledge_schema.py and check_register.py exit 0; manifest 30 entries all OK; nothing written in the checkout."
+}

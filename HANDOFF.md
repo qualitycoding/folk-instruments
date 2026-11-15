@@ -24,7 +24,7 @@ Build five physically modelled instrument plugins (VST3 and Standalone, built wi
 ## 3. Setup, tests and the freeze
 
 - Setup and every build and test command: `plan/ENVIRONMENT.md` sections 2 to 4.
-- The frozen suite: `build/folk-tests`, `build/folk-perf`, the five `...HostTest` programs, and `cd tests && FOLK_RENDER=<absolute path of folk-render> python3 -m pytest -m "not reference"`; the reference tests add `-m reference` with `FOLK_TINYSOL` and `FOLK_REF_ROOT`.
+- The frozen suite: `build/folk-tests`, `build/folk-locale-tests`, `build/folk-perf`, the five `...HostTest` programs, and `cd tests && FOLK_RENDER=<absolute path of folk-render> python3 -m pytest -m "not reference"`; the reference tests add `-m reference` with `FOLK_TINYSOL` and `FOLK_REF_ROOT`.
 - Verify the freeze: `sha256sum -c tests/FROZEN_MANIFEST.sha256`. CI runs the same check.
 - **Immutability.** You cannot modify, skip, mark as expected-failure, or weaken a frozen test or fixture. If a frozen test is invalid, halt that step and write `TEST_CHALLENGE.md` (item ID, evidence, proposed fix); the planning agent amends the plan. Steps that do not depend on the challenged item may continue.
 - Tests that pass from the start: the tool checks in `tests/py/test_metrics_selfcheck.py` and `tests/py/test_pluginval_log_check.py`, and `test_T200_frozen_thresholds_still_describe_the_data`. Everything else fails against the stubs and turns green as you implement.
