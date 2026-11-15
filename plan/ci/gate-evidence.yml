@@ -111,8 +111,9 @@ jobs:
       - name: Pushed branch holds the bundle
         env:
           GATE: ${{ needs.evidence.outputs.gate }}
+          TOKEN: ${{ github.token }}
         run: |
           cd evidence
-          git fetch --depth 1 "https://github.com/${GITHUB_REPOSITORY}.git" "evidence/$GATE"
+          git fetch --depth 1 "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "evidence/$GATE"
           git ls-tree --name-only FETCH_HEAD | grep -qx SHA256SUMS
           git ls-tree --name-only FETCH_HEAD | grep -qx MANIFEST.json

@@ -189,6 +189,7 @@ jobs:
         run: cmake --build build-tsan --parallel 4 --target FolkHarmonicaHostTest FolkAccordionHostTest FolkMelodionHostTest FolkMandolinHostTest FolkBouzoukiHostTest
       - name: Concurrency test under ThreadSanitizer (T-304)
         run: |
+          sudo sysctl -w vm.mmap_rnd_bits=28
           export TSAN_OPTIONS="halt_on_error=1 second_deadlock_stack=1${{ hashFiles('tests/ci/tsan.supp') != '' && ' suppressions=tests/ci/tsan.supp' || '' }}"
           n=0
           for t in Harmonica Accordion Melodion Mandolin Bouzouki; do

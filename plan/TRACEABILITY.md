@@ -78,11 +78,11 @@ Every test with a numeric threshold fails the build when missed: all are asserti
 | D-020 to D-024 | C-011 to C-014 | T-002, T-003, T-110 to T-114 |
 | D-030 to D-033 | C-017 to C-020 | T-004, T-120 to T-125 |
 | D-040, D-041 | C-023 to C-025, C-065 | T-131 to T-134 |
-| D-050 to D-053 | C-021, C-049 to C-051, C-055 | T-200, T-201, T-210; gates G-L1 to G-L5 |
+| D-050 to D-053 | C-021, C-049 to C-051, C-055 | T-200, T-201, T-210, T-211; gates G-L1 to G-L5 |
 | D-060 to D-064 | C-026 to C-031, C-042, C-064 | T-005, T-006, T-140 to T-154 |
 | D-070 to D-073 | C-034 to C-041, C-052 | T-007, T-140, T-146, T-147 |
 | D-080 to D-086 | C-043 to C-048, C-057 | T-300, T-302, T-310, T-013; S-003 |
-| D-090 to D-094 | C-056, C-057 | T-008, T-014, T-160 to T-163, T-302 |
+| D-090 to D-094 | C-056, C-057 | T-008, T-014, T-016, T-160 to T-163, T-302, T-303, T-304 |
 
 ## 4. CI platform matrix (protocol 3.9)
 
