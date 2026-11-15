@@ -7,7 +7,7 @@ import similarity as s, metrics as m
 from scipy.signal import sosfilt, resample_poly
 rho, c0, alpha = 1.2, 343.0, 0.61
 def hz(n): return 440 * 2 ** ((n - 69) / 12)
-def run_chord(notes, p0, mode, A_m=120e-6, Vp=200e-6, fs=48000 * 8, T=1.0):
+def run_chord(notes, p0, mode, A_m=40e-6, Vp=200e-6, fs=48000 * 8, T=1.0):
     P = [s.reed(hz(n) * 2 ** (23.1 / 1200) / 444.0) for n in notes]          # natural frequency set 23 cents above the target
     tabs = [s.table(q) for q in P]; N = len(P); dt = 1 / fs; n = int(T * fs)
     x = np.array([q["x0"] for q in P]); v = np.zeros(N); p1 = np.zeros(N); u = np.zeros(N); pp = 0.0

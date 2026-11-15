@@ -1,4 +1,4 @@
-# Copy to .github/workflows/gate-evidence.yml in step S-340. Builds the evidence bundle of one listening gate and pushes it
+# Copy to .github/workflows/gate-evidence.yml in step S-210 (S-340 re-checks the copy). Builds the evidence bundle of one listening gate and pushes it
 # as the only content of the orphan branch evidence/<gate id> (plan/PLAN.md S-340, S-LISTEN; HANDOFF.md "Delivering audio").
 # Trigger: a push to an implementation branch whose head commit message contains
 #   [gate-evidence <gate id> <instrument> seed=<n>]
