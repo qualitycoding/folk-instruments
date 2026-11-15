@@ -1,0 +1,127 @@
+{
+ "checked": [
+  {
+   "row": 7,
+   "url": "https://euphonics.org/11-6-free-reeds/",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "page footer (CC BY-NC-SA 4.0 badge and text)",
+   "correction": ""
+  },
+  {
+   "row": 81,
+   "url": "https://dael.euracoustics.org/confs/fa2023/data/articles/000539.pdf",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "PDF first page copyright note (CC Attribution 3.0 Unported)",
+   "correction": ""
+  },
+  {
+   "row": 82,
+   "url": "https://en.wikipedia.org/wiki/Irish_bouzouki",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "page footer (CC BY-SA 4.0); history, tunings, scale lengths and 1972 Abnett instrument confirmed",
+   "correction": ""
+  },
+  {
+   "row": 89,
+   "url": "https://archive.org/",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "home page; no item used",
+   "correction": ""
+  },
+  {
+   "row": 95,
+   "url": "https://zenodo.org/api/records?q=harmonica%7Cmandolin%7Cbouzouki",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "API response now; first 25 hits include the named datasets alongside software and taxonomic records; none are isolated-note sets",
+   "correction": ""
+  },
+  {
+   "row": 97,
+   "url": "https://en.wikipedia.org/wiki/Richter-tuned_harmonica",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "page footer (CC BY-SA 4.0)",
+   "correction": ""
+  },
+  {
+   "row": 98,
+   "url": "https://philharmonia.co.uk/resources/sound-samples/",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "licensing paragraph on the page; permitted use stricter than the terms, acceptable",
+   "correction": ""
+  },
+  {
+   "row": 100,
+   "url": "https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_article",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": false,
+   "permitted_ok": true,
+   "where_read": "article page metadata (Copyright 2003 by The Acoustical Society of Japan; FREE ACCESS)",
+   "correction": "Content cell mentions Table 1, air-cavity modes and accelerance curves; the article page abstract supports only TV-holography modal frequencies of four mandolins and a mandola, frequency response curves and sound spectra. Either narrow the cell or note it was read from the full text."
+  },
+  {
+   "row": 134,
+   "url": "https://commons.wikimedia.org/w/index.php?search=bouzouki+filetype%3Aaudio",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "search results now; hits show mixed licences (CC BY-SA 4.0, CC BY 3.0, some per-file)",
+   "correction": ""
+  },
+  {
+   "row": 142,
+   "url": "https://www.daddario.com/sitemap.xml",
+   "title_ok": true,
+   "licence_ok": false,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "sitemap XML contains no footer, copyright or terms text",
+   "correction": "Licence cell says 'Copyright D'Addario & Co., all rights reserved; site Terms of Service (page footer)' but the sitemap XML has no footer or licence statement. Record the place actually read (the site's footer on another page) or state 'none stated on the sitemap'. Permitted use 'read only' is acceptable."
+  },
+  {
+   "row": 146,
+   "url": "https://zenodo.org/api/records/3685367",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Zenodo record metadata (title TinySOL, version 6.0, cc-by-4.0, six creators)",
+   "correction": ""
+  },
+  {
+   "row": 148,
+   "url": "https://zenodo.org/records/4588740",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Zenodo record metadata via API (version 1.1, cc-by-4.0; 12 instruments, none of the five)",
+   "correction": ""
+  }
+ ],
+ "not_checked": [],
+ "discrepancies": 2,
+ "summary": "All 12 rows checked. Two discrepancies: row 100 (content cell goes beyond what the article page abstract supports) and row 142 (licence cell cites a page footer that the sitemap XML does not have). Rows 95, 134 and 148 (corrected earlier) now match; row 95's hit list has changed but the described hits are still present."
+}
