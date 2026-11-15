@@ -259,7 +259,7 @@ Verbatim from the protocol:
 > * **Implementation results.** `RETROSPECTIVE.md` opens with an implementation results header: `[software]` code-review findings by severity and how many were fixed or accepted as `R-###`; adversarial breaks confirmed; the mutation score against its floor if `S-MUTATE` ran. These are implementation results and are reported here, never in the planner's Phase 5 report.
 > * **Done when:** every finding links to an `L-` or `K-` file, and the schema check in Appendix C passes.
 
-"Appendix C" is in `plan/TEMPLATES.md`; the schema check is `python3 scripts/check_knowledge_schema.py`. This plan has no `S-MUTATE` step (D-004): say so in the results header.
+"Appendix C" is in `plan/TEMPLATES.md`; the schema check is `python3 scripts/check_knowledge_schema.py`. This plan has no mutation-testing step (D-004): say so in the results header.
 
 ## 12. Integration
 

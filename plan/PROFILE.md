@@ -16,7 +16,7 @@
 | `protocols/modules/audio.md` | v1.0 | `audio = true` |
 | `protocols/modules/ephemeral.md` | v1.0 | environment class `ephemeral` |
 
-Read from `qualitycoding/skills` at commit `a20ed73` (`origin/main` on 2026-11-14). Skills read: `create-plan`, `audio-blind-listening-validation`. The skills `mutation-testing-in-ci` and `mutation-sharding` are read when the `S-MUTATE` decision is taken (see `plan/DECISIONS.md`).
+Read from `qualitycoding/skills` at commit `a20ed73` (`origin/main` on 2026-11-14). Skills read: `create-plan`, `audio-blind-listening-validation`. The skills `mutation-testing-in-ci` and `mutation-sharding` were not read: the mutation-testing step is omitted (D-004).
 
 ## Tier map
 
