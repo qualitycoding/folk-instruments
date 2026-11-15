@@ -196,7 +196,7 @@ Gate actions of S-210 (after its tests pass): the pilot gate needs the evidence 
 - Depends on: S-210
 - Inputs: D-022, rule DR-04, C-013
 - Actions: follow rule DR-04. The experiment: one channel with a blow reed and a draw reed sharing the cell pressure, the draw reed mounted with the opposite orientation, and a second upstream volume and passage (the player's mouth) whose resonance frequency is the bend control; the wheel moves that resonance from 1.2 times the higher reed's frequency down to the lower reed's frequency. Keep it behind an internal build-time switch until the rule's conditions are met.
-- Outputs: either an updated `core/src/harmonica.cpp` (adopted) or no code change (not adopted); in both cases an entry in `DEVIATIONS.md` and a knowledge item `knowledge/K-<time>-two-reed-bend-experiment.md` recording what was tried and measured
+- Outputs: `baseline/s212-before.txt`; either an updated `core/src/harmonica.cpp` (adopted) or no code change (not adopted); in both cases an entry in `DEVIATIONS.md` and a knowledge item `knowledge/K-<time>-two-reed-bend-experiment.md` recording what was tried and measured
 - Evidence produced: none new
 - Done when: before starting, the list of frozen tests passing on `impl-<run_id>` is saved to `baseline/s212-before.txt`; rule DR-04 has been applied and its outcome recorded (its performance condition judged with `FOLK_PERF_GATE=1 $B/folk-perf` locally and on the next CI run, both recorded); PY `harmonica` and PY `harmonica and (T100 or T101 or T102 or T103)` still pass; every test listed in `baseline/s212-before.txt` still passes.
 - Checkpoint: adopted or not.
@@ -301,7 +301,7 @@ Gate actions of S-250: push a commit with the marker `[gate-evidence G-P2 mandol
   3. Run `python3 tools/calibrate_reeds.py --check` (the committed offsets match a fresh run with the committed curves within 0.2 cents) and `python3 tools/gen_presets.py --check`.
   4. Build once with `cmake -S . -B $HOME/folk-build-asan -G Ninja -DFOLK_BUILD_PLUGINS=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_CXX_FLAGS="-fsanitize=address,undefined -fno-sanitize-recover=undefined" && cmake --build $HOME/folk-build-asan` and run `folk-tests` there with `ASAN_OPTIONS=detect_leaks=0:halt_on_error=1` (the allocation-probe test T-011 replaces `operator new`; if the sanitiser build cannot link because of that, run it with the Catch2 filter `~"T-011*"` and record this in `EXECUTION_LOG.md`).
 - Outputs: `presets/gains.json`, `core/src/generated/presets_data.h` (regenerated); removes `core/src/stubs.cpp`
-- Evidence produced: T-001 to T-015 complete, T-100 to T-163 complete
+- Evidence produced: T-001 to T-015, T-100 to T-114, T-120 to T-125, T-131 to T-134, T-140 to T-154 and T-160 to T-163, all complete
 - Done when: `$B/folk-tests` exits 0 with 27 test cases passed; `cd tests && FOLK_RENDER=$B/folk-render python3 -m pytest -m "not reference"` exits 0 with no failure, error or skip; `$B/folk-perf` exits 0 and prints five `PERF` lines, each recorded in `EXECUTION_LOG.md`; both `--check` commands exit 0; the sanitiser run exits 0.
 - Checkpoint: step done; the five local real-time factors.
 - On failure: fix the code. A local real-time factor below 4 is not a failure of this step (the gate is on the CI runner, S-320) but is recorded; rule DR-06 applies if S-320 misses.
@@ -380,7 +380,7 @@ Gate actions of S-250: push a commit with the marker `[gate-evidence G-P2 mandol
   2. If any reference test fails, calibrate by rule DR-07, running `python3 tools/reed_check.py --instrument <name> --calibrated > baseline/reed-check-calibrated.csv` and then `tools/calibrate_reeds.py` after any change to a reed curve, and re-running the whole of `S-300`'s `Done when` after each round.
   3. Save the final output to `baseline/reference-after.txt`.
 - Outputs: `baseline/reference-before.txt`, `baseline/reference-after.txt`, possibly updated `presets/reeds.json` and `presets/bodies.json`
-- Evidence produced: T-200, T-201b
+- Evidence produced: T-200 (T-200a to T-200e), T-201 (T-201b)
 - Done when: `python3 -m pytest -m reference -s` exits 0 locally or in the CI `reference` job, and the `Done when` of `S-300` still holds; or rule DR-07's five rounds are used up, in which case the step is logged as failed, the failing tests are listed in `EXECUTION_LOG.md`, and the plan continues to `S-340` with that failure carried into the evidence of the listening gate of the instrument concerned.
 - Checkpoint: rounds used; pass or fail per test.
 - On failure: rule DR-07.
