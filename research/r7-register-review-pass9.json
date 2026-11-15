@@ -1,0 +1,107 @@
+{
+ "checked": [
+  {
+   "row": 3,
+   "url": "https://arxiv.org/pdf/2401.01606",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "PDF pages 1-2 (title, authors, abstract, Fletcher); abstract page arxiv.org/abs/2401.01606 shows non-exclusive-distrib/1.0 licence",
+   "correction": ""
+  },
+  {
+   "row": 16,
+   "url": "https://arxiv.org/html/2401.01606v1",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "HTML page: 'License: arXiv.org perpetual non-exclusive license'; Acta Acustica 2007 journal reference present",
+   "correction": ""
+  },
+  {
+   "row": 95,
+   "url": "https://zenodo.org/api/records?q=harmonica|mandolin|bouzouki",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": false,
+   "permitted_ok": true,
+   "where_read": "Unencoded URL returns HTTP 400; re-fetched URL-encoded (%7C): 71 hits, mixed record types",
+   "correction": "Content 'no audio datasets' is only partly supported: dataset-type hits exist (3D mandolin models, wood harmonica, 1892 Campaign Harmonica, Leone Allemandes Corpus zip); none was seen to be an audio dataset from the metadata checked, so say 'no audio datasets seen among the first hits'. URL as written fails with 400 unless percent-encoded."
+  },
+  {
+   "row": 132,
+   "url": "https://ccrma.stanford.edu/~jos/pasp/Ideal_Plucked_String.html",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Page header: Copyright 2026-08-21 by Julius O. Smith III; text on initial displacement, zero velocity, travelling waves",
+   "correction": ""
+  },
+  {
+   "row": 134,
+   "url": "https://commons.wikimedia.org/w/index.php?search=bouzouki+filetype%3Aaudio",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": false,
+   "permitted_ok": true,
+   "where_read": "Search results page (bouzouki only); file pages not re-read",
+   "correction": "The URL is the bouzouki search only; the harmonica, melodica, Electra-Melodica and 'open-course notes' content is not on this page (no hits for melodica/bend/open course). Content cell cannot be verified from the named URL; list the other search URLs or trim. Licence 'per file' is accurate (results show mixed licences e.g. CC BY-SA 4.0)."
+  },
+  {
+   "row": 142,
+   "url": "https://www.daddario.com/sitemap.xml",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Sitemap XML is a sitemapindex; footer on https://www.daddario.com/ reads 'Copyright (c) D'Addario & Co. All Rights Reserved' with Terms of Service link",
+   "correction": ""
+  },
+  {
+   "row": 146,
+   "url": "https://zenodo.org/api/records/3685367",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Zenodo record JSON: TinySOL, version 6.0, six creators match, license cc-by-4.0, DOI 10.5281/zenodo.3685367",
+   "correction": ""
+  },
+  {
+   "row": 148,
+   "url": "https://zenodo.org/records/4588740",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Zenodo record JSON (api/records/4588740): Good-sounds dataset, Romani Picas, Parra Rodriguez, Dabiri, Serra; cc-by-4.0; version 1.1 (cell says not dated, minor). 'read only' is stricter than needed, not inconsistent",
+   "correction": ""
+  },
+  {
+   "row": 136,
+   "url": "https://commons.wikimedia.org/wiki/File:Blues_Harp1.ogg",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "action=render Licensing section: GFDL 1.2 or later; CC BY-SA 3.0, 2.5, 2.0 and 1.0; author Grassinger",
+   "correction": ""
+  },
+  {
+   "row": 145,
+   "url": "https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_pdf",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Article page meta name=copyright '2003 by The Acoustical Society of Japan'; PDF text confirms four mandolins and a mandola, tuning G3 D4 A4 E5",
+   "correction": ""
+  }
+ ],
+ "not_checked": [],
+ "discrepancies": 2,
+ "summary": "All 10 rows fetched. 2 rows with discrepancies (95, 134), both in the content cell; titles, authors, licences and permitted uses all match."
+}

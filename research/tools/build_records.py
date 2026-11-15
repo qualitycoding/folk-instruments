@@ -97,7 +97,10 @@ OVERRIDE = {"euphonics.org/publication-list": ("Site text CC BY-NC-SA 4.0 except
             "zenodo.org/records/3685367": (None, None, "C.-E. Cella, D. Ghisi, V. Lostanlen, F. Levy, J. Fineberg, Y. Maresz (recorded at Ircam)"),
             "zenodo.org/api/records/3685367": (None, None, "C.-E. Cella, D. Ghisi, V. Lostanlen, F. Levy, J. Fineberg, Y. Maresz (recorded at Ircam)")}
 PERMIT = {}
-SUMMARY = {"https://commons.wikimedia.org/wiki/File:Tuning-Sound-G-Bouzouki.ogg": "A short recording, 'Tuning Sound G for Irish Bouzouki', the contributor's own work (24 August 2019).",
+SUMMARY = {"https://zenodo.org/api/records?q=harmonica|mandolin": "Zenodo API searches for the instrument names (the query separators must be percent-encoded as %7C to run). Among the first hits are dataset records (3D models of a mandolin, a 'wood harmonica', an 1892 harmonica record, a corpus of allemandes), none of them a set of isolated notes of these instruments.",
+           "https://commons.wikimedia.org/w/index.php?search=bouzouki": "A Wikimedia Commons search for bouzouki audio files; its hits carry mixed licences per file (for example CC BY-SA 4.0). The other Commons searches of round 3 (harmonica, melodica, mandolin) are summarised in research/rounds/r3-adversarial.json; the files used have their own rows.",
+           "https://zenodo.org/records/4588740": "Good-sounds dataset: single notes and scales of orchestral and other instruments recorded at 48 kHz; none of the five instruments.",
+           "https://commons.wikimedia.org/wiki/File:Tuning-Sound-G-Bouzouki.ogg": "A short recording, 'Tuning Sound G for Irish Bouzouki', the contributor's own work (24 August 2019).",
            "https://commons.wikimedia.org/wiki/File:Harmonica_02.ogg": "Harmonica 02: a 17 s clip, released into the public domain by its author through pdsounds.org; the original was a mono MP3 at 22 kHz (27 March 2008).",
            "https://euphonics.org/7-3-multiple-strings": "Section 7.3 of Woodhouse's online book Euphonics: multiple strings, coupled polarisations and double-decay envelopes, with sound examples.",
            "https://arxiv.org/pdf/2104.02480": "'Pickers' Guide to Acoustics of the Banjo', parts I and II (Politzer, Woodhouse, Mansour). A round-1 worker took this to be the preprint of Woodhouse's double-decay paper; it is not, and no claim rests on it.",
@@ -166,6 +169,8 @@ for u, s_ in src_by_url.items():
         s_["access_notes"] = "unreachable when first checked in round 1; fetched with HTTP 200 on 2026-11-15 by the licence sweep (spike S16), after the owner widened the network allowlist"
     if u.startswith("https://ccrma.stanford.edu/software/stk/classstk_1_1Mandolin"): s_["access_notes"] = "class reference page fetched with HTTP 200 on 2026-11-15"
     if u == "https://zenodo.org/record/3685367": s_["access_notes"] = "record metadata read through the Zenodo API; the archive was downloaded and its md5 checked in spike S07"
+    if u.startswith("https://commons.wikimedia.org/w/index.php?search=bouzouki"): s_["title"] = "Wikimedia Commons search: bouzouki filetype:audio"
+    if u.startswith("https://zenodo.org/records/4588740"): s_["version_or_date"] = "version 1.1 (record page)"
     if u == "https://commons.wikimedia.org/wiki/File:Harmonica_02.ogg": s_["title"] = "Harmonica 02 (Harmonica_02.ogg)"
     if u == "https://arxiv.org/pdf/2104.02480": s_["title"] = "Pickers' Guide to Acoustics of the Banjo, parts I and II (arXiv 2104.02480)"; s_["owner_or_authors"] = "D. Politzer, J. Woodhouse, H. Mansour"
     if u.startswith("https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf"): s_["title"] = "Clamped bar model for free reeds (Forum Acusticum 2023)"; s_["owner_or_authors"] = "N. Puranik, G. Scavone"
