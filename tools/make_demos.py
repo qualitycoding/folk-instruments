@@ -61,6 +61,8 @@ def main():
             t += 2.0
         ch.sort(key=lambda e: (round(e[0], 6), e[1]))
         write(f"{ins}-06-chords.events", [f"{a:.4f} {e}" for a, _, e in ch] + [f"{t + 1.5:.4f} end"])
+        if ins == "melodion":  # chords under a flow-limited breath (D-041; gate G-L4)
+            write("melodion-11-chords-limited-breath.events", ["0.0000 set range 1", "0.0000 set breath_mode 1"] + [f"{a:.4f} {e}" for a, _, e in ch] + [f"{t + 1.5:.4f} end"])
         if ins in PLUCKED:
             trem = seq([(0, 4, root), (4, 4, root + 4), (8, 4, root + 7), (12, 6, root + 12)], 90, vel=0.75, gap=0.98, pre=[(0.0, "cc 1 1.0")])
             write(f"{ins}-07-tremolo.events", trem)

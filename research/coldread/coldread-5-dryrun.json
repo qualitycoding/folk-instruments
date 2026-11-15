@@ -1,0 +1,178 @@
+{
+ "items": [
+  {
+   "n": 1,
+   "where": "plan/PLAN.md S-320 vs plan/DECISIONS.md DR-04",
+   "kind": "contradiction",
+   "severity": "guess",
+   "text": "DR-04 says S-212's provisional adoption 'becomes final in S-320' (switch turned off if T-013 fails for the harmonica in CI and passes without it), but S-320's actions, Done when and checkpoint never mention DR-04, the build-time switch or S-212; S-320 only says 'apply DR-06 for T-013', so an implementer at a T-013 miss does not know whether to optimise (DR-06) or turn the two-reed switch off first.",
+   "suggested_fix": "Add an S-320 action: if S-212 adopted provisionally, apply DR-04's final check before DR-06 and record the outcome in DEVIATIONS.md and the checkpoint."
+  },
+  {
+   "n": 2,
+   "where": "plan/PLAN.md conventions, PUSH",
+   "kind": "contradiction",
+   "severity": "minor",
+   "text": "PUSH lists 'S-212's performance check' among the steps that wait for a CI run, but DR-04 and S-212 now make that check a local folk-perf run (the CI check is deferred to S-320).",
+   "suggested_fix": "Drop S-212 from the PUSH list of CI-waiting steps."
+  },
+  {
+   "n": 3,
+   "where": "plan/PLAN.md S-212",
+   "kind": "missing decision rule",
+   "severity": "minor",
+   "text": "An adopted two-reed bend changes the harmonica's output level, yet S-212 neither re-runs GAIN harmonica nor lists the exclusive resource 'generated presets', while its Done when requires PY harmonica (which includes T-162, dependent on the gain) to pass.",
+   "suggested_fix": "State that S-212 re-runs GAIN harmonica after adoption and lists 'generated presets' as exclusive resource."
+  },
+  {
+   "n": 4,
+   "where": "plan/PLAN.md S-201, S-300 (tools/reed_check.py, tools/calibrate_reeds.py)",
+   "kind": "missing input",
+   "severity": "minor",
+   "text": "The tools 'call reed_probe' but no argument or convention says where the binary is (e.g. $B/reed_probe), and S-300 runs 'calibrate_reeds.py --check' with no path.",
+   "suggested_fix": "Give both tools a --probe argument defaulting to $HOME/folk-build/reed_probe and use it in the commands."
+  },
+  {
+   "n": 5,
+   "where": "plan/DECISIONS.md D-094 vs tests/juce/host_test.cpp T-302 (state round trip); plan/PLAN.md S-310",
+   "kind": "test-decision mismatch",
+   "severity": "guess",
+   "text": "D-094 says the wrapper copies parameter values to the engine only at the start of each block and saves state as the engine's state text; T-302 sets every JUCE parameter to 0.37 and calls getStateInformation with no processBlock in between, so the literal design saves the defaults and the round-trip check fails. S-310 action 2 specifies only the restore path.",
+   "suggested_fix": "State in D-094/S-310 that getStateInformation builds the text from the current JUCE parameter values (e.g. push them into the engine or a temporary engine first), not from the engine's last-block values."
+  },
+  {
+   "n": 6,
+   "where": "plan/PLAN.md S-310 action 2 vs plan/DECISIONS.md D-090",
+   "kind": "ambiguous",
+   "severity": "guess",
+   "text": "Validating the blob with loadState 'on a temporary engine' and then updating the JUCE parameters from it resets every key missing from the text to its default, whereas D-090 says missing keys keep their current values.",
+   "suggested_fix": "Say the temporary engine is first loaded with the current parameter values (or that only the keys present in the text are copied back)."
+  },
+  {
+   "n": 7,
+   "where": "plan/PLAN.md S-REF action 4; plan/ENVIRONMENT.md section 1; plan/DECISIONS.md D-052",
+   "kind": "missing input",
+   "severity": "guess",
+   "text": "S-REF tells the implementer to copy source_url 'the Zenodo archive URL of plan/ENVIRONMENT.md', but ENVIRONMENT.md holds no URL (only the record number and md5); the only URL is in ci.yml and ends in '/content', not '.tar.gz', while D-052 identifies archive rows by a '.zip'/'.tar.gz' source_url, so fetch_references.py would treat the 1 GB tarball as the WAV itself whenever the file is not already extracted. licence_url and accessed for these rows are also unstated.",
+   "suggested_fix": "Put the exact source_url, licence_url and accessed values of the 12 TinySOL rows in ENVIRONMENT section 1, and define archive detection in D-052 by an explicit rule that the '/content' URL satisfies."
+  },
+  {
+   "n": 8,
+   "where": "plan/ENVIRONMENT.md section 1 (TinySOL rows) vs plan/DECISIONS.md DR-11",
+   "kind": "contradiction",
+   "severity": "guess",
+   "text": "ENVIRONMENT says a TinySOL hash that differs on a fresh download 'is a halt', while DR-11 says a reference whose sha256 no longer matches is dropped, logged in DEVIATIONS.md, and work continues with fewer notes.",
+   "suggested_fix": "Make the two agree (for example: DR-11 applies, except that losing any of the 12 accordion rows is a halt because G-L3 and T-200 depend on them)."
+  },
+  {
+   "n": 9,
+   "where": "plan/DECISIONS.md D-052 / DR-13 / DR-16; plan/PLAN.md S-REF Done when; plan/ci/ci.yml job reference",
+   "kind": "missing decision rule",
+   "severity": "guess",
+   "text": "CI's reference job fetches every row including private Philharmonia files; if that host refuses CI downloads (or its terms bar automated access, Rule 15 (a)), fetch_references.py exits 1, the reference job and all-green stay red, and no rule covers it: DR-13 assumes CI can reach the host and DR-16 only covers a DR-07 failure.",
+   "suggested_fix": "Add a rule for a private reference that CI cannot fetch (e.g. index it as private with comparison run locally only, or drop it under DR-11) and say how all-green is then reached."
+  },
+  {
+   "n": 10,
+   "where": "plan/PLAN.md S-240 Done when (pluck_ref.py equivalence)",
+   "kind": "unevaluable done-when",
+   "severity": "guess",
+   "text": "The check compares 'the core's output' for the f-hole mandolin with pluck_ref.py's render(), but the mandolin instrument (bodies, courses, note mapping) is only built in S-250, and it does not say whether the comparison is taken before or after G_out, level/0.7 and the tanh limiter, which reshape a peak-normalised waveform enough to break a 0.01 RMS bound.",
+   "suggested_fix": "Say the comparison drives pluck.h directly (or the engine) and taps the body output before G_out and the limiter, with the course, body and Y_ref built as in pluck_ref.py's __main__."
+  },
+  {
+   "n": 11,
+   "where": "plan/PLAN.md S-110 action 2 and S-240 Outputs",
+   "kind": "ambiguous",
+   "severity": "minor",
+   "text": "S-110 implements folk-render 'to the contract of D-092', which includes --dump-model and tap, when no plucked model exists; S-240 adds the internal headers for tap and --dump-model but does not list tools/folk-render/main.cpp as an output, so it is unclear which step wires them in.",
+   "suggested_fix": "List tools/folk-render/main.cpp in S-240's outputs and state that S-110 leaves --dump-model and tap as stubs."
+  },
+  {
+   "n": 12,
+   "where": "plan/PLAN.md S-340 action 1 (c) vs tests/py/test_evidence_guard.py",
+   "kind": "missing input",
+   "severity": "minor",
+   "text": "The guard fails unless every file in the evidence directory is listed in MANIFEST.json, but the derived_from rule names only demos, pair clips, PAIRS-SHA256SUMS and METRICS.md, leaving key.json.b64, sources.json.b64 (written by make_blind_pairs.py into pairs/), SHA256SUMS and ATTRIBUTION.md unspecified.",
+   "suggested_fix": "List these four files with derived_from [] (or say the key and sources files are excluded from the published directory)."
+  },
+  {
+   "n": 13,
+   "where": "plan/PLAN.md S-340 action 2 (METRICS.md)",
+   "kind": "ambiguous",
+   "severity": "minor",
+   "text": "METRICS.md is built from 'pytest -k <name>', which for the mandolin and bouzouki misses most test_strings.py tests (T-142 to T-145, T-148, T-149, T-151, T-153 carry no instrument name), so the 'pass or fail of each frozen test concerning the instrument' in action 1 (c) is not what the command produces.",
+   "suggested_fix": "Give per-instrument -k expressions (for example those of S-250 and S-260's Done when)."
+  },
+  {
+   "n": 14,
+   "where": "plan/PLAN.md S-LISTEN action 3",
+   "kind": "non-literal command",
+   "severity": "guess",
+   "text": "The local private-pairs run gives only the seed and --private-out (no --out, --render, --ref-root), and the fallback asks the owner to 'place the files under $FOLK_REF_ROOT', a directory inside the implementer's ephemeral sandbox that the owner cannot reach.",
+   "suggested_fix": "Write the full command, and say how the owner hands over the files (for example upload to the session or a named path the implementer then copies and hash-checks)."
+  },
+  {
+   "n": 15,
+   "where": "plan/GATES.md G-L4 question 3; demos/melodion-204-variant.events",
+   "kind": "ambiguous",
+   "severity": "minor",
+   "text": "The question asks whether the limited-breath variant '-204-variant' sounds like a player running short of air, but that demo is a single-note melody with breath_mode 1, where the plenum barely sags; the effect only shows with several keys held.",
+   "suggested_fix": "Point the question at a chord demo rendered with breath_mode 1, or add one to make_demos.py."
+  },
+  {
+   "n": 16,
+   "where": "plan/GATES.md G-L branches; plan/PLAN.md S-LISTEN pass condition",
+   "kind": "missing decision rule",
+   "severity": "minor",
+   "text": "The pass condition includes 'no demo reported as wrong', but the listener answers question 2 in free text; nothing says how the implementer decides that a remark counts as 'reported as wrong' when the response is 'proceed'.",
+   "suggested_fix": "Make the listener name wrong demos explicitly (for example 'wrong: <demo ids>' or 'none') in the answer to question 2."
+  },
+  {
+   "n": 17,
+   "where": "plan/PLAN.md S-330 action 2 vs S-201 action 1",
+   "kind": "ambiguous",
+   "severity": "minor",
+   "text": "S-330 runs 'reed_check.py ... > baseline/reed-check-calibrated.csv' (CSV on standard output), while S-201 says the tool 'writes a CSV' and produces baseline/reed-check.csv, so its output convention is undefined.",
+   "suggested_fix": "Give reed_check.py an --out argument (or state that it prints the CSV to standard output) and use it in both steps."
+  },
+  {
+   "n": 18,
+   "where": "plan/PLAN.md S-250 Depends on / S-210 gate actions",
+   "kind": "missing input",
+   "severity": "minor",
+   "text": "S-250 depends on S-210 'for the evidence tooling of its gate actions', but that tooling (gate-evidence.yml, fetch_references.py, build_evidence.py, index header) is produced by the gate actions after S-210's Done when, which is what 'passed' means under HANDOFF section 4.",
+   "suggested_fix": "Add the gate-action outputs to S-210's Done when, or make S-250 depend on GATE-G-P1.md being written."
+  }
+ ],
+ "steps_walked": [
+  "S-000",
+  "S-002",
+  "S-003",
+  "S-100",
+  "S-101",
+  "S-110",
+  "S-200",
+  "S-201",
+  "S-210",
+  "S-212",
+  "S-220",
+  "S-230",
+  "S-240",
+  "S-250",
+  "S-260",
+  "S-300",
+  "S-310",
+  "S-320",
+  "S-REF",
+  "S-330",
+  "S-340",
+  "S-REVIEW",
+  "S-ADVERSARIAL",
+  "S-LISTEN",
+  "S-INTEGRATE",
+  "S-RETRO",
+  "S-KNOW"
+ ],
+ "summary": "18 items: 0 blocker, 8 guess, 10 minor; every step walked and about 40 frozen test cases checked against the decisions and the spikes.\nMost serious: D-094's state save fails T-302 when read literally; S-320 never carries out DR-04's final adoption check; the TinySOL source_url is missing and does not match D-052's archive rule.\nAlso open: no rule for a private reference that CI cannot fetch; ENVIRONMENT's 'halt' contradicts DR-11; S-240's pluck_ref equivalence check is unevaluable as written.\nRecently amended text checked and sound: PUSH and GAIN (apart from a stale S-212 mention), S-003 .gitignore, S-240 constants and tap route, the S-REF folder layout and TinySOL hashes, S-340 clip names and spread, D-052, D-064 (matches pluck_ref.py), R-012 and R-015.\nNo blocker found: each item can be worked around by a reversible guess under the default rule, but several would cost a halt or a red CI."
+}

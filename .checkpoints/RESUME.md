@@ -4,7 +4,7 @@ This note is for the PLANNING agent. An implementing agent starts at `HANDOFF.md
 
 **Where things stand.** Phases 0 to 2 are complete (six research rounds, ended at the round limit; 65 claims; tests frozen and red-verified). Phase 3 documents exist. Cold reads 1 to 3 (dry run plus mechanical each) produced 38 + 6, 31 + 3 and 33 + 4 items; pass 4 found 19 + 9; all were resolved by amending the plan (records in `research/coldread/`). The source register passed its twelfth review clean and is marked `verified`.
 
-**Next action.** Cold read pass 5 (the last) with new agents on clean clones (`state.json` `in_flight`). Resolve its items; a fifth pass at most, after which open items become High risks. Then Phase 4 pre-mortem (at most 5 rounds), 4.7 assumption audit, Phase 5 final check, status header and push.
+**Next action.** Cold reads are complete (5 of 5; pass 4 found 19 + 9 items, pass 5 18 + 2; all resolved, none left open, so no cold-read item became a risk). Phase 4 pre-mortem round 1 with a fresh agent (`state.json` `in_flight`), at most 5 rounds; then the 4.7 assumption audit, Phase 5 final check, status header and push.
 
 **Open questions.** None for the owner.
 
