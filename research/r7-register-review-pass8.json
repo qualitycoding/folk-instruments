@@ -1,0 +1,127 @@
+{
+ "checked": [
+  {
+   "row": 6,
+   "url": "https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "PDF first two pages: title, authors, CC BY 3.0 copyright line, B5 harmonium reed LDV",
+   "correction": ""
+  },
+  {
+   "row": 48,
+   "url": "https://ccrma.stanford.edu/software/stk/classstk_1_1Mandolin.html",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Class page: setDetune, patent warning, copyright 1995-2023 all rights reserved (access note 'Search summary only' is stale but outside the checked columns)",
+   "correction": ""
+  },
+  {
+   "row": 104,
+   "url": "https://commons.wikimedia.org/wiki/File:Tuning-Sound-G-Bouzouki.ogg",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "File page: Own work, SoylentGreen, 24 August 2019, CC BY-SA 4.0",
+   "correction": ""
+  },
+  {
+   "row": 110,
+   "url": "https://en.wikipedia.org/wiki/Harmonica",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Page text and CC BY-SA licence footer",
+   "correction": ""
+  },
+  {
+   "row": 112,
+   "url": "https://en.wikipedia.org/wiki/Inharmonicity",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Page text (bending stiffness) and CC BY-SA footer",
+   "correction": ""
+  },
+  {
+   "row": 113,
+   "url": "https://en.wikipedia.org/wiki/Mandolin",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Page text (tuning, courses) and CC BY-SA footer",
+   "correction": ""
+  },
+  {
+   "row": 115,
+   "url": "https://en.wikipedia.org/wiki/Overblowing",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Page text (semitone, Bahnson) and CC BY-SA footer",
+   "correction": ""
+  },
+  {
+   "row": 117,
+   "url": "https://euphonics.org/wp-content/uploads/2022/03/Double_decays_JASA.pdf",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "PDF pages 1-2: title, author, abstract (lute, mandolin, banjo, mistuning), 'C 2021 Acoustical Society of America'. The 'personal use only' wording is attributed to the publication list, which was not fetched, so it is not confirmed here",
+   "correction": ""
+  },
+  {
+   "row": 136,
+   "url": "https://commons.wikimedia.org/wiki/File:Blues_Harp1.ogg",
+   "title_ok": true,
+   "licence_ok": false,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "File page Licensing section: GFDL and CC BY-SA 3.0 only; Source own work, Author Grassinger",
+   "correction": "Licence cell should read 'GFDL; CC BY-SA 3.0'; the page does not list CC BY-SA 1.0 or 2.0. Permitted use unchanged."
+  },
+  {
+   "row": 138,
+   "url": "https://commons.wikimedia.org/wiki/File:Harmonica_02.ogg",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "File page: mastermesh, 27 March 2008, PD-pdsounds, MP3 mono 22 kHz; length shown as '0:17' (labelled minutes by the page, plainly seconds)",
+   "correction": ""
+  },
+  {
+   "row": 145,
+   "url": "https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_pdf",
+   "title_ok": true,
+   "licence_ok": false,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "PDF pages 1-2 and J-STAGE article page: title, authors, four mandolins and a mandola, tuning G3 D4 A4 E5 match; no copyright statement found in either",
+   "correction": "Cell cites 'Copyright 2003 The Acoustical Society of Japan (article page metadata)' but no such statement appears in the PDF or the fetched article page; re-check or reword. 'read only' is a safe permitted use."
+  },
+  {
+   "row": 149,
+   "url": "https://zenodo.org/record/3685367",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Zenodo record metadata: CC BY 4.0, version 6.0, Cella, Ghisi, Lostanlen et al.; accordion listed under Keyboards. Cell can drop 'not re-read'",
+   "correction": ""
+  }
+ ],
+ "not_checked": [],
+ "discrepancies": 2,
+ "summary": "12 rows checked (all fetched, HTTP 200). Two discrepancies: row 136 (licence cell lists CC BY-SA 1.0-3.0; page gives GFDL and CC BY-SA 3.0) and row 145 (copyright statement not found on the PDF or article page). Rows 104 and 138 now match their pages. Row 117's personal-use wording rests on an unfetched publication list. Row 48's access note 'Search summary only' is stale."
+}

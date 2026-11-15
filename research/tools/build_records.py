@@ -133,7 +133,9 @@ SWEEP = {"https://arxiv.org/html/0810.2870": "arXiv.org perpetual non-exclusive 
          "ccrma.stanford.edu/%7Ejos/pasp": "Copyright J. O. Smith III (page footer); read only",
          "ccrma.stanford.edu/~jos/pasp/Ideal_Plucked_String": "Copyright J. O. Smith III (page footer); read only",
          "ccrma.stanford.edu/software/stk/classstk_1_1Mandolin": "Copyright 1995 to 2023 Perry R. Cook and Gary P. Scavone, all rights reserved (page footer)",
-         "jstage.jst.go.jp/article/ast/24/1/24_1_1/_pdf": "Copyright 2003 The Acoustical Society of Japan (article page metadata)",
+         "jstage.jst.go.jp/article/ast/24/1/24_1_1/_pdf": "Copyright 2003 The Acoustical Society of Japan (meta tag 'copyright' of the article page https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_article; the PDF itself carries no statement)",
+         "commons.wikimedia.org/wiki/File:Blues_Harp1.ogg": "GFDL 1.2 or later; CC BY-SA 1.0, 2.0, 2.5 and 3.0 (file description page, Licensing section)",
+         "zenodo.org/record/3685367": "CC BY 4.0 (Zenodo record metadata, licence id cc-by-4.0)",
          "zenodo.org/api/records?q=": "not applicable: a search query; each record carries its own licence",
          "archive.org/advancedsearch": "not applicable: a search query",
          "archive.org/wayback/available": "not applicable: an availability query",
@@ -162,6 +164,8 @@ for u, s_ in src_by_url.items():
             break
     if SWEPT.get(u, {}).get("status") == "200" and (s_.get("outcome") == "unreachable" or re.search(r"fail|blocked|not allowed|not resolv|snippet", s_.get("access_notes") or "", re.I)):
         s_["access_notes"] = "unreachable when first checked in round 1; fetched with HTTP 200 on 2026-11-15 by the licence sweep (spike S16), after the owner widened the network allowlist"
+    if u.startswith("https://ccrma.stanford.edu/software/stk/classstk_1_1Mandolin"): s_["access_notes"] = "class reference page fetched with HTTP 200 on 2026-11-15"
+    if u == "https://zenodo.org/record/3685367": s_["access_notes"] = "record metadata read through the Zenodo API; the archive was downloaded and its md5 checked in spike S07"
     if u == "https://commons.wikimedia.org/wiki/File:Harmonica_02.ogg": s_["title"] = "Harmonica 02 (Harmonica_02.ogg)"
     if u == "https://arxiv.org/pdf/2104.02480": s_["title"] = "Pickers' Guide to Acoustics of the Banjo, parts I and II (arXiv 2104.02480)"; s_["owner_or_authors"] = "D. Politzer, J. Woodhouse, H. Mansour"
     if u.startswith("https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf"): s_["title"] = "Clamped bar model for free reeds (Forum Acusticum 2023)"; s_["owner_or_authors"] = "N. Puranik, G. Scavone"
