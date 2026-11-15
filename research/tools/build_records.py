@@ -74,18 +74,20 @@ def one(t): return " ".join(str(t or "").replace("|", "/").split())
 def permitted(s):
     if s["url"] in PERMIT: return PERMIT[s["url"]]
     lic = (s.get("licence_or_terms") or "").lower(); u = s["url"]
-    if s.get("outcome") == "unreachable": return "read only (not read)"
+    if s.get("outcome") == "unreachable" and not s.get("swept"): return "read only (not read)"
     if "philharmonia" in u: return "private reference only (linked, not republished; Rule 15)"
     if "zenodo.org/records/3685367" in u or "zenodo.org/api/records/3685367" in u: return "redistribute (CC BY 4.0, with attribution)"
     if "juce-framework/JUCE" in u: return "adapt (AGPL-3.0; compatible with the repository's AGPL-3.0)"
     if "choosealicense" in u: return "redistribute (licence text copied verbatim into LICENSE)"
     if "cc0" in lic or "public domain" in lic: return "redistribute"
+    if "nc" in lic.split("(")[0] and "cc by" in lic: return "quote briefly with attribution (non-commercial licence)"
     if "cc by" in lic or "creative commons attribution" in lic: return "adapt with attribution"
     if "without restrictions" in lic: return "redistribute"
     return "read only"
 def licence(s):
     l = one(s.get("licence_or_terms"))
-    if not l or l.lower().startswith("not read"): return "unknown (" + (l or "not read") + ")"
+    if not l or l.lower().startswith("not read"):
+        return UNREACHABLE_NOTE if s.get("unreached_at_sweep") or s.get("outcome") == "unreachable" or "not allowed" in (s.get("reason") or "") or "fetch failed" in (s.get("reason") or "") else "unknown (" + (l or "not read") + ")"
     return l
 # Corrections from the R7 review (research/r7-register-review.json), keyed by a substring of the URL: (licence, permitted use, owner)
 OVERRIDE = {"euphonics.org/publication-list": ("Site text CC BY-NC-SA 4.0 except where noted (footer); linked papers remain under their publishers' copyright and are offered for personal use only (publication list page)", "quote briefly with attribution", None),
@@ -107,6 +109,56 @@ for u, s_ in src_by_url.items():
             if lic: s_["licence_or_terms"] = lic
             if per: PERMIT[u] = per
             if owner: s_["owner_or_authors"] = owner
+# Licence sweep of spike S16 (research/spikes/s16-licence-sweep): statements read from the pages themselves.
+SWEEP = {"https://arxiv.org/html/0810.2870": "arXiv.org perpetual non-exclusive licence (HTML page)",
+         "https://arxiv.org/html/2401.01606": "arXiv.org perpetual non-exclusive licence (HTML page)",
+         "https://arxiv.org/pdf/2401.01606": "arXiv.org non-exclusive distribution licence 1.0 (abstract page of the same paper)",
+         "https://arxiv.org/pdf/2104.02480": "CC BY 4.0 (arXiv abstract page of the same preprint)",
+         "dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf": "CC BY 3.0 (first page of the PDF)",
+         "dael.euracoustics.org/confs/fa2023/data/articles/000539.pdf": "CC BY 3.0 (first page of the PDF)",
+         "dael.euracoustics.org/confs/fa2026/data/articles/000418.pdf": "CC BY 3.0 (first page of the PDF)",
+         "dafx.de/paper-archive/2023/DAFx23_paper_47.pdf": "CC BY 4.0 (first page of the PDF)",
+         "dafx.de/paper-archive/2010/DAFx10/PerngSmithRossing": "unknown: no licence or copyright statement on the first two pages of the PDF or on the archive page (DAFx proceedings)",
+         "dafx.de/paper-archive/2011/Papers/24_e.pdf": "unknown: no licence or copyright statement on the first two pages of the PDF (DAFx proceedings)",
+         "euphonics.org/11-6-free-reeds": "CC BY-NC-SA 4.0 (site footer)",
+         "euphonics.org/7-3-multiple-strings": "CC BY-NC-SA 4.0 (site footer)",
+         "en.wikipedia.org/wiki/Accordion": "CC BY-SA 4.0 (page footer)",
+         "en.wikipedia.org/wiki/Irish_bouzouki": "CC BY-SA 4.0 (page footer)",
+         "ccrma.stanford.edu/%7Ejos/pasp": "Copyright J. O. Smith III (page footer); read only",
+         "ccrma.stanford.edu/~jos/pasp/Ideal_Plucked_String": "Copyright J. O. Smith III (page footer); read only",
+         "ccrma.stanford.edu/software/stk/classstk_1_1Mandolin": "Copyright 1995 to 2023 Perry R. Cook and Gary P. Scavone, all rights reserved (page footer)",
+         "jstage.jst.go.jp/article/ast/24/1/24_1_1/_pdf": "Copyright 2003 The Acoustical Society of Japan (article page metadata)",
+         "zenodo.org/api/records?q=": "not applicable: a search query; each record carries its own licence",
+         "archive.org/advancedsearch": "not applicable: a search query",
+         "archive.org/wayback/available": "not applicable: an availability query",
+         "commons.wikimedia.org/w/api.php": "not applicable: a search query",
+         "arxiv.org/search": "not applicable: a search query",
+         "hal.science/search": "not applicable: a search query",
+         "pypi.org/simple": "not applicable: a package index queried for version numbers",
+         "pypi.org/pypi/numpy/json": "not applicable: package metadata queried for version and Python requirement",
+         "www.google.com/search": "not applicable: web search queries",
+         "https://archive.org/": "not applicable: site searched, no item used",
+         "https://commons.wikimedia.org/": "not applicable: site searched; licences of the files used are in their own rows"}
+UNREACHABLE_NOTE = "unknown: the host was not reachable from the planning sandbox (no network route or HTTP 403), so the licence could not be read"
+# Content cells: replace reasons and bare claim IDs with what the source is cited for.
+CITED = {}
+for f in ROUND_FILES[1]:
+    for c in json.load(open("research/rounds/" + f)).get("claims", []):
+        for s_ in c.get("sources", []):
+            CITED.setdefault(s_.get("url", "").strip(), c["claim"])
+SWEPT = json.load(open("research/spikes/s16-licence-sweep/output.json"))
+for u, s_ in src_by_url.items():
+    if SWEPT.get(u, {}).get("status") in ("000", "403", ""): s_["unreached_at_sweep"] = True
+    for key, lic in SWEEP.items():
+        if (u.startswith(key) if key.startswith("http") else key in u):
+            s_["licence_or_terms"] = lic; s_["swept"] = True
+            if lic.startswith("not applicable"): PERMIT[u] = "not applicable (no content used)"
+            break
+    cs = (s_.get("content_summary") or "").strip()
+    if len(cs) < 25 or re.fullmatch(r"[A-Z]\d+[a-z]?", cs):
+        if u in CITED: s_["content_summary"] = "Cited by a round-1 worker for: " + CITED[u][:220]
+        elif s_.get("outcome") == "unreachable": s_["content_summary"] = "Not read (" + (one(s_.get("reason")) or "unreachable") + ")."
+        else: s_["content_summary"] = (one(s_.get("title")) or "untitled") + "; " + (cs or "no summary recorded") + "."
 rows = sorted(src_by_url.values(), key=lambda s: (s.get("first_round", s["round"]), s["file"], s["url"]))
 # ---- SOURCES.md
 out = ["# Sources", "", f"Every external source opened or queried during planning ({len(rows)} distinct URLs), in the order first checked. The source register (`knowledge/K-20261115T020000Z-source-register-folk-instruments-vst.md`) holds the same list with licence and permitted use. Web search queries are listed in the round logs.", ""]

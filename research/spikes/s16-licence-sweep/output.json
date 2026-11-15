@@ -1,0 +1,1035 @@
+{
+ "https://ar5iv.labs.arxiv.org/html/2401.01606": {
+  "row": 1,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://arxiv.org/html/0810.2870v1": {
+  "row": 2,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [
+   "Copyright",
+   "Copyright 2026 Fonticons, Inc.-->"
+  ],
+  "zenodo": [],
+  "pypi": [
+   "arXiv.org perpetual non-exclusive license"
+  ]
+ },
+ "https://arxiv.org/pdf/2401.01606": {
+  "row": 3,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://bvbvf1.bib-bvb.de/vufind/PrimoRecord/cdi_crossref_primary_10_1121_1_406857": {
+  "row": 4,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://colinpykett.org.uk/physics-of-free-reed-wind-instruments.htm": {
+  "row": 5,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf": {
+  "row": 6,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [
+   "Copyright: \u00a92023 Ninad Puranik et. al. This is an open-access"
+  ],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://euphonics.org/11-6-free-reeds/": {
+  "row": 7,
+  "status": "200",
+  "cc": [
+   "creativecommons.org/licenses/by-nc-sa/4.0",
+   "creativecommons.org/licenses/by-sa/3.0"
+  ],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://hal.archives-ouvertes.fr/hal-01106161": {
+  "row": 8,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://lampz.tugraz.at/~hadley/memm/mechanics/cbeam.php": {
+  "row": 9,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://physicstoday.aip.org/features/acoustics-of-free-reed-instruments": {
+  "row": 10,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://researchportalplus.anu.edu.au/en/publications/oscillating-reed-valves-an-experimental-study/": {
+  "row": 11,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://resolve.cambridge.org/core/journals/journal-of-fluid-mechanics/article/aerodynamic-excitation-of-the-harmonium-reed/3B5156625194BBF5549B08928B2F5495": {
+  "row": 12,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.cs.bu.edu/fac/snyder/TablatureWeb/BERLIN2.PDF": {
+  "row": 13,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.cs.bu.edu/fac/snyder/TablatureWeb/Bahnson%20JASA%201998.pdf": {
+  "row": 14,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.phys.unsw.edu.au/music/people/publications/Tarnopolskyetal2000.pdf": {
+  "row": 15,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://arxiv.org/html/2401.01606v1": {
+  "row": 16,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [
+   "Copyright",
+   "Copyright 2026 Fonticons, Inc.-->"
+  ],
+  "zenodo": [],
+  "pypi": [
+   "arXiv.org perpetual non-exclusive license"
+  ]
+ },
+ "https://bluesharmonica.com/real_time_magnetic_resonance_imaging_fo_upper_airways_during_harmonica_pitch_bends_0": {
+  "row": 17,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://ccrma405080.stanford.edu/events/peter-r-egbert-real-time-magnetic-resonance-imaging-of-vocal-tract-during-harmonica-pitch-ben": {
+  "row": 18,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://doi.org/10.1121/1.421359": {
+  "row": 19,
+  "status": "403",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://en.wikipedia.com/wiki/Chromatic_harmonica": {
+  "row": 20,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://harp-l.org/pipermail/harp-l/2014-May/msg00008.html": {
+  "row": 21,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://harpsurgery.com/hand-tremolo": {
+  "row": 22,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://hohner.de/en/instruments/harmonicas/chromatic/chrometta/chrometta-12": {
+  "row": 23,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/6635814": {
+  "row": 24,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://last.hit.bme.hu/sites/default/files/documents/Rudas_Annamaria_-_Szakdolgozat_2021.pdf": {
+  "row": 25,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.bluesharmonica.com/two_half_valving_strategies_diatonic_harmonicas": {
+  "row": 26,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.bluesharmonica.com/website_dedicated_physics_harmonica": {
+  "row": 27,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.brendan-power.com/images/POWERBENDER_BOOK_SAMPLE.pdf": {
+  "row": 28,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.dafx.de/paper-archive/2023/DAFx23_paper_47.pdf": {
+  "row": 29,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [
+   "Copyright: \u00a9 2023 Ninad Puranik et al. This is an open-access article distributed"
+  ],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.learntheharmonica.com/post/harmonica-notes-easy-guide-layout": {
+  "row": 30,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.musicjunction.com.au/products/hohner-marine-band-classic-1896-10-hole-diatonic-harmonica": {
+  "row": 31,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.phys.unsw.edu.au/jw/reprints/WolfeSmithAA.pdf": {
+  "row": 32,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://acta-acustica.edpsciences.org/10.1051/aacus/2024020": {
+  "row": 33,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://dael.euracoustics.org/confs/fa2026/data/articles/000418.pdf": {
+  "row": 34,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [
+   "Copyright: \u00a92026 Seiji Adachi This is an open-access article"
+  ],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://en.wikibooks.org/wiki/Accordion/Reed_Ranks_and_Switches": {
+  "row": 35,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://en.wikipedia.org/wiki/Accordion": {
+  "row": 36,
+  "status": "200",
+  "cc": [
+   "creativecommons.org/licenses/by-sa/4.0"
+  ],
+  "arxiv": [],
+  "copyright": [
+   "Copyright Office, \"Concerto in C Major for Bassetti Accordion\", Composer: John Serry, 4 June 1968, Copyright #"
+  ],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://euracoustics.org/documents/14/AiP_2021_02_Accordion_acoustics.pdf": {
+  "row": 37,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://isma2017.cirmmt.mcgill.ca/proceedings/pdf/ISMA_2017_paper_52.pdf": {
+  "row": 38,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://melodicaworld.com/?p=11741": {
+  "row": 39,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://usa.yamaha.com/products/musical_instruments/winds/pianica/p-37d/index.html": {
+  "row": 40,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.accordionists.info/threads/making-sense-out-of-cents.14511/latest": {
+  "row": 41,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.hohner.de/en/instruments/melodica/student-melodicas/student-32-melodica": {
+  "row": 42,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.libertybellows.com/general-accordion-questions.htm": {
+  "row": 43,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://acta-acustica.edpsciences.org/10.1051/aacus/2020008": {
+  "row": 44,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://arxiv.org/pdf/2104.02480": {
+  "row": 45,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://bibbase.org/network/publication/abel-vlimki-smith-robustefficientdesignofallpassfiltersfordispersivestringsoundsynthesis-2010": {
+  "row": 46,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://ccrma.stanford.edu/%7Ejos/pasp/EDR_Based_Loop_Filter_Design.html": {
+  "row": 47,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [
+   "Copyright &#169;"
+  ],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://ccrma.stanford.edu/software/stk/classstk_1_1Mandolin.html": {
+  "row": 48,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [
+   "&copy;1995--2023 Perry R. Cook and Gary P. Scavone. All Rights Reserved."
+  ],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://concept.lib.ed.ac.uk/esjs/article/download/9815/12844": {
+  "row": 49,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://core.ac.uk/download/357253971.pdf": {
+  "row": 50,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://csound.com/manual/STKMandolin.html": {
+  "row": 51,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://dafx.de/paper-archive/details/FxpIAYIVGkUKoqVYzYCHQg": {
+  "row": 52,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://dafx.de/paper-archive/details/PywhUlPUhwQUW7fKB6OHXQ": {
+  "row": 53,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://dafx.de/paper-archive/details/XJTIoSIXj3qqer3WzLlEHQ": {
+  "row": 54,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://dafx.de/paper-archive/details/_B8kl7InKAjA221WjmV8Eg": {
+  "row": 55,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://eprints.soton.ac.uk/476996/1/Pablo_Miranda_Internoise2022.pdf": {
+  "row": 56,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://euphonics.org/7-3-multiple-strings-and-double-decays/": {
+  "row": 57,
+  "status": "200",
+  "cc": [
+   "creativecommons.org/licenses/by-nc-sa/4.0"
+  ],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/9224380": {
+  "row": 58,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://openreview.net/pdf/617931ce90da4c3b1e5b20551bd1cd1a4b93c1b4.pdf": {
+  "row": 59,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://phys.unsw.edu.au/jw/Helmholtz.html": {
+  "row": 60,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://pubs.aip.org/asa/jasa/article/150/6/4375/994397/A-necessary-condition-for-double-decay-envelopes": {
+  "row": 61,
+  "status": "403",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://purl.stanford.edu/wp454hs7976": {
+  "row": 62,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://repositori.upf.edu/items/7c207d44-4ac0-4100-a216-dc814a1abe60/full": {
+  "row": 63,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://typeset.io/papers/tunable-dispersion-filter-design-for-piano-synthesis-fy4bq64bfk": {
+  "row": 64,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://typeset.io/pdf/simple-model-for-low-frequency-guitar-function-plccqpv99x.pdf": {
+  "row": 65,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.Wikipedia.com/wiki/Mandolin": {
+  "row": 66,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.bohrium.com/paper-details/a-necessary-condition-for-double-decay-envelopes-in-stringed-instruments/814713989719130112-582": {
+  "row": 67,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.dafx.de/paper-archive/2010/DAFx10/PerngSmithRossing_DAFx10_P93.pdf": {
+  "row": 68,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.dsprelated.com/dspbooks/pasp/String_Coupling_Effects.html": {
+  "row": 69,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.dsprelated.com/freebooks/pasp/Commuted_Synthesis.html": {
+  "row": 70,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.dsprelated.com/freebooks/pasp/String_Coupling_Effects.html": {
+  "row": 71,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.ece.uvic.ca/~bctill/papers/numacoust/V%c3%a4lim%c3%a4ki_etal_2006.pdf": {
+  "row": 72,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.firgelliauto.com/blogs/engineering-calculators/helmholtz-resonator-calculator": {
+  "row": 73,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.ioa.org.uk/system/files/publications/AR%20BAXANDALL%20IS%20BROWN%20CE%20GOUGH%20VIBRATIONS%20OF%20PIANO%20STRINGS%20AND%20COUPLING%20TO%20THE%20SOUNDBOARD.pdf": {
+  "row": 74,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.ioa.org.uk/system/files/publications/P%20CHUMNANTAS%20CA%20GREATED%20DM%20CAMPBELL%20INHARMONICITY%20OF%20STEPPED%20STIFF%20STRINGS.pdf": {
+  "row": 75,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.repository.cam.ac.uk/items/3d2cfb54-a00d-4dbb-8e08-69099990d8b2": {
+  "row": 76,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.rose-hulman.edu/~moloney/Acoustics/0506/End_correction_Meeks_0506.doc": {
+  "row": 77,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.speech.kth.se/music/5_lectures/weinreic/weinreic.html": {
+  "row": 78,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://youtubemusicsucks.com/how-to-tremolo-pick-a-mandolin/": {
+  "row": 79,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://acoustics.org/pressroom/httpdocs/139th/cohen.htm": {
+  "row": 80,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://dael.euracoustics.org/confs/fa2023/data/articles/000539.pdf": {
+  "row": 81,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [
+   "Copyright: \u00a92023 First author et al. This is an open-access article"
+  ],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://en.wikipedia.org/wiki/Irish_bouzouki": {
+  "row": 82,
+  "status": "200",
+  "cc": [
+   "creativecommons.org/licenses/by-sa/4.0"
+  ],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://h2g2.com/entry/A27733016": {
+  "row": 83,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://pdfs.semanticscholar.org/9f7c/49a5b574bfde828b3918313c7fcf54ab2d89.pdf": {
+  "row": 84,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.h2g2.com/edited_entry/A827147": {
+  "row": 85,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.mdpi.com/2076-3417/13/7/4585": {
+  "row": 86,
+  "status": "403",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.prestomusic.com/instruments-accessories/products/8808454--daddario-ej81-irish-bouzouki-strings": {
+  "row": 87,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.stewmac.com/strings-and-accessories/strings/mandolin-strings/daddario-phosphor-bronze-mandolin-strings/": {
+  "row": 88,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://archive.org/": {
+  "row": 89,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://commons.wikimedia.org/": {
+  "row": 90,
+  "status": "200",
+  "cc": [
+   "creativecommons.org/licenses/by-sa/4.0",
+   "creativecommons.org/publicdomain/zero/1.0"
+  ],
+  "arxiv": [],
+  "copyright": [
+   "Copyright_statuses\" title=\"Category:Copyright statuses\">Copyright statuses"
+  ],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://freesound.org/": {
+  "row": 91,
+  "status": "403",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://magenta.tensorflow.org/datasets/nsynth": {
+  "row": 93,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://sfzinstruments.github.io/": {
+  "row": 94,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://github.com/actions/checkout": {
+  "row": 119,
+  "status": "403",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://pubs.aip.org/asa/jasa/article-abstract/117/4/2279/543421": {
+  "row": 123,
+  "status": "403",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://pubs.aip.org/asa/jasa/article/103/4/2134/556883": {
+  "row": 124,
+  "status": "403",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://pypi.org/simple/": {
+  "row": 125,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://archive.org/advancedsearch.php": {
+  "row": 127,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://archive.org/advancedsearch.php?q=harmonica+bending+acoustics": {
+  "row": 128,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://archive.org/wayback/available?url=www.cs.bu.edu/fac/snyder/TablatureWeb/Bahnson%20JASA%201998.pdf": {
+  "row": 130,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://arxiv.org/search/?query=bouzouki": {
+  "row": 131,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [
+   "Copyright"
+  ],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://ccrma.stanford.edu/~jos/pasp/Ideal_Plucked_String.html": {
+  "row": 132,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [
+   "Copyright &#169;"
+  ],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://commons.wikimedia.org/w/api.php": {
+  "row": 133,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [
+   "Copyright\">"
+  ],
+  "zenodo": [],
+  "pypi": [
+   " "
+  ]
+ },
+ "https://hal.science/search/index/?q=harmonica+reed": {
+  "row": 140,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://pypi.org/pypi/numpy/json": {
+  "row": 141,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.dafx.de/paper-archive/2011/Papers/24_e.pdf": {
+  "row": 143,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.google.com/search (WebSearch tool)": {
+  "row": 144,
+  "status": "000",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_pdf": {
+  "row": 145,
+  "status": "200",
+  "cc": [],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [],
+  "pypi": []
+ },
+ "https://zenodo.org/api/records?q=harmonica&type=dataset": {
+  "row": 147,
+  "status": "200",
+  "cc": [
+   "creativecommons.org/licenses/by-nc/4.0"
+  ],
+  "arxiv": [],
+  "copyright": [],
+  "zenodo": [
+   "cc-by-4.0",
+   "cc-by-nc-4.0",
+   "cc-zero"
+  ],
+  "pypi": []
+ }
+}

@@ -48,16 +48,16 @@ The fetch tool could not resolve hosts outside the environment's network allowli
 - <https://dael.euracoustics.org/confs/fa2026/data/articles/000418.pdf>, accessed 2026-11-14: **used**. Vent-hole pressure loss mechanism
 - <https://acta-acustica.edpsciences.org/10.1051/aacus/2024020> (DOI 10.1051/aacus/2024020), accessed 2026-11-14: **unreachable**. host blocked
 - <https://en.wikipedia.org/wiki/Accordion>, accessed 2026-11-14: **unreachable**. host not allowed
-- <https://www.libertybellows.com/general-accordion-questions.htm>, accessed 2026-11-14: **used**. Tuning chart
-- <https://www.accordionists.info/threads/making-sense-out-of-cents.14511/latest>, accessed 2026-11-14: **used**. 
-- <https://en.wikibooks.org/wiki/Accordion/Reed_Ranks_and_Switches>, accessed 2026-11-14: **used**. 
-- <https://usa.yamaha.com/products/musical_instruments/winds/pianica/p-37d/index.html>, accessed 2026-11-14: **used**. 
-- <https://www.hohner.de/en/instruments/melodica/student-melodicas/student-32-melodica>, accessed 2026-11-14: **used**. 
-- <https://melodicaworld.com/?p=11741>, accessed 2026-11-14: **used**. 
-- <https://isma2017.cirmmt.mcgill.ca/proceedings/pdf/ISMA_2017_paper_52.pdf>, accessed 2026-11-14: **used**. 
+- <https://www.libertybellows.com/general-accordion-questions.htm>, accessed 2026-11-14: **used**. Cited by a round-1 worker for: Register letters: L = 16' bassoon rank (one octave below written pitch), M = 8' clarinet rank (unison), H = 4' piccolo rank (one 
+- <https://www.accordionists.info/threads/making-sense-out-of-cents.14511/latest>, accessed 2026-11-14: **used**. Cited by a round-1 worker for: Musette detuning is quoted in cents at A4 or beats per second; a typical shop rule is about 1 Hz = 3.5 cents mid-keyboard; style 
+- <https://en.wikibooks.org/wiki/Accordion/Reed_Ranks_and_Switches>, accessed 2026-11-14: **used**. Cited by a round-1 worker for: Register letters: L = 16' bassoon rank (one octave below written pitch), M = 8' clarinet rank (unison), H = 4' piccolo rank (one 
+- <https://usa.yamaha.com/products/musical_instruments/winds/pianica/p-37d/index.html>, accessed 2026-11-14: **used**. Cited by a round-1 worker for: Yamaha describes the P-37D Pianica as 37 keys covering F3 to F6 (three octaves).
+- <https://www.hohner.de/en/instruments/melodica/student-melodicas/student-32-melodica>, accessed 2026-11-14: **used**. Cited by a round-1 worker for: Hohner lists the Student 32 range as f (small octave) to c (three-lined octave), which in German notation is F3 to C6 in scientif
+- <https://melodicaworld.com/?p=11741>, accessed 2026-11-14: **used**. Cited by a round-1 worker for: The long-tube experiment: a melodica builder forum thread ('Tubes - some experiments', melodicaworld.com) reports no significant 
+- <https://isma2017.cirmmt.mcgill.ca/proceedings/pdf/ISMA_2017_paper_52.pdf>, accessed 2026-11-14: **used**. Cited by a round-1 worker for: A Hatton study of harmonica note bending (leshatton.org, May 2015) and a McGill thesis (escholarship.mcgill.ca mc87pt57q) and an 
 - <https://pubs.aip.org/asa/jasa/article/150/6/4375/994397/A-necessary-condition-for-double-decay-envelopes>, accessed 2026-11-14: **used**. Bibliographic record and abstract wording
-- <https://arxiv.org/pdf/2104.02480>, accessed 2026-11-14: **unreachable**. Not opened
-- <https://www.repository.cam.ac.uk/items/3d2cfb54-a00d-4dbb-8e08-69099990d8b2>, accessed 2026-11-14: **unreachable**. Not opened
+- <https://arxiv.org/pdf/2104.02480>, accessed 2026-11-14: **unreachable**. Not read (unreachable).
+- <https://www.repository.cam.ac.uk/items/3d2cfb54-a00d-4dbb-8e08-69099990d8b2>, accessed 2026-11-14: **unreachable**. Cited by a round-1 worker for: Woodhouse's paper is J. Woodhouse, 'A necessary condition for double-decay envelopes in stringed instruments', J. Acoust. Soc. Am
 - <https://euphonics.org/7-3-multiple-strings-and-double-decays/>, accessed 2026-11-14: **unreachable**. Exists per search; not opened
 - <https://eprints.soton.ac.uk/476996/1/Pablo_Miranda_Internoise2022.pdf>, accessed 2026-11-14: **corroborating**. Relays Woodhouse criterion and Weinreich mechanism
 - <https://www.dsprelated.com/freebooks/pasp/String_Coupling_Effects.html>, accessed 2026-11-14: **corroborating**. Vertical vs horizontal polarisation decay
@@ -69,29 +69,29 @@ The fetch tool could not resolve hosts outside the environment's network allowli
 - <https://phys.unsw.edu.au/jw/Helmholtz.html>, accessed 2026-11-14: **corroborating**. Guitar air mode approx Helmholtz
 - <https://www.rose-hulman.edu/~moloney/Acoustics/0506/End_correction_Meeks_0506.doc>, accessed 2026-11-14: **corroborating**. 0.85 r flanged, 0.6 r unflanged
 - <https://www.firgelliauto.com/blogs/engineering-calculators/helmholtz-resonator-calculator>, accessed 2026-11-14: **corroborating**. Formula with garbled/incorrect end-correction assignment
-- <https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/9224380>, accessed 2026-11-14: **corroborating**. 1.7 r end correction
-- <https://www.dsprelated.com/freebooks/pasp/Commuted_Synthesis.html>, accessed 2026-11-14: **used**. Body IR as excitation
-- <https://csound.com/manual/STKMandolin.html>, accessed 2026-11-14: **corroborating**. Detune parameter
+- <https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/9224380>, accessed 2026-11-14: **corroborating**. Cited by a round-1 worker for: End corrections: the textbook per-end values are about 0.85 r for a flanged opening and about 0.6 r (0.61 r) for an unflanged ope
+- <https://www.dsprelated.com/freebooks/pasp/Commuted_Synthesis.html>, accessed 2026-11-14: **used**. Cited by a round-1 worker for: Commuted synthesis (Smith): because the linear parts of a plucked-string instrument commute, the body response can be moved befor
+- <https://csound.com/manual/STKMandolin.html>, accessed 2026-11-14: **corroborating**. Cited by a round-1 worker for: Commuted synthesis (Smith): because the linear parts of a plucked-string instrument commute, the body response can be moved befor
 - <https://typeset.io/papers/tunable-dispersion-filter-design-for-piano-synthesis-fy4bq64bfk>, accessed 2026-11-14: **used**. Second-order allpass cascade, Thiran-based
-- <https://bibbase.org/network/publication/abel-vlimki-smith-robustefficientdesignofallpassfiltersfordispersivestringsoundsynthesis-2010>, accessed 2026-11-14: **used**. Quartic-root pole design
+- <https://bibbase.org/network/publication/abel-vlimki-smith-robustefficientdesignofallpassfiltersfordispersivestringsoundsynthesis-2010>, accessed 2026-11-14: **used**. Cited by a round-1 worker for: Dispersion allpass design: Rauhala and Valimaki, 'Tunable dispersion filter design for piano synthesis', IEEE Signal Processing L
 - <https://dafx.de/paper-archive/details/FxpIAYIVGkUKoqVYzYCHQg>, accessed 2026-11-14: **used**. Very high-order allpass design
-- <https://dafx.de/paper-archive/details/XJTIoSIXj3qqer3WzLlEHQ>, accessed 2026-11-14: **corroborating**. Finger/pick on waveguide
-- <https://dafx.de/paper-archive/details/PywhUlPUhwQUW7fKB6OHXQ>, accessed 2026-11-14: **corroborating**. DAFx-09 bridge model
-- <https://concept.lib.ed.ac.uk/esjs/article/download/9815/12844>, accessed 2026-11-14: **corroborating**. Core-only simplification
-- <https://www.ioa.org.uk/system/files/publications/P%20CHUMNANTAS%20CA%20GREATED%20DM%20CAMPBELL%20INHARMONICITY%20OF%20STEPPED%20STIFF%20STRINGS.pdf>, accessed 2026-11-14: **corroborating**. Windings add stiffness
-- <https://www.ece.uvic.ca/~bctill/papers/numacoust/V%c3%a4lim%c3%a4ki_etal_2006.pdf>, accessed 2026-11-14: **corroborating**. KS and DWG review
-- <https://www.ioa.org.uk/system/files/publications/AR%20BAXANDALL%20IS%20BROWN%20CE%20GOUGH%20VIBRATIONS%20OF%20PIANO%20STRINGS%20AND%20COUPLING%20TO%20THE%20SOUNDBOARD.pdf>, accessed 2026-11-14: **corroborating**. Cites Weinreich
-- <https://www.dsprelated.com/dspbooks/pasp/String_Coupling_Effects.html>, accessed 2026-11-14: **unreachable**. fetch failed
-- <https://www.speech.kth.se/music/5_lectures/weinreic/weinreic.html>, accessed 2026-11-14: **unreachable**. fetch failed
-- <https://www.bohrium.com/paper-details/a-necessary-condition-for-double-decay-envelopes-in-stringed-instruments/814713989719130112-582>, accessed 2026-11-14: **unreachable**. fetch failed
-- <https://dafx.de/paper-archive/details/_B8kl7InKAjA221WjmV8Eg>, accessed 2026-11-14: **unreachable**. fetch failed
+- <https://dafx.de/paper-archive/details/XJTIoSIXj3qqer3WzLlEHQ>, accessed 2026-11-14: **corroborating**. Cited by a round-1 worker for: The input file does not cite Germain and Evangelista; the task cites 'Synthesis of guitar by digital waveguides: modeling the ple
+- <https://dafx.de/paper-archive/details/PywhUlPUhwQUW7fKB6OHXQ>, accessed 2026-11-14: **corroborating**. Cited by a round-1 worker for: The input file does not cite Germain and Evangelista; the task cites 'Synthesis of guitar by digital waveguides: modeling the ple
+- <https://concept.lib.ed.ac.uk/esjs/article/download/9815/12844>, accessed 2026-11-14: **corroborating**. Cited by a round-1 worker for: For a solid round wire of diameter d, Young's modulus E, tension T, vibrating length L, the stiff-string partials are f_n = n f_0
+- <https://www.ioa.org.uk/system/files/publications/P%20CHUMNANTAS%20CA%20GREATED%20DM%20CAMPBELL%20INHARMONICITY%20OF%20STEPPED%20STIFF%20STRINGS.pdf>, accessed 2026-11-14: **corroborating**. Cited by a round-1 worker for: For wound strings the inharmonicity stiffness is usually taken from the core only (windings contribute little bending stiffness),
+- <https://www.ece.uvic.ca/~bctill/papers/numacoust/V%c3%a4lim%c3%a4ki_etal_2006.pdf>, accessed 2026-11-14: **corroborating**. Cited by a round-1 worker for: Karplus-Strong reduces to a single delay loop with a loop filter and is a simplified digital waveguide; Jaffe and Smith (1983) ex
+- <https://www.ioa.org.uk/system/files/publications/AR%20BAXANDALL%20IS%20BROWN%20CE%20GOUGH%20VIBRATIONS%20OF%20PIANO%20STRINGS%20AND%20COUPLING%20TO%20THE%20SOUNDBOARD.pdf>, accessed 2026-11-14: **corroborating**. Cited by a round-1 worker for: Weinreich, 'Coupled piano strings', J. Acoust. Soc. Am. 62, 1474-1484 (1977) exists. Its explanation of the two-stage piano decay
+- <https://www.dsprelated.com/dspbooks/pasp/String_Coupling_Effects.html>, accessed 2026-11-14: **unreachable**. Not read (unreachable).
+- <https://www.speech.kth.se/music/5_lectures/weinreic/weinreic.html>, accessed 2026-11-14: **unreachable**. Not read (unreachable).
+- <https://www.bohrium.com/paper-details/a-necessary-condition-for-double-decay-envelopes-in-stringed-instruments/814713989719130112-582>, accessed 2026-11-14: **unreachable**. Not read (unreachable).
+- <https://dafx.de/paper-archive/details/_B8kl7InKAjA221WjmV8Eg>, accessed 2026-11-14: **unreachable**. Not read (unreachable).
 - <https://typeset.io/pdf/simple-model-for-low-frequency-guitar-function-plccqpv99x.pdf>, accessed 2026-11-14: **used**. Two-oscillator guitar model
 - <https://repositori.upf.edu/items/7c207d44-4ac0-4100-a216-dc814a1abe60/full>, accessed 2026-11-14: **used**. Admittance + radiativity filter modelling
 - <https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_article>, accessed 2026-11-14: **not relevant**. Outside this branch; abstract mentions TV holography of four mandolins and a mandola
 - <https://ccrma.stanford.edu/%7Ejos/pasp/EDR_Based_Loop_Filter_Design.html>, accessed 2026-11-14: **corroborating**. Loop filter fitting to decay
-- <https://www.Wikipedia.com/wiki/Mandolin>, accessed 2026-11-14: **corroborating**. Tremolo rationale
-- <https://youtubemusicsucks.com/how-to-tremolo-pick-a-mandolin/>, accessed 2026-11-14: **corroborating**. Tempo example only
-- <https://openreview.net/pdf/617931ce90da4c3b1e5b20551bd1cd1a4b93c1b4.pdf>, accessed 2026-11-14: **not relevant**. No mandolin data
+- <https://www.Wikipedia.com/wiki/Mandolin>, accessed 2026-11-14: **corroborating**. Cited by a round-1 worker for: Tremolo: no measured stroke rates, up/down asymmetry or re-excitation studies were found. Only (a) Wikipedia's statement that man
+- <https://youtubemusicsucks.com/how-to-tremolo-pick-a-mandolin/>, accessed 2026-11-14: **corroborating**. Cited by a round-1 worker for: Tremolo: no measured stroke rates, up/down asymmetry or re-excitation studies were found. Only (a) Wikipedia's statement that man
+- <https://openreview.net/pdf/617931ce90da4c3b1e5b20551bd1cd1a4b93c1b4.pdf>, accessed 2026-11-14: **not relevant**. Plucked-string synthesis paper (search hit); No mandolin data.
 - <https://www.mdpi.com/2076-3417/13/7/4585> (DOI 10.3390/app13074585), accessed 2026-11-14: **unreachable**. host www.mdpi.com does not resolve from sandbox
 - <https://acoustics.org/pressroom/httpdocs/139th/cohen.htm>, accessed 2026-11-14: **unreachable**. host does not resolve; summary only via search
 - <https://dael.euracoustics.org/confs/fa2023/data/articles/000539.pdf>, accessed 2026-11-14: **unreachable**. host does not resolve

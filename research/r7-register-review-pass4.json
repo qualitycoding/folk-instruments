@@ -1,0 +1,66 @@
+{
+ "checked": [
+  {
+   "row": 97,
+   "url": "https://en.wikipedia.org/wiki/Richter-tuned_harmonica",
+   "licence_ok": true,
+   "summary_ok": true,
+   "where_read": "page footer ('Text is available under the Creative Commons Attribution-ShareAlike 4.0 License'); body text; saved at /tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/r7d/r97.html",
+   "correction": ""
+  },
+  {
+   "row": 110,
+   "url": "https://en.wikipedia.org/wiki/Harmonica",
+   "licence_ok": true,
+   "summary_ok": true,
+   "where_read": "page footer ('Text is available under the Creative Commons Attribution-ShareAlike 4.0 License'); body text; saved at /tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/r7d/r110.html",
+   "correction": ""
+  },
+  {
+   "row": 111,
+   "url": "https://en.wikipedia.org/wiki/Helmholtz_resonance",
+   "licence_ok": true,
+   "summary_ok": true,
+   "where_read": "page footer ('Text is available under the Creative Commons Attribution-ShareAlike 4.0 License'); body text; saved at /tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/r7d/r111.html",
+   "correction": ""
+  },
+  {
+   "row": 114,
+   "url": "https://en.wikipedia.org/wiki/Melodica",
+   "licence_ok": true,
+   "summary_ok": true,
+   "where_read": "page footer ('Text is available under the Creative Commons Attribution-ShareAlike 4.0 License'); body text; saved at /tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/r7d/r114.html",
+   "correction": ""
+  },
+  {
+   "row": 82,
+   "url": "https://en.wikipedia.org/wiki/Irish_bouzouki",
+   "licence_ok": false,
+   "summary_ok": false,
+   "where_read": "page footer ('Text is available under the Creative Commons Attribution-ShareAlike 4.0 License'); body text; saved at /tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/r7d/r82.html",
+   "correction": "Licence cell 'unknown (not read)' and use 'read only' are wrong: the page footer states CC BY-SA 4.0, so licence should be 'CC BY-SA 4.0 (page footer)' and use 'adapt with attribution'. Content cell 'E6' is not a description of the page; replace with e.g. 'Irish bouzouki: adaptation of the Greek bouzouki introduced to Irish music in the mid-1960s by Johnny Moynihan; retuning and players.' (Note: this row is numbered 82, not a row listed by number in the brief.)"
+  },
+  {
+   "row": 103,
+   "url": "https://ccrma.stanford.edu/~jos/pasp/Stiff_String.html",
+   "licence_ok": true,
+   "summary_ok": true,
+   "where_read": "page footer 'Copyright 2026-08-21 by Julius O. Smith III' (no open licence stated); body text on stiffness term, dispersion, link to Stiff String Synthesis Models; saved at /tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/r7d/r103.html. Note the summary's 'allpass dispersion filters' is not on this page itself; the register attributes it to the following page, which was not fetched.",
+   "correction": ""
+  },
+  {
+   "row": 137,
+   "url": "https://commons.wikimedia.org/wiki/File:Electra-Melodica-Hohner-1967_CC-BY_Reuter-Schefczik.flac",
+   "licence_ok": true,
+   "summary_ok": true,
+   "where_read": "file page Licensing section 'licensed under the Creative Commons Attribution-Share Alike 4.0 International license'; description 'Electra-Melodica, invented in 1967 by Ernst Zacharias and manufactured by Hohner'; date 30 August 2024; authors Christoph Reuter and Holger Schefczik; saved at /tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/r7d/r137.html",
+   "correction": ""
+  }
+ ],
+ "not_checked": [
+  "Row 103 allpass dispersion filters claim on the following page (Stiff_String_Synthesis_Models.html): not fetched, out of scope.",
+  "Row 114 'trade names by maker' and row 110/97 details checked by keyword and passage sampling, not read in full."
+ ],
+ "discrepancies": 1,
+ "summary": "Seven rows checked against live pages. Six are accurate (97, 110, 111, 114, 103, 137; 103 and 137 corrections hold). One discrepancy: row 82 (Irish bouzouki) has licence 'unknown (not read)' although the page footer states CC BY-SA 4.0, and its content cell 'E6' describes nothing."
+}
