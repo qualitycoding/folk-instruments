@@ -1,0 +1,100 @@
+{
+ "reviewed": [
+  {
+   "id": "C-059",
+   "verdict": "stands-with-caveat",
+   "attack": "Derived the dimensionless groups from the D-010 equations with xi = x/x0, tau = w0*t, pressure scale P, flow scale U = alpha*Su*sqrt(2P/rho). Checked each group under D-012 (heights, Sr, A_in ~ 1/k; V1 ~ 1/k^2; K, Q, Lr, Wr, S2, L2 fixed) including the useful-section law of table(). Re-ran the spike's own run()/analyse() (copied to the scratchpad) at k = 0.5 (222 Hz) and k = 6 (2664 Hz), plus k = 1, at 110 and 400 steps per period and at 100, 700 and 1500 Pa; recorded rms of d/dt u and the x range.",
+   "finding": "The similarity is exact. Groups: reed forcing Sr*P/(K*x0) (1/k / 1/k), damping 1/Q, jet ratio Sr*x0*w0/(alpha*Su*vj) with Su ~ x0*Lr (table(): Lr, Wr fixed and every height in hypot() ~ 1/k, so Su(xi) ~ 1/k), inlet A_in/U (1/k / 1/k), cell rho*c0^2*U/(V1*w0*P) ((1/k)/(1/k^2 * k)), passage S2*P/(rho*L2*w0*U) (1/(k * 1/k)), and C-004's ratio V1*L2*w0^2/(c0^2*S2) are all invariant. Because the discrete semi-implicit map in scaled variables depends only on w0*dt, results at equal steps per period are identical to round-off: k = 0.5, 1 and 6 give the same cents to 0.01 (110 spp: -19.38, -24.03, -22.71; 400 spp: -19.97, -24.54, -23.26 at 100/700/1500 Pa), so the offset is within 1 cent of the reference at the same pressure (0.00 cents). Caveats: (1) at 700 Pa (and 1000 Pa in ramp_output.json) the offset is -24.5 cents, outside the '-20 to -23' band quoted in C-053 and D-016; 700 Pa is p0 at the calibration breath b = 0.6 (1500*0.6^1.5 = 697 Pa). (2) Discretisation moves the offset by about 0.6 cents between 110 and 400 spp, so with D-011 the offset varies by up to ~0.6 cents with pitch (calibration absorbs it). (3) Radiated level: d/dt u is identical at every k (rms 0.1027, 0.885, 1.754 m3/s2 at 100/700/1500 Pa for k = 0.5, 1, 6), i.e. 0 dB per octave, while u itself falls 6 dB per octave; every reed of a rank radiates the same source level, so any level slope along the keyboard must come from the body filter or gains. (4) The scaled reeds are no longer physical: at 27.5 Hz x0 = 8.5 mm and the tip swings to 7.6 x0 = 65 mm on a 13 mm tongue, V1 = 12.5 litres; at 6 kHz x0 = 39 um, hmin = 3.7 um.",
+   "suggested_rewording": "... sounds at 100, 400, 700 and 1500 Pa at about -20, -23, -24.5 and -23 cents (offset non-monotonic in pressure; identical at every pitch at equal steps per period); the source level d/dt u is the same at every pitch (0 dB per octave). The scaled reeds have non-physical dimensions at the ends of the range."
+  },
+  {
+   "id": "D-010",
+   "verdict": "refuted",
+   "attack": "D-010 tabulates Su over [-4 x0, +4 x0] and D-015 confines x to the tabulated range by a stiff spring; the spike tabulates over [-(6 x0 + es + er), +6 x0] and holds Su constant beyond, with no spring. Read the x range in the spike's runs, then re-ran the reference reed (400 spp) with the D-010 range, (a) Su clamped beyond, no spring, and (b) a spring of 100*K beyond the range.",
+   "finding": "In the spike the reed goes to -4.97 x0 / +6.36 x0 at 700 Pa and -6.82 x0 / +7.61 x0 at 1500 Pa (amplitude 4.63 x0 already at 400 Pa), i.e. well outside [-4 x0, 4 x0] and even beyond the spike's own +6 x0 table end. With the D-010 range and no spring: 1500 Pa gives -20.96 cents, amplitude 9.4 x0, h2 -6.2 dB (spike: -23.26, 7.2 x0, +0.2 dB). With a spring: 400 Pa +286 cents, 700 Pa +370 cents, 1500 Pa +1035 cents. So an implementation that follows D-010 and D-015 cannot pass DR-03 at 400 and 1500 Pa, and DR-03 tells the implementer the spike is the reference while D-010 fixes the range.",
+   "suggested_rewording": "Tabulate Su over [-(6 x0 + es + er), +6 x0] exactly as table() in spike S12, hold it constant beyond the table, and apply D-015's confining spring only beyond |x - x0| > 20 x0 (or another bound shown not to alter S12)."
+  },
+  {
+   "id": "C-060",
+   "verdict": "stands-with-caveat",
+   "attack": "Bisected steps per period for the reference reed at 1500 and 1800 Pa (1800 Pa = 1500 Pa * 1.2, the vibrato peak D-016 allows). Re-ran with D-012's permitted calibration factors (x0 0.5 to 2, hmin 0.5 to 2, Q 0.3 to 3) at 110 and 160 spp.",
+   "finding": "Uncalibrated: diverges at <= 95 spp (1500 Pa) and <= 100 spp (1800 Pa); stable at 105 and 110. The margin of the 110 rule at 1800 Pa is about 10 %. With hmin factor 0.5 the reed diverges at 110 spp (400 Pa) and at 160 spp (1500 and 1800 Pa); it needs about 220 spp. x0 factor 0.5 leaves the reed silent (choked) at 1500 and 1800 Pa. The claim's 'small gaps make it less stable' is right but the number 100 holds only for the reference proportions.",
+   "suggested_rewording": "... needs about 100 or more steps per period with the reference proportions (105 at 1800 Pa); with the minimum gap halved it needs about 220."
+  },
+  {
+   "id": "D-011",
+   "verdict": "stands-with-caveat",
+   "attack": "Applied m = ceil(110 f_r/(R fs)), R = 4, at fs = 44100 and 48000 to reeds at 27.5 Hz, 1603.5 Hz (m = 1, 110.01 spp), 4810.4 Hz (m = 3, 110.01 spp), 5236.9 Hz / 6981 Hz at 48 kHz (110.01 spp), 6000 Hz (44.1 kHz: m = 4, 117.6 spp; 48 kHz: m = 4, 128 spp), each scaled by D-012, at 1500 and 1800 Pa.",
+   "finding": "Every case is stable and sounds at 1500 Pa (-22.7 to -23.4 cents) and 1800 Pa (-21.96 to -22.64 cents). The rule is correct for uncalibrated reeds, but it does not cover the calibration ranges D-012 allows: with hmin factor 0.5 the reed diverges even at the DR-03 fallback constant 160, and D-015 then resets the voice silently. Also the x0 factor 0.5 makes the reed choke at high pressure, so the D-016 pressure range no longer holds once curves differ from 1.",
+   "suggested_rewording": "m = ceil(C * f_r / (R * fs)) with C = 110 / min(1, hmin_factor(note)) (or restrict the hmin factor to >= 1 and the x0 factor to >= 0.75 unless a check of S12 at 1800 Pa passes); include 1800 Pa in DR-03's check."
+  },
+  {
+   "id": "D-012",
+   "verdict": "stands-with-caveat",
+   "attack": "As for C-059, plus the calibration factors of D-012.",
+   "finding": "The scaling law keeps every group fixed, as stated. But the clause 'every reed starts at the same pressure, sounds the same number of cents below...' holds only while the three curves are 1; the permitted factors (hmin 0.5, x0 0.5) break stability or make the reed choke at 1500 Pa (see C-060, D-011). The source level is pitch-independent (0 dB per octave).",
+   "suggested_rewording": "Add: the factor ranges are limited to values for which the S12 check passes at 1800 Pa with the D-011 sub-step rule; source level d/dt u is the same at every pitch."
+  },
+  {
+   "id": "C-004",
+   "verdict": "stands",
+   "attack": "Checked the rewording against round 4 and checked the note's claim that D-012 keeps the ratio at 2.54.",
+   "finding": "V1*L2*w0^2/(c0^2*S2) ~ (1/k^2)*k^2 = constant, so every scaled reed sits at 2.54 as the note says. The claim now limits itself to the reference reed and states the counter-example.",
+   "suggested_rewording": ""
+  },
+  {
+   "id": "C-053",
+   "verdict": "stands-with-caveat",
+   "attack": "Compared the offsets with S12 output and ramp_output.json and my 700 Pa runs.",
+   "finding": "'20 to 23 cents below' is overstated: at 700 Pa the offset is -24.5 cents (400 spp) and at 1000 Pa -24.55 (ramp_output.json). The round-4 corrections (choked in the slot; does not transfer under cantilever scaling) are carried correctly.",
+   "suggested_rewording": "... sounds from 100 Pa to 1500 Pa, 19 to 25 cents below its natural frequency (largest near 700 to 1000 Pa) ..."
+  },
+  {
+   "id": "C-054",
+   "verdict": "stands-with-caveat",
+   "attack": "Read output2.txt and reed_bench2.cpp.",
+   "finding": "14.49 and 12.70 ns per step, 5.62 and 6.41 x real time, all 64 sounding, max_substeps 1: matches the wording. The benchmark stops at 1.5 kHz, so no reed takes sub-steps; reeds above 1745 Hz (at 4 x 48 kHz) cost 2 to 4 steps each (up to 6 kHz with H ranks), and if C-060's hmin caveat forces C = 220 the cost doubles. The wording is not overstated, but D-014 should not treat 5.6 x as covering the high registers.",
+   "suggested_rewording": ""
+  },
+  {
+   "id": "C-055",
+   "verdict": "stands-with-caveat",
+   "attack": "Checked every figure against research/spikes/s07-tinysol-accordion/output.json and round 4's findings.",
+   "finding": "Figures match the output (ff-pp 12.36/20.67/24.84 dB; share brighter 0.851; sub-octave q90 -35.4/-42.4 dB; rise 0.213/0.094/0.040 s; neighbour MAD q90 10.10/7.78/9.81 dB). 'The rest none' is slightly strong: round 4's prominence test found a distinct f/2 peak in 5 pp, 19 mf and 14 ff of 330 notes (about 5 to 12 %), and ff's q90 is -55 dB. Not materially overstated.",
+   "suggested_rewording": "... about one note in ten (fewer at pp and ff) shows a distinct component an octave below ..."
+  }
+ ],
+ "new_load_bearing_claims": [
+  {
+   "claim": "D-010's useful-section range [-4 x0, +4 x0] with D-015's confining spring cannot reproduce spike S12: the reed reaches -6.8 x0 / +7.6 x0 at 1500 Pa; with that range the offset at 1500 Pa is -21.0 cents without a spring and +286 to +1035 cents (400 to 1500 Pa) with a stiff spring.",
+   "evidence": "/tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/adv5/t4.py, t4.log, t1.log (x ranges)"
+  },
+  {
+   "claim": "The 110-steps-per-period rule holds only for the reference proportions: with D-012's permitted hmin factor 0.5 the reed diverges at 160 steps per period and needs about 220; with x0 factor 0.5 it chokes at 1500 Pa. Margin at the vibrato peak 1800 Pa is about 10 % (diverges at 100, stable at 105).",
+   "evidence": "/tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/adv5/ inline runs (bisection and calibration-factor runs), t3.log"
+  },
+  {
+   "claim": "Under the D-012 similarity law the source signal d/dt u has the same level at every pitch (0 dB per octave; u itself falls 6 dB per octave).",
+   "evidence": "/tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/adv5/t1.log: dudt_rms identical to 1e-14 for k = 0.5, 1, 6"
+  }
+ ],
+ "downgrades": [
+  "D-010 (useful-section range; refuted against its own reference spike)",
+  "C-060 (number valid only for reference proportions)",
+  "C-053 (offset band 20 to 23 cents should be 19 to 25)"
+ ],
+ "unresolved_contradictions": [
+  "D-010/D-015 (table [-4 x0, 4 x0], stiff spring beyond) versus spike S12 and DR-03 (S12 is the reference; its reed moves to -6.8 x0 / +7.6 x0).",
+  "D-012 calibration ranges (hmin 0.5 to 2, x0 0.5 to 2) versus D-011's sub-step rule and DR-03's fallback constant 160 (hmin 0.5 diverges at 160 spp) and D-016's pressure range (x0 0.5 chokes at 1500 Pa).",
+  "D-016 '20 to 23 cents below at every pitch' versus S12/ramp output (-24.5 cents at 700 to 1000 Pa, the calibration pressure)."
+ ],
+ "sources_checked": [
+  "plan/DECISIONS.md (D-010 to D-016, DR-03)",
+  "research/claims.json (C-004, C-053 to C-057, C-059, C-060)",
+  "research/rounds/r4-adversarial.json",
+  "research/spikes/s12-reed-similarity-scaling/similarity.py, output.json, ramp.py, ramp_output.json",
+  "research/spikes/s05-reed-cost/reed_bench2.cpp, output2.txt",
+  "research/spikes/s07-tinysol-accordion/output.json"
+ ],
+ "summary": "C-059/D-012: similarity is exact; every dimensionless group (including the useful-section law and C-004's ratio) is invariant, and k = 0.5 and 6 reproduce the reference's cents to 0.01 at equal steps per period, at 100, 700 and 1500 Pa.\nCaveats: offset is -24.5 cents at 700 to 1000 Pa (outside the quoted -20 to -23; 700 Pa is the calibration pressure); d/dt u has the same level at every pitch (0 dB/octave); scaled reeds are non-physical at the range ends.\nD-010 refuted against S12: the reed moves to -6.8/+7.6 x0 at 1500 Pa, beyond D-010's [-4 x0, 4 x0] table; with that range and D-015's spring the reed sounds +286 to +1035 cents off, so DR-03 cannot pass.\nD-011 rule (C = 110, R = 4) is stable at 44.1 and 48 kHz for 27.5 Hz to 7 kHz, including 110.01 spp cases, at 1500 and 1800 Pa; margin at 1800 Pa is about 10 %.\nBut D-012's calibration ranges break it: hmin factor 0.5 diverges even at DR-03's fallback 160 spp (needs ~220); x0 factor 0.5 chokes at 1500 Pa.\nC-004 stands; C-053 slightly overstated (20 to 23 -> 19 to 25 cents); C-054 accurate but covers no sub-stepped reeds; C-055 matches its output, 'the rest none' mildly strong.\nNew load-bearing claims: 3. Downgrades: D-010, C-060, C-053. Unresolved contradictions: 3 (D-010/D-015 vs S12/DR-03; D-012 ranges vs D-011/DR-03/D-016; D-016 offset band).\nNot saturated: this round produced a refutation and new load-bearing findings."
+}
