@@ -21,6 +21,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - name: Frozen manifest
         run: sha256sum -c tests/FROZEN_MANIFEST.sha256
       - name: Schema of lessons and knowledge items
@@ -34,6 +36,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.13"
@@ -42,8 +46,13 @@ jobs:
           cmake --version
           python3 --version
           echo "runner image: ${ImageOS:-unknown} ${ImageVersion:-unknown}"
-      - name: Python packages
-        run: python3 -m pip install -r tests/requirements.txt
+      - name: Locale for the locale tests (T-016)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get install -y --no-install-recommends locales
+          sudo locale-gen de_DE.UTF-8
+      - name: Python packages (hash-locked)
+        run: python3 -m pip install --require-hashes -r tests/requirements.lock
       - name: Configure (core only)
         run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DFOLK_BUILD_PLUGINS=OFF "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=${{ github.workspace }}/bin" "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE=${{ github.workspace }}/bin"
       - name: Build
@@ -53,9 +62,12 @@ jobs:
           ls -l bin
           test -s "bin/folk-render${{ runner.os == 'Windows' && '.exe' || '' }}"
           test -s "bin/folk-tests${{ runner.os == 'Windows' && '.exe' || '' }}"
+          test -s "bin/folk-locale-tests${{ runner.os == 'Windows' && '.exe' || '' }}"
           test -s "bin/folk-perf${{ runner.os == 'Windows' && '.exe' || '' }}"
       - name: C++ unit and engine tests
         run: bin/folk-tests
+      - name: Locale tests (T-016)
+        run: bin/folk-locale-tests
       - name: Performance, gating (ubuntu-24.04 only, D-086)
         if: matrix.os == 'ubuntu-24.04'
         run: bin/folk-perf
@@ -80,6 +92,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.13"
@@ -87,13 +101,17 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends libasound2-dev libfreetype-dev libfontconfig1-dev libx11-dev libxcomposite-dev libxcursor-dev libxext-dev libxinerama-dev libxrandr-dev libxrender-dev libglu1-mesa-dev mesa-common-dev xvfb
+          sudo apt-get install -y --no-install-recommends libasound2-dev libfreetype-dev libfontconfig1-dev libx11-dev libxcomposite-dev libxcursor-dev libxext-dev libxinerama-dev libxrandr-dev libxrender-dev libglu1-mesa-dev mesa-common-dev xvfb locales
+          sudo locale-gen de_DE.UTF-8
       - name: Configure
         run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release ${{ runner.os == 'macOS' && '"-DCMAKE_OSX_ARCHITECTURES=arm64;x86_64" -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0' || '' }}
       - name: Build
         run: cmake --build build --config Release --parallel 4
-      - name: Host tests
-        run: ${{ runner.os == 'Linux' && 'xvfb-run -a' || '' }} ctest --test-dir build -C Release --output-on-failure -E folk-perf
+      - name: Host tests, exactly 7 (five host programs, folk-tests, folk-locale-tests)
+        run: |
+          set -o pipefail
+          ${{ runner.os == 'Linux' && 'xvfb-run -a' || '' }} ctest --test-dir build -C Release --no-tests=error --output-on-failure -E folk-perf | tee ctest.log
+          grep -q "100% tests passed, 0 tests failed out of 7" ctest.log
       - name: Collect the five VST3 bundles
         run: |
           mkdir -p out
@@ -154,14 +172,43 @@ jobs:
           retention-days: 14
           if-no-files-found: error
 
+  host-tsan:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Linux packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libasound2-dev libfreetype-dev libfontconfig1-dev libx11-dev libxcomposite-dev libxcursor-dev libxext-dev libxinerama-dev libxrandr-dev libxrender-dev libglu1-mesa-dev mesa-common-dev xvfb locales
+          sudo locale-gen de_DE.UTF-8
+      - name: Configure with ThreadSanitizer
+        run: cmake -S . -B build-tsan -DCMAKE_BUILD_TYPE=RelWithDebInfo "-DCMAKE_CXX_FLAGS=-fsanitize=thread -fno-omit-frame-pointer" "-DCMAKE_EXE_LINKER_FLAGS=-fsanitize=thread"
+      - name: Build the host tests
+        run: cmake --build build-tsan --parallel 4 --target FolkHarmonicaHostTest FolkAccordionHostTest FolkMelodionHostTest FolkMandolinHostTest FolkBouzoukiHostTest
+      - name: Concurrency test under ThreadSanitizer (T-304)
+        run: |
+          export TSAN_OPTIONS="halt_on_error=1 second_deadlock_stack=1${{ hashFiles('tests/ci/tsan.supp') != '' && ' suppressions=tests/ci/tsan.supp' || '' }}"
+          n=0
+          for t in Harmonica Accordion Melodion Mandolin Bouzouki; do
+            b="$(find build-tsan/plugins -type f -name "Folk${t}HostTest" | head -n 1)"
+            test -n "$b"
+            xvfb-run -a "$b" "T-304*"
+            n=$((n + 1))
+          done
+          test "$n" -eq 5
+
   reference:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.13"
-      - run: python3 -m pip install -r tests/requirements.txt
+      - run: python3 -m pip install --require-hashes -r tests/requirements.lock
       - name: TinySOL cache (CC BY 4.0, redistributable; the only cached reference)
         id: cache
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
@@ -200,17 +247,19 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.13"
       - name: Vulnerability scan of the Python test dependencies (T-310)
         run: |
           python3 -m pip install pip-audit==2.10.0
-          python3 -m pip_audit --strict -r tests/requirements.txt
+          python3 -m pip_audit --strict --require-hashes -r tests/requirements.lock
 
   all-green:
     if: always()
-    needs: [freeze, core, plugins, reference, audit]
+    needs: [freeze, core, plugins, host-tsan, reference, audit]
     runs-on: ubuntu-24.04
     steps:
       - name: Every job succeeded
@@ -219,5 +268,6 @@ jobs:
           test "${{ needs.freeze.result }}" = success
           test "${{ needs.core.result }}" = success
           test "${{ needs.plugins.result }}" = success
+          test "${{ needs.host-tsan.result }}" = success
           test "${{ needs.reference.result }}" = success
           test "${{ needs.audit.result }}" = success

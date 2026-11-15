@@ -1,7 +1,7 @@
 {
  "run_id": "gen-20261114T004707Z-folk-instruments-vst",
  "branch": "gen-20261114T004707Z-folk-instruments-vst",
- "sequence": 16,
+ "sequence": 17,
  "protocol_versions": {
   "core": "4.0",
   "modules/software-ci": "1.0",
@@ -76,7 +76,7 @@
   "exploration": 0,
   "proof_review": 0,
   "cold_read": 5,
-  "premortem": 0,
+  "premortem": 1,
   "audit": 0
  },
  "completed": [
@@ -122,11 +122,11 @@
  ],
  "artifacts": {
   ".gitignore": "6f4ff2992c4e2558837e2e09c39ed2bba140658755b22d046aab810ea2c90ca0",
-  "CMakeLists.txt": "4a67d40d574de8a82af596bd016b9a86a53c777b621416ce5c21fb3b978f4bff",
-  "HANDOFF.md": "d315bac11aa651dcc66e52895c7ac57cd1c201c86815a9686ad1b8d1799cff19",
+  "CMakeLists.txt": "73ba001399d2d9590b588ad45c6a7957cba210d8aadb1345aca0b4a133f6ddba",
+  "HANDOFF.md": "468b84c3403b9cde902efaca994e09846aa0cd02eca871ffd68425c195c52f5d",
   "LICENSE": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
   "README.md": "07dcf6acf9c8fdf11622a8ec69b475ce63ef2074b33e42b20b65d82e87ec87ba",
-  "core/include/folk/engine.h": "8e16590ba9ac85cece8034a438c6045a0e299a583e1d7c8a4729ed6f67ef1e9e",
+  "core/include/folk/engine.h": "5785d6175b312e7343ec87f0d5e61f95f25d2ba5f36efe1f1bd7eba49ba0a6b9",
   "core/include/folk/strings.h": "f4f5fb835e58f41aeae35e0cbab5062046fb29597d9a6c69efd0e434da30d99d",
   "core/include/folk/tuning.h": "40fc1dcc129eff3a83dea631a06c58e4c5020262befa53bc0663491820b06950",
   "core/src/stubs.cpp": "e4d8629e0bcfb1f6ae0d790f95e61933a08b4f99993eecc14ae20995756ba82d",
@@ -277,18 +277,20 @@
   "lessons/L-20261115T131500Z-pycache-committed-before-gitignore.md": "59236cdff3b0768b97a7728cc1804ac546cda58d418a6dfdac771cb9757bf175",
   "lessons/L-20261115T133000Z-source-identity-not-checked.md": "9b88becdac46342882923aa60e19bc64761665cf802a043ba0f9d9d4ab6b9024",
   "plan/ASSUMPTIONS.md": "2a7277c849ee7ebc19c230107e607af716b70bc05f4276156aeafd11a9e83986",
-  "plan/DECISIONS.md": "376c22d4398fb4f1b71b073b2243a0559b64bab5a1d3b442ed2cd96cf09b9e29",
-  "plan/ENVIRONMENT.md": "c2e8a647f81d69d5629b34f96af78c01e14b48c88b5309c0a3675a99ab773797",
-  "plan/GATES.md": "c04131dd7b0e78ec9380288ed2772a1e8586b8124d59c8e2447f5c4a95589fcb",
-  "plan/PLAN.md": "42915e2631396b5bd416890ddb5d297da2be5e270c83dca87bb28299058faab7",
+  "plan/DECISIONS.md": "8e2b0ed11d1d53c7347487601855f0e19ddd67938784c280cea32e8dba2c6b92",
+  "plan/ENVIRONMENT.md": "c4a692cb531abe988bf1a5b12783903f073ba85cdcd5ee4cccda64fea4ea09e9",
+  "plan/GATES.md": "ed07272c56cc9544ab91938b5e2c2554b2b32da48d513081418a4d931f236994",
+  "plan/PLAN.md": "cd7bd795007c91faf1b597aae04557b75a0eac14f1dc3d25e1854fc970df0f44",
   "plan/PROFILE.md": "723f0c5761439ea504a71d064e2ea63fefef69c7185578a9d9fe0a5277842d37",
   "plan/TEMPLATES.md": "a7cab6ff0a71b6a49d6a136b3ac0920368645d58396b30ef7b3e48eea587fb23",
-  "plan/TRACEABILITY.md": "b5eac8cb2ae7f0ccde6e5ff46f93c24194166da0efaf6dafc97771aff3995482",
-  "plan/ci/ci.yml": "032dce2d2aeadb8c267e71c0d0f5f8aa3472f9d98b03dba03051946ba453d6b7",
-  "plan/ci/gate-evidence.yml": "707f101b05462499dbf7bd18ce76f7ceb6652d890d2c43b43e213cc3ade859fe",
+  "plan/TRACEABILITY.md": "c0b5901897480004843ca4a0a002bcebacc78fdc7aec3588925c7fa2fc55cb3c",
+  "plan/ci/ci.yml": "e80c11161f9c0c558b4f071fb316399e60d14a78ea049af6ba1a8e40239101c5",
+  "plan/ci/gate-evidence.yml": "dd143c73097bb2db56d6e673977b9dddcdc1c173e781c42c2110d5e4bf4e21d5",
   "plugins/CMakeLists.txt": "aea436c6947dbef926105daf2ee3808eac31e1f83adf994b6cc213bef3a0bd06",
   "plugins/common/FolkProcessor.cpp": "7ec03bb17da1970f331931347d44b98505eb4d3009e314eb5bc6dd3400fcefb6",
-  "premortem/RISK_REGISTER.md": "2cbbc8408c322636c844526dbd8a4046b6a781711e9415863311e18443b290ae",
+  "premortem/RISK_REGISTER.md": "d0fb65935d0fd6e63a0df0db1f2311b479daf87f569487e61eee90c51984d1c8",
+  "premortem/round-1.json": "cc5ce63ac3e2635981f4d9ff0bdc73381e645673214caa0ecef528a223223135",
+  "premortem/round-1.md": "9b82972659afe91d063638dd06aa0dd9a713d92a827f75db6a5604307dec3e31",
   "research/BRIEF.md": "f7e611004b94fd008a9ebc73e1040e703fa20e839c9118ab24cd09014bde4533",
   "research/INPUT_owner_research_file.md": "c3c9fd35dfbe6140105cefc75e5abfcabc75e005747949ac8ffb6d19670ad356",
   "research/PRIOR_KNOWLEDGE.md": "ad323f58200ad2e28b5ab89e5d579dde4389df1ddc52f0b69471f543a7f565b5",
@@ -428,11 +430,12 @@
   "reviews/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "scripts/check_knowledge_schema.py": "eab49ba4a33cf1a219a5af0b8175b519f8ca90c4b532389e82366043a90314ca",
   "scripts/checkpoint.py": "5f170045d31bb94cd69b3a73b0f1108d33654fb5d746efec33a49516d14de759",
-  "tests/FROZEN_MANIFEST.sha256": "cc96cda4e7fc6494539628ea738b5bafc9ae1c3bcc7efdb06ffa2a7befe12011",
+  "tests/FROZEN_MANIFEST.sha256": "2f5b6c7662da1be5132bd2cd6cb76e3a3ec8c21c307277538960b9a9204db25e",
   "tests/README.md": "9fee1bf2d34e3fe057a8bf8daa35916b03588be8fc6dd0288af80985742ff349",
   "tests/ci/check_pluginval_log.py": "849a33e7b74f16cdcad194f260c5943a93e4667687a55503128f7ef146845945",
   "tests/cpp/param_table.h": "e0bbd7c6ae2694e390697114791ad37b355af711662f8bc1ce0d0c6c93347435",
   "tests/cpp/test_engine.cpp": "c3fa29d588cd27019033ef20c555ba3e575da09e9d6170993cc8e44c2fe2f8f6",
+  "tests/cpp/test_locale.cpp": "9a24574624c3756cfbc728b6cd5a2b9c72b3aff280ecdfef1ec6e2ac810369e0",
   "tests/cpp/test_perf.cpp": "faadcb6b1356016057ad8a969d453c9ae3b632e6d0944df2a30cfe24ed57db13",
   "tests/cpp/test_strings.cpp": "7df51232c63dbfdfcb87a92a60503eea644897c1068ce98c98cb480872275227",
   "tests/cpp/test_tuning.cpp": "24998c8a3f05fabd9506397d2be6deb37172fe285338526de405792d4f7ec8a7",
@@ -444,12 +447,13 @@
   "tests/fixtures/huge_line.events": "cd0154dd1f908c4c86c299b6acfd2cafe0953527223c8a608523060db03cdaa5",
   "tests/fixtures/missing_end.events": "a11e9bb0163fe712152f704173d58c25e1b2fe4d5866021b22b221e557b6fa6d",
   "tests/fixtures/negative_time.events": "ed0d463af2da5a2f7e6cf72e97d73fa26866ea7bcfaad6093f3d36eff4f0cc38",
-  "tests/juce/host_test.cpp": "7cdd19dd8fb793a702c5a2af38b1860f1715869bdf981f6df1d145d04a546e35",
+  "tests/juce/host_test.cpp": "1f560b53ac66d66cf50d9312529ec0c288b3f64dbb1e59a5b78b2a5cafc87774",
   "tests/py/conftest.py": "7d0791ea96477fff946ecaaa08aa45b4349d96ec563d4f95d7f0bc9afb056a68",
   "tests/py/metrics.py": "53c58f47dbe204ee0588cc86aef2273e4e41c102a10bf60e873bcd2d2527b7fe",
   "tests/py/test_accordion.py": "df10cbf683935060eb4282169eff4ade67a6df54fb051342a6b37c1160115487",
   "tests/py/test_common.py": "799fcc0d51ac4c422a4bfb78dd4833f978324b7214e6554a3fe15d9b058518f9",
   "tests/py/test_evidence_guard.py": "f2bfa21d20b981f4e3cd93bc4f1471202b9c298bf76cf8def9544991767e9a51",
+  "tests/py/test_fetch_references.py": "17d8cdd801ce38ef5dc7469cf7b89e6959101d1d1d235f62f668b41250a2c971",
   "tests/py/test_harmonica.py": "ccf2dc2f9cf21974ea9d27fbae92869f5c056a37034d2590366f7d758bef4bc1",
   "tests/py/test_melodion.py": "9f9c426bd720c82b309d0a2ce1d9d5cc2bb24e504f3a5a173e5a0f259d884b83",
   "tests/py/test_metrics_selfcheck.py": "c13ff9247e65e2429204ea4c793db214c7a6e430a1e26c1dade949723b4cfd39",
@@ -458,18 +462,22 @@
   "tests/py/test_reference.py": "85c4cc272ea164dcb3936a00709ab87e2432c5999da13edc970ba797e000e012",
   "tests/py/test_strings.py": "9b6a1aba3f4b0e12535e1894906cee3f987c59743c00594ff381ae9846cf2c92",
   "tests/pytest.ini": "50062f53cc963237537db0afd92fbb9312e24695f7d4760559e6acb41c8e2a28",
+  "tests/requirements.lock": "95312fb46f415d0ea839f4b8fd2f47fca4e36a3d57cb917a03053bd487316394",
   "tests/requirements.txt": "1bcb1e6cd2e98cc5be97e3759ce22086a76d57213e49357a4cca62b5005d14c8",
   "tools/evidence_guard.py": "0376d303fd0e1b52e450eb8230180fbee543d1b82b3c696956f009b33883c46f",
+  "tools/fetch_references.py": "dce0faa61eb1faafdd8eca3d04eceebd25f4b964041b2ab8279593198a8d5ea9",
   "tools/folk-render/main.cpp": "14f836356d70fb0562d054c4abdba6c1a9ee53fac5fd9d114d1cda85adb211b3",
   "tools/listening/make_blind_pairs.py": "bb55c5019ffcec3c1402cabe103fad8bd63a0b6f12b4f26969221395def69e58",
   "tools/listening/score_blind.py": "54a6afe41f783f923032d1ee4cb0fb8fa2a1a749d0e9f9e53d153b8cdfafec73",
   "tools/make_demos.py": "3980052e55916891e59f73cc79b1587a242bed6bf34146c92f89485d9d2ccf7c"
  },
  "in_flight": {
-  "operation": "premortem round 1",
-  "started_at": "2026-11-15T23:40:00Z",
+  "operation": "cold-read re-run after pre-mortem round 1 (protocol 4.4), then pre-mortem round 2",
+  "started_at": "2026-11-16T01:30:00Z",
   "expected_outputs": [
-   "premortem/round-1.md"
+   "scratchpad/coldread-6-dryrun.json",
+   "scratchpad/coldread-6-mechanical.json",
+   "premortem/round-2.md"
   ],
   "safe_to_repeat": true
  },
@@ -807,5 +815,8 @@
   "K-20261115T010102Z-c-063-the-reed-model-tolerates-only-moderate-changes-o",
   "K-20261115T020000Z-source-register-folk-instruments-vst"
  ],
- "updated_at": "2026-11-15T23:18:50Z"
+ "updated_at": "2026-11-15T23:47:02Z",
+ "freeze": {
+  "refrozen_after": "pre-mortem round 1: T-016, T-211, T-302 (3 new cases), T-303, T-304; 30 frozen files"
+ }
 }

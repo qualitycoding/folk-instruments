@@ -34,7 +34,7 @@ public:
     virtual ~Engine() = default;
 
     virtual Instrument instrument() const = 0;
-    virtual void prepare(double sampleRate, int maxBlockSize) = 0;   ///< 44100 <= sampleRate <= 96000
+    virtual void prepare(double sampleRate, int maxBlockSize) = 0;   ///< plays at 44100..96000; any other rate gives silence and never throws (D-090)
     virtual void reset() = 0;                                        ///< silence, default controller state, reseeded noise
 
     virtual int numParams() const = 0;

@@ -9,6 +9,7 @@ At a gate the implementer halts, writes the gate record from the template in `HA
 | G-L1 to G-L5 | S-LISTEN | listening validation, one per instrument | 3 each |
 | G-002 | any step that would release or publish | external or irreversible action | no limit |
 | G-003 | S-KNOW | lesson and knowledge stores | no limit |
+| G-004 | S-REVIEW or S-ADVERSARIAL, only when a Critical or High finding is not fixed | acceptance of a review finding | no limit |
 
 Gates not required: `G-001` (profiles `math` and `computational` are inactive); `G-INT` (the integration route is `pull-request`: the owner merges the pull request, which is the owner's own action).
 
@@ -45,11 +46,12 @@ G-L1 harmonica, G-L2 mandolin, G-L3 accordion, G-L4 melodion, G-L5 bouzouki.
 | G-L2 mandolin | Philharmonia mandolin notes, private reference (D-051), if `S-REF` indexed 12 or more | 12, cut from the start, delivered privately | the same |
 | G-L1 harmonica, G-L4 melodion, G-L5 bouzouki | none with 12 notes at planning time; whatever `S-REF` indexed | 12 if `S-REF` indexed 12 or more notes of the instrument, otherwise none | with pairs: the same; without pairs: no demo reported as wrong |
 
-  The pass condition is necessary, not sufficient: the listener's remarks on the demos count alongside the score. A listener who gives one letter for 10 or more of the 12 pairs is showing side bias; record it.
+  The pass condition is necessary, not sufficient: the listener's remarks on the demos count alongside the score. Two of the 14 pairs are controls (D-053); a round with a missed control, or with one letter given for 10 or more of the 14 pairs, is void and repeated with a new seed, and does not count towards the round limit. A gate without pairs rests on the listener's remarks alone; its record says so.
 - **Questions.**
-  1. (Only if pairs were delivered.) For each of the 12 pairs, which side is the real instrument? Answer with 12 letters in order, for example `ABBABAABABBA`. Play each pair once, A then B, on your own headphones.
+  1. (Only if pairs were delivered.) For each of the 14 pairs, which side is the real instrument? Answer with 14 letters in order, for example `ABBABAABABBAAB`. Play each pair once, A then B, on your own headphones.
   2. Do the demos sound like the instrument? End your answer with a line `wrong: <demo names>` or `wrong: none`; that line alone decides 'no demo reported as wrong'.
   3. Per instrument: harmonica: do the bends (`-08-bend`, `-10-chromatic-on-diatonic`) sound like a player bending? Mandolin and bouzouki: does the tremolo (`-07-tremolo`) sound like picking, and do the variants differ as you expect? Accordion: do the registers and the musette (`-2xx-variant`) sound right, and does the cassotto setting sound warmer rather than just duller? Melodion: do chords under a limited breath (`-11-chords-limited-breath`) sag believably, and does the limited-breath variant (`-204-variant`) still sound right on single notes?
+  4. (G-L1 only, once for all five plugins.) Install the plugins from the CI artifact named in the record, load one in your usual host, and play it: do the pitch wheel and a breath controller (CC 2 or CC 11) act, does a factory preset load, and does a saved session reopen with the same sound? (R-019, R-018.)
 - **Allowed responses.** `proceed`; `iterate: <notes>`; `proceed-with-rescope: <text>`; `stop`; `override-round-limit: <reason>` (only to allow a round beyond the third).
 - **Branches.** `proceed`: only valid if the pass condition is met and no reference test of the instrument was recorded as failed in `S-330` (in that case ask once whether `iterate`, `proceed-with-rescope` naming the shortfall, or `stop` is meant; rule DR-16); if pairs were judged and more than 8 were correct, tell the owner the score and ask once whether `iterate`, `proceed-with-rescope` or `stop` is meant. `iterate: <notes>`: rule DR-12; new evidence with a new seed; next round. After round 3: only `proceed` (if the condition is met), `proceed-with-rescope`, `stop` or `override-round-limit`. `proceed-with-rescope: <text>`: the text names the accepted shortfall; copy it into `DEVIATIONS.md` and the retrospective; continue. `stop`: rule DR-15: the instrument stays built and tested; the answer is recorded in `DEVIATIONS.md` and `README.md`; the other instruments continue.
 
@@ -62,6 +64,15 @@ This plan releases nothing (A-018, D-007), so no step opens this gate. It exists
 - **Questions.** 1. May this be published as described? 2. Under which version number?
 - **Allowed responses.** `publish: <version>`; `do-not-publish`.
 - **Branches.** `publish`: perform exactly the described action, record it. `do-not-publish`: record it and continue without the action.
+
+## G-004: acceptance of a Critical or High review finding
+
+- **Trigger.** `S-REVIEW` or `S-ADVERSARIAL` ends with a Critical or High finding that has no fix commit verified by the reviewer (R-025). The implementer never accepts such a finding.
+- **Blocks.** Every later step.
+- **Evidence bundle.** The finding as the reviewer wrote it, the attempted fixes, the failure path, and the options.
+- **Question.** May this finding ship unfixed, and with what statement in `README.md`?
+- **Allowed responses.** `accept: <statement>`; `fix: <direction>`; `stop`.
+- **Branches.** `accept`: record the risk as accepted by the owner, copy the statement into `README.md` and `DEVIATIONS.md`, continue. `fix`: apply the direction and repeat the review of that finding. `stop`: halt with `BLOCKED.md`.
 
 ## G-003: lesson and knowledge stores
 

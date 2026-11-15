@@ -41,8 +41,11 @@ Categories: U unit, I integration, O operational, S security, P performance, R r
 | T-012 | same | I | SC-11 | 1 |
 | T-014 | same | U, S | SC-02, SC-11 | 2 |
 | T-015 | same | I, O | SC-11 | 1 |
+| T-016 | `tests/cpp/test_locale.cpp` (program `folk-locale-tests`) | U, S | SC-02, SC-11 | 2 |
 | T-013 | `tests/cpp/test_perf.cpp` | P | SC-12 | 1 |
-| T-302 | `tests/juce/host_test.cpp` (one program per plugin) | I, S | SC-01, SC-11 | 4 per plugin |
+| T-302 | `tests/juce/host_test.cpp` (one program per plugin) | I, S | SC-01, SC-11 | 7 per plugin |
+| T-303 | same | I | SC-01 | 1 per plugin |
+| T-304 | same (also run under ThreadSanitizer in job `host-tsan`) | I, S | SC-01, SC-11 | 1 per plugin |
 | T-090 | `tests/py/test_metrics_selfcheck.py` (checks `tests/py/metrics.py`) | K | the measurements themselves | 12 |
 | T-091 | `tests/py/test_pluginval_log_check.py` (checks `tests/ci/check_pluginval_log.py`) | K | T-300's check | 2 |
 | T-100 to T-109 | `tests/py/test_reeds.py` | I | SC-03, SC-04; C-001 to C-004, C-053, C-059, C-062 | 44, 9, 9, 9, 3, 3, 3, 3, 6, 3 |
@@ -57,10 +60,11 @@ Categories: U unit, I integration, O operational, S security, P performance, R r
 | T-200 | `tests/py/test_reference.py` | R | SC-13; C-055 | 11: T-200a (1, a tool check on the data), T-200b harmonic profile (3), T-200c centroid (3), T-200d dynamic range (1), T-200e rise time (3) |
 | T-201 | same | R | SC-13 | 5: T-201a index well-formed (1), T-201b comparison per instrument (4) |
 | T-210 | `tests/py/test_evidence_guard.py` | S | SC-13; Rule 15 | 7 |
+| T-211 | `tests/py/test_fetch_references.py` | S | SC-13; Rule 16 | 10 |
 | T-300 | CI step "pluginval, strictness 10, each plugin" with `tests/ci/check_pluginval_log.py` | V | SC-01 | 5 plugins on 4 runners |
 | T-310 | CI job `audit` (`pip_audit --strict`) | S | SC-15 | 1 |
 
-Test IDs T-130 and T-016 to T-089 are unused.
+Test IDs T-130 and T-017 to T-089 are unused.
 
 Required categories (protocol 2B.3): unit (T-001 to T-008, T-014); integration (T-009 to T-012, T-100 to T-163, T-302); operational (T-015 tails and shutdown of sound, T-161 start-up, configuration errors and I/O failures of the render tool, T-163 repeatability; resource exhaustion: T-009's event flood and T-124's seventeenth key; resume after interruption does not apply to a plugin or a one-shot render, which hold no persistent state beyond the state text of T-014); security (T-009, T-014, T-161, T-210, T-302 malformed state, T-310 dependency scan); performance (T-013, best of three runs, on the named runner). Deployment tests: not applicable (`software.deploys = false`).
 
@@ -92,14 +96,15 @@ Every test with a numeric threshold fails the build when missed: all are asserti
 
 The matrix is produced by step `S-003` from `plan/ci/ci.yml` and recorded in `plan/ENVIRONMENT.md` section 5. The mutation job placement rule does not apply (D-004).
 
-## 5. State at the freeze (red verification, 2026-11-15, planning sandbox, against the stubs)
+## 5. State at the freeze (red verification, 2026-11-15, planning sandbox, against the stubs; re-frozen after pre-mortem round 1 with T-016, T-211 and the new T-302 to T-304 cases)
 
 | Suite | Result |
 |---|---|
 | `build/folk-tests` | 27 test cases, 27 failed, every failure an exception `not implemented: ...` or an assertion that follows from it; no crash |
+| `build/folk-locale-tests` | 2 test cases, 2 failed with `not implemented: ...` (under `de_DE.UTF-8`) |
 | `build/folk-perf` | 1 test case, failed with `not implemented: Engine::create` |
-| five `...HostTest` programs | 4 test cases each, all failed with `not implemented: createPluginFilter` |
-| `pytest -m "not reference"` | 306 collected: 14 passed (T-090: 12, T-091: 2), 292 failed; the failures are `folk-render failed with status 64: folk-render: not implemented`, a returned status of 64 where another was expected, or (T-210) status 64 from the stub of `tools/evidence_guard.py` |
+| five `...HostTest` programs | 9 test cases each (T-302: 7, T-303, T-304), all failed with `not implemented: createPluginFilter` |
+| `pytest -m "not reference"` | 316 collected: 14 passed (T-090: 12, T-091: 2), 302 failed; the failures are `folk-render failed with status 64: folk-render: not implemented`, a returned status of 64 where another was expected, or (T-210, T-211) status 64 from the stubs of `tools/evidence_guard.py` and `tools/fetch_references.py` |
 | `pytest -m reference` with TinySOL present | 16 collected: 1 passed (T-200a, a tool check on the data), 5 failed (T-201: no `references/index.csv` yet), 10 errors raised in the fixture that renders the candidate (`folk-render failed with status 64`) |
 
 The Python tests of instrument behaviour were also run against an idealised stand-in renderer (spike S08): all pass except T-163, for a reason that concerns only the stand-in (`research/spikes/s08-test-oracle/README.md`).
