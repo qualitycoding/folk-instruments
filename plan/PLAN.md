@@ -68,7 +68,7 @@ Order at a glance: `S-000`, `S-002`, `S-003`; then two tracks that may run concu
 - Depends on: S-002
 - Inputs: `plan/ci/ci.yml`, `plan/ENVIRONMENT.md` section 5
 - Actions:
-  1. `mkdir -p .github/workflows && cp plan/ci/ci.yml .github/workflows/ci.yml`. Add `.gitattributes` with the two lines `tests/** text eol=lf` and `*.events text eol=lf` (Windows checkouts must not change the hashed files). Add `.gitignore` with `build*/`, `__pycache__/`, `*.pyc`, `refs-private/`.
+  1. `mkdir -p .github/workflows && cp plan/ci/ci.yml .github/workflows/ci.yml`. Add `.gitattributes` with the two lines `tests/** text eol=lf` and `*.events text eol=lf` (Windows checkouts must not change the hashed files). Append to the existing `.gitignore` the lines `build*/` and `refs-*/`.
   2. Commit and PUSH. This first run is the spike for the unverified items of `plan/ENVIRONMENT.md` section 5.
   3. Read the run's results (job conclusions and failing step names through the available GitHub tool). Expected at this point: job `freeze` succeeds; job `audit` succeeds; jobs `core`, `plugins` and `reference` fail in their test steps, not in checkout, configure, build or download steps; `all-green` fails.
   4. For each unverified item in the table of `plan/ENVIRONMENT.md` section 5, record what the run showed in `EXECUTION_LOG.md`, and apply that table's "If it fails" column.
@@ -145,7 +145,7 @@ Order at a glance: `S-000`, `S-002`, `S-003`; then two tracks that may run concu
   2. Write `tools/reed_probe.cpp` (a small program built with the core, not shipped in the plugins) that runs one reed at a given natural frequency and constant reservoir pressure for a given time at a given host rate and prints sounding frequency in cents relative to the natural frequency, tip amplitude over `x0`, and whether any state became non-finite.
 - Outputs: `core/src/reed.h`, `core/src/reed.cpp`, `tools/reed_probe.cpp`
 - Evidence produced: none (verified in S-201)
-- Done when: CORE BUILD including `reed_probe`; `reed_probe` for 444 Hz at 400 Pa and 48000 Hz host rate prints an offset between -24.5 and -21.5 cents and an amplitude between 4.4 and 4.9 times `x0` (spike S12: -23.1 cents, 4.63).
+- Done when: CORE BUILD including `reed_probe`; `reed_probe --undriven` (the reed displaced by `x0` and released with the supply at 0 Pa) shows the tip amplitude never growing over 2 s (a model that gains energy with no supply is wrong); `reed_probe` for 444 Hz at 400 Pa and 48000 Hz host rate prints an offset between -24.5 and -21.5 cents and an amplitude between 4.4 and 4.9 times `x0` (spike S12: -23.1 cents, 4.63).
 - Checkpoint: step done.
 - On failure: compare with `similarity.py` line by line (order of updates, signs, units); the spike is the reference.
 - Gate: none
@@ -179,8 +179,8 @@ Order at a glance: `S-000`, `S-002`, `S-003`; then two tracks that may run concu
 - Inputs: D-020 to D-024, `core/src/reed.h`, `presets/harmonica.json`
 - Actions: implement the harmonica instrument in `core/src/harmonica.cpp`: note mapping through `diatonicNoteFor` and `chromaticNoteFor`, the baseline bend of D-022, breath sources, vibrato, `wah`, `air_noise`, `airtightness`, `valve_buzz`, polyphony 4 with oldest-first stealing, silence for unplayable notes.
 - Outputs: `core/src/harmonica.cpp`
-- Evidence produced: T-100 (harmonica), T-101 to T-108 (harmonica), T-110 to T-114
-- Done when: CORE BUILD; PY `harmonica`; PY `(T100 or T101 or T102 or T103 or T104 or T105 or T106 or T107 or T108) and harmonica`.
+- Evidence produced: T-100 (harmonica), T-101 to T-109 (harmonica), T-110 to T-114
+- Done when: CORE BUILD; PY `harmonica`; PY `(T100 or T101 or T102 or T103 or T104 or T105 or T106 or T107 or T108 or T109) and harmonica`.
 - Checkpoint: step done.
 - On failure: fix the code. If a reed test fails only at the extreme notes, re-check S-201's table first. Rule DR-05 for a test that looks wrong.
 - Gate: G-P1 (the gate is opened by this step; see `plan/GATES.md`)
@@ -213,7 +213,7 @@ Gate actions of S-210 (after its tests pass): render `demos/harmonica-01-melody.
 - Inputs: D-030 to D-033, `core/src/reed.h`, `presets/accordion.json`
 - Actions: implement the accordion in `core/src/accordion.cpp`: ranks per register, tremolo by D-031, cassotto and sordina filters, bend, key noise, bellows from velocity or controller, polyphony 16 keys, a change of `register` while keys are held taking effect within one block (ranks start or stop for held keys).
 - Outputs: `core/src/accordion.cpp`
-- Evidence produced: T-100 to T-108 (accordion), T-120 to T-125, T-161 event-file features
+- Evidence produced: T-100 to T-109 (accordion), T-120 to T-125, T-161 event-file features
 - Done when: CORE BUILD; PY `accordion`; PY `T161`.
 - Checkpoint: step done.
 - On failure: fix the code; rule DR-05.
@@ -229,7 +229,7 @@ Gate actions of S-210 (after its tests pass): render `demos/harmonica-01-melody.
 - Inputs: D-040, D-041, `core/src/reed.h`
 - Actions: implement the melodion in `core/src/melodion.cpp`: the plenum of D-041 in both breath modes, ranges, bodies, moisture, polyphony 10.
 - Outputs: `core/src/melodion.cpp`
-- Evidence produced: T-100 to T-108 (melodion), T-131 to T-134
+- Evidence produced: T-100 to T-109 (melodion), T-131 to T-134
 - Done when: CORE BUILD; PY `melodion`.
 - Checkpoint: step done.
 - On failure: fix the code; rule DR-05.
@@ -248,7 +248,7 @@ Gate actions of S-210 (after its tests pass): render `demos/harmonica-01-melody.
   2. Implement `core/src/pluck.h` and `pluck.cpp`: the partial bank, the 2 x 2 pair blocks with their matrix exponential, the pluck of D-063, damping, tremolo, sustain, the body of D-064 with its admittance, the `tap` event, the control-rate tick, and the `--dump-model` data.
 - Outputs: `presets/bodies.json`, `core/src/pluck.h`, `core/src/pluck.cpp`
 - Evidence produced: none (verified in S-250)
-- Done when: CORE BUILD; a unit program or Catch2 test of the implementer's own (not frozen) shows that the pair block reproduces `research/spikes/s04-coupled-pair/output.json`: early and late decay rates of the 1-cent case within 2 % of -75.3 and -5.14 dB/s.
+- Done when: CORE BUILD; a unit program or Catch2 test of the implementer's own (not frozen) shows that the pair block reproduces `research/spikes/s04-coupled-pair/output.json`: early and late decay rates of the 1-cent case within 2 % of -75.3 and -5.14 dB/s; and that with no pluck after an initial excitation the summed energy of all resonators of a course and body never grows from one control tick to the next, for `body_coupling` 0, 0.5 and 1 and mistunings of 0, 3.5 and 8 cents.
 - Checkpoint: step done.
 - On failure: compare with `research/spikes/s04-coupled-pair/pair.py`.
 - Gate: none
@@ -263,7 +263,7 @@ Gate actions of S-210 (after its tests pass): render `demos/harmonica-01-melody.
 - Inputs: D-070 to D-072, `core/src/pluck.h`
 - Actions: implement the mandolin in `core/src/mandolin.cpp`: three bodies, four courses, note-to-course rule, all plucked-instrument parameters.
 - Outputs: `core/src/mandolin.cpp`
-- Evidence produced: T-140 (mandolin), T-141 to T-146 (mandolin), T-148 to T-153
+- Evidence produced: T-140 (mandolin), T-141 to T-146 (mandolin), T-148 to T-154 (mandolin)
 - Done when: CORE BUILD; PY `strings and (mandolin or T141 or T142 or T143 or T144 or T145 or T148 or T149 or T150 or T151 or T153)`.
 - Checkpoint: step done.
 - On failure: fix the code; rule DR-05.
@@ -281,7 +281,7 @@ Gate actions of S-250: render `demos/mandolin-01-melody.events`, `-04-dynamics`,
 - Inputs: D-073, `core/src/pluck.h`
 - Actions: implement the bouzouki in `core/src/bouzouki.cpp`: three variants, octave courses with `octave_order`, body presets.
 - Outputs: `core/src/bouzouki.cpp`
-- Evidence produced: T-140 (bouzouki), T-146 (bouzouki), T-147, T-152 (bouzouki)
+- Evidence produced: T-140 (bouzouki), T-146 (bouzouki), T-147, T-152 (bouzouki), T-154 (bouzouki)
 - Done when: CORE BUILD; PY `strings`.
 - Checkpoint: step done.
 - On failure: fix the code; rule DR-05.
@@ -298,7 +298,7 @@ Gate actions of S-250: render `demos/mandolin-01-melody.events`, `-04-dynamics`,
 - Actions:
   1. Delete `core/src/stubs.cpp`; make sure no function throws `NotImplemented`.
   2. Run the complete Catch2 suite, `folk-perf`, and the complete Python suite except the reference tests.
-  3. Run `python3 tools/calibrate_reeds.py --check` (the committed offsets match a fresh run within 0.2 cents) and `python3 tools/gen_presets.py --check`.
+  3. Run `python3 tools/calibrate_reeds.py --check` (the committed offsets match a fresh run with the committed curves within 0.2 cents) and `python3 tools/gen_presets.py --check`.
   4. Build once with `-DCMAKE_CXX_FLAGS="-fsanitize=address,undefined -fno-sanitize-recover=undefined" -DCMAKE_BUILD_TYPE=RelWithDebInfo` into `$HOME/folk-build-asan` and run `folk-tests` there with `ASAN_OPTIONS=detect_leaks=0:halt_on_error=1` (the allocation-probe test T-011 replaces `operator new`; if the sanitiser build cannot link because of that, run it with the Catch2 filter `~"T-011*"` and record this in `EXECUTION_LOG.md`).
 - Outputs: none new (removes `core/src/stubs.cpp`)
 - Evidence produced: T-001 to T-015 complete, T-100 to T-163 complete
@@ -377,7 +377,7 @@ Gate actions of S-250: render `demos/mandolin-01-melody.events`, `-04-dynamics`,
 - Inputs: `tests/py/test_reference.py`, rule DR-07, D-012 (the three curves), D-071
 - Actions:
   1. Run the reference tests locally (`plan/ENVIRONMENT.md` section 3) with `FOLK_TINYSOL` and `FOLK_REF_ROOT` set, or in CI under rule DR-13; save the output to `baseline/reference-before.txt` (pass and fail lines and the printed T-201 lines only; no reference-derived numbers for private references beyond pass counts).
-  2. If any reference test fails, calibrate by rule DR-07, re-running the check of `S-201` (its `Done when`) and `tools/calibrate_reeds.py` after any change to a reed curve, and re-running the whole of `S-300`'s `Done when` after each round.
+  2. If any reference test fails, calibrate by rule DR-07, running the calibrated-set check of D-012 and then `tools/calibrate_reeds.py` after any change to a reed curve (write the check's table to `baseline/reed-check-calibrated.csv`), and re-running the whole of `S-300`'s `Done when` after each round.
   3. Save the final output to `baseline/reference-after.txt`.
 - Outputs: `baseline/reference-before.txt`, `baseline/reference-after.txt`, possibly updated `presets/reeds.json` and `presets/bodies.json`
 - Evidence produced: T-200, T-201b
@@ -395,12 +395,12 @@ Gate actions of S-250: render `demos/mandolin-01-melody.events`, `-04-dynamics`,
 - Depends on: S-300, S-REF
 - Inputs: `demos/*.events`, `tools/make_demos.py`, `tools/listening/make_blind_pairs.py`, `tools/evidence_guard.py`, D-052, D-053
 - Actions:
-  1. Write `tools/build_evidence.py --gate <gate id> --instrument <name> --seed <n> --out <dir> [--private-out <dir>]`. It (a) renders every `demos/<instrument>-*.events` file to `<dir>/demos/<same name>.wav` at 48 kHz; (b) if `references/index.csv` holds 12 or more notes of the instrument, picks the 12 with the lowest ids, renders the candidate for each with the row's `velocity` and `sets` for the reference's duration (at most 3 s), and runs `tools/listening/make_blind_pairs.py --ref <refs> --cand <cands> --out <pairs dir> --seed <n> --pairs 12 --window start`; the pairs directory is `<dir>/pairs` when every one of the 12 references is redistributable, otherwise `<private-out>/pairs` with only a file `PAIRS-SHA256SUMS` in `<dir>`; for the accordion the 12 references are the TinySOL mf notes at MIDI 48, 52, 55, 59, 62, 65, 69, 72, 76, 79, 83, 86 and the candidate patch is that of D-050; (c) writes `<dir>/MANIFEST.json` (every file with its `derived_from` list), `<dir>/SHA256SUMS`, `<dir>/ATTRIBUTION.md` and `<dir>/METRICS.md` (the pass or fail of each frozen test concerning the instrument, taken from a pytest run); (d) runs `tools/evidence_guard.py` on `<dir>` and exits non-zero if it fails. The answer key written by the pair builder stays base64-encoded.
+  1. Write `tools/build_evidence.py --gate <gate id> --instrument <name> --seed <n> --out <dir> [--private-out <dir>]`. It (a) renders every `demos/<instrument>-*.events` file to `<dir>/demos/<same name>.wav` at 48 kHz; (b) if `references/index.csv` holds 12 or more notes of the instrument, picks the 12 with the lowest ids, renders the candidate for each with the row's `velocity` and `sets` for the reference's duration (at most 3 s), and runs `tools/listening/make_blind_pairs.py --ref <refs> --cand <cands> --out <pairs dir> --seed <n> --pairs 12 --window start`; it passes `--rms-db -23` for reeds and `--rms-db -32` for plucked instruments (short, peaky notes clip at the default level), and afterwards checks every pair file: peak below 0.99, and the correlation of each clip with the reference file or candidate render it was cut from above 0.99 for the side the answer key names (so that a mislabelled or swapped pair is caught before anyone listens); the pairs directory is `<dir>/pairs` when every one of the 12 references is redistributable, otherwise `<private-out>/pairs` with only a file `PAIRS-SHA256SUMS` in `<dir>`; for the accordion the 12 references are the TinySOL mf notes at MIDI 48, 52, 55, 59, 62, 65, 69, 72, 76, 79, 83, 86 and the candidate patch is that of D-050; (c) writes `<dir>/MANIFEST.json` (every file with its `derived_from` list), `<dir>/SHA256SUMS`, `<dir>/ATTRIBUTION.md` and `<dir>/METRICS.md` (the pass or fail of each frozen test concerning the instrument, taken from a pytest run, and, when references exist, a table comparing references and candidates note by note: spectral centroid over fundamental, level, rise time for reeds or decay rate of the fundamental for plucked instruments, with the largest mismatches listed first; for private references only the count of notes inside and outside the reference spread); (d) runs `tools/evidence_guard.py` on `<dir>` and exits non-zero if it fails. The answer key written by the pair builder stays base64-encoded.
   2. Add `.github/workflows/gate-evidence.yml`: triggered on push to `impl-**` when the head commit message contains `[gate-evidence `; it parses the gate id and instrument from the message `[gate-evidence <gate id> <instrument> seed=<n>]`, builds the render tool, fetches the redistributable references, runs `tools/build_evidence.py`, and pushes the result as the only content of the orphan branch `evidence/<gate id>` (force-push to that evidence branch only); `permissions: contents: write`; its own concurrency group `gate-evidence-${{ github.ref }}` with `cancel-in-progress: false`; the same action pins as `ci.yml`; no failure-swallowing; a final step that fails if `SHA256SUMS` or `MANIFEST.json` is missing from the pushed tree.
   3. Dry run locally: `python3 tools/build_evidence.py --gate G-TEST --instrument accordion --seed 1 --out $HOME/folk-evidence/G-TEST`.
 - Outputs: `tools/build_evidence.py`, `.github/workflows/gate-evidence.yml`
 - Evidence produced: none (tooling for S-LISTEN)
-- Done when: the dry run exits 0 and its output directory holds `MANIFEST.json`, `SHA256SUMS`, `ATTRIBUTION.md`, `METRICS.md`, at least 20 WAV files under `demos/`, and (TinySOL being available locally) 24 WAV files under `pairs/`; a second dry run with an index row's `redistributable` flag temporarily set to `false` for one of the 12 notes writes no `pairs/` directory into the output (try it with a copy of the index, not the committed file).
+- Done when: the dry run exits 0, prints the pair check as passed for all 24 clips, and its output directory holds `MANIFEST.json`, `SHA256SUMS`, `ATTRIBUTION.md`, `METRICS.md`, at least 20 WAV files under `demos/`, and (TinySOL being available locally) 24 WAV files under `pairs/`; a second dry run with an index row's `redistributable` flag temporarily set to `false` for one of the 12 notes writes no `pairs/` directory into the output (try it with a copy of the index, not the committed file).
 - Checkpoint: step done.
 - On failure: fix the tool. If TinySOL is not available locally, perform the dry run in CI by pushing a commit with `[gate-evidence G-TEST accordion seed=1]`, verify the branch `evidence/G-TEST`, then delete that branch.
 - Gate: none

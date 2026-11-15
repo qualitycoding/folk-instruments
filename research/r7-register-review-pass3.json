@@ -1,0 +1,89 @@
+{
+ "checked": [
+  {
+   "row": 103,
+   "url": "https://ccrma.stanford.edu/~jos/pasp/Stiff_String.html",
+   "licence_in_register": "Copyright J. O. Smith III (page footer); read only",
+   "licence_at_source": "Copyright 2026-08-21 by Julius O. Smith III, CCRMA Stanford (no open licence)",
+   "where_read": "page footer",
+   "licence_ok": true,
+   "summary_ok": false,
+   "correction": "Summary overreaches: the page covers the stiffness term, dispersive propagation and use in piano synthesis, but does not mention allpass dispersion filters or string loops (those are on the next page, Stiff String Synthesis Models, not fetched). Remove 'allpass dispersion filters in string loops' or cite the next page."
+  },
+  {
+   "row": 109,
+   "url": "https://en.wikipedia.org/wiki/Chromatic_harmonica",
+   "licence_in_register": "CC BY-SA 4.0 (page footer)",
+   "licence_at_source": "Text under CC BY-SA 4.0; additional terms may apply",
+   "where_read": "page footer",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": ""
+  },
+  {
+   "row": 112,
+   "url": "https://en.wikipedia.org/wiki/Inharmonicity",
+   "licence_in_register": "CC BY-SA 4.0 (page footer)",
+   "licence_at_source": "Text under CC BY-SA 4.0; additional terms may apply",
+   "where_read": "page footer",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": ""
+  },
+  {
+   "row": 115,
+   "url": "https://en.wikipedia.org/wiki/Overblowing",
+   "licence_in_register": "CC BY-SA 4.0 (page footer)",
+   "licence_at_source": "Text under CC BY-SA 4.0; additional terms may apply",
+   "where_read": "page footer",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": ""
+  },
+  {
+   "row": 117,
+   "url": "https://euphonics.org/wp-content/uploads/2022/03/Double_decays_JASA.pdf",
+   "licence_in_register": "Copyright 2021 ASA (first page); offered by author for personal use only, otherwise permission needed (publication list, item 142)",
+   "licence_at_source": "(c) 2021 Acoustical Society of America (first page, confirmed). The 'personal use only' clause could not be re-verified: the publication list was not fetched (euphonics.org upload directory returned 403).",
+   "where_read": "PDF first page via pdftotext",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": "Optional: first page shows the copyright symbol and 'C 2021', so 'Copyright 2021' is a fair rendering. Publication-list wording unverified in this pass."
+  },
+  {
+   "row": 135,
+   "url": "https://commons.wikimedia.org/wiki/File:Bending_Mundharmonika.ogg",
+   "licence_in_register": "GFDL 1.2+; CC BY-SA 3.0",
+   "licence_at_source": "GFDL 1.2 or later; CC BY-SA 3.0 Unported",
+   "where_read": "Licensing section of file page",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": "Minor: page says 'Ziehbendings Mundharmonika' (draw bends), own work, 26 Oct 2006; it does not say 'diatonic' or that notes are not isolated, so those two points are the reviewer's inference rather than page content."
+  },
+  {
+   "row": 136,
+   "url": "https://commons.wikimedia.org/wiki/File:Blues_Harp1.ogg",
+   "licence_in_register": "GFDL; CC BY-SA 1.0-3.0",
+   "licence_at_source": "GFDL 1.2 or later; CC BY-SA 3.0, 2.5, 2.0 and 1.0 (user may choose)",
+   "where_read": "Licensing section of file page",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": ""
+  },
+  {
+   "row": 137,
+   "url": "https://commons.wikimedia.org/wiki/File:Electra-Melodica-Hohner-1967_CC-BY_Reuter-Schefczik.flac",
+   "licence_in_register": "CC BY-SA 4.0",
+   "licence_at_source": "CC BY-SA 4.0 International",
+   "where_read": "Licensing section of file page",
+   "licence_ok": true,
+   "summary_ok": false,
+   "correction": "Summary says 'Electro-acoustic variant, not a standard melodica'; the page only describes the Electra-Melodica, invented 1967 by Ernst Zacharias, made by Hohner, about 600 units, recording dated 30 Aug 2024. Replace with that."
+  }
+ ],
+ "not_checked": [
+  "Row 117: author's 'personal use only' statement (publication list item 142) not re-read; euphonics.org directory returned 403"
+ ],
+ "discrepancies": 2,
+ "summary": "8 rows checked against live sources. All licence cells match the source (117 partly: ASA copyright confirmed, publication-list clause not re-read). Two summaries overreach: row 103 (allpass dispersion filters in string loops not on page) and row 137 ('electro-acoustic variant' unsupported). Row 135 has a minor inference ('diatonic', 'not isolated notes'). Rows 109, 112, 115, 136 clean; 115 and 135 corrections hold."
+}

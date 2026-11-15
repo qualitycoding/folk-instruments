@@ -1,0 +1,134 @@
+{
+ "checked": [
+  {
+   "row": 96,
+   "url": "https://zenodo.org/records/3685367",
+   "licence_in_register": "CC BY 4.0, stated on record page",
+   "licence_at_source": "Zenodo API metadata license id cc-by-4.0; description says use must comply with CC BY 4.0. Creators listed are Cella, Ghisi, Lostanlen, Levy, Fineberg, Maresz (UC Berkeley, NYU, Columbia, Boston, Paris Conservatoire); IRCAM is named only as the original SOL recording site.",
+   "where_read": "zenodo.org/api/records/3685367 (metadata.license, metadata.description, files)",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": "",
+   "permitted_use_suggestion": ""
+  },
+  {
+   "row": 98,
+   "url": "https://philharmonia.co.uk/resources/sound-samples/",
+   "licence_in_register": "Site terms: free to use, including in commercial work, but not to be sold or made available 'as is'",
+   "licence_at_source": "Licensing paragraph: 'free to use these samples as you wish, including releasing them as part of a commercial work. The only restriction is that they must not be sold or made available as is (i.e. as samples or as a sampler instrument)'",
+   "where_read": "Licensing section of the page body",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": "",
+   "permitted_use_suggestion": ""
+  },
+  {
+   "row": 99,
+   "url": "https://theremin.music.uiowa.edu/MIS.html",
+   "licence_in_register": "Page text: freely available, may be downloaded and used for any projects, without restrictions",
+   "licence_at_source": "'freely available on this website and may be downloaded and used for any projects, without restrictions' (intro paragraph, Lawrence Fritts credited). Instrument menu lists no harmonica, accordion, melodica, mandolin or bouzouki (it does list Guitar).",
+   "where_read": "Intro paragraph and instrument menu",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": "",
+   "permitted_use_suggestion": ""
+  },
+  {
+   "row": 100,
+   "url": "https://www.jstage.jst.go.jp/article/ast/24/1/24_1_1/_article",
+   "licence_in_register": "Copyright 2003 The Acoustical Society of Japan (article page metadata); free to read",
+   "licence_at_source": "'(c) 2003 by The Acoustical Society of Japan'; labelled JOURNAL FREE ACCESS; no Creative Commons licence on the page",
+   "where_read": "Article page footer/abstract area",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": "",
+   "permitted_use_suggestion": ""
+  },
+  {
+   "row": 101,
+   "url": "https://arxiv.org/abs/2401.01606",
+   "licence_in_register": "arXiv non-exclusive distribution licence 1.0 (abstract page)",
+   "licence_at_source": "'view license' link to arxiv.org/licenses/nonexclusive-distrib/1.0/",
+   "where_read": "Abstract page licence link",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": "",
+   "permitted_use_suggestion": ""
+  },
+  {
+   "row": 102,
+   "url": "https://ccrma.stanford.edu/~jos/pasp/Coupled_Strings.html",
+   "licence_in_register": "Copyright J. O. Smith III (page footer); read only",
+   "licence_at_source": "'Copyright (c) 2026-08-21 by Julius O. Smith III', W3K Publishing 2010; no reuse licence stated",
+   "where_read": "Page header/footer block",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": "",
+   "permitted_use_suggestion": ""
+  },
+  {
+   "row": 104,
+   "url": "https://commons.wikimedia.org/wiki/File:Tuning-Sound-G-Bouzouki.ogg",
+   "licence_in_register": "CC BY-SA 4.0 (file description page, Licensing section)",
+   "licence_at_source": "'licensed under the Creative Commons Attribution-Share Alike 4.0 International license'; author SoylentGreen, own work, 24 Aug 2019",
+   "where_read": "Licensing section of the file page",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": "",
+   "permitted_use_suggestion": ""
+  },
+  {
+   "row": 113,
+   "url": "https://en.wikipedia.org/wiki/Mandolin",
+   "licence_in_register": "CC BY-SA 4.0 (page footer)",
+   "licence_at_source": "'Text is available under the Creative Commons Attribution-ShareAlike 4.0 License; additional terms may apply' (footer, last edited 1 Nov 2026). Tuning G3 D4 A4 E5 and scale lengths present.",
+   "where_read": "Page footer",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": "",
+   "permitted_use_suggestion": ""
+  },
+  {
+   "row": 116,
+   "url": "https://euphonics.org/publication-list-jim-woodhouse/",
+   "licence_in_register": "CC BY-NC-SA 4.0 (site footer)",
+   "licence_at_source": "Footer: 'Except where otherwise noted, the content on this site is licensed under CC BY-NC-SA 4.0'. But the page itself says: 'Where PDF downloads are provided, these are for personal use only. Commercial or reproduction use requires the permission of the journal concerned', and individual entries carry journal copyright notices (AIP 2011, ASA 2016/2018/2021, personal use only).",
+   "where_read": "Footer plus notice at top of page and per-entry copyright lines",
+   "licence_ok": false,
+   "summary_ok": true,
+   "correction": "CC BY-NC-SA 4.0 for the site text and list (site footer, 'except where otherwise noted'); linked PDF author copies are NOT under that licence: personal use only, copyright held by the journal (AIP/ASA), reproduction needs journal permission (notice at top of page and per entry).",
+   "permitted_use_suggestion": "quote briefly with attribution"
+  },
+  {
+   "row": 126,
+   "url": "https://www.daddario.com/products/ej81-irish-bouzouki-strings",
+   "licence_in_register": "unknown (not read (product page))",
+   "licence_at_source": "Footer: 'Copyright (c) D'Addario & Co. All Rights Reserved', with Privacy Policy and Terms of Service links; no reuse licence on the page. Summary verified: product JSON name '11-40 Irish Bouzouki, 8-String, Phosphor Bronze'; description 'optimized for use with Irish Bouzouki, tuned GDAD'.",
+   "where_read": "Page footer and product JSON/description",
+   "licence_ok": false,
+   "summary_ok": true,
+   "correction": "All rights reserved, (c) D'Addario & Co. (page footer); governed by site Terms of Service; no reuse licence stated. Facts (gauges, tuning) cited, not text or images, reproduced.",
+   "permitted_use_suggestion": "read only"
+  },
+  {
+   "row": 138,
+   "url": "https://commons.wikimedia.org/wiki/File:Harmonica_02.ogg",
+   "licence_in_register": "Public domain",
+   "licence_at_source": "Licensing section: 'released into the public domain by its author, mastermesh' (worldwide, with fallback grant); source pdsounds.org record 473; original MP3 mono 22 kHz; dated 27 March 2008. Only 02 fetched; 03 to 07 not opened.",
+   "where_read": "Licensing and Summary sections of the file page",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": "",
+   "permitted_use_suggestion": ""
+  }
+ ],
+ "not_checked": [
+  {
+   "row": 105,
+   "url": "https://doi.org/10.1163/27723194-bja10001",
+   "why": "doi.org redirect to brill.com returned HTTP 403 (CloudFront 'request blocked'); CC BY 4.0 claim and mode summary not verified"
+  }
+ ],
+ "discrepancies": 2,
+ "summary": "Eleven rows fetched live and checked (96, 98, 99, 100, 101, 102, 104, 113, 116, 126, 138); row 105 (doi.org/Brill) returned 403 and is not checked.\nNine licence cells match the source (96, 98, 99, 100, 101, 102, 104, 113, 138); summaries match the pages in all eleven.\nRow 116: site-wide CC BY-NC-SA 4.0 is real, but the page limits linked PDFs to personal use (journal copyright); 'adapt with attribution' is too permissive, suggest quote briefly.\nRow 126: 'unknown' resolved: (c) D'Addario & Co., all rights reserved, Terms of Service; no reuse licence.\nRow 96 minor (not counted): owner shown as IRCAM, but Zenodo creators are Cella et al.; licence unaffected."
+}

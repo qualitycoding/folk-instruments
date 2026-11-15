@@ -35,6 +35,8 @@ The intake batch was sent on 2026-11-14. The owner's reply was, verbatim: "Resum
 | A-018 | Binaries | No release. CI artefacts of a public repository are a distribution, so builds are short-retention artefacts only, and nothing that is not AGPL-compatible is bundled. | `software.deploys = false`; `G-002` guards any later release. |
 | A-019 | Status of the input file | Every statement in the input file enters `research/claims.json` with the input file as a Tier 4 source that counts as zero sources towards `corroborated`. Its equations were lost in export and are re-derived from primary sources. Its tables of computed values are re-computed in spikes. | No design decision or test rests on the file alone. |
 | A-020 | Planner network | Direct HTTPS from the sandbox to paper and recording hosts is blocked; literature is read through the web search and fetch tools; public git and package registries are reachable. | Recorded as `D-###` (alternative channel, 0.1). |
+| A-021 | Wound strings | No maker's figures for wound strings were read. Wound strings are given a linear density from their pitch and a nominal tension of 100 N, and a core diameter of 0.4 of the outer diameter. | Preset data (D-072); affects inharmonicity and decay of the bass courses only; calibrated against references where they exist (DR-07). |
+| A-022 | Reed proportions | Reeds are scaled by similarity from one measured harmonica reed (D-012), not from the proportions of real reeds of each instrument. | All reeds of a rank sound alike until calibrated; judged by T-200 and the listening gates. |
 
 ## Software intake (0.3.2)
 

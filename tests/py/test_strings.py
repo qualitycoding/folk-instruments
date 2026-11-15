@@ -182,3 +182,17 @@ def test_T153_damping_parameter(render):
         t, e = m.band_envelope_db(x, sr, hz(62))
         r.append(m.decay_rate_db_per_s(t, e, 0.1, 1.0))
     assert r[0] < 0 and r[1] <= 1.5 * r[0], r
+
+
+FRETTED = [("mandolin", {"body": 0}, open_note, fret) for open_note in (55, 62, 69, 76) for fret in (1, 5, 7, 12)] + \
+          [("bouzouki", {"variant": 2}, open_note, fret) for open_note in (43, 50, 57, 62) for fret in (1, 4)] + \
+          [("bouzouki", {"variant": 2}, 62, 12), ("bouzouki", {"variant": 2}, 62, 24), ("mandolin", {"body": 0}, 76, 24)]
+
+
+@pytest.mark.parametrize("ins,sets,open_note,fret", FRETTED)
+def test_T154_fretted_notes(render, ins, sets, open_note, fret):
+    """T-154. Notes 1 to 24 semitones above each open string sound within 3 cents of equal temperament, on whichever
+    course the note-to-course rule gives them (the tuning table and the shortening of the string by the fret are both right)."""
+    midi = open_note + fret
+    x, sr = render(ins, note(midi, 0.7, 1.2), {**sets, "pair_detune_cents": 0})
+    assert abs(pitch_cents(x, sr, midi, t0=0.05, t1=0.5)) <= 3.0

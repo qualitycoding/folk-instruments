@@ -156,7 +156,7 @@ def reed_note(ins, P, midi, vel, t_on, t_off, sr, n_total, breath_curve, vib_cur
             g = n ** (-tilt)
             if ins == "accordion" and fn > 2000: g *= (0.4 if P["cassotto"] else 1.0) * (0.4 if P["sordina"] else 1.0)
             sig += g * np.sin(2 * np.pi * fn * (t + t_on) + n * ph)
-    sig = 0.12 * sig * amp * env
+    sig = 0.12 * (sig + 0.01 * P["air_noise"] * rng.standard_normal(len(t))) * amp * env
     if ins == "accordion" and attack: k = int(0.015 * sr); sig[:k] += 0.02 * P["key_noise"] * rng.standard_normal(k)[:len(sig[:k])]
     out[i0:i2] += sig; return out
 def eta_air(d, f): M = d / 4 * np.sqrt(2 * np.pi * f / 1.5e-5); return 1.2 / RHO * (2 * math.sqrt(2) * M + 1) / M ** 2

@@ -1,0 +1,184 @@
+#!/usr/bin/env python3
+"""Builds, from research/claims.json and the per-round JSON files: research/SOURCES.md, research/rounds/round-N.md,
+one knowledge item per claim under knowledge/, and the source register (R7). Run from the repository root after
+research/tools/build_claims.py. Hand-written text for the round logs is in ROUND_TEXT below."""
+import json, glob, pathlib, re, collections
+RUN = "gen-20261114T004707Z-folk-instruments-vst"
+C = json.load(open("research/claims.json"))
+ROUND_FILES = {1: ["r1-A-free-reed.json", "r1-B-harmonica.json", "r1-C-accordion-melodica.json", "r1-D-plucked-string.json", "r1-E-mandolin-bouzouki.json", "r1-G-references.json"],
+               2: ["r1-P-planner.json"], 3: ["r3-adversarial.json"], 4: ["r4-adversarial.json"], 5: ["r5-adversarial.json"], 6: ["r6-adversarial.json"]}
+SEARCHES = [(2, "web search: Millot Baumann \"minimal model of free reeds\" Acta Acustica 2007", "used", "located arXiv:2401.01606"),
+            (2, "web search: Ricot Causse Misdariis blown-closed free reeds accordion reed pdf", "used", "located the JASA record and a HAL entry; no full text"),
+            (2, "web search: Bahnson Antaki Beery diatonic harmonica 1998 pdf", "used", "located a copy on a host outside the allowlist; not read"),
+            (2, "web search: Philharmonia sound samples licence terms", "used", "led to the Philharmonia page, which was then read"),
+            (2, "web search: GitHub-hosted runners available images labels 2026", "corroborating", "led to the runner-images README, which was then read")]
+ROUND_TEXT = {
+ 1: """## What was done
+R0: the lesson store (251 matching active lessons) and the knowledge store (323 matching items) were digested (`research/r0/`). R1: the question tree (`research/QUESTIONS.md`). R2, breadth: six workers, one per branch (free reeds, harmonica, accordion and melodion, plucked strings, mandolin and bouzouki, reference recordings), each testing the owner's input file statement by statement. Spike S01 recomputed the file's tables.
+
+## Access failure
+The fetch tool could not resolve hosts outside the environment's network allowlist and the search tool hit a usage limit, so every worker read its sources at search-snippet or abstract level only. No claim from this round was accepted as corroborated. Lesson: `lessons/L-20261114T090000Z-fetch-tool-shares-sandbox-allowlist.md`. The owner then approved adding 20 literature, dataset and manufacturer hosts to the allowlist; a later request for five more was refused by the service, which left `www.cs.bu.edu` (a copy of Bahnson et al. 1998) and `web.archive.org` out of reach.
+
+## Outcome
+151 worker claims (files `r1-*.json`): the input file's computed tables are arithmetically right; many of its attributions could not be traced (reed Q values and thresholds, laser-vibrometer pressures, cassotto figures' origin, melodica experiments, the mandolin '318 against 423 Hz' pair, 'mandolin #95'); its melodica ranges and its light mandolin string set are wrong.""",
+ 2: """## What was done
+R3 and R4, depth: the planner read the primary sources that the allowlist now reached (Millot and Baumann; Cohen and Rossing; Woodhouse; Quintavalla et al.; the encyclopaedia pages for layouts and tunings; the TinySOL record; the Philharmonia and Iowa pages; JUCE at the pinned tag; the runner-images README) and built the claim register (`research/claims.json`, first 51 claims). R6, spikes: S02 (JUCE build), S03 and S03b (minimal reed model and the volume condition), S04 (coupled string pair).
+
+## Gaps found
+Nine load-bearing claims below the corroboration bar; Brezas et al. 2023, Bahnson et al. 1998 and Ricot et al. 2005 unreadable (publishers refuse automated requests).""",
+ 3: """## What was done
+R5: a fresh-context reviewer attacked all 26 load-bearing claims (`r3-adversarial.json`), re-ran the reed spike at 44.1 to 705.6 kHz and with a second integrator, and searched Zenodo, Wikimedia Commons and archive.org for reference recordings. Spikes S03c (pressure-driven reed), S05 (cost), S06 (known answers), S07 (TinySOL accordion measured), S08 (test oracle), S09, S10 (five plugins built).
+
+## Outcome
+No claim refuted; C-002, C-030 and C-051 weakened and reworded; C-040's tuning corroborated by the maker's page; eight missing claims added (hysteresis, real-time safety, cost, JUCE 9, Python version, download hosts). Not saturated.""",
+ 4: """## What was done
+R5 on the five claims added in round 3 and on the frozen tests (`r4-adversarial.json`).
+
+## Outcome
+A real defect in the design: the reed model with the reference reed's proportions did not transfer to other pitches (a cantilever-scaled 3520 Hz reed never oscillated; a 111 Hz reed was 50 to 100 cents flat). C-053 and C-055 weakened. Eight test defects reported; five were corrected before the freeze (band-limited beat measurement; an interpolation bug in the modulation measurement; brightness tested at five pitches; threshold, level and pitch tests at low, middle and high notes; a deprecated JUCE call), three were kept as statements of the design (single polarisation, re-pluck damping, absence of a rank). Not saturated.""",
+ 5: """## What was done
+The planner derived a similarity scaling for the reed and verified it in spike S12 from 55 Hz to 5.3 kHz, re-measured the cost (S05b), checked the headless editor and the dependency scan (S11), and rewrote decisions D-011 and D-012. R5 on those changes (`r5-adversarial.json`).
+
+## Outcome
+The scaling is exact (every dimensionless group invariant). Three contradictions between the decision text and the reference spike were found (table range and confining spring; calibration ranges against the sub-step rule; the quoted offset band) and one new fact (the source level is the same at every pitch). Not saturated.""",
+ 6: """## What was done
+The planner corrected D-010, D-011, D-012, D-015, D-016, DR-03 and step S-201. R5, last permitted round (`r6-adversarial.json`): the reviewer simulated a build that follows the decisions literally and checked the plan's own numerical gates and the breath law.
+
+## Outcome
+Steps S-200 and S-201 would pass (40 rows, smallest margin 0.95 cents); the frozen reed tests T-101, T-102, T-103 and T-105 can be satisfied. The calibration ranges were still too wide and the re-check clause could not be met by a calibrated set; both were then narrowed and replaced (D-012's calibrated-set check). **The research loop ended at the round limit, not by saturation**: round 6 still produced new load-bearing findings. They are in the register as C-062 and C-063, and what was not re-reviewed after the last correction is risk R-003.
+
+## Termination criteria
+Rounds run: 6 of at most 6. Load-bearing claims: 36; verified 26, corroborated 3, below the bar 7 (C-012, C-013, C-014, C-017, C-027, C-039, C-051), each carried into `premortem/RISK_REGISTER.md` (R-001, R-004, R-005). R7: the source register is `knowledge/K-20261115T020000Z-source-register-folk-instruments-vst.md`."""}
+RANK = {"used": 0, "corroborating": 1, "rejected": 2, "not relevant": 3, "unreachable": 4}
+src_by_url, per_round = {}, collections.defaultdict(list)
+for rnd, files in ROUND_FILES.items():
+    for f in files:
+        d = json.load(open("research/rounds/" + f))
+        for s in d.get("sources_checked", []):
+            if not isinstance(s, dict) or not str(s.get("url", "")).startswith("http"): continue
+            u = re.sub(r"[?&](token|sig|signature|X-Amz-[A-Za-z-]+)=[^&]+", "", s["url"]).strip()
+            s = dict(s, url=u, round=rnd, file=f); per_round[rnd].append(s)
+            old = src_by_url.get(u)
+            if old is None or RANK.get(s.get("outcome"), 9) < RANK.get(old.get("outcome"), 9):
+                if old: s["first_round"] = old.get("first_round", old["round"])
+                src_by_url[u] = s
+            for k in ("licence_or_terms", "content_summary"):
+                if old and (not src_by_url[u].get(k) or src_by_url[u].get(k) in ("not read", "")) and old.get(k) not in (None, "", "not read"): src_by_url[u][k] = old[k]
+claims_by_url = collections.defaultdict(list)
+for c in C:
+    for s in c["sources"]:
+        if s["url"].startswith("http"): claims_by_url[s["url"]].append(c["id"])
+missing = sorted(set(claims_by_url) - set(src_by_url))
+assert not missing, missing
+def one(t): return " ".join(str(t or "").replace("|", "/").split())
+def permitted(s):
+    if s["url"] in PERMIT: return PERMIT[s["url"]]
+    lic = (s.get("licence_or_terms") or "").lower(); u = s["url"]
+    if s.get("outcome") == "unreachable": return "read only (not read)"
+    if "philharmonia" in u: return "private reference only (linked, not republished; Rule 15)"
+    if "zenodo.org/records/3685367" in u or "zenodo.org/api/records/3685367" in u: return "redistribute (CC BY 4.0, with attribution)"
+    if "juce-framework/JUCE" in u: return "adapt (AGPL-3.0; compatible with the repository's AGPL-3.0)"
+    if "choosealicense" in u: return "redistribute (licence text copied verbatim into LICENSE)"
+    if "cc0" in lic or "public domain" in lic: return "redistribute"
+    if "cc by" in lic or "creative commons attribution" in lic: return "adapt with attribution"
+    if "without restrictions" in lic: return "redistribute"
+    return "read only"
+def licence(s):
+    l = one(s.get("licence_or_terms"))
+    if not l or l.lower().startswith("not read"): return "unknown (" + (l or "not read") + ")"
+    return l
+# Corrections from the R7 review (research/r7-register-review.json), keyed by a substring of the URL: (licence, permitted use, owner)
+OVERRIDE = {"euphonics.org/publication-list": ("Site text CC BY-NC-SA 4.0 except where noted (footer); linked papers remain under their publishers' copyright and are offered for personal use only (publication list page)", "quote briefly with attribution", None),
+            "euphonics.org/wp-content/uploads/2022/03/Double_decays_JASA.pdf": ("Copyright 2021 Acoustical Society of America (first page of the PDF); offered by the author for personal use only, any other use needs permission of the author and the Society (publication list, item 142)", "read only", None),
+            "euphonics.org/uncategorized": ("Site text CC BY-NC-SA 4.0 except where noted (footer)", "quote briefly with attribution", None),
+            "daddario.com": ("Copyright D'Addario & Co., all rights reserved; site Terms of Service (page footer)", "read only", None),
+            "zenodo.org/records/3685367": (None, None, "C.-E. Cella, D. Ghisi, V. Lostanlen, F. Levy, J. Fineberg, Y. Maresz (recorded at Ircam)"),
+            "zenodo.org/api/records/3685367": (None, None, "C.-E. Cella, D. Ghisi, V. Lostanlen, F. Levy, J. Fineberg, Y. Maresz (recorded at Ircam)")}
+PERMIT = {}
+SUMMARY = {"commons.wikimedia.org/wiki/File:Bending_Mundharmonika.ogg": "A recording of draw bends on a diatonic harmonica (the contributor's own work, 2006); not isolated single notes."}
+for u, s_ in src_by_url.items():
+    for key, text in SUMMARY.items():
+        if key in u: s_["content_summary"] = text
+for u, s_ in src_by_url.items():
+    for key, (lic, per, owner) in OVERRIDE.items():
+        if key in u:
+            if lic: s_["licence_or_terms"] = lic
+            if per: PERMIT[u] = per
+            if owner: s_["owner_or_authors"] = owner
+rows = sorted(src_by_url.values(), key=lambda s: (s.get("first_round", s["round"]), s["file"], s["url"]))
+# ---- SOURCES.md
+out = ["# Sources", "", f"Every external source opened or queried during planning ({len(rows)} distinct URLs), in the order first checked. The source register (`knowledge/K-20261115T020000Z-source-register-folk-instruments-vst.md`) holds the same list with licence and permitted use. Web search queries are listed in the round logs.", ""]
+for i, s in enumerate(rows, 1):
+    out.append(f"{i}. {one(s.get('title')) or '(untitled)'}. {one(s.get('owner_or_authors'))}. {one(s.get('version_or_date'))}. <{s['url']}>" + (f" DOI {s['doi']}." if s.get("doi") else "") + f" Accessed {s.get('accessed', '2026-11-14')}. Tier {s.get('tier')}. Outcome: {s.get('outcome')}." + (f" Claims: {', '.join(sorted(set(claims_by_url.get(s['url'], []))))}." if claims_by_url.get(s["url"]) else "") + (f" Note: {one(s.get('reason'))}" if s.get("reason") else ""))
+out += ["", "## Command and pin verification locators (1.3.6)", "",
+        "- JUCE `docs/CMake API.md` and `docs/Linux Dependencies.md` at commit dabd5ad13cd869cba41046947fffc8e5ce5cd662: `juce_add_plugin`, `juce_add_console_app`, universal binaries, Linux packages.",
+        "- pluginval `Source/CommandLine.cpp`, `Source/PluginTests.cpp`, `Source/Validator.cpp` at v1.0.4 (commit ed19c2c16b57a6d94db391bea3ef4a80b769d5bf): options and log strings.",
+        "- `actions/runner-images` README at commit 95e6f51a068507e8f43d061d2166a39d0ef36ce8: runner labels.",
+        "- Every other command in `plan/ENVIRONMENT.md` was executed in the planning sandbox (spikes S02, S08, S10, S11 and the red verification)."]
+pathlib.Path("research/SOURCES.md").write_text("\n".join(out) + "\n")
+# ---- round logs
+for rnd in range(1, 7):
+    L = [f"# Research round {rnd}", "", ROUND_TEXT[rnd], "", "## Sources checked", ""]
+    seen = set()
+    for s in per_round[rnd]:
+        if s["url"] in seen: continue
+        seen.add(s["url"]); L.append(f"- <{s['url']}>" + (f" (DOI {s['doi']})" if s.get("doi") else "") + f", accessed {s.get('accessed', '2026-11-14')}: **{s.get('outcome')}**. {one(s.get('reason')) or one(s.get('content_summary'))[:160]}")
+    for (r, q, o, why) in SEARCHES:
+        if r == rnd: L.append(f"- {q}, 2026-11-14: **{o}**. {why}")
+    if rnd == 2: L.append("- git tag lists (`git ls-remote --tags`) of juce-framework/JUCE, catchorg/Catch2, Tracktion/pluginval, actions/checkout, actions/upload-artifact, actions/download-artifact, actions/setup-python, actions/cache, ilammy/msvc-dev-cmd, mull-project/mull, steinbergmedia/vst3sdk, free-audio/clap, 2026-11-14: **used** (pins) or **not relevant** (msvc-dev-cmd, mull, vst3sdk, clap: not used by the plan).")
+    if rnd in (5, 6): L.append("- No external source was opened in this round; it consisted of spikes and of a review of files on this branch.")
+    if not seen and rnd not in (5, 6): L.append("- none")
+    pathlib.Path(f"research/rounds/round-{rnd}.md").write_text("\n".join(L) + "\n")
+# ---- knowledge items
+K = pathlib.Path("knowledge")
+for old in K.glob("K-*.md"): old.unlink()
+ids = []
+for i, c in enumerate(C):
+    slug = re.sub(r"[^a-z0-9]+", "-", c["claim"].lower())[:48].strip("-")
+    kid = f"K-20261115T01{i // 60:02d}{i % 60:02d}Z-{c['id'].lower()}-{slug}"
+    tags = list(c["tags"])
+    if not any(t.startswith("subject:") for t in tags): tags.append("subject:juce" if "tech:juce" in tags else "subject:python-test-tooling")
+    tags.append("phase:research")
+    s0 = c["sources"][0]; ver = s0.get("version") or "version-independent"
+    stmt = c["claim"].replace('"', "'")
+    body = (c["note"] + "\n\n" if c["note"] else "") + f"Input-file verdict: {c['input_file_verdict']}. Load-bearing: {'yes' if c['load_bearing'] else 'no'}. Informs: {', '.join(c['informs']) or 'nothing directly'}.\n\nAll sources: " + "; ".join(f"{s['title']} ({s['locator']})" for s in c["sources"]) + "."
+    K.joinpath(kid + ".md").write_text(f"""---
+id: {kid}
+statement: "{stmt}"
+status: current
+supersedes: []
+tags: [{', '.join(tags)}]
+applies_to_version: "{one(ver).replace('"', "'")}"
+source: {{ url: "{s0['url']}", doi: "{s0.get('doi', '')}", title: "{one(s0['title']).replace('"', "'")}", locator: "{one(s0['locator']).replace('"', "'")}", accessed: "{s0['accessed']}", tier: {s0['tier']} }}
+confidence: {c['confidence']}
+derived_from: [{c['id']}]
+discovered_by: planner
+run: {RUN}
+recorded_at: 2026-11-15T01:{i // 60:02d}:{i % 60:02d}Z
+---
+{body}
+""")
+    ids.append(kid)
+# ---- source register
+cnt = collections.Counter(s.get("outcome") for s in rows); unk = sum(1 for s in rows if licence(s).startswith("unknown") or licence(s).lower() == "none stated")
+cited = sorted({cid for v in claims_by_url.values() for cid in v})
+head = f"""---
+id: K-20261115T020000Z-source-register-folk-instruments-vst
+statement: "Source register for the folk-instruments VST research (run {RUN}): {len(rows)} external sources checked, {cnt.get('used', 0)} used, {cnt.get('corroborating', 0)} corroborating, {cnt.get('rejected', 0)} rejected, {cnt.get('not relevant', 0)} not relevant, {cnt.get('unreachable', 0)} unreachable; {unk} have an unknown or unstated licence."
+status: current
+supersedes: []
+tags: [subject:free-reed-modelling, subject:plucked-string-modelling, domain:audio, phase:research, kind:source-register]
+applies_to_version: version-independent
+source: {{ url: "", doi: "", title: "Source register, run {RUN}", locator: "table below", accessed: "2026-11-15", tier: n/a }}
+confidence: REVIEW_PENDING
+derived_from: [{', '.join(cited)}]
+discovered_by: planner
+run: {RUN}
+recorded_at: 2026-11-15T02:00:00Z
+---
+| # | Source (title, owner) | URL or DOI | Version or date | Accessed | Tier | Outcome | Content (own words) | Claims | Licence or terms (read where) | Permitted use | Access notes |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+"""
+body = "".join(f"| {i} | {one(s.get('title')) or '(untitled)'}; {one(s.get('owner_or_authors')) or 'owner not recorded'} | {s['url']}{(' ; DOI ' + s['doi']) if s.get('doi') else ''} | {one(s.get('version_or_date')) or 'not dated'} | {s.get('accessed', '2026-11-14')} | {s.get('tier')} | {s.get('outcome')} | {one(s.get('content_summary')) or one(s.get('reason')) or 'not read'} | {', '.join(sorted(set(claims_by_url.get(s['url'], [])))) or 'none'} | {licence(s)} | {permitted(s)} | {one(s.get('access_notes')) or 'none'} |\n" for i, s in enumerate(rows, 1))
+K.joinpath("K-20261115T020000Z-source-register-folk-instruments-vst.md").write_text(head + body)
+print(len(rows), "sources;", dict(cnt), "; unknown licence:", unk, ";", len(ids), "knowledge items")

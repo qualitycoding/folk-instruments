@@ -108,3 +108,15 @@ def test_T108_breath_from_controller(render, ins, src, cc):
     assert m.rms_db(m.seg(silent, sr, 0.5, 1.5)) < -70.0
     swell, _ = render(ins, [f"0 cc {cc} 0.0", f"0 on {n} 0.1"] + [f"{0.5 + 0.1 * k:.1f} cc {cc} {0.1 * k:.1f}" for k in range(1, 11)] + [f"2.5 off {n}", "2.7 end"], {"breath_source": src})
     assert m.rms_db(m.seg(swell, sr, 1.7, 2.4)) > m.rms_db(m.seg(swell, sr, 0.0, 0.5)) + 30.0
+
+
+@pytest.mark.parametrize("ins", REEDS)
+def test_T109_air_noise_fills_the_gaps_between_harmonics(render, ins):
+    """T-109. air_noise = 1 raises the energy between the first and second harmonics (1.35 to 1.65 times the fundamental)
+    by at least 6 dB over air_noise = 0, and leaves the fundamental within 1 dB (the noise stage does what its control says)."""
+    f0 = hz(A[ins])
+    clean, sr = render(ins, note(A[ins], 0.6, 2.0), {"air_noise": 0})
+    noisy, _ = render(ins, note(A[ins], 0.6, 2.0), {"air_noise": 1})
+    gap = lambda x: m.band_energy_db(m.seg(x, sr, 0.6, 1.6), sr, 1.35 * f0, 1.65 * f0)
+    assert gap(noisy) >= gap(clean) + 6.0
+    assert abs(level_at(noisy, sr, f0, 0.6, 1.6) - level_at(clean, sr, f0, 0.6, 1.6)) <= 1.0

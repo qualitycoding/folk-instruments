@@ -13,7 +13,7 @@
 | SC-07 | Melodion: chord sag under a flow-limited breath and none under a pressure-controlled breath; moisture; ranges; bodies | T-131 to T-134 | S-230 |
 | SC-08 | Strings: stiff-string partials within 3 cents; loss formulas; pluck-position comb; beats at the mistuning; two-stage decay of a pair and single decay of one string; faster decay of high partials | T-005, T-006, T-141 to T-145 | S-101, S-240, S-250 |
 | SC-09 | Bodies: preset modes ring where the preset puts them; presets carry the literature values | T-146 | S-240 to S-260 |
-| SC-10 | Courses and playing: tunings of all six string variants; note-to-course rule; octave courses; tremolo; one note per course; pitch bend; damping and sustain; velocity; damping control | T-007, T-140, T-147 to T-153 | S-100, S-250, S-260 |
+| SC-10 | Courses and playing: tunings of all six string variants; note-to-course rule; octave courses; tremolo; one note per course; pitch bend; damping and sustain; velocity; damping control | T-007, T-140, T-147 to T-154 | S-100, S-250, S-260 |
 | SC-11 | Robustness and safety: finite output within full scale under random use; block-size and sample-rate independence; no allocation on the audio thread; determinism; malformed state and event files refused; tails end; command-line contract | T-009 to T-012, T-015, T-160, T-161, T-163, T-302 | S-110, S-300, S-310 |
 | SC-12 | Performance: each instrument at full polyphony at least 4 times faster than real time at 48 kHz, block 256, on the `ubuntu-24.04` x64 hosted runner (A-009) | T-013 | S-300, S-320 |
 | SC-13 | Reference comparison: the accordion within the spread of real notes (harmonic profile, centroid, dynamic range, rise time); other instruments within their own reference spread where 8 or more notes exist; reference handling is fail-closed | T-200, T-201, T-210 | S-REF, S-330 |
@@ -45,11 +45,11 @@ Categories: U unit, I integration, O operational, S security, P performance, R r
 | T-302 | `tests/juce/host_test.cpp` (one program per plugin) | I, S | SC-01, SC-11 | 4 per plugin |
 | T-090 | `tests/py/test_metrics_selfcheck.py` (checks `tests/py/metrics.py`) | K | the measurements themselves | 12 |
 | T-091 | `tests/py/test_pluginval_log_check.py` (checks `tests/ci/check_pluginval_log.py`) | K | T-300's check | 2 |
-| T-100 to T-108 | `tests/py/test_reeds.py` | I | SC-03, SC-04; C-001 to C-004, C-053, C-059 | 44, 9, 9, 9, 3, 3, 3, 3, 6 |
+| T-100 to T-109 | `tests/py/test_reeds.py` | I | SC-03, SC-04; C-001 to C-004, C-053, C-059, C-062 | 44, 9, 9, 9, 3, 3, 3, 3, 6, 3 |
 | T-110 to T-114 | `tests/py/test_harmonica.py` | I | SC-05 | 6, 30, 10, 1, 1 |
 | T-120 to T-125 | `tests/py/test_accordion.py` | I | SC-06 | 14, 7, 2, 2, 1, 1 |
 | T-131 to T-134 | `tests/py/test_melodion.py` | I | SC-07 | 2, 1, 3, 1 |
-| T-140 to T-153 | `tests/py/test_strings.py` | I | SC-08, SC-09, SC-10 | 23, 1, 2, 1, 1, 1, 6, 1, 2, 1, 5, 1, 2, 1 |
+| T-140 to T-154 | `tests/py/test_strings.py` | I | SC-08, SC-09, SC-10 | 23, 1, 2, 1, 1, 1, 6, 1, 2, 1, 5, 1, 2, 1, 27 |
 | T-160 | `tests/py/test_common.py` | I | SC-11 | 10 |
 | T-161 | same (with `tests/fixtures/`) | O, S | SC-11 | 16 |
 | T-162 | same | I | SC-03, SC-11 | 5 |
@@ -70,12 +70,12 @@ Every test with a numeric threshold fails the build when missed: all are asserti
 
 | Decision | Claims | Tests |
 |---|---|---|
-| D-010 to D-016 (reed model, scaling, breath, safety) | C-001 to C-004, C-053, C-054, C-059 to C-061 | T-009 to T-013, T-100 to T-108; the checks of S-200 and S-201 |
+| D-010 to D-016 (reed model, scaling, breath, safety) | C-001 to C-004, C-053, C-054, C-059 to C-061 | T-009 to T-013, T-100 to T-109; the checks of S-200 and S-201 |
 | D-020 to D-024 | C-011 to C-014 | T-002, T-003, T-110 to T-114 |
 | D-030 to D-033 | C-017 to C-020 | T-004, T-120 to T-125 |
 | D-040, D-041 | C-023 to C-025 | T-131 to T-134 |
 | D-050 to D-053 | C-021, C-049 to C-051, C-055 | T-200, T-201, T-210; gates G-L1 to G-L5 |
-| D-060 to D-064 | C-026 to C-031, C-042 | T-005, T-006, T-141 to T-153 |
+| D-060 to D-064 | C-026 to C-031, C-042 | T-005, T-006, T-141 to T-154 |
 | D-070 to D-073 | C-034 to C-041, C-052 | T-007, T-140, T-146, T-147 |
 | D-080 to D-086 | C-043 to C-048, C-057 | T-300, T-302, T-310, T-013; S-003 |
 | D-090 to D-094 | C-056, C-057 | T-008, T-014, T-160 to T-163, T-302 |
@@ -99,7 +99,7 @@ The matrix is produced by step `S-003` from `plan/ci/ci.yml` and recorded in `pl
 | `build/folk-tests` | 27 test cases, 27 failed, every failure an exception `not implemented: ...` or an assertion that follows from it; no crash |
 | `build/folk-perf` | 1 test case, failed with `not implemented: Engine::create` |
 | five `...HostTest` programs | 4 test cases each, all failed with `not implemented: createPluginFilter` |
-| `pytest -m "not reference"` | 276 collected: 14 passed (T-090: 12, T-091: 2), 262 failed; the failures are `folk-render failed with status 64: folk-render: not implemented`, a returned status of 64 where another was expected, or (T-210) status 64 from the stub of `tools/evidence_guard.py` |
+| `pytest -m "not reference"` | 306 collected: 14 passed (T-090: 12, T-091: 2), 292 failed; the failures are `folk-render failed with status 64: folk-render: not implemented`, a returned status of 64 where another was expected, or (T-210) status 64 from the stub of `tools/evidence_guard.py` |
 | `pytest -m reference` with TinySOL present | 16 collected: 1 passed (T-200a, a tool check on the data), 5 failed (T-201: no `references/index.csv` yet), 10 errors raised in the fixture that renders the candidate (`folk-render failed with status 64`) |
 
 The Python tests of instrument behaviour were also run against an idealised stand-in renderer (spike S08): all pass except T-163, for a reason that concerns only the stand-in (`research/spikes/s08-test-oracle/README.md`).

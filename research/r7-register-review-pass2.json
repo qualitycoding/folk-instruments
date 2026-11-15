@@ -1,0 +1,84 @@
+{
+ "checked": [
+  {
+   "row": 106,
+   "url": "https://en.wikipedia.org/wiki/Accordion_reed_ranks_and_switches",
+   "licence_in_register": "CC BY-SA 4.0 (page footer)",
+   "licence_at_source": "Creative Commons Attribution-ShareAlike 4.0 International (page footer)",
+   "where_read": "page footer",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": "",
+   "permitted_use_suggestion": "adapt with attribution"
+  },
+  {
+   "row": 107,
+   "url": "https://en.wikipedia.org/wiki/Bouzouki",
+   "licence_in_register": "CC BY-SA 4.0 (page footer)",
+   "licence_at_source": "Creative Commons Attribution-ShareAlike 4.0 International (page footer)",
+   "where_read": "page footer",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": "Page confirms 27 frets, trichordo/tetrachordo, octave-paired bass courses, ranges C3-E6 and D3-E6.",
+   "permitted_use_suggestion": "adapt with attribution"
+  },
+  {
+   "row": 108,
+   "url": "https://en.wikipedia.org/wiki/Cassotto",
+   "licence_in_register": "CC BY-SA 4.0 (page footer)",
+   "licence_at_source": "Creative Commons Attribution-ShareAlike 4.0 International (page footer)",
+   "where_read": "page footer",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": "Page states 500-1000 Hz strengthened and over 1000 Hz subdued; the register's wording matches.",
+   "permitted_use_suggestion": "adapt with attribution"
+  },
+  {
+   "row": 116,
+   "url": "https://euphonics.org/publication-list-jim-woodhouse/",
+   "licence_in_register": "Site text CC BY-NC-SA 4.0 except where noted (footer); linked papers remain under publishers' copyright, personal use only (publication list page)",
+   "licence_at_source": "Footer: 'Except where otherwise noted, the content on this site is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.' Page head: PDF downloads are for personal use only; commercial or reproduction use needs the journal's permission.",
+   "where_read": "page footer and top of publication-list page",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": "",
+   "permitted_use_suggestion": "quote briefly with attribution (bibliographic data only; do not redistribute PDFs)"
+  },
+  {
+   "row": 117,
+   "url": "https://euphonics.org/wp-content/uploads/2022/03/Double_decays_JASA.pdf",
+   "licence_in_register": "Site text CC BY-NC-SA 4.0 except where noted (footer); linked papers remain under publishers' copyright and are offered for personal use only (publication list page)",
+   "licence_at_source": "PDF first page: 'C 2021 Acoustical Society of America'. Publication list item 142: 'Copyright (2021) Acoustical Society of America. This article may be downloaded for personal use only. Any other use requires prior permission of the author and the Acoustical Society of America.'",
+   "where_read": "PDF first page (pdftotext) and publication-list item 142",
+   "licence_ok": false,
+   "summary_ok": true,
+   "correction": "The register cell leads with the site-wide CC BY-NC-SA footer, which does not cover this paper (the list says 'except where noted' and notes it). Terms should read: (c) 2021 Acoustical Society of America; personal use only; other use needs ASA and author permission. Summary matches the abstract (guitar, piano, lute, mandolin, banjo, double decays); the bowl-back and loss-factor details were not individually re-read.",
+   "permitted_use_suggestion": "read only; record facts and equations in own words, no reproduction or redistribution, quote only within fair dealing with citation"
+  },
+  {
+   "row": 126,
+   "url": "https://www.daddario.com/products/ej81-irish-bouzouki-strings",
+   "licence_in_register": "Copyright D'Addario & Co., all rights reserved; site Terms of Service (page footer)",
+   "licence_at_source": "Footer: 'Copyright (c) D'Addario & Co. All Rights Reserved ... Terms of Service'",
+   "where_read": "page footer",
+   "licence_ok": true,
+   "summary_ok": true,
+   "correction": "Page data names the product '11-40 Irish Bouzouki, 8-String, Phosphor Bronze' and text says 'tuned GDAD'. Page also gives gauges .011 to .040 (not needed).",
+   "permitted_use_suggestion": "read only"
+  },
+  {
+   "row": 135,
+   "url": "https://commons.wikimedia.org/wiki/File:Bending_Mundharmonika.ogg",
+   "licence_in_register": "GFDL 1.2+; CC BY-SA 3.0",
+   "licence_at_source": "GFDL 1.2 or later (author's permission text, 26 Oct 2006) and CC BY-SA 3.0 Unported (licence tag)",
+   "where_read": "licence section of the file page",
+   "licence_ok": true,
+   "summary_ok": false,
+   "correction": "Page describes only 'Ziehbendings Mundharmonika' (draw bends), own work by Matthias.Gruber. 'Chromatik Mundharmonika.ogg' and 'chromatic chords' do not appear on this page; remove or cite the other file's own page. Tier 4 and outcome 'used' for audio need a note that no content was derived from the page text.",
+   "permitted_use_suggestion": "adapt with attribution (GFDL or CC BY-SA 3.0 at reuser's choice)"
+  }
+ ],
+ "not_checked": [],
+ "discrepancies": 2,
+ "summary": "Seven rows re-read against live sources. Licences for 106, 107, 108, 116, 126 and 135 match the sources; summaries for 106-108, 116 and 126 match. Row 117's licence cell is misleading (site CC BY-NC-SA footer does not cover the ASA-copyright paper; personal use only). Row 135's summary mentions a Chromatik file and chords not on the page."
+}

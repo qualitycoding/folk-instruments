@@ -1,0 +1,68 @@
+import json
+S = "/tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/adv6/"
+tgt = {100: -20.1, 400: -23.1, 1500: -23.3}
+rows = []
+for line in open(S+"s201_ramp9.log"):
+    a = json.loads(line); p0 = a["p0"]
+    if p0 == 50: ok = a["state"] == "silent"; res = f"silent, amp {a['amp_over_x0']} x0"
+    elif p0 == 1800: ok = a["state"] == "sounds"; res = f"sounds, finite, {a['cents']} cents (no target), amp {a['amp_over_x0']} x0"
+    else:
+        ok = a["state"] == "sounds" and abs(a["cents"]-tgt[p0]) <= 1.5
+        res = f"sounds, {a['cents']} cents (target {tgt[p0]}, margin {round(1.5-abs(a['cents']-tgt[p0]),2)}), amp {a['amp_over_x0']} x0"
+    rows.append(dict(midi=a["midi"], host_rate=a["host_rate"], p0=p0, result=f"m={a['m']}, {a['spp']} steps/period; "+res, passes=ok))
+rows.append(dict(midi=69, host_rate=48000, p0=400, result="S-200 Done when (444 Hz, 400 Pa, 48 kHz; 432 steps/period, similarity-equivalent to the MIDI 69 / 48 kHz row): -23.05 cents in [-24.5, -21.5], amplitude 4.63 x0 in [4.4, 4.9]", passes=True))
+out = {
+ "resolution": [
+  {"item": "r5 contradiction 1: D-010/D-015 table range [-4 x0, 4 x0] and stiff spring versus S12/DR-03", "status": "resolved",
+   "evidence": "D-010: 'tabulated per reed exactly as table() ... 2048 points over x in [-(6 x0 + es + er), +6 x0], linear interpolation, and the end values held beyond the ends'; D-015: 'A confining spring acts only where |x - x0| exceeds 20 x0'. Largest excursion found this round 9.1 x0 (Q factor 3, 1800 Pa), below 20 x0. Simulation of the literal design reproduces S12 (task 2)."},
+  {"item": "r5 contradiction 2: D-012 calibration ranges versus D-011 sub-step rule, DR-03 fallback and D-016 pressure range", "status": "partly",
+   "evidence": "D-012 now reads 'a factor on Q (0.3 to 3), a factor on x0 (0.75 to 2) and a factor on hmin (1 to 2) ... Any calibrated set of curves must pass the check of step S-201 again before it is committed'; D-011: 'C = 110 / min(1, hmin factor ...)'. The hmin and low-x0 hazards are removed, but the remaining upper bounds fail: at 110 steps/period Q x3 and x0 x2 diverge at 1500 and 1800 Pa, x0 x1.5 diverges at 1800 Pa (all stable at 135); Q x0.3 and x0 x2 are silent from rest at 100 Pa; Q x3 sounds at 50 Pa. C's hmin term is now always 1 (vestigial). The re-check clause catches these, but see unresolved_contradictions."},
+  {"item": "r5 contradiction 3: D-016 '20 to 23 cents below' versus S12 -24.5 cents at 700 to 1000 Pa", "status": "resolved",
+   "evidence": "D-016: 'the model sounds 19 to 25 cents below a reed's natural frequency, depending on pressure (most near 700 to 1000 Pa)'; calibration pressure now stated consistently as 'b = 0.6 (581 Pa)' (1250*0.6^1.5 = 580.9). Steady offsets measured this round: -19.55 to -24.72 cents."},
+  {"item": "C-053 (offset band)", "status": "resolved", "evidence": "C-053: 'sounds from 100 Pa to 1500 Pa, 19 to 25 cents below its natural frequency (most near 700 to 1000 Pa)'."},
+  {"item": "C-055 ('the rest none')", "status": "resolved", "evidence": "C-055: 'about one note in ten (fewer at pp and ff) shows a distinct component an octave below the note'."},
+  {"item": "C-059 (similarity, offsets by pressure)", "status": "resolved", "evidence": "C-059: 'sounds at 100, 400, 700 and 1500 Pa at about -20, -23, -24.5 and -23 cents (the same at every pitch to 0.01 cent for an equal number of steps per period)'; reproduced this round (MIDI 100 and 112 identical at equal steps/period)."},
+  {"item": "C-060 (steps per period)", "status": "resolved", "evidence": "C-060: 'needs more than about 100 steps per reed period (it diverges at 95 or fewer at 1500 Pa and at 100 or fewer at 1800 Pa ...); halving the clearance hmin raises the need to about 220 steps'. Accurate for reference proportions; it says nothing about the Q and x0 factors D-012 still permits (see new claims)."},
+  {"item": "C-061 (new: d/dt u level pitch-independent; tip travel -6.8/+7.6 x0)", "status": "resolved",
+   "evidence": "Confirmed: steady d/dt u rms at b = 1.0 is 2.66, 2.77, 2.97 dB (re 1 m3/s2) at 110, 440, 2637 Hz (0.3 dB spread from steps/period 1745, 436, 146); tip amplitude 7.20 x0 at 1500 Pa at every pitch."},
+  {"item": "S-200 and S-201 Done when (curves all 1)", "status": "resolved", "evidence": "S-201: 'every 50 Pa row is silent ...; every other row sounds ... with an offset within 1.5 cents of -20.1 (100 Pa), -23.1 (400 Pa), -23.3 (1500 Pa) (no offset target at 1800 Pa)'; all 40 simulated rows pass, smallest margin 0.95 cents (MIDI 100/112, 44.1 kHz, 100 Pa: -19.55)."}
+ ],
+ "s201_check": rows,
+ "breath_mapping": {
+  "starts_at_b025": "Yes. With 15 ms one-pole smoothing of b and p0 = 1250 b^1.5 (156 Pa), from rest, the reed sounds at MIDI 28 (41.2 Hz), 45 (110 Hz), 69 (440 Hz) and 100 (2637 Hz). Onset scales with the period, so bass reeds are slow: half-level time at b = 0.25 is 0.25 s at 440 Hz, 0.57 s at 110 Hz and not reached within 0.8 s at 41.2 Hz (tip amplitude 2.08 x0 at 1.2-1.6 s against 2.82 x0 steady; offset in the T-102 window -26.6 cents, still settling). Starting from rest also holds with a step to 1500 and 1800 Pa (no choke).",
+  "silent_at_b002_b008": "Yes. b = 0.02 (3.5 Pa) and b = 0.08 (28.3 Pa): tip amplitude <= 0.0003 x0 at MIDI 28 and 0 at MIDI 100; d/dt u rms in 0.5-1.5 s is -158 / -98 dB (MIDI 28) and exactly 0 (MIDI 100), against about +2.5 dB at b = 1.0, i.e. at least 100 dB below the loud note.",
+  "level_by_velocity_db": [
+   {"midi": 69, "f_hz": 440.0, "b": [0.25, 0.4, 0.55, 0.7, 0.85, 1.0], "dudt_rms_db_0.6_1.6s": [-15.73, -8.89, -4.5, -1.42, 0.91, 2.77], "span_db": 18.5, "monotonic": True},
+   {"midi": 100, "f_hz": 2637.0, "b": [0.25, 0.4, 0.55, 0.7, 0.85, 1.0], "dudt_rms_db_0.6_1.6s": [-15.59, -8.69, -4.29, -1.21, 1.11, 2.97], "span_db": 18.56, "monotonic": True},
+   {"midi": 45, "f_hz": 110.0, "b": [0.25, 0.4, 0.55, 0.7, 0.85, 1.0], "dudt_rms_db_0.6_1.6s": [-16.19, -9.0, -4.6, -1.52, 0.82, 2.66], "span_db": 18.85, "monotonic": True},
+   {"midi": 28, "f_hz": 41.2, "b": [0.25, 0.4, 0.55, 0.7, 0.85, 1.0], "dudt_rms_db_0.6_1.6s": [-20.93, -9.94, -4.91, -1.67, 0.7, 2.57], "span_db": 23.5, "monotonic": True, "note": "b = 0.25 still in its onset during the window"}
+  ],
+  "half_level_time_s": {"f_440_b0.3": 0.179, "f_440_b0.6": 0.08, "f_440_b1.0": 0.054, "f_440_b0.25": 0.247, "f_110_b0.25": 0.572, "f_110_b1.0": 0.134, "f_2637_b0.25": 0.073, "f_2637_b1.0": 0.023, "method": "10 ms rms windows of d/dt u at the base rate, 1 ms hop, first time >= 0.5 x rms over 0.8-1.4 s (amplitude, not power)"},
+  "tests_satisfiable": "With curves all 1, the reed model as specified satisfies T-101 (sounds at b = 0.5, silent at b = 0.02 with >= 100 dB margin), T-102 (spans 18.5 to 18.9 dB at steady pitches, 23.5 dB at 41 Hz, every step a rise of at least 1.8 dB), T-103 (0.3 to 1.0: -3.3 cents at 440 Hz, about -3.8 at 110 Hz; allowed -30 to +5) and T-105 (80 ms at b = 0.6; 179 ms at 0.3 > 54 ms at 1.0) at the reed's d/dt u. Caveat: measured before body filter, gain and limiter.",
+  "required_changes": "None to the reed model for T-101 to T-105. Two things must hold downstream: (1) the soft limiter's g of D-015 must leave the b = 0.25 to 1.0 span above 10 dB (an 18.5 dB source span leaves 8.5 dB for compression; a g that pushes a default note to -1 dBFS could eat it); (2) the breath smoother should be specified to start from 0 at note-on (D-011 resets the reed state but D-016 does not say whether the smoother is reset; a carried-over b changes onset time and T-105). Any D-012 calibration with Q factor < 1 or x0 factor > 1 raises the onset pressure (Q x0.3 and x0 x2 are silent at 100 Pa) and must be re-checked against b = 0.25 / 156 Pa."
+ },
+ "new_load_bearing_claims": [
+  {"claim": "The upper ends of D-012's permitted calibration factors break D-011's 110-steps-per-period rule: at 110 steps per period Q factor 3 and x0 factor 2 diverge at 1500 and 1800 Pa, and x0 factor 1.5 diverges at 1800 Pa; all are stable at 135. Q factor 0.3 and x0 factor 2 are silent from rest at 100 Pa; Q factor 3 sounds at 50 Pa (0.06 x0).", "evidence": S+"calib.log, "+S+"calib2.log (reference reed, similarity.py run/analyse, 300 periods, 9-period ramp)"},
+  {"claim": "S-201's fixed offset targets (-20.1/-23.1/-23.3 within 1.5 cents, silent at 50 Pa), which D-012 and PLAN S-300 action 2 require every calibrated curve set to pass again, reject almost any material calibration: hmin factor 2 gives -21.68 (110 spp) and -22.74 (400 spp) at 100 Pa; Q factor 1.5 gives -20.45 at 1500 Pa; Q factor 0.3 gives -30 to -36 cents; x0 factor 0.75 is marginally not silent at 50 Pa at 110 spp (0.023 x0).", "evidence": S+"calib.log, "+S+"calib2.log"},
+  {"claim": "Under the literal D-016 breath law (15 ms smoothing, p0 = 1250 b^1.5) the reed's onset time scales with its period: half-level at b = 0.25 takes 0.25 s at 440 Hz, 0.57 s at 110 Hz and more than 0.8 s at 41 Hz; at 440 Hz it takes 179, 80 and 54 ms at b = 0.3, 0.6, 1.0, and the d/dt u level spans 18.5 to 18.9 dB from b = 0.25 to 1.0 at steady pitches.", "evidence": S+"breath.log, "+S+"breath.py, "+S+"b110.py output"}
+ ],
+ "downgrades": [
+  "D-012 (calibration factor ranges: Q up to 3 and x0 up to 2 are not stable under D-011 at 1500/1800 Pa; Q 0.3 and x0 2 move the onset above 100 Pa)",
+  "D-011 (C = 110 / min(1, hmin factor) is now always 110 given hmin factor >= 1; the rule does not cover the Q and x0 factors that actually need about 135 steps per period)",
+  "DR-07 (still names 'the scaling exponents' as calibratable reed data; D-012 has no exponents and DR-03 forbids changing the scaling law; it omits the hmin factor)"
+ ],
+ "unresolved_contradictions": [
+  "D-012 permitted ranges (Q factor up to 3, x0 factor up to 2) versus D-011's sub-step rule (110 steps per period) and S-201's 1500/1800 Pa rows: these factors diverge at 110 steps per period.",
+  "D-012 / PLAN S-300 action 2 ('Any calibrated set of curves must pass the check of step S-201 again') versus DR-07 calibration of Q, x0 and hmin: S-201's offset targets are those of the uncalibrated reed, so most calibrations that change the sound also fail the check (e.g. hmin x2: -21.7 to -22.7 cents at 100 Pa against -20.1 +/- 1.5)."
+ ],
+ "summary": ""
+}
+out["summary"] = "\n".join([
+ "R5's three contradictions: D-010/D-015 table range resolved (spike's range and end-hold adopted, spring only beyond 20 x0); D-016 offset band resolved (19 to 25 cents); D-012 calibration ranges partly resolved.",
+ "C-053, C-055, C-059, C-060 adopt round 5's rewordings; C-061 confirmed (d/dt u within 0.3 dB from 110 Hz to 2.6 kHz; tip 7.2 x0 at 1500 Pa).",
+ "S-201 with curves at 1, simulated literally (C = 110, R = 4, 44.1/48 kHz) at MIDI 28, 69, 100, 112 x 5 pressures: all 40 rows pass, smallest margin 0.95 cents (MIDI 100/112, 100 Pa, -19.55); S-200 passes (-23.05 cents, 4.63 x0).",
+ "D-016 breath law: starts from rest at b = 0.25 at every pitch, silent at b = 0.02 and 0.08; level span 0.25 to 1.0 is 18.5 to 18.9 dB and monotonic; half-level at 440 Hz 179/80/54 ms at b = 0.3/0.6/1.0; T-101, T-102, T-103, T-105 satisfiable at the source (limiter g must not compress the span below 10 dB).",
+ "Bass onset is slow (0.57 s at 110 Hz, over 0.8 s at 41 Hz at b = 0.25) because onset scales with the period.",
+ "New: D-012's upper factors (Q x3, x0 x2; x0 x1.5 at 1800 Pa) diverge at 110 steps/period (need about 135); Q x0.3 and x0 x2 silent at 100 Pa; S-201's fixed offset targets reject most real calibrations, so the re-check clause blocks DR-07.",
+ "New load-bearing claims: 3. Downgrades: D-012, D-011, DR-07. Unresolved contradictions: 2 (D-012 ranges vs D-011; S-201 re-check vs DR-07 calibration)."])
+json.dump(out, open("/home/user/folk-instruments/research/rounds/r6-adversarial.json", "w"), indent=1)
