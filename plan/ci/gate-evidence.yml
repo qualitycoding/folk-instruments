@@ -1,0 +1,86 @@
+# Copy to .github/workflows/gate-evidence.yml in step S-340. Builds the evidence bundle of one listening gate and pushes it
+# as the only content of the orphan branch evidence/<gate id> (plan/PLAN.md S-340, S-LISTEN; HANDOFF.md "Delivering audio").
+# Trigger: a push to an implementation branch whose head commit message contains
+#   [gate-evidence <gate id> <instrument> seed=<n>]
+# The message is parsed by a Python step from the event payload file, never interpolated into a shell command.
+name: gate-evidence
+on:
+  push:
+    branches: ["impl-**"]
+permissions:
+  contents: write
+concurrency:
+  group: gate-evidence-${{ github.ref }}
+  cancel-in-progress: false
+defaults:
+  run:
+    shell: bash
+jobs:
+  evidence:
+    if: contains(github.event.head_commit.message, '[gate-evidence ')
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+      - run: python3 -m pip install -r tests/requirements.txt
+      - name: Parse the marker (strict pattern; anything else fails)
+        id: marker
+        run: |
+          python3 - <<'PY'
+          import json, os, re
+          msg = json.load(open(os.environ["GITHUB_EVENT_PATH"]))["head_commit"]["message"]
+          m = re.search(r"\[gate-evidence (G-L[1-5]|G-P[12]|G-TEST) (harmonica|accordion|melodion|mandolin|bouzouki) seed=([0-9]{1,6})\]", msg)
+          if not m:
+              raise SystemExit("no valid [gate-evidence <gate> <instrument> seed=<n>] marker")
+          with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
+              fh.write(f"gate={m.group(1)}\ninstrument={m.group(2)}\nseed={m.group(3)}\n")
+          PY
+      - name: TinySOL cache (same key as ci.yml)
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        id: cache
+        with:
+          path: refs/tinysol
+          key: tinysol-6.0-36030a7fe389da86c3419e5ee48e3b7f-accordion
+      - name: Download TinySOL if not cached
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p refs/tinysol && cd refs/tinysol
+          curl --fail --location --retry 5 --retry-delay 20 -o TinySOL.tar.gz "https://zenodo.org/api/records/3685367/files/TinySOL.tar.gz/content"
+          echo "36030a7fe389da86c3419e5ee48e3b7f  TinySOL.tar.gz" | md5sum -c -
+          tar xzf TinySOL.tar.gz --wildcards '*Accordion*'
+          rm TinySOL.tar.gz
+      - name: Fetch the redistributable references only
+        run: python3 tools/fetch_references.py --index references/index.csv --root refs --archive-cache "$RUNNER_TEMP/ref-archives" --only-redistributable
+      - name: Build the render tool
+        run: |
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DFOLK_BUILD_PLUGINS=OFF -DFOLK_BUILD_TESTS=OFF
+          cmake --build build --parallel 4
+          test -s build/folk-render
+      - name: Build the evidence (the guard runs inside and fails the step on any private-derived file)
+        run: python3 tools/build_evidence.py --gate "${{ steps.marker.outputs.gate }}" --instrument "${{ steps.marker.outputs.instrument }}" --seed "${{ steps.marker.outputs.seed }}" --out "$RUNNER_TEMP/evidence" --render build/folk-render --ref-root refs
+        env:
+          FOLK_REF_ROOT: ${{ github.workspace }}/refs
+      - name: Evidence post-conditions
+        run: |
+          test -s "$RUNNER_TEMP/evidence/SHA256SUMS"
+          test -s "$RUNNER_TEMP/evidence/MANIFEST.json"
+          test "$(find "$RUNNER_TEMP/evidence/demos" -name '*.wav' | wc -l)" -ge 9
+          python3 tools/evidence_guard.py --index references/index.csv --evidence "$RUNNER_TEMP/evidence"
+      - name: Push to the orphan branch evidence/<gate>
+        run: |
+          gate="${{ steps.marker.outputs.gate }}"
+          cd "$RUNNER_TEMP/evidence"
+          git init -q -b "evidence/$gate"
+          git config user.name "gate-evidence workflow"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Evidence for $gate (${{ steps.marker.outputs.instrument }}, seed ${{ steps.marker.outputs.seed }}) from ${{ github.sha }}"
+          git push --force "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" "evidence/$gate:evidence/$gate"
+      - name: Pushed branch holds the bundle
+        run: |
+          gate="${{ steps.marker.outputs.gate }}"
+          git fetch --depth 1 origin "evidence/$gate"
+          git ls-tree --name-only FETCH_HEAD | grep -qx SHA256SUMS
+          git ls-tree --name-only FETCH_HEAD | grep -qx MANIFEST.json

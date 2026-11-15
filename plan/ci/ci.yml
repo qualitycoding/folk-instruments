@@ -56,10 +56,14 @@ jobs:
           test -s "bin/folk-perf${{ runner.os == 'Windows' && '.exe' || '' }}"
       - name: C++ unit and engine tests
         run: bin/folk-tests
-      - name: Performance (gates on ubuntu-24.04 only, D-086)
+      - name: Performance, gating (ubuntu-24.04 only, D-086)
+        if: matrix.os == 'ubuntu-24.04'
         run: bin/folk-perf
         env:
-          FOLK_PERF_GATE: ${{ matrix.os == 'ubuntu-24.04' && '1' || '' }}
+          FOLK_PERF_GATE: "1"
+      - name: Performance, informational (other runners, D-086)
+        if: matrix.os != 'ubuntu-24.04'
+        run: bin/folk-perf
       - name: Audio behaviour tests
         working-directory: tests
         run: python3 -m pytest -m "not reference" --junitxml=../pytest-core.xml
@@ -155,16 +159,16 @@ jobs:
         with:
           python-version: "3.13"
       - run: python3 -m pip install -r tests/requirements.txt
-      - name: TinySOL cache
+      - name: TinySOL cache (CC BY 4.0, redistributable; the only cached reference)
         id: cache
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          path: tinysol
+          path: refs/tinysol
           key: tinysol-6.0-36030a7fe389da86c3419e5ee48e3b7f-accordion
-      - name: Download TinySOL 6.0 (CC BY 4.0) and extract the accordion notes
+      - name: Download TinySOL 6.0 and extract the accordion notes
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          mkdir -p tinysol && cd tinysol
+          mkdir -p refs/tinysol && cd refs/tinysol
           curl --fail --location --retry 5 --retry-delay 20 -o TinySOL.tar.gz "https://zenodo.org/api/records/3685367/files/TinySOL.tar.gz/content"
           echo "36030a7fe389da86c3419e5ee48e3b7f  TinySOL.tar.gz" | md5sum -c -
           curl --fail --location --retry 5 --retry-delay 20 -o TinySOL_metadata.csv "https://zenodo.org/api/records/3685367/files/TinySOL_metadata.csv/content"
@@ -172,7 +176,9 @@ jobs:
           tar xzf TinySOL.tar.gz --wildcards '*Accordion*'
           rm TinySOL.tar.gz
       - name: Reference notes exist
-        run: test "$(find tinysol/Keyboards/Accordion -name '*.wav' | wc -l)" -eq 689
+        run: test "$(find refs/tinysol/Keyboards/Accordion -name '*.wav' | wc -l)" -eq 689
+      - name: Fetch every indexed reference and check its hash (private ones are not cached or uploaded, D-052)
+        run: python3 tools/fetch_references.py --index references/index.csv --root refs --archive-cache "$RUNNER_TEMP/ref-archives"
       - name: Build the render tool
         run: |
           cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DFOLK_BUILD_PLUGINS=OFF -DFOLK_BUILD_TESTS=OFF
@@ -183,8 +189,8 @@ jobs:
         run: python3 -m pytest -m reference -s --junitxml=../pytest-reference.xml
         env:
           FOLK_RENDER: ${{ github.workspace }}/build/folk-render
-          FOLK_TINYSOL: ${{ github.workspace }}/tinysol
-          FOLK_REF_ROOT: ${{ github.workspace }}/refs-redistributable
+          FOLK_TINYSOL: ${{ github.workspace }}/refs/tinysol
+          FOLK_REF_ROOT: ${{ github.workspace }}/refs
       - run: test -s pytest-reference.xml && grep -q "<testsuite" pytest-reference.xml
 
   audit:

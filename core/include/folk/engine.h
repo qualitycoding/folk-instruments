@@ -44,6 +44,7 @@ public:
     virtual float getParam(int index) const = 0;
 
     // Events take effect at sampleOffset samples into the next process() call (0 <= sampleOffset < n of that call).
+    // Events with the same offset are applied in the order received.
     virtual void noteOn(int midiNote, float velocity01, int sampleOffset) = 0;
     virtual void noteOff(int midiNote, int sampleOffset) = 0;
     virtual void controlChange(int cc, float value01, int sampleOffset) = 0;
@@ -53,6 +54,8 @@ public:
     /// Writes n samples to each channel (it overwrites; it does not add). |sample| <= 1 always.
     virtual void process(float* left, float* right, int n) noexcept = 0;
     virtual double tailSeconds() const = 0;
+    /// Processing latency in host samples (23 for the reed instruments, 0 for the plucked ones; plan/DECISIONS.md D-011).
+    virtual int latencySamples() const = 0;
 
     /// Text form of all parameter values: lines "id=value\n", first line "folk-state 1 <instrument name>".
     virtual std::string saveState() const = 0;
