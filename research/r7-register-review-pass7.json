@@ -1,0 +1,127 @@
+{
+ "checked": [
+  {
+   "row": 104,
+   "url": "https://commons.wikimedia.org/wiki/File:Tuning-Sound-G-Bouzouki.ogg",
+   "title_ok": false,
+   "licence_ok": true,
+   "summary_ok": false,
+   "permitted_ok": true,
+   "where_read": "Commons file page: Summary, Licensing and file history sections",
+   "correction": "The page describes only Tuning-Sound-G-Bouzouki.ogg ('Tuning Sound G for Irish Bouzouki', 24 August 2019, own work, SoylentGreen, CC BY-SA 4.0). It does not mention or link companion files -d-, -a-, -dd-, nor say 'isolated open-course note' or that other courses have their own pages. Remove the companion-file wording from the source and content cells or cite where it was verified."
+  },
+  {
+   "row": 136,
+   "url": "https://commons.wikimedia.org/wiki/File:Blues_Harp1.ogg",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Commons file page, Licensing section (GFDL 1.2+ and CC BY-SA 3.0/2.5/2.0/1.0) and Summary (Soundfile HOHNER BluesHarp, Grassinger, no date)",
+   "correction": ""
+  },
+  {
+   "row": 138,
+   "url": "https://commons.wikimedia.org/wiki/File:Harmonica_02.ogg",
+   "title_ok": false,
+   "licence_ok": true,
+   "summary_ok": false,
+   "permitted_ok": true,
+   "where_read": "Commons file page, Summary and Licensing (PD-author, mastermesh, pdsounds.org; original MP3 mono 22 kHz; 27 March 2008)",
+   "correction": "The page is for Harmonica 02 only (17 s). 'Harmonica 02 to 07' and 'short clips' (plural) are not on this page; only 02 was verified. Either restrict the row to Harmonica 02 or check files 03 to 07."
+  },
+  {
+   "row": 139,
+   "url": "https://commons.wikimedia.org/wiki/File:MandolinenDemo.ogg",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Commons file page, Licensing (CC0 1.0), Summary (StephanDo, own work, 15 June 2012)",
+   "correction": ""
+  },
+  {
+   "row": 102,
+   "url": "https://ccrma.stanford.edu/~jos/pasp/Coupled_Strings.html",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Page text and footer: 'Copyright 2026-08-21 by Julius O. Smith III'; two-stage decay, bridge coupling, eigenanalysis present",
+   "correction": ""
+  },
+  {
+   "row": 112,
+   "url": "https://en.wikipedia.org/wiki/Inharmonicity",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Page footer (CC BY-SA 4.0) and body: inharmonicity from dispersion in a stiff string",
+   "correction": ""
+  },
+  {
+   "row": 113,
+   "url": "https://en.wikipedia.org/wiki/Mandolin",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Page footer (CC BY-SA 4.0); body covers tuning, 13 inch scale length, mandola/octave mandolin family",
+   "correction": ""
+  },
+  {
+   "row": 147,
+   "url": "https://zenodo.org/api/records?q=harmonica&type=dataset",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "API response: a search result list; each record carries its own metadata (query itself has no licence). Claim about TinySOL/Good-sounds not rechecked.",
+   "correction": ""
+  },
+  {
+   "row": 99,
+   "url": "https://theremin.music.uiowa.edu/MIS.html",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Page intro: 'freely available ... may be downloaded and used for any projects, without restrictions'; Fritts; anechoic chamber; instrument list lacks the named instruments",
+   "correction": ""
+  },
+  {
+   "row": 97,
+   "url": "https://en.wikipedia.org/wiki/Richter-tuned_harmonica",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "Page footer (CC BY-SA 4.0); lead and Valved diatonics section",
+   "correction": ""
+  },
+  {
+   "row": 6,
+   "url": "https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "PDF page 1: Puranik, Scavone; CC BY 3.0 Unported statement; B5 harmonium reed LDV; distributed model",
+   "correction": ""
+  },
+  {
+   "row": 29,
+   "url": "https://www.dafx.de/paper-archive/2023/DAFx23_paper_47.pdf",
+   "title_ok": true,
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "PDF page 1: Puranik and Scavone, CC BY 4.0 copyright statement, harmonium source-filter model",
+   "correction": ""
+  }
+ ],
+ "not_checked": [],
+ "discrepancies": 2,
+ "summary": "12 rows checked against live sources (rows 6 and 29 chosen as the two from 1-60). Two discrepancies: row 104 (companion files and 'isolated open-course note' not supported by the page) and row 138 (page covers only Harmonica 02, not 02 to 07). Licence and permitted-use cells were consistent in all rows. Not rechecked: row 97 'alternative tunings' and row 147's claim about TinySOL/Good-sounds."
+}

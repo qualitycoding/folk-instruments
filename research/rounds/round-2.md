@@ -39,7 +39,7 @@ Nine load-bearing claims below the corroboration bar; Brezas et al. 2023, Bahnso
 - <https://pubs.aip.org/asa/jasa/article-abstract/117/4/2279/543421> (DOI 10.1121/1.1852546), accessed 2026-11-14: **unreachable**. refused by the publisher (HTTP 403) from the sandbox
 - <https://www.daddario.com/products/ej81-irish-bouzouki-strings>, accessed 2026-11-14: **used**. read by the planner; full text
 - <https://en.wikipedia.org/wiki/Overblowing>, accessed 2026-11-14: **used**. read by the planner; full text
-- <https://commons.wikimedia.org/wiki/File:Tuning-Sound-G-Bouzouki.ogg>, accessed 2026-11-14: **used**. read by the planner; file pages read by the round-3 reviewer
+- <https://commons.wikimedia.org/wiki/File:Tuning-Sound-G-Bouzouki.ogg>, accessed 2026-11-14: **used**. read by the planner; file page read by the round-3 reviewer
 - <https://github.com/Tracktion/pluginval>, accessed 2026-11-14: **used**. read by the planner; source read by the round-3 reviewer
 - web search: Millot Baumann "minimal model of free reeds" Acta Acustica 2007, 2026-11-14: **used**. located arXiv:2401.01606
 - web search: Ricot Causse Misdariis blown-closed free reeds accordion reed pdf, 2026-11-14: **used**. located the JASA record and a HAL entry; no full text

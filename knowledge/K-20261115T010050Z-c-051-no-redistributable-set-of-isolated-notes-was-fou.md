@@ -5,7 +5,7 @@ status: current
 supersedes: []
 tags: [subject:folk-instrument-reference-recordings, phase:research]
 applies_to_version: "2019-08-24"
-source: { url: "https://commons.wikimedia.org/wiki/File:Tuning-Sound-G-Bouzouki.ogg", doi: "", title: "Tuning-Sound-G-Bouzouki.ogg and companion files (-d-, -a-, -dd-)", locator: "file description pages", accessed: "2026-11-14", tier: 3 }
+source: { url: "https://commons.wikimedia.org/wiki/File:Tuning-Sound-G-Bouzouki.ogg", doi: "", title: "Tuning Sound G for Irish Bouzouki (Tuning-Sound-G-Bouzouki.ogg)", locator: "file description pages", accessed: "2026-11-14", tier: 3 }
 confidence: single-source
 derived_from: [C-051]
 discovered_by: planner
@@ -16,4 +16,4 @@ The plan gives the implementer a bounded search procedure and a decision rule pe
 
 Input-file verdict: not-in-input. Load-bearing: yes. Informs: D-051, S-REF, G-L1.
 
-All sources: Tuning-Sound-G-Bouzouki.ogg and companion files (-d-, -a-, -dd-) (file description pages); round-3 adversarial review (sources read in full where it says so) (reference_candidates); round-1 worker file (sources read at snippet level; see that file) (claims and open questions).
+All sources: Tuning Sound G for Irish Bouzouki (Tuning-Sound-G-Bouzouki.ogg) (file description pages); round-3 adversarial review (sources read in full where it says so) (reference_candidates); round-1 worker file (sources read at snippet level; see that file) (claims and open questions).
