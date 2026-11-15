@@ -1,7 +1,7 @@
 {
  "run_id": "gen-20261114T004707Z-folk-instruments-vst",
  "branch": "gen-20261114T004707Z-folk-instruments-vst",
- "sequence": 10,
+ "sequence": 11,
  "protocol_versions": {
   "core": "4.0",
   "modules/software-ci": "1.0",
@@ -61,8 +61,8 @@
   "T4": "haiku"
  },
  "tier_substitutions": [],
- "phase": "1",
- "subphase": "1.3-round5",
+ "phase": "3",
+ "subphase": "3.1-plan-drafted",
  "rounds": {
   "research": 0,
   "exploration": 0,
@@ -189,6 +189,7 @@
   "plan/ASSUMPTIONS.md": "9d71531e889a149db4956fe986963de1e419d44ec4c2ec8b44d4a60bdc04dc6e",
   "plan/DECISIONS.md": "4152f7652dee657b18d7707b074f3f73b05d321865cfd5021547c590d16f529b",
   "plan/ENVIRONMENT.md": "f9e38df4157f2d5ed989c07be7e07c3ae7a8c90528be5c20d26256f89ad5725e",
+  "plan/PLAN.md": "3a9d0391a1ad297da97c29f0d6c648e40e9bbd6d794f30981e65e7dd008da135",
   "plan/PROFILE.md": "b4669c549879c09a9d5b4c501bbf399501fb060f7422d9f0ce214862aac76764",
   "plan/TEMPLATES.md": "a7cab6ff0a71b6a49d6a136b3ac0920368645d58396b30ef7b3e48eea587fb23",
   "plan/ci/ci.yml": "d1a9137dd5a6bce05c98c9a08539508548d48117df680bf19331f80fcbff1b9d",
@@ -211,6 +212,7 @@
   "research/rounds/r1-P-planner.json": "1f1b7fe0709b1b72cd3f4d4eba560c59368b11b10df535556c64bc3c1634b662",
   "research/rounds/r3-adversarial.json": "4a4df2bfe756a18ccde91b128a3d8828a441fabe1d05de5eec64d92ca011fc88",
   "research/rounds/r4-adversarial.json": "da2c53e1dda275f1460e1277d9cd4cff68cab9b1937d0790cea1d1d45a8d1a12",
+  "research/rounds/r5-adversarial.json": "2e7c68a129a7dc2aad6a557ac0acc08770240a37c0ba9dad14f3de4994dcd541",
   "research/spikes/s01-input-tables/output.json": "8a802fef547d15611f14afc17cdc446a18ecef6739ec9fd8092934d7b02c0533",
   "research/spikes/s01-input-tables/recompute.py": "f89b4047eadc750b969c6cd41961ccbd190780fc9e7f95d33d3c2e3f975d2e8c",
   "research/spikes/s02-juce-build/CMakeLists.txt": "5ab36361e13ab6e9a6731314924788c5c4dae786459f8ff0b63ab50da1f6e44d",
@@ -329,5 +331,5 @@
  "lessons_loaded": [],
  "lessons_recorded": [],
  "knowledge_added": [],
- "updated_at": "2026-11-14T19:08:33Z"
+ "updated_at": "2026-11-15T00:15:44Z"
 }

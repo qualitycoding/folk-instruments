@@ -1,0 +1,8 @@
+{"state": "sounds", "cents": -19.97, "amp_over_x0": 1.879, "h2_dB": -20.3, "h3_dB": -17.9, "table": "[-4x0,4x0]", "spring_factor": 0, "p0": 100}
+{"state": "sounds", "cents": -22.67, "amp_over_x0": 4.571, "h2_dB": -9.1, "h3_dB": -9.5, "table": "[-4x0,4x0]", "spring_factor": 0, "p0": 400}
+{"state": "sounds", "cents": -23.26, "amp_over_x0": 5.816, "h2_dB": -5.9, "h3_dB": -9.0, "table": "[-4x0,4x0]", "spring_factor": 0, "p0": 700}
+{"state": "sounds", "cents": -20.96, "amp_over_x0": 9.402, "h2_dB": -6.2, "h3_dB": -13.0, "table": "[-4x0,4x0]", "spring_factor": 0, "p0": 1500}
+{"state": "sounds", "cents": -19.97, "amp_over_x0": 1.879, "h2_dB": -20.3, "h3_dB": -17.9, "table": "[-4x0,4x0]", "spring_factor": 100, "p0": 100}
+{"state": "sounds", "cents": 286.46, "amp_over_x0": 3.679, "h2_dB": -6.8, "h3_dB": -12.5, "table": "[-4x0,4x0]", "spring_factor": 100, "p0": 400}
+{"state": "sounds", "cents": 370.16, "amp_over_x0": 4.105, "h2_dB": -1.1, "h3_dB": -11.9, "table": "[-4x0,4x0]", "spring_factor": 100, "p0": 700}
+{"state": "sounds", "cents": 1034.99, "amp_over_x0": 4.431, "h2_dB": -3.4, "h3_dB": -8.8, "table": "[-4x0,4x0]", "spring_factor": 100, "p0": 1500}

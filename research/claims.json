@@ -2007,7 +2007,7 @@
  },
  {
   "id": "C-053",
-  "claim": "At the reference pitch (444 Hz), driven from a pressure reservoir through an inlet orifice of 30 mm2, the reed model is silent at 50 Pa and sounds from 100 Pa to 1500 Pa, 20 to 23 cents below its natural frequency, with the second flow harmonic rising from -20 dB to about 0 dB; 3000 Pa applied within 20 ms holds the reed shut inside the slot without starting it, while a slower rise lets it sound. The reference reed's proportions do not transfer to other pitches: a reed scaled like a real cantilever to 3520 Hz did not oscillate at any pressure, and one scaled to 111 Hz sounded 50 to 100 cents flat.",
+  "claim": "At the reference pitch (444 Hz), driven from a pressure reservoir through an inlet orifice of 30 mm2, the reed model is silent at 50 Pa and sounds from 100 Pa to 1500 Pa, 19 to 25 cents below its natural frequency (most near 700 to 1000 Pa), with the second flow harmonic rising from -20 dB to about 0 dB; 3000 Pa applied within 20 ms holds the reed shut inside the slot without starting it, while a slower rise lets it sound. The reference reed's proportions do not transfer to other pitches: a reed scaled like a real cantilever to 3520 Hz did not oscillate at any pressure, and one scaled to 111 Hz sounded 50 to 100 cents flat.",
   "kind": "numerical",
   "load_bearing": true,
   "sources": [
@@ -2026,6 +2026,24 @@
     "title": "round-4 adversarial review",
     "version": "this run",
     "locator": "review of C-053; new_load_bearing_claims 1",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "research/spikes/s12-reed-similarity-scaling/ramp_output.json",
+    "doi": "",
+    "title": "planning spike S12B",
+    "version": "this run",
+    "locator": "1000 Pa rows",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "research/rounds/r5-adversarial.json",
+    "doi": "",
+    "title": "round-5 adversarial review",
+    "version": "this run",
+    "locator": "review of C-053",
     "accessed": "2026-11-14",
     "tier": 3
    }
@@ -2098,7 +2116,7 @@
  },
  {
   "id": "C-055",
-  "claim": "In the TinySOL accordion notes (646 analysed; a second estimator on 330 notes agrees on the first two figures): the median pitch is 6 cents above A = 440 Hz; ff is louder than pp by 12.4 to 24.8 dB (10th to 90th percentile); odd harmonics are stronger than even ones in about nine notes in ten; ff is brighter than pp in 85 % of pitches; the pitch difference between ff and pp is not distinguishable from zero (median -1.7 cents, 95 % interval -3.4 to 0.0); about one note in ten shows a component an octave below the note (90th percentile -35 dB at pp, -42 dB at mf), the rest none; the rise to half the steady level takes 213 ms at pp, 94 ms at mf and 40 ms at ff in the median; the mean absolute difference of harmonics 1 to 8 between a note and the mean of its semitone neighbours has a 90th percentile of 10.1 dB (pp), 7.8 dB (mf) and 9.8 dB (ff). Below about 100 Hz the harmonic measurement cannot separate a note from mains hum.",
+  "claim": "In the TinySOL accordion notes (646 analysed; a second estimator on 330 notes agrees on the first two figures): the median pitch is 6 cents above A = 440 Hz; ff is louder than pp by 12.4 to 24.8 dB (10th to 90th percentile); odd harmonics are stronger than even ones in about nine notes in ten; ff is brighter than pp in 85 % of pitches; the pitch difference between ff and pp is not distinguishable from zero (median -1.7 cents, 95 % interval -3.4 to 0.0); about one note in ten (fewer at pp and ff) shows a distinct component an octave below the note (90th percentile -35 dB at pp, -42 dB at mf); the rise to half the steady level takes 213 ms at pp, 94 ms at mf and 40 ms at ff in the median; the mean absolute difference of harmonics 1 to 8 between a note and the mean of its semitone neighbours has a 90th percentile of 10.1 dB (pp), 7.8 dB (mf) and 9.8 dB (ff). Below about 100 Hz the harmonic measurement cannot separate a note from mains hum.",
   "kind": "numerical",
   "load_bearing": true,
   "sources": [
@@ -2256,7 +2274,7 @@
  },
  {
   "id": "C-059",
-  "claim": "Scaling the reference reed by similarity (for a frequency factor k = f/444: all heights x0, hmin, er, es and the pumping area Sr divided by k; inlet area divided by k; cell volume divided by k squared; stiffness, Q, tongue length and width, inlet passage unchanged) leaves the model's behaviour unchanged at every pitch: from 55.5 Hz to 5328 Hz it is silent at 50 Pa, sounds at 100, 400 and 1500 Pa at -20, -23 and -23 cents, with the same relative amplitude and the same flow harmonics to within 0.5 dB.",
+  "claim": "Scaling the reference reed by similarity (for a frequency factor k = f/444: all heights x0, hmin, er, es and the pumping area Sr divided by k; inlet area divided by k; cell volume divided by k squared; stiffness, Q, tongue length and width, inlet passage unchanged) leaves the model's behaviour unchanged at every pitch: from 55.5 Hz to 5328 Hz it is silent at 50 Pa, sounds at 100, 400, 700 and 1500 Pa at about -20, -23, -24.5 and -23 cents (the same at every pitch to 0.01 cent for an equal number of steps per period), with the same relative amplitude and the same flow harmonics.",
   "kind": "numerical",
   "load_bearing": true,
   "sources": [
@@ -2266,6 +2284,24 @@
     "title": "planning spike S12",
     "version": "this run",
     "locator": "all rows at 8 times 48 kHz, and at 4 times up to 1776 Hz",
+    "accessed": "2026-11-14",
+    "tier": 1
+   },
+   {
+    "url": "research/rounds/r5-adversarial.json",
+    "doi": "",
+    "title": "round-5 adversarial review",
+    "version": "this run",
+    "locator": "review of C-059: factors 0.5 and 6; derivation of the groups",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "research/spikes/s13-round5-reruns/t1.log",
+    "doi": "",
+    "title": "planning spike S13",
+    "version": "this run",
+    "locator": "factors 0.5, 1, 6",
     "accessed": "2026-11-14",
     "tier": 1
    }
@@ -2282,14 +2318,14 @@
    "T-103"
   ],
   "input_file_verdict": "not-in-input",
-  "note": "This follows from writing the equations in dimensionless form; the spike confirms it. It gives up the proportions of real reeds: differences of timbre along the keyboard are added by calibration (DR-07).",
+  "note": "This follows from writing the equations in dimensionless form; the spike confirms it. It gives up the proportions of real reeds: differences of timbre along the keyboard are added by calibration (DR-07). A reviewer derived the dimensionless groups independently and found every one invariant, the useful-section law included.",
   "tags": [
    "subject:free-reed-modelling"
   ]
  },
  {
   "id": "C-060",
-  "claim": "The semi-implicit Euler step of the reed model needs about 100 or more steps per reed period: at 192 kHz it diverges for reeds at 3552 Hz and 5328 Hz above 100 Pa, and at 384 kHz for the 5328 Hz reed at 1500 Pa, while all runs with at least 108 steps per period stay bounded and agree in pitch within 1 cent; small gaps or a short inlet passage make it less stable.",
+  "claim": "With the reference proportions the semi-implicit Euler step of the reed model needs more than about 100 steps per reed period (it diverges at 95 or fewer at 1500 Pa and at 100 or fewer at 1800 Pa, and is stable at 105 and 110 from 27.5 Hz to 7 kHz at host rates 44.1 and 48 kHz with a base rate of four times the host rate); halving the clearance hmin raises the need to about 220 steps, and halving the rest offset makes the reed choke at 1500 Pa.",
   "kind": "numerical",
   "load_bearing": true,
   "sources": [
@@ -2301,6 +2337,15 @@
     "locator": "rows marked diverged",
     "accessed": "2026-11-14",
     "tier": 1
+   },
+   {
+    "url": "research/rounds/r5-adversarial.json",
+    "doi": "",
+    "title": "round-5 adversarial review",
+    "version": "this run",
+    "locator": "reviews of C-060 and D-011; new_load_bearing_claims 2",
+    "accessed": "2026-11-14",
+    "tier": 3
    },
    {
     "url": "research/rounds/r4-adversarial.json",
@@ -2317,11 +2362,52 @@
   "contradicted_by": [],
   "informs": [
    "D-011",
+   "D-012",
    "T-009",
    "T-100"
   ],
   "input_file_verdict": "not-in-input",
   "note": "",
+  "tags": [
+   "subject:free-reed-modelling"
+  ]
+ },
+ {
+  "id": "C-061",
+  "claim": "Under the similarity scaling the reed's source signal, the time derivative of its total flow, has the same level at every pitch (the flow itself falls 6 dB per octave); and the reed's tip travels to about -6.8 and +7.6 times its rest offset at 1500 Pa, beyond the ends of the spike's useful-section table (+6 times the rest offset), where the spike holds the table's end value.",
+  "kind": "numerical",
+  "load_bearing": true,
+  "sources": [
+   {
+    "url": "research/rounds/r5-adversarial.json",
+    "doi": "",
+    "title": "round-5 adversarial review",
+    "version": "this run",
+    "locator": "new_load_bearing_claims 1 and 3; review of D-010",
+    "accessed": "2026-11-14",
+    "tier": 3
+   },
+   {
+    "url": "research/spikes/s13-round5-reruns/t1.log",
+    "doi": "",
+    "title": "planning spike S13",
+    "version": "this run",
+    "locator": "dudt_rms and x ranges",
+    "accessed": "2026-11-14",
+    "tier": 1
+   }
+  ],
+  "confidence": "verified",
+  "evidence_class": "n/a",
+  "contradicted_by": [],
+  "informs": [
+   "D-010",
+   "D-012",
+   "D-013",
+   "D-015"
+  ],
+  "input_file_verdict": "not-in-input",
+  "note": "D-010 fixes the table and its end behaviour to the spike's; a narrower table with a confining spring detuned the reed by 286 to 1035 cents in the reviewer's run.",
   "tags": [
    "subject:free-reed-modelling"
   ]

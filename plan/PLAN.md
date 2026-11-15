@@ -159,12 +159,12 @@ Order at a glance: `S-000`, `S-002`, `S-003`; then two tracks that may run concu
 - Depends on: S-200
 - Inputs: `tools/reed_probe.cpp`, D-012, D-016, rule DR-03
 - Actions:
-  1. Run `reed_probe` at the 12 check pitches of rule DR-03 (natural frequency = equal-tempered frequency of the MIDI note), at 50, 100, 400 and 1500 Pa, at host rates 44100 and 48000; write the table to `baseline/reed-check.csv`.
+  1. Run `reed_probe` at the 12 check pitches of rule DR-03 (natural frequency = equal-tempered frequency of the MIDI note), at 50, 100, 400, 1500 and 1800 Pa, at host rates 44100 and 48000; write the table to `baseline/reed-check.csv`.
   2. Apply rule DR-03 to any row that fails.
   3. Write `tools/calibrate_reeds.py` as D-016 describes (it calls `reed_probe`), run it, and commit `presets/reeds.json` with the offset table and the three curves of D-012 all equal to 1.
 - Outputs: `baseline/reed-check.csv`, `tools/calibrate_reeds.py`, `presets/reeds.json`
 - Evidence produced: none
-- Done when: `baseline/reed-check.csv` has 96 rows; every 50 Pa row is silent (amplitude below 0.02 `x0`); every other row sounds with an offset within 1.5 cents of -20.1 (100 Pa), -23.1 (400 Pa), -23.3 (1500 Pa) and no non-finite state; `presets/reeds.json` parses and holds 109 offsets (MIDI 16 to 124) between -26 and -18 cents.
+- Done when: `baseline/reed-check.csv` has 120 rows; every 50 Pa row is silent (amplitude below 0.02 `x0`); every other row sounds with no non-finite state, and with an offset within 1.5 cents of -20.1 (100 Pa), -23.1 (400 Pa), -23.3 (1500 Pa) (no offset target at 1800 Pa); `presets/reeds.json` parses and holds, for each of the four host rates, 109 offsets (MIDI 16 to 124) between -27 and -17 cents.
 - Checkpoint: step done; the sub-step constant in use.
 - On failure: rule DR-03.
 - Gate: none
@@ -377,7 +377,7 @@ Gate actions of S-250: render `demos/mandolin-01-melody.events`, `-04-dynamics`,
 - Inputs: `tests/py/test_reference.py`, rule DR-07, D-012 (the three curves), D-071
 - Actions:
   1. Run the reference tests locally (`plan/ENVIRONMENT.md` section 3) with `FOLK_TINYSOL` and `FOLK_REF_ROOT` set, or in CI under rule DR-13; save the output to `baseline/reference-before.txt` (pass and fail lines and the printed T-201 lines only; no reference-derived numbers for private references beyond pass counts).
-  2. If any reference test fails, calibrate by rule DR-07, re-running `tools/calibrate_reeds.py` after any change to a reed curve, and re-running the whole of `S-300`'s `Done when` after each round.
+  2. If any reference test fails, calibrate by rule DR-07, re-running the check of `S-201` (its `Done when`) and `tools/calibrate_reeds.py` after any change to a reed curve, and re-running the whole of `S-300`'s `Done when` after each round.
   3. Save the final output to `baseline/reference-after.txt`.
 - Outputs: `baseline/reference-before.txt`, `baseline/reference-after.txt`, possibly updated `presets/reeds.json` and `presets/bodies.json`
 - Evidence produced: T-200, T-201b

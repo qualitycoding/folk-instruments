@@ -1,0 +1,73 @@
+# Human gates
+
+At a gate the implementer halts, writes the gate record from the template in `HANDOFF.md`, commits and pushes it, and reports its path and questions in chat. Only an allowed response counts. Silence is never a response. Sign-off at one gate never covers another gate, and sign-off for one round never covers the next.
+
+| Gate | Opened by | Kind | Round limit |
+|---|---|---|---|
+| G-P1 | S-210 | pilot listening, harmonica (demos only) | 2 |
+| G-P2 | S-250 | pilot listening, mandolin (demos only) | 2 |
+| G-L1 to G-L5 | S-LISTEN | listening validation, one per instrument | 3 each |
+| G-002 | any step that would release or publish | external or irreversible action | no limit |
+| G-003 | S-KNOW | lesson and knowledge stores | no limit |
+
+Gates not required: `G-001` (profiles `math` and `computational` are inactive); `G-INT` (the integration route is `pull-request`: the owner merges the pull request, which is the owner's own action).
+
+---
+
+## G-P1 and G-P2: pilot listening
+
+Purpose: an early check by the owner's ear, before the second and third instruments of a family are built on the same core (A-003). Demos only; no blind pairs; no pass score.
+
+- **Trigger.** G-P1: `S-210` after its tests pass. G-P2: `S-250` after its tests pass.
+- **Blocks.** G-P1 blocks `S-220` and `S-230`. G-P2 blocks `S-260`.
+- **Continues meanwhile.** G-P1: `S-212`, `S-101`, `S-240`, `S-250`, `S-REF`. G-P2: `S-200` to `S-230` (subject to G-P1), `S-REF`.
+- **Evidence bundle.** The rendered demo files named in the step's gate actions, delivered by the delivery rule of `HANDOFF.md`; the list of frozen tests that pass for the instrument; the real-time factor printed by `folk-perf` for the instrument.
+- **Questions.**
+  1. Does this sound like the instrument? If not, what is wrong, in your own words (for example: too clean, too bright, synthetic attack, wrong pitch, lifeless sustain)?
+  2. Which demo is the weakest?
+  3. May the remaining instruments of this family be built on this sound engine as it is?
+- **Allowed responses.** `proceed`; `iterate: <notes>`; `proceed-with-rescope: <text>`; `stop`.
+- **Branches.** `proceed`: continue. `iterate: <notes>`: apply the iterate procedure of `HANDOFF.md` to this instrument (analysis chosen from the listener's words, one general change per difference, all frozen tests re-run), render the same demos again, open round 2; after round 2 only `proceed`, `proceed-with-rescope`, `stop` or `override-round-limit: <reason>` are accepted. `proceed-with-rescope: <text>`: copy the text into `DEVIATIONS.md`, apply it if it is a reduction of scope (for example dropping a variant), and continue; if the text asks for something that changes a public interface or a frozen test, write `BLOCKED.md` instead. `stop`: the family's remaining instruments are not built; record it in `DEVIATIONS.md`; the other family continues.
+
+## G-L1 to G-L5: listening validation
+
+G-L1 harmonica, G-L2 mandolin, G-L3 accordion, G-L4 melodion, G-L5 bouzouki.
+
+- **Trigger.** `S-LISTEN`.
+- **Blocks.** `S-INTEGRATE` (all five must be answered).
+- **Continues meanwhile.** The other listening gates.
+- **Evidence bundle.** The evidence branch `evidence/<gate id>` built by the `gate-evidence` workflow (demos as WAV, `MANIFEST.json`, `SHA256SUMS`, `ATTRIBUTION.md`, `METRICS.md`, and blind pairs when every reference is redistributable); for an instrument whose pairs use a private reference, the pairs delivered privately by the delivery rule and their hashes on the branch; the statement of how many references are redistributable and how many private; the frozen pass condition; any reference test that failed in `S-330`.
+- **Reference set and pass condition (frozen).**
+
+| Gate | References at planning time | Blind pairs | Pass condition |
+|---|---|---|---|
+| G-L3 accordion | TinySOL 6.0, 12 mf notes (MIDI 48, 52, 55, 59, 62, 65, 69, 72, 76, 79, 83, 86), CC BY 4.0, redistributable | 12, cut from the start of each note | at most 8 of 12 picked correctly, and no demo reported as wrong |
+| G-L2 mandolin | Philharmonia mandolin notes, private reference (D-051), if `S-REF` indexed 12 or more | 12, cut from the start, delivered privately | the same |
+| G-L1 harmonica, G-L4 melodion, G-L5 bouzouki | none with 12 notes at planning time; whatever `S-REF` indexed | 12 if `S-REF` indexed 12 or more notes of the instrument, otherwise none | with pairs: the same; without pairs: no demo reported as wrong |
+
+  The pass condition is necessary, not sufficient: the listener's remarks on the demos count alongside the score. A listener who gives one letter for 10 or more of the 12 pairs is showing side bias; record it.
+- **Questions.**
+  1. (Only if pairs were delivered.) For each of the 12 pairs, which side is the real instrument? Answer with 12 letters in order, for example `ABBABAABABBA`. Play each pair once, A then B, on your own headphones.
+  2. Do the demos sound like the instrument? Which, if any, sound wrong, and how?
+  3. Per instrument: harmonica: do the bends (`-08-bend`, `-10-chromatic-on-diatonic`) sound like a player bending? Mandolin and bouzouki: does the tremolo (`-07-tremolo`) sound like picking, and do the variants differ as you expect? Accordion: do the registers and the musette (`-2xx-variant`) sound right, and does the cassotto setting sound warmer rather than just duller? Melodion: do chords under a limited breath (`-204-variant`) sag believably?
+- **Allowed responses.** `proceed`; `iterate: <notes>`; `proceed-with-rescope: <text>`; `stop`; `override-round-limit: <reason>` (only to allow a round beyond the third).
+- **Branches.** `proceed`: only valid if the pass condition is met; if pairs were judged and more than 8 were correct, tell the owner the score and ask once whether `iterate`, `proceed-with-rescope` or `stop` is meant. `iterate: <notes>`: rule DR-12; new evidence with a new seed; next round. After round 3: only `proceed` (if the condition is met), `proceed-with-rescope`, `stop` or `override-round-limit`. `proceed-with-rescope: <text>`: the text names the accepted shortfall; copy it into `DEVIATIONS.md` and the retrospective; continue. `stop`: the instrument's plugin target is removed from the default build (the code stays), recorded in `DEVIATIONS.md`; the other instruments continue.
+
+## G-002: external or irreversible action
+
+This plan releases nothing (A-018, D-007), so no step opens this gate. It exists so that the rule has a place: if any step, deviation or request would create a tagged release, an installer, a package, an upload outside the repository, a change of repository visibility or settings, or a merge into `main`, the implementer halts first.
+
+- **Trigger.** Before any such action.
+- **Evidence bundle.** What would be published, where, under which licence; the CI run that built it; the licences of everything inside it; the count of redistributable and private references and confirmation that nothing derived from a private reference is included (`tools/evidence_guard.py` output).
+- **Questions.** 1. May this be published as described? 2. Under which version number?
+- **Allowed responses.** `publish: <version>`; `do-not-publish`.
+- **Branches.** `publish`: perform exactly the described action, record it. `do-not-publish`: record it and continue without the action.
+
+## G-003: lesson and knowledge stores
+
+- **Trigger.** `S-KNOW`, the last step.
+- **Blocks.** Only the pushes to the stores.
+- **Evidence bundle.** `GATE-G-003.md` as described in `S-KNOW`.
+- **Question.** May the lessons be pushed to `https://github.com/qualitycoding/Lessons` and the knowledge items to `https://github.com/qualitycoding/knowledge`?
+- **Allowed responses.** `push-to-proposed`; `push-to: <lesson-target> [knowledge-target]`; `do-not-push`.
+- **Branches.** As in `S-KNOW`. If no response arrives, the bundle fallback of `S-KNOW` is written and reported; writing a bundle is not a push.
