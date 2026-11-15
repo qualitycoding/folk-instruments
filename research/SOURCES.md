@@ -7,7 +7,7 @@ Every external source opened or queried during planning (149 distinct URLs), in 
 3. Millot and Baumann, minimal model of free reeds. Millot, Baumann. . <https://arxiv.org/pdf/2401.01606> Accessed 2026-11-14. Tier 2. Outcome: used.
 4. Fletcher 1993 catalogue record. Fletcher. . <https://bvbvf1.bib-bvb.de/vufind/PrimoRecord/cdi_crossref_primary_10_1121_1_406857> Accessed 2026-11-14. Tier 1. Outcome: used.
 5. Physics of free reeds (Pykett). Pykett. . <https://colinpykett.org.uk/physics-of-free-reed-wind-instruments.htm> Accessed 2026-11-14. Tier 3. Outcome: not relevant. Note: not opened
-6. Forum Acusticum 2023 harmonium reed paper. not identified. . <https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf> Accessed 2026-11-14. Tier 2. Outcome: used.
+6. Clamped bar model for free reeds (Forum Acusticum 2023). N. Puranik, G. Scavone. . <https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf> Accessed 2026-11-14. Tier 2. Outcome: used.
 7. Euphonics, Free reeds. Euphonics. . <https://euphonics.org/11-6-free-reeds/> Accessed 2026-11-14. Tier 3. Outcome: not relevant. Note: not opened
 8. HAL record, Ricot et al.. Ricot, Causse, Misdariis. . <https://hal.archives-ouvertes.fr/hal-01106161> Accessed 2026-11-14. Tier 1. Outcome: unreachable. Note: host not allowed
 9. Cantilever beam notes. Hadley. . <https://lampz.tugraz.at/~hadley/memm/mechanics/cbeam.php> Accessed 2026-11-14. Tier 3. Outcome: used.

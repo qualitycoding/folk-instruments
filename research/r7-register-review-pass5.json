@@ -1,0 +1,115 @@
+{
+ "checked": [
+  {
+   "row": 2,
+   "url": "https://arxiv.org/html/0810.2870v1",
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "arXiv HTML page and /abs/0810.2870 (non-exclusive distribution licence link); title matches",
+   "correction": ""
+  },
+  {
+   "row": 6,
+   "url": "https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf",
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "PDF pp.1-2 via pdftotext: CC BY 3.0 Unported footer; St. Hilaire, LDV and distributed model all present",
+   "correction": "Minor: the paper is Puranik and Scavone, 'Clamped bar model for free reeds'; the source cell says 'not identified' and could be filled in."
+  },
+  {
+   "row": 7,
+   "url": "https://euphonics.org/11-6-free-reeds/",
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "HTML page; CC licence widget links by-nc-sa/4.0 (an image credit separately cites CC BY-SA 3.0, not the site licence)",
+   "correction": ""
+  },
+  {
+   "row": 29,
+   "url": "https://www.dafx.de/paper-archive/2023/DAFx23_paper_47.pdf",
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "PDF p.1 via pdftotext: CC BY 4.0 footer; harmonium source-filter synthesis in the abstract",
+   "correction": ""
+  },
+  {
+   "row": 34,
+   "url": "https://dael.euracoustics.org/confs/fa2026/data/articles/000418.pdf",
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "PDF via pdftotext: 'Copyright 2026 Seiji Adachi', CC BY 3.0 Unported; vent-hole pressure loss in abstract. The PDF is watermarked 'preliminary'.",
+   "correction": "Access note 'fetch blocked; snippet only' is stale: the PDF fetched fine."
+  },
+  {
+   "row": 36,
+   "url": "https://en.wikipedia.org/wiki/Accordion",
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "HTML page: CC BY-SA 4.0 licence text in footer",
+   "correction": "Access note and content ('not read, host not allowed') are stale: the page is reachable (HTTP 200); outcome 'unreachable' no longer holds."
+  },
+  {
+   "row": 45,
+   "url": "https://arxiv.org/pdf/2104.02480",
+   "licence_ok": true,
+   "summary_ok": false,
+   "permitted_ok": true,
+   "where_read": "PDF pp.1-2 and /abs/2104.02480: licence link creativecommons.org/licenses/by/4.0",
+   "correction": "Wrong identification: arXiv 2104.02480 is 'Pickers' Guide to Acoustics of the Banjo, parts I and II' (Politzer, Woodhouse, Mansour), not a 'Woodhouse double decay preprint'. Fix the source name, and the 'unreachable' outcome and access notes (the PDF and abs page fetched with HTTP 200). Licence cell is correct."
+  },
+  {
+   "row": 48,
+   "url": "https://ccrma.stanford.edu/software/stk/classstk_1_1Mandolin.html",
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "HTML page: '(c)1995-2023 Perry R. Cook and Gary P. Scavone. All Rights Reserved'; 'two twang models' and 'commuted' text present; also notes Stanford patents on commuted synthesis",
+   "correction": "Access note 'Search summary only' is stale: page fetched. Optionally add the patent warning."
+  },
+  {
+   "row": 57,
+   "url": "https://euphonics.org/7-3-multiple-strings-and-double-decays/",
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "HTML page: CC licence widget by-nc-sa/4.0 (page title matches)",
+   "correction": "Access note and outcome ('not resolvable', 'unreachable') are stale: page returned HTTP 200."
+  },
+  {
+   "row": 82,
+   "url": "https://en.wikipedia.org/wiki/Irish_bouzouki",
+   "licence_ok": true,
+   "summary_ok": false,
+   "permitted_ok": true,
+   "where_read": "HTML page: CC BY-SA 4.0 text; Moynihan, G2 D3 A3 D4 tuning and Irvine giving a Greek bouzouki to Lunny are present",
+   "correction": "The page does not state '1971' for Irvine's use of GDAD. It says 'early 1970s' for the gift to Lunny and 1972 for Planxty; Moynihan's retuning is 'mid-1960s'. Remove or soften '1971'."
+  },
+  {
+   "row": 5,
+   "url": "https://colinpykett.org.uk/physics-of-free-reed-wind-instruments.htm",
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "curl failed: CONNECT tunnel failed, HTTP 403 from the proxy, no content",
+   "correction": "Cell 'unknown: host not reachable' is accurate from here (403 at the proxy); nothing further to verify."
+  },
+  {
+   "row": 9,
+   "url": "https://lampz.tugraz.at/~hadley/memm/mechanics/cbeam.php",
+   "licence_ok": true,
+   "summary_ok": true,
+   "permitted_ok": true,
+   "where_read": "curl failed: CONNECT tunnel failed, HTTP 403 from the proxy, no content",
+   "correction": "Same: the host really fails from here, so the unknown licence cell and 'read only' stand."
+  }
+ ],
+ "not_checked": [],
+ "discrepancies": 2,
+ "summary": "12 rows checked (10 requested plus unreachable rows 5 and 9). All licence cells and permitted-use cells match the sources. Two content discrepancies: row 45 (arXiv 2104.02480 is a banjo paper, not a Woodhouse double-decay preprint, and it was reachable) and row 82 ('from 1971' is not on the page). Stale access notes or outcomes (the host did fetch) on rows 34, 36, 45, 48 and 57; minor source-name gap on row 6. Rows 5 and 9 do fail from here (403)."
+}

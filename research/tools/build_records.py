@@ -97,12 +97,15 @@ OVERRIDE = {"euphonics.org/publication-list": ("Site text CC BY-NC-SA 4.0 except
             "zenodo.org/records/3685367": (None, None, "C.-E. Cella, D. Ghisi, V. Lostanlen, F. Levy, J. Fineberg, Y. Maresz (recorded at Ircam)"),
             "zenodo.org/api/records/3685367": (None, None, "C.-E. Cella, D. Ghisi, V. Lostanlen, F. Levy, J. Fineberg, Y. Maresz (recorded at Ircam)")}
 PERMIT = {}
-SUMMARY = {"ccrma.stanford.edu/~jos/pasp/Stiff_String.html": "The stiffness term in the string wave equation and the resulting dispersion (high-frequency components travel faster); points to the following page, Stiff String Synthesis Models, for allpass dispersion filters.",
+SUMMARY = {"https://arxiv.org/pdf/2104.02480": "'Pickers' Guide to Acoustics of the Banjo', parts I and II (Politzer, Woodhouse, Mansour). A round-1 worker took this to be the preprint of Woodhouse's double-decay paper; it is not, and no claim rests on it.",
+           "https://en.wikipedia.org/wiki/Irish_bouzouki": "History of the Irish bouzouki (Johnny Moynihan's retuning of a Greek bouzouki in the mid-1960s; Andy Irvine and Donal Lunny in the early 1970s, unison bass courses, Peter Abnett's first purpose-built instrument in 1972), common tunings (G2 D3 A3 D4), construction and scale lengths (24 to 25 in, some 26 to 27 in).",
+           "https://ccrma.stanford.edu/software/stk/classstk_1_1Mandolin.html": "STK Mandolin class reference: two detuned plucked strings with a commuted body response; the page warns that commuted synthesis was covered by a Stanford patent.",
+           "ccrma.stanford.edu/~jos/pasp/Stiff_String.html": "The stiffness term in the string wave equation and the resulting dispersion (high-frequency components travel faster); points to the following page, Stiff String Synthesis Models, for allpass dispersion filters.",
            "commons.wikimedia.org/wiki/File:Electra-Melodica": "A recording of a Hohner Electra-Melodica (an instrument of 1967); not used.",
            "commons.wikimedia.org/wiki/File:Bending_Mundharmonika.ogg": "A recording of draw bends on a harmonica (the contributor's own work, 2006)."}
 for u, s_ in src_by_url.items():
     for key, text in SUMMARY.items():
-        if key in u: s_["content_summary"] = text
+        if (u.startswith(key) if key.startswith("http") else key in u): s_["content_summary"] = text; s_["fixed_summary"] = True
 for u, s_ in src_by_url.items():
     for key, (lic, per, owner) in OVERRIDE.items():
         if key in u:
@@ -154,7 +157,11 @@ for u, s_ in src_by_url.items():
             s_["licence_or_terms"] = lic; s_["swept"] = True
             if lic.startswith("not applicable"): PERMIT[u] = "not applicable (no content used)"
             break
+    if SWEPT.get(u, {}).get("status") == "200" and s_.get("outcome") == "unreachable":
+        s_["access_notes"] = "unreachable when first checked in round 1; fetched with HTTP 200 on 2026-11-15 by the licence sweep (spike S16), after the owner widened the network allowlist"
+    if u.startswith("https://dael.euracoustics.org/confs/fa2023/data/articles/000853.pdf"): s_["title"] = "Clamped bar model for free reeds (Forum Acusticum 2023)"; s_["owner_or_authors"] = "N. Puranik, G. Scavone"
     cs = (s_.get("content_summary") or "").strip()
+    if s_.get("fixed_summary"): continue
     if len(cs) < 25 or re.fullmatch(r"[A-Z]\d+[a-z]?", cs):
         if u in CITED: s_["content_summary"] = "Cited by a round-1 worker for: " + CITED[u][:220]
         elif s_.get("outcome") == "unreachable": s_["content_summary"] = "Not read (" + (one(s_.get("reason")) or "unreachable") + ")."
