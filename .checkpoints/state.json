@@ -1,7 +1,7 @@
 {
  "run_id": "gen-20261114T004707Z-folk-instruments-vst",
  "branch": "gen-20261114T004707Z-folk-instruments-vst",
- "sequence": 15,
+ "sequence": 16,
  "protocol_versions": {
   "core": "4.0",
   "modules/software-ci": "1.0",
@@ -69,8 +69,8 @@
    "reason": "the owner switched the session model; the planning session (T1) continues on Opus. Rule 5: T1 is filled by the highest available model; recorded here and in plan/PROFILE.md."
   }
  ],
- "phase": "3",
- "subphase": "3B-cold-read",
+ "phase": "4",
+ "subphase": "4-premortem",
  "rounds": {
   "research": 6,
   "exploration": 0,
@@ -199,6 +199,7 @@
   "demos/melodion-06-chords.events": "a70177bb1e3c8814379297e58849a016c6673b25335393353c2b65bc7a53d326",
   "demos/melodion-07-vibrato.events": "db71fabbaefae8d303b09ab2e02d72e2c21caa0cc3bd4019d8e710229ace56e3",
   "demos/melodion-09-breath-swell.events": "1bb64df2ac73f68639cf7aaf4be24c3412c1b2854c8f2333755e22191a48731c",
+  "demos/melodion-11-chords-limited-breath.events": "dded564a8667ee23511112b32af1dd75bdb5fe1794dc61774e3969c41b1c68ea",
   "demos/melodion-201-variant.events": "89d1b3d6cc9789d8812bc26e24fa761b48c746579f9f60032b526d353a6957c3",
   "demos/melodion-202-variant.events": "965082f1386f5fc45cbe97f9537bcdf73ec591a7b5f6dc5c3ae5ea5ad0316a85",
   "demos/melodion-203-variant.events": "5fb6b4eb271f856588f6ce2e8c844f51ac96677e72feefd3d4c2274b2244df5c",
@@ -276,10 +277,10 @@
   "lessons/L-20261115T131500Z-pycache-committed-before-gitignore.md": "59236cdff3b0768b97a7728cc1804ac546cda58d418a6dfdac771cb9757bf175",
   "lessons/L-20261115T133000Z-source-identity-not-checked.md": "9b88becdac46342882923aa60e19bc64761665cf802a043ba0f9d9d4ab6b9024",
   "plan/ASSUMPTIONS.md": "2a7277c849ee7ebc19c230107e607af716b70bc05f4276156aeafd11a9e83986",
-  "plan/DECISIONS.md": "3771659c737e2ad0d40af7538d1f62e1592cb71bf76ce09e9913240a9b1b7498",
-  "plan/ENVIRONMENT.md": "85e52f684b2cce87e9a7403bc5188cac716b9cabd4dfd2c4b43c406b6677c687",
-  "plan/GATES.md": "6819fcf5e54ea75975261722f72bff96ef847837ae53e97a7d1042843714577a",
-  "plan/PLAN.md": "623049c8c93dbe561f7920218f1c6737d43d27d15559053203e89d584b54574c",
+  "plan/DECISIONS.md": "376c22d4398fb4f1b71b073b2243a0559b64bab5a1d3b442ed2cd96cf09b9e29",
+  "plan/ENVIRONMENT.md": "c2e8a647f81d69d5629b34f96af78c01e14b48c88b5309c0a3675a99ab773797",
+  "plan/GATES.md": "c04131dd7b0e78ec9380288ed2772a1e8586b8124d59c8e2447f5c4a95589fcb",
+  "plan/PLAN.md": "42915e2631396b5bd416890ddb5d297da2be5e270c83dca87bb28299058faab7",
   "plan/PROFILE.md": "723f0c5761439ea504a71d064e2ea63fefef69c7185578a9d9fe0a5277842d37",
   "plan/TEMPLATES.md": "a7cab6ff0a71b6a49d6a136b3ac0920368645d58396b30ef7b3e48eea587fb23",
   "plan/TRACEABILITY.md": "b5eac8cb2ae7f0ccde6e5ff46f93c24194166da0efaf6dafc97771aff3995482",
@@ -302,6 +303,8 @@
   "research/coldread/coldread-3-mechanical.json": "8d5408121bf0de7ce70c3cbaba2bd315175f21edc9b6a38c9c0a116b14bd4a4a",
   "research/coldread/coldread-4-dryrun.json": "22a7a4a3c504a6c466fe322d5cadb0a8eb6060afc3dc93b9e6f335825f7a9640",
   "research/coldread/coldread-4-mechanical.json": "3bc2b096284f7dc293d3ace83743f120c6607a5322899e56326b943e264d312f",
+  "research/coldread/coldread-5-dryrun.json": "1bce39ea7d4f695a2b679bcfdb38e52790977791c1f1407219ab3377c1a3e571",
+  "research/coldread/coldread-5-mechanical.json": "341ecefd4c9c2c4534d14f6b26f560c00de3d95d3beeceed3d8ba3a474ad984f",
   "research/r0/knowledge_digest.json": "538556406fc2fdcf3aad62a7b93b524398ce3a23d2c3e2df0c8263e0e3551c9f",
   "research/r0/knowledge_highlights.md": "21e18a96b6585b1e268a520e9d20a14ebf230ebf5e98a3cdba0a200f3fe0ef7c",
   "research/r0/knowledge_relevance.json": "505e80ef6179a2ba5e0abce530f119f6aaa49c6444566a034673c72a2fafdf8a",
@@ -460,7 +463,7 @@
   "tools/folk-render/main.cpp": "14f836356d70fb0562d054c4abdba6c1a9ee53fac5fd9d114d1cda85adb211b3",
   "tools/listening/make_blind_pairs.py": "bb55c5019ffcec3c1402cabe103fad8bd63a0b6f12b4f26969221395def69e58",
   "tools/listening/score_blind.py": "54a6afe41f783f923032d1ee4cb0fb8fa2a1a749d0e9f9e53d153b8cdfafec73",
-  "tools/make_demos.py": "3542e95daeaaee608c23662fe2489763d78ebe8db983a0d93381be9cc719bbf4"
+  "tools/make_demos.py": "3980052e55916891e59f73cc79b1587a242bed6bf34146c92f89485d9d2ccf7c"
  },
  "in_flight": {
   "operation": "premortem round 1",
@@ -804,5 +807,5 @@
   "K-20261115T010102Z-c-063-the-reed-model-tolerates-only-moderate-changes-o",
   "K-20261115T020000Z-source-register-folk-instruments-vst"
  ],
- "updated_at": "2026-11-15T19:12:34Z"
+ "updated_at": "2026-11-15T23:18:50Z"
 }
