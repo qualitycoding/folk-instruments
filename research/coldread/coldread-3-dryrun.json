@@ -1,0 +1,298 @@
+{
+ "items": [
+  {
+   "n": 1,
+   "where": "plan/PLAN.md S-110 and S-201 (reed_probe, tools/calibrate_reeds.py) vs plan/DECISIONS.md D-016",
+   "kind": "missing input",
+   "severity": "guess",
+   "text": "D-016 says calibrate_reeds.py measures the reference source RMS S_ref and stores it as source_rms_ref (and S-201 requires that constant), but S-200 fixes reed_probe's single JSON line to three keys (state, cents, amp_over_x0) and no other tool in the plan outputs the base-rate source RMS (u[k]-u[k-1])*R*fs.",
+   "suggested_fix": "Add a fourth key (source_rms over the last 30 %) to the reed_probe output contract in S-200, or say that calibrate_reeds.py computes it by its own code path."
+  },
+  {
+   "n": 2,
+   "where": "plan/DECISIONS.md D-040 (moisture) vs D-010, D-015 and T-011",
+   "kind": "contradiction",
+   "severity": "guess",
+   "text": "D-040 makes moisture add moisture*0.4*x0 to hmin at run time, but D-010 says the useful-section table (which contains hmin through hypot(h, hmin)) is built once per MIDI note in prepare(), never on the audio thread, and T-011 forbids allocation in setParam/process. A continuous run-time hmin change therefore has no allowed implementation.",
+   "suggested_fix": "State how moisture reaches the table (for example a small fixed set of pre-built moisture levels interpolated, or an approximation that does not need a rebuild) or drop the hmin term."
+  },
+  {
+   "n": 3,
+   "where": "plan/PLAN.md S-100 step 3 (CMake custom command for gen_presets.py) vs plan/ci/ci.yml job `plugins`",
+   "kind": "non-literal command",
+   "severity": "guess",
+   "text": "S-100 asks for a CMake custom command that runs tools/gen_presets.py when a preset file changes, 'so that a build without Python works'. On a fresh checkout the JSON files (checked out after core/...) are newer than the committed header, so ninja/make will rerun the tool; it needs numpy and scipy (firwin), and the `plugins` job of ci.yml runs setup-python but never pip-installs tests/requirements.txt. The plan says ci.yml must stay byte-identical.",
+   "suggested_fix": "Say that the custom command is opt-in (for example behind FOLK_REGENERATE_PRESETS=ON, default OFF) and that CI only runs gen_presets.py --check."
+  },
+  {
+   "n": 4,
+   "where": "plan/PLAN.md S-003 actions 3 to 4 vs plan/ENVIRONMENT.md section 5 table",
+   "kind": "unevaluable done-when",
+   "severity": "guess",
+   "text": "S-003 expects the `plugins` job to fail at 'Host tests' and asks to record, for every unverified item of the section 5 table, what the run showed. Three items (lipo universal check, pluginval archive layout, pluginval log markers) are in steps after 'Host tests', which are skipped, so the first run cannot show them.",
+   "suggested_fix": "Say that those three items are recorded as 'not observable at S-003, deferred to S-320' and keep their 'If it fails' columns for S-320."
+  },
+  {
+   "n": 5,
+   "where": "plan/PLAN.md S-200 / D-013 tools/calibrate_gains.py and the per-instrument steps S-210, S-220, S-230, S-250, S-260",
+   "kind": "non-literal command",
+   "severity": "guess",
+   "text": "The command `python3 tools/calibrate_gains.py --instrument <name>` does not say where folk-render is found, whether the tool itself regenerates core/src/generated/presets_data.h and rebuilds, or what G_out the measured binary already contains (the new G_out must be old G_out times target/peak, and the binary only reflects gains.json after a rebuild). Nothing in S-200 tests the tool (no instrument sounds yet).",
+   "suggested_fix": "Specify the tool's arguments (render path, build dir), that it multiplies the current gains.json value, and that the step re-runs gen_presets.py and rebuilds before re-measuring."
+  },
+  {
+   "n": 6,
+   "where": "plan/PLAN.md S-340 action 2 (METRICS.md)",
+   "kind": "contradiction",
+   "severity": "guess",
+   "text": "The same paragraph says 'METRICS.md lists the non-reference tests only; the reference results are those of the latest CI reference job' and then 'METRICS.md lists the outcome of pytest -m \"not reference\" -k <name> ... and of the reference tests concerning it'.",
+   "suggested_fix": "Delete the clause 'and of the reference tests concerning it' (or the earlier sentence)."
+  },
+  {
+   "n": 7,
+   "where": "plan/PLAN.md S-340 Done-when (second dry run) vs the argument list of build_evidence.py",
+   "kind": "missing input",
+   "severity": "guess",
+   "text": "The second dry run must use 'a copy of the index, not the committed file', but build_evidence.py's argument list (--gate --instrument --seed --out --render --ref-root --private-out, as called by the workflow) has no --index option, and the plan does not say what the tool does with a private reference when --private-out is absent (skip pairs or fail).",
+   "suggested_fix": "Add an optional --index (default references/index.csv) and state that without --private-out a private reference means pairs are skipped."
+  },
+  {
+   "n": 8,
+   "where": "plan/PLAN.md S-340 and tests/py/test_evidence_guard.py (T-210) for private pairs",
+   "kind": "ambiguous",
+   "severity": "guess",
+   "text": "For a gate whose pairs use private references, <dir> holds PAIRS-SHA256SUMS and METRICS.md (with counts computed from the private references). MANIFEST.json needs a derived_from list for each; listing the private reference ids makes the guard exit 1, listing [] hides the derivation from the guard. The plan does not say which.",
+   "suggested_fix": "State the derived_from for PAIRS-SHA256SUMS and for METRICS.md when private references contribute (and whether the guard is expected to pass for those files)."
+  },
+  {
+   "n": 9,
+   "where": "plan/PLAN.md S-340 action 1(b) and D-052",
+   "kind": "undefined term",
+   "severity": "minor",
+   "text": "'the 12 with the lowest ids' presumes an id scheme for references/index.csv rows; D-052 and S-REF define the column but not the format (numeric, zero-padded, string), so lexicographic and numeric order can differ and TinySOL rows may not sort first.",
+   "suggested_fix": "Define the id format in D-052 (for example <instrument>-<zero-padded number>) and the sort."
+  },
+  {
+   "n": 10,
+   "where": "plan/DECISIONS.md section 'Key noise' (D-033) vs T-125",
+   "kind": "missing decision rule",
+   "severity": "guess",
+   "text": "key_noise gives a band (300 Hz to 3 kHz) and a 15 ms length but no amplitude or level law; T-125 only needs at least +6 dB in the first 15 ms of a soft note, and T-009/T-162 need no clipping. Every other noise control (air_noise, valve_buzz) has a formula.",
+   "suggested_fix": "Give an RMS law for key_noise relative to S_ref or the voice level."
+  },
+  {
+   "n": 11,
+   "where": "plan/PLAN.md S-002 action 3 and Done when",
+   "kind": "unevaluable done-when",
+   "severity": "minor",
+   "text": "Only the last 30 lines of the pytest output are saved; with -ra they are 29 FAILED lines and the summary, so the saved file cannot show 'exactly the tool-check tests passing', only the counts 14 passed / 292 failed.",
+   "suggested_fix": "Save the pytest summary line plus a `--co`-free list of passed test ids (for example -rp output) or reduce the Done-when to the counts."
+  },
+  {
+   "n": 12,
+   "where": "HANDOFF.md section 5 vs plan/DECISIONS.md Part 4",
+   "kind": "contradiction",
+   "severity": "minor",
+   "text": "HANDOFF says the specific rules are DR-01 to DR-14; Part 4 has DR-01 to DR-16 and the plan relies on DR-15 and DR-16.",
+   "suggested_fix": "Change HANDOFF to DR-01 to DR-16."
+  },
+  {
+   "n": 13,
+   "where": "plan/DECISIONS.md D-040 / D-093 and demos/melodion-08-bend.events",
+   "kind": "missing decision rule",
+   "severity": "minor",
+   "text": "D-093 lists the pitch wheel as handled, but the melodion has no bend parameter or decision, while a demo (melodion-08-bend, in the listening set) sends bend events; what the wheel does on the melodion is undefined.",
+   "suggested_fix": "State that the melodion ignores the pitch wheel (and drop the demo) or give a bend rule."
+  },
+  {
+   "n": 14,
+   "where": "core/include/folk/tuning.h StringSpec vs plan/DECISIONS.md D-072 and D-092 dump-model",
+   "kind": "ambiguous",
+   "severity": "minor",
+   "text": "tuning.h says diameterM is the core diameter for a wound string, D-072 lists wound strings by outer diameter (0.040w) and D-092 --dump-model needs both diameter_m (outer) and core_m; the conversion (outer = core/0.4) is implied only.",
+   "suggested_fix": "Write the conversion in D-072 or in the header comment."
+  },
+  {
+   "n": 15,
+   "where": "plan/DECISIONS.md DR-07 and plan/PLAN.md S-330 Outputs",
+   "kind": "missing decision rule",
+   "severity": "minor",
+   "text": "DR-07 lets the implementer calibrate eta_E and 'the plectrum factors' for strings, but these are constants in D-061/D-063, not preset data, S-330's Outputs list only reeds.json and bodies.json, and changing them breaks the equivalence with pluck_ref.py that S-240 tested.",
+   "suggested_fix": "Say where eta_E and the plectrum factors live (presets/strings.json) and that pluck_ref.py is then re-run with the same values."
+  },
+  {
+   "n": 16,
+   "where": "plan/DECISIONS.md D-003 vs plan/PLAN.md S-INTEGRATE / S-RETRO / S-KNOW order",
+   "kind": "contradiction",
+   "severity": "minor",
+   "text": "D-003 says EXECUTION_LOG.md, DEVIATIONS.md and GATE-*.md travel to main, but pr-<run_id> is cut at S-INTEGRATE, before the log entries of S-INTEGRATE to S-KNOW and GATE-G-003.md exist; the plan never says to refresh the pull request.",
+   "suggested_fix": "State that those late records stay on impl-<run_id> only, or add a final commit to pr-<run_id>."
+  },
+  {
+   "n": 17,
+   "where": "plan/PLAN.md S-RETRO header and plan/PROFILE.md tier map",
+   "kind": "undefined term",
+   "severity": "minor",
+   "text": "'Tier: T2' and 'a T4 agent first collects the inputs' are defined only in the planner's PROFILE.md (T1 to T4 = four named models); the implementer is not told whether it must match them, nor who writes baseline/retro-digest.md.",
+   "suggested_fix": "State that tiers are advisory and that the digest may be written by the implementer."
+  },
+  {
+   "n": 18,
+   "where": "plan/PLAN.md steps that run on two tracks (S-210/S-220/S-230/S-250/S-260, S-201, S-110)",
+   "kind": "missing decision rule",
+   "severity": "minor",
+   "text": "The tracks 'may run concurrently' but every instrument step edits presets/gains.json, core/src/generated/presets_data.h and CMakeLists.txt, and all list 'Exclusive resources: none'.",
+   "suggested_fix": "List the generated header and gains.json as exclusive resources or say to serialise."
+  },
+  {
+   "n": 19,
+   "where": "plan/PLAN.md S-REVIEW (dependency comparison)",
+   "kind": "unstated credential",
+   "severity": "minor",
+   "text": "Each dependency is compared with its 'current release and deprecation notices', which needs registry/web access; the implementer's network may allow only the hosts of S-000 and no fallback is given.",
+   "suggested_fix": "Add 'record as not checked if unreachable' with a DEVIATIONS entry."
+  },
+  {
+   "n": 20,
+   "where": "plan/PLAN.md S-212 Done-when",
+   "kind": "ambiguous",
+   "severity": "minor",
+   "text": "'the list of frozen tests passing on impl-<run_id> is saved to baseline/s212-before.txt' names no command or format (pytest -rp? catch2 -r?), so 'every test listed still passes' cannot be checked mechanically.",
+   "suggested_fix": "Give the command (for example pytest -m 'not reference' -rA plus folk-tests -r compact) and the file format."
+  },
+  {
+   "n": 21,
+   "where": "plan/DECISIONS.md DR-04 vs plan/PLAN.md S-212",
+   "kind": "unevaluable done-when",
+   "severity": "guess",
+   "text": "DR-04 adopts the two-reed bend only if 'every test in tests/py/test_harmonica.py and test_reeds.py passes'. S-212 runs before S-220/S-230, so test_reeds.py's accordion and melodion cases still fail against the stubs; the condition cannot be met literally, and T-013 'still passes' is only judged on a local machine.",
+   "suggested_fix": "Restrict DR-04 to the harmonica-parametrised tests (as S-212's Done-when does) and state which T-013 result (local or CI) decides."
+  },
+  {
+   "n": 22,
+   "where": "plan/PLAN.md S-330 Done-when vs HANDOFF.md section 4 and S-REVIEW Depends on",
+   "kind": "contradiction",
+   "severity": "guess",
+   "text": "S-330 may end 'logged as failed' after five DR-07 rounds and the plan 'continues'; but S-REVIEW lists S-330 under Depends on, and HANDOFF says a step starts once every dependency 'has passed'.",
+   "suggested_fix": "Say that S-330 counts as done for dependency purposes once its failure is logged, or drop S-330 from S-REVIEW's Depends on."
+  },
+  {
+   "n": 23,
+   "where": "plan/DECISIONS.md DR-16 vs plan/PLAN.md S-LISTEN and S-INTEGRATE",
+   "kind": "missing decision rule",
+   "severity": "guess",
+   "text": "DR-16 lets the pull request open with a red `reference` job only if the owner answered that instrument's gate with proceed-with-rescope naming the DR-07 shortfall. The gate allows a plain `proceed` (pass condition met) for an instrument whose T-200/T-201 failed; then no rule applies, the check cannot be fixed (rounds used up) and S-INTEGRATE cannot finish.",
+   "suggested_fix": "Make S-LISTEN put the failed reference tests into the question and accept only proceed-with-rescope in that case, or add a rule for the plain proceed."
+  },
+  {
+   "n": 24,
+   "where": "plan/PLAN.md S-240 Done-when vs S-300 / S-002 (27 test cases)",
+   "kind": "ambiguous",
+   "severity": "minor",
+   "text": "S-240 asks for 'a unit program or Catch2 test of the implementer's own (not frozen)' without saying where it lives; adding it to the folk-tests target makes S-300's 'exactly 27 test cases passed' false.",
+   "suggested_fix": "Say it goes in a separate target (for example folk-extra-tests) not run by the 27-case check."
+  },
+  {
+   "n": 25,
+   "where": "plan/PLAN.md S-100 action 1-2 and S-240 action 1 (claim and confidence fields)",
+   "kind": "missing decision rule",
+   "severity": "guess",
+   "text": "Every value in harmonica.json, accordion.json, strings.json and bodies.json must carry claim and confidence, and gen_presets.py exits non-zero on a missing field; but several values have no claim (Irish bouzouki body 'no source', melodion bass range 'design value', wah and noise design values, D-071), and which C-### belongs to which value is not tabulated.",
+   "suggested_fix": "Give the placeholder to use (for example claim 'none', confidence 'design') and a value-to-claim table."
+  },
+  {
+   "n": 26,
+   "where": "plan/PLAN.md S-REF action 3 and D-051",
+   "kind": "missing decision rule",
+   "severity": "minor",
+   "text": "Only mandolin has a D-051 justification for a private reference; for other instruments a find under a non-redistributable licence (for example a Zenodo dataset under CC BY-NC) would be indexed with redistributable=false without the Rule 15 shortfall decision, and the plan does not say to skip it.",
+   "suggested_fix": "Say that for any instrument other than the mandolin a non-redistributable find is not indexed."
+  },
+  {
+   "n": 27,
+   "where": "plan/PLAN.md S-210 gate action 3 vs S-REF action 4",
+   "kind": "ambiguous",
+   "severity": "minor",
+   "text": "S-210 says to write references/index.csv 'with the header and no rows', but S-REF (which may already be done: it depends only on S-110 and G-P1 lists it as continuing) writes the full index; S-210 would overwrite it.",
+   "suggested_fix": "Add 'unless references/index.csv already exists'."
+  },
+  {
+   "n": 28,
+   "where": "plan/DECISIONS.md D-092 event file",
+   "kind": "ambiguous",
+   "severity": "minor",
+   "text": "An event-file line `set <unknown id> <value>` or an out-of-range value: exit status 2 (unknown parameter) or 3 (malformed event file)? Only the --set option case is specified.",
+   "suggested_fix": "State the status for set events with unknown ids or non-numeric values."
+  },
+  {
+   "n": 29,
+   "where": "plan/DECISIONS.md D-015",
+   "kind": "missing decision rule",
+   "severity": "minor",
+   "text": "'A confining spring acts only where |x - x0| exceeds 20 x0' gives no stiffness; 'state variables below 1e-20 are set to zero' does not say which (x is about x0, never small).",
+   "suggested_fix": "Give the spring constant and name the variables (v, p1, u and the deviation x - x0)."
+  },
+  {
+   "n": 30,
+   "where": "plan/PLAN.md 'Lessons applied' lines (K-... and L-... ids) vs the repository",
+   "kind": "missing input",
+   "severity": "minor",
+   "text": "Most cited K- and L- ids (for example K-20261105T233000Z, K-20261029T030700Z, K-20261104T004700Z, L-20261007T150300Z) are not files in this repository; the facts are restated in the step text or PRIOR_KNOWLEDGE.md but the implementer cannot open the ids.",
+   "suggested_fix": "Say that the ids are provenance only and that the step text is complete."
+  },
+  {
+   "n": 31,
+   "where": "plan/PLAN.md S-000 action 5 and HANDOFF.md sections 14 and 15",
+   "kind": "missing decision rule",
+   "severity": "minor",
+   "text": "S-000 does not probe the two capabilities a late step depends on: reading Actions results (first needed at S-003) and starting a fresh-context agent (first needed at S-REVIEW, after months of work), and 'a pull request can be opened' is tested by listing PRs, which does not prove creation.",
+   "suggested_fix": "Add both probes to S-000 and record them under diagnostic_impl."
+  },
+  {
+   "n": 32,
+   "where": "HANDOFF.md section 9 vs plan/PLAN.md S-340 action 1(b)",
+   "kind": "contradiction",
+   "severity": "minor",
+   "text": "HANDOFF: 'Decode the answer key only after the listener has answered'; S-340's pair check decodes the key before any listening ('only inside this check and never printed').",
+   "suggested_fix": "Add 'except for the automated pair check of S-340' to HANDOFF section 9."
+  },
+  {
+   "n": 33,
+   "where": "plan/DECISIONS.md D-063 (note change on a course)",
+   "kind": "ambiguous",
+   "severity": "minor",
+   "text": "'those remaining amplitudes are moved to the matching partials of the new note' does not say how partials match (same index n, or the greedy pairing of D-062), and the spike has no such case.",
+   "suggested_fix": "State 'partial n to partial n'."
+  }
+ ],
+ "steps_walked": [
+  "S-000",
+  "S-002",
+  "S-003",
+  "S-100",
+  "S-101",
+  "S-110",
+  "S-200",
+  "S-201",
+  "S-210",
+  "S-212",
+  "S-220",
+  "S-230",
+  "S-240",
+  "S-250",
+  "S-260",
+  "S-300",
+  "S-310",
+  "S-320",
+  "S-REF",
+  "S-330",
+  "S-340",
+  "S-REVIEW",
+  "S-ADVERSARIAL",
+  "S-LISTEN",
+  "S-INTEGRATE",
+  "S-RETRO",
+  "S-KNOW"
+ ],
+ "summary": "Plan is largely executable; no item blocks outright, but 13 guess items and 20 minor items remain.\nMost serious: reed_probe/S_ref gap, moisture vs prepare()-built tables, gen_presets custom command failing in the plugins job, DR-16 gap for a plain 'proceed', S-330 failure vs S-REVIEW dependency.\nS-340 has internal contradictions (METRICS.md reference tests, missing --index, derived_from for private pairs).\n15 frozen tests sampled (T-001..T-007, T-100..T-111, T-120..T-125, T-131..T-134, T-140..T-154, T-160..T-163, T-200, T-201, T-210, T-302) agree with the decisions; test counts 27 / 306 re-counted and match TRACEABILITY.\nThe tests, spikes S12/S17/S18 and both workflows are otherwise consistent with D-010..D-064, D-090..D-094."
+}

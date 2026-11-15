@@ -40,7 +40,7 @@ const char* accordionRegisterName(int registerIndex);
 // ---------------------------------------------------------------- plucked instruments
 struct StringSpec {
     int midiNote;         ///< open pitch
-    double diameterM;     ///< outer diameter of a plain string, core diameter of a wound string
+    double diameterM;     ///< outer diameter of a plain string; core diameter of a wound string (0.4 x the outer diameter listed in D-072)
     bool wound;
     double linearDensity; ///< kg/m
 };

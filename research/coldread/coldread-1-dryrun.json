@@ -1,0 +1,338 @@
+{
+ "items": [
+  {
+   "where": "plan/DECISIONS.md D-064 and D-062 (S-240)",
+   "kind": "undefined term",
+   "severity": "guess",
+   "text": "Y_ref is not defined: 'chosen per body so that eta_b of the open top course is 2e-3 at body_coupling 1' does not say which partial n, which string, or which frequency eta_b is evaluated at. f_ref in z = i*2*f_ref*Y(w)/Y0 has no value in D-062 (it can be inferred from T-006 to be the string's fundamental), nor is it said which w is used for Y(w) when the pair's two partials differ, nor which string's Y0 applies in a wound/octave pair.",
+   "suggested_fix": "State f_ref, the w at which Y is evaluated for a pair, the partial and string used to normalise Y_ref, and give the normalisation as a formula.",
+   "n": 1
+  },
+  {
+   "where": "plan/DECISIONS.md D-064 (S-240, S-250)",
+   "kind": "missing decision",
+   "severity": "guess",
+   "text": "The body model is only partly specified: Y(w) is given, but not how the bridge force is formed from partial states (units, scale), the state equation of a mode, the gain of the direct path, or the gain relating strings and body output to full scale. Output level (T-162 peak -30..-1 dBFS, T-152, T-146 -80 dB floor) therefore depends on invented constants.",
+   "suggested_fix": "Give the mode ODE, the force-to-state coupling constant, the direct-path gain and the output scale as formulas or fixed numbers.",
+   "n": 2
+  },
+  {
+   "where": "plan/DECISIONS.md D-062 (S-240)",
+   "kind": "ambiguous",
+   "severity": "guess",
+   "text": "The pairing rule is under-specified: 'each partial that lies within 60 cents of a partial of the other string' (what if one partial has two candidates, e.g. octave course where partial m of high matches 2m of low and neighbours?); how f_1 of the second string relates to pair_detune_cents when the pitch wheel moves; and what happens at the 60-cent edge (a hard switch changes level discontinuously).",
+   "suggested_fix": "Define a greedy nearest-partner matching with a tie rule, and say whether the edge is hard.",
+   "n": 3
+  },
+  {
+   "where": "plan/DECISIONS.md D-060 / tests T-140, T-154 (S-250, S-260)",
+   "kind": "test-decision mismatch",
+   "severity": "guess",
+   "text": "T-140/T-154 demand fundamentals within 3 cents with body_coupling default 1 and coupling by a complex admittance whose imaginary part shifts the diagonal (Omega adds z to both strings). D-060 only guarantees the uncoupled first partial is in tune; no decision says to compensate the pitch shift from Y, and the shift grows if a partial sits on a body mode (Y_ref is normalised only at the top course). An implementation following the decisions exactly may miss 3 cents.",
+   "suggested_fix": "Add a rule that f_1 of each string is pre-compensated so the coupled mode sits at the equal-tempered pitch, or state the maximum shift.",
+   "n": 4
+  },
+  {
+   "where": "plan/DECISIONS.md D-063 vs tests/py/test_strings.py T-149 (S-250)",
+   "kind": "test-decision mismatch",
+   "severity": "minor",
+   "text": "T-149 wants the first note of a course 30 dB down 0.3 s after a second note on the same course, but D-063 only multiplies existing amplitudes by 0.15 (-16.5 dB) and does not say whether the old partials are retuned to the new note. Marginal: it passes with exactly unison strings (antisymmetric residue is silent) and if the resonators are retuned, but fails if the old pitch keeps ringing.",
+   "suggested_fix": "State that a new note on a course retunes its resonators (old partials continue at the new pitch) or raise the damping factor.",
+   "n": 5
+  },
+  {
+   "where": "plan/DECISIONS.md D-041 vs tests/py/test_melodion.py T-131 (S-230)",
+   "kind": "test-decision mismatch",
+   "severity": "guess",
+   "text": "With breath_mode 1, ub = b*0.4 l/s: at velocity 0.7 that is 0.28 l/s, which through A_in=30 mm2 and alpha=0.61 gives only about 140 Pa for ONE reed (just above the 100 Pa onset), and about 9 Pa with four reeds, i.e. silent. T-131 needs graded sags of >=1.5 dB twice among sounding A4 levels; the decisions give a step to silence. Nothing says what happens to A_in of non-sounding reeds or whether the A4 reed still speaks with 4 keys open.",
+   "suggested_fix": "Re-check the 0.4 l/s constant against T-131 with a spike, or state the plenum inlet areas so that the test is achievable.",
+   "n": 6
+  },
+  {
+   "where": "plan/DECISIONS.md D-024/D-010 (S-200, S-210, S-220)",
+   "kind": "missing decision",
+   "severity": "guess",
+   "text": "air_noise has no scale constant ('band-limited noise proportional to jet velocity'; band edges not given). Tests pin it from both sides: T-109 (air_noise 1 adds >=6 dB between harmonics, fundamental within 1 dB), T-101 (rms < -70 dB at velocity 0.02 with default 0.2), T-120 (220 Hz component 50 dB below at default 0.2). Likewise the output scale g of the tanh limiter and per-instrument gain are 'chosen' with no calibration rule. The implementer must tune by trial.",
+   "suggested_fix": "Give air_noise scale and band, the limiter g and the per-instrument gains as numbers, or a calibration step with target levels.",
+   "n": 7
+  },
+  {
+   "where": "plan/DECISIONS.md D-010/D-011/D-013 (S-200)",
+   "kind": "ambiguous",
+   "severity": "guess",
+   "text": "The source signal is 'the time derivative of u' but it is not said how it is computed at the base rate (difference of u between base-rate samples, or from du/dt of the last sub-step), nor whether the sample is the last sub-step or an average; the spike is named as reference only for equation order, and the output scale of du/dt to full-scale is unspecified. The half-band cascade and the base-rate summing of 'all reeds' are given, but filter taps/design are not (only '80 dB stop-band, linear phase').",
+   "suggested_fix": "Quote the exact lines of similarity.py/reed_bench2.cpp that produce the source sample and give the FIR design (length or window).",
+   "n": 8
+  },
+  {
+   "where": "plan/PLAN.md S-110 vs plan/DECISIONS.md D-092 and tests T-010/T-163",
+   "kind": "missing decision",
+   "severity": "minor",
+   "text": "Events with the same sample offset must keep file order (tests T-107 '0 cc 1' then note, T-161 '0 set register 1' then '0 on'), and the control-rate tick of 64 samples (D-062) must be aligned to the absolute sample counter for T-010 (block independence 1e-5). Neither is stated; 'sorted by sample offset' does not say stable.",
+   "suggested_fix": "Say the queue is stably sorted and control ticks are counted from reset, not from block start.",
+   "n": 9
+  },
+  {
+   "where": "plan/PLAN.md S-REF action 4-5 vs tests/py/test_reference.py T-201 and plan/ci/ci.yml job reference",
+   "kind": "contradiction",
+   "severity": "blocker",
+   "text": "S-REF says that in CI 'T-201 sees only redistributable notes', but the frozen T-201 reads the committed references/index.csv (all rows of the instrument, including rows with redistributable=false) and asserts that every listed file exists under FOLK_REF_ROOT and matches its sha256. If the mandolin's private Philharmonia rows are committed (they must be, for the local run of action 6), the CI job 'reference' fails with 'is missing', so all-green stays red forever; if they are not committed, the local private comparison cannot run.",
+   "suggested_fix": "Decide where private rows live (e.g. a second index outside the repo selected by an env var, which needs a TEST_CHALLENGE since the test hard-codes the path) or state that the mandolin comparison is local-only and CI is allowed to fail for it.",
+   "n": 10
+  },
+  {
+   "where": "plan/PLAN.md S-REF, S-340 (accordion pairs), tests/py/test_evidence_guard.py, tools/evidence_guard.py",
+   "kind": "missing decision",
+   "severity": "blocker",
+   "text": "The accordion blind pairs derive from 12 TinySOL notes, and evidence_guard fails on any derived_from id that is not a row of references/index.csv with redistributable true. Nothing tells the implementer to index the TinySOL notes (S-REF's index is 'one row per usable note' found by the search; T-201 excludes accordion), and if they are indexed, fetch_references.py cannot download single notes (TinySOL is one 1 GB tarball), and CI's 'gate-evidence' workflow is only told to 'fetch the redistributable references'. Which of the several TinySOL mf notes at one MIDI pitch (302 mf notes over about 80 pitches, 35 retuned) to use is also not stated, and index.csv has no column for the TinySOL path (FOLK_TINYSOL, not FOLK_REF_ROOT).",
+   "suggested_fix": "State how TinySOL notes enter index.csv and the guard (rows with a Zenodo URL and path inside the tarball), how CI obtains them (reuse the reference job's cached download), and the tie-break among takes.",
+   "n": 11
+  },
+  {
+   "where": "tests/cpp/test_perf.cpp vs plan/DECISIONS.md D-086 vs plan/ci/ci.yml job core",
+   "kind": "contradiction",
+   "severity": "guess",
+   "text": "The frozen perf test gates when FOLK_PERF_GATE is set to anything (getenv != nullptr); D-086 says only value 1 on ubuntu-24.04. ci.yml sets FOLK_PERF_GATE to the empty string on the other three runners ('... && 1 || empty'), and GitHub Actions exports an empty env value, so on macOS (and possibly Windows) the gate is active and a miss of 4x fails the job although D-086 and DR-06 say there is no target there.",
+   "suggested_fix": "Make ci.yml set the variable only on ubuntu-24.04 (a conditional step), and say in S-003 that this is a deliberate deviation from the byte-identical copy.",
+   "n": 12
+  },
+  {
+   "where": "core/include/folk/engine.h vs plan/DECISIONS.md D-011, D-094 (S-200, S-310)",
+   "kind": "contradiction",
+   "severity": "guess",
+   "text": "D-011 and D-094 require the wrapper to report the half-band decimator's latency to the host, but the public Engine interface in engine.h (D-090 'as committed') has no latency accessor, and changing a Part 3 interface triggers the default halt rule.",
+   "suggested_fix": "Add a latencySamples() to the decision text and header, or state that the latency is a documented constant exported by a free function.",
+   "n": 13
+  },
+  {
+   "where": "plan/PLAN.md S-INTEGRATE Done vs S-330 Done and DR-07",
+   "kind": "contradiction",
+   "severity": "guess",
+   "text": "S-330 may end 'failed' after five calibration rounds and the plan continues, but S-INTEGRATE requires every check, including all-green (which needs the reference job green), on the pull request head. A DR-07 failure therefore makes S-INTEGRATE unsatisfiable, and no rule says whether to stop, ask the owner, or open the PR with a named red check.",
+   "suggested_fix": "Add to S-INTEGRATE an explicit branch for a red reference job that is a recorded DR-07 failure (open the PR, state the red check, ask the owner).",
+   "n": 14
+  },
+  {
+   "where": "plan/GATES.md G-P1/G-P2 branch `stop` vs plan/PLAN.md S-300, S-310, plan/ci/ci.yml",
+   "kind": "missing decision rule",
+   "severity": "guess",
+   "text": "After `stop` at G-P1 or G-P2 the accordion, melodion or bouzouki are never built, yet S-300 depends on S-220, S-230 and S-260 and requires 27 passing Catch2 cases and all pytest tests to pass; ci.yml loops over all five plugins unconditionally. The same applies to G-L `stop` (plugin target removed from the default build while ci.yml still collects five bundles).",
+   "suggested_fix": "State what S-300, S-310 and ci.yml do for an instrument that was stopped (keep a stub engine, or amend the workflow and the test selection).",
+   "n": 15
+  },
+  {
+   "where": "HANDOFF.md section 'Delivering audio', plan/PLAN.md S-210 and S-250 gate actions, S-LISTEN",
+   "kind": "missing decision",
+   "severity": "guess",
+   "text": "Pilot demos and private pairs must be put in a directory outside the repository, but the environment is ephemeral (only the pushed branch is durable) and the owner has no stated way to reach the implementer's filesystem; the only channel offered is 'the conversation's file-sharing facility if there is one'. Why pilot demos (not private material) may not go to the evidence branch is not explained. Without a channel the gates G-P1, G-P2 and G-L2 cannot be answered.",
+   "suggested_fix": "Allow pilot demos on the evidence branch (or a named release-free location), and name the delivery channel for private pairs, or say the gate is waiting for the owner to name one.",
+   "n": 16
+  },
+  {
+   "where": "plan/PLAN.md S-003 actions 3 and On failure, S-320, S-INTEGRATE",
+   "kind": "unstated credential",
+   "severity": "guess",
+   "text": "The plan reads job conclusions 'through the available GitHub tool' but no step says which tool or credential the implementer has (state.json: push access and PR rights only). The fallback (print the failing output to $GITHUB_STEP_SUMMARY) still needs the same read access, so it is circular if the tool is missing.",
+   "suggested_fix": "State the read mechanism (GitHub MCP tools or gh with the same token) and a last-resort fallback, e.g. a workflow step that pushes logs to a log branch readable with git.",
+   "n": 17
+  },
+  {
+   "where": "plan/PLAN.md S-KNOW actions 2-3",
+   "kind": "missing input",
+   "severity": "guess",
+   "text": "The bundle fallback uses 'the prepared lesson-store clone' and 'knowledge-store clone', but no step prepares them and the stores are 'cloned on sign-off'. The implementer's only stated credential is for qualitycoding/folk-instruments, so cloning and pushing the stores may be impossible and the bundles cannot be made from clones that never existed.",
+   "suggested_fix": "Add an action that clones both stores read-only at S-000 (or builds the bundles from lessons/ and knowledge/ of this repository).",
+   "n": 18
+  },
+  {
+   "where": "plan/PLAN.md S-REVIEW, S-ADVERSARIAL, S-RETRO (Tier lines)",
+   "kind": "unstated credential",
+   "severity": "guess",
+   "text": "These steps require 'a fresh-context agent that wrote none of the code' but nothing says the implementer can spawn one, or what to do if it cannot (self-review would not be fresh-context).",
+   "suggested_fix": "State the capability needed and a fallback (new session started by the owner, or a recorded deviation).",
+   "n": 19
+  },
+  {
+   "where": "plan/PLAN.md S-200 Actions 2 and Done when; S-201",
+   "kind": "ambiguous",
+   "severity": "guess",
+   "text": "reed_probe has no specified interface or measurement: run length, analysis window, how frequency (peak interpolation) and amplitude (half peak-to-peak over x0, as in similarity.py analyse) are measured, and whether pressure is stepped or ramped. The -24.5..-21.5 cent and 4.4..4.9 targets only hold for the spike's method (300 periods, last 30 % window, Hann FFT with interpolation; step and 9-period ramp give the same result per research/spikes/s15). 'tip amplitude over x0' is also undefined (x - x0, or the peak?). calibrate_reeds.py in S-201 depends on parsing this unspecified output.",
+   "suggested_fix": "State the probe's CLI, run length (300 periods), analysis window and the exact amplitude and cents formulas, copied from similarity.py analyse().",
+   "n": 20
+  },
+  {
+   "where": "plan/PLAN.md S-200 Inputs (similarity.py and reed_bench2.cpp)",
+   "kind": "contradiction",
+   "severity": "guess",
+   "text": "Two inputs define the useful section Su(x) differently: similarity.py table() integrates the clamped-free mode shape psi (with Sr scaled by IPSI=0.3915), while reed_bench2.cpp uses the crude form Wr*hypot(h,hmin)+2*Lr*hypot(0.39*h,hmin). S-200 names both without saying that only similarity.py is the reference for the table.",
+   "suggested_fix": "Say that reed_bench2.cpp is used only for the cost structure and Su must be built exactly as similarity.py table() does.",
+   "n": 21
+  },
+  {
+   "where": "plan/DECISIONS.md D-016 vs plan/PLAN.md S-201 Done when",
+   "kind": "contradiction",
+   "severity": "minor",
+   "text": "D-016 says presets/reeds.json holds the offset 'per instrument and host rate' (D-012 curves are per instrument), S-201 requires 109 offsets for each of four host rates with no instrument dimension.",
+   "suggested_fix": "State one table per instrument and rate, or one shared table until a curve differs.",
+   "n": 22
+  },
+  {
+   "where": "plan/DECISIONS.md D-016, D-015 and tests T-106, T-161 event_file_features",
+   "kind": "missing decision",
+   "severity": "guess",
+   "text": "What a reed does at note-off is not decided: whether the breath target goes to 0 through the 15 ms filter or is held, the release of a voice, retrigger of a key that is still sounding, and how polyphony stealing ends a voice (hard cut or ramp). T-106 (-40 dB 0.5 s after note-off) and T-161 (rank stops when register changes while a key is held) depend on it.",
+   "suggested_fix": "Add a short rule: note-off sets the breath target to 0 through the same smoothing filter; stealing and retrigger reset the reed states with a short fade.",
+   "n": 23
+  },
+  {
+   "where": "plan/PLAN.md S-240 Done when vs research/spikes/s04-coupled-pair/pair.py",
+   "kind": "unevaluable done-when",
+   "severity": "guess",
+   "text": "'early and late decay rates of the 1-cent case within 2 % of -75.3 and -5.14 dB/s' gives no fit windows; the spike measured 0 to 0.08 s and 3 to 5 s, while T-144 uses 0.03-0.25 s and 1.2-2.5 s. The implementer's own test is also told to check that 'the summed energy never grows' without defining the energy weights for strings plus body.",
+   "suggested_fix": "Quote the windows (0-0.08 s, 3-5 s), the f, eta_i and eta_b values of the spike (660 Hz, 2e-4, 2e-3), and define the energy as the sum of |a|^2 of strings and 1/2 (v^2+...) of body modes.",
+   "n": 24
+  },
+  {
+   "where": "plan/DECISIONS.md D-064 and tests T-140, T-154, T-144 (S-240, S-250)",
+   "kind": "test-decision mismatch",
+   "severity": "guess",
+   "text": "Y_ref is normalised only at the top open string's fundamental, but Y(w) peaks at g_k*Q_k*Y_ref at a body mode (Q 30, first mode gain 1). A string partial landing on a mode (e.g. D-sharp 4, 311 Hz, against the 313 Hz f-hole mode used by T-154; C4 against 272 Hz) gets eta_b of order 0.1 to 0.5, i.e. decays in milliseconds and is shifted by the real part of z. T-154 needs the fundamental of every listed fretted note within 3 cents between 0.05 and 0.5 s. No decision limits eta_b or compensates the shift.",
+   "suggested_fix": "Add a cap on eta_b (or a frequency-smoothed Y for the loss) and a tuning compensation rule, and check T-154 notes against the mode table in a spike.",
+   "n": 25
+  },
+  {
+   "where": "plan/DECISIONS.md D-030, tests T-100, T-124, T-120 (S-220)",
+   "kind": "missing decision",
+   "severity": "minor",
+   "text": "The playable key range of the accordion is not decided (tests use 40 to 100, demos 41 to 100, TinySOL 28 to 109), nor what a key does whose octave-shifted rank falls outside MIDI 16 to 124 of the offset table.",
+   "suggested_fix": "Fix the key range (for example 40 to 100) and say that out-of-range ranks are silent.",
+   "n": 26
+  },
+  {
+   "where": "tools/make_demos.py chord lists (mandolin (62,69,74,78), bouzouki (57,61,64)) vs D-063 one note per course",
+   "kind": "test-decision mismatch",
+   "severity": "minor",
+   "text": "Two demo chords put two notes on the same course (69 and 74 on the mandolin A course; 57 and 61 on the bouzouki A course of the default variant), so the second replaces the first and the demo is not the chord it says; the listener at G-P2 and G-L2 will judge 'chords' that are partly missing.",
+   "suggested_fix": "Change the chord voicings to notes on distinct courses.",
+   "n": 27
+  },
+  {
+   "where": "plan/PLAN.md S-LISTEN action 5 vs plan/GATES.md question 1 vs tools/listening/score_blind.py",
+   "kind": "non-literal command",
+   "severity": "minor",
+   "text": "GATES asks the listener for 12 letters like ABBABAABABBA and S-LISTEN passes them as --answers <letters>, but score_blind.py splits on commas or spaces only, so an unseparated string fails with '1 answers for 12 pairs'.",
+   "suggested_fix": "Say to insert commas between the letters before calling score_blind.py.",
+   "n": 28
+  },
+  {
+   "where": "plan/PLAN.md S-340 action 1(b)",
+   "kind": "ambiguous",
+   "severity": "guess",
+   "text": "make_blind_pairs.py only reads *.wav files and matches reference and candidate by file stem, but references may be ogg/flac/mp3 (the Commons and Philharmonia sources); the plan does not say to convert them or how stems are named. The post-check 'correlation above 0.99 with the file it was cut from' is not defined: the clips are resampled to 44.1 kHz, cut at a threshold start, DC-removed, level-scaled and faded, so a correlation needs the same cut and a lag search; the method is not given.",
+   "suggested_fix": "State the conversion step and stem rule, and define the check (repeat prepare() from the script on the source and require correlation above 0.99 at lag 0).",
+   "n": 29
+  },
+  {
+   "where": "plan/PLAN.md S-340 action 2 (gate-evidence.yml)",
+   "kind": "ambiguous",
+   "severity": "guess",
+   "text": "The workflow is specified in prose only: no trigger expression, no way to parse the commit message safely (injection via the commit text), no cache or download step for TinySOL, no Python and dependency install, no statement of how the orphan branch is created and pushed with the default token, and METRICS.md needs 'each frozen test concerning the instrument' with no rule for selecting them.",
+   "suggested_fix": "Give a skeleton workflow in plan/ci or list the exact steps, and give the pytest -k expression per instrument.",
+   "n": 30
+  },
+  {
+   "where": "plan/PLAN.md S-310 action 1",
+   "kind": "undefined term",
+   "severity": "minor",
+   "text": "Factory preset names are 'named after the variant', but the variants in tools/make_demos.py are settings dictionaries (for example {register: 4, musette_cents: 4}, {variant: 0, key: 7}, {range: 1, breath_mode: 1}); names exist only for the 12 registers and a few examples.",
+   "suggested_fix": "Give the list of preset names per instrument.",
+   "n": 31
+  },
+  {
+   "where": ".checkpoints/RESUME.md and .checkpoints/state.json",
+   "kind": "contradiction",
+   "severity": "minor",
+   "text": "The resume note still says 'Next action: run research round 1' and state.json says phase 2E-freeze, while HANDOFF says to start at S-000; plan stubs also name steps that do not exist (stubs.cpp and the evidence guard stub say S-130, FolkProcessor stub says S-120). A fresh agent reading the checkpoint may start planning work.",
+   "suggested_fix": "Overwrite RESUME.md with 'implementation: start at S-000' and correct the stub comments.",
+   "n": 32
+  },
+  {
+   "where": "plan/PLAN.md S-REF action 5, S-340 action 2 vs S-003 'byte-identical' and S-RETRO deviation diff",
+   "kind": "contradiction",
+   "severity": "minor",
+   "text": "S-REF adds a fetch step to ci.yml and S-INTEGRATE edits it, but neither lists .github/workflows/ci.yml in Outputs or in DEVIATIONS, and S-RETRO treats any unexplained workflow difference as a missing deviation.",
+   "suggested_fix": "List ci.yml among the outputs of S-REF and say these edits are planned, not deviations.",
+   "n": 33
+  },
+  {
+   "where": "plan/DECISIONS.md D-040 vs tests/py/test_melodion.py T-134",
+   "kind": "test-decision mismatch",
+   "severity": "minor",
+   "text": "T-134 needs the metal body (+3 dB shelf above 3 kHz) to move the spectral centroid by at least 3 % from both plastic and wood; whether a 3 dB shelf above 3 kHz achieves 3 % depends on how much energy a reed note has above 3 kHz at A4, which the decisions do not fix, and the shelf shape (Q, order) is not given.",
+   "suggested_fix": "Give shelf order and corner type, and check the 3 % margin in a spike.",
+   "n": 34
+  },
+  {
+   "where": "plan/DECISIONS.md D-092 (S-110, S-ADVERSARIAL)",
+   "kind": "ambiguous",
+   "severity": "minor",
+   "text": "'rendering stops at the end event (at most 600 s)' does not say what happens when the end time exceeds 600 s (error exit 3, clip, or accept), nor for the stereo content (is L equal to R), nor what exit status an event time of inf or 1e308 gets; S-ADVERSARIAL will try 'an end at 1e9 s'.",
+   "suggested_fix": "Say: end time above 600 s is a malformed file (status 3); non-finite times are status 3.",
+   "n": 35
+  },
+  {
+   "where": "plan/DECISIONS.md D-092 --dump-model vs core/include/folk/tuning.h",
+   "kind": "ambiguous",
+   "severity": "minor",
+   "text": "dump-model prints diameter_m and core_m, but StringSpec.diameterM is 'core diameter for a wound string' while D-061 needs the outer diameter for eta_air; it is not said which value diameter_m holds for a wound string or what core_m is for a plain one.",
+   "suggested_fix": "Define diameter_m as outer and core_m as the metal core (equal for plain strings).",
+   "n": 36
+  },
+  {
+   "where": "plan/PLAN.md S-000 action 3",
+   "kind": "non-literal command",
+   "severity": "minor",
+   "text": "The environment probe needs 'the start of the next turn' to check the file and process; a non-interactive run may have no turn boundary, and the result only selects which HANDOFF section applies.",
+   "suggested_fix": "Say that if no turn boundary occurs before S-002 ends, record 'ephemeral' (the safe default).",
+   "n": 37
+  },
+  {
+   "where": "plan/PLAN.md S-110 and tests T-008",
+   "kind": "missing input",
+   "severity": "minor",
+   "text": "ParamInfo.name (display label) must be non-empty (T-008) but neither D-091 nor param_table.h gives labels; the implementer invents them for about 60 parameters. Also S-100/S-110/S-201 Outputs omit core/src/generated/presets_data.h although it is regenerated, so the S-300 'gen_presets.py --check' can fail on an uncommitted regeneration.",
+   "suggested_fix": "Allow derived labels (id with spaces) and list the regenerated header among the outputs.",
+   "n": 38
+  }
+ ],
+ "steps_walked": [
+  "S-000",
+  "S-002",
+  "S-003",
+  "S-100",
+  "S-101",
+  "S-110",
+  "S-200",
+  "S-201",
+  "S-210",
+  "S-212",
+  "S-220",
+  "S-230",
+  "S-240",
+  "S-250",
+  "S-260",
+  "S-300",
+  "S-310",
+  "S-320",
+  "S-REF",
+  "S-330",
+  "S-340",
+  "S-REVIEW",
+  "S-ADVERSARIAL",
+  "S-LISTEN",
+  "S-INTEGRATE",
+  "S-RETRO",
+  "S-KNOW"
+ ],
+ "summary": "All 27 steps walked; about 20 frozen tests (T-001..T-015, T-100..T-114, T-120..T-125, T-131..T-134, T-140..T-154, T-160..T-163, T-200/201/210) cross-checked against D-010..D-094.\nS-110 is satisfiable with silent instruments (T-008, T-014, T-009 out-of-range and the T161 subset all pass on silence); S-200/S-201 are specified by the spike scripts but reed_probe has no interface or measurement window.\nBlockers: the frozen T-201 reads every row of the committed index (private rows break the CI reference job and all-green), and the accordion pairs cannot pass evidence_guard or be fetched in CI because TinySOL notes have no route into index.csv.\nMain guesses: string/body model constants (Y_ref, f_ref, body force/gain, eta_b near body modes vs T-154), air/key noise and limiter gains, perf-gate env var, missing latency accessor, delivery of audio to the owner, circular CI-reading fallback, fresh-context agents, gate-stop vs S-300/S-INTEGRATE.\nS-340 tooling (build_evidence.py, gate-evidence workflow) is described in prose only; pair check, reference formats and TinySOL fetching are not specified well enough to write without invention."
+}

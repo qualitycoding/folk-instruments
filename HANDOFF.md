@@ -33,12 +33,12 @@ Build five physically modelled instrument plugins (VST3 and Standalone, built wi
 
 `S-000` environment and access; `S-002` baseline red run; `S-003` CI. Reeds: `S-100` tables, `S-110` engine frame and render tool, `S-200` reed voice, `S-201` reed check and tuning, `S-210` harmonica (opens gate `G-P1`), `S-212` optional two-reed bend, `S-220` accordion, `S-230` melodion. Strings: `S-101` formulas, `S-240` string, course and body, `S-250` mandolin (opens `G-P2`), `S-260` bouzouki. Then `S-300` whole core, `S-310` wrapper and plugins, `S-320` green on every platform, `S-REF` references, `S-330` reference calibration, `S-340` demos and evidence tooling, `S-REVIEW`, `S-ADVERSARIAL`, `S-LISTEN` (gates `G-L1` to `G-L5`), `S-INTEGRATE` (a pull request to `main`; you do not merge), `S-RETRO`, `S-KNOW` (gate `G-003`).
 
-A step may start as soon as every step in its `Depends on` list has passed. Independent steps may run concurrently unless they list the same exclusive resource. Keep `EXECUTION_LOG.md`: one line per step attempt with the UTC time, step ID, attempt number, outcome (`pass`, `fail` or `blocked`), commit hash and a short note.
+A step may start as soon as every step in its `Depends on` list has passed; a step whose `Done when` allows it to end logged as failed while the plan continues (`S-330` under DR-07) counts as passed for this purpose. Independent steps may run concurrently unless they list the same exclusive resource. Keep `EXECUTION_LOG.md`: one line per step attempt with the UTC time, step ID, attempt number, outcome (`pass`, `fail` or `blocked`), commit hash and a short note.
 
 ## 5. Halting and deviating
 
 - **Default rule.** Choose the most reversible option that does not expand scope, log it in `DEVIATIONS.md` with the reason, and continue, unless it touches frozen tests, security, data integrity, a public interface or research integrity, in which case halt and write `BLOCKED.md` (what happened, the evidence, the options you see).
-- The specific rules `DR-01` to `DR-14` are in `plan/DECISIONS.md` Part 4. Use them before the default rule.
+- The specific rules `DR-01` to `DR-16` are in `plan/DECISIONS.md` Part 4. Use them before the default rule.
 - **Never**: relax a threshold, lower pluginval's strictness, disable or skip a test, add a failure-swallowing idiom to a command whose result matters, change a pin silently, commit audio derived from a private reference, merge into `main`, publish or release anything, or push to a store before `G-003` is answered.
 - **Waiting.** While a gate is `OPEN`, finish the steps its record lists under "Continues meanwhile", push, report that you are waiting on the gate, and stop. A fresh session reads every `GATE-*.md` before anything else.
 
@@ -183,7 +183,7 @@ The gates and their questions are in `plan/GATES.md`. The record template and it
 
 ## 9. Listening gates
 
-Measured metrics do not tell you whether audio sounds right; a listener does. The procedure for `S-LISTEN` is in that step. Scoring: chance is 6 of 12; 10 correct gives a one-sided p of about 0.019, 9 gives 0.073, 7 gives 0.387. The pass condition (at most 8 of 12 correct, and no demo reported as wrong) was frozen at planning time; a listening gate never relaxes a frozen metric threshold. Decode the answer key only after the listener has answered. Use a new seed after every round whose results the listener has been told.
+Measured metrics do not tell you whether audio sounds right; a listener does. The procedure for `S-LISTEN` is in that step. Scoring: chance is 6 of 12; 10 correct gives a one-sided p of about 0.019, 9 gives 0.073, 7 gives 0.387. The pass condition (at most 8 of 12 correct, and no demo reported as wrong) was frozen at planning time; a listening gate never relaxes a frozen metric threshold. Decode the answer key only after the listener has answered (the one exception is the automated pair check of `S-340`, which decodes it inside the check and never prints it). Use a new seed after every round whose results the listener has been told.
 
 The iterate procedure, verbatim from the skill `audio-blind-listening-validation` (qualitycoding/skills, commit a20ed73):
 

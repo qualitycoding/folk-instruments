@@ -71,8 +71,9 @@ def main():
             vib = ["0.0000 on %d 0.7" % root] + [f"{1.0 + 0.1 * i:.4f} cc 1 {i / 10:.1f}" for i in range(11)] + [f"4.5000 off {root}", "5.5000 end"]
             write(f"{ins}-07-vibrato.events", vib)
             notes = {"harmonica": (71, 3), "accordion": (69, 1), "melodion": (69, 0)}[ins]
-            bend = [f"0.0000 on {notes[0]} 0.7"] + [f"{0.8 + 0.06 * i:.4f} bend {-i / 10:.1f}" for i in range(11)] + [f"{2.2 + 0.06 * i:.4f} bend {-(1 - i / 10):.1f}" for i in range(11)] + [f"3.4000 off {notes[0]}", "4.4000 end"]
-            write(f"{ins}-08-bend.events", bend)
+            if ins != "melodion":  # the melodion ignores the pitch wheel (D-093)
+              bend = [f"0.0000 on {notes[0]} 0.7"] + [f"{0.8 + 0.06 * i:.4f} bend {-i / 10:.1f}" for i in range(11)] + [f"{2.2 + 0.06 * i:.4f} bend {-(1 - i / 10):.1f}" for i in range(11)] + [f"3.4000 off {notes[0]}", "4.4000 end"]
+              write(f"{ins}-08-bend.events", bend)
             swell = ["0.0000 set breath_source 1", "0.0000 cc 2 0.0", f"0.0000 on {root} 1.0"] + [f"{0.2 + 0.1 * i:.4f} cc 2 {min(1.0, i / 20):.2f}" for i in range(21)] + [f"{2.4 + 0.1 * i:.4f} cc 2 {max(0.0, 1 - i / 20):.2f}" for i in range(21)] + [f"4.6000 off {root}", "5.2000 end"]
             write(f"{ins}-09-breath-swell.events", swell)
         if ins == "harmonica":

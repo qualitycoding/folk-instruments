@@ -1,0 +1,136 @@
+{
+ "checks": [
+  {
+   "n": 1,
+   "name": "IDs defined",
+   "passed": false,
+   "misses": [
+    "UNDEFINED D-065: first use tests/py/test_strings.py:3",
+    "UNDEFINED D-066: first use tests/py/test_strings.py:3",
+    "UNDEFINED D-067: first use tests/py/test_strings.py:3",
+    "UNDEFINED D-068: first use tests/py/test_strings.py:3",
+    "UNDEFINED D-069: first use tests/py/test_strings.py:3",
+    "UNDEFINED T-115: first use plan/PLAN.md:304",
+    "UNDEFINED T-116: first use plan/PLAN.md:304",
+    "UNDEFINED T-117: first use plan/PLAN.md:304",
+    "UNDEFINED T-118: first use plan/PLAN.md:304",
+    "UNDEFINED T-119: first use plan/PLAN.md:304",
+    "UNDEFINED T-126: first use plan/PLAN.md:304",
+    "UNDEFINED T-127: first use plan/PLAN.md:304",
+    "UNDEFINED T-128: first use plan/PLAN.md:304",
+    "UNDEFINED T-129: first use plan/PLAN.md:304",
+    "UNDEFINED T-130: first use plan/PLAN.md:304",
+    "UNDEFINED T-135: first use plan/PLAN.md:304",
+    "UNDEFINED T-136: first use plan/PLAN.md:304",
+    "UNDEFINED T-137: first use plan/PLAN.md:304",
+    "UNDEFINED T-138: first use plan/PLAN.md:304",
+    "UNDEFINED T-139: first use plan/PLAN.md:304",
+    "UNDEFINED T-155: first use plan/PLAN.md:304",
+    "UNDEFINED T-156: first use plan/PLAN.md:304",
+    "UNDEFINED T-157: first use plan/PLAN.md:304",
+    "UNDEFINED T-158: first use plan/PLAN.md:304",
+    "UNDEFINED T-159: first use plan/PLAN.md:304"
+   ]
+  },
+  {
+   "n": 2,
+   "name": "Paths exist or are created by a PLAN step",
+   "passed": false,
+   "misses": [
+    "MISSING baseline/s212-before.txt at plan/PLAN.md:201"
+   ]
+  },
+  {
+   "n": 3,
+   "name": "PLAN structure, fields and depends-on ids",
+   "passed": true,
+   "misses": [],
+   "notes": [
+    "S-LISTEN has non-template field(s) ['Demo list'] at PLAN.md:443"
+   ]
+  },
+  {
+   "n": 4,
+   "name": "GATES G-003, DECISIONS D-004, PROFILE rigour and protocol files",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 5,
+   "name": "No failure-swallowing idioms",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 6,
+   "name": "HANDOFF terms, files, and two checker scripts",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 7,
+   "name": "PLAN does not cite planning-protocol sections by number",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 8,
+   "name": "Frozen manifest, headers and no bytecode",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 9,
+   "name": "Every TRACEABILITY T-id is evidenced in a PLAN step",
+   "passed": false,
+   "misses": [
+    "T-200a (TRACEABILITY.md section 2) not in any PLAN Evidence produced / Done when line",
+    "T-200b (TRACEABILITY.md section 2) not in any PLAN Evidence produced / Done when line",
+    "T-200c (TRACEABILITY.md section 2) not in any PLAN Evidence produced / Done when line",
+    "T-200d (TRACEABILITY.md section 2) not in any PLAN Evidence produced / Done when line",
+    "T-200e (TRACEABILITY.md section 2) not in any PLAN Evidence produced / Done when line",
+    "T-201 (TRACEABILITY.md section 2) not in any PLAN Evidence produced / Done when line"
+   ]
+  },
+  {
+   "n": 10,
+   "name": "Platform matrix, YAML parse, pinned uses, tabs",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 11,
+   "name": "S-LISTEN content and GATES definitions",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 12,
+   "name": "No review artefacts committed",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 13,
+   "name": "Named spike files exist and named JSON parses",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 14,
+   "name": "CI-named tools present or created before first workflow use",
+   "passed": false,
+   "misses": [
+    "tools/fetch_references.py is absent and created only by S-210 (gate action 4) and S-REF (action 5); it is named by ci.yml:184 in job `reference`, which runs on the first push (S-003, which copies ci.yml at PLAN.md S-003 action 1). Not guaranteed before first use: S-003 action 3 expects that step to fail. Also named by gate-evidence.yml:55, after S-210 action 4 (fine)."
+   ],
+   "notes": [
+    "tests/ci/check_pluginval_log.py: present in checkout; named in [('ci.yml', 139)]",
+    "tools/build_evidence.py: ABSENT; named in [('gate-evidence.yml', 62)]; created by [('S-210', 'Outputs', 175), ('S-340', 'Actions line 398', 398), ('S-340', 'Outputs', 392)]",
+    "tools/build_evidence.py: created at S-210 action 5 (PLAN.md:398-399 and 181), triggered at S-210 action 6 (after creation, same step); gate-evidence.yml copied at S-210 action 1. Ordering holds only by action order within S-210, not by a prior step.",
+    "tools/evidence_guard.py: present in checkout; named in [('gate-evidence.yml', 70)]",
+    "tools/fetch_references.py: ABSENT; named in [('ci.yml', 184), ('gate-evidence.yml', 55)]; created by [('S-210', 'Outputs', 175), ('S-REF', 'Actions line 361', 361), ('S-REF', 'Outputs', 351)]"
+   ]
+  }
+ ],
+ "summary": "Mechanical checks on the scratchpad checkout. Misses: check 1 (25 undefined ids: D-065..D-069 from a range in tests/py/test_strings.py:3, T-115..119, T-126..130, T-135..139, T-155..159 from the range T-100 to T-163 in plan/PLAN.md:304); check 2 (baseline/s212-before.txt, plan/PLAN.md:201, not in any Outputs or Actions); check 9 (T-200a..e and T-201 never named in an Evidence or Done line); check 14 (tools/fetch_references.py used by ci.yml:184 on the first push at S-003, created only at S-210/S-REF). Passed: 3 (structure; one non-template field 'Demo list' in S-LISTEN noted), 4, 5 (no idioms), 6 (both scripts exit 0), 7, 8, 10, 11, 12, 13. Scripts in /tmp/claude-0/-home-user/33848ac0-9924-5fbc-b8d6-b9a90c833f8d/scratchpad/coldm3/."
+}

@@ -1,0 +1,282 @@
+{
+ "items": [
+  {
+   "n": 1,
+   "where": "plan/PLAN.md S-210 gate actions; plan/ci/gate-evidence.yml step 'Fetch the redistributable references only'; S-REF",
+   "kind": "step depends on something no earlier step produces",
+   "severity": "blocker",
+   "text": "The workflow that S-210 copies and triggers for G-P1 runs `python3 tools/fetch_references.py ... --only-redistributable` unconditionally, but that tool is written only in S-REF (action 5), which depends on S-110 only and is not a dependency of S-210. At the G-P1 marker commit the file does not exist, so the run fails before building any evidence. S-210 also does not say its first `build_evidence.py` must accept the `--render` and `--ref-root` arguments the workflow passes (S-340 lists them).",
+   "suggested_fix": "Add a minimal `tools/fetch_references.py` (it must accept a header-only index) and the `--render`/`--ref-root` arguments to the S-210 gate actions, or make S-REF a dependency of S-210."
+  },
+  {
+   "n": 2,
+   "where": "plan/PLAN.md S-LISTEN 'On failure' vs plan/DECISIONS.md DR-15 vs plan/GATES.md G-L 'stop'",
+   "kind": "contradiction",
+   "severity": "guess",
+   "text": "S-LISTEN says a `stop` at a listening gate removes that instrument's plugin target from the default build. DR-15 and GATES say the instrument stays built and tested and only DEVIATIONS.md and README.md are updated. Removing a target would also break ci.yml 'Collect the five VST3 bundles' (it requires all five) and the five HostTest programs.",
+   "suggested_fix": "Delete the 'removes that instrument's plugin target' sentence from S-LISTEN and point to DR-15."
+  },
+  {
+   "n": 3,
+   "where": "plan/DECISIONS.md D-041; research/spikes/s18-plenum-filters/plenum.py and output.json",
+   "kind": "contradiction",
+   "severity": "guess",
+   "text": "D-041 gives A_m = 40 mm2 and says spike S18 shows 2.9 dB then a further 2.3 dB drop with a plenum of 274 Pa. plenum.py uses A_m=120e-6 as its default, and the committed output.json shows 728.5 / 664.6 / 564.5 Pa and A4 levels -6.56 / -7.13 / -8.21 dB, i.e. drops of 0.57 and 1.08 dB, which would fail T-131 (needs 1.5 dB each). The cited evidence cannot be reproduced from the repository.",
+   "suggested_fix": "Re-run S18 with A_m=40e-6, commit that output and make 40e-6 the script default, or correct D-041 to the committed figures and choose A_m so T-131 passes."
+  },
+  {
+   "n": 4,
+   "where": "plan/PLAN.md S-210, S-220, S-230, S-250 Done-when; D-013; S-300 action 1",
+   "kind": "step depends on something no earlier step produces",
+   "severity": "guess",
+   "text": "Absolute-level frozen tests (T-101 rms > -40 dBFS, T-102 span, T-113, T-162 peak -30..-1 dBFS, G-P1 demos) are in the Done-when of S-210 to S-250, but G_out (presets/gains.json, tools/calibrate_gains.py) is only produced in S-300. No provisional gain is defined. D-013 also fixes the peak 'before the limiter', but folk-render only exposes output after tanh and after the `level` parameter (default 0.7), and the plan does not say whether `level` is before or after the limiter or how the calibration tool measures a pre-limiter peak.",
+   "suggested_fix": "Move calibrate_gains.py and a provisional gains.json to S-200/S-110, and state where `level` sits and how the pre-limiter peak is measured (for example render at a tiny `level` and invert tanh)."
+  },
+  {
+   "n": 5,
+   "where": "plan/DECISIONS.md D-051 vs tests/py/test_reference.py T-201b vs plan/TRACEABILITY.md SC-13; PLAN.md S-REF action 6",
+   "kind": "test-decision mismatch",
+   "severity": "guess",
+   "text": "D-051 and S-REF use a threshold of 12 notes: with fewer, T-201 'prints NOT-APPLICABLE'. The frozen T-201b applies the comparison at 8 or more indexed notes (and at least 4 with neighbours) and only prints NOT-APPLICABLE below 8, as SC-13 also says. With 8 to 11 notes (for example 9 mandolin or 4+ bouzouki notes) the test runs and can fail while the decision says it should not apply.",
+   "suggested_fix": "State in D-051 that T-201 applies from 8 notes and the listening pairs from 12, and tell S-REF what to do about 8 to 11 notes."
+  },
+  {
+   "n": 6,
+   "where": "plan/DECISIONS.md D-016 (voice free rule and breath noise)",
+   "kind": "undefined term",
+   "severity": "guess",
+   "text": "'the reference reed's source RMS at b = 0.6' is used for the voice-free threshold (100 dB below) and for the air-noise level, but no step computes or stores that number (reed_probe does not print it, calibrate_reeds.py writes offsets only, gains.json is a gain). It is unclear whether it is measured at prepare() or stored as preset data, at which pitch, and whether it includes the 4x decimator.",
+   "suggested_fix": "Name the preset constant (or an offline measurement in S-201) and the pitch it is taken at."
+  },
+  {
+   "n": 7,
+   "where": "plan/DECISIONS.md D-016 vs plan/PLAN.md S-201 (reeds.json offsets)",
+   "kind": "ambiguous",
+   "severity": "guess",
+   "text": "D-016 defines the offset as 'between natural and sounding frequency' and sets f_r = f_target * 2^(offset/1200). S-201 requires the stored offsets to lie between -27 and -17 cents, which is the sign of reed_probe's `cents = 1200 log2(f/natural)`. With that sign the formula puts the natural frequency further below the target and the pitch error would be about 46 cents; the sign must be flipped, which the plan does not say.",
+   "suggested_fix": "Define the stored offset as sounding minus natural in cents and write f_r = f_target * 2^(-offset/1200)."
+  },
+  {
+   "n": 8,
+   "where": "plan/DECISIONS.md D-010, D-012, D-022, D-033 with tests T-011 and T-012",
+   "kind": "missing decision rule",
+   "severity": "guess",
+   "text": "The useful-section table depends on a reed's scaled geometry (and on the per-pitch x0 and hmin curve factors after S-330) and 'is built when the reed is created, never on the audio thread'. Voices are allocated in prepare(), but reeds are retuned at every note-on (and glide under the wheel, D-022/D-033). The plan does not say whether a table is precomputed per MIDI note (about 109 x 2048 doubles per instrument), rebuilt in a worker, or kept in normalised x/x0 units, nor whether the table follows a gliding natural frequency. Rebuilding at note-on would break T-011 (note-ons on 12 different notes inside the armed region).",
+   "suggested_fix": "Specify one table per (instrument, MIDI note) built in prepare(), and say that a glide does not change the table."
+  },
+  {
+   "n": 9,
+   "where": "plan/DECISIONS.md D-040/D-041 (melodion breath)",
+   "kind": "missing decision rule",
+   "severity": "guess",
+   "text": "The plenum has one source pressure p0, but D-016 gives each note its own breath (velocity when breath_source = 0). With two or more keys at different velocities the plenum p0 is undefined (last note-on, maximum, mean?). T-131 only uses equal velocities.",
+   "suggested_fix": "State how p0 of the plenum is derived from per-note velocities (for example the most recent note-on)."
+  },
+  {
+   "n": 10,
+   "where": "plan/DECISIONS.md DR-07",
+   "kind": "undefined term",
+   "severity": "guess",
+   "text": "DR-07 allows calibrating 'the output filter' for reeds, but no tunable output filter is defined for the accordion at cassotto 0 (T-200's patch has none) or for the harmonica; D-032/D-040 give fixed design values. An implementer would have to invent a new filter, which is a design change.",
+   "suggested_fix": "Name the filter and its allowed parameter range in D-012 or DR-07, or delete the words 'and the output filter'."
+  },
+  {
+   "n": 11,
+   "where": "plan/PLAN.md S-201 Done-when; DR-03; D-016 range 16..124 vs spike S12",
+   "kind": "missing decision rule",
+   "severity": "guess",
+   "text": "S-201 requires 109 offsets for MIDI 16..124, each within -27..-17 cents. Spike S12 covers 55 Hz to 5.3 kHz (about MIDI 33 to 112) on a 6-value grid, and the check pitches of DR-03 only reach MIDI 28 and 112. DR-03 covers failures at the 12 check pitches only; there is no rule for a silent or diverging reed at MIDI 16..27 or 113..124, which no key can reach (accordion keys give MIDI 28..112).",
+   "suggested_fix": "Restrict the table to MIDI 28..112, or add a rule for the unreachable extremes."
+  },
+  {
+   "n": 12,
+   "where": "plan/DECISIONS.md D-094/D-090 and engine.h loadState; tests/juce/host_test.cpp 'state round trip and malformed state'",
+   "kind": "missing decision rule",
+   "severity": "guess",
+   "text": "The state text grammar is not specified beyond the first line: trailing newline, duplicate keys, missing keys, whitespace, number format and precision (T-014 needs a bit-exact text round trip). The T-302 'truncated' blob (half the state text, no junk bytes) must leave every parameter unchanged, which fails if a final line cut inside a number is accepted. Step S-ADVERSARIAL also probes repeated keys.",
+   "suggested_fix": "Add to D-090 that every line must end in a newline, keys must be unique, number format is %.9g, and a partial state is refused or accepted as a whole."
+  },
+  {
+   "n": 13,
+   "where": "plan/DECISIONS.md D-092 vs tests/fixtures/negative_time.events (T-161)",
+   "kind": "test-decision mismatch",
+   "severity": "minor",
+   "text": "D-092 lists malformed files as non-finite times, end time above 600 s, decreasing times, missing end and over-long lines, but not negative times; the frozen fixture negative_time.events must give status 3 and 'line 1'.",
+   "suggested_fix": "Add 'a negative time' to the malformed list in D-092."
+  },
+  {
+   "n": 14,
+   "where": "plan/PLAN.md S-340 action 3 (dry run) and action 1/2",
+   "kind": "non-literal command",
+   "severity": "guess",
+   "text": "The dry-run command omits `--render` and `--ref-root`, and no default is given for either (FOLK_RENDER? $B/folk-render? FOLK_REF_ROOT?). The tests need an absolute FOLK_RENDER, whereas the workflow passes the relative `build/folk-render`; the plan does not say that build_evidence.py must make it absolute and export FOLK_RENDER to the pytest run behind METRICS.md.",
+   "suggested_fix": "Give the defaults (env FOLK_RENDER, FOLK_REF_ROOT) and require absolute paths inside build_evidence.py."
+  },
+  {
+   "n": 15,
+   "where": "plan/PLAN.md S-340 and S-LISTEN step 3; plan/ci/gate-evidence.yml",
+   "kind": "missing decision rule",
+   "severity": "guess",
+   "text": "For a gate whose pairs use a private reference (G-L2 mandolin) the CI workflow fetches redistributable references only, yet the index lists 12 or more mandolin rows, so build_evidence.py in CI finds the files missing. The plan does not say whether it must skip pairs, fail or build demos only; S-LISTEN's 'if CI built none' assumes a skip. The same run cannot produce the METRICS.md reference-test results because the workflow sets no FOLK_TINYSOL and downloads no TinySOL_metadata.csv.",
+   "suggested_fix": "Say that build_evidence.py skips pairs (and reference metrics) when any needed reference file is absent, and print which; add the metadata download to the workflow if METRICS.md needs it."
+  },
+  {
+   "n": 16,
+   "where": "plan/PLAN.md S-REF action 3 and 4",
+   "kind": "missing decision rule",
+   "severity": "guess",
+   "text": "The columns `velocity` and `sets` are required (T-201a needs 0 < velocity <= 1) but only the TinySOL rows say how to fill them. For Wikimedia, Zenodo or Philharmonia notes nothing says how to choose the candidate velocity (or map a dynamic label to it) and the candidate patch (variant, body, key). `author` for TinySOL rows is also not stated.",
+   "suggested_fix": "Give a rule, for example velocity from the source's dynamic label (pp 0.3, mf 0.6, ff 0.95) and default 0.6, and sets naming the variant matching the recorded instrument."
+  },
+  {
+   "n": 17,
+   "where": "plan/PLAN.md S-300 action 4",
+   "kind": "non-literal command",
+   "severity": "minor",
+   "text": "The sanitiser configure line lacks `-DFOLK_BUILD_PLUGINS=OFF` and the generator, so by default it would fetch and build JUCE and five plugins with sanitiser flags into $HOME/folk-build-asan.",
+   "suggested_fix": "Write the full cmake command as for CORE BUILD with the two extra flags."
+  },
+  {
+   "n": 18,
+   "where": "plan/PLAN.md S-330 action 1 vs tests/py/test_reference.py",
+   "kind": "contradiction",
+   "severity": "minor",
+   "text": "S-330 allows only the 'printed T-201 lines' with no reference-derived numbers for private references, but the frozen test prints `within {limit} dB`, a value computed from the private notes' own neighbour spread, and the CI log of the public repository shows it too.",
+   "suggested_fix": "Say that the limit value is redacted in the saved file, and accept its presence in CI logs (R-014)."
+  },
+  {
+   "n": 19,
+   "where": "plan/DECISIONS.md D-012 and PLAN.md S-330 action 2",
+   "kind": "undefined term",
+   "severity": "minor",
+   "text": "The 'calibrated-set check' is described in D-012 (12 pitches, 28/156/400/1500/1800 Pa, both host rates, silent/sounds/finite) but no tool or output file is assigned except `baseline/reed-check-calibrated.csv`; S-201's table uses different pressures (50, 100, 400, 1500, 1800 Pa) and tolerances.",
+   "suggested_fix": "Assign a script (for example `tools/reed_check.py --calibrated`) in S-201 that both steps run."
+  },
+  {
+   "n": 20,
+   "where": "plan/DECISIONS.md D-011 and PLAN.md S-100, S-200",
+   "kind": "missing input",
+   "severity": "minor",
+   "text": "D-011 says the half-band coefficients are generated into the preset header by gen_presets.py (from scipy.signal.firwin), but S-100 describes gen_presets.py only for presets/*.json, and S-100/S-110/S-200 name no source file for them. S-100 also says the tool exits non-zero on a missing 'claim'/'confidence' field, while params.json, reeds.json, gains.json and the filter coefficients have no claim.",
+   "suggested_fix": "List the generated tables and which fields are mandatory for each in S-100."
+  },
+  {
+   "n": 21,
+   "where": "plan/DECISIONS.md D-006 vs plan/ci/",
+   "kind": "contradiction",
+   "severity": "minor",
+   "text": "D-006 says S-INTEGRATE waits for 'the three CI workflows of this plan', but plan/ci holds two (ci.yml and gate-evidence.yml, which does not run on pr-** branches).",
+   "suggested_fix": "Change to 'the jobs of ci.yml'."
+  },
+  {
+   "n": 22,
+   "where": "plan/ci/gate-evidence.yml header comment vs PLAN.md S-210",
+   "kind": "contradiction",
+   "severity": "minor",
+   "text": "The header says to copy the workflow in step S-340, but S-210 copies it for G-P1 and S-340 'copies it unchanged' again.",
+   "suggested_fix": "Change the header to S-210."
+  },
+  {
+   "n": 23,
+   "where": "PLAN.md conventions ('Checkpoint' line) and scripts/checkpoint.py",
+   "kind": "non-literal command",
+   "severity": "minor",
+   "text": "Steps say what to add to `.checkpoints/state.json` (`completed`, `diagnostic_impl`, counts), but scripts/checkpoint.py (docstring: key=value arguments) ignores them, only bumps the sequence and hashes artifacts, and runs `git add -A`. The schema of the new keys is not given.",
+   "suggested_fix": "Say that the state file is edited by hand, or extend the script."
+  },
+  {
+   "n": 24,
+   "where": "plan/ci/ci.yml job plugins",
+   "kind": "unstated credential",
+   "severity": "minor",
+   "text": "The `plugins` job has no setup-python step but uses `python3` on Windows and macOS runners for the hash check, the unzip and tests/ci/check_pluginval_log.py. Whether `python3` exists on windows-2025 is not in the unverified-items table of ENVIRONMENT section 5.",
+   "suggested_fix": "Add setup-python to the plugins job or add the item to the table."
+  },
+  {
+   "n": 25,
+   "where": "HANDOFF.md section 9 'Private pairs'; PLAN.md S-LISTEN",
+   "kind": "missing decision rule",
+   "severity": "minor",
+   "text": "If no file-sending tool exists the gate stays OPEN while waiting for the owner's delivery choice, but the private pairs and references are in an ephemeral container ($HOME/folk-private, $HOME/folk-refs) that may be reaped. The plan does not say that the pairs are rebuilt deterministically from the seed and the re-fetched references after a resume, nor that the answer key must then be identical.",
+   "suggested_fix": "State that build_evidence.py is deterministic for a given seed and that the pairs are rebuilt on resume."
+  },
+  {
+   "n": 26,
+   "where": "plan/DECISIONS.md D-032",
+   "kind": "ambiguous",
+   "severity": "minor",
+   "text": "The cassotto filter applies to 'ranks L and M'; whether M- and M+ (musette ranks of registers 4 to 6, 10, 11) are also routed through it is not said (T-122 only tests register 1).",
+   "suggested_fix": "State whether M-, M+ count as M for the cassotto."
+  },
+  {
+   "n": 27,
+   "where": "plan/PLAN.md S-240; D-092 --dump-model; core/include/folk/engine.h",
+   "kind": "missing decision rule",
+   "severity": "minor",
+   "text": "folk-render must print string and body-mode data (--dump-model), but engine.h has no accessor and D-090 freezes the public headers; the plan only says pluck.cpp provides 'the --dump-model data'. Adding an accessor to engine.h would be a public-interface change (halt rule).",
+   "suggested_fix": "Say that folk-render includes an internal header from core/src for the model dump."
+  },
+  {
+   "n": 28,
+   "where": "plan/PLAN.md S-ADVERSARIAL (5)",
+   "kind": "missing decision rule",
+   "severity": "minor",
+   "text": "A surviving hand-made mutant is 'a finding' but no severity rule is given, and Done-when forbids open Critical or High breaks only. New tests can only come through TEST_CHALLENGE, which needs the planner.",
+   "suggested_fix": "State the severity of a surviving mutant (for example Medium unless a formula of D-060..D-062 is affected)."
+  },
+  {
+   "n": 29,
+   "where": "plan/PLAN.md S-LISTEN actions 1-2; plan/ci/gate-evidence.yml concurrency",
+   "kind": "ambiguous",
+   "severity": "minor",
+   "text": "'The five gates may be open at the same time' but several marker commits pushed in quick succession to the same ref share one concurrency group; GitHub keeps only one pending run in a group, so earlier pending markers are dropped. Also a push event only carries the head commit message.",
+   "suggested_fix": "Say to push one marker, wait for its evidence branch, then push the next."
+  },
+  {
+   "n": 30,
+   "where": "plan/PLAN.md S-212 and DR-04; D-086",
+   "kind": "unevaluable done-when",
+   "severity": "minor",
+   "text": "DR-04 adopts the two-reed bend only if 'T-013 still passes', but T-013 gates only where FOLK_PERF_GATE is set (CI ubuntu-24.04); locally the test passes whatever the speed, and S-212 has no CI step. 'CPP T-0* still passes for the tests that passed before the step' also has no recorded list of those tests.",
+   "suggested_fix": "Say that S-212 must be judged on a CI run, or set FOLK_PERF_GATE=1 locally and record the factor."
+  },
+  {
+   "n": 31,
+   "where": "HANDOFF.md/plan: gate G-P1 evidence list vs S-210 build_evidence.py first version",
+   "kind": "ambiguous",
+   "severity": "minor",
+   "text": "GATES says the G-P1/G-P2 evidence includes the list of passing frozen tests and the folk-perf real-time factor, but the S-210 first version of build_evidence.py produces no METRICS.md (added in S-340) and the workflow never runs folk-perf.",
+   "suggested_fix": "Say that these two items are pasted into GATE-G-P1.md by hand."
+  }
+ ],
+ "steps_walked": [
+  "S-000",
+  "S-002",
+  "S-003",
+  "S-100",
+  "S-101",
+  "S-110",
+  "S-200",
+  "S-201",
+  "S-210",
+  "S-212",
+  "S-220",
+  "S-230",
+  "S-240",
+  "S-250",
+  "S-260",
+  "S-300",
+  "S-310",
+  "S-320",
+  "S-REF",
+  "S-330",
+  "S-340",
+  "S-REVIEW",
+  "S-ADVERSARIAL",
+  "S-LISTEN",
+  "S-INTEGRATE",
+  "S-RETRO",
+  "S-KNOW"
+ ],
+ "summary": "Walked all 27 steps, both workflows, HANDOFF 9/14/15, D-011 to D-064, DR-15/DR-16 and about 20 frozen tests (T-001..T-015, T-100..T-114, T-120..T-125, T-131..T-134, T-140..T-154, T-160..T-163, T-200/T-201, T-210, T-302). Amendments are mostly consistent: pluck_ref.py agrees with D-060..D-064, similarity.py with D-010/D-012 and the S-200 numbers, plenum.py with the D-032/D-040 filter figures. Main problems: gate-evidence.yml needs fetch_references.py before S-REF (S-210 blocker); DR-15 conflicts with S-LISTEN 'stop'; D-041's A_m and drops do not match the committed S18 output; absolute-level tests run before gain calibration; D-051 threshold 12 vs test threshold 8. Remaining items are small unspecified details (offset sign, reference RMS constant, reed table at note-on, state grammar). Counts: 1 blocker, 14 guess, 16 minor."
+}

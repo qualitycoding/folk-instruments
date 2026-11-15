@@ -1,0 +1,92 @@
+{
+ "checks": [
+  {
+   "n": 1,
+   "name": "IDs defined",
+   "passed": false,
+   "misses": [
+    "S-MUTATE (S) undefined by design (step omitted, D-004); used at HANDOFF.md:259 and HANDOFF.md:262 and plan/DECISIONS.md:23 (a decision record, not a step). Still a dangling reference to a step that does not exist.",
+    "T-0 (T) is a test-name glob, not an identifier: plan/PLAN.md:201 \"CPP T-0*\" (T-001..T-009 exist). Listed as a miss because the scan matched it; likely a false positive."
+   ]
+  },
+  {
+   "n": 2,
+   "name": "Backtick paths exist or are planned",
+   "passed": false,
+   "misses": [
+    "baseline/retro-digest.md: no step lists it in Outputs or Actions. Used at plan/PLAN.md:486 (S-RETRO Tier line) as the input a \"T4 agent\" collects into; no step creates it. Real miss.",
+    "plan/OPERATIONS.md: used at plan/PROFILE.md:39 and :43; PROFILE says it is deliberately not created (N/A). Expected non-existence, but it is a path that neither exists nor is created.",
+    "tools/reed_probe: a binary name, not a file. Its source tools/reed_probe.cpp is created at plan/PLAN.md:146. Likely a false positive (used at plan/DECISIONS.md:54)."
+   ]
+  },
+  {
+   "n": 3,
+   "name": "PLAN.md structure and 14 fields",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 4,
+   "name": "GATES G-003, D-004 S-MUTATE, PROFILE rigour and protocol versions",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 5,
+   "name": "Failure-swallowing idioms absent",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 6,
+   "name": "HANDOFF phrases, TEMPLATES, schema script",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 7,
+   "name": "No protocol-section citations for implementer",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 8,
+   "name": "Frozen manifest verified; coverage and marker",
+   "passed": false,
+   "misses": [
+    "not in manifest: tests/ci/__pycache__/check_pluginval_log.cpython-313.pyc"
+   ]
+  },
+  {
+   "n": 9,
+   "name": "Every T-id maps to a step",
+   "passed": false,
+   "misses": [
+    "T-090 (plan/TRACEABILITY.md:46, K, \"passes from the freeze\", 12 cases) appears in no Evidence produced or Done when line of plan/PLAN.md. Only TRACEABILITY.md:102 counts it.",
+    "T-091 (plan/TRACEABILITY.md:47, K, checks T-300 log, 2 cases) appears in no Evidence produced or Done when line of plan/PLAN.md."
+   ]
+  },
+  {
+   "n": 10,
+   "name": "CI platform labels in matrix",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "n": 11,
+   "name": "S-LISTEN names reference set, pass condition, demos, gates, round limit",
+   "passed": false,
+   "misses": [
+    "plan/PLAN.md:443-463 (S-LISTEN) names no demo list and no demo files. It refers to 'demos' only generically (step 1 and Inputs via tools/build_evidence.py, which renders every demos/<instrument>-*.events). The example demo files (-08-bend, -10-chromatic-on-diatonic, -07-tremolo, -2xx-variant) appear only in plan/GATES.md questions, not in the step.",
+    "plan/PLAN.md:443-463 names the reference set only by pointing at plan/GATES.md ('the reference set and how many references are redistributable', step 4). Not named inline."
+   ]
+  },
+  {
+   "n": 12,
+   "name": "No CODE_REVIEW, ADVERSARIAL_REVIEW or MUTATION review files",
+   "passed": true,
+   "misses": []
+  }
+ ],
+ "summary": "Passed: 3, 4, 5, 6, 7, 10, 12. Failed: 1 (2 items: S-MUTATE is a deliberate omission; T-0 is a test-name glob), 2 (3 items: baseline/retro-digest.md never created; plan/OPERATIONS.md deliberately not created; tools/reed_probe is a binary name), 8 (1 item: tests/ci/__pycache__/check_pluginval_log.cpython-313.pyc not in manifest), 9 (2 items: T-090 and T-091 cited by no Evidence or Done-when line), 11 (2 items: S-LISTEN names no demo files and does not name the reference set inline). All 28 manifest entries verify OK and all 19 .py/.cpp/.h entries carry the frozen marker. scripts/check_knowledge_schema.py exits 0 and changed no file. No failure-swallowing idioms found. Check 7 note: plan/PLAN.md:3 HTML comment cites a planning-protocol phase, addressed to the planner, not counted."
+}
