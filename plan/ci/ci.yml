@@ -83,6 +83,9 @@ jobs:
           FOLK_RENDER: ${{ github.workspace }}/bin/folk-render${{ runner.os == 'Windows' && '.exe' || '' }}
       - name: Test report exists
         run: test -s pytest-core.xml && grep -q "<testsuite" pytest-core.xml
+      - name: Generated tables match the preset files (ubuntu-24.04)
+        if: matrix.os == 'ubuntu-24.04'
+        run: python3 tools/gen_presets.py --check
 
   plugins:
     strategy:
@@ -178,6 +181,19 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      - name: Address-space randomisation that ThreadSanitizer accepts (juceaide runs instrumented during the build)
+        run: sudo sysctl -w vm.mmap_rnd_bits=28
+      - name: Suppressions file allows only exact JUCE functions (T-092)
+        run: python3 tests/ci/check_tsan_supp.py tests/ci/tsan.supp
+      - name: Sanitiser options
+        run: |
+          opts="halt_on_error=1 second_deadlock_stack=1"
+          if [ -f tests/ci/tsan.supp ]; then opts="$opts suppressions=$PWD/tests/ci/tsan.supp"; fi
+          echo "TSAN_OPTIONS=$opts" >> "$GITHUB_ENV"
+      - name: Canary - ThreadSanitizer must report a deliberate race
+        run: |
+          c++ -fsanitize=thread -O1 -pthread tests/ci/tsan_canary.cpp -o tsan-canary
+          if ./tsan-canary; then echo "ThreadSanitizer did not report the canary race: the T-304 run would prove nothing"; exit 1; fi
       - name: Linux packages
         run: |
           sudo apt-get update
@@ -189,8 +205,6 @@ jobs:
         run: cmake --build build-tsan --parallel 4 --target FolkHarmonicaHostTest FolkAccordionHostTest FolkMelodionHostTest FolkMandolinHostTest FolkBouzoukiHostTest
       - name: Concurrency test under ThreadSanitizer (T-304)
         run: |
-          sudo sysctl -w vm.mmap_rnd_bits=28
-          export TSAN_OPTIONS="halt_on_error=1 second_deadlock_stack=1${{ hashFiles('tests/ci/tsan.supp') != '' && ' suppressions=tests/ci/tsan.supp' || '' }}"
           n=0
           for t in Harmonica Accordion Melodion Mandolin Bouzouki; do
             b="$(find build-tsan/plugins -type f -name "Folk${t}HostTest" | head -n 1)"
@@ -228,6 +242,8 @@ jobs:
           rm TinySOL.tar.gz
       - name: Reference notes exist
         run: test "$(find refs/tinysol/Keyboards/Accordion -name '*.wav' | wc -l)" -eq 689
+      - name: TinySOL accordion files match the frozen hash list (R-053)
+        run: cd refs/tinysol && sha256sum --strict --quiet -c ../../tests/data/tinysol-accordion.sha256
       - name: Fetch every indexed reference and check its hash (private ones are not cached or uploaded, D-052)
         run: python3 tools/fetch_references.py --index references/index.csv --root refs --archive-cache "$RUNNER_TEMP/ref-archives"
       - name: Build the render tool

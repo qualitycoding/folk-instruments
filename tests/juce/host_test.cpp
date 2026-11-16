@@ -12,6 +12,7 @@
 #include <cmath>
 #include <cstring>
 #include <memory>
+#include <string>
 #include <random>
 #include <thread>
 #include <vector>
@@ -117,18 +118,33 @@ TEST_CASE("T-302 state round trip under a decimal-comma locale", "[juce][securit
     std::setlocale(LC_ALL, "C");
 }
 
-TEST_CASE("T-302 re-selecting the current program after a restore changes nothing", "[juce]") {
+TEST_CASE("T-302 the current program survives a restore and re-selecting it changes nothing", "[juce]") {
     auto a = make(); a->setPlayConfigDetails(0, 2, 48000.0, 512); a->prepareToPlay(48000.0, 512);
-    REQUIRE(a->getNumPrograms() >= 1);
+    REQUIRE(a->getNumPrograms() >= 2);
+    const int prog = a->getNumPrograms() - 1;          // a non-default program, so a lost index is visible
+    a->setCurrentProgram(prog);
+    REQUIRE(a->getCurrentProgram() == prog);
     const auto& pa = a->getParameters();
-    for (int i = 0; i < pa.size(); ++i) pa[i]->setValueNotifyingHost(0.37f);
+    for (int i = 0; i < pa.size(); ++i) pa[i]->setValueNotifyingHost(0.37f);   // the user edits after choosing a preset
     juce::MemoryBlock state; a->getStateInformation(state);
     auto b = make(); b->setPlayConfigDetails(0, 2, 48000.0, 512); b->prepareToPlay(48000.0, 512);
     b->setStateInformation(state.getData(), static_cast<int>(state.getSize()));
-    CHECK(b->getCurrentProgram() == a->getCurrentProgram());
-    b->setCurrentProgram(b->getCurrentProgram());   // some hosts do this after restoring a session
+    CHECK(b->getCurrentProgram() == prog);
+    b->setCurrentProgram(b->getCurrentProgram());      // some hosts do this after restoring a session
     const auto& pb = b->getParameters();
     for (int i = 0; i < pa.size(); ++i) CHECK(std::fabs(pb[i]->getValue() - pa[i]->getValue()) < 1e-6f);
+
+    // D-094: the state is the engine's text followed by a last line '#program <index>'.
+    const std::string text(static_cast<const char*>(state.getData()), state.getSize());
+    const auto cut = text.rfind("#program ");
+    REQUIRE(cut != std::string::npos);
+    for (const std::string& variant : {text.substr(0, cut), text.substr(0, cut) + "#program 9999\n", text.substr(0, cut) + "#program x\n"}) {
+        auto c = make(); c->setPlayConfigDetails(0, 2, 48000.0, 512); c->prepareToPlay(48000.0, 512);
+        c->setStateInformation(variant.data(), static_cast<int>(variant.size()));
+        CHECK(c->getCurrentProgram() == 0);            // missing or bad index: program 0, parameters still restored
+        const auto& pc = c->getParameters();
+        for (int i = 0; i < pa.size(); ++i) CHECK(std::fabs(pc[i]->getValue() - pa[i]->getValue()) < 1e-6f);
+    }
 }
 
 TEST_CASE("T-302 sample rates outside 44.1 to 96 kHz neither throw nor produce invalid output", "[juce][robustness]") {

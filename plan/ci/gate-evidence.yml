@@ -57,6 +57,8 @@ jobs:
           echo "36030a7fe389da86c3419e5ee48e3b7f  TinySOL.tar.gz" | md5sum -c -
           tar xzf TinySOL.tar.gz --wildcards '*Accordion*'
           rm TinySOL.tar.gz
+      - name: TinySOL accordion files match the frozen hash list (R-053)
+        run: cd refs/tinysol && sha256sum --strict --quiet -c ../../tests/data/tinysol-accordion.sha256
       - name: Fetch the redistributable references only
         run: python3 tools/fetch_references.py --index references/index.csv --root refs --archive-cache "$RUNNER_TEMP/ref-archives" --only-redistributable
       - name: Build the render tool

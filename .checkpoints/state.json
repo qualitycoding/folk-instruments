@@ -1,7 +1,7 @@
 {
  "run_id": "gen-20261114T004707Z-folk-instruments-vst",
  "branch": "gen-20261114T004707Z-folk-instruments-vst",
- "sequence": 18,
+ "sequence": 19,
  "protocol_versions": {
   "core": "4.0",
   "modules/software-ci": "1.0",
@@ -76,7 +76,7 @@
   "exploration": 0,
   "proof_review": 0,
   "cold_read": 5,
-  "premortem": 1,
+  "premortem": 2,
   "audit": 0,
   "cold_read_reruns": 1
  },
@@ -124,7 +124,7 @@
  "artifacts": {
   ".gitignore": "6f4ff2992c4e2558837e2e09c39ed2bba140658755b22d046aab810ea2c90ca0",
   "CMakeLists.txt": "73ba001399d2d9590b588ad45c6a7957cba210d8aadb1345aca0b4a133f6ddba",
-  "HANDOFF.md": "30c80769a9a91df7c883691209735358933f48c345119c3c798c42c5d0ca1de6",
+  "HANDOFF.md": "ab86c5f7ddab806b3f3f333db0c7b217d4ca52734d1468c089c7e58e07041239",
   "LICENSE": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
   "README.md": "07dcf6acf9c8fdf11622a8ec69b475ce63ef2074b33e42b20b65d82e87ec87ba",
   "core/include/folk/engine.h": "5785d6175b312e7343ec87f0d5e61f95f25d2ba5f36efe1f1bd7eba49ba0a6b9",
@@ -278,20 +278,22 @@
   "lessons/L-20261115T131500Z-pycache-committed-before-gitignore.md": "59236cdff3b0768b97a7728cc1804ac546cda58d418a6dfdac771cb9757bf175",
   "lessons/L-20261115T133000Z-source-identity-not-checked.md": "9b88becdac46342882923aa60e19bc64761665cf802a043ba0f9d9d4ab6b9024",
   "plan/ASSUMPTIONS.md": "6f946034fca921ea643c97179077ea0e944d0cab35a90e004c4df071447e3570",
-  "plan/DECISIONS.md": "daa5ccf372ef24c907231b68d80777c530a8858fc8f011710ad427b577e64d23",
-  "plan/ENVIRONMENT.md": "311423d0599573bee68a3bdd300bc9cc914dee3568d61bb35c5f5106bd7e974f",
-  "plan/GATES.md": "569f775b96b6f00f0c74da83d419286be6696fbe6f1435cc1a4635dd476f4b45",
-  "plan/PLAN.md": "08b28f3b2a80a63aaee76bc6742f64d25c3795f5178407a94fdb96ad1127bfd0",
+  "plan/DECISIONS.md": "023faf8ab53f7a54338de62c02e1d2320ae754a40c017fb38ba1aa3442f62e26",
+  "plan/ENVIRONMENT.md": "50d3c8c8b61ed26a2387e8484c46069f56d740dae571b38c119396f280fa4ff3",
+  "plan/GATES.md": "4f0479219c9ca2310b916ad228a73d2ddc7c74352b800c3876d52a67d027db16",
+  "plan/PLAN.md": "57168d3174357acab209b70b34c8fc581745d5d2f9c240dc3cfbdb4346758cf5",
   "plan/PROFILE.md": "723f0c5761439ea504a71d064e2ea63fefef69c7185578a9d9fe0a5277842d37",
   "plan/TEMPLATES.md": "a7cab6ff0a71b6a49d6a136b3ac0920368645d58396b30ef7b3e48eea587fb23",
-  "plan/TRACEABILITY.md": "30170e7c9cbb1fc41acacf2e5a644a3561e3f35e36199a02546627304ad52b81",
-  "plan/ci/ci.yml": "3bec6c0f42419e1a813c55551b6971b266bb24859040a07a6cb1e4a886c6dec1",
-  "plan/ci/gate-evidence.yml": "fb2b82d7096f0cba8468500ee6dc42d8265e54a5bc0749dd73a3ed789b8f6cc1",
+  "plan/TRACEABILITY.md": "65f11ffa8593986036bf7e0d26aa71ad838287061d210e8702e8b01652370067",
+  "plan/ci/ci.yml": "995710c545d207807df81d873bb8c1002351596556a40ef7d81801497d6beb84",
+  "plan/ci/gate-evidence.yml": "15d209903acd2346eb53267b80d6d5826b2c98e231cc3e68937587091d4252b2",
   "plugins/CMakeLists.txt": "aea436c6947dbef926105daf2ee3808eac31e1f83adf994b6cc213bef3a0bd06",
   "plugins/common/FolkProcessor.cpp": "7ec03bb17da1970f331931347d44b98505eb4d3009e314eb5bc6dd3400fcefb6",
-  "premortem/RISK_REGISTER.md": "8b90b2d7eb3f55bb815c5558e978e34d7280478b79ae0e89b230310e31657563",
+  "premortem/RISK_REGISTER.md": "f37f0c3c98ea6c62c3da22b18627559ff5fe94e29e6f091f5b09e9d4a1fd2165",
   "premortem/round-1.json": "cc5ce63ac3e2635981f4d9ff0bdc73381e645673214caa0ecef528a223223135",
   "premortem/round-1.md": "9b82972659afe91d063638dd06aa0dd9a713d92a827f75db6a5604307dec3e31",
+  "premortem/round-2.json": "3c693882525a6b8d98027963f8e103b67f8bbb45aca69f9bda5dd89707630dfc",
+  "premortem/round-2.md": "83ad42a85841339c82581e1910c2a60f08a076fa3252dd2950c08d093e35e668",
   "research/BRIEF.md": "f7e611004b94fd008a9ebc73e1040e703fa20e839c9118ab24cd09014bde4533",
   "research/INPUT_owner_research_file.md": "c3c9fd35dfbe6140105cefc75e5abfcabc75e005747949ac8ffb6d19670ad356",
   "research/PRIOR_KNOWLEDGE.md": "ad323f58200ad2e28b5ab89e5d579dde4389df1ddc52f0b69471f543a7f565b5",
@@ -433,15 +435,18 @@
   "reviews/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "scripts/check_knowledge_schema.py": "eab49ba4a33cf1a219a5af0b8175b519f8ca90c4b532389e82366043a90314ca",
   "scripts/checkpoint.py": "5f170045d31bb94cd69b3a73b0f1108d33654fb5d746efec33a49516d14de759",
-  "tests/FROZEN_MANIFEST.sha256": "2f5b6c7662da1be5132bd2cd6cb76e3a3ec8c21c307277538960b9a9204db25e",
+  "tests/FROZEN_MANIFEST.sha256": "3a75ddb52ae1ecbe4a6dfe6205197a25cac1b614b535445e01b965fd24ebab5c",
   "tests/README.md": "9fee1bf2d34e3fe057a8bf8daa35916b03588be8fc6dd0288af80985742ff349",
   "tests/ci/check_pluginval_log.py": "849a33e7b74f16cdcad194f260c5943a93e4667687a55503128f7ef146845945",
+  "tests/ci/check_tsan_supp.py": "ce26b064bc51dff6da102ab4d797dcc2b06a96e8891f78123316880aaa16f0a4",
+  "tests/ci/tsan_canary.cpp": "5e889eceacdaf273ea8514a146d9d027a5fae6f9be0495d8bacbf6727985162b",
   "tests/cpp/param_table.h": "e0bbd7c6ae2694e390697114791ad37b355af711662f8bc1ce0d0c6c93347435",
   "tests/cpp/test_engine.cpp": "c3fa29d588cd27019033ef20c555ba3e575da09e9d6170993cc8e44c2fe2f8f6",
   "tests/cpp/test_locale.cpp": "9a24574624c3756cfbc728b6cd5a2b9c72b3aff280ecdfef1ec6e2ac810369e0",
   "tests/cpp/test_perf.cpp": "faadcb6b1356016057ad8a969d453c9ae3b632e6d0944df2a30cfe24ed57db13",
   "tests/cpp/test_strings.cpp": "7df51232c63dbfdfcb87a92a60503eea644897c1068ce98c98cb480872275227",
   "tests/cpp/test_tuning.cpp": "24998c8a3f05fabd9506397d2be6deb37172fe285338526de405792d4f7ec8a7",
+  "tests/data/tinysol-accordion.sha256": "bf3da6bc5f8731498df8e05ea10f665ec2c6d02f863e9b75e3e6ec8c575b4e24",
   "tests/fixtures/README.md": "ac347c18051976c3fec22d02aa4ec8f34676051c8ec3df37d364d9c066642d00",
   "tests/fixtures/bad_kind.events": "22d351c209e2053eb748bb9463bbab97b8b04577c32b36f0d8899948cfcfe6cf",
   "tests/fixtures/bad_number.events": "c9087e5f5b1d05b4bba39e762b39b4c6bf8db5ed119af99026c1ac5045b4f2bb",
@@ -450,7 +455,7 @@
   "tests/fixtures/huge_line.events": "cd0154dd1f908c4c86c299b6acfd2cafe0953527223c8a608523060db03cdaa5",
   "tests/fixtures/missing_end.events": "a11e9bb0163fe712152f704173d58c25e1b2fe4d5866021b22b221e557b6fa6d",
   "tests/fixtures/negative_time.events": "ed0d463af2da5a2f7e6cf72e97d73fa26866ea7bcfaad6093f3d36eff4f0cc38",
-  "tests/juce/host_test.cpp": "1f560b53ac66d66cf50d9312529ec0c288b3f64dbb1e59a5b78b2a5cafc87774",
+  "tests/juce/host_test.cpp": "4521dc503464eaab8e6a49f21124b77b63841e1c6bae35d91bada8a5487d18b7",
   "tests/py/conftest.py": "7d0791ea96477fff946ecaaa08aa45b4349d96ec563d4f95d7f0bc9afb056a68",
   "tests/py/metrics.py": "53c58f47dbe204ee0588cc86aef2273e4e41c102a10bf60e873bcd2d2527b7fe",
   "tests/py/test_accordion.py": "df10cbf683935060eb4282169eff4ade67a6df54fb051342a6b37c1160115487",
@@ -464,6 +469,7 @@
   "tests/py/test_reeds.py": "ffbc303b9d6d21bb1dd44304712433bea912106be62cdf704c161879d2666223",
   "tests/py/test_reference.py": "85c4cc272ea164dcb3936a00709ab87e2432c5999da13edc970ba797e000e012",
   "tests/py/test_strings.py": "9b6a1aba3f4b0e12535e1894906cee3f987c59743c00594ff381ae9846cf2c92",
+  "tests/py/test_tsan_supp_check.py": "f97d2ca537ceec0279b6868cf9688f49ef71765a2fd813c17b64593f4e33e4ec",
   "tests/pytest.ini": "50062f53cc963237537db0afd92fbb9312e24695f7d4760559e6acb41c8e2a28",
   "tests/requirements.lock": "95312fb46f415d0ea839f4b8fd2f47fca4e36a3d57cb917a03053bd487316394",
   "tests/requirements.txt": "1bcb1e6cd2e98cc5be97e3759ce22086a76d57213e49357a4cca62b5005d14c8",
@@ -475,10 +481,11 @@
   "tools/make_demos.py": "3980052e55916891e59f73cc79b1587a242bed6bf34146c92f89485d9d2ccf7c"
  },
  "in_flight": {
-  "operation": "pre-mortem round 2",
-  "started_at": "2026-11-16T03:00:00Z",
+  "operation": "pre-mortem round 3 and cold-read re-run 2 (parallel, same commit)",
+  "started_at": "2026-11-16T05:30:00Z",
   "expected_outputs": [
-   "premortem/round-2.md"
+   "premortem/round-3.md",
+   "scratchpad/coldread-7-dryrun.json"
   ],
   "safe_to_repeat": true
  },
@@ -816,8 +823,8 @@
   "K-20261115T010102Z-c-063-the-reed-model-tolerates-only-moderate-changes-o",
   "K-20261115T020000Z-source-register-folk-instruments-vst"
  ],
- "updated_at": "2026-11-15T23:58:47Z",
+ "updated_at": "2026-11-16T00:17:49Z",
  "freeze": {
-  "refrozen_after": "pre-mortem round 1: T-016, T-211, T-302 (3 new cases), T-303, T-304; 30 frozen files"
+  "refrozen_after": "pre-mortem rounds 1 and 2: T-016, T-211, T-092, T-302 to T-304 cases, TinySOL hash list; 34 frozen files"
  }
 }

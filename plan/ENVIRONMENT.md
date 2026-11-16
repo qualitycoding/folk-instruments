@@ -30,6 +30,8 @@ Every pin below was looked up on 2026-11-14. "Verified" names the spike or sourc
 
 The Python pins are in `tests/requirements.txt` (four direct packages) and, with every transitive dependency and its hashes, in `tests/requirements.lock`. Wheels for Python 3.13 exist for numpy 2.5.3 and scipy 1.18.1 on `win_amd64`, `macosx_14_0_arm64`, `macosx_14_0_x86_64` and `manylinux_2_28_x86_64` (PyPI file lists read 2026-11-15); soundfile and pytest are pure-Python or universal wheels; no runner builds from source. The C++ dependencies are locked by commit in `CMakeLists.txt` (`FOLK_JUCE_COMMIT`, `FOLK_CATCH2_COMMIT`).
 
+The 689 extracted accordion files are hashed in the frozen list `tests/data/tinysol-accordion.sha256` (made 2026-11-16 from the archive above); both workflows check it after the cache or download step, so a poisoned or corrupted cache fails the job (R-053).
+
 ### TinySOL rows of the accordion reference set
 
 The other columns are the same for all 12 rows: `instrument` `accordion`; `source_url` `https://zenodo.org/api/records/3685367/files/TinySOL.tar.gz/content`; `licence` `CC-BY-4.0`; `licence_url` `https://creativecommons.org/licenses/by/4.0/`; `accessed` `2026-11-14`; `redistributable` `true`; ids `accordion-001` to `accordion-012` in the order below; `velocity`, `sets` and `author` as `S-REF` action 4 says.
@@ -112,7 +114,7 @@ python3 -m pip install pip-audit==2.10.0
 python3 -m pip_audit --strict -r tests/requirements.txt
 ```
 
-State of the suite at the freeze (against the stubs): `build/folk-tests` runs 27 test cases and all 27 fail with `not implemented`; `build/folk-locale-tests` runs 2 and both fail the same way; `build/folk-perf` fails the same way; the five host programs (9 test cases each) fail with `not implemented: createPluginFilter`; `pytest -m "not reference"` reports the tool-check tests passing (`test_metrics_selfcheck.py`, `test_pluginval_log_check.py`) and every other test failing on `folk-render failed with status 64` or, for the evidence guard and the fetch tool (T-210, T-211), status 64 from their stubs. Exact counts are in `plan/TRACEABILITY.md`.
+State of the suite at the freeze (against the stubs): `build/folk-tests` runs 27 test cases and all 27 fail with `not implemented`; `build/folk-locale-tests` runs 2 and both fail the same way; `build/folk-perf` fails the same way; the five host programs (9 test cases each) fail with `not implemented: createPluginFilter`; `pytest -m "not reference"` reports the tool-check tests passing (`test_metrics_selfcheck.py`, `test_pluginval_log_check.py`, `test_tsan_supp_check.py`) and every other test failing on `folk-render failed with status 64` or, for the evidence guard and the fetch tool (T-210, T-211), status 64 from their stubs. Exact counts are in `plan/TRACEABILITY.md`.
 
 ## 4. Long builds in a recycling sandbox
 

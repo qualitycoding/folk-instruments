@@ -48,6 +48,7 @@ Categories: U unit, I integration, O operational, S security, P performance, R r
 | T-304 | same (also run under ThreadSanitizer in job `host-tsan`) | I, S | SC-01, SC-11 | 1 per plugin |
 | T-090 | `tests/py/test_metrics_selfcheck.py` (checks `tests/py/metrics.py`) | K | the measurements themselves | 12 |
 | T-091 | `tests/py/test_pluginval_log_check.py` (checks `tests/ci/check_pluginval_log.py`) | K | T-300's check | 2 |
+| T-092 | `tests/py/test_tsan_supp_check.py` (checks `tests/ci/check_tsan_supp.py`; with the canary `tests/ci/tsan_canary.cpp` in job `host-tsan`) | K | T-304's sanitiser run | 13 |
 | T-100 to T-109 | `tests/py/test_reeds.py` | I | SC-03, SC-04; C-001 to C-004, C-053, C-059, C-062 | 44, 9, 9, 9, 3, 3, 3, 3, 6, 3 |
 | T-110 to T-114 | `tests/py/test_harmonica.py` | I | SC-05 | 6, 30, 10, 1, 1 |
 | T-120 to T-125 | `tests/py/test_accordion.py` | I | SC-06 | 14, 7, 2, 2, 1, 1 |
@@ -96,7 +97,7 @@ Every test with a numeric threshold fails the build when missed: all are asserti
 
 The matrix is produced by step `S-003` from `plan/ci/ci.yml` and recorded in `plan/ENVIRONMENT.md` section 5. The mutation job placement rule does not apply (D-004).
 
-## 5. State at the freeze (red verification, 2026-11-15, planning sandbox, against the stubs; re-frozen after pre-mortem round 1 with T-016, T-211 and the new T-302 to T-304 cases)
+## 5. State at the freeze (red verification, 2026-11-15, planning sandbox, against the stubs; re-frozen after pre-mortem round 1 with T-016, T-211 and the new T-302 to T-304 cases, and after round 2 with T-092, the TinySOL hash list and a stronger T-302 program case)
 
 | Suite | Result |
 |---|---|
@@ -104,7 +105,7 @@ The matrix is produced by step `S-003` from `plan/ci/ci.yml` and recorded in `pl
 | `build/folk-locale-tests` | 2 test cases, 2 failed with `not implemented: ...` (under `de_DE.UTF-8`) |
 | `build/folk-perf` | 1 test case, failed with `not implemented: Engine::create` |
 | five `...HostTest` programs | 9 test cases each (T-302: 7, T-303, T-304), all failed with `not implemented: createPluginFilter` |
-| `pytest -m "not reference"` | 316 collected: 14 passed (T-090: 12, T-091: 2), 302 failed; the failures are `folk-render failed with status 64: folk-render: not implemented`, a returned status of 64 where another was expected, or (T-210, T-211) status 64 from the stubs of `tools/evidence_guard.py` and `tools/fetch_references.py` |
+| `pytest -m "not reference"` | 329 collected: 27 passed (T-090: 12, T-091: 2, T-092: 13), 302 failed; the failures are `folk-render failed with status 64: folk-render: not implemented`, a returned status of 64 where another was expected, or (T-210, T-211) status 64 from the stubs of `tools/evidence_guard.py` and `tools/fetch_references.py` |
 | `pytest -m reference` with TinySOL present | 16 collected: 1 passed (T-200a, a tool check on the data), 5 failed (T-201: no `references/index.csv` yet), 10 errors raised in the fixture that renders the candidate (`folk-render failed with status 64`) |
 
 The Python tests of instrument behaviour were also run against an idealised stand-in renderer (spike S08): all pass except T-163, for a reason that concerns only the stand-in (`research/spikes/s08-test-oracle/README.md`).
