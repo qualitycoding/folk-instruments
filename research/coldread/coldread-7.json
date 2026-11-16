@@ -1,0 +1,172 @@
+{
+ "items": [
+  {
+   "n": 1,
+   "where": "plan/ci/gate-evidence.yml 'Download TinySOL if not cached' vs plan/ci/ci.yml reference job; tests/py/test_reference.py lines 42-49",
+   "kind": "workflow / cache",
+   "severity": "blocker",
+   "text": "Both workflows share the cache key tinysol-6.0-36030a7fe389da86c3419e5ee48e3b7f-accordion and path refs/tinysol, and both run on pushes to impl-** (same ref, so same cache scope). Only ci.yml downloads TinySOL_metadata.csv; gate-evidence.yml does not. actions/cache saves only when the job succeeds: the ci.yml reference job fails at S-003 (fetch stub) and at S-210 (T-200 against an unbuilt accordion), so the first entry saved is the one from the G-P1 gate-evidence run in S-210, which lacks TinySOL_metadata.csv. Every later reference job hits that entry: the count (689) and the frozen hash list pass (the list holds only the WAVs), then T-200/T-201 fail on the missing metadata file (test_reference.py reads FOLK_TINYSOL/TinySOL_metadata.csv). The entry cannot be overwritten under the same key, so S-330, S-320's later runs and S-INTEGRATE's all-green stay red with no planned rule; the implementer must change a pinned key or delete caches (a deviation the plan does not anticipate).",
+   "suggested_fix": "Make gate-evidence.yml download and md5-check TinySOL_metadata.csv exactly as ci.yml does (or give the two workflows different cache keys), and add the metadata file's md5 check after the cache step in both workflows; record the cache key change, if any, in ENVIRONMENT section 1."
+  },
+  {
+   "n": 2,
+   "where": "plan/PLAN.md S-LISTEN action 4 (README install notes); S-INTEGRATE action 5 (README maintenance notes, R-028); no step's Outputs",
+   "kind": "missing producer",
+   "severity": "guess",
+   "text": "S-LISTEN action 4 copies 'the install notes of README.md (per OS: folder, and on macOS xattr ...)' into GATE-G-L1.md, and S-INTEGRATE lists 'the maintenance notes of README.md (for each CI job, why it can go red ... R-028)' as an owner action, but no step writes README.md (the committed README says the repository holds no implementation). The implementer must invent when and what to write; R-028's mitigation exists only by implication.",
+   "suggested_fix": "Add to S-310 (install notes) and S-INTEGRATE or S-340 (maintenance notes per CI job, with the rule for each) an action and an Outputs entry for README.md, with the sections and a Done-when check that they exist."
+  },
+  {
+   "n": 3,
+   "where": "plan/PLAN.md S-REVIEW-DELTA Inputs; S-ADVERSARIAL and S-REVIEW Outputs; S-INTEGRATE action 3",
+   "kind": "missing artefact",
+   "severity": "guess",
+   "text": "S-REVIEW-DELTA diffs from 'the commit S-ADVERSARIAL reviewed (the commit is in reviews/ADVERSARIAL_REVIEW.md)', and S-INTEGRATE's description cites 'the commit range each review covered', but neither S-REVIEW's nor S-ADVERSARIAL's Outputs/Done when requires recording the reviewed head commit. A reviewer following those steps need not write it, and the delta range is then a guess.",
+   "suggested_fix": "Add to the Outputs and Done when of S-REVIEW and S-ADVERSARIAL: 'the file names the head commit reviewed (full hash)'."
+  },
+  {
+   "n": 4,
+   "where": "plan/DECISIONS.md D-053; plan/PLAN.md S-LISTEN action 5; HANDOFF section 8 gate template",
+   "kind": "gate procedure",
+   "severity": "guess",
+   "text": "The owner answers with the 14 letters and a response (proceed/iterate/...) at the same time, but void is only known after score_gate.py decodes the key. Nothing says what happens to a response given with an attempt that turns out void: is it discarded, does the gate file go back to Status: OPEN, and how a single-Status template 'gains one section per attempt'. The implementer must guess whether a 'proceed' given with a void attempt is acted on.",
+   "suggested_fix": "State in D-053: a response given with a void attempt is recorded in that attempt's section and not acted on; the gate file returns to Status: OPEN, and each attempt section has its own Evidence, Questions and Response blocks."
+  },
+  {
+   "n": 5,
+   "where": "plan/PLAN.md S-LISTEN Done when",
+   "kind": "inconsistent done-when",
+   "severity": "guess",
+   "text": "Done when accepts 'proceed-without-pairs: <text>' or 'stop' as a gate's response, but its second clause requires 'for every gate with pairs, the recorded score meets the pass condition or the response is proceed-with-rescope'. A gate with pairs answered proceed-without-pairs (all attempts void, no score) or stop (score above 8) fails the clause literally, so the step can never be done under responses the plan allows.",
+   "suggested_fix": "Change the clause to: 'for every gate with pairs answered proceed, the recorded score of a valid round meets the pass condition'."
+  },
+  {
+   "n": 6,
+   "where": "plan/DECISIONS.md D-094 ('for the current program it does nothing'); plan/PLAN.md S-310 action 1; tests/cpp/param_table.h defaults",
+   "kind": "spec defect",
+   "severity": "guess",
+   "text": "A fresh instance has current program 0 but default parameter values. For the accordion (default register 1; program 0 'Piccolo' is register 0) and the bouzouki (default variant 1; program 0 'Greek trichordo' is variant 0), choosing the first preset in a host does nothing, because D-094 makes setCurrentProgram a no-op for the current program. Implementing D-094 literally ships this; departing from it risks T-302's 'current program survives a restore and re-selecting it changes nothing' case. G-L1 question 4 ('does a factory preset load') may then report it as a defect the plan caused.",
+   "suggested_fix": "Make program 0 of every instrument equal the defaults (for example a first 'Default' preset in factory.json), or have the no-op apply only after a restore (a flag set by setStateInformation and cleared by any other program change)."
+  },
+  {
+   "n": 7,
+   "where": "plan/PLAN.md S-LISTEN actions 1 and 4; PLAN conventions 'PUSH'",
+   "kind": "CI run cancelled",
+   "severity": "guess",
+   "text": "GATE-G-L1.md must name a CI run on the head commit whose vst3-* artifacts the owner can download, but each later marker commit (G-L2 to G-L5) is a push that starts ci.yml, whose concurrency group cancels the run in progress. The plugins job takes much longer than a gate-evidence run, so the G-L1 run is usually cancelled before it uploads artifacts. The convention 'commit without pushing while waiting' covers gate-evidence runs, not the ci.yml run G-L1 depends on. Artifacts also expire after 3 days, possibly before the owner answers.",
+   "suggested_fix": "In S-LISTEN, wait for the ci.yml run of the G-L1 record's commit to finish (plugins job green, artifacts uploaded) before pushing the next marker, and if the owner answers after the artifacts expire, push an empty commit and add the new run URL to the record."
+  },
+  {
+   "n": 8,
+   "where": "plan/DECISIONS.md D-094, the sentence after 'leaves the current program at 0'",
+   "kind": "garbled text",
+   "severity": "minor",
+   "text": "'a text whose only fault is a bad #program line is still restored and restores it only if loadState accepts it (then updates the JUCE parameters from the engine)' is ungrammatical (two clauses merged). The intent can be reconstructed from host_test.cpp line 141-146 (missing, 9999 and 'x' all give program 0 with the parameters restored), but the decision text itself does not say it clearly. 'Leaves the current program at 0' is also unclear for an instance whose program was not 0 before the restore (set to 0, or left unchanged?).",
+   "suggested_fix": "Rewrite as: 'The parameters are restored if and only if loadState accepts the remaining text (then the JUCE parameters are updated from the engine). The current program is then set to the #program index if it is a valid index, otherwise to 0.'"
+  },
+  {
+   "n": 9,
+   "where": "plan/ci/ci.yml host-tsan 'Canary' step; tests/ci/tsan_canary.cpp header comment",
+   "kind": "weak check",
+   "severity": "minor",
+   "text": "The canary passes on any non-zero exit (a TSan start-up abort for 'unexpected memory mapping', a crash), and it is compiled by its own command line, not by the CMake build, so it cannot show that the host-test binaries are instrumented (R-051's 'no positive control that the build is instrumented'). If CMAKE_CXX_FLAGS were lost for JUCE or plugin targets, T-304 would run uninstrumented and pass. The frozen comment says 'built with the same sanitiser flags' but the flags differ (-O1 against RelWithDebInfo with -fno-omit-frame-pointer).",
+   "suggested_fix": "In the canary step, require the output to contain 'ThreadSanitizer: data race'; after the build, check each host-test binary for __tsan_init (nm or the TSan banner) before running T-304."
+  },
+  {
+   "n": 10,
+   "where": "plan/DECISIONS.md D-053 seeds",
+   "kind": "seed collision",
+   "severity": "minor",
+   "text": "Seed 100 g + 10 N + k collides once k reaches 10 (the owner may answer 'repeat' without limit) or N reaches 10 (override-round-limit is unbounded): G-L1 round 1 attempt 10 equals round 2 attempt 0 (seed 120), and round 10 of G-L1 equals round 0 of G-L2.",
+   "suggested_fix": "Bound k and N to 0..9 and ask the owner beyond that, or use 1000 g + 100 N + k (the marker regex allows 6 digits)."
+  },
+  {
+   "n": 11,
+   "where": "plan/PLAN.md S-INTEGRATE action 1 vs S-REVIEW-DELTA",
+   "kind": "cross-reference",
+   "severity": "minor",
+   "text": "S-REVIEW-DELTA says it is repeated for the merged diff if S-INTEGRATE merges a moved main, but S-INTEGRATE action 1 only says to re-run S-300's Done when and the manifest check. An implementer working from S-INTEGRATE alone will skip the repeat review.",
+   "suggested_fix": "Add to S-INTEGRATE action 1: 'then repeat S-REVIEW-DELTA for the merge commit's diff before action 2'."
+  },
+  {
+   "n": 12,
+   "where": "HANDOFF.md section 15; plan/GATES.md G-004 trigger",
+   "kind": "cross-reference",
+   "severity": "minor",
+   "text": "HANDOFF section 15 lists the fresh-context steps as S-REVIEW, S-ADVERSARIAL and S-RETRO, and G-004's trigger names S-REVIEW and S-ADVERSARIAL only; S-REVIEW-DELTA (which needs a fresh context and may open G-004) is missing from both.",
+   "suggested_fix": "Add S-REVIEW-DELTA to both lists."
+  },
+  {
+   "n": 13,
+   "where": "plan/PLAN.md S-REVIEW actions ('the four actions')",
+   "kind": "count",
+   "severity": "minor",
+   "text": "S-REVIEW compares 'the four actions' with their current releases, but ENVIRONMENT section 1 pins five (checkout, setup-python, upload-artifact, cache, download-artifact), so download-artifact would go unchecked.",
+   "suggested_fix": "Say 'the five actions of plan/ENVIRONMENT.md section 1'."
+  },
+  {
+   "n": 14,
+   "where": "plan/PLAN.md S-340 action 1 and D-053 (control sine)",
+   "kind": "under-specified",
+   "severity": "minor",
+   "text": "The control sine's frequency source (the row's midi at A4 = 440 Hz, or the patch's a4_hz such as 441.6) and how the 10 ms RMS envelope is applied (step or interpolated) are not stated. Either reading works for a control, but the implementer has to choose.",
+   "suggested_fix": "State: frequency 440 * 2^((midi-69)/12); the envelope linearly interpolated between 10 ms window centres; length equal to the reference clip (at most 3 s)."
+  },
+  {
+   "n": 15,
+   "where": "plan/ENVIRONMENT.md section 3 'Dependency scan' vs plan/ci/ci.yml audit job",
+   "kind": "inconsistent command",
+   "severity": "minor",
+   "text": "The local pip-audit command reads tests/requirements.txt, while CI uses --require-hashes -r tests/requirements.lock (R-030). The two can disagree on transitive packages.",
+   "suggested_fix": "Use the CI command in section 3."
+  }
+ ],
+ "mechanical": [
+  {
+   "check": "every step ID in any Depends on line is a defined step",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "the order line at the top of PLAN.md lists every step heading in order",
+   "passed": false,
+   "misses": [
+    "All 28 headings are listed, but not in heading order: the line groups the reeds track (S-100, S-110, S-200 ... S-230) before the strings track (S-101, S-240, S-250, S-260). The headings run S-100, S-101, S-110, ..., S-230, S-240. The first mismatch is position 5: the line has S-110, the headings have S-101. HANDOFF section 4 has the same grouping."
+   ]
+  },
+  {
+   "check": "every R-### cited in plan/*.md and HANDOFF.md exists in premortem/RISK_REGISTER.md",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "test counts in plan/*.md and HANDOFF.md agree with the files",
+   "passed": true,
+   "misses": [],
+   "note": "Catch2: folk-tests 27 (tuning 11, strings 6, engine 10), folk-locale-tests 2, folk-perf 1, host_test 9 (T-302 7, T-303 1, T-304 1); per-ID case counts in TRACEABILITY all match. pytest by static count of parametrisations: 329 not-reference (tool checks 12+2+13 = 27), 16 reference (T-200 11, T-201 5); every per-ID figure in TRACEABILITY matches. ctest: 3 core + 5 host = 8, minus folk-perf = 7. Pairs 14 = 12 + 2 controls; 28 clips. Accordion demos 24 (>= 20 required), the smallest set 12 (>= 9 in gate-evidence)."
+  },
+  {
+   "check": "both workflows parse as YAML; every uses: pins a 40-hex commit listed in ENVIRONMENT section 1",
+   "passed": true,
+   "misses": [],
+   "note": "ci.yml 13 uses, gate-evidence.yml 5 uses, all pinned and listed"
+  },
+  {
+   "check": "sha256sum -c tests/FROZEN_MANIFEST.sha256 passes and lists 34 files",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "every .py, .cpp and .h in the manifest contains 'FROZEN — DO NOT MODIFY'",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "tests/data/tinysol-accordion.sha256 has 689 lines, paths relative to refs/tinysol",
+   "passed": true,
+   "misses": [],
+   "note": "689 lines, all under Keyboards/Accordion/, no duplicates; this matches the tar extraction of ./Keyboards/... into refs/tinysol in both workflows"
+  }
+ ],
+ "summary": "1 blocker, 6 guess, 8 minor. Blocker: the shared TinySOL cache key is first saved by gate-evidence.yml, which does not download TinySOL_metadata.csv, so every later ci.yml reference job fails T-200/T-201. Guesses: no step writes the README install and maintenance notes; S-ADVERSARIAL and S-REVIEW do not record the commit S-REVIEW-DELTA diffs from; how a response given with a void attempt is handled; S-LISTEN's Done when contradicts its allowed responses; D-094's 'no-op for the current program' makes the first preset unselectable in a fresh accordion or bouzouki; the G-L1 CI run is cancelled by the next marker push. The amended items otherwise agree: control pairs, void rule, attempt record names, the repeat and proceed-without-pairs responses, the T-302 program case against D-094, the host-tsan step order, check_tsan_supp.py against T-092 (13 cases), and the TinySOL hash list in both workflows. One mechanical miss: the order line groups the tracks instead of following heading order."
+}

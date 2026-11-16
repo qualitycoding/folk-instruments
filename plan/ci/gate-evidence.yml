@@ -43,12 +43,12 @@ jobs:
           with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
               fh.write(f"gate={m.group(1)}\ninstrument={m.group(2)}\nseed={m.group(3)}\n")
           PY
-      - name: TinySOL cache (same key as ci.yml)
+      - name: TinySOL cache, with its own key (this job does not download the metadata file that ci.yml's entry holds)
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         id: cache
         with:
           path: refs/tinysol
-          key: tinysol-6.0-36030a7fe389da86c3419e5ee48e3b7f-accordion
+          key: tinysol-6.0-36030a7fe389da86c3419e5ee48e3b7f-accordion-evidence
       - name: Download TinySOL if not cached
         if: steps.cache.outputs.cache-hit != 'true'
         run: |

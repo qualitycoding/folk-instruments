@@ -275,4 +275,4 @@ Read workflow runs, job conclusions and job logs with the GitHub tools the sessi
 
 ## 15. Fresh-context reviewers
 
-`S-REVIEW`, `S-ADVERSARIAL` and `S-RETRO` must be done by an agent that wrote none of the code (`S-RETRO`: none of the records). Start one with the session's subagent tool (in Claude Code: `Agent`), or as a new session (in a Claude Code cloud session: `create_session`), giving it only the branch and the step's text. If neither is possible, halt and write `BLOCKED.md` asking the owner to start a fresh session on the branch for that step; a review written by the implementer itself does not satisfy the step.
+`S-REVIEW`, `S-ADVERSARIAL`, `S-REVIEW-DELTA` and `S-RETRO` must be done by an agent that wrote none of the code (`S-RETRO`: none of the records). Start one with the session's subagent tool (in Claude Code: `Agent`), or as a new session (in a Claude Code cloud session: `create_session`), giving it only the branch and the step's text. If neither is possible, halt and write `BLOCKED.md` asking the owner to start a fresh session on the branch for that step; a review written by the implementer itself does not satisfy the step.

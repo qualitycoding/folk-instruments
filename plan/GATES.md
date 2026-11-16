@@ -9,7 +9,7 @@ At a gate the implementer halts, writes the gate record from the template in `HA
 | G-L1 to G-L5 | S-LISTEN | listening validation, one per instrument | 3 each |
 | G-002 | any step that would release or publish | external or irreversible action | no limit |
 | G-003 | S-KNOW | lesson and knowledge stores | no limit |
-| G-004 | S-REVIEW or S-ADVERSARIAL, only when a Critical or High finding is not fixed | acceptance of a review finding | no limit |
+| G-004 | S-REVIEW, S-ADVERSARIAL or S-REVIEW-DELTA, only when a Critical or High finding is not fixed | acceptance of a review finding | no limit |
 
 Gates not required: `G-001` (profiles `math` and `computational` are inactive); `G-INT` (the integration route is `pull-request`: the owner merges the pull request, which is the owner's own action).
 
@@ -67,7 +67,7 @@ This plan releases nothing (A-018, D-007), so no step opens this gate. It exists
 
 ## G-004: acceptance of a Critical or High review finding
 
-- **Trigger.** `S-REVIEW` or `S-ADVERSARIAL` ends with a Critical or High finding that has no fix commit verified by the reviewer (R-025). The implementer never accepts such a finding.
+- **Trigger.** `S-REVIEW`, `S-ADVERSARIAL` or `S-REVIEW-DELTA` ends with a Critical or High finding that has no fix commit verified by the reviewer (R-025). The implementer never accepts such a finding.
 - **Blocks.** Every later step.
 - **Evidence bundle.** The finding as the reviewer wrote it, the attempted fixes, the failure path, and the options.
 - **Question.** May this finding ship unfixed, and with what statement in `README.md`?

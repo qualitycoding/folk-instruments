@@ -111,7 +111,7 @@ Dependency scan:
 
 ```
 python3 -m pip install pip-audit==2.10.0
-python3 -m pip_audit --strict -r tests/requirements.txt
+python3 -m pip_audit --strict --require-hashes -r tests/requirements.lock
 ```
 
 State of the suite at the freeze (against the stubs): `build/folk-tests` runs 27 test cases and all 27 fail with `not implemented`; `build/folk-locale-tests` runs 2 and both fail the same way; `build/folk-perf` fails the same way; the five host programs (9 test cases each) fail with `not implemented: createPluginFilter`; `pytest -m "not reference"` reports the tool-check tests passing (`test_metrics_selfcheck.py`, `test_pluginval_log_check.py`, `test_tsan_supp_check.py`) and every other test failing on `folk-render failed with status 64` or, for the evidence guard and the fetch tool (T-210, T-211), status 64 from their stubs. Exact counts are in `plan/TRACEABILITY.md`.

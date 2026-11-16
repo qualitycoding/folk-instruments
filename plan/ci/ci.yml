@@ -193,7 +193,10 @@ jobs:
       - name: Canary - ThreadSanitizer must report a deliberate race
         run: |
           c++ -fsanitize=thread -O1 -pthread tests/ci/tsan_canary.cpp -o tsan-canary
-          if ./tsan-canary; then echo "ThreadSanitizer did not report the canary race: the T-304 run would prove nothing"; exit 1; fi
+          status=0; ./tsan-canary > canary.log 2>&1 || status=$?
+          cat canary.log
+          test "$status" -eq 66
+          grep -q "WARNING: ThreadSanitizer: data race" canary.log
       - name: Linux packages
         run: |
           sudo apt-get update
@@ -209,6 +212,7 @@ jobs:
           for t in Harmonica Accordion Melodion Mandolin Bouzouki; do
             b="$(find build-tsan/plugins -type f -name "Folk${t}HostTest" | head -n 1)"
             test -n "$b"
+            nm "$b" | grep -q __tsan_init
             xvfb-run -a "$b" "T-304*"
             n=$((n + 1))
           done
