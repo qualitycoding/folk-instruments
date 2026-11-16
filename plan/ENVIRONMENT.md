@@ -34,9 +34,9 @@ The 689 extracted accordion files are hashed in the frozen list `tests/data/tiny
 
 ### TinySOL rows of the accordion reference set
 
-The other columns are the same for all 12 rows: `instrument` `accordion`; `source_url` `https://zenodo.org/api/records/3685367/files/TinySOL.tar.gz/content`; `licence` `CC-BY-4.0`; `licence_url` `https://creativecommons.org/licenses/by/4.0/`; `accessed` `2026-11-14`; `redistributable` `true`; ids `accordion-001` to `accordion-012` in the order below; `velocity`, `sets` and `author` as `S-REF` action 4 says.
+The other columns are the same for all 12 rows: `instrument` `accordion`; `source_url` `https://zenodo.org/api/records/3685367/files/TinySOL.tar.gz/content`; `licence` `CC-BY-4.0`; `licence_url` `https://creativecommons.org/licenses/by/4.0/`; `accessed` `2026-11-14`; `redistributable` `true`; ids `accordion-001` to `accordion-014` in the order below; `velocity`, `sets` and `author` as `S-REF` action 4 says.
 
-The 12 mf notes of D-050, chosen by D-052's tie rule from `TinySOL_metadata.csv` (md5 above) and hashed from the files of `TinySOL.tar.gz` (md5 above) on 2026-11-15; the first was also checked against the archive member directly. `S-REF` copies these into `references/index.csv`; if a fresh download gives a different hash, rule DR-11 applies as for any reference, except that losing any of these 12 rows is a halt with `BLOCKED.md` (T-200 and gate G-L3 depend on all 12); the row is never edited to match.
+The 12 mf notes of D-050, then the two control notes of D-053 (MIDI 57 and 64, not among the 12), all chosen by D-052's tie rule from `TinySOL_metadata.csv` (md5 above) and hashed from the files of `TinySOL.tar.gz` (md5 above) on 2026-11-15; the first was also checked against the archive member directly. `S-REF` copies these into `references/index.csv`; if a fresh download gives a different hash, rule DR-11 applies as for any reference, except that losing any of these 12 rows is a halt with `BLOCKED.md` (T-200 and gate G-L3 depend on all 12); the row is never edited to match.
 
 | MIDI | `file` | sha256 |
 |---|---|---|
@@ -52,6 +52,8 @@ The 12 mf notes of D-050, chosen by D-052's tie rule from `TinySOL_metadata.csv`
 | 79 | `tinysol/Keyboards/Accordion/ordinario/Acc-ord-G5-mf-N-N.wav` | `f1074a98319c2f76b3114a09a5d0395335695728bef4b96d31ecc13ce23664d4` |
 | 83 | `tinysol/Keyboards/Accordion/ordinario/Acc-ord-B5-mf-N-N.wav` | `6649162d7d6576d768f1d13bf9426852998fe396236259da02e73ee102b522b2` |
 | 86 | `tinysol/Keyboards/Accordion/ordinario/Acc-ord-D6-mf-N-N.wav` | `4a7aaf99956994e8ea86f760adffd0ea4746c04199f9aa983af641bf47bb012a` |
+| 57 | `tinysol/Keyboards/Accordion/ordinario/Acc-ord-A3-mf-N-N.wav` | `6f34a60001b8ad521c58fbda5ca43f881a1439624a412d2bbabc8e6cb9c49350` |
+| 64 | `tinysol/Keyboards/Accordion/ordinario/Acc-ord-E4-mf-N-N.wav` | `ca7c735847cc35131fc3034741f69f5c7ed7c24d33b37be7f49a4d2e4ebc7525` |
 
 ## 2. Setup on Ubuntu 24.04 (verified in the planning sandbox as root; CI prefixes `sudo`)
 

@@ -4,7 +4,7 @@ This note is for the PLANNING agent. An implementing agent starts at `HANDOFF.md
 
 **Where things stand.** Phases 0 to 2 are complete (six research rounds, ended at the round limit; 65 claims; tests frozen and red-verified). Phase 3 documents exist. Cold reads 1 to 3 (dry run plus mechanical each) produced 38 + 6, 31 + 3 and 33 + 4 items; pass 4 found 19 + 9; all were resolved by amending the plan (records in `research/coldread/`). The source register passed its twelfth review clean and is marked `verified`.
 
-**Next action.** Pre-mortem rounds 1 and 2 are done and mitigated (register R-001 to R-066; tests re-frozen, 34 files, red-verified: pytest 329 collected, 27 tool checks pass). Running pre-mortem round 3 and a cold-read re-run in parallel. At most 5 pre-mortem rounds; then the 4.7 audit and Phase 5.
+**Next action.** Pre-mortem rounds 1 to 3 are done and mitigated (register R-001 to R-077; 34 frozen files; pytest 335 collected, 33 tool checks pass). Round 4 and a cold-read re-run are next, in parallel. At most 5 rounds; then the 4.7 audit and Phase 5.
 
 **Open questions.** None for the owner.
 

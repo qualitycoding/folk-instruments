@@ -244,6 +244,8 @@ jobs:
           echo "a86c9bb115f69e61f2f25872e397fc4a  TinySOL_metadata.csv" | md5sum -c -
           tar xzf TinySOL.tar.gz --wildcards '*Accordion*'
           rm TinySOL.tar.gz
+      - name: TinySOL metadata present and unchanged
+        run: echo "a86c9bb115f69e61f2f25872e397fc4a  refs/tinysol/TinySOL_metadata.csv" | md5sum -c -
       - name: Reference notes exist
         run: test "$(find refs/tinysol/Keyboards/Accordion -name '*.wav' | wc -l)" -eq 689
       - name: TinySOL accordion files match the frozen hash list (R-053)
