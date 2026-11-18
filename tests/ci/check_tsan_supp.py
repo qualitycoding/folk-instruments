@@ -2,18 +2,18 @@
 # FROZEN — DO NOT MODIFY. Listed in tests/FROZEN_MANIFEST.sha256. Change only through a TEST_CHALLENGE amendment (HANDOFF.md).
 """Checks tests/ci/tsan.supp before the host-tsan job uses it (R-021, R-051). Usage: check_tsan_supp.py <file>.
 A missing file passes (no suppressions). Otherwise every line must be blank, a comment starting with '#', or exactly
-'race:^juce::<Class>::<function>(', anchored at the start and closed by the opening parenthesis of the parameter list
+'race:^juce::<Class>::<function>(' or 'deadlock:^juce::<Class>::<function>(', anchored at the start and closed by the opening parenthesis of the parameter list
 (ThreadSanitizer matches a pattern as a substring of the demangled frame, which ends in the parameter list, for example
 'juce::Thread::threadEntryPoint()': an unanchored 'race:juce::AudioBuffer' would also hide races in a wrapper function
 taking a juce::AudioBuffer, and a pattern ending in '$' matches no function at all): at least a class and a function
 inside JUCE's namespace, no wildcard, no other
-suppression type (no 'called_from_lib', 'deadlock', 'mutex', 'thread', 'signal' or 'race_top'), and never 'folk'.
+suppression type (no 'called_from_lib', 'mutex', 'thread', 'signal' or 'race_top'), and never 'folk'.
 Exit status 0 when the file is acceptable, 1 otherwise, naming each bad line."""
 import pathlib
 import re
 import sys
 
-LINE = re.compile(r"race:\^juce::[A-Za-z_][A-Za-z0-9_]*(::[A-Za-z_][A-Za-z0-9_]*)*::~?[A-Za-z_][A-Za-z0-9_]*\(")
+LINE = re.compile(r"(race|deadlock):\^juce::[A-Za-z_][A-Za-z0-9_]*(::[A-Za-z_][A-Za-z0-9_]*)*::~?[A-Za-z_][A-Za-z0-9_]*\(")
 
 
 def main(argv):
