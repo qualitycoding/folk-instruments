@@ -1,8 +1,8 @@
 // FROZEN — DO NOT MODIFY. Listed in tests/FROZEN_MANIFEST.sha256. Change only through a TEST_CHALLENGE amendment (HANDOFF.md).
 // Second canary for the host-tsan job (R-069, R-078): a deliberate race inside a named function in JUCE's namespace. The job
-// runs it twice: with the suppression line 'race:^juce::CanaryBox::bump(' it must exit 0 (the form that
-// tests/ci/check_tsan_supp.py accepts really suppresses a function frame), and with the near miss
-// 'race:^juce::CanaryBox::bum(' it must be reported (exit 66).
+// runs it twice: with the suppression line 'race_top:^juce::CanaryBox::bump(' it must exit 0 (the form that
+// tests/ci/check_tsan_supp.py accepts really suppresses a race whose top frame is that function), and with the near miss
+// 'race_top:^juce::CanaryBox::bum(' it must be reported (exit 66).
 #include <cstdio>
 #include <thread>
 

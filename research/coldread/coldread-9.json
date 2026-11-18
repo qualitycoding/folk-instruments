@@ -1,0 +1,187 @@
+{
+ "items": [
+  {
+   "n": 1,
+   "where": "plan/DECISIONS.md D-053 'Confirmation after a change'; plan/GATES.md G-L Allowed responses",
+   "kind": "response gap",
+   "severity": "guess",
+   "text": "A gate closed with `proceed-with-rescope` (for example after a score above 8, or after an S-330 reference failure, where `proceed` is refused) can get a confirmation round. `confirm` is 'valid only if the pass condition holds'. Otherwise D-053 says 'the owner is asked once, as for `proceed`'. The `proceed` branch offers `iterate`, `proceed-with-rescope` or `stop`. But in a confirmation round GATES allows only `confirm` or `iterate` (and `confirm-again`/`stop` only when a third confirmation would start). So the owner cannot re-accept the shortfall they already accepted. The only way out is `iterate`, which opens a counted normal round, possibly past the limit. The implementer has to guess whether `proceed-with-rescope`/`stop` count in a confirmation round.",
+   "suggested_fix": "Allow `proceed-with-rescope: <text>` and `stop` in a confirmation round, and say in D-053 that `confirm` on a gate closed with `proceed-with-rescope` needs only that the recorded shortfall still describes the result (or that the score is no worse)."
+  },
+  {
+   "n": 2,
+   "where": "plan/DECISIONS.md D-053 (demos rendered 'at the gate commit and at the head commit'); plan/PLAN.md S-LISTEN Done when, S-INTEGRATE action 3",
+   "kind": "missing procedure",
+   "severity": "guess",
+   "text": "The trigger needs the demos rendered with the folk-render of the gate commit. No step says how: which checkout (a worktree?), which build directory, and whether to use that commit's or the head's `build_evidence.py` and `demos/*.events`. The tempting shortcut is to compare against the WAVs on `evidence/<gate>`. Those are CI-rendered and force-overwritten by later rounds, so a byte comparison with a local render can report a difference that is only platform floating point. It is also unstated how a demo file added or removed between the two commits counts.",
+   "suggested_fix": "Specify: `git worktree add $HOME/folk-gate-<gate> <gate commit>`, CORE BUILD there into `$HOME/folk-build-gate`, run that tree's `tools/build_evidence.py --demos-only` with its own folk-render, run the head's the same way, compare `demos/` file by file, and count a file present on one side only as 'differs'. Never compare with evidence-branch WAVs."
+  },
+  {
+   "n": 3,
+   "where": "plan/DECISIONS.md D-053 ('as does a gate closed with `proceed-without-pairs`'); plan/PLAN.md S-LISTEN Done when",
+   "kind": "ambiguous trigger",
+   "severity": "guess",
+   "text": "It is unclear whether a `proceed-without-pairs` gate gets a confirmation round unconditionally or only under the same demos-differ condition. If unconditionally, it is re-confirmed at the end of S-LISTEN and again before the PR even when nothing changed. After a `confirm`, two things are also unstated: whether a gate whose latest response is `confirm` is still covered (the trigger lists only gates answered `proceed`/`proceed-with-rescope`), and which commit becomes the baseline for the next check (the original gate commit or the confirmation's evidence commit).",
+   "suggested_fix": "Write 'under the same condition'. State that after `confirm` the gate keeps its original closing response for this rule and the confirmation's evidence commit becomes the baseline commit."
+  },
+  {
+   "n": 4,
+   "where": "plan/PLAN.md S-INTEGRATE actions 2 and 3",
+   "kind": "step order",
+   "severity": "guess",
+   "text": "Action 2 creates `pr-<run_id>` from `impl-<run_id>` and commits the removals. Action 3 then applies the D-053 confirmation rule, which can add marker commits, gate-file sections, `listening/` records and fixes on impl (plus a further S-REVIEW-DELTA). After that it says 'Then push `pr-<run_id>`'. That branch was cut before those commits and is now stale. Recreating it is described only under On failure, for red checks.",
+   "suggested_fix": "Move the confirmation check (and any S-REVIEW-DELTA repeat) before action 2, or add to action 3: 'if any commit was added to impl-<run_id> since action 2, recreate pr-<run_id> from the new head (repeat action 2) before pushing'."
+  },
+  {
+   "n": 5,
+   "where": "plan/DECISIONS.md D-094 (setCurrentProgram: `setValue` plus `updateHostDisplay` through a timer); plan/PLAN.md S-310",
+   "kind": "API behaviour",
+   "severity": "guess",
+   "text": "`AudioProcessorParameter::setValue` does not call `sendValueChangedMessageToListeners`. So neither the `GenericAudioProcessorEditor` sliders nor the JUCE VST3 wrapper's cached parameter values (both fed by parameter listeners) learn that a program changed. `updateHostDisplay()` carries no values. The sound changes but the editor and the host's parameter view stay stale. At G-L1 question 4 ('does a factory preset load') this will likely be reported as a defect and cost an `iterate` round. T-302 does not see it. An implementer following D-094 literally ships the stale UI; one who notices has to invent the fix.",
+   "suggested_fix": "In D-094: when the message-thread timer finds the flag set, call `p->sendValueChangedMessageToListeners(p->getValue())` for every parameter of the applied preset, then `updateHostDisplay(juce::AudioProcessorListener::ChangeDetails{}.withProgramChanged(true))`. This stays off the audio thread."
+  },
+  {
+   "n": 6,
+   "where": "plan/PLAN.md S-LISTEN actions 2-3; plan/DECISIONS.md D-053 (exit 3)",
+   "kind": "unhandled path",
+   "severity": "minor",
+   "text": "For a gate whose pairs are private (mandolin), the CI run builds demos only, so CI can never refuse an unbalanced key. The refusal (exit 3) first appears in the local action-3 run, after the marker seed is already used for the CI demos. Action 2's 'push a new marker with the next attempt number' covers only a failed CI job. The plan does not say what to do when the local run exits 3, and the CI demos and local pairs must share a seed.",
+   "suggested_fix": "Have `build_evidence.py` check key balance from the seed and the 14 stems whenever the instrument has 12 or more indexed notes, even when it skips the pairs, so CI refuses too. Alternatively, add to action 3: on local exit 3, push a new marker with the next k and rebuild."
+  },
+  {
+   "n": 7,
+   "where": "plan/PLAN.md S-340 action 1 and Done when",
+   "kind": "post-condition / ordering",
+   "severity": "minor",
+   "text": "The Done when requires the unbalanced-seed run to 'print only `unbalanced key`'. Action 1 never says the balance is checked before demos are rendered or any progress is printed, so a tool that renders first fails this check. `--demos-only` (needed by D-053) has no Done-when check at all (Rule 14).",
+   "suggested_fix": "Say the balance check runs first, before any rendering or output. Add to Done when: `--demos-only` writes only `<dir>/demos/*.wav` (the same count as the full run) and exits 0."
+  },
+  {
+   "n": 8,
+   "where": "plan/GATES.md G-L Trigger",
+   "kind": "inconsistency",
+   "severity": "minor",
+   "text": "GATES says a closed gate is reopened 'when shared sound code changes after its evidence commit'. D-053's condition differs: the demos differ in any byte AND a change reaches the instrument (its own code included, not only shared code), plus gates closed with `proceed-without-pairs`. A reader of GATES alone triggers on different cases.",
+   "suggested_fix": "Replace the clause with 'under the confirmation rule of D-053'."
+  },
+  {
+   "n": 9,
+   "where": "plan/DECISIONS.md D-053 seeds",
+   "kind": "bounds",
+   "severity": "minor",
+   "text": "Confirmation seeds `1000g + 900 + 10j + k` assume j <= 9. `confirm-again` puts no cap on j: j = 10..19 leaves the 900-999 range, and j = 20 gives 1000(g+1)+100, the seed of gate g+1, round 1, attempt 0. There is also no rule for when k reaches 10 in a confirmation (voids followed by `repeat`). Normal rounds are 'at most 8 even with `override-round-limit`', but nothing says what to answer when the owner overrides at round 8.",
+   "suggested_fix": "Cap j at 9 and k at 9 in confirmations. Beyond either cap, or for an override past round 8, halt with BLOCKED.md for a seed-scheme amendment."
+  },
+  {
+   "n": 10,
+   "where": "plan/DECISIONS.md D-053 'Confirmation after a change'; HANDOFF.md section 8 template",
+   "kind": "record mechanics",
+   "severity": "minor",
+   "text": "A confirmation round adds 'a section `Confirmation <j>` in the gate's last gate file'. It is not said whether that file's `Status` goes back to `OPEN` while the owner's answer is awaited. That status is what halts work, drives resumption by a fresh session, and is tested in S-LISTEN's 'no gate is `OPEN`'.",
+   "suggested_fix": "State: set `Status: OPEN` in that file while a confirmation awaits an answer, and `ANSWERED` once `confirm`/`iterate` is recorded."
+  },
+  {
+   "n": 11,
+   "where": "HANDOFF.md section 9 ('the one exception is the automated pair check of S-340')",
+   "kind": "inconsistency",
+   "severity": "minor",
+   "text": "D-053's unbalanced-key refusal also derives the key before the listener answers, in every gate run, not only in S-340's dry run. The 'one exception' wording makes the required refusal look like a rule breach.",
+   "suggested_fix": "Name the balance refusal as a second exception (it derives the key internally and prints only `unbalanced key`)."
+  },
+  {
+   "n": 12,
+   "where": "plan/PLAN.md S-310 Outputs / Done when",
+   "kind": "post-condition",
+   "severity": "minor",
+   "text": "`README.md` is an output with specified content (the 'no implementation' sentence replaced, per-OS install folders, `xattr` note, unsupported-rate note, a Maintenance line per CI job). The Done when checks none of it (Rule 14). The README's next sentence, 'The execution plan is on the generation branch', is left as it is.",
+   "suggested_fix": "Add to Done when: README no longer contains 'holds no implementation'; it has a 'Maintenance' section with one line for each job of ci.yml (freeze, core, plugins, host-tsan, reference, audit, all-green) and install notes for Windows, macOS and Linux."
+  },
+  {
+   "n": 13,
+   "where": "plan/ci/ci.yml job host-tsan, step 'No source or build file switches the sanitiser off'",
+   "kind": "swallowed failure",
+   "severity": "minor",
+   "text": "`if grep -rnE ... CMakeLists.txt plugins core tests/juce; then ... exit 1; fi` treats grep's error status 2 (for example a missing path after a rename) the same as 'no match'. The check then passes without having searched (Rule 14).",
+   "suggested_fix": "Use `grep -rnE ... ; rc=$?; if [ $rc -eq 0 ]; then echo 'sanitiser exclusion found'; exit 1; elif [ $rc -ne 1 ]; then exit $rc; fi`."
+  },
+  {
+   "n": 14,
+   "where": "plan/ENVIRONMENT.md section 5 (host-tsan row); tests/ci/check_tsan_supp.py",
+   "kind": "semantics",
+   "severity": "minor",
+   "text": "ThreadSanitizer suppresses a report if ANY frame of any stack matches. A form the checker accepts, such as `race:^juce::Thread::threadEntryPoint(` (a T-092 pass case) or any JUCE function that calls back into the wrapper, therefore also hides races whose stacks contain `plugins/` or `core/` frames. The rule 'a report with a frame in plugins/ or core/ is a defect, never suppressed' is stated per report. The implementer may believe a suppression added for a JUCE-only report cannot hide wrapper races.",
+   "suggested_fix": "Add to section 5: suppress only JUCE functions that never call wrapper or core code (no thread entry points, dispatch loops, listener or callback dispatchers). S-REVIEW checks each `tsan.supp` line against this."
+  },
+  {
+   "n": 15,
+   "where": "plan/GATES.md G-P1/G-P2 Allowed responses vs Branches",
+   "kind": "response list",
+   "severity": "minor",
+   "text": "The Branches text accepts `override-round-limit: <reason>` after round 2, but the gate's 'Allowed responses' line omits it. An implementer copying 'Allowed responses' into the record, as the template asks, lists a set that excludes a response the gate accepts.",
+   "suggested_fix": "Add `override-round-limit: <reason>` (only to allow a round beyond the second) to G-P1/G-P2 Allowed responses."
+  }
+ ],
+ "mechanical": [
+  {
+   "check": "Every Depends on ID in plan/PLAN.md is a defined step",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "Every R-### cited in plan/*.md and HANDOFF.md exists in premortem/RISK_REGISTER.md (86 rows, R-001..R-086); every register row has 11 columns",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "Test counts agree with files: Catch2 folk-tests 27 (tuning 11, strings 6, engine 10), locale 2, perf 1, host 9 per program (T-302 7, T-303 1, T-304 1); per-ID Catch2 counts in TRACEABILITY",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "pytest counts by static parametrisation count: 339 not-reference collected, 37 tool checks (T-090 12, T-091 2, T-092 23), 302 others; 16 reference (T-200 11, T-201 5); every per-ID count in TRACEABILITY section 2 matches",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "ctest 7 (5 host tests + folk-tests + folk-locale-tests, folk-perf excluded) agrees with CMakeLists, plugins/CMakeLists.txt and the ci.yml grep",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "Pairs 14, clips 28 consistent across S-340, D-053, GATES (14 x 2 = 28; --pairs 14 accepted by make_blind_pairs.py); seed 1 dry run gives a balanced key (6 A of 14) with the builder's seeding",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "Both workflows parse as YAML; every `uses:` pins a 40-hex commit listed in plan/ENVIRONMENT.md section 1",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "sha256sum -c tests/FROZEN_MANIFEST.sha256 passes with 35 files; every .py/.cpp/.h in it carries 'FROZEN — DO NOT MODIFY'",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "Options of build_evidence.py, fetch_references.py, calibrate_gains.py used anywhere (plan, workflows, tests) are in the plan's option lists",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "Every response named in plan/PLAN.md or plan/DECISIONS.md for a gate appears in that gate's Allowed responses in plan/GATES.md",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "The 14 TinySOL rows of ENVIRONMENT section 1 match tests/data/tinysol-accordion.sha256",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "T-092 regex: all 22 fail cases rejected, all pass cases and both canary suppression lines accepted",
+   "passed": true,
+   "misses": []
+  }
+ ],
+ "summary": "15 items: 0 blocker, 5 guess, 10 minor. Every mechanical check passed. The amended host-tsan job (both canaries, nm to a file, exclusion grep), the T-092 checker and test, S-REF's 14 rows and S-REVIEW-DELTA's per-run sections are sound. The remaining gaps are in the D-053 confirmation mechanics: re-closing a rescoped gate, how to render at the gate commit, the proceed-without-pairs trigger and baseline, and S-INTEGRATE ordering. D-094's setValue leaves the editor and host parameter view stale."
+}

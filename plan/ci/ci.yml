@@ -200,8 +200,8 @@ jobs:
       - name: Canary - the accepted suppression form silences a race in a named function, a near miss does not
         run: |
           c++ -fsanitize=thread -O1 -pthread tests/ci/tsan_canary_named.cpp -o tsan-canary-named
-          echo 'race:^juce::CanaryBox::bump(' > named-ok.supp
-          echo 'race:^juce::CanaryBox::bum(' > named-miss.supp
+          echo 'race_top:^juce::CanaryBox::bump(' > named-ok.supp
+          echo 'race_top:^juce::CanaryBox::bum(' > named-miss.supp
           python3 tests/ci/check_tsan_supp.py named-ok.supp
           python3 tests/ci/check_tsan_supp.py named-miss.supp
           TSAN_OPTIONS="halt_on_error=1 suppressions=$PWD/named-ok.supp" ./tsan-canary-named
@@ -209,7 +209,8 @@ jobs:
           test "$status" -eq 66
       - name: No source or build file switches the sanitiser off
         run: |
-          if grep -rnE "no_sanitize|fno-sanitize|__tsan_ignore|tsan_ignore" CMakeLists.txt plugins core tests/juce; then echo "sanitiser exclusion found"; exit 1; fi
+          rc=0; grep -rnE "no_sanitize|fno-sanitize|__tsan_ignore|tsan_ignore" CMakeLists.txt plugins core tests/juce || rc=$?
+          test "$rc" -eq 1   # 1: nothing found; 0: an exclusion exists; 2: grep failed (for example a moved path)
       - name: Linux packages
         run: |
           sudo apt-get update

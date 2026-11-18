@@ -183,7 +183,7 @@ The gates and their questions are in `plan/GATES.md`. The record template and it
 
 ## 9. Listening gates
 
-Measured metrics do not tell you whether audio sounds right; a listener does. The procedure for `S-LISTEN` is in that step. Scoring: chance is 6 of 12; 10 correct gives a one-sided p of about 0.019, 9 gives 0.073, 7 gives 0.387. The pass condition (at most 8 of 12 correct, and no demo reported as wrong) was frozen at planning time; a listening gate never relaxes a frozen metric threshold. Decode the answer key only after the listener has answered (the one exception is the automated pair check of `S-340`, which decodes it inside the check and never prints it). Use a new seed after every round whose results the listener has been told.
+Measured metrics do not tell you whether audio sounds right; a listener does. The procedure for `S-LISTEN` is in that step. Scoring: chance is 6 of 12; 10 correct gives a one-sided p of about 0.019, 9 gives 0.073, 7 gives 0.387. The pass condition (at most 8 of 12 correct, and no demo reported as wrong) was frozen at planning time; a listening gate never relaxes a frozen metric threshold. Decode the answer key only after the listener has answered (the exceptions are the automated pair check of `S-340`, which decodes it inside the check and never prints it, and the balance check of D-053, which reports only 'unbalanced key'). Use a new seed after every round whose results the listener has been told.
 
 The iterate procedure, verbatim from the skill `audio-blind-listening-validation` (qualitycoding/skills, commit a20ed73):
 
