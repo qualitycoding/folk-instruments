@@ -1,0 +1,137 @@
+{
+ "items": [
+  {
+   "n": 1,
+   "where": "tests/ci/check_tsan_supp.py (LINE regex), tests/py/test_tsan_supp_check.py (T-092 pass case), plan/ENVIRONMENT.md section 5 row 'host-tsan ... without reports from inside JUCE'",
+   "kind": "verification cannot work as designed",
+   "severity": "blocker",
+   "text": "The anchored form the checker now requires, 'race:^juce::Class::function$', ends with '$'. The checker's own docstring (and R-069) rely on the fact that ThreadSanitizer matches the template against the demangled function name, parameter types included. Symbolised frame names look like 'juce::MessageManager::runDispatchLoop()' or 'Thread1(void*)', so a template that ends at the function name and is anchored with '$' never matches a real frame. Every line T-092 accepts therefore suppresses nothing. If T-304 under host-tsan produces a JUCE-internal report, the remedy in ENVIRONMENT section 5 (add a tsan.supp line plus a DEVIATIONS entry) leaves the job red. Nothing tells the implementer why, and the checker and T-092 are frozen, so the only way out is a TEST_CHALLENGE halt. The check fails closed, so this never causes a false pass. It does block S-320 and S-REVIEW whenever JUCE itself reports a race.",
+   "suggested_fix": "Accept a start-anchored template that ends at the opening parenthesis, e.g. 'race:^juce::MessageManager::runDispatchLoop(' (regex '...::~?Name\\('), with no '$'. '^juce::' already keeps out every folk/FolkProcessor frame. Update T-092's pass case to match, re-freeze, and in ENVIRONMENT section 5 give one example line copied from a real report frame."
+  },
+  {
+   "n": 2,
+   "where": "plan/ci/ci.yml job host-tsan, step 'Concurrency test under ThreadSanitizer (T-304)': nm \"$b\" | grep -q __tsan_init",
+   "kind": "CI command can fail with no defect",
+   "severity": "minor",
+   "text": "The workflow sets defaults.run.shell: bash, so GitHub runs every step with 'bash -eo pipefail'. 'grep -q' exits at the first match. nm's sorted output for a JUCE host program still has many KB after '__tsan_init' (the other __tsan_* symbols and the lowercase libc and ALSA imports). If nm writes again after grep has exited, it dies of SIGPIPE (status 141), pipefail turns that into a failure, and the step goes red with no message. Whether this happens depends on timing, so host-tsan can fail intermittently at S-320 for an instrumented, correct build. S-003 cannot reveal it, because that step is expected to fail anyway.",
+   "suggested_fix": "Avoid the early-exit pipe: 'nm \"$b\" > nm.txt && grep -q __tsan_init nm.txt' (or 'nm \"$b\" | grep -c __tsan_init > /dev/null', where grep reads to the end)."
+  },
+  {
+   "n": 3,
+   "where": "plan/DECISIONS.md D-053 'Confirmation after a change'; plan/GATES.md G-L Allowed responses and Branches; plan/PLAN.md S-LISTEN actions 1, 4, 5 and Done when",
+   "kind": "undefined procedure",
+   "severity": "guess",
+   "text": "The plan never fully specifies how a confirmation round runs. (a) Seed: 'the next seed' could mean attempt k+1 of the gate's last round or attempt 0 of round N+1. The 1000g+100N+k schedule and the record names (listening/<gate>-round-<N>-attempt-<k>.md, GATE-<id>-r<N>.md) have no slot for a round that does not count. (b) GATES Branches has no entry for 'confirm'. For 'iterate' in a confirmation round it says 'next round', but not whether that round counts towards the limit of 3. A gate that closed in round 3 would then seem to need override-round-limit. (c) With pairs, the plan does not say whether the pass condition and the void rules apply. If the owner answers 'confirm' while the score is 9 or more of 12, S-LISTEN's Done when ('the recorded score of its last valid attempt meets the pass condition') fails, and no branch covers that case. (d) Only gates answered 'proceed' or 'proceed-with-rescope' are confirmed. A gate closed with 'proceed-without-pairs' (which D-053 calls a rescope) or with an S-330 shortfall is not listed explicitly.",
+   "suggested_fix": "Add to D-053: a confirmation round is round 'C<m>' of the gate, with seed 1000g+900+k, recorded as GATE-<id>-c<m>.md and listening/<gate>-confirm-<m>-attempt-<k>.md. Void rules and the pass condition apply; 'confirm' is valid only if the condition is met (otherwise ask once, as for proceed). 'iterate' opens the next counted round, and override-round-limit is needed if 3 rounds are already used. State that 'proceed-without-pairs' gates are confirmed too. Add a 'confirm' branch in GATES."
+  },
+  {
+   "n": 4,
+   "where": "plan/PLAN.md S-LISTEN actions 1-2 (also S-210 gate action 6, S-250); plan/DECISIONS.md D-053 (exit 3 'unbalanced key'); plan/ci/gate-evidence.yml",
+   "kind": "stale evidence accepted / unhandled failure",
+   "severity": "guess",
+   "text": "Action 2 only checks that branch evidence/<gate id> exists and holds SHA256SUMS and MANIFEST.json. The branch survives from earlier rounds. If a marker run fails, the check still passes on the previous round's bundle and key, and the record would name the wrong seed. A failed run happens whenever build_evidence.py refuses an unbalanced key with exit 3. By simulation that happens for planned seeds 1102, 1300, 1301, 2201 and 2202. S-LISTEN does not say that a red gate-evidence run with 'unbalanced key' means 'push the next attempt number'; that rule is only in D-053. For a private-pair instrument the CI run builds demos only, and the local run may exit 3. The plan does not say whether the demos must then be rebuilt in CI under the new seed.",
+   "suggested_fix": "In action 2, require the branch's head commit message to read 'Evidence for <gate> (<instrument>, seed <s>) from <marker commit sha>' (the publish step already writes it). Add: 'if the evidence job fails with \"unbalanced key\" (exit 3), push the marker again with k+1; the refused seed gets no record'. Say that for private pairs the local seed is the one in the marker."
+  },
+  {
+   "n": 5,
+   "where": "plan/PLAN.md S-340 action 1 and Done when",
+   "kind": "requirement only in D-053",
+   "severity": "minor",
+   "text": "The specification of build_evidence.py in S-340 omits D-053's refusal of an unbalanced key (exit 3, printing only 'unbalanced key'), and the Done when does not test it. An implementer who works from the step text writes a tool without it, and S-LISTEN's seed logic then breaks silently. The S-340 dry run with seed 1 happens to be balanced, so nothing catches the omission.",
+   "suggested_fix": "Add clause (e) to S-340 action 1 for the exit-3 refusal. To Done when add: a dry run with a known-unbalanced seed (e.g. 1102 for the accordion stems) exits 3 and writes no pairs."
+  },
+  {
+   "n": 6,
+   "where": "plan/PLAN.md S-INTEGRATE actions 1, 3, 5",
+   "kind": "ordering",
+   "severity": "minor",
+   "text": "Action 5 is a step after the pull request is opened, yet it says that if origin/main was merged in action 1, S-REVIEW-DELTA is repeated before the pull request is opened. Action 3 is where the pull request is opened, and it sends only 'fixes made in this step or after a G-004 answer' back to S-REVIEW-DELTA. A merge is not a fix. An implementer who follows the actions in order opens the pull request before the merged diff is re-reviewed.",
+   "suggested_fix": "Move the merged-diff re-review into action 1 or 3: 'if action 1 merged origin/main, or any fix was made, repeat S-REVIEW-DELTA, then apply the D-053 confirmation rule, then push and open'. Delete the sentence from action 5."
+  },
+  {
+   "n": 7,
+   "where": "plan/PLAN.md S-REVIEW-DELTA Inputs vs Done when and Outputs",
+   "kind": "inconsistent on repeat",
+   "severity": "minor",
+   "text": "On a repeat, Inputs start from 'the head this step last reviewed'. Done when still requires DELTA_REVIEW.md to name the range from the commit S-ADVERSARIAL reviewed. It is not said whether a repeat overwrites reviews/DELTA_REVIEW.md or appends to it. S-INTEGRATE needs 'the commit range each review covered'.",
+   "suggested_fix": "State that each repeat appends a section with its own range, and that Done when holds when the sections together cover S-ADVERSARIAL's commit to HEAD without gaps."
+  },
+  {
+   "n": 8,
+   "where": "plan/DECISIONS.md D-094 (setCurrentProgram, restore sentence)",
+   "kind": "ambiguous / possibly unachievable",
+   "severity": "guess",
+   "text": "(a) setCurrentProgram 'may be called on the audio thread ... only writes the preset's values into the JUCE parameters (atomics), never ... locks'. But JUCE's notifying setter (setValueNotifyingHost) goes through AudioProcessor's listener lock and host callbacks. The implementer must guess whether to update the parameters without notifying the host (the host and GUI then go stale) or to break the no-lock rule. (b) For a restore with a missing or bad '#program' line, 'leaves the current program at 0' does not say whether the program is set to 0 when it was non-zero before. Nor does it say whether 0 then becomes 'the index set by the last setStateInformation'. If it does, a user who then picks preset 0 from the host menu gets no change. T-302 checks only fresh instances, so it does not settle either question.",
+   "suggested_fix": "Say explicitly how the values are written: e.g. set each parameter with setValue plus a deferred, message-thread host notification, or accept setValueNotifyingHost and drop 'never locks' for that call. Then say: 'a missing or bad line sets the current program to 0 and records no restored index'."
+  },
+  {
+   "n": 9,
+   "where": "plan/PLAN.md S-310 Outputs (README.md)",
+   "kind": "stale text left in deliverable",
+   "severity": "minor",
+   "text": "'The existing file gains ...' reads as append-only. The current README.md says 'The repository currently holds no implementation ... start at HANDOFF.md'. That would become false on the pull-request branch and contradict the install notes added below it.",
+   "suggested_fix": "Say 'replace the second paragraph of README.md with ...' and keep the licence line."
+  },
+  {
+   "n": 10,
+   "where": "plan/ENVIRONMENT.md section 1, 'TinySOL rows' paragraph; plan/PLAN.md S-REF action 4",
+   "kind": "count wording",
+   "severity": "minor",
+   "text": "ENVIRONMENT says 'The other columns are the same for all 12 rows' directly above a 14-row table. S-REF action 4 says '14 TinySOL accordion rows' but its parenthesis lists only the 12 MIDI values. The control rows' MIDI (57, 64) appears only in the table.",
+   "suggested_fix": "Write 'all 14 rows', and in S-REF list 'MIDI 48 ... 86, then 57 and 64 (controls)'."
+  }
+ ],
+ "mechanical": [
+  {
+   "check": "Every 'Depends on' ID in plan/PLAN.md is a defined step",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "Every R-### cited in plan/*.md and HANDOFF.md exists in premortem/RISK_REGISTER.md (R-001..R-077, no duplicates)",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "Every risk register row has 11 columns (77 rows)",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "Catch2 TEST_CASE counts: folk-tests 27 (10+6+11), folk-locale-tests 2, folk-perf 1, host_test.cpp 9",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "pytest counts (static AST count with parametrisations): 335 non-reference (33 tool checks: T-090 12, T-091 2, T-092 19), 16 reference",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "ctest count 7 (5 HostTest + folk-tests + folk-locale-tests; folk-perf excluded)",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "Pairs 14 and clips 28 stated consistently (D-053, GATES, S-340, S-LISTEN)",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "Both workflows parse as YAML; every uses: pins a 40-hex commit listed in plan/ENVIRONMENT.md section 1 (with matching action name)",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "sha256sum -c tests/FROZEN_MANIFEST.sha256: 34 files, all OK",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "TinySOL table in ENVIRONMENT section 1: 14 rows, 14 distinct 64-hex hashes, each path present in tests/data/tinysol-accordion.sha256 (689 entries, relative to refs/tinysol) with the same hash; note names match MIDI",
+   "passed": true,
+   "misses": []
+  }
+ ],
+ "summary": "All 10 mechanical checks passed. 10 items: 1 blocker, 4 guess, 5 minor. The serious ones: (1) the anchored TSan suppression form ending in '$' cannot match symbolised frames, which carry parameter lists, so the planned remedy for a JUCE-internal race cannot work; (2) the D-053 confirmation round has no defined seed, record name, round counting, 'confirm' branch or score rule; (3) S-LISTEN accepts a stale evidence branch after a failed marker run and does not handle build_evidence's exit 3; (4) D-094's no-lock setCurrentProgram conflicts with JUCE's notifying setter, and the missing-line restore case is ambiguous; (5) 'nm | grep -q' under pipefail can fail host-tsan with no defect."
+}

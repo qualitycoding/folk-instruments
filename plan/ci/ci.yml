@@ -212,7 +212,8 @@ jobs:
           for t in Harmonica Accordion Melodion Mandolin Bouzouki; do
             b="$(find build-tsan/plugins -type f -name "Folk${t}HostTest" | head -n 1)"
             test -n "$b"
-            nm "$b" | grep -q __tsan_init
+            nm "$b" > syms.txt
+            grep -q __tsan_init syms.txt
             xvfb-run -a "$b" "T-304*"
             n=$((n + 1))
           done

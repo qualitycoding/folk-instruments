@@ -34,7 +34,7 @@ The 689 extracted accordion files are hashed in the frozen list `tests/data/tiny
 
 ### TinySOL rows of the accordion reference set
 
-The other columns are the same for all 12 rows: `instrument` `accordion`; `source_url` `https://zenodo.org/api/records/3685367/files/TinySOL.tar.gz/content`; `licence` `CC-BY-4.0`; `licence_url` `https://creativecommons.org/licenses/by/4.0/`; `accessed` `2026-11-14`; `redistributable` `true`; ids `accordion-001` to `accordion-014` in the order below; `velocity`, `sets` and `author` as `S-REF` action 4 says.
+The other columns are the same for all 14 rows: `instrument` `accordion`; `source_url` `https://zenodo.org/api/records/3685367/files/TinySOL.tar.gz/content`; `licence` `CC-BY-4.0`; `licence_url` `https://creativecommons.org/licenses/by/4.0/`; `accessed` `2026-11-14`; `redistributable` `true`; ids `accordion-001` to `accordion-014` in the order below; `velocity`, `sets` and `author` as `S-REF` action 4 says.
 
 The 12 mf notes of D-050, then the two control notes of D-053 (MIDI 57 and 64, not among the 12), all chosen by D-052's tie rule from `TinySOL_metadata.csv` (md5 above) and hashed from the files of `TinySOL.tar.gz` (md5 above) on 2026-11-15; the first was also checked against the archive member directly. `S-REF` copies these into `references/index.csv`; if a fresh download gives a different hash, rule DR-11 applies as for any reference, except that losing any of these 12 rows is a halt with `BLOCKED.md` (T-200 and gate G-L3 depend on all 12); the row is never edited to match.
 

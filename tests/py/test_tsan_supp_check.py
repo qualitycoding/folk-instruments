@@ -18,11 +18,11 @@ def run(tmp_path, text):
 
 def test_T092_missing_or_exact_juce_entries_pass(tmp_path):
     assert run(tmp_path, None) == 0
-    assert run(tmp_path, "# JUCE message queue, see DEVIATIONS.md\n\nrace:^juce::MessageManager::runDispatchLoop$\nrace:^juce::Thread::threadEntryPoint$\nrace:^juce::detail::Foo::~Foo$\n") == 0
+    assert run(tmp_path, "# JUCE message queue, see DEVIATIONS.md\n\nrace:^juce::MessageManager::runDispatchLoop(\nrace:^juce::Thread::threadEntryPoint(\nrace:^juce::detail::Foo::~Foo(\n") == 0
 
 
 @pytest.mark.parametrize("line", ["race:juce::MessageManager::runDispatchLoop", "race:^juce::AudioBuffer", "race:juce::AudioBuffer",
-                                  "race:^juce::A$", "race:^juce::MessageManager::runDispatchLoop", "race:juce::Thread::run$", "race:*", "race:juce::*", "race:juce", "race:folk::Engine::process", "race:FolkProcessor::processBlock",
+                                  "race:^juce::A(", "race:^juce::MessageManager::runDispatchLoop", "race:^juce::Thread::run$", "race:juce::Thread::run(", "race:^juce::Thread::run(int", "race:*", "race:juce::*", "race:juce", "race:folk::Engine::process", "race:FolkProcessor::processBlock",
                                   "called_from_lib:libjuce.so", "deadlock:juce::CriticalSection::enter", "mutex:juce::SpinLock",
                                   "race_top:juce::AudioProcessor::processBlock", "race:juce::folkHelper", "race:std::vector", "race:juce::Thread*"])
 def test_T092_broad_or_foreign_entries_fail(tmp_path, line):
