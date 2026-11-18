@@ -48,7 +48,7 @@ Categories: U unit, I integration, O operational, S security, P performance, R r
 | T-304 | same (also run under ThreadSanitizer in job `host-tsan`) | I, S | SC-01, SC-11 | 1 per plugin |
 | T-090 | `tests/py/test_metrics_selfcheck.py` (checks `tests/py/metrics.py`) | K | the measurements themselves | 12 |
 | T-091 | `tests/py/test_pluginval_log_check.py` (checks `tests/ci/check_pluginval_log.py`) | K | T-300's check | 2 |
-| T-092 | `tests/py/test_tsan_supp_check.py` (checks `tests/ci/check_tsan_supp.py`; with the canaries `tests/ci/tsan_canary.cpp` and `tests/ci/tsan_canary_named.cpp` in job `host-tsan`) | K | T-304's sanitiser run | 29 |
+| T-092 | `tests/py/test_tsan_supp_check.py` (checks `tests/ci/check_tsan_supp.py`; with the canaries `tests/ci/tsan_canary.cpp`, `tests/ci/tsan_canary_named.cpp` and `tests/ci/tsan_canary_scope.cpp` in job `host-tsan`) | K | T-304's sanitiser run | 29 |
 | T-100 to T-109 | `tests/py/test_reeds.py` | I | SC-03, SC-04; C-001 to C-004, C-053, C-059, C-062 | 44, 9, 9, 9, 3, 3, 3, 3, 6, 3 |
 | T-110 to T-114 | `tests/py/test_harmonica.py` | I | SC-05 | 6, 30, 10, 1, 1 |
 | T-120 to T-125 | `tests/py/test_accordion.py` | I | SC-06 | 14, 7, 2, 2, 1, 1 |
@@ -97,7 +97,7 @@ Every test with a numeric threshold fails the build when missed: all are asserti
 
 The matrix is produced by step `S-003` from `plan/ci/ci.yml` and recorded in `plan/ENVIRONMENT.md` section 5. The mutation job placement rule does not apply (D-004).
 
-## 5. State at the freeze (red verification, 2026-11-15, planning sandbox, against the stubs; re-frozen after pre-mortem round 1 with T-016, T-211 and the new T-302 to T-304 cases, after round 2 with T-092, the TinySOL hash list and a stronger T-302 program case, after round 3 with an anchored T-092 checker, after round 4 with the named canary and the parenthesis-anchored form, and after cold read 9 with the top-frame `race_top:` form)
+## 5. State at the freeze (red verification, 2026-11-15, planning sandbox, against the stubs; re-frozen after pre-mortem round 1 with T-016, T-211 and the new T-302 to T-304 cases, after round 2 with T-092, the TinySOL hash list and a stronger T-302 program case, after round 3 with an anchored T-092 checker, after round 4 with the named canary and the parenthesis-anchored form, after cold read 9 with the top-frame `race_top:` form, and after round 5 with the scope canary; 36 frozen files)
 
 | Suite | Result |
 |---|---|

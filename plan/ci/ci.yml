@@ -207,10 +207,17 @@ jobs:
           TSAN_OPTIONS="halt_on_error=1 suppressions=$PWD/named-ok.supp" ./tsan-canary-named
           status=0; TSAN_OPTIONS="halt_on_error=1 suppressions=$PWD/named-miss.supp" ./tsan-canary-named || status=$?
           test "$status" -eq 66
+      - name: Canary - an accepted line for a JUCE frame low in the stack does not hide a race in non-JUCE code
+        run: |
+          c++ -fsanitize=thread -O1 -pthread tests/ci/tsan_canary_scope.cpp -o tsan-canary-scope
+          echo 'race_top:^juce::ScopeThread::entry(' > scope.supp
+          python3 tests/ci/check_tsan_supp.py scope.supp
+          status=0; TSAN_OPTIONS="halt_on_error=1 suppressions=$PWD/scope.supp" ./tsan-canary-scope || status=$?
+          test "$status" -eq 66
       - name: No source or build file switches the sanitiser off
         run: |
-          rc=0; grep -rnE "no_sanitize|fno-sanitize|__tsan_ignore|tsan_ignore" CMakeLists.txt plugins core tests/juce || rc=$?
-          test "$rc" -eq 1   # 1: nothing found; 0: an exclusion exists; 2: grep failed (for example a moved path)
+          rc=0; grep -rnE "no_sanitize|fno-sanitize|__tsan_ignore|tsan_ignore|AnnotateIgnore|AnnotateHappens|TSAN_OPTIONS|CMAKE_CXX_FLAGS[^\n]*REPLACE|string *\( *REPLACE[^)]*sanitize" --include=CMakeLists.txt --include='*.cmake' --include='*.cpp' --include='*.h' --include='*.hpp' --exclude-dir=.git --exclude-dir=research --exclude-dir='build*' --exclude=tsan_canary.cpp --exclude=tsan_canary_named.cpp --exclude=tsan_canary_scope.cpp . || rc=$?
+          test "$rc" -eq 1   # 1: nothing found; 0: an exclusion exists; 2: grep failed
       - name: Linux packages
         run: |
           sudo apt-get update
@@ -232,6 +239,16 @@ jobs:
             n=$((n + 1))
           done
           test "$n" -eq 5
+      - name: Every compiled object of the host tests is instrumented (R-088)
+        run: |
+          bad=0; count=0
+          for o in $(find build-tsan -name '*.o' \( -path '*Folk*HostTest*' -o -path '*folkdsp*' \)); do
+            count=$((count + 1))
+            nm "$o" > obj-syms.txt
+            if ! grep -q __tsan_func_entry obj-syms.txt; then echo "not instrumented: $o"; bad=1; fi
+          done
+          test "$count" -gt 0
+          test "$bad" -eq 0
 
   reference:
     runs-on: ubuntu-24.04

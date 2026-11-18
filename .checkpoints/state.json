@@ -1,7 +1,7 @@
 {
  "run_id": "gen-20261114T004707Z-folk-instruments-vst",
  "branch": "gen-20261114T004707Z-folk-instruments-vst",
- "sequence": 21,
+ "sequence": 22,
  "protocol_versions": {
   "core": "4.0",
   "modules/software-ci": "1.0",
@@ -70,15 +70,15 @@
   }
  ],
  "phase": "4",
- "subphase": "4-premortem",
+ "subphase": "4.7-audit",
  "rounds": {
   "research": 6,
   "exploration": 0,
   "proof_review": 0,
   "cold_read": 5,
-  "premortem": 4,
+  "premortem": 5,
   "audit": 0,
-  "cold_read_reruns": 3
+  "cold_read_reruns": 4
  },
  "completed": [
   "0.1",
@@ -124,7 +124,7 @@
  "artifacts": {
   ".gitignore": "6f4ff2992c4e2558837e2e09c39ed2bba140658755b22d046aab810ea2c90ca0",
   "CMakeLists.txt": "73ba001399d2d9590b588ad45c6a7957cba210d8aadb1345aca0b4a133f6ddba",
-  "HANDOFF.md": "6cdaba5cb6cfa168a1565330762a4c78611cd8539b71a7a376d9e4a0a6c8b41e",
+  "HANDOFF.md": "134d5494ea103943cf1e0fbbebbe99440386925885a9516c9cc5f54124dc409e",
   "LICENSE": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
   "README.md": "07dcf6acf9c8fdf11622a8ec69b475ce63ef2074b33e42b20b65d82e87ec87ba",
   "core/include/folk/engine.h": "5785d6175b312e7343ec87f0d5e61f95f25d2ba5f36efe1f1bd7eba49ba0a6b9",
@@ -278,18 +278,19 @@
   "lessons/L-20261115T131500Z-pycache-committed-before-gitignore.md": "59236cdff3b0768b97a7728cc1804ac546cda58d418a6dfdac771cb9757bf175",
   "lessons/L-20261115T133000Z-source-identity-not-checked.md": "9b88becdac46342882923aa60e19bc64761665cf802a043ba0f9d9d4ab6b9024",
   "plan/ASSUMPTIONS.md": "6f946034fca921ea643c97179077ea0e944d0cab35a90e004c4df071447e3570",
-  "plan/DECISIONS.md": "870d6030f797cb47fb428ca40e836e6d2edf4c4cf45db7f966e9fe04df8c8a93",
-  "plan/ENVIRONMENT.md": "c9349b4e70e70fa92efd203761972eea487a3589ec6ffc12630ea6875823115e",
-  "plan/GATES.md": "011a0162a3ae92a55b624f350289f300978601007c9d0e387b11903c3716b7e3",
-  "plan/PLAN.md": "8e74ec628e0e00ea767ceb83e43a66df1e9122fd0e905d61936e680b30e6501a",
+  "plan/DECISIONS.md": "36738a673a337e08fcf15fcb3d3507adadfaf876b670938ad08831785d5a5083",
+  "plan/ENVIRONMENT.md": "7de54b195968d7c03b4cae64745cde0400eab89cc0f5e927df2f463dcafbb0c4",
+  "plan/GATES.md": "e8d70f609ad660fca80524f44fb6aa26237c1836cfcf5eff5551928a1f0624bb",
+  "plan/PLAN.md": "6226d05f88749b9794cc972534b8c3141f0cecfb8c72d14775f9e485847725f8",
   "plan/PROFILE.md": "723f0c5761439ea504a71d064e2ea63fefef69c7185578a9d9fe0a5277842d37",
   "plan/TEMPLATES.md": "a7cab6ff0a71b6a49d6a136b3ac0920368645d58396b30ef7b3e48eea587fb23",
-  "plan/TRACEABILITY.md": "d7b5cbe649ad8dde8f1eb9cfe06448366d8e78e82a923a1b4f4cb10a24a927da",
-  "plan/ci/ci.yml": "8cf3ee2f58a93c55bd5fcbeb45100921eb1a461912ed4bd88e89760aa2597377",
+  "plan/TRACEABILITY.md": "eb89c1e214fdaa2a3086ee7aaf04bca292d7879b29d5b50992d0e7ef6f3f729b",
+  "plan/ci/ci.yml": "591760e7d13f7a9f3f59d39f13fd2a91b21bf28d76fd0323e39da1bfa0df332d",
   "plan/ci/gate-evidence.yml": "ba1640f920caf382f9c65a4b754c017c84e231ab3f27d7e942a75e3ec3be946a",
   "plugins/CMakeLists.txt": "aea436c6947dbef926105daf2ee3808eac31e1f83adf994b6cc213bef3a0bd06",
   "plugins/common/FolkProcessor.cpp": "7ec03bb17da1970f331931347d44b98505eb4d3009e314eb5bc6dd3400fcefb6",
-  "premortem/RISK_REGISTER.md": "1df823ae85947c848667a29d969139dd0dffe870a252c1093150e8a3709887b9",
+  "premortem/CONVERGENCE.md": "20915c2df49cbf732a4e92c2f4d94653315a44a63eac125a9666f8d1a0ba28ea",
+  "premortem/RISK_REGISTER.md": "6cd5a3a5fb2af05ae586fbfedf284e14525109dc8dd8c06de1831b8952e0bb46",
   "premortem/round-1.json": "cc5ce63ac3e2635981f4d9ff0bdc73381e645673214caa0ecef528a223223135",
   "premortem/round-1.md": "9b82972659afe91d063638dd06aa0dd9a713d92a827f75db6a5604307dec3e31",
   "premortem/round-2.json": "3c693882525a6b8d98027963f8e103b67f8bbb45aca69f9bda5dd89707630dfc",
@@ -298,6 +299,8 @@
   "premortem/round-3.md": "2255401811f98229651d4e8cf5a933ee5cd9278024027448f0f1d87c4b47b7ca",
   "premortem/round-4.json": "7c50c4cc8769520a0785f8bd48b0f99fbbcad638d381ea16d2cdecdb6388995c",
   "premortem/round-4.md": "4e88e391c111669f15373be727c6770165704eb9f472fa0566fb073462c8c128",
+  "premortem/round-5.json": "ae7f177e83f3107a6a5de317582a095a131e3b5c0869204f7a90e69cf829c051",
+  "premortem/round-5.md": "ec088483c6d5dcc09ff5a8c739c5b6ab19b832b1495b48470b928c0e17015773",
   "research/BRIEF.md": "f7e611004b94fd008a9ebc73e1040e703fa20e839c9118ab24cd09014bde4533",
   "research/INPUT_owner_research_file.md": "c3c9fd35dfbe6140105cefc75e5abfcabc75e005747949ac8ffb6d19670ad356",
   "research/PRIOR_KNOWLEDGE.md": "ad323f58200ad2e28b5ab89e5d579dde4389df1ddc52f0b69471f543a7f565b5",
@@ -318,6 +321,7 @@
   "research/coldread/coldread-6-mechanical.json": "fefb98461e51cbdd2e9e45e322fbd98907e83837a96e3a62bad712caa36d4751",
   "research/coldread/coldread-7.json": "3fd2c800235ca5593f3f4523384b84f8ab4b322ba505a1824cb61ec4d71c21d1",
   "research/coldread/coldread-8.json": "8e4410af158763668fa0642cac8553d5f6154de20a1180d6160b6272f3ddf21e",
+  "research/coldread/coldread-9.json": "eb9a8dc72e24104ff393fd4bca43ea422a5f721f06b32024a5e6c4bed10b8906",
   "research/r0/knowledge_digest.json": "538556406fc2fdcf3aad62a7b93b524398ce3a23d2c3e2df0c8263e0e3551c9f",
   "research/r0/knowledge_highlights.md": "21e18a96b6585b1e268a520e9d20a14ebf230ebf5e98a3cdba0a200f3fe0ef7c",
   "research/r0/knowledge_relevance.json": "505e80ef6179a2ba5e0abce530f119f6aaa49c6444566a034673c72a2fafdf8a",
@@ -441,12 +445,13 @@
   "reviews/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "scripts/check_knowledge_schema.py": "eab49ba4a33cf1a219a5af0b8175b519f8ca90c4b532389e82366043a90314ca",
   "scripts/checkpoint.py": "5f170045d31bb94cd69b3a73b0f1108d33654fb5d746efec33a49516d14de759",
-  "tests/FROZEN_MANIFEST.sha256": "90a07eb7088b9ee5b62324e092f967bde43bc9a62c85a9251f76c76402d26595",
+  "tests/FROZEN_MANIFEST.sha256": "375ae64c2d6cd71bfd44d341502cc087098fbfcc1f3a2b713fcab3f830d8a4c0",
   "tests/README.md": "9fee1bf2d34e3fe057a8bf8daa35916b03588be8fc6dd0288af80985742ff349",
   "tests/ci/check_pluginval_log.py": "849a33e7b74f16cdcad194f260c5943a93e4667687a55503128f7ef146845945",
-  "tests/ci/check_tsan_supp.py": "69cb06a54f793565c6dba1f93acf9a46a72e56e783e348f4453566101243b4ba",
+  "tests/ci/check_tsan_supp.py": "fbc703e19e5dbd633ecf8f747797548249551bd867354ca387f6a255c40c27a3",
   "tests/ci/tsan_canary.cpp": "5e889eceacdaf273ea8514a146d9d027a5fae6f9be0495d8bacbf6727985162b",
-  "tests/ci/tsan_canary_named.cpp": "0978e66115b6b2372f654fa81cbf2f144393dd849000563bdae4c877734dbed8",
+  "tests/ci/tsan_canary_named.cpp": "aa44d543ab7f4eeb32c4aad730b3350067994301a89c64e13de0edbb52bf136c",
+  "tests/ci/tsan_canary_scope.cpp": "9e7c4b28a0884fcd8a43339a1ba196d0f67c663fd388d1deb4794b9e477967a4",
   "tests/cpp/param_table.h": "e0bbd7c6ae2694e390697114791ad37b355af711662f8bc1ce0d0c6c93347435",
   "tests/cpp/test_engine.cpp": "c3fa29d588cd27019033ef20c555ba3e575da09e9d6170993cc8e44c2fe2f8f6",
   "tests/cpp/test_locale.cpp": "9a24574624c3756cfbc728b6cd5a2b9c72b3aff280ecdfef1ec6e2ac810369e0",
@@ -476,7 +481,7 @@
   "tests/py/test_reeds.py": "ffbc303b9d6d21bb1dd44304712433bea912106be62cdf704c161879d2666223",
   "tests/py/test_reference.py": "85c4cc272ea164dcb3936a00709ab87e2432c5999da13edc970ba797e000e012",
   "tests/py/test_strings.py": "9b6a1aba3f4b0e12535e1894906cee3f987c59743c00594ff381ae9846cf2c92",
-  "tests/py/test_tsan_supp_check.py": "66cad6ed53adb89332be2846a17cdc77fe0423ca537ecad5fb91ed50dc4ed9a5",
+  "tests/py/test_tsan_supp_check.py": "9e81f191f60ed2d6983bd0e47801a3aca0ad561cc87a72b5224c82dca9a83dd3",
   "tests/pytest.ini": "50062f53cc963237537db0afd92fbb9312e24695f7d4760559e6acb41c8e2a28",
   "tests/requirements.lock": "95312fb46f415d0ea839f4b8fd2f47fca4e36a3d57cb917a03053bd487316394",
   "tests/requirements.txt": "1bcb1e6cd2e98cc5be97e3759ce22086a76d57213e49357a4cca62b5005d14c8",
@@ -488,11 +493,11 @@
   "tools/make_demos.py": "3980052e55916891e59f73cc79b1587a242bed6bf34146c92f89485d9d2ccf7c"
  },
  "in_flight": {
-  "operation": "pre-mortem round 5 (last) and cold-read re-run 4 (parallel)",
-  "started_at": "2026-11-18T17:00:00Z",
+  "operation": "cold-read re-run 5 and 4.7 assumption audit (parallel)",
+  "started_at": "2026-11-18T20:00:00Z",
   "expected_outputs": [
-   "premortem/round-5.md",
-   "scratchpad/coldread-9.json"
+   "scratchpad/coldread-10.json",
+   "premortem/ASSUMPTION_AUDIT.md"
   ],
   "safe_to_repeat": true
  },
@@ -830,8 +835,12 @@
   "K-20261115T010102Z-c-063-the-reed-model-tolerates-only-moderate-changes-o",
   "K-20261115T020000Z-source-register-folk-instruments-vst"
  ],
- "updated_at": "2026-11-18T15:48:48Z",
+ "updated_at": "2026-11-18T16:03:05Z",
  "freeze": {
   "refrozen_after": "pre-mortem rounds 1 and 2: T-016, T-211, T-092, T-302 to T-304 cases, TinySOL hash list; 34 frozen files"
+ },
+ "phase4": {
+  "result": "round limit reached; every counted finding mitigated; no Critical or High (expected/plausible) open; not BLOCKED (4.6 does not apply); round-5 mitigations not re-reviewed by a sixth round",
+  "record": "premortem/CONVERGENCE.md"
  }
 }
