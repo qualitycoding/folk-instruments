@@ -1,6 +1,20 @@
 # Plan
 
-<!-- STATUS HEADER: written by the planner before the final push -->
+**Status: READY.** Planned on 2026-11-14 to 2026-11-19 under the planning protocol core v4.0 with modules `software-ci` v1.0, `audio` v1.0 and `ephemeral` v1.0 (`qualitycoding/skills` at `a20ed73`); rigour `standard`. Active profile: `software`, with mode flag `audio`; environment class `ephemeral`.
+
+| Item | Count |
+|---|---|
+| Claims (65) by confidence | verified 31, corroborated 4, single-source 26, inferred 4; load-bearing below the bar: 7 (C-012, C-013, C-014, C-017, C-027, C-039, C-051), each carried as a risk |
+| Tests by category (37 test IDs; a test can carry two categories) | integration 15, unit 10, security 9, operational 3, tool check 3, reference 2, performance 1, plugin validation 1 |
+| Test cases at the freeze | Catch2: 27 (`folk-tests`), 2 (`folk-locale-tests`), 1 (`folk-perf`), 9 per host program (5 programs); pytest: 345 (`not reference`; 43 tool checks pass at the freeze, 302 fail against the stubs) and 16 reference tests; 36 frozen files |
+| Steps | 28 (`S-000` to `S-KNOW`) |
+| Gates | 10: G-P1, G-P2 (pilot listening), G-L1 to G-L5 (listening validation), G-002 (publishing; opened by no step), G-003 (stores), G-004 (owner acceptance of a review finding; only when needed) |
+| Risks by severity (146) | Critical 11 (all mitigated); High 30 (29 mitigated, 1 accepted: R-010); Medium 59; Low 46; 5 speculative |
+| Assumption audit (88 items) | confirmed 49, falsified 3 (resolved by D-095), unverifiable 36 (R-098 to R-133) |
+| Review steps | `S-REVIEW`, `S-ADVERSARIAL`, `S-REVIEW-DELTA` (fresh-context reviewers); mutation testing not planned (D-004), so no mutation floor |
+| Loops against their bounds | research 6 of 6 (ended at the limit, not saturated); cold read 5 of 5 plus 5 re-runs after plan changes; pre-mortem 5 of 5, then one round on the audit's changes (protocol 4.7.4); assumption audit 1 pass plus a re-audit of the changed set |
+
+Pre-mortem note: round 5, the last of the loop, still found High risks; all were mitigated after the round and are not open (`premortem/CONVERGENCE.md`), but those mitigations were checked by a cold-read re-run and by running them in the planning sandbox, not by a further pre-mortem round of the loop.
 
 Read `HANDOFF.md` first. Conventions used in every step:
 

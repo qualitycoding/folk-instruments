@@ -1,7 +1,7 @@
 {
  "run_id": "gen-20261114T004707Z-folk-instruments-vst",
  "branch": "gen-20261114T004707Z-folk-instruments-vst",
- "sequence": 23,
+ "sequence": 24,
  "protocol_versions": {
   "core": "4.0",
   "modules/software-ci": "1.0",
@@ -69,8 +69,8 @@
    "reason": "the owner switched the session model; the planning session (T1) continues on Opus. Rule 5: T1 is filled by the highest available model; recorded here and in plan/PROFILE.md."
   }
  ],
- "phase": "4",
- "subphase": "4.7-audit",
+ "phase": "5",
+ "subphase": "5-final",
  "rounds": {
   "research": 6,
   "exploration": 0,
@@ -100,7 +100,10 @@
   "3.8",
   "3.9",
   "3.10",
-  "3.12"
+  "3.12",
+  "4",
+  "4.7",
+  "5"
  ],
  "pending": [
   "3.6",
@@ -230,7 +233,7 @@
   "knowledge/K-20261115T010022Z-c-023-the-keyboard-wind-instrument-is-sold-as-melodica.md": "14dece7ad525f3ad31728ae380e40125129abae43a8b236f925c3261a759b5dc",
   "knowledge/K-20261115T010023Z-c-024-common-melodica-ranges-are-f3-to-f6-37-keys-and.md": "c9a18992b5540f9c859b242a30f02c7bb507e73eca81490e7de62e7a6117c7cd",
   "knowledge/K-20261115T010024Z-c-025-no-peer-reviewed-or-thesis-study-specific-to-the.md": "7a1b2c8aea38817571298ddfa48e5f731b523e933d0130b51ec48eca157d7dbb",
-  "knowledge/K-20261115T010025Z-c-026-the-partials-of-a-stiff-string-are-f-n-n-f0-sqrt.md": "90b1c8cf910dca9bf201cdadf12f5d9de28a0784a5eee2ecd9438cec345884d2",
+  "knowledge/K-20261115T010025Z-c-026-the-partials-of-a-stiff-string-are-f-n-n-f0-sqrt.md": "dd32524de381ba2b21140184c7e59f66165431035bde8aa1801f785d2b87a0e3",
   "knowledge/K-20261115T010026Z-c-027-the-loss-factor-of-string-mode-n-can-be-modelled.md": "6515da999ec7a5b343b0be1ddaff787dac4fe3fc7216c0898a83f0fd326bebf2",
   "knowledge/K-20261115T010027Z-c-028-two-strings-of-a-course-that-share-a-bridge-form.md": "4e63e97d2a8c0d498fab8e254863b9860e0c838592fe5ec6770ef23a666780d0",
   "knowledge/K-20261115T010028Z-c-029-for-the-bowl-back-mandolin-woodhouse-measured-a.md": "5a4f13401de5814825f6498c5aa4e6ad83e8e6b3973ef4afab6de1e5946fe525",
@@ -268,7 +271,7 @@
   "knowledge/K-20261115T010100Z-c-061-under-the-similarity-scaling-the-reed-s-source-s.md": "752333ecafd6a7e3b07c2b59188d18280e8c603733fa025a88ce16796cebd7a6",
   "knowledge/K-20261115T010101Z-c-062-with-the-breath-law-p0-1250-pa-b-1-5-and-the-ref.md": "a5d70e949410bc02f54bd39cd9e8792c3b472ee1f364808292e8b25a774dbcdc",
   "knowledge/K-20261115T010102Z-c-063-the-reed-model-tolerates-only-moderate-changes-o.md": "84cde85fd08134be0f88662dad12f30d3f930285949316d476c9a6af984f7b25",
-  "knowledge/K-20261115T010103Z-c-064-a-reference-implementation-of-the-string-model-a.md": "7074f372e46697c9e54cf57f423345bcd36a365fbb1b85008202a7f6c2b6a64b",
+  "knowledge/K-20261115T010103Z-c-064-a-reference-implementation-of-the-string-model-a.md": "0c079e9f41bb362843bdbeff404001474b36efea7d2b4954b9e7659284845039",
   "knowledge/K-20261115T010104Z-c-065-with-several-similarity-scaled-reeds-drawing-fro.md": "6e12284db87ee1ae4c4169d666768b88f1d3b4d330a646e7c843ef341b1a7dd0",
   "knowledge/K-20261115T020000Z-source-register-folk-instruments-vst.md": "524278f50d12209f808dbc965e4d07ec10b49fc38078befcdce2d710b3858eba",
   "knowledge/K-20261119T090300Z-cpp-streams-follow-global-locale-not-setlocale.md": "3a9e6011d96b33b50c4aa99b62ffc0ff01dbf802bd8d633c444a2dd1e414ee91",
@@ -284,20 +287,20 @@
   "lessons/L-20261119T090100Z-tsan-func-entry-not-in-every-object.md": "7e64f98c81a10e5f26b91c006bb088ce800e0719515743b3258be3707bdead90",
   "lessons/L-20261119T090200Z-decision-text-rounded-spike-figure.md": "30b4439d05a6350728f62505e5a2d1fc1b1e62f23b046da5a2c2c56fc4c475d7",
   "plan/ASSUMPTIONS.md": "6f946034fca921ea643c97179077ea0e944d0cab35a90e004c4df071447e3570",
-  "plan/DECISIONS.md": "9ff41db482ce745201c3a184f1045a6ab55b943a9a471a9050feba3eed5ed6a7",
-  "plan/ENVIRONMENT.md": "6eb922f2f0cbb8b5fe7378626f252e22cb51df6f2815704297a04cb6de79f62e",
-  "plan/GATES.md": "0f64c85290bfabaf6a477450bc97f43061d5decdd417b980cbad8d716a41d4e5",
-  "plan/PLAN.md": "a6fe275318d609f5139e92b17f9d6fd9fd9da2bbc5ad579985e9a1b55af3df7b",
+  "plan/DECISIONS.md": "2a4397e9fcd2425abc9e5c1ce8681969e5c766adbf6e66af3fd0631485bfcbf9",
+  "plan/ENVIRONMENT.md": "9d646a7bdb3da94c9ea4c01baf8d586fe440116e60ff6a397e9faef8007e6a05",
+  "plan/GATES.md": "3dfeeb97c9b7be3b878f4db887fe08cdb95979e4b4ebfe34723ad94dfc2abd18",
+  "plan/PLAN.md": "15ef9a7a869344200ca19f8a7fa95110e1136028b0cf2d1dff18db92967fa460",
   "plan/PROFILE.md": "723f0c5761439ea504a71d064e2ea63fefef69c7185578a9d9fe0a5277842d37",
   "plan/TEMPLATES.md": "a7cab6ff0a71b6a49d6a136b3ac0920368645d58396b30ef7b3e48eea587fb23",
-  "plan/TRACEABILITY.md": "b1e7718fd4c63dc011e7db3108c4c5c85927e832c58b477df0037fde8fee6e18",
-  "plan/ci/ci.yml": "05123f24e40fd400bd36f46f88b86685cf89e0476659912d6aece29d0ed7cc38",
+  "plan/TRACEABILITY.md": "04b07b46973a224b6a0882ef2913e1cdce45d25e6b25a69b84185fc82da69a5a",
+  "plan/ci/ci.yml": "ddadf2d420d1f37f1d4e7915fb336bdf6e9d223e9e6622a1058d83fcd0b7c823",
   "plan/ci/gate-evidence.yml": "ba1640f920caf382f9c65a4b754c017c84e231ab3f27d7e942a75e3ec3be946a",
   "plugins/CMakeLists.txt": "aea436c6947dbef926105daf2ee3808eac31e1f83adf994b6cc213bef3a0bd06",
   "plugins/common/FolkProcessor.cpp": "7ec03bb17da1970f331931347d44b98505eb4d3009e314eb5bc6dd3400fcefb6",
-  "premortem/ASSUMPTION_AUDIT.md": "4b4638d8dd496f7f79533d1d1d97eb4d669304716a4463e71beab06c63b93f6b",
-  "premortem/CONVERGENCE.md": "fc0f83216981ff2e1627818a67f46e8d94633a591716a67df4234b9b88f64ecc",
-  "premortem/RISK_REGISTER.md": "6a05179d783093f7fee6e88af8eecdae5d03dc17f8d14061dff81fab484bedd8",
+  "premortem/ASSUMPTION_AUDIT.md": "79a40cd348b2a2940b530722178d1c64aaf6d05597506e409883be5ac0ac11f7",
+  "premortem/CONVERGENCE.md": "72c01b7cbce5193fb93f48db8da322aa90da618a5bd4df3ffa29b932f3b1965e",
+  "premortem/RISK_REGISTER.md": "1a0328298b7c16d741055b4221e77435778820cb4b37fb0a92d3ca4c1ea3e90c",
   "premortem/assumption-audit.json": "2155416d92c089352125e604bcef8d9cf40bbc3a9dd3f7a21b87aac70606793b",
   "premortem/round-1.json": "cc5ce63ac3e2635981f4d9ff0bdc73381e645673214caa0ecef528a223223135",
   "premortem/round-1.md": "9b82972659afe91d063638dd06aa0dd9a713d92a827f75db6a5604307dec3e31",
@@ -309,15 +312,18 @@
   "premortem/round-4.md": "4e88e391c111669f15373be727c6770165704eb9f472fa0566fb073462c8c128",
   "premortem/round-5.json": "ae7f177e83f3107a6a5de317582a095a131e3b5c0869204f7a90e69cf829c051",
   "premortem/round-5.md": "ec088483c6d5dcc09ff5a8c739c5b6ab19b832b1495b48470b928c0e17015773",
+  "premortem/round-6.json": "2f00796aa365a9ec20c78d6a0501776043a889d8aa80de20b552314a9ebd5fd2",
+  "premortem/round-6.md": "1f751c79ac96ed333676f406a934cfe176869624775321ce03fd198916bb9502",
   "research/BRIEF.md": "f7e611004b94fd008a9ebc73e1040e703fa20e839c9118ab24cd09014bde4533",
   "research/INPUT_owner_research_file.md": "c3c9fd35dfbe6140105cefc75e5abfcabc75e005747949ac8ffb6d19670ad356",
   "research/PRIOR_KNOWLEDGE.md": "ad323f58200ad2e28b5ab89e5d579dde4389df1ddc52f0b69471f543a7f565b5",
   "research/QUESTIONS.md": "738b15476df12b778f75625af7b46b4443d5abff82075718449a1ba9b4cbe829",
   "research/SOURCES.md": "371bf94458f96b6a45c262f855cc3160d6eae337de3ebdc19bc18e78f222e173",
-  "research/claims.json": "da5f2d68b1d01ca3f85e0d4f3f6af424c445cda0fe01ea0709771265a5563975",
+  "research/claims.json": "ea80b662c3070d991eeafe010a8983cd5bd0509e8ce0af54ad6d6ad9ab555e58",
   "research/coldread/coldread-1-dryrun.json": "4195256ffc25ea8dd96ced1ea2a00ccaf7d4ed9e56be2b9866cd89086687c2e2",
   "research/coldread/coldread-1-mechanical.json": "d8590df5f106121ad4d905041c2e6f308e255bca276128dc60915cdb74c1d2cb",
   "research/coldread/coldread-10.json": "a7a58b5306deea76eb9879c22a2054008ae7deeff78e5bb878d164ba20943d0b",
+  "research/coldread/coldread-11.json": "7e80217352860b5356f98fb36a8a12d93bface24f802ec9a3d98be495b4e2b9d",
   "research/coldread/coldread-2-dryrun.json": "779e9b2ccdcf1291ffa3b0a35c223912dff4cb1cbcc584e894af0b82f017f482",
   "research/coldread/coldread-2-mechanical.json": "c67c50f47498a7332a668adb553e811add850009bdf8808a41277ce3a3d39c83",
   "research/coldread/coldread-3-dryrun.json": "043c4e415f6c7b52ef8bed12888fb609ca4f422e5af139abe441be210194b5d8",
@@ -448,13 +454,13 @@
   "research/spikes/s18-plenum-filters/output.json": "e38d739a9d868296eb31515ef592512b9d5bb9eec26d444e8d2b1471426b7e0a",
   "research/spikes/s18-plenum-filters/plenum.py": "f60dd5631442cd26ed219cd092b289e59c875a9a0f2d5c6a6c566b30192fa1a0",
   "research/spikes/s18-plenum-filters/rerun.log": "dd7d8af71371de22b548316d020c3f1e36cf53ca5fcf6c49bbaff5c31890c00d",
-  "research/tools/build_claims.py": "9bb7156a6d6bb62bcd2618c173050cb5a276d1cfc9ca92490a0d68ab01c38cc7",
+  "research/tools/build_claims.py": "5c08c8d1928b93ad12e6eefd8b12addc4f5ed541643f5ee618c62d3d5ff9e493",
   "research/tools/build_records.py": "f4790026b0c4f5b08bfb583c7b4cf0ef7ff7304cfa938acc54ef978c18c4ce7d",
   "research/tools/check_register.py": "001b17208f69eed99b4a741b943b9e2d35448155c9aa6487e7b64fdd8755ceb8",
   "reviews/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "scripts/check_knowledge_schema.py": "eab49ba4a33cf1a219a5af0b8175b519f8ca90c4b532389e82366043a90314ca",
   "scripts/checkpoint.py": "5f170045d31bb94cd69b3a73b0f1108d33654fb5d746efec33a49516d14de759",
-  "tests/FROZEN_MANIFEST.sha256": "0f274520f0df6a2cc86788c37e3a26a813920bb75fe40a3af303670cd2d413ac",
+  "tests/FROZEN_MANIFEST.sha256": "75debb46e2f5d7a5f83413dea9ab384bea5ba572c5780e2eb811e443b99d35e7",
   "tests/README.md": "9fee1bf2d34e3fe057a8bf8daa35916b03588be8fc6dd0288af80985742ff349",
   "tests/ci/check_pluginval_log.py": "849a33e7b74f16cdcad194f260c5943a93e4667687a55503128f7ef146845945",
   "tests/ci/check_tsan_supp.py": "fbc703e19e5dbd633ecf8f747797548249551bd867354ca387f6a255c40c27a3",
@@ -476,7 +482,7 @@
   "tests/fixtures/huge_line.events": "cd0154dd1f908c4c86c299b6acfd2cafe0953527223c8a608523060db03cdaa5",
   "tests/fixtures/missing_end.events": "a11e9bb0163fe712152f704173d58c25e1b2fe4d5866021b22b221e557b6fa6d",
   "tests/fixtures/negative_time.events": "ed0d463af2da5a2f7e6cf72e97d73fa26866ea7bcfaad6093f3d36eff4f0cc38",
-  "tests/juce/host_test.cpp": "e4d2485d1101a334ebd3c1ca56466d4ba7bd7e7788b411aeca42a2c16b6aaf02",
+  "tests/juce/host_test.cpp": "5910501bf1ae9ef3ea683a04af6187144425dbe58b6fa4f0e786439a54df1921",
   "tests/py/conftest.py": "7d0791ea96477fff946ecaaa08aa45b4349d96ec563d4f95d7f0bc9afb056a68",
   "tests/py/metrics.py": "53c58f47dbe204ee0588cc86aef2273e4e41c102a10bf60e873bcd2d2527b7fe",
   "tests/py/test_accordion.py": "df10cbf683935060eb4282169eff4ade67a6df54fb051342a6b37c1160115487",
@@ -501,15 +507,7 @@
   "tools/listening/score_blind.py": "54a6afe41f783f923032d1ee4cb0fb8fa2a1a749d0e9f9e53d153b8cdfafec73",
   "tools/make_demos.py": "3980052e55916891e59f73cc79b1587a242bed6bf34146c92f89485d9d2ccf7c"
  },
- "in_flight": {
-  "operation": "4.7.4 follow-up: cold read and re-audit of the changed set, and one pre-mortem round on the changed steps (parallel)",
-  "started_at": "2026-11-19T10:30:00Z",
-  "expected_outputs": [
-   "scratchpad/coldread-11.json",
-   "scratchpad/premortem-round-6.md"
-  ],
-  "safe_to_repeat": true
- },
+ "in_flight": null,
  "lesson_store": {
   "location": "https://github.com/qualitycoding/Lessons",
   "commit_read": "9934bb5",
@@ -844,12 +842,16 @@
   "K-20261115T010102Z-c-063-the-reed-model-tolerates-only-moderate-changes-o",
   "K-20261115T020000Z-source-register-folk-instruments-vst"
  ],
- "updated_at": "2026-11-19T08:47:23Z",
+ "updated_at": "2026-11-19T09:01:45Z",
  "freeze": {
   "refrozen_after": "pre-mortem rounds 1 and 2: T-016, T-211, T-092, T-302 to T-304 cases, TinySOL hash list; 34 frozen files"
  },
  "phase4": {
   "result": "round limit reached; every counted finding mitigated; no Critical or High (expected/plausible) open; not BLOCKED (4.6 does not apply); round-5 mitigations not re-reviewed by a sixth round",
   "record": "premortem/CONVERGENCE.md"
+ },
+ "phase5": {
+  "final_check": "passed (scripted over the protocol 5.1 list; two script false alarms inspected and cleared)",
+  "status": "READY"
  }
 }
