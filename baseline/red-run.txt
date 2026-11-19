@@ -1,0 +1,703 @@
+== folk-tests
+
+/home/user/folk-instruments/tests/cpp/test_tuning.cpp:120: FAILED:
+  CHECK( accordionRegisterRanks(12) == 0u )
+due to unexpected exception with message:
+  not implemented: accordionRegisterRanks
+
+-------------------------------------------------------------------------------
+T-007 note-to-course rule
+-------------------------------------------------------------------------------
+/home/user/folk-instruments/tests/cpp/test_tuning.cpp:173
+...............................................................................
+
+/home/user/folk-instruments/tests/cpp/test_tuning.cpp:173: FAILED:
+due to unexpected exception with message:
+  not implemented: mandolinCourses
+
+-------------------------------------------------------------------------------
+T-009 out-of-range event arguments are ignored, not fatal
+-------------------------------------------------------------------------------
+/home/user/folk-instruments/tests/cpp/test_engine.cpp:127
+...............................................................................
+
+/home/user/folk-instruments/tests/cpp/test_engine.cpp:127: FAILED:
+due to unexpected exception with message:
+  not implemented: Engine::create
+
+===============================================================================
+test cases:  27 |  27 failed
+assertions: 148 | 1 passed | 147 failed
+
+== folk-locale-tests
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+folk-locale-tests is a Catch2 v3.16.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+T-016 state text round trip under a decimal-comma locale
+-------------------------------------------------------------------------------
+/home/user/folk-instruments/tests/cpp/test_locale.cpp:37
+...............................................................................
+
+/home/user/folk-instruments/tests/cpp/test_locale.cpp:39: FAILED:
+  {Unknown expression after the reported line}
+due to unexpected exception with message:
+  not implemented: instrumentName
+
+-------------------------------------------------------------------------------
+T-016 a state written in the C locale loads under a decimal-comma locale
+-------------------------------------------------------------------------------
+/home/user/folk-instruments/tests/cpp/test_locale.cpp:53
+...............................................................................
+
+/home/user/folk-instruments/tests/cpp/test_locale.cpp:53: FAILED:
+due to unexpected exception with message:
+  not implemented: Engine::create
+
+===============================================================================
+test cases: 2 | 2 failed
+assertions: 3 | 1 passed | 2 failed
+
+== folk-perf
+Randomness seeded to: 3350530118
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+folk-perf is a Catch2 v3.16.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+T-013 ten seconds at full polyphony render at least four times faster than real
+time
+-------------------------------------------------------------------------------
+/home/user/folk-instruments/tests/cpp/test_perf.cpp:13
+...............................................................................
+
+/home/user/folk-instruments/tests/cpp/test_perf.cpp:13: FAILED:
+due to unexpected exception with message:
+  not implemented: Engine::create
+
+===============================================================================
+test cases: 1 | 1 failed
+assertions: 1 | 1 failed
+
+== pytest
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>       assert r.returncode == 0, f"folk-render --dump-model failed with status {r.returncode}: {r.stderr.strip()}"
+E       AssertionError: folk-render --dump-model failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>       assert r.returncode == 0, f"folk-render --dump-model failed with status {r.returncode}: {r.stderr.strip()}"
+E       AssertionError: folk-render --dump-model failed with status 64: folk-render: not implemented
+>       assert r.returncode == 0, f"folk-render --dump-model failed with status {r.returncode}: {r.stderr.strip()}"
+E       AssertionError: folk-render --dump-model failed with status 64: folk-render: not implemented
+>       assert r.returncode == 0, f"folk-render --dump-model failed with status {r.returncode}: {r.stderr.strip()}"
+E       AssertionError: folk-render --dump-model failed with status 64: folk-render: not implemented
+>       assert r.returncode == 0, f"folk-render --dump-model failed with status {r.returncode}: {r.stderr.strip()}"
+E       AssertionError: folk-render --dump-model failed with status 64: folk-render: not implemented
+>       assert r.returncode == 0, f"folk-render --dump-model failed with status {r.returncode}: {r.stderr.strip()}"
+E       AssertionError: folk-render --dump-model failed with status 64: folk-render: not implemented
+>       assert r.returncode == 0, f"folk-render --dump-model failed with status {r.returncode}: {r.stderr.strip()}"
+E       AssertionError: folk-render --dump-model failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+>           assert r.returncode == 0, f"folk-render failed with status {r.returncode}: {r.stderr.strip()}"
+E           AssertionError: folk-render failed with status 64: folk-render: not implemented
+PASSED py/test_metrics_selfcheck.py::test_peak_near_frequency_and_level
+PASSED py/test_metrics_selfcheck.py::test_peak_near_refuses_short_segments
+PASSED py/test_metrics_selfcheck.py::test_partials_follow_stiff_string_law
+PASSED py/test_metrics_selfcheck.py::test_rms_peak_centroid_band
+PASSED py/test_metrics_selfcheck.py::test_decay_rate_and_two_stage_decay
+PASSED py/test_metrics_selfcheck.py::test_onset_time
+PASSED py/test_metrics_selfcheck.py::test_modulation_frequency_of_two_detuned_tones
+PASSED py/test_metrics_selfcheck.py::test_count_onsets
+PASSED py/test_metrics_selfcheck.py::test_harmonic_count_and_profile
+PASSED py/test_metrics_selfcheck.py::test_modulation_frequency_ignores_ripple_of_a_steady_tone
+PASSED py/test_metrics_selfcheck.py::test_modulation_frequency_stays_inside_its_band
+PASSED py/test_metrics_selfcheck.py::test_bandpass_isolates_the_fundamental_beat
+PASSED py/test_pluginval_log_check.py::test_complete_log_passes
+PASSED py/test_pluginval_log_check.py::test_each_defect_is_caught
+PASSED py/test_tsan_supp_check.py::test_T092_missing_or_exact_juce_entries_pass
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:^juce::Thread::threadEntryPoint(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:^juce::MessageManager::runDispatchLoop(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[deadlock:^juce::CriticalSection::enter(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race_top:juce::Thread::run(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race_top:^juce::A(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race_top:^folk::Engine::process(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:juce::MessageManager::runDispatchLoop]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:^juce::AudioBuffer]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:juce::AudioBuffer]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:^juce::A(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:^juce::MessageManager::runDispatchLoop]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:^juce::Thread::run$]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:juce::Thread::run(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:^juce::Thread::run(int]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:*]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:juce::*]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:juce]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:folk::Engine::process]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:FolkProcessor::processBlock]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[called_from_lib:libjuce.so]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[deadlock:juce::CriticalSection::enter]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[deadlock:^juce::CriticalSection::enter$]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[deadlock:^folk::X::y(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[mutex:juce::SpinLock]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race_top:juce::AudioProcessor::processBlock]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:juce::folkHelper]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:std::vector]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:juce::Thread*]
+== pytest summary
+302 failed, 43 passed, 16 deselected in 5.13s
+PASSED py/test_metrics_selfcheck.py::test_peak_near_frequency_and_level
+PASSED py/test_metrics_selfcheck.py::test_peak_near_refuses_short_segments
+PASSED py/test_metrics_selfcheck.py::test_partials_follow_stiff_string_law
+PASSED py/test_metrics_selfcheck.py::test_rms_peak_centroid_band
+PASSED py/test_metrics_selfcheck.py::test_decay_rate_and_two_stage_decay
+PASSED py/test_metrics_selfcheck.py::test_onset_time
+PASSED py/test_metrics_selfcheck.py::test_modulation_frequency_of_two_detuned_tones
+PASSED py/test_metrics_selfcheck.py::test_count_onsets
+PASSED py/test_metrics_selfcheck.py::test_harmonic_count_and_profile
+PASSED py/test_metrics_selfcheck.py::test_modulation_frequency_ignores_ripple_of_a_steady_tone
+PASSED py/test_metrics_selfcheck.py::test_modulation_frequency_stays_inside_its_band
+PASSED py/test_metrics_selfcheck.py::test_bandpass_isolates_the_fundamental_beat
+PASSED py/test_pluginval_log_check.py::test_complete_log_passes
+PASSED py/test_pluginval_log_check.py::test_each_defect_is_caught
+PASSED py/test_tsan_supp_check.py::test_T092_missing_or_exact_juce_entries_pass
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:^juce::Thread::threadEntryPoint(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:^juce::MessageManager::runDispatchLoop(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[deadlock:^juce::CriticalSection::enter(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race_top:juce::Thread::run(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race_top:^juce::A(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race_top:^folk::Engine::process(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:juce::MessageManager::runDispatchLoop]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:^juce::AudioBuffer]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:juce::AudioBuffer]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:^juce::A(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:^juce::MessageManager::runDispatchLoop]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:^juce::Thread::run$]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:juce::Thread::run(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:^juce::Thread::run(int]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:*]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:juce::*]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:juce]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:folk::Engine::process]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:FolkProcessor::processBlock]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[called_from_lib:libjuce.so]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[deadlock:juce::CriticalSection::enter]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[deadlock:^juce::CriticalSection::enter$]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[deadlock:^folk::X::y(]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[mutex:juce::SpinLock]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race_top:juce::AudioProcessor::processBlock]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:juce::folkHelper]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:std::vector]
+PASSED py/test_tsan_supp_check.py::test_T092_broad_or_foreign_entries_fail[race:juce::Thread*]
