@@ -18,16 +18,16 @@ A cold-read re-run (protocol 4.4) followed every round's amendments; their recor
 
 Round 6 found 0 Critical and 3 High (all mitigated: two were already fixed on the branch at 645d0b4, one fixed after the round), recorded as R-134 to R-146.
 
-Register by severity and status (146 rows, including R-098 to R-133 from the assumption audit and R-134 to R-146 from round 6):
+Register by severity and status (147 rows, including R-098 to R-133 from the assumption audit, R-134 to R-146 from round 6 and R-147 from the recheck of 2026-11-19):
 
 | Severity | Status | Count |
 |---|---|---|
 | Critical | mitigated | 11 |
 | High | accepted | 1 |
 | High | mitigated | 29 |
-| Low | accepted | 31 |
-| Low | mitigated | 11 |
+| Low | accepted | 20 |
+| Low | mitigated | 22 |
 | Low | speculative | 4 |
-| Medium | accepted | 19 |
-| Medium | mitigated | 39 |
+| Medium | accepted | 18 |
+| Medium | mitigated | 41 |
 | Medium | speculative | 1 |
