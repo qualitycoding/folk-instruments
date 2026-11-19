@@ -14,7 +14,7 @@ set(FOLK_CATCH2_COMMIT 08092139210881f01a34e60c5f2fd6afa0ea4024) # tag v3.16.1
 
 include(FetchContent)
 
-add_library(folkdsp STATIC core/src/stubs.cpp core/src/strings.cpp core/src/tuning.cpp)
+add_library(folkdsp STATIC core/src/stubs.cpp core/src/strings.cpp core/src/tuning.cpp core/src/engine_base.cpp)
 target_include_directories(folkdsp PUBLIC core/include)
 if(MSVC)
   target_compile_options(folkdsp PRIVATE /W4 /permissive-)

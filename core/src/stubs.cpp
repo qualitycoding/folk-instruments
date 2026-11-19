@@ -5,7 +5,4 @@
 
 namespace folk {
 #define FOLK_STUB(name) throw NotImplemented(name)
-const char* instrumentName(Instrument) { FOLK_STUB("instrumentName"); }
-bool instrumentFromName(std::string_view, Instrument&) { FOLK_STUB("instrumentFromName"); }
-std::unique_ptr<Engine> Engine::create(Instrument) { FOLK_STUB("Engine::create"); }
 }  // namespace folk

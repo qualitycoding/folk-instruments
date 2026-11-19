@@ -73,6 +73,16 @@ def generate():
                 rows.append("{" + ", ".join(parts) + "}")
             L.append(f"inline constexpr StringSpecData k{inst}Courses{v}[] = {{" + ", ".join(rows) + "};")
             L.append(f"inline constexpr int k{inst}Courses{v}Count = {len(variant)};")
+    params = load("params", False)
+    if params is not None:
+        L.append("struct ParamRow { const char* id; const char* name; float min, max, def; int steps; };")
+        for i, n in enumerate(params["instruments"]):
+            rows = []
+            for pid, lo, hi, de, st in params[n]:
+                name = pid.replace("_", " ").capitalize().replace(" hz", " Hz")
+                rows.append("{" + f'"{pid}", "{name}", {float(lo)!r}f, {float(hi)!r}f, {float(de)!r}f, {int(st)}' + "}")
+            L.append(f"inline constexpr ParamRow kParams{i}[] = {{" + ", ".join(rows) + "};")
+            L.append(f"inline constexpr int kParams{i}Count = {len(rows)};")
     hb = halfband()
     L.append("inline constexpr double kHalfBand63[63] = {" + ", ".join(num(x) for x in hb) + "};")
     L.append("}}  // namespace folk::gen")
