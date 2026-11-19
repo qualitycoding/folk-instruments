@@ -20,11 +20,4 @@ std::vector<CourseSpec> bouzoukiCourses(int) { FOLK_STUB("bouzoukiCourses"); }
 double mandolinScaleLengthM(int) { FOLK_STUB("mandolinScaleLengthM"); }
 double bouzoukiScaleLengthM(int) { FOLK_STUB("bouzoukiScaleLengthM"); }
 int courseForNote(const std::vector<CourseSpec>&, int, int) { FOLK_STUB("courseForNote"); }
-double inharmonicityB(double, double, double, double) { FOLK_STUB("inharmonicityB"); }
-double partialHz(double, double, int) { FOLK_STUB("partialHz"); }
-double stringTensionN(double, double, double) { FOLK_STUB("stringTensionN"); }
-double lossFactorAir(double, double, double, double, double) { FOLK_STUB("lossFactorAir"); }
-double lossFactorBending(double, double, double, double, double, int, double) { FOLK_STUB("lossFactorBending"); }
-double lossFactorBridge(double, int, double, double) { FOLK_STUB("lossFactorBridge"); }
-PairModes solveCoupledPair(double, double, double, double, std::complex<double>, double) { FOLK_STUB("solveCoupledPair"); }
 }  // namespace folk
