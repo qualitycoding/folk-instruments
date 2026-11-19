@@ -83,6 +83,13 @@ def generate():
                 rows.append("{" + f'"{pid}", "{name}", {float(lo)!r}f, {float(hi)!r}f, {float(de)!r}f, {int(st)}' + "}")
             L.append(f"inline constexpr ParamRow kParams{i}[] = {{" + ", ".join(rows) + "};")
             L.append(f"inline constexpr int kParams{i}Count = {len(rows)};")
+    reeds = load("reeds", False)
+    if reeds is not None:
+        L.append(f"inline constexpr double kSourceRmsRef = {num(reeds['source_rms_ref'])};")
+        L.append("inline constexpr int kReedRates[4] = {44100, 48000, 88200, 96000};")
+        for i, n in enumerate(("harmonica", "accordion", "melodion")):
+            rows = ["{" + ", ".join(num(x) for x in reeds["offsets"][n][str(r)]) + "}" for r in (44100, 48000, 88200, 96000)]
+            L.append(f"inline constexpr double kReedOffsets{i}[4][85] = {{" + ", ".join(rows) + "};")
     gains = load("gains", False) or {}
     order = ["harmonica", "accordion", "melodion", "mandolin", "bouzouki"]
     L.append("inline constexpr double kGainOut[5] = {" + ", ".join(num(gains.get(n, 1.0)) for n in order) + "};")

@@ -103,7 +103,13 @@
   "3.12",
   "4",
   "4.7",
-  "5"
+  "5",
+  "S-000",
+  "S-002",
+  "S-100",
+  "S-110",
+  "S-200",
+  "S-201"
  ],
  "pending": [
   "3.6",
@@ -853,5 +859,10 @@
  "phase5": {
   "final_check": "passed (scripted over the protocol 5.1 list; two script false alarms inspected and cleared)",
   "status": "READY"
+ },
+ "S-101": "blocked: TEST_CHALLENGE.md (T-006 lock check)",
+ "S-201": {
+  "subcstep_constant": 110,
+  "ns_per_reed_sample": 30.1
  }
 }
