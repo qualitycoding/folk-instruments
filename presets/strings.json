@@ -1,0 +1,335 @@
+{
+ "steel_density": {
+  "value": 7850.0,
+  "claim": "none",
+  "confidence": "design"
+ },
+ "wound_nominal_tension_n": {
+  "value": 100.0,
+  "claim": "none",
+  "confidence": "design"
+ },
+ "wound_core_fraction": {
+  "value": 0.4,
+  "claim": "none",
+  "confidence": "design"
+ },
+ "mandolin_scale_m": {
+  "value": [
+   0.3524,
+   0.3524,
+   0.33
+  ],
+  "claim": "C-037",
+  "confidence": "single-source"
+ },
+ "mandolin_courses": {
+  "value": [
+   [
+    {
+     "first": {
+      "midi": 55,
+      "outer_in": 0.04,
+      "wound": 1
+     },
+     "second": {
+      "midi": 55,
+      "outer_in": 0.04,
+      "wound": 1
+     }
+    },
+    {
+     "first": {
+      "midi": 62,
+      "outer_in": 0.026,
+      "wound": 1
+     },
+     "second": {
+      "midi": 62,
+      "outer_in": 0.026,
+      "wound": 1
+     }
+    },
+    {
+     "first": {
+      "midi": 69,
+      "outer_in": 0.015,
+      "wound": false
+     },
+     "second": {
+      "midi": 69,
+      "outer_in": 0.015,
+      "wound": false
+     }
+    },
+    {
+     "first": {
+      "midi": 76,
+      "outer_in": 0.011,
+      "wound": false
+     },
+     "second": {
+      "midi": 76,
+      "outer_in": 0.011,
+      "wound": false
+     }
+    }
+   ],
+   [
+    {
+     "first": {
+      "midi": 55,
+      "outer_in": 0.04,
+      "wound": 1
+     },
+     "second": {
+      "midi": 55,
+      "outer_in": 0.04,
+      "wound": 1
+     }
+    },
+    {
+     "first": {
+      "midi": 62,
+      "outer_in": 0.026,
+      "wound": 1
+     },
+     "second": {
+      "midi": 62,
+      "outer_in": 0.026,
+      "wound": 1
+     }
+    },
+    {
+     "first": {
+      "midi": 69,
+      "outer_in": 0.015,
+      "wound": false
+     },
+     "second": {
+      "midi": 69,
+      "outer_in": 0.015,
+      "wound": false
+     }
+    },
+    {
+     "first": {
+      "midi": 76,
+      "outer_in": 0.011,
+      "wound": false
+     },
+     "second": {
+      "midi": 76,
+      "outer_in": 0.011,
+      "wound": false
+     }
+    }
+   ],
+   [
+    {
+     "first": {
+      "midi": 55,
+      "outer_in": 0.038,
+      "wound": 1
+     },
+     "second": {
+      "midi": 55,
+      "outer_in": 0.038,
+      "wound": 1
+     }
+    },
+    {
+     "first": {
+      "midi": 62,
+      "outer_in": 0.024,
+      "wound": 1
+     },
+     "second": {
+      "midi": 62,
+      "outer_in": 0.024,
+      "wound": 1
+     }
+    },
+    {
+     "first": {
+      "midi": 69,
+      "outer_in": 0.014,
+      "wound": false
+     },
+     "second": {
+      "midi": 69,
+      "outer_in": 0.014,
+      "wound": false
+     }
+    },
+    {
+     "first": {
+      "midi": 76,
+      "outer_in": 0.01,
+      "wound": false
+     },
+     "second": {
+      "midi": 76,
+      "outer_in": 0.01,
+      "wound": false
+     }
+    }
+   ]
+  ],
+  "claim": "C-034",
+  "confidence": "corroborated"
+ },
+ "bouzouki_scale_m": {
+  "value": [
+   0.68,
+   0.68,
+   0.65
+  ],
+  "claim": "C-039",
+  "confidence": "single-source"
+ },
+ "bouzouki_courses": {
+  "value": [
+   [
+    {
+     "first": {
+      "midi": 50,
+      "outer_in": 0.022,
+      "wound": 1
+     },
+     "second": {
+      "midi": 62,
+      "outer_in": 0.011,
+      "wound": false
+     }
+    },
+    {
+     "first": {
+      "midi": 57,
+      "outer_in": 0.014,
+      "wound": false
+     },
+     "second": {
+      "midi": 57,
+      "outer_in": 0.014,
+      "wound": false
+     }
+    },
+    {
+     "first": {
+      "midi": 62,
+      "outer_in": 0.011,
+      "wound": false
+     },
+     "second": {
+      "midi": 62,
+      "outer_in": 0.011,
+      "wound": false
+     }
+    }
+   ],
+   [
+    {
+     "first": {
+      "midi": 48,
+      "outer_in": 0.024,
+      "wound": 1
+     },
+     "second": {
+      "midi": 60,
+      "outer_in": 0.011,
+      "wound": false
+     }
+    },
+    {
+     "first": {
+      "midi": 53,
+      "outer_in": 0.02,
+      "wound": 1
+     },
+     "second": {
+      "midi": 65,
+      "outer_in": 0.01,
+      "wound": false
+     }
+    },
+    {
+     "first": {
+      "midi": 57,
+      "outer_in": 0.014,
+      "wound": false
+     },
+     "second": {
+      "midi": 57,
+      "outer_in": 0.014,
+      "wound": false
+     }
+    },
+    {
+     "first": {
+      "midi": 62,
+      "outer_in": 0.011,
+      "wound": false
+     },
+     "second": {
+      "midi": 62,
+      "outer_in": 0.011,
+      "wound": false
+     }
+    }
+   ],
+   [
+    {
+     "first": {
+      "midi": 43,
+      "outer_in": 0.04,
+      "wound": 1
+     },
+     "second": {
+      "midi": 43,
+      "outer_in": 0.04,
+      "wound": 1
+     }
+    },
+    {
+     "first": {
+      "midi": 50,
+      "outer_in": 0.028,
+      "wound": 1
+     },
+     "second": {
+      "midi": 50,
+      "outer_in": 0.028,
+      "wound": 1
+     }
+    },
+    {
+     "first": {
+      "midi": 57,
+      "outer_in": 0.016,
+      "wound": false
+     },
+     "second": {
+      "midi": 57,
+      "outer_in": 0.016,
+      "wound": false
+     }
+    },
+    {
+     "first": {
+      "midi": 62,
+      "outer_in": 0.011,
+      "wound": false
+     },
+     "second": {
+      "midi": 62,
+      "outer_in": 0.011,
+      "wound": false
+     }
+    }
+   ]
+  ],
+  "claim": "C-040",
+  "confidence": "corroborated"
+ }
+}

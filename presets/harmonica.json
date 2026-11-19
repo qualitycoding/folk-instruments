@@ -1,0 +1,125 @@
+{
+ "richter_blow_c": {
+  "value": [
+   60,
+   64,
+   67,
+   72,
+   76,
+   79,
+   84,
+   88,
+   91,
+   96
+  ],
+  "claim": "C-011",
+  "confidence": "corroborated"
+ },
+ "richter_draw_c": {
+  "value": [
+   62,
+   67,
+   71,
+   74,
+   77,
+   81,
+   83,
+   86,
+   89,
+   93
+  ],
+  "claim": "C-011",
+  "confidence": "corroborated"
+ },
+ "key_hole1_blow_high_keys_0_to_6": {
+  "value": 60,
+  "claim": "C-011",
+  "confidence": "corroborated"
+ },
+ "key_hole1_blow_low_keys_7_to_11": {
+  "value": 48,
+  "claim": "C-011",
+  "confidence": "corroborated"
+ },
+ "max_bend_draw_holes_1_to_10": {
+  "value": [
+   1,
+   2,
+   3,
+   1,
+   0,
+   1,
+   0,
+   0,
+   0,
+   0
+  ],
+  "claim": "C-012",
+  "confidence": "single-source"
+ },
+ "max_bend_blow_holes_1_to_10": {
+  "value": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   2
+  ],
+  "claim": "C-012",
+  "confidence": "single-source"
+ },
+ "overblow_holes": {
+  "value": [
+   1,
+   4,
+   5,
+   6
+  ],
+  "claim": "C-012",
+  "confidence": "single-source"
+ },
+ "overdraw_holes": {
+  "value": [
+   7,
+   9,
+   10
+  ],
+  "claim": "C-012",
+  "confidence": "single-source"
+ },
+ "chromatic_blow_offsets_per_group": {
+  "value": [
+   0,
+   4,
+   7,
+   12
+  ],
+  "claim": "C-014",
+  "confidence": "single-source"
+ },
+ "chromatic_draw_offsets_per_group": {
+  "value": [
+   2,
+   5,
+   9,
+   11
+  ],
+  "claim": "C-014",
+  "confidence": "single-source"
+ },
+ "chromatic_first_note": {
+  "value": 60,
+  "claim": "C-014",
+  "confidence": "single-source"
+ },
+ "chromatic_holes": {
+  "value": 12,
+  "claim": "C-014",
+  "confidence": "single-source"
+ }
+}

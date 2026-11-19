@@ -8,16 +8,4 @@ namespace folk {
 const char* instrumentName(Instrument) { FOLK_STUB("instrumentName"); }
 bool instrumentFromName(std::string_view, Instrument&) { FOLK_STUB("instrumentFromName"); }
 std::unique_ptr<Engine> Engine::create(Instrument) { FOLK_STUB("Engine::create"); }
-double midiToHz(double, double) { FOLK_STUB("midiToHz"); }
-int diatonicReedNote(int, int, Breath) { FOLK_STUB("diatonicReedNote"); }
-HarpNote diatonicNoteFor(int, int) { FOLK_STUB("diatonicNoteFor"); }
-int diatonicMaxBend(int, Breath) { FOLK_STUB("diatonicMaxBend"); }
-HarpNote chromaticNoteFor(int) { FOLK_STUB("chromaticNoteFor"); }
-unsigned accordionRegisterRanks(int) { FOLK_STUB("accordionRegisterRanks"); }
-const char* accordionRegisterName(int) { FOLK_STUB("accordionRegisterName"); }
-std::vector<CourseSpec> mandolinCourses(int) { FOLK_STUB("mandolinCourses"); }
-std::vector<CourseSpec> bouzoukiCourses(int) { FOLK_STUB("bouzoukiCourses"); }
-double mandolinScaleLengthM(int) { FOLK_STUB("mandolinScaleLengthM"); }
-double bouzoukiScaleLengthM(int) { FOLK_STUB("bouzoukiScaleLengthM"); }
-int courseForNote(const std::vector<CourseSpec>&, int, int) { FOLK_STUB("courseForNote"); }
 }  // namespace folk

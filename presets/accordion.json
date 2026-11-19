@@ -1,0 +1,106 @@
+{
+ "registers": {
+  "value": [
+   {
+    "name": "Piccolo",
+    "ranks": [
+     "H"
+    ]
+   },
+   {
+    "name": "Clarinet",
+    "ranks": [
+     "M"
+    ]
+   },
+   {
+    "name": "Bassoon",
+    "ranks": [
+     "L"
+    ]
+   },
+   {
+    "name": "Oboe",
+    "ranks": [
+     "M",
+     "H"
+    ]
+   },
+   {
+    "name": "Violin",
+    "ranks": [
+     "M",
+     "M+"
+    ]
+   },
+   {
+    "name": "Musette (imitation)",
+    "ranks": [
+     "M",
+     "M+",
+     "H"
+    ]
+   },
+   {
+    "name": "Musette (authentic)",
+    "ranks": [
+     "M-",
+     "M",
+     "M+"
+    ]
+   },
+   {
+    "name": "Organ",
+    "ranks": [
+     "L",
+     "H"
+    ]
+   },
+   {
+    "name": "Harmonium",
+    "ranks": [
+     "L",
+     "M",
+     "H"
+    ]
+   },
+   {
+    "name": "Bandoneon",
+    "ranks": [
+     "L",
+     "M"
+    ]
+   },
+   {
+    "name": "Accordion",
+    "ranks": [
+     "L",
+     "M",
+     "M+"
+    ]
+   },
+   {
+    "name": "Master",
+    "ranks": [
+     "L",
+     "M",
+     "M+",
+     "H"
+    ]
+   }
+  ],
+  "claim": "C-017",
+  "confidence": "single-source"
+ },
+ "rank_bits": {
+  "value": {
+   "L": 1,
+   "M-": 2,
+   "M": 4,
+   "M+": 8,
+   "H": 16
+  },
+  "claim": "C-017",
+  "confidence": "single-source"
+ }
+}
