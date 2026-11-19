@@ -177,6 +177,11 @@ public:
 };
 }  // namespace
 
-std::unique_ptr<Engine> Engine::create(Instrument i) { return std::make_unique<SilentEngine>(i); }
+std::unique_ptr<Engine> makeHarmonica();
+
+std::unique_ptr<Engine> Engine::create(Instrument i) {
+    if (i == Instrument::Harmonica) return makeHarmonica();
+    return std::make_unique<SilentEngine>(i);
+}
 
 }  // namespace folk
