@@ -137,3 +137,19 @@ Counts: "[(('claim', 'confirmed'), 15), (('claim', 'unverifiable'), 15), (('assu
 | ThreadSanitizer suppression scope (knowledge from rounds 4 and 5) | recorded | K-20261119T090500Z |
 
 Per protocol 4.7.4 the changed steps had one cold-read re-run with a re-audit of the changed set (4.7.7; `research/coldread/coldread-11.json`: all three corrections confirmed) and one pre-mortem round (`premortem/round-6.md`; its three High findings mitigated, R-134 to R-146).
+
+## Recheck of the unverifiable items (2026-11-19, at the owner's request)
+
+| Item | New verdict | Evidence |
+|---|---|---|
+| A-001 | confirmed | `git ls-remote`: `main` at 375f650, only the generation branch besides; no plan branch on skills, Lessons or knowledge |
+| A-020 | confirmed (as observed) | paper hosts and the HAL and arXiv APIs refused by this sandbox's policy; github, pypi, zenodo, wikipedia, archive.org search and daddario.com reachable |
+| A-021 | partly confirmed | D'Addario product pages: wound-string tensions 104 and 109 N (EJ74), 89 and 97 N (EJ73) against the nominal 100 N; the core ratio 0.4 is still unchecked |
+| C-037 | confirmed | D'Addario product pages: EJ74 .011/.015/.026PB/.040PB, EJ73 .010/.014/.024PB/.038PB |
+| D-012 (rejected alternative) | confirmed | cantilever scaling re-run with the S12 code: silent at 3520 Hz at every pressure, at 111 Hz sounding only at 100 Pa and 66 cents flat; similarity scaling sounds at all pressures, 19 to 25 cents flat |
+| D-084 | partly confirmed | GitHub API: repository public; billing documents unreachable |
+| A-009 | still unverifiable, strengthened | S05 re-run at C = 160: 7.06 times real time for 64 reeds on this sandbox (7.46 at C = 110); full engine and runner untested |
+| C-051 | still holds for redistributable sets | archive.org: 'Stella Mandolin Sample Library (Decent Sampler)', David Hilowitz, CC BY-ND 4.0, a candidate private mandolin reference; its download host was refused, so its notes are unknown |
+| C-010, C-015, C-020, C-032, C-036, C-041 | still unverifiable | every reachable route (HAL API, arXiv export, Crossref, OpenAlex, Semantic Scholar, MDPI, Brill) refused by the sandbox |
+| TP-LOC-1, TP-T304-1, D-090 Apple premise, A-022 | still unverifiable | need macOS and Windows runners or the implemented engine |
+| A-002, A-003, A-006, A-007, A-008, A-010, A-011, A-013, A-014, A-017 | owner's decision | intake defaults; only the owner can confirm them |
