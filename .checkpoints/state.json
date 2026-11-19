@@ -78,7 +78,7 @@
   "cold_read": 5,
   "premortem": 5,
   "audit": 0,
-  "cold_read_reruns": 4
+  "cold_read_reruns": 5
  },
  "completed": [
   "0.1",

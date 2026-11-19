@@ -1,0 +1,193 @@
+{
+ "items": [
+  {
+   "n": 1,
+   "where": "plan/GATES.md, G-L1 to G-L5, Allowed responses (confirmation round)",
+   "kind": "contradiction",
+   "severity": "guess",
+   "text": "The confirmation-round sentence is garbled ('`stop` or (closes the gate again, valid only if the pass condition holds where pairs exist) or `iterate`') and still says `confirm` is valid 'only if the pass condition holds where pairs exist'. D-053 now requires the full pass condition, including `wrong: none`, in every case, with or without pairs. It also lets a gate closed with `proceed-with-rescope` be confirmed when the owner states that the shortfall still describes the result. GATES leaves both out. An implementer working from the gate record, which is copied from GATES, would accept `confirm` on a no-pairs gate whose answer names a wrong demo. That is R-091's failure path.",
+   "suggested_fix": "Rewrite as: 'In a confirmation round: `confirm` (closes the gate again; valid only if the full pass condition holds, meaning the score where pairs exist and `wrong: none` in every case, or, for a gate closed with `proceed-with-rescope`, the owner states that the recorded shortfall still describes the result), `proceed-with-rescope: <text>`, `iterate: <notes>` or `stop`.'"
+  },
+  {
+   "n": 2,
+   "where": "plan/GATES.md G-L allowed responses vs plan/DECISIONS.md D-053 (third confirmation)",
+   "kind": "contradiction",
+   "severity": "guess",
+   "text": "D-053 lists the answers when a third confirmation round would start as `confirm-again`, `proceed-with-rescope: <text>` or `stop`, which is R-093's mitigation. GATES allows only '`confirm-again` or `stop` when a third confirmation round would start'. The gate record copies its allowed responses from GATES, so the non-destructive exit is missing there, and a `proceed-with-rescope` answer would be 'not an allowed response'.",
+   "suggested_fix": "In GATES write: 'when a third confirmation round would start: `confirm-again` (run it, with listening), `proceed-with-rescope: <text>` or `stop`'."
+  },
+  {
+   "n": 3,
+   "where": "plan/PLAN.md S-LISTEN Done when",
+   "kind": "ambiguity",
+   "severity": "guess",
+   "text": "The `wrong:` check is scoped to 'every gate with pairs answered `proceed`'. G-L1 and G-L4, and probably G-L5, have no pairs, and they are the gates R-091 is about. Read literally, the Done when never checks the `wrong:` line for them, so R-091's mitigation ('S-LISTEN's Done when reads each gate's latest closure and its wrong: line') is only half in place. The clause also says 'answered `proceed`' and in the same sentence 'or its response is `proceed-with-rescope` ...', which contradict each other. A latest closure of `confirm` is not 'answered proceed'. And the first clause '(or each has `confirm`)' ignores confirmation rounds closed with `proceed-with-rescope` or `stop`.",
+   "suggested_fix": "Restate as: 'For every gate, the latest closure (a normal or a confirmation round) is read. If it is `proceed` or `confirm`, the answer's `wrong:` line reads `wrong: none`, and where pairs exist the score of the attempt it rests on is at most 8 of 12. If it is `proceed-with-rescope`, `proceed-without-pairs` or `stop`, it names the shortfall or the wrong demos. No gate needs a confirmation round that has not been closed by one of these.'"
+  },
+  {
+   "n": 4,
+   "where": "plan/PLAN.md S-LISTEN Actions; D-053 'Before S-REVIEW-DELTA'",
+   "kind": "missing step",
+   "severity": "guess",
+   "text": "No action of S-LISTEN runs the D-053 comparison (worktree build, `--demos-only` at the gate commit and at the head, sha256 comparison). Its Done when needs the result ('no gate needs a confirmation round'), and D-053 times it 'before S-REVIEW-DELTA'. The implementer has to infer that it is a final action of S-LISTEN, rerun after every confirmation or iterate until stable, and decide where to record it.",
+   "suggested_fix": "Add S-LISTEN action 6: 'When every gate has a response, apply D-053's comparison to every gate answered proceed, proceed-with-rescope or proceed-without-pairs; record the result and `git diff --stat` in the gate file; repeat after any change until no gate differs or each has a closing answer.'"
+  },
+  {
+   "n": 5,
+   "where": "plan/DECISIONS.md D-053 (new baseline)",
+   "kind": "gap",
+   "severity": "guess",
+   "text": "Only `confirm` makes the confirmation's evidence commit the gate's new baseline. A confirmation round closed with `proceed-with-rescope: <text>`, which is now allowed, keeps the old gate commit. Every later check (before S-REVIEW-DELTA, at S-INTEGRATE 1b, after each fix) then sees different demos on unchanged audio and starts another confirmation, until the two-round cap is hit. This is R-092(b) by another route. The same is unclear after `confirm-again`.",
+   "suggested_fix": "Say: 'Any answer that closes a confirmation round (`confirm` or `proceed-with-rescope`) makes that round's evidence commit the gate's new baseline.'"
+  },
+  {
+   "n": 6,
+   "where": "plan/PLAN.md S-INTEGRATE On failure / action 3 vs D-053",
+   "kind": "gap",
+   "severity": "guess",
+   "text": "D-053 requires the confirmation check 'again before the pull request is opened'. Action 1b runs it once, before action 2. A red check is then 'fixed on impl and brought over by repeating actions 2 to 4'. That skips 1b and S-REVIEW-DELTA, so a CI fix that changes DSP code or compile options reaches the pull request with audio the owner never heard and changes nobody reviewed (R-068, R-094). Action 3's 'if anything was committed after action 2, recreate' has the same gap.",
+   "suggested_fix": "In action 3 and in On failure, say: 'after any commit to impl-<run_id> other than records, repeat S-REVIEW-DELTA for it and action 1b before recreating pr-<run_id>.'"
+  },
+  {
+   "n": 7,
+   "where": "plan/ENVIRONMENT.md section 5, host-tsan suppression row ('If it fails')",
+   "kind": "contradiction",
+   "severity": "guess",
+   "text": "The row allows a suppression for 'a report whose top frame on both stacks lies in JUCE module code' and in the same cell says 'a report with a frame in `plugins/` or `core/` is a defect, never suppressed'. Every T-304 stack holds host_test.cpp frames, and the audio thread's holds FolkProcessor::processBlock from plugins/ (R-089's own finding). Under the second clause no report could ever qualify, so R-089's contradiction is still there.",
+   "suggested_fix": "Replace the second clause with: 'a report whose top frame on either stack lies in plugins/ or core/ is a defect, never suppressed'."
+  },
+  {
+   "n": 8,
+   "where": "plan/ci/ci.yml host-tsan, step 'Every compiled object ... is instrumented'; ENVIRONMENT section 5 row; PLAN S-003 action 4, S-320 action 5",
+   "kind": "sequencing",
+   "severity": "guess",
+   "text": "The object check comes after 'Concurrency test under ThreadSanitizer (T-304)' and has no `if: always()`. At S-003 the T-304 step fails against the stubs, as expected, so the object check never runs. Yet ENVIRONMENT section 5 says the item is first shown by 'the host-tsan job in S-003'. S-003 action 4 defers only three items, and S-320 action 5 records only those three. The implementer has to guess where this item is observed and recorded, and whether a data-only object (which needs an exception edit to ci.yml) is a deviation of S-003 or of S-320.",
+   "suggested_fix": "Either move the object check before the T-304 step (it needs only the build), or add it to the deferred items of S-003 action 4 and of S-320 action 5."
+  },
+  {
+   "n": 9,
+   "where": "plan/ENVIRONMENT.md section 5 object-check row",
+   "kind": "incorrect premise",
+   "severity": "minor",
+   "text": "'contains a function, so each references __tsan_func_entry' does not hold for GCC: its tsan pass emits func_entry/exit only for functions that have an instrumented access or a non-builtin call. A translation unit of trivial functions (constant returns, builtin math only) is instrumented but has no reference. The row calls that case a defect the implementer cannot fix. JUCE's data-only objects (for example the compilation-time source of juce_core) are an expected first hit and are handled by the exception rule.",
+   "suggested_fix": "Reword: an object with no reference is listed as an exception if `nm` shows it defines no function, or if every function it defines has no memory access or call (shown with `objdump -d`); otherwise it is a defect."
+  },
+  {
+   "n": 10,
+   "where": "tests/ci/check_tsan_supp.py docstring; ENVIRONMENT section 5 ('matches only a race whose top frame is that JUCE function')",
+   "kind": "misleading claim",
+   "severity": "minor",
+   "text": "ThreadSanitizer checks `race_top:` against the top frame of each access stack and suppresses the report if either one matches. An accepted line therefore also hides a later race between that JUCE function and plugin or core code that touches the same memory, a wrapper bug. The 'both stacks in JUCE' rule protects only the moment the line is added, and no canary covers this case: the scope canary tests a JUCE frame low in the stack, not a JUCE top frame on one side.",
+   "suggested_fix": "State the limit in ENVIRONMENT section 5 and in R-088. When a suppression is added, re-check T-304's report list without the file (for example in a second, informational run) so that a race with a plugin-side top frame is still seen."
+  },
+  {
+   "n": 11,
+   "where": "plan/ci/ci.yml host-tsan 'No source or build file switches the sanitiser off'",
+   "kind": "coverage",
+   "severity": "minor",
+   "text": "In a POSIX ERE bracket, `[^\\n]` means 'neither a backslash nor the letter n', so `CMAKE_CXX_FLAGS[^\\n]*REPLACE` misses any line with an 'n' between the two words. The widened grep also still misses forms R-090 names: AnnotateBenignRace*, __tsan_acquire/__tsan_release, list(REMOVE_ITEM ...), per-file COMPILE_OPTIONS, and CMakePresets.json. The object check covers removed instrumentation, but annotations hide races while the code stays instrumented.",
+   "suggested_fix": "Use `CMAKE_CXX_FLAGS.*REPLACE`, add `AnnotateBenignRace|__tsan_acquire|__tsan_release|REMOVE_ITEM`, and include `*.json` presets, or record the remainder as accepted in R-090."
+  },
+  {
+   "n": 12,
+   "where": "plan/DECISIONS.md D-053 confirmation scope",
+   "kind": "ambiguity",
+   "severity": "minor",
+   "text": "'every gate answered `proceed` or `proceed-with-rescope`' literally includes the pilot gates G-P1 and G-P2. Their instruments are certain to differ from their gate commits, their first build_evidence.py has no `--demos-only`, and the confirmation seed formula exists only for G-L`g`. S-INTEGRATE 1b says 'listening gate', and the pilot gates are also called listening gates elsewhere.",
+   "suggested_fix": "Write 'every listening-validation gate G-L1 to G-L5 answered ...'."
+  },
+  {
+   "n": 13,
+   "where": "plan/GATES.md Branches; D-053 caps",
+   "kind": "missing response",
+   "severity": "minor",
+   "text": "The G-L branches define no action for `confirm` or `confirm-again`. D-053 says that when k or j would reach 10 'the owner is asked whether to continue', but no allowed response exists for that question. It is also unclear whether each confirmation round after the third needs its own `confirm-again`.",
+   "suggested_fix": "Add branches for `confirm` and `confirm-again`. Name the allowed answers at the k/j cap (for example `repeat`, `proceed-with-rescope: <text>`, `stop`). Say that every confirmation round past the second needs a fresh `confirm-again`."
+  },
+  {
+   "n": 14,
+   "where": "plan/PLAN.md S-340 action 1(c) MANIFEST",
+   "kind": "inconsistency",
+   "severity": "minor",
+   "text": "Pair clips carry 'the ids of all references used by the pair set', which is 14 with the controls, but `key.json.b64` and `sources.json.b64` carry 'the ids of all 12 references'. sources.json names the control stems derived from references 13 and 14.",
+   "suggested_fix": "Write 'the ids of all references used by the pair set (14, or 12 where the controls repeat real-pair notes)' for both files."
+  },
+  {
+   "n": 15,
+   "where": "plan/DECISIONS.md D-094 setCurrentProgram",
+   "kind": "ambiguity",
+   "severity": "minor",
+   "text": "S-310 defines each factory preset as 'sets only the parameters named; everything else default', but D-094 says setCurrentProgram 'only writes the preset's values' and notifies 'each parameter of the preset'. It is unclear whether parameters the preset does not name are reset to default (and then must also be written and notified) or left as they are. For example, 'Piccolo' after 'Clarinet, cassotto' would otherwise keep cassotto 1.",
+   "suggested_fix": "Say: 'a preset writes every parameter: the named values and the defaults for the rest; every written parameter is notified'."
+  },
+  {
+   "n": 16,
+   "where": "plan/DECISIONS.md D-051 vs PLAN S-REF action 3/4",
+   "kind": "inconsistency",
+   "severity": "minor",
+   "text": "S-REF searches to 14 notes with Philharmonia last, and action 4 indexes any Philharmonia mandolin note. D-051 permits a private reference only while the redistributable pool has fewer than 12 notes. With 12 or 13 redistributable mandolin notes, indexing Philharmonia notes as 13th and 14th would make the control references private. That routes the whole pair set privately, contrary to D-051 (R-095 residue).",
+   "suggested_fix": "In S-REF action 4: 'Philharmonia notes are indexed only while the instrument has fewer than 12 redistributable notes; with 12 or 13, the controls use the first two by id (D-053).'"
+  },
+  {
+   "n": 17,
+   "where": "plan/DECISIONS.md D-053 comparison commands",
+   "kind": "operational",
+   "severity": "minor",
+   "text": "`git worktree add $HOME/folk-gate-<gate id> <gate commit>` fails if the path or its registration exists from the earlier check. The rule runs before S-REVIEW-DELTA, again at S-INTEGRATE 1b, and possibly more often. After a container recycle the registration can survive while the directory is gone.",
+   "suggested_fix": "Prefix with `git worktree remove --force $HOME/folk-gate-<gate id> 2>/dev/null; git worktree prune` (the result of that cleanup does not matter), or use `--detach` with a fresh path per check."
+  },
+  {
+   "n": 18,
+   "where": "tests/ci/check_tsan_supp.py accepted form",
+   "kind": "coverage gap",
+   "severity": "minor",
+   "text": "The accepted pattern cannot express a JUCE top frame in a template or an anonymous namespace (for example `juce::AudioBuffer<float>::clear(`). For such a report the only route is a TEST_CHALLENGE, and the plan does not say so in the ENVIRONMENT row.",
+   "suggested_fix": "Add to the row: 'a JUCE report that the accepted form cannot express is a TEST_CHALLENGE.md item (DR-05), not a suppression.'"
+  }
+ ],
+ "mechanical": [
+  {
+   "check": "every `Depends on` ID is a defined step (28 steps)",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "every R-### cited in plan/*.md, HANDOFF.md, premortem/CONVERGENCE.md exists in the register; every register row has 11 columns (97 rows, R-001 to R-097)",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "CONVERGENCE severity/status counts equal the register's (status read as the text before ';', since 13 status cells carry a '; pre-mortem round N found ...' suffix); 97 rows; round 5 = 6 new + 4 residual, 3 High plausible + 1 High remote",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "test counts: Catch2 folk-tests 27, locale 2, perf 1, host 9 (T-302 7); pytest 345 collected not-reference + 16 reference; 43 tool checks (12+2+29); T-092 29 (1 + 28 parametrised); every per-ID count in TRACEABILITY section 2; ctest 7; pairs 14, clips 28",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "both workflows parse as YAML; every `uses:` (13 + 5) pins a 40-hex commit listed in ENVIRONMENT section 1",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "sha256sum -c tests/FROZEN_MANIFEST.sha256 passes, 36 files; every .py/.cpp/.h in it carries 'FROZEN — DO NOT MODIFY'",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "every option of build_evidence.py, fetch_references.py, calibrate_gains.py used anywhere is in the plan's option list",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "every gate response named in PLAN.md or DECISIONS.md is in that gate's allowed responses in GATES.md",
+   "passed": false,
+   "misses": [
+    "D-053 names `proceed-with-rescope: <text>` as an answer when a third confirmation round would start; GATES G-L allows only `confirm-again` or `stop` at that point"
+   ]
+  }
+ ],
+ "summary": "Cold read 10: 0 blockers, 8 guess, 10 minor. Most of the confirmation-rule and TSan amendments can be carried out, but several mitigations were made in one file and not carried into the others: GATES still has the old confirm validity rule and is missing proceed-with-rescope at the third confirmation; S-LISTEN's Done when checks the wrong: line only for gates with pairs; ENVIRONMENT section 5 keeps the 'any frame in plugins/' clause; a confirmation closed with a rescope sets no new baseline; and S-INTEGRATE's fix loop skips 1b. The host-tsan object check cannot run at S-003. Mechanical checks: 7 of 8 pass; 1 miss (a gate response named in D-053 but not allowed in GATES)."
+}

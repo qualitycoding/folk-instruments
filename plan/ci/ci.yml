@@ -216,7 +216,7 @@ jobs:
           test "$status" -eq 66
       - name: No source or build file switches the sanitiser off
         run: |
-          rc=0; grep -rnE "no_sanitize|fno-sanitize|__tsan_ignore|tsan_ignore|AnnotateIgnore|AnnotateHappens|TSAN_OPTIONS|CMAKE_CXX_FLAGS[^\n]*REPLACE|string *\( *REPLACE[^)]*sanitize" --include=CMakeLists.txt --include='*.cmake' --include='*.cpp' --include='*.h' --include='*.hpp' --exclude-dir=.git --exclude-dir=research --exclude-dir='build*' --exclude=tsan_canary.cpp --exclude=tsan_canary_named.cpp --exclude=tsan_canary_scope.cpp . || rc=$?
+          rc=0; grep -rnE "no_sanitize|fno-sanitize|__tsan_ignore|tsan_ignore|AnnotateIgnore|AnnotateHappens|TSAN_OPTIONS|CMAKE_CXX_FLAGS.*REPLACE|string *\( *REPLACE[^)]*sanitize|list *\( *REMOVE_ITEM[^)]*sanitize|AnnotateBenign|__tsan_acquire|__tsan_release" --include=CMakeLists.txt --include='*.cmake' --include='*.cpp' --include='*.h' --include='*.hpp' --exclude-dir=.git --exclude-dir=research --exclude-dir='build*' --exclude=tsan_canary.cpp --exclude=tsan_canary_named.cpp --exclude=tsan_canary_scope.cpp . || rc=$?
           test "$rc" -eq 1   # 1: nothing found; 0: an exclusion exists; 2: grep failed
       - name: Linux packages
         run: |
@@ -227,6 +227,16 @@ jobs:
         run: cmake -S . -B build-tsan -DCMAKE_BUILD_TYPE=RelWithDebInfo "-DCMAKE_CXX_FLAGS=-fsanitize=thread -fno-omit-frame-pointer" "-DCMAKE_EXE_LINKER_FLAGS=-fsanitize=thread"
       - name: Build the host tests
         run: cmake --build build-tsan --parallel 4 --target FolkHarmonicaHostTest FolkAccordionHostTest FolkMelodionHostTest FolkMandolinHostTest FolkBouzoukiHostTest
+      - name: Every compiled object of the host tests is instrumented (R-088)
+        run: |
+          bad=0; count=0
+          for o in $(find build-tsan -name '*.o' \( -path '*Folk*HostTest*' -o -path '*folkdsp*' \)); do
+            count=$((count + 1))
+            nm "$o" > obj-syms.txt
+            if ! grep -qE "__tsan_(func_entry|read|write|init)" obj-syms.txt; then echo "not instrumented: $o"; bad=1; fi
+          done
+          test "$count" -gt 0
+          test "$bad" -eq 0
       - name: Concurrency test under ThreadSanitizer (T-304)
         run: |
           n=0
@@ -239,16 +249,6 @@ jobs:
             n=$((n + 1))
           done
           test "$n" -eq 5
-      - name: Every compiled object of the host tests is instrumented (R-088)
-        run: |
-          bad=0; count=0
-          for o in $(find build-tsan -name '*.o' \( -path '*Folk*HostTest*' -o -path '*folkdsp*' \)); do
-            count=$((count + 1))
-            nm "$o" > obj-syms.txt
-            if ! grep -q __tsan_func_entry obj-syms.txt; then echo "not instrumented: $o"; bad=1; fi
-          done
-          test "$count" -gt 0
-          test "$bad" -eq 0
 
   reference:
     runs-on: ubuntu-24.04
