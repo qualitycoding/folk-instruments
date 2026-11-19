@@ -16,16 +16,18 @@ A cold-read re-run (protocol 4.4) followed every round's amendments; their recor
 
 **After the assumption audit (protocol 4.7.4).** The audit falsified three premises and changed the plan (`premortem/ASSUMPTION_AUDIT.md`). As 4.7.4 requires, the changed steps then had one cold-read re-run with a re-audit of the corrected premises (`research/coldread/coldread-11.json`: all three confirmed; its items resolved) and one pre-mortem round limited to the changed steps (`premortem/round-6.md`). That round is the one the audit rule mandates, not a sixth round of the 4.5 loop, whose limit of five was reached before the audit.
 
-Register by severity and status (133 rows, including R-098 to R-133 from the assumption audit):
+Round 6 found 0 Critical and 3 High (all mitigated: two were already fixed on the branch at 645d0b4, one fixed after the round), recorded as R-134 to R-146.
+
+Register by severity and status (146 rows, including R-098 to R-133 from the assumption audit and R-134 to R-146 from round 6):
 
 | Severity | Status | Count |
 |---|---|---|
 | Critical | mitigated | 11 |
 | High | accepted | 1 |
-| High | mitigated | 26 |
+| High | mitigated | 29 |
 | Low | accepted | 31 |
-| Low | mitigated | 6 |
-| Low | speculative | 1 |
+| Low | mitigated | 11 |
+| Low | speculative | 4 |
 | Medium | accepted | 19 |
-| Medium | mitigated | 37 |
+| Medium | mitigated | 39 |
 | Medium | speculative | 1 |

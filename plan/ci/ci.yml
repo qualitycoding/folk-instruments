@@ -49,6 +49,7 @@ jobs:
       - name: Locale for the locale tests (T-016)
         if: runner.os == 'Linux'
         run: |
+          sudo apt-get update
           sudo apt-get install -y --no-install-recommends locales
           sudo locale-gen de_DE.UTF-8
       - name: Python packages (hash-locked)
@@ -245,7 +246,7 @@ jobs:
             test -n "$b"
             nm "$b" > syms.txt
             grep -q __tsan_init syms.txt
-            xvfb-run -a "$b" "T-304*"
+            xvfb-run -a "$b" "T-304*" --success   # prints the block and call counts even when T-304 passes
             n=$((n + 1))
           done
           test "$n" -eq 5

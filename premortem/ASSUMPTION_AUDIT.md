@@ -130,10 +130,10 @@ Counts: "[(('claim', 'confirmed'), 15), (('claim', 'unverifiable'), 15), (('assu
 
 | Item | Verdict | Resulting IDs |
 |---|---|---|
-| TP-TSAN-2 | falsified | check widened to any ThreadSanitizer hook (already on the branch at 9fc7795, verified with g++ 13 on empty, data-only and trivial objects); ENVIRONMENT section 5 row rewritten; L-20261119T090100Z, K-20261119T090400Z; R-088 mitigation updated |
-| TP-LOC-2 | falsified | frozen T-016 and the T-302 locale case amended to switch the C++ global locale as well, with a probe stream; re-frozen and red-verified; D-090 rationale corrected; L-20261119T090000Z, K-20261119T090300Z |
-| D-064 S17 figure | falsified | D-064 quotes the measured levels (spread 11.2 dB); L-20261119T090200Z |
+| TP-TSAN-2 | falsified | D-095; check widened to any ThreadSanitizer hook (already on the branch at 9fc7795, verified with g++ 13 on empty, data-only and trivial objects); ENVIRONMENT section 5 row rewritten; L-20261119T090100Z, K-20261119T090400Z; R-088 mitigation updated |
+| TP-LOC-2 | falsified | D-095; frozen T-016 and the T-302 locale case amended to switch the C++ global locale as well, with a probe stream; re-frozen and red-verified; D-090 rationale corrected; L-20261119T090000Z, K-20261119T090300Z |
+| D-064 S17 figure | falsified | D-095; D-064 quotes the measured levels (spread 11.2 dB); L-20261119T090200Z |
 | 36 unverifiable items | unverifiable | R-098 to R-133 (8 mitigated with plan changes: S-201 reed cost, S-220 early reference probe, S-330 PERF per round, G-P1/G-P2 scope question, ENVIRONMENT rows TP-LOC-1 and TP-T304-1; 28 accepted, each with what would catch it) |
 | ThreadSanitizer suppression scope (knowledge from rounds 4 and 5) | recorded | K-20261119T090500Z |
 
-Per protocol 4.7.4 the changed steps get one cold-read re-run and one pre-mortem round, and the changed set is re-audited (4.7.7).
+Per protocol 4.7.4 the changed steps had one cold-read re-run with a re-audit of the changed set (4.7.7; `research/coldread/coldread-11.json`: all three corrections confirmed) and one pre-mortem round (`premortem/round-6.md`; its three High findings mitigated, R-134 to R-146).

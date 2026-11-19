@@ -84,6 +84,7 @@ Every test with a numeric threshold fails the build when missed: all are asserti
 | D-070 to D-073 | C-034 to C-041, C-052 | T-007, T-140, T-146, T-147 |
 | D-080 to D-086 | C-043 to C-048, C-057 | T-300, T-302, T-310, T-013; S-003 |
 | D-090 to D-094 | C-056, C-057 | T-008, T-014, T-016, T-160 to T-163, T-302, T-303, T-304 |
+| D-095 | none (audit amendments) | T-016, T-302 (locale case); the `host-tsan` object check |
 
 ## 4. CI platform matrix (protocol 3.9)
 
