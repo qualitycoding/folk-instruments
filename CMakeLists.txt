@@ -14,7 +14,7 @@ set(FOLK_CATCH2_COMMIT 08092139210881f01a34e60c5f2fd6afa0ea4024) # tag v3.16.1
 
 include(FetchContent)
 
-add_library(folkdsp STATIC core/src/stubs.cpp core/src/strings.cpp core/src/tuning.cpp core/src/engine_base.cpp)
+add_library(folkdsp STATIC core/src/stubs.cpp core/src/strings.cpp core/src/tuning.cpp core/src/engine_base.cpp core/src/reed.cpp)
 target_include_directories(folkdsp PUBLIC core/include)
 if(MSVC)
   target_compile_options(folkdsp PRIVATE /W4 /permissive-)
@@ -25,6 +25,9 @@ endif()
 
 add_executable(folk-render tools/folk-render/main.cpp)
 target_link_libraries(folk-render PRIVATE folkdsp)
+
+add_executable(reed_probe tools/reed_probe.cpp)
+target_link_libraries(reed_probe PRIVATE folkdsp)
 
 if(FOLK_BUILD_TESTS)
   FetchContent_Declare(Catch2 GIT_REPOSITORY https://github.com/catchorg/Catch2.git GIT_TAG ${FOLK_CATCH2_COMMIT})

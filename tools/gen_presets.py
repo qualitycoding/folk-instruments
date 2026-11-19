@@ -83,6 +83,9 @@ def generate():
                 rows.append("{" + f'"{pid}", "{name}", {float(lo)!r}f, {float(hi)!r}f, {float(de)!r}f, {int(st)}' + "}")
             L.append(f"inline constexpr ParamRow kParams{i}[] = {{" + ", ".join(rows) + "};")
             L.append(f"inline constexpr int kParams{i}Count = {len(rows)};")
+    gains = load("gains", False) or {}
+    order = ["harmonica", "accordion", "melodion", "mandolin", "bouzouki"]
+    L.append("inline constexpr double kGainOut[5] = {" + ", ".join(num(gains.get(n, 1.0)) for n in order) + "};")
     hb = halfband()
     L.append("inline constexpr double kHalfBand63[63] = {" + ", ".join(num(x) for x in hb) + "};")
     L.append("}}  // namespace folk::gen")
