@@ -6,3 +6,4 @@
 2026-11-19T20:37:10Z S-200 1 pass 30f884e reed.cpp, reed_probe, calibrate_gains.py; 444 Hz 400 Pa 48k: -23.05 cents, 4.632 x0 (spike -23.1, 4.63); undriven decays; ns_per_reed_sample 29.9 (above 20 ns early warning, A-009/R-147)
 2026-11-19T20:38:04Z S-201 1 pass d38d9ca reed-check.csv 120 rows 0 failing (C=110); reeds.json offsets -24.31..-23.71 cents; ns_per_reed_sample 30.1 (> 20 ns early warning vs A-009; T-013 on CI is the gate)
 2026-11-19T20:41:10Z S-210 1 partial 2618acd harmonica instrument + ReedEngine; all 88 harmonica pytest cases pass; G_out 0.0642117 (peak -11.996 dBFS); gate tooling (evidence_guard, fetch_references, build_evidence, workflow) and G-P1 not done
+2026-11-19T20:41:35Z S-210 2 partial 2ef5ee8 tools/evidence_guard.py done (T-210 green). Not done: fetch_references.py (T-211), build_evidence.py, gate-evidence workflow, GATE-G-P1.md. Session stopped here.
