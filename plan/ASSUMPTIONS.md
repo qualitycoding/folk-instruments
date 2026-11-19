@@ -1,6 +1,6 @@
 # Assumptions and intake answers
 
-The intake batch was sent on 2026-11-14. The owner's reply was, verbatim: "Resume". No item was answered individually, so every item adopts its proposed default (protocol 0.3.6 item 3). Each record states the default adopted and its consequence.
+The intake batch was sent on 2026-11-14. The owner's reply was, verbatim: "Resume". No item was answered individually, so every item adopts its proposed default (protocol 0.3.6 item 3). Each record states the default adopted and its consequence. On 2026-11-19 the owner confirmed explicitly that A-002, A-003, A-006, A-007, A-008, A-010, A-011, A-013, A-014 and A-017 are correct (answer "All correct" to a question listing each of them).
 
 ## Restated task (0.3.1)
 

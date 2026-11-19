@@ -152,4 +152,5 @@ Per protocol 4.7.4 the changed steps had one cold-read re-run with a re-audit of
 | C-051 | still holds for redistributable sets | archive.org: 'Stella Mandolin Sample Library (Decent Sampler)', David Hilowitz, CC BY-ND 4.0, a candidate private mandolin reference; its download host was refused, so its notes are unknown |
 | C-010, C-015, C-020, C-032, C-036, C-041 | still unverifiable | every reachable route (HAL API, arXiv export, Crossref, OpenAlex, Semantic Scholar, MDPI, Brill) refused by the sandbox |
 | TP-LOC-1, TP-T304-1, D-090 Apple premise, A-022 | still unverifiable | need macOS and Windows runners or the implemented engine |
-| A-002, A-003, A-006, A-007, A-008, A-010, A-011, A-013, A-014, A-017 | owner's decision | intake defaults; only the owner can confirm them |
+| A-002, A-003, A-006, A-007, A-008, A-010, A-011, A-013, A-014, A-017 | confirmed by the owner | asked on 2026-11-19 with each default stated; answer 'All correct' |
+| C-051 follow-up | owner's decision | the Stella library is added to S-REF source (d) as the first mandolin candidate, private under D-051 |

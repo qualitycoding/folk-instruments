@@ -44,7 +44,7 @@ G-L1 harmonica, G-L2 mandolin, G-L3 accordion, G-L4 melodion, G-L5 bouzouki.
 | Gate | References at planning time | Blind pairs | Pass condition |
 |---|---|---|---|
 | G-L3 accordion | TinySOL 6.0, 12 mf notes (MIDI 48, 52, 55, 59, 62, 65, 69, 72, 76, 79, 83, 86), CC BY 4.0, redistributable | 12, cut from the start of each note | at most 8 of 12 picked correctly, and no demo reported as wrong |
-| G-L2 mandolin | Philharmonia mandolin notes, private reference (D-051), if `S-REF` indexed 12 or more | 12, cut from the start, delivered privately | the same |
+| G-L2 mandolin | the private mandolin references of D-051 (the Stella library first, then Philharmonia), if `S-REF` indexed 12 or more | 12, cut from the start, delivered privately | the same |
 | G-L1 harmonica, G-L4 melodion, G-L5 bouzouki | none with 12 notes at planning time; whatever `S-REF` indexed | 12 if `S-REF` indexed 12 or more notes of the instrument, otherwise none | with pairs: the same; without pairs: no demo reported as wrong |
 
   The pass condition is necessary, not sufficient: the listener's remarks on the demos count alongside the score. Two of the 14 pairs are controls (D-053); a round with a missed control, or with one letter given for 10 or more of the 14 pairs where the key has fewer than 10 of that letter, is void and repeated with a new seed (D-053 gives the seeds, record names and the owner's choices after two void attempts), and does not count towards the round limit. A gate without pairs rests on the listener's remarks alone; its record says so.
