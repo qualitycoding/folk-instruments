@@ -1,0 +1,134 @@
+{
+ "items": [
+  {
+   "n": 1,
+   "where": "plan/PLAN.md S-220 Done when (early reference probe, R-128)",
+   "kind": "non-runnable check",
+   "severity": "blocker",
+   "text": "The probe command `cd tests && python3 -m pytest -m reference -k accordion -s` selects no test: no T-200 test name, parameter id or module name contains 'accordion' (T-201 is parametrised over harmonica, melodion, mandolin, bouzouki only). Run on a copy: 'no tests collected (361 deselected)', exit 5. The command also omits FOLK_RENDER and FOLK_TINYSOL, which the frozen reference tests assert. Nothing in S-220 says where TinySOL comes from at that point: S-REF action 2 downloads it, but S-220 does not depend on S-REF. Because 'a failure here does not fail this step', an implementer can record 'exit 5' as the probe result, so the R-128 mitigation (an early A-022 probe) silently does nothing.",
+   "suggested_fix": "Use `cd tests && FOLK_RENDER=$B/folk-render FOLK_TINYSOL=$HOME/folk-refs/tinysol python3 -m pytest -m reference -k T200 -s` (TinySOL fetched as in S-REF action 2, or the CI reference job under DR-13). Require the logged result to show test outcomes, not 'no tests collected'."
+  },
+  {
+   "n": 2,
+   "where": "plan/PLAN.md S-201 Checkpoint (per-reed cost, R-120)",
+   "kind": "underspecified measurement",
+   "severity": "guess",
+   "text": "The step asks for 'the cost of one reed per sample measured by reed_probe (a timing of 450 periods at 444 Hz)'. But reed_probe as specified in S-200 prints no timing. The step does not say: which pressure or host rate to use; whether wall time of the whole process counts (it includes start-up and the table build; 450 periods at 444 Hz is about 1 s of audio, so this is a millisecond-scale and noisy measurement); whether 'per sample' means per host sample, per base-rate sample or per sub-step; or what figure counts as a shortfall against A-009. The result is put in EXECUTION_LOG.md, while the Checkpoint convention says checkpoint values go in .checkpoints/state.json. The measurement is also local, but A-009 is about the CI runner, which is where R-120's auditor proposal put it.",
+   "suggested_fix": "In S-200, give reed_probe a `--time` option that prints ns per base-rate sample, measured over the step loop only. In S-201, run it at 444 Hz, 400 Pa and 48000 Hz (best of 3). Record the result in state.json under S-201 and in the log. State the budget: 4x real time with 64 reeds at 192 kHz base rate means about 20 ns per reed per base-rate sample, including decimation overhead. Above that, consider DR-06 early."
+  },
+  {
+   "n": 3,
+   "where": "plan/PLAN.md S-330 action 2 (PERF per round)",
+   "kind": "conflict with D-086 / undefined outcome",
+   "severity": "guess",
+   "text": "The step runs `FOLK_PERF_GATE=1 $B/folk-perf` locally after each calibration round. Under D-086 that environment variable turns T-013 into a gate, and D-086 restricts the gate to the ubuntu-24.04 runner. On slower local hardware folk-perf exits non-zero. The plan does not say what that means for the round: stop calibrating, apply DR-06, or record it and continue. It also does not say where the five PERF lines go. The stated purpose 'seen before S-320' may not be attainable. S-330 depends on S-300 and S-REF, not on S-320, and the order at a glance puts S-320 before S-330, so S-320 can be green before any calibration round runs.",
+   "suggested_fix": "Run `$B/folk-perf` without FOLK_PERF_GATE (figures are printed only) and record the PERF lines in EXECUTION_LOG.md and in state.json under S-330 per round. If a round lowers a factor by more than X%, push and read the CI core job's gated figure before the next round. Reword 'before S-320' as 'before S-INTEGRATE's CI run'."
+  },
+  {
+   "n": 4,
+   "where": "plan/GATES.md G-P1/G-P2 question 4 and the proceed-with-rescope branch",
+   "kind": "contradictory example / uncovered case",
+   "severity": "guess",
+   "text": "The rescope branch says to apply 'a reduction of scope (for example dropping a variant)'. But the frozen tests are parametrised over every variant: for example, T-146 covers mandolin body 0, 1 and 2 and bouzouki variant 0, 1 and 2. Dropping a variant therefore makes frozen tests unpassable, which by the same branch, and by DR-15's reasoning for 'stop', should mean BLOCKED.md. A rescope that expands scope without touching a frozen test or a public interface (for example adding a format or a platform) is not covered at all. Question 4 also cannot be answered alongside an `iterate:` answer to questions 1-3, because one response is allowed. Finally, the gate record does not list the variants the owner is asked to confirm.",
+   "suggested_fix": "State that any rescope removing an instrument, variant or platform that a frozen test covers goes to BLOCKED.md plus TEST_CHALLENGE.md, and that any expansion goes to BLOCKED.md for a plan amendment. Allow `iterate: <notes>` to carry a scope remark that is asked again in round 2. Have the gate actions paste the variant list from DECISIONS into the record."
+  },
+  {
+   "n": 5,
+   "where": "premortem/RISK_REGISTER.md R-098, R-102, R-104, R-105, R-120, R-127, R-128, R-130 (Mitigation column)",
+   "kind": "ambiguous instruction status",
+   "severity": "guess",
+   "text": "The mitigation cells mix what the plan adopted with the auditor's verbatim proposals ('Add: ...', 'Ensure ...', 'Add a decision rule ...'). Several proposals are not in the plan: R-102 (S-REF records whether a bowl-back reference exists), R-105 (compare the Greek bouzouki body peaks before G-L5), R-127 (compare a wound string's inharmonicity B with --dump-model), R-104 (archive.org and Commons category searches; S-REF uses one Internet Archive item and the Commons search API), R-120 (S-200 records folk-perf on the runner; the plan has local S-201 timing instead), and R-130 (always print the counts with -s or INFO; the plan relies on the printout on failure). HANDOFF lists the register in the reading order, so an implementer cannot tell whether an 'Add:' is an instruction.",
+   "suggested_fix": "Mark each proposal 'adopted as <step/row>' or 'not adopted: <reason>'. For accepted rows, delete the imperative wording or move it to a 'considered' note."
+  },
+  {
+   "n": 6,
+   "where": "research/claims.json C-064",
+   "kind": "stale source of the corrected figure",
+   "severity": "minor",
+   "text": "C-064 still says the tap rings the first three f-hole body modes 'within 11 dB of each other'. The measured spread is 11.23 dB, and D-064 now quotes it correctly. The claim the misquote came from is uncorrected, so a later reader of claims.json gets the falsified figure.",
+   "suggested_fix": "Correct C-064 to 'within 11.3 dB (11.23 dB spread)', or add a correction note naming L-20261119T090200Z."
+  },
+  {
+   "n": 7,
+   "where": "plan/DECISIONS.md D-064 last sentence",
+   "kind": "wording",
+   "severity": "minor",
+   "text": "'ringing within 11.3 dB (S17: -36.7, -42.9, -47.9 dB, a spread of 11.2 dB; planning audit)' gives two figures for one quantity. Both are true (11.23 dB), but a reader may suspect another mismatch.",
+   "suggested_fix": "'ringing with a spread of 11.23 dB (S17 T146_levels -36.7, -42.9, -47.9 dB)'."
+  },
+  {
+   "n": 8,
+   "where": "premortem/CONVERGENCE.md vs premortem/ASSUMPTION_AUDIT.md resolution",
+   "kind": "record gap",
+   "severity": "minor",
+   "text": "The audit resolution says protocol 4.7.4 requires one cold-read re-run and one pre-mortem round on the changed steps. CONVERGENCE.md records only rounds 1-5, says 5 is the maximum, and does not say whether the post-audit round ran, is pending, or how it relates to the round limit.",
+   "suggested_fix": "Add a line stating the status of the post-audit cold read (this one) and pre-mortem round, and how its findings will be recorded."
+  },
+  {
+   "n": 9,
+   "where": "tests/juce/host_test.cpp T-302 locale case (frozen)",
+   "kind": "test robustness / coverage",
+   "severity": "minor",
+   "text": "The case restores the locale with a plain call at its end, not with RAII as test_locale.cpp does (RestoreC). If a call in the case throws, Catch2 records the failure and runs the next case (for example T-304) under the comma locale. The case also checks only a round trip within the same locale. A wrapper-level field written and read with a default stream would round-trip unnoticed; the core writer itself is covered by T-016, whose ',' check and C-to-comma load both catch it (probe below).",
+   "suggested_fix": "At the next amendment, use a RestoreC-style guard and add a CHECK that the state blob contains no ','. Until then this is no action, only a known limitation."
+  },
+  {
+   "n": 10,
+   "where": "plan/ENVIRONMENT.md section 5, TP-LOC-1 row",
+   "kind": "missing command",
+   "severity": "minor",
+   "text": "If the test fails, the row asks for the runner's 'locale -a (or Windows locale list)' output. Windows has no locale -a, and the evidence that would actually settle the question is which of the six candidate names setlocale and std::locale accept. No command is given for that.",
+   "suggested_fix": "Name a command, for example a 10-line program (or the Catch2 failure output with INFO per name) that prints setlocale(LC_ALL, name) and the std::locale constructor result for each of the six names."
+  }
+ ],
+ "mechanical": [
+  {
+   "check": "CONVERGENCE.md severity/status table equals register counts (status = text before ';', first word)",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "every register row has 11 columns (133 rows, R-001..R-133 contiguous, no duplicates, no escaped pipes)",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "sha256sum -c tests/FROZEN_MANIFEST.sha256 passes with 36 files",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "every L-/K- id named in ASSUMPTION_AUDIT.md exists under lessons/ or knowledge/ (6 ids: L-20261119T090000Z, L-...090100Z, L-...090200Z, K-...090300Z, K-...090400Z, K-...090500Z)",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "python3 scripts/check_knowledge_schema.py exits 0 ('all entries valid'); no __pycache__ created",
+   "passed": true,
+   "misses": []
+  },
+  {
+   "check": "audit resolution: 36 unverifiable items = R-098..R-133, 8 mitigated / 28 accepted (register: High mitigated 4, Medium mitigated 4, Medium accepted 6, Low accepted 22)",
+   "passed": true,
+   "misses": []
+  }
+ ],
+ "reaudit": [
+  {
+   "id": "TP-LOC-2",
+   "verdict": "confirmed",
+   "checked": "I copied setCommaLocale() verbatim (it is identical in tests/cpp/test_locale.cpp and tests/juce/host_test.cpp) into reaudit/loc/probe.cpp and built it with g++ 13.3 -O2 against de_DE.utf8. Results: it returns true; afterwards setlocale(NULL) and std::locale().name() are de_DE.UTF-8, and printf %g and a default ostringstream both print 0,5; a stream imbued with std::locale::classic() prints 0.5; RestoreC leaves both locales at C/classic (printf 0.5, default stream 0.5). A two-line writer using a default stream gives 'level=0,370000005', which T-016's ',' check catches; the classic-imbued writer gives 'level=0.370000005'. The old setlocale-only switch leaves the default stream at 0.5, which reproduces the original falsification. Extra: under de_DE a default istringstream reads '0.25' as 25 and consumes it whole (the '.' is taken as a grouping separator), so a reader on the global locale is caught by T-016 case 2's value checks, not by the whole-consumption rule."
+  },
+  {
+   "id": "TP-TSAN-2",
+   "verdict": "confirmed",
+   "checked": "I compiled empty, data-only, header-only (inline/template, no emitted code), trivial pure int and float functions, an array loop and an atomic with g++ 13.3 -c in five modes: -fsanitize=thread -O2; the CI form -fsanitize=thread -fno-omit-frame-pointer -O2 -g -DNDEBUG; -fsanitize=thread -O1; plain -O2; plain -O2 -g. With the workflow's exact pattern grep -qE \"__tsan_(func_entry|read|write|init)\" on nm output, all 21 instrumented objects pass (each references __tsan_init; the pure functions have no __tsan_func_entry, which confirms the original finding) and all 14 uninstrumented objects fail. Caveat, not a falsification: with -flto the .o holds GIMPLE and nm shows no __tsan symbol, so the check would fail a correct build. The plan's CMake uses juce_recommended_config_flags only, not the LTO flags."
+  },
+  {
+   "id": "D-064",
+   "verdict": "confirmed",
+   "checked": "output.json has T146_levels [-36.6837, -42.8673, -47.9142], so the spread is 11.2305 dB; D-064 quotes -36.7, -42.9 and -47.9 with a spread of 11.2, 'within 11.3 dB'. I re-ran pluck_ref.py in a copy (reaudit/mirror) and its output.json is identical to the committed one. The other S17 figures in D-064 match too: pair -95.6/-22.5 dB/s, single -56.6/-56.6 dB/s, beat 1.534 Hz, worst 0.51 cents. Residue: claims.json C-064 still says 'within 11 dB' (item 6)."
+  }
+ ],
+ "summary": "Cold read: 10 items (1 blocker, 4 guess, 5 minor). The blocker is the S-220 early reference probe: `-k accordion` selects zero tests (exit 5) and the command lacks FOLK_RENDER and FOLK_TINYSOL, so R-128's mitigation does nothing. The guesses: the S-201 per-reed cost measurement, local PERF gating in S-330, the rescope branch at G-P1/G-P2, and auditor proposals in register mitigation cells that read as instructions. All 6 mechanical checks pass. Re-audit: TP-LOC-2, TP-TSAN-2 and D-064 are all confirmed (the corrections hold); the only caveat is that the TSan object check would fail under LTO, which the plan does not use."
+}

@@ -120,6 +120,7 @@ void restoreClassicLocale() { std::setlocale(LC_ALL, "C"); std::locale::global(s
 }  // namespace
 
 TEST_CASE("T-302 state round trip under a decimal-comma locale", "[juce][security][locale]") {
+    struct Restore { ~Restore() { restoreClassicLocale(); } } restore;   // also on a failed REQUIRE, so later cases run in "C"
     REQUIRE(setCommaLocale());
     auto a = make(); a->setPlayConfigDetails(0, 2, 48000.0, 512); a->prepareToPlay(48000.0, 512);
     const auto& pa = a->getParameters();
@@ -129,7 +130,6 @@ TEST_CASE("T-302 state round trip under a decimal-comma locale", "[juce][securit
     b->setStateInformation(state.getData(), static_cast<int>(state.getSize()));
     const auto& pb = b->getParameters();
     for (int i = 0; i < pa.size(); ++i) CHECK(std::fabs(pb[i]->getValue() - pa[i]->getValue()) < 1e-6f);
-    restoreClassicLocale();
 }
 
 TEST_CASE("T-302 the current program survives a restore and re-selecting it changes nothing", "[juce]") {

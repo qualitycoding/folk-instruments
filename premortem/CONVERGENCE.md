@@ -14,6 +14,8 @@ A cold-read re-run (protocol 4.4) followed every round's amendments; their recor
 
 **Outcome.** The loop did not reach a round with no counted finding: round 5, the last permitted, still found three High risks at `plausible` likelihood. Each was mitigated after the round (two of them had already been fixed on the branch before the round's report arrived, because the round ran on the previous commit). No Critical risk and no High risk at `expected` or `plausible` likelihood is open in `premortem/RISK_REGISTER.md`. Protocol 4.6 applies only when counted risks remain after the last round; none remains, so the plan is not marked `BLOCKED`. The owner should know that the mitigations added after round 5 (R-088 to R-095) were checked by a cold-read re-run and, where executable, by running them in the planning sandbox (the three ThreadSanitizer canaries, the suppression checker, the exclusion grep), but not by a sixth pre-mortem round. This is stated again in the Phase 5 report.
 
+**After the assumption audit (protocol 4.7.4).** The audit falsified three premises and changed the plan (`premortem/ASSUMPTION_AUDIT.md`). As 4.7.4 requires, the changed steps then had one cold-read re-run with a re-audit of the corrected premises (`research/coldread/coldread-11.json`: all three confirmed; its items resolved) and one pre-mortem round limited to the changed steps (`premortem/round-6.md`). That round is the one the audit rule mandates, not a sixth round of the 4.5 loop, whose limit of five was reached before the audit.
+
 Register by severity and status (133 rows, including R-098 to R-133 from the assumption audit):
 
 | Severity | Status | Count |

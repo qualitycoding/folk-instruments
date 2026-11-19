@@ -2506,7 +2506,7 @@
  },
  {
   "id": "C-064",
-  "claim": "A reference implementation of the string model as decided (D-060 to D-064: greedy pairing, bridge admittance from the body modes capped at a bridge loss factor of 8e-3, pitch compensation, exact matrix-exponential steps, body modes driven by the bridge force) puts every fretted note of the f-hole mandolin within 0.51 cents of its target; on the bowl-back the E pair decays at -95.6 dB/s early and -22.5 dB/s late while one string alone decays at -56.6 dB/s throughout; a 4-cent mistuning on a nearly rigid bridge beats at 1.534 Hz; a tap rings the first three f-hole body modes within 11 dB of each other. A stagger of 0.84 ms between the strokes on the two strings starts the E strings almost in antiphase and removes the two-stage decay; 0.105 ms keeps it.",
+  "claim": "A reference implementation of the string model as decided (D-060 to D-064: greedy pairing, bridge admittance from the body modes capped at a bridge loss factor of 8e-3, pitch compensation, exact matrix-exponential steps, body modes driven by the bridge force) puts every fretted note of the f-hole mandolin within 0.51 cents of its target; on the bowl-back the E pair decays at -95.6 dB/s early and -22.5 dB/s late while one string alone decays at -56.6 dB/s throughout; a 4-cent mistuning on a nearly rigid bridge beats at 1.534 Hz; a tap rings the first three f-hole body modes with a spread of 11.23 dB (-36.68, -42.87, -47.91 dB). A stagger of 0.84 ms between the strokes on the two strings starts the E strings almost in antiphase and removes the two-stage decay; 0.105 ms keeps it.",
   "kind": "numerical",
   "load_bearing": true,
   "sources": [

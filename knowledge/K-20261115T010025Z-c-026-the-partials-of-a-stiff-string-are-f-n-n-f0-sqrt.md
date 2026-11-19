@@ -12,6 +12,6 @@ discovered_by: planner
 run: gen-20261114T004707Z-folk-instruments-vst
 recorded_at: 2026-11-15T01:00:25Z
 ---
-Input-file verdict: supported. Load-bearing: yes. Informs: D-060, T-130.
+Input-file verdict: supported. Load-bearing: yes. Informs: D-060, T-005, T-140.
 
 All sources: A necessary condition for double-decay envelopes in stringed instruments, J. Acoust. Soc. Am. 150(6), 4375-4384 (eq. (4): the bending term E*pi^2*d^2*n^2/(64*rho*L^4*f1^2) is B*n^2); Physical Audio Signal Processing: The Stiff String; Stiff String Synthesis Models (stiff-string wave equation and dispersion); round-1 worker file (sources read at snippet level; see that file) (claims D1, D2 (Fletcher and Rossing form)); planning spike S01 (strings table reproduced).

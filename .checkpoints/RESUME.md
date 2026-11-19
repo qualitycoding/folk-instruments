@@ -8,6 +8,6 @@ This note is for the PLANNING agent. An implementing agent starts at `HANDOFF.md
 
 **Open questions.** None for the owner.
 
-**Do not redo.** Research is closed at round 6. The intake batch is used. `main` exists; do not push to it. Spikes S17 and S18 are current; S08 (the stand-in renderer) predates S17 and is a check of the tests only.
+**Do not redo.** `research/tools/build_records.py` rebuilds `knowledge/` and deletes items it did not generate (the three K-20261119 items); after running it, restore them with `git checkout -- knowledge/K-20261119*`. Research is closed at round 6. The intake batch is used. `main` exists; do not push to it. Spikes S17 and S18 are current; S08 (the stand-in renderer) predates S17 and is a check of the tests only.
 
 **Human answers still to apply.** None.
