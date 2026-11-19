@@ -169,7 +169,7 @@ Order of work at a glance (by track; the step headings below are not in this ord
 - Outputs: `baseline/reed-check.csv`, `tools/reed_check.py`, `tools/calibrate_reeds.py`, `presets/reeds.json`, `core/src/generated/presets_data.h` (regenerated)
 - Evidence produced: none
 - Done when: `baseline/reed-check.csv` has 120 rows; every 50 Pa row is silent (amplitude below 0.02 `x0`); every other row sounds with no non-finite state, and with an offset within 1.5 cents of -20.1 (100 Pa), -23.1 (400 Pa), -23.3 (1500 Pa) (no offset target at 1800 Pa); `presets/reeds.json` parses and holds, for each of the three reed instruments and each of the four host rates, 85 offsets (MIDI 28 to 112) between -27 and -17 cents, and the constant `source_rms_ref` (the three instruments' tables are equal while their curves are all 1).
-- Checkpoint: step done; the sub-step constant in use.
+- Checkpoint: step done; the sub-step constant in use; the cost of one reed per sample measured by `reed_probe` (a timing of 450 periods at 444 Hz, printed in `EXECUTION_LOG.md`), so a performance shortfall against A-009 shows before the instruments exist.
 - On failure: rule DR-03.
 - Gate: none
 - Relevant decisions/claims: D-011, D-012, D-016; C-059, C-060
@@ -218,7 +218,7 @@ Gate actions of S-210 (after its tests pass): the pilot gate needs the evidence 
 - Actions: implement the accordion in `core/src/accordion.cpp`: ranks per register, tremolo by D-031, cassotto and sordina filters, bend, key noise, bellows from velocity or controller, polyphony 16 keys, a change of `register` while keys are held taking effect within one block (ranks start or stop for held keys).
 - Outputs: `core/src/accordion.cpp`; `presets/gains.json` (entry for the accordion, by GAIN `accordion`, run as soon as the instrument makes sound and before its `Done when` is evaluated: T-162 depends on the gain)
 - Evidence produced: T-100 to T-109 (accordion), T-120 to T-125, T-161 event-file features
-- Done when: CORE BUILD; PY `accordion`; PY `T161`.
+- Done when: CORE BUILD; PY `accordion`; PY `T161`; and, as an early probe of A-022, the accordion reference tests (`cd tests && python3 -m pytest -m reference -k accordion -s`, locally with TinySOL or in the next CI `reference` job, rule DR-13) have been run once and their result recorded in `EXECUTION_LOG.md` (a failure here does not fail this step; it starts DR-07 thinking early and is carried to `S-330`).
 - Checkpoint: step done.
 - On failure: fix the code; rule DR-05.
 - Gate: none
@@ -383,7 +383,7 @@ Gate actions of S-250: push a commit with the marker `[gate-evidence G-P2 mandol
 - Inputs: `tests/py/test_reference.py`, rule DR-07, D-012 (the three curves), D-071
 - Actions:
   1. Run the reference tests locally (`plan/ENVIRONMENT.md` section 3) with `FOLK_TINYSOL` and `FOLK_REF_ROOT` set, or in CI under rule DR-13; save the output to `baseline/reference-before.txt` (pass and fail lines and the printed T-201 lines only; in this saved file, replace the limit value of a T-201 line for an instrument with private references by `<redacted>`; the same line in the CI log is accepted: risk R-016).
-  2. If any reference test fails, calibrate by rule DR-07, running `python3 tools/reed_check.py --instrument <name> --calibrated --out baseline/reed-check-calibrated.csv` and then `tools/calibrate_reeds.py` after any change to a reed curve, and re-running the whole of `S-300`'s `Done when` after each round.
+  2. If any reference test fails, calibrate by rule DR-07 (after each round also run `FOLK_PERF_GATE=1 $B/folk-perf` and record the five `PERF` lines, so a calibration that costs speed is seen before `S-320`), running `python3 tools/reed_check.py --instrument <name> --calibrated --out baseline/reed-check-calibrated.csv` and then `tools/calibrate_reeds.py` after any change to a reed curve, and re-running the whole of `S-300`'s `Done when` after each round.
   3. Save the final output to `baseline/reference-after.txt`.
 - Outputs: `baseline/reference-before.txt`, `baseline/reference-after.txt`, possibly updated `presets/reeds.json`, `presets/bodies.json` and `presets/strings.json` (`eta_E` and the plectrum factors, DR-07)
 - Evidence produced: T-200 (T-200a, T-200b, T-200c, T-200d, T-200e), T-201 (T-201b)

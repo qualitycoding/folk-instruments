@@ -27,6 +27,7 @@ Purpose: an early check by the owner's ear, before the second and third instrume
   1. Does this sound like the instrument? If not, what is wrong, in your own words (for example: too clean, too bright, synthetic attack, wrong pitch, lifeless sustain)?
   2. Which demo is the weakest?
   3. May the remaining instruments of this family be built on this sound engine as it is?
+  4. Is the scope still right: five instruments, the variants of `plan/DECISIONS.md`, VST3 and Standalone on Windows, macOS and Linux, nothing released (A-003, A-018)? Answer with `proceed-with-rescope: <text>` to change it.
 - **Allowed responses.** `proceed`; `iterate: <notes>`; `proceed-with-rescope: <text>`; `stop`; `override-round-limit: <reason>` (only after round 2).
 - **Branches.** `proceed`: continue. `iterate: <notes>`: apply the iterate procedure of `HANDOFF.md` to this instrument (analysis chosen from the listener's words, one general change per difference, all frozen tests re-run), render the same demos again, open round 2; after round 2 only `proceed`, `proceed-with-rescope`, `stop` or `override-round-limit: <reason>` are accepted. `proceed-with-rescope: <text>`: copy the text into `DEVIATIONS.md`, apply it if it is a reduction of scope (for example dropping a variant), and continue; if the text asks for something that changes a public interface or a frozen test, write `BLOCKED.md` instead. `stop`: rule DR-15: halt and write `BLOCKED.md` (the instruments not yet built would leave frozen tests unpassable, so the plan must be amended first).
 

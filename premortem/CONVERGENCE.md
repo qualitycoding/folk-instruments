@@ -14,16 +14,16 @@ A cold-read re-run (protocol 4.4) followed every round's amendments; their recor
 
 **Outcome.** The loop did not reach a round with no counted finding: round 5, the last permitted, still found three High risks at `plausible` likelihood. Each was mitigated after the round (two of them had already been fixed on the branch before the round's report arrived, because the round ran on the previous commit). No Critical risk and no High risk at `expected` or `plausible` likelihood is open in `premortem/RISK_REGISTER.md`. Protocol 4.6 applies only when counted risks remain after the last round; none remains, so the plan is not marked `BLOCKED`. The owner should know that the mitigations added after round 5 (R-088 to R-095) were checked by a cold-read re-run and, where executable, by running them in the planning sandbox (the three ThreadSanitizer canaries, the suppression checker, the exclusion grep), but not by a sixth pre-mortem round. This is stated again in the Phase 5 report.
 
-Register by severity and status (97 rows):
+Register by severity and status (133 rows, including R-098 to R-133 from the assumption audit):
 
 | Severity | Status | Count |
 |---|---|---|
 | Critical | mitigated | 11 |
 | High | accepted | 1 |
-| High | mitigated | 22 |
-| Low | accepted | 9 |
+| High | mitigated | 26 |
+| Low | accepted | 31 |
 | Low | mitigated | 6 |
 | Low | speculative | 1 |
-| Medium | accepted | 13 |
-| Medium | mitigated | 33 |
+| Medium | accepted | 19 |
+| Medium | mitigated | 37 |
 | Medium | speculative | 1 |

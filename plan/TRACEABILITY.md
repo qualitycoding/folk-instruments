@@ -97,7 +97,7 @@ Every test with a numeric threshold fails the build when missed: all are asserti
 
 The matrix is produced by step `S-003` from `plan/ci/ci.yml` and recorded in `plan/ENVIRONMENT.md` section 5. The mutation job placement rule does not apply (D-004).
 
-## 5. State at the freeze (red verification, 2026-11-15, planning sandbox, against the stubs; re-frozen after pre-mortem round 1 with T-016, T-211 and the new T-302 to T-304 cases, after round 2 with T-092, the TinySOL hash list and a stronger T-302 program case, after round 3 with an anchored T-092 checker, after round 4 with the named canary and the parenthesis-anchored form, after cold read 9 with the top-frame `race_top:` form, and after round 5 with the scope canary; 36 frozen files)
+## 5. State at the freeze (red verification, 2026-11-15, planning sandbox, against the stubs; re-frozen after pre-mortem round 1 with T-016, T-211 and the new T-302 to T-304 cases, after round 2 with T-092, the TinySOL hash list and a stronger T-302 program case, after round 3 with an anchored T-092 checker, after round 4 with the named canary and the parenthesis-anchored form, after cold read 9 with the top-frame `race_top:` form, after round 5 with the scope canary, and after the assumption audit with locale cases that also switch the C++ global locale; 36 frozen files)
 
 | Suite | Result |
 |---|---|

@@ -11,9 +11,12 @@
 #include <clocale>
 #include <cmath>
 #include <cstring>
+#include <exception>
+#include <locale>
 #include <memory>
 #include <string>
 #include <random>
+#include <sstream>
 #include <thread>
 #include <vector>
 #include "folk/engine.h"
@@ -97,12 +100,23 @@ juce::RangedAudioParameter* paramById(juce::AudioProcessor& p, const char* id) {
         if (auto* r = dynamic_cast<juce::RangedAudioParameter*>(q); r != nullptr && r->paramID == id) return r;
     return nullptr;
 }
+// Switches both the C locale and the C++ global locale (default-constructed streams follow the latter; audit TP-LOC-2).
 bool setCommaLocale() {
-    for (const char* name : {"de_DE.UTF-8", "de_DE.utf8", "de_DE", "German_Germany.1252", "German", "de-DE"})
-        if (std::setlocale(LC_ALL, name) != nullptr && std::strcmp(std::localeconv()->decimal_point, ",") == 0) return true;
+    for (const char* name : {"de_DE.UTF-8", "de_DE.utf8", "de_DE", "German_Germany.1252", "German", "de-DE"}) {
+        if (std::setlocale(LC_ALL, name) == nullptr || std::strcmp(std::localeconv()->decimal_point, ",") != 0) continue;
+        try {
+            std::locale cpp(name);
+            if (std::use_facet<std::numpunct<char>>(cpp).decimal_point() != ',') continue;
+            std::locale::global(cpp);
+        } catch (const std::exception&) { continue; }
+        std::ostringstream probe; probe << 0.5;
+        if (probe.str() == "0,5") return true;
+    }
     std::setlocale(LC_ALL, "C");
+    std::locale::global(std::locale::classic());
     return false;
 }
+void restoreClassicLocale() { std::setlocale(LC_ALL, "C"); std::locale::global(std::locale::classic()); }
 }  // namespace
 
 TEST_CASE("T-302 state round trip under a decimal-comma locale", "[juce][security][locale]") {
@@ -115,7 +129,7 @@ TEST_CASE("T-302 state round trip under a decimal-comma locale", "[juce][securit
     b->setStateInformation(state.getData(), static_cast<int>(state.getSize()));
     const auto& pb = b->getParameters();
     for (int i = 0; i < pa.size(); ++i) CHECK(std::fabs(pb[i]->getValue() - pa[i]->getValue()) < 1e-6f);
-    std::setlocale(LC_ALL, "C");
+    restoreClassicLocale();
 }
 
 TEST_CASE("T-302 the current program survives a restore and re-selecting it changes nothing", "[juce]") {
