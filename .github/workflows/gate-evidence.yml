@@ -1,0 +1,121 @@
+# Copy to .github/workflows/gate-evidence.yml in step S-210 (S-340 re-checks the copy). Builds the evidence bundle of one listening gate and pushes it
+# as the only content of the orphan branch evidence/<gate id> (plan/PLAN.md S-340, S-LISTEN; HANDOFF.md "Delivering audio").
+# Trigger: a push to an implementation branch whose head commit message contains
+#   [gate-evidence <gate id> <instrument> seed=<n>]
+# The message is parsed by a Python step from the event payload file, never interpolated into a shell command.
+name: gate-evidence
+on:
+  push:
+    branches: ["impl-**"]
+permissions:
+  contents: read
+concurrency:
+  group: gate-evidence-${{ github.ref }}
+  cancel-in-progress: false
+defaults:
+  run:
+    shell: bash
+jobs:
+  evidence:
+    if: contains(github.event.head_commit.message, '[gate-evidence ')
+    runs-on: ubuntu-24.04
+    outputs:
+      gate: ${{ steps.marker.outputs.gate }}
+      instrument: ${{ steps.marker.outputs.instrument }}
+      seed: ${{ steps.marker.outputs.seed }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+      - run: python3 -m pip install --require-hashes -r tests/requirements.lock
+      - name: Parse the marker (strict pattern; anything else fails)
+        id: marker
+        run: |
+          python3 - <<'PY'
+          import json, os, re
+          msg = json.load(open(os.environ["GITHUB_EVENT_PATH"]))["head_commit"]["message"]
+          m = re.search(r"\[gate-evidence (G-L[1-5]|G-P[12]|G-TEST) (harmonica|accordion|melodion|mandolin|bouzouki) seed=([0-9]{1,6})\]", msg)
+          if not m:
+              raise SystemExit("no valid [gate-evidence <gate> <instrument> seed=<n>] marker")
+          with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
+              fh.write(f"gate={m.group(1)}\ninstrument={m.group(2)}\nseed={m.group(3)}\n")
+          PY
+      - name: TinySOL cache, with its own key (this job does not download the metadata file that ci.yml's entry holds)
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        id: cache
+        with:
+          path: refs/tinysol
+          key: tinysol-6.0-36030a7fe389da86c3419e5ee48e3b7f-accordion-evidence
+      - name: Download TinySOL if not cached
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p refs/tinysol && cd refs/tinysol
+          curl --fail --location --retry 5 --retry-delay 20 -o TinySOL.tar.gz "https://zenodo.org/api/records/3685367/files/TinySOL.tar.gz/content"
+          echo "36030a7fe389da86c3419e5ee48e3b7f  TinySOL.tar.gz" | md5sum -c -
+          tar xzf TinySOL.tar.gz --wildcards '*Accordion*'
+          rm TinySOL.tar.gz
+      - name: TinySOL accordion files match the frozen hash list (R-053)
+        run: cd refs/tinysol && sha256sum --strict --quiet -c ../../tests/data/tinysol-accordion.sha256
+      - name: Fetch the redistributable references only
+        run: python3 tools/fetch_references.py --index references/index.csv --root refs --archive-cache "$RUNNER_TEMP/ref-archives" --only-redistributable
+      - name: Build the render tool
+        run: |
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DFOLK_BUILD_PLUGINS=OFF -DFOLK_BUILD_TESTS=OFF
+          cmake --build build --parallel 4
+          test -s build/folk-render
+      - name: Build the evidence (the guard runs inside and fails the step on any private-derived file)
+        run: python3 tools/build_evidence.py --gate "${{ steps.marker.outputs.gate }}" --instrument "${{ steps.marker.outputs.instrument }}" --seed "${{ steps.marker.outputs.seed }}" --out "$RUNNER_TEMP/evidence" --render build/folk-render --ref-root refs
+        env:
+          FOLK_REF_ROOT: ${{ github.workspace }}/refs
+      - name: Evidence post-conditions
+        run: |
+          test -s "$RUNNER_TEMP/evidence/SHA256SUMS"
+          test -s "$RUNNER_TEMP/evidence/MANIFEST.json"
+          test "$(find "$RUNNER_TEMP/evidence/demos" -name '*.wav' | wc -l)" -ge 9
+          python3 tools/evidence_guard.py --index references/index.csv --evidence "$RUNNER_TEMP/evidence"
+      - name: Hand the bundle to the publishing job (the only job with write access, which runs no repository code)
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: evidence-bundle
+          path: ${{ runner.temp }}/evidence
+          retention-days: 1
+          if-no-files-found: error
+
+  publish:
+    needs: evidence
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: evidence-bundle
+          path: evidence
+      - name: Push to the orphan branch evidence/<gate>
+        env:
+          GATE: ${{ needs.evidence.outputs.gate }}
+          INSTRUMENT: ${{ needs.evidence.outputs.instrument }}
+          SEED: ${{ needs.evidence.outputs.seed }}
+          TOKEN: ${{ github.token }}
+        run: |
+          test -s evidence/SHA256SUMS
+          test -s evidence/MANIFEST.json
+          cd evidence
+          git init -q -b "evidence/$GATE"
+          git config user.name "gate-evidence workflow"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Evidence for $GATE ($INSTRUMENT, seed $SEED) from $GITHUB_SHA"
+          git push --force "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "evidence/$GATE:evidence/$GATE"
+      - name: Pushed branch holds the bundle
+        env:
+          GATE: ${{ needs.evidence.outputs.gate }}
+          TOKEN: ${{ github.token }}
+        run: |
+          cd evidence
+          git fetch --depth 1 "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "evidence/$GATE"
+          git ls-tree --name-only FETCH_HEAD | grep -qx SHA256SUMS
+          git ls-tree --name-only FETCH_HEAD | grep -qx MANIFEST.json

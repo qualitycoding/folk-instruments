@@ -5,7 +5,7 @@ paths pass, G_out calibrated to -12 dBFS) and `tools/evidence_guard.py` (T-210 g
 
 S-101 passed after the planner's D-096 amendment (TEST_CHALLENGE.md resolved).
 
-Not started / remaining of S-210: `tools/fetch_references.py` (T-211), `tools/build_evidence.py`, `.github/workflows/gate-evidence.yml`,
+S-210 finished except the gate answer: GATE-G-P1.md is OPEN (S-220, S-230 blocked).
 the marker commit and `GATE-G-P1.md` (owner listening gate; S-220 and S-230 wait for its answer).
 Independent of that gate and next in line: S-240 (string, course, body), S-250 (mandolin, opens G-P2), S-260, then S-300 onwards.
 

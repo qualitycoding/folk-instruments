@@ -8,3 +8,4 @@
 2026-11-19T20:41:10Z S-210 1 partial 2618acd harmonica instrument + ReedEngine; all 88 harmonica pytest cases pass; G_out 0.0642117 (peak -11.996 dBFS); gate tooling (evidence_guard, fetch_references, build_evidence, workflow) and G-P1 not done
 2026-11-19T20:41:35Z S-210 2 partial 2ef5ee8 tools/evidence_guard.py done (T-210 green). Not done: fetch_references.py (T-211), build_evidence.py, gate-evidence workflow, GATE-G-P1.md. Session stopped here.
 2026-11-20T15:06:17Z S-101 2 pass a65ea0d T-006 amended by D-096 (8454145) merged; CPP T-005*, T-006* green; manifest OK
+2026-11-20T15:08:26Z S-210 3 pass a07c0cf fetch_references (T-211), build_evidence, workflow copied, references index/archives; G-P1 OPEN (demos delivered by file, not evidence branch)
