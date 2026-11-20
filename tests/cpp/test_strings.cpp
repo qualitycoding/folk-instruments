@@ -67,5 +67,11 @@ TEST_CASE("T-006 strongly coupled pair mistuned by 3 cents locks", "[unit][strin
     const PairModes m = solveCoupledPair(w1, w2, 2e-4, 2e-4, {M_PI * 1e-3, 0.0}, 660.0);
     const double splitHz = std::abs(m.omega[0].real() - m.omega[1].real()) / (2.0 * M_PI);
     CHECK(splitHz < 0.01);                                   // against 1.14 Hz uncoupled (spike S04)
-    CHECK(m.omega[0].imag() > 10.0 * m.omega[1].imag());     // fast and slow modes remain distinct
+    // Exact eigenvalues mean +/- sqrt(delta^2 + z^2) (closed form, equal to numpy.linalg.eig to 1e-12). At 3 cents the
+    // detuning (3.59 rad/s) is close to the coupling (4.15 rad/s), so the decay rates are only partly separated: 6.63 and
+    // 2.50 (21:1 at unison, 1:1 once unlocked at 4 cents). Amended by TEST_CHALLENGE (S-101): the earlier '> 10 times'
+    // was never computed from the spike and no correct solver can meet it (D-096).
+    CHECK_THAT(m.omega[0].imag(), WithinRel(6.627051213076816, 1e-6));
+    CHECK_THAT(m.omega[1].imag(), WithinRel(2.4968530793399473, 1e-6));
+    CHECK(m.omega[0].imag() > 2.0 * m.omega[1].imag());      // fast and slow modes remain distinct
 }
